@@ -21,7 +21,8 @@ namespace KiwoomRestApi.Net.Examples
 
 			var client = new KiwoomRestApiClient(appKey, secretKey, true);
 
-			var aa = client.Account.GetContracts(KiwoomQueryType.All, KiwoomTradeType.All, KiwoomStockExchangeType.Unified).Result;
+			var aa = client.Account.GetDateStockRealizedProfitLoss("", new DateTime(2025, 8, 1)).Result;
+			//var aa = client.Account.GetContracts(KiwoomQueryType.All, KiwoomTradeType.All, KiwoomStockExchangeType.Unified).Result;
 
 			//var a = client.OAuth.GetAccessToken().Result;
 			//var tokenValue = a.Data?.Token ?? string.Empty;
