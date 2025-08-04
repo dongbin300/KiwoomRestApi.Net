@@ -1,4 +1,5 @@
-﻿using KiwoomRestApi.Net.Converters;
+﻿using KiwoomRestApi.Net.Clients.DomesticStocks;
+using KiwoomRestApi.Net.Converters;
 using KiwoomRestApi.Net.Objects;
 
 using Newtonsoft.Json;
@@ -20,18 +21,40 @@ namespace KiwoomRestApi.Net.Clients
 		public string NextKey { get; set; } = string.Empty;
 
 		public KiwoomRestApiClientOAuth OAuth { get; set; }
+		public KiwoomRestApiClientDomesticStockAccount Account { get; set; }
 
-		public KiwoomRestApiClient(string appKey, string secretKey)
+		public KiwoomRestApiClient(string appKey, string secretKey, bool isMock = false)
 		{
 			Client = new HttpClient
 			{
-				BaseAddress = new Uri(KiwoomUrls.RestApiHost)
+				BaseAddress = isMock ? new Uri(KiwoomUrls.MockRestApiHost) : new Uri(KiwoomUrls.RestApiHost)
 			};
 			AppKey = appKey;
 			SecretKey = secretKey;
 
 			OAuth = new KiwoomRestApiClientOAuth(this);
+			Account = new KiwoomRestApiClientDomesticStockAccount(this);
+
+			var token = OAuth.GetAccessToken().GetAwaiter().GetResult().Data?.Token;
+
+			Authorization = "Bearer " + token;
 		}
+
+		public KiwoomRestApiClient(string appKey, string secretKey, string token, bool isMock = false)
+		{
+			Client = new HttpClient
+			{
+				BaseAddress = isMock ? new Uri(KiwoomUrls.MockRestApiHost) : new Uri(KiwoomUrls.RestApiHost)
+			};
+			AppKey = appKey;
+			SecretKey = secretKey;
+
+			OAuth = new KiwoomRestApiClientOAuth(this);
+			Account = new KiwoomRestApiClientDomesticStockAccount(this);
+
+			Authorization = "Bearer " + token;
+		}
+
 
 		public async Task<KiwoomRestApiResponse<T>> PostKiwoomRestApiAsync<T>(string endpoint, string apiId, IDictionary<string, string>? bodies = null)
 		{

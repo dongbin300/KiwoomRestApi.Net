@@ -15,7 +15,7 @@ namespace KiwoomRestApi.Net.Converters
 
 			var response = new KiwoomRestApiResponse<T>
 			{
-				ReturnMessage = jsonObject["return_msg"]?.ToString() ?? "",
+				ReturnMessage = jsonObject["return_msg"]?.ToString().Trim() ?? "",
 				ReturnCode = jsonObject["return_code"]?.ToObject<int>() ?? 0
 			};
 
