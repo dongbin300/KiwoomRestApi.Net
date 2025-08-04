@@ -1,4 +1,8 @@
-﻿using KiwoomRestApi.Net.Objects;
+﻿using KiwoomRestApi.Net.Converters;
+using KiwoomRestApi.Net.Objects;
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 using System;
 using System.Collections.Generic;
@@ -9,8 +13,13 @@ namespace KiwoomRestApi.Net.Clients
 {
 	public class KiwoomRestApiClient : BaseClient
 	{
-		protected string AppKey { get; private set; } = string.Empty;
-		protected string SecretKey { get; private set; } = string.Empty;
+		public string AppKey { get; private set; } = string.Empty;
+		public string SecretKey { get; private set; } = string.Empty;
+		public string Authorization { get; set; } = string.Empty;
+		public string ContYn { get; set; } = string.Empty;
+		public string NextKey { get; set; } = string.Empty;
+
+		public KiwoomRestApiClientOAuth OAuth { get; set; }
 
 		public KiwoomRestApiClient(string appKey, string secretKey)
 		{
@@ -20,17 +29,31 @@ namespace KiwoomRestApi.Net.Clients
 			};
 			AppKey = appKey;
 			SecretKey = secretKey;
+
+			OAuth = new KiwoomRestApiClientOAuth(this);
 		}
 
-		protected async Task<HttpResponseWrapper<T>> PostKiwoomRestApiAsync<T>(string endpoint, string apiId, string authorization, string contYn, string nextKey, IDictionary<string, string>? bodies)
+		public async Task<KiwoomRestApiResponse<T>> PostKiwoomRestApiAsync<T>(string endpoint, string apiId, IDictionary<string, string>? bodies = null)
 		{
-			Dictionary<string, string> headers = [];
-			headers.Add("api-id", apiId);
-			headers.Add("authorization", authorization);
-			headers.Add("cont-yn", contYn);
-			headers.Add("next-key", nextKey);
+			var headers = new Dictionary<string, string>
+			{
+				["api-id"] = apiId,
+				["authorization"] = Authorization,
+				["cont-yn"] = ContYn,
+				["next-key"] = NextKey
+			};
 
-			return await PostAsync<T>(endpoint, headers, bodies).ConfigureAwait(false);
+			var response = await PostAsync<JObject>(endpoint, headers, bodies).ConfigureAwait(false);
+
+			var settings = new JsonSerializerSettings
+			{
+				Converters = { new KiwoomRestApiResponseConverter<T>() }
+			};
+
+			var converted = response.Body?.ToString();
+			var result = JsonConvert.DeserializeObject<KiwoomRestApiResponse<T>>(converted!, settings);
+
+			return result ?? new KiwoomRestApiResponse<T>();
 		}
 	}
 }

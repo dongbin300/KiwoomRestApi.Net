@@ -1,0 +1,13 @@
+﻿using Newtonsoft.Json;
+
+namespace KiwoomRestApi.Net.Objects
+{
+	public record KiwoomRestApiResponse<T>
+	{
+		public T? Data { get; internal set; }
+		[JsonProperty("return_msg")]
+		public string ReturnMessage { get; internal set; } = string.Empty;
+		[JsonProperty("return_code")]
+		public int ReturnCode { get; internal set; }
+	}
+}

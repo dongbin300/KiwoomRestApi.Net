@@ -15,7 +15,7 @@ namespace KiwoomRestApi.Net.Clients
 		public IDictionary<string, IEnumerable<string>> Headers { get; set; } = new Dictionary<string, IEnumerable<string>>();
 	}
 
-	public class BaseClient() : IClient
+	public class BaseClient : IClient
 	{
 		public HttpClient Client { get; set; } = default!;
 
@@ -26,26 +26,30 @@ namespace KiwoomRestApi.Net.Clients
 
 		protected async Task<HttpResponseWrapper<T>> GetAsync<T>(string endpoint, IDictionary<string, string>? headers = null)
 		{
-			using var request = new HttpRequestMessage(HttpMethod.Get, endpoint);
-			AddHeaders(request, headers);
-
+			using var request = CreateRequest(HttpMethod.Get, endpoint, headers);
 			using var response = await Client.SendAsync(request).ConfigureAwait(false);
 			return await CreateResponseWrapper<T>(response).ConfigureAwait(false);
 		}
 
 		protected async Task<HttpResponseWrapper<T>> PostAsync<T>(string endpoint, IDictionary<string, string>? headers = null, IDictionary<string, string>? bodies = null)
 		{
-			using var request = new HttpRequestMessage(HttpMethod.Post, endpoint);
+			using var request = CreateRequest(HttpMethod.Post, endpoint, headers, bodies);
+			using var response = await Client.SendAsync(request).ConfigureAwait(false);
+			return await CreateResponseWrapper<T>(response).ConfigureAwait(false);
+		}
+
+		private static HttpRequestMessage CreateRequest(HttpMethod method, string endpoint, IDictionary<string, string>? headers, IDictionary<string, string>? bodies = null)
+		{
+			var request = new HttpRequestMessage(method, endpoint);
 			AddHeaders(request, headers);
 
-			if (bodies != null && bodies.Count > 0)
+			if (method == HttpMethod.Post && bodies != null && bodies.Count > 0)
 			{
 				string jsonBody = JsonConvert.SerializeObject(bodies);
 				request.Content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
 			}
 
-			using var response = await Client.SendAsync(request).ConfigureAwait(false);
-			return await CreateResponseWrapper<T>(response).ConfigureAwait(false);
+			return request;
 		}
 
 		private static void AddHeaders(HttpRequestMessage request, IDictionary<string, string>? headers)
