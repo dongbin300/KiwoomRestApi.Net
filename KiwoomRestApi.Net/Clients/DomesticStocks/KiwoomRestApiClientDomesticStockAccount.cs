@@ -78,5 +78,76 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetContracts>(_endpoint, apiId, bodies).ConfigureAwait(false);
 		}
+
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetTodayRealizedProfitLoss>> GetTodayRealizedProfitLoss(string stockCode)
+		{
+			const string apiId = "ka10077";
+			var bodies = new Dictionary<string, string>
+			{
+				["stk_cd"] = stockCode
+			};
+
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetTodayRealizedProfitLoss>(_endpoint, apiId, bodies).ConfigureAwait(false);
+		}
+
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetProfitRate>> GetProfitRate(KiwoomStockExchangeType stockExchangeType)
+		{
+			const string apiId = "ka10085";
+			var bodies = new Dictionary<string, string>
+			{
+				["stex_tp"] = stockExchangeType.ToCodeString()
+			};
+
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetProfitRate>(_endpoint, apiId, bodies).ConfigureAwait(false);
+		}
+
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetOutstandingPartialOrders>> GetOutstandingPartialOrders(string orderId)
+		{
+			const string apiId = "ka10088";
+			var bodies = new Dictionary<string, string>
+			{
+				["ord_no"] = orderId
+			};
+
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetOutstandingPartialOrders>(_endpoint, apiId, bodies).ConfigureAwait(false);
+		}
+
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetTodayTradeDiaries>> GetTodayTradeDiaries(KiwoomOddLotType oddLotType, KiwoomCashCreditType cashCreditType, DateTime? date = null)
+		{
+			const string apiId = "ka10170";
+			var bodies = new Dictionary<string, string>
+			{
+				["ottks_tp"] = oddLotType.ToCodeString(),
+				["ch_crd_tp"] = cashCreditType.ToCodeString(),
+				["base_dt"] = date.ToKiwoomDateString()
+
+			};
+
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetTodayTradeDiaries>(_endpoint, apiId, bodies).ConfigureAwait(false);
+		}
+
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetDeposits>> GetDeposits(KiwoomDepositQueryType queryType)
+		{
+			const string apiId = "kt00001";
+			var bodies = new Dictionary<string, string>
+			{
+				["qry_tp"] = queryType.ToCodeString()
+
+			};
+
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetDeposits>(_endpoint, apiId, bodies).ConfigureAwait(false);
+		}
+
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetDailyEstimatedDepositAssets>> GetDailyEstimatedDepositAssets(DateTime startDate, DateTime endDate)
+		{
+			const string apiId = "kt00002";
+			var bodies = new Dictionary<string, string>
+			{
+				["start_dt"] = startDate.ToKiwoomDateString(),
+				["end_dt"] = endDate.ToKiwoomDateString()
+			};
+
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetDailyEstimatedDepositAssets>(_endpoint, apiId, bodies).ConfigureAwait(false);
+		}
 	}
 }

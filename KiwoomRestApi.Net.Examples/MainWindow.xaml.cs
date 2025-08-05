@@ -20,9 +20,11 @@ namespace KiwoomRestApi.Net.Examples
 			//var token = File.ReadAllText("D:\\Assets\\kiwoom_token.txt");
 
 			var client = new KiwoomRestApiClient(appKey, secretKey, true);
+			var startDate = new DateTime(2025, 8, 1);
+			var endDate = new DateTime(2025, 8, 5);
+			var stockCode = "452400";
 
-			var aa = client.Account.GetDateStockRealizedProfitLoss("", new DateTime(2025, 8, 1)).Result;
-			//var aa = client.Account.GetContracts(KiwoomQueryType.All, KiwoomTradeType.All, KiwoomStockExchangeType.Unified).Result;
+			var __result__ = client.Account.GetDailyEstimatedDepositAssets(startDate, endDate).Result;
 
 			//var a = client.OAuth.GetAccessToken().Result;
 			//var tokenValue = a.Data?.Token ?? string.Empty;

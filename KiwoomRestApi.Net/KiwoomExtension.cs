@@ -13,5 +13,10 @@ namespace KiwoomRestApi.Net
 		{
 			return dateTime.ToString("yyyyMMdd");
 		}
+
+		public static string ToKiwoomDateString(this DateTime? dateTime)
+		{
+			return dateTime == null ? string.Empty : dateTime.Value.ToString("yyyyMMdd");
+		}
 	}
 }
