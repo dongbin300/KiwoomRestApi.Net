@@ -149,5 +149,56 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetDailyEstimatedDepositAssets>(_endpoint, apiId, bodies).ConfigureAwait(false);
 		}
+
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetEstimatedDepositAsset>> GetEstimatedDepositAsset(KiwoomDelistingQueryType queryType)
+		{
+			const string apiId = "kt00003";
+			var bodies = new Dictionary<string, string>
+			{
+				["qry_tp"] = queryType.ToCodeString()
+			};
+
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetEstimatedDepositAsset>(_endpoint, apiId, bodies).ConfigureAwait(false);
+		}
+
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetEvaluations>> GetEvaluations(KiwoomDelistingQueryType queryType, KiwoomStockExchangeType stockExchangeType)
+		{
+			const string apiId = "kt00004";
+			var bodies = new Dictionary<string, string>
+			{
+				["qry_tp"] = queryType.ToCodeString(),
+				["dmst_stex_tp"] = stockExchangeType.ToCodeString()
+			};
+
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetEvaluations>(_endpoint, apiId, bodies).ConfigureAwait(false);
+		}
+
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetContractBalances>> GetContractBalances(KiwoomStockExchangeType stockExchangeType)
+		{
+			const string apiId = "kt00005";
+			var bodies = new Dictionary<string, string>
+			{
+				["dmst_stex_tp"] = stockExchangeType.ToCodeString()
+			};
+
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetContractBalances>(_endpoint, apiId, bodies).ConfigureAwait(false);
+		}
+
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetOrderContractDetails>> GetOrderContractDetails(KiwoomOrderQueryType orderQueryType, KiwoomStockBondType stockBondType, KiwoomTradeType tradeType, KiwoomDomesticStockExchangeType domesticStockExchangeType, DateTime? date = null, string stockCode = "", string fromOrderId = "")
+		{
+			const string apiId = "kt00007";
+			var bodies = new Dictionary<string, string>
+			{
+				["qry_tp"] = orderQueryType.ToCodeString(),
+				["stk_bond_tp"] = stockBondType.ToCodeString(),
+				["sell_tp"] = tradeType.ToCodeString(),
+				["dmst_stex_tp"] = domesticStockExchangeType.ToCodeString(),
+				["ord_dt"] = date.ToKiwoomDateString(),
+				["stk_cd"] = stockCode,
+				["fr_ord_no"] = fromOrderId
+			};
+
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetOrderContractDetails>(_endpoint, apiId, bodies).ConfigureAwait(false);
+		}
 	}
 }

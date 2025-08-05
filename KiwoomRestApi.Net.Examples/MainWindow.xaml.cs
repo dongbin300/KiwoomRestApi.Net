@@ -24,7 +24,7 @@ namespace KiwoomRestApi.Net.Examples
 			var endDate = new DateTime(2025, 8, 5);
 			var stockCode = "452400";
 
-			var __result__ = client.Account.GetDailyEstimatedDepositAssets(startDate, endDate).Result;
+			var __result__ = client.Account.GetOrderContractDetails(KiwoomOrderQueryType.OrderSequence, KiwoomStockBondType.All, KiwoomTradeType.All, KiwoomDomesticStockExchangeType.All, endDate).Result;
 
 			//var a = client.OAuth.GetAccessToken().Result;
 			//var tokenValue = a.Data?.Token ?? string.Empty;

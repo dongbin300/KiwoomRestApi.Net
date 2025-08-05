@@ -7,7 +7,7 @@ namespace KiwoomRestApi.Net.Converters
 {
 	public class KiwoomTimeConverter : JsonConverter<TimeSpan>
 	{
-		private const string Format = "hhmmss";
+		private static readonly string[] Formats = { "hhmmss", @"hh\:mm\:ss" };
 
 		public override TimeSpan ReadJson(JsonReader reader, Type objectType, TimeSpan existingValue, bool hasExistingValue, JsonSerializer serializer)
 		{
@@ -15,7 +15,7 @@ namespace KiwoomRestApi.Net.Converters
 			if (string.IsNullOrEmpty(s))
 				throw new JsonSerializationException("Time value is null or empty.");
 
-			if (TimeSpan.TryParseExact(s, Format, CultureInfo.InvariantCulture, out var ts))
+			if (TimeSpan.TryParseExact(s, Formats, CultureInfo.InvariantCulture, out var ts))
 			{
 				return ts;
 			}
@@ -25,7 +25,8 @@ namespace KiwoomRestApi.Net.Converters
 
 		public override void WriteJson(JsonWriter writer, TimeSpan value, JsonSerializer serializer)
 		{
-			writer.WriteValue(value.ToString(@"hhmmss"));
+			writer.WriteValue(value.ToString("hhmmss"));
 		}
 	}
+
 }
