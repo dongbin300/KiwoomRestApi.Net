@@ -23,6 +23,7 @@ namespace KiwoomRestApi.Net.Clients
 		public KiwoomRestApiClientOAuth OAuth { get; set; }
 		public KiwoomRestApiClientDomesticStockAccount Account { get; set; }
 		public KiwoomRestApiClientDomesticStockShortSale ShortSale { get; set; }
+		public KiwoomRestApiClientDomesticStockForeignInstitution ForeignInstitution { get; set; }
 
 		public KiwoomRestApiClient(string appKey, string secretKey, bool isMock = false)
 		: this(appKey, secretKey, null, isMock)
@@ -42,6 +43,7 @@ namespace KiwoomRestApi.Net.Clients
 			OAuth = new KiwoomRestApiClientOAuth(this);
 			Account = new KiwoomRestApiClientDomesticStockAccount(this);
 			ShortSale = new KiwoomRestApiClientDomesticStockShortSale(this);
+			ForeignInstitution = new KiwoomRestApiClientDomesticStockForeignInstitution(this);
 		}
 
 		public static KiwoomRestApiClient Create(string appKey, string secretKey, bool isMock = false)

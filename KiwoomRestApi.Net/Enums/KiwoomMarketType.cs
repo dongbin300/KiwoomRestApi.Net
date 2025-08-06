@@ -8,4 +8,10 @@
 		OTCBB = 3,
 		ECN = 4
 	}
+
+	public enum KiwoomMarketType2
+	{
+		KOSPI = 1,
+		KOSDAQ = 101
+	}
 }

@@ -1,6 +1,4 @@
-﻿using System.Runtime.Serialization;
-
-namespace KiwoomRestApi.Net.Enums
+﻿namespace KiwoomRestApi.Net.Enums
 {
 	public enum KiwoomQueryType
 	{
@@ -38,5 +36,16 @@ namespace KiwoomRestApi.Net.Enums
 	{
 		Aggregate = 1,
 		Individual = 2
+	}
+
+	public enum KiwoomQueryTypePeriod
+	{
+		RecentDay = 1,
+		ThreeDays = 3,
+		FiveDays = 5,
+		TenDays = 10,
+		TwentyDays = 20,
+		OneHundredTwentyDays = 120,
+		CustomRange = 0
 	}
 }

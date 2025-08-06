@@ -278,5 +278,33 @@ namespace KiwoomRestApi.Net.Tests
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 		#endregion
+
+		#region ForeignInstitution
+		[TestCase("005930")]
+		public async Task GetStockForeignersAsync(string stockCode)
+		{
+			var result = await client.ForeignInstitution.GetStockForeignersAsync(stockCode);
+
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase("005930")]
+		public async Task GetDailyAsync(string stockCode)
+		{
+			var result = await client.ForeignInstitution.GetDailyAsync(stockCode);
+
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomQueryTypePeriod.RecentDay, KiwoomStockExchangeType2.Unified, KiwoomMarketType2.KOSPI, KiwoomNetSellAmountType.NetBuy, KiwoomStockIndustryType.Stock, KiwoomAmountQuantityType.Amount)]	
+		public async Task GetContinuousTradesAsync(KiwoomQueryTypePeriod queryType, KiwoomStockExchangeType2 stockExchangeType, KiwoomMarketType2 marketType, KiwoomNetSellAmountType netSellAmountType, KiwoomStockIndustryType stockIndustryType, KiwoomAmountQuantityType amountQuantityType, string _startDate = "2025-08-01", string _endDate = "2025-08-04")
+		{
+			DateTime startDate = DateTime.Parse(_startDate);
+			DateTime endDate = DateTime.Parse(_endDate);
+			var result = await client.ForeignInstitution.GetContinuousTradesAsync(queryType, stockExchangeType, marketType, netSellAmountType, stockIndustryType, amountQuantityType, startDate, endDate);
+
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+		#endregion
 	}
 }
