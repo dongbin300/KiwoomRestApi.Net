@@ -9,5 +9,9 @@ namespace KiwoomRestApi.Net.Objects
 		public string ReturnMessage { get; internal set; } = string.Empty;
 		[JsonProperty("return_code")]
 		public int ReturnCode { get; internal set; }
+
+		public string ApiId { get; internal set; } = string.Empty;
+		public string ContYn { get; internal set; } = string.Empty;
+		public string NextKey { get; internal set; } = string.Empty;
 	}
 }

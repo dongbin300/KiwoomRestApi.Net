@@ -7,6 +7,7 @@ using Newtonsoft.Json.Linq;
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -76,20 +77,43 @@ namespace KiwoomRestApi.Net.Clients
 		public async Task<KiwoomRestApiResponse<T>> PostKiwoomRestApiAsync<T>(string endpoint, string apiId, IDictionary<string, string>? body = null)
 		{
 			var headers = new HttpParameterMap()
-			.AddField("api-id", apiId)
-			.AddField("authorization", Authorization)
-			.AddField("cont-yn", ContYn)
-			.AddField("next-key", NextKey);
+				.AddField("api-id", apiId)
+				.AddField("authorization", Authorization)
+				.AddField("cont-yn", ContYn)
+				.AddField("next-key", NextKey);
 
 			var response = await PostAsync<JObject>(endpoint, headers, body).ConfigureAwait(false);
+
+			if (response.Body == null)
+				return new KiwoomRestApiResponse<T>();
+
+			var jsonString = response.Body.ToString();
 
 			var settings = new JsonSerializerSettings
 			{
 				Converters = { new KiwoomRestApiResponseConverter<T>() }
 			};
 
-			var result = JsonConvert.DeserializeObject<KiwoomRestApiResponse<T>>(response.Body?.ToString()!, settings);
-			return result ?? new KiwoomRestApiResponse<T>();
+			var result = JsonConvert.DeserializeObject<KiwoomRestApiResponse<T>>(jsonString, settings) ?? new KiwoomRestApiResponse<T>();
+
+			AssignHeadersToResponse(result, response.Headers);
+
+			return result;
+		}
+
+		private void AssignHeadersToResponse<T>(KiwoomRestApiResponse<T> response, IDictionary<string, IEnumerable<string>>? headers)
+		{
+			if (headers == null)
+				return;
+
+			if (headers.TryGetValue("api-id", out var apiIdValues))
+				response.ApiId = apiIdValues.FirstOrDefault() ?? string.Empty;
+
+			if (headers.TryGetValue("cont-yn", out var contYnValues))
+				response.ContYn = contYnValues.FirstOrDefault() ?? string.Empty;
+
+			if (headers.TryGetValue("next-key", out var nextKeyValues))
+				response.NextKey = nextKeyValues.FirstOrDefault() ?? string.Empty;
 		}
 	}
 }
