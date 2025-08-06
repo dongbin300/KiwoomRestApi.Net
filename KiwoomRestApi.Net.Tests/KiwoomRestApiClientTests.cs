@@ -15,6 +15,7 @@ namespace KiwoomRestApi.Net.Tests
 			client = await KiwoomRestApiClient.CreateAsync(appKey, secretKey, true);
 		}
 
+		#region OAuth
 		//[Test]
 		//public async Task GetAccessAndRevokeToken()
 		//{
@@ -32,7 +33,9 @@ namespace KiwoomRestApi.Net.Tests
 
 		//	Assert.That(result2.ReturnCode, Is.EqualTo(0));
 		//}
+		#endregion
 
+		#region Account
 		[TestCase("005930", "2025-08-04")]
 		public async Task GetDateStockRealizedProfitLossAsync(string stockCode, string _date)
 		{
@@ -261,5 +264,19 @@ namespace KiwoomRestApi.Net.Tests
 
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
+		#endregion
+
+		#region ShortSale
+		[TestCase("005930", "2025-08-01", "2025-08-04")]
+		[TestCase("005930", "2025-08-01", "2025-08-04", KiwoomTimeType.Period)]
+		public async Task GetShortsTransactionsAsync(string stockCode, string _startDate, string _endDate, KiwoomTimeType timeType = KiwoomTimeType.StartDate)
+		{
+			DateTime startDate = DateTime.Parse(_startDate);
+			DateTime endDate = DateTime.Parse(_endDate);
+			var result = await client.ShortSale.GetShortsTransactionsAsync(stockCode, startDate, endDate, timeType);
+
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+		#endregion
 	}
 }

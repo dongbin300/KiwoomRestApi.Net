@@ -21,15 +21,11 @@ namespace KiwoomRestApi.Net.Examples
 
 			var client = KiwoomRestApiClient.Create(appKey, secretKey, true);
 			var startDate = new DateTime(2025, 8, 1);
-			var endDate = new DateTime(2025, 8, 4);
+			var endDate = new DateTime(2025, 8, 6);
 			var stockCode = "452400";
 
-			var __result__ = client.Account.GetMarginOrdersAsync("452400").Result;
+			var __result__ = client.ShortSale.GetShortsTransactionsAsync(stockCode, startDate, endDate).Result;
 
-			//var a = client.OAuth.GetAccessToken().Result;
-			//var tokenValue = a.Data?.Token ?? string.Empty;
-			//File.WriteAllText("D:\\Assets\\kiwoom_token.txt", tokenValue);
-			//var b = client.OAuth.RevokeAccessToken(tokenValue).Result;
 		}
 	}
 }

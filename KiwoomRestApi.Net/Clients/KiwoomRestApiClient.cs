@@ -16,38 +16,32 @@ namespace KiwoomRestApi.Net.Clients
 	{
 		public string AppKey { get; private set; } = string.Empty;
 		public string SecretKey { get; private set; } = string.Empty;
-		public string Authorization { get; set; } = string.Empty;
+		public string? Authorization { get; set; } = string.Empty;
 		public string ContYn { get; set; } = string.Empty;
 		public string NextKey { get; set; } = string.Empty;
 
 		public KiwoomRestApiClientOAuth OAuth { get; set; }
 		public KiwoomRestApiClientDomesticStockAccount Account { get; set; }
+		public KiwoomRestApiClientDomesticStockShortSale ShortSale { get; set; }
 
 		public KiwoomRestApiClient(string appKey, string secretKey, bool isMock = false)
+		: this(appKey, secretKey, null, isMock)
 		{
-			Client = new HttpClient
-			{
-				BaseAddress = isMock ? new Uri(KiwoomUrls.MockRestApiHost) : new Uri(KiwoomUrls.RestApiHost)
-			};
-			AppKey = appKey;
-			SecretKey = secretKey;
-
-			OAuth = new KiwoomRestApiClientOAuth(this);
-			Account = new KiwoomRestApiClientDomesticStockAccount(this);
 		}
 
-		public KiwoomRestApiClient(string appKey, string secretKey, string token, bool isMock = false)
+		public KiwoomRestApiClient(string appKey, string secretKey, string? token, bool isMock = false)
 		{
 			Client = new HttpClient
 			{
-				BaseAddress = isMock ? new Uri(KiwoomUrls.MockRestApiHost) : new Uri(KiwoomUrls.RestApiHost)
+				BaseAddress = new Uri(isMock ? KiwoomUrls.MockRestApiHost : KiwoomUrls.RestApiHost)
 			};
 			AppKey = appKey;
 			SecretKey = secretKey;
-			Authorization = $"Bearer {token}";
+			Authorization = token != null ? $"Bearer {token}" : null;
 
 			OAuth = new KiwoomRestApiClientOAuth(this);
 			Account = new KiwoomRestApiClientDomesticStockAccount(this);
+			ShortSale = new KiwoomRestApiClientDomesticStockShortSale(this);
 		}
 
 		public static KiwoomRestApiClient Create(string appKey, string secretKey, bool isMock = false)

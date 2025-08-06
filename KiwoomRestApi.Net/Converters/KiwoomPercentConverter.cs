@@ -14,9 +14,7 @@ namespace KiwoomRestApi.Net.Converters
 			if (reader.Value == null)
 				return 0m;
 
-			var s = reader.Value.ToString()?.Trim();
-			if (string.IsNullOrEmpty(s))
-				return 0m;
+			var s = reader.Value.ToString()?.Trim() ?? "0";
 
 			if (s.EndsWith("%"))
 				s = s.Substring(0, s.Length - 1);

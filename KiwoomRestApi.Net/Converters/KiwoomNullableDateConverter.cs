@@ -16,6 +16,10 @@ namespace KiwoomRestApi.Net.Converters
 			{
 				return null;
 			}
+			if (s == "00000000")
+			{
+				return DateTime.MinValue;
+			}
 			if (DateTime.TryParseExact(s, Format, CultureInfo.InvariantCulture, DateTimeStyles.None, out var dt))
 			{
 				return dt;
