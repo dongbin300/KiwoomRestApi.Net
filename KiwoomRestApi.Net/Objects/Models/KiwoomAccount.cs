@@ -103,18 +103,18 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomAccountGetRealizedProfitLossItem
 	{
 		[JsonProperty("dt")]
-		[JsonConverter(typeof(KiwoomDateConverter))]
-		public DateTime Date;
+		[JsonConverter(typeof(KiwoomNullableDateConverter))]
+		public DateTime? Date;
 		[JsonProperty("buy_amt")]
-		public decimal BuyAmount;
+		public decimal? BuyAmount;
 		[JsonProperty("sell_amt")]
-		public decimal SellAmount;
+		public decimal? SellAmount;
 		[JsonProperty("tdy_sel_pl")]
-		public decimal TodaySellProfitLoss;
+		public decimal? TodaySellProfitLoss;
 		[JsonProperty("tdy_trde_cmsn")]
-		public decimal TodayTradeCommission;
+		public decimal? TodayTradeCommission;
 		[JsonProperty("tdy_trde_tax")]
-		public decimal TodayTradeTax;
+		public decimal? TodayTradeTax;
 	}
 
 	public record KiwoomAccountGetOutstandingOrders

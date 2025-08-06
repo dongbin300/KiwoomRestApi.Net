@@ -34,10 +34,6 @@ namespace KiwoomRestApi.Net.Clients
 
 			OAuth = new KiwoomRestApiClientOAuth(this);
 			Account = new KiwoomRestApiClientDomesticStockAccount(this);
-
-			var token = OAuth.GetAccessToken().GetAwaiter().GetResult().Data?.Token;
-
-			Authorization = "Bearer " + token;
 		}
 
 		public KiwoomRestApiClient(string appKey, string secretKey, string token, bool isMock = false)
@@ -48,34 +44,55 @@ namespace KiwoomRestApi.Net.Clients
 			};
 			AppKey = appKey;
 			SecretKey = secretKey;
+			Authorization = $"Bearer {token}";
 
 			OAuth = new KiwoomRestApiClientOAuth(this);
 			Account = new KiwoomRestApiClientDomesticStockAccount(this);
-
-			Authorization = "Bearer " + token;
 		}
 
-
-		public async Task<KiwoomRestApiResponse<T>> PostKiwoomRestApiAsync<T>(string endpoint, string apiId, IDictionary<string, string>? bodies = null)
+		public static KiwoomRestApiClient Create(string appKey, string secretKey, bool isMock = false)
 		{
-			var headers = new Dictionary<string, string>
-			{
-				["api-id"] = apiId,
-				["authorization"] = Authorization,
-				["cont-yn"] = ContYn,
-				["next-key"] = NextKey
-			};
+			var client = new KiwoomRestApiClient(appKey, secretKey, isMock);
+			client.Initialize();
+			return client;
+		}
 
-			var response = await PostAsync<JObject>(endpoint, headers, bodies).ConfigureAwait(false);
+		public static async Task<KiwoomRestApiClient> CreateAsync(string appKey, string secretKey, bool isMock = false)
+		{
+			var client = new KiwoomRestApiClient(appKey, secretKey, isMock);
+			await client.InitializeAsync();
+			return client;
+		}
+
+		public void Initialize()
+		{
+			var token = OAuth.GetAccessToken().Result.Data?.Token ?? throw new InvalidOperationException("Token is null");
+			Authorization = $"Bearer {token}";
+		}
+
+		public async Task InitializeAsync()
+		{
+			var result = await OAuth.GetAccessToken();
+			var token = result.Data?.Token ?? throw new InvalidOperationException("Token is null");
+			Authorization = $"Bearer {token}";
+		}
+
+		public async Task<KiwoomRestApiResponse<T>> PostKiwoomRestApiAsync<T>(string endpoint, string apiId, IDictionary<string, string>? body = null)
+		{
+			var headers = new HttpParameterMap()
+			.AddField("api-id", apiId)
+			.AddField("authorization", Authorization)
+			.AddField("cont-yn", ContYn)
+			.AddField("next-key", NextKey);
+
+			var response = await PostAsync<JObject>(endpoint, headers, body).ConfigureAwait(false);
 
 			var settings = new JsonSerializerSettings
 			{
 				Converters = { new KiwoomRestApiResponseConverter<T>() }
 			};
 
-			var converted = response.Body?.ToString();
-			var result = JsonConvert.DeserializeObject<KiwoomRestApiResponse<T>>(converted!, settings);
-
+			var result = JsonConvert.DeserializeObject<KiwoomRestApiResponse<T>>(response.Body?.ToString()!, settings);
 			return result ?? new KiwoomRestApiResponse<T>();
 		}
 	}

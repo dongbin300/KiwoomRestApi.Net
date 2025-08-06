@@ -31,21 +31,21 @@ namespace KiwoomRestApi.Net.Clients
 			return await CreateResponseWrapper<T>(response).ConfigureAwait(false);
 		}
 
-		protected async Task<HttpResponseWrapper<T>> PostAsync<T>(string endpoint, IDictionary<string, string>? headers = null, IDictionary<string, string>? bodies = null)
+		protected async Task<HttpResponseWrapper<T>> PostAsync<T>(string endpoint, IDictionary<string, string>? headers = null, IDictionary<string, string>? body = null)
 		{
-			using var request = CreateRequest(HttpMethod.Post, endpoint, headers, bodies);
+			using var request = CreateRequest(HttpMethod.Post, endpoint, headers, body);
 			using var response = await Client.SendAsync(request).ConfigureAwait(false);
 			return await CreateResponseWrapper<T>(response).ConfigureAwait(false);
 		}
 
-		private static HttpRequestMessage CreateRequest(HttpMethod method, string endpoint, IDictionary<string, string>? headers, IDictionary<string, string>? bodies = null)
+		private static HttpRequestMessage CreateRequest(HttpMethod method, string endpoint, IDictionary<string, string>? headers, IDictionary<string, string>? body = null)
 		{
 			var request = new HttpRequestMessage(method, endpoint);
 			AddHeaders(request, headers);
 
-			if (method == HttpMethod.Post && bodies != null && bodies.Count > 0)
+			if (method == HttpMethod.Post && body != null && body.Count > 0)
 			{
-				string jsonBody = JsonConvert.SerializeObject(bodies);
+				string jsonBody = JsonConvert.SerializeObject(body);
 				request.Content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
 			}
 

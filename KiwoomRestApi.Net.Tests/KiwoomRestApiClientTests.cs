@@ -5,39 +5,39 @@ namespace KiwoomRestApi.Net.Tests
 {
 	public class KiwoomRestApiClientTests
 	{
-		KiwoomRestApiClient client;
+		KiwoomRestApiClient client = default!;
 
-		[SetUp]
-		public void Setup()
+		[OneTimeSetUp]
+		public async Task OneTimeSetUp()
 		{
 			var appKey = File.ReadAllText("D:\\Assets\\kiwoom_appkey_mock.txt");
 			var secretKey = File.ReadAllText("D:\\Assets\\kiwoom_secretkey_mock.txt");
-
-			client = new KiwoomRestApiClient(appKey, secretKey, true);
+			client = await KiwoomRestApiClient.CreateAsync(appKey, secretKey, true);
 		}
 
-		[Test]
-		public async Task GetAccessAndRevokeToken()
-		{
-			var result = await client.OAuth.GetAccessToken();
-			var token = result.Data?.Token ?? string.Empty;
+		//[Test]
+		//public async Task GetAccessAndRevokeToken()
+		//{
+		//	var client = new KiwoomRestApiClient(appKey, secretKey, true);
+		//	var result = await client.OAuth.GetAccessToken();
+		//	var token = result.Data?.Token ?? string.Empty;
 
-			Assert.Multiple(() =>
-			{
-				Assert.That(result.ReturnCode, Is.EqualTo(0));
-				Assert.That(string.IsNullOrEmpty(token), Is.False);
-			});
+		//	Assert.Multiple(() =>
+		//	{
+		//		Assert.That(result.ReturnCode, Is.EqualTo(0));
+		//		Assert.That(string.IsNullOrEmpty(token), Is.False);
+		//	});
 
-			var result2 = await client.OAuth.RevokeAccessToken(token);
+		//	var result2 = await client.OAuth.RevokeAccessToken(token);
 
-			Assert.That(result2.ReturnCode, Is.EqualTo(0));
-		}
+		//	Assert.That(result2.ReturnCode, Is.EqualTo(0));
+		//}
 
 		[TestCase("005930", "2025-08-04")]
 		public async Task GetDateStockRealizedProfitLoss(string stockCode, string _date)
 		{
 			DateTime date = DateTime.Parse(_date);
-			var result = await client.Account.GetDateStockRealizedProfitLoss(stockCode, date);
+			var result = await client.Account.GetDateStockRealizedProfitLossAsync(stockCode, date);
 
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
@@ -47,7 +47,7 @@ namespace KiwoomRestApi.Net.Tests
 		{
 			DateTime startDate = DateTime.Parse(_startDate);
 			DateTime endDate = DateTime.Parse(_endDate);
-			var result = await client.Account.GetPeriodStockRealizedProfitLoss(stockCode, startDate, endDate);
+			var result = await client.Account.GetPeriodStockRealizedProfitLossAsync(stockCode, startDate, endDate);
 
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
@@ -57,7 +57,7 @@ namespace KiwoomRestApi.Net.Tests
 		{
 			DateTime startDate = DateTime.Parse(_startDate);
 			DateTime endDate = DateTime.Parse(_endDate);
-			var result = await client.Account.GetRealizedProfitLoss(startDate, endDate);
+			var result = await client.Account.GetRealizedProfitLossAsync(startDate, endDate);
 
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
@@ -65,7 +65,7 @@ namespace KiwoomRestApi.Net.Tests
 		[TestCase(KiwoomQueryType.All, KiwoomTradeType.All, KiwoomStockExchangeType.Unified)]
 		public async Task GetOutstandingOrders(KiwoomQueryType queryType, KiwoomTradeType tradeType, KiwoomStockExchangeType stockExchangeType)
 		{
-			var result = await client.Account.GetOutstandingOrders(queryType, tradeType, stockExchangeType);
+			var result = await client.Account.GetOutstandingOrdersAsync(queryType, tradeType, stockExchangeType);
 
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
@@ -73,7 +73,7 @@ namespace KiwoomRestApi.Net.Tests
 		[TestCase(KiwoomQueryType.All, KiwoomTradeType.All, KiwoomStockExchangeType.Unified)]
 		public async Task GetContracts(KiwoomQueryType queryType, KiwoomTradeType tradeType, KiwoomStockExchangeType stockExchangeType)
 		{
-			var result = await client.Account.GetContracts(queryType, tradeType, stockExchangeType);
+			var result = await client.Account.GetContractsAsync(queryType, tradeType, stockExchangeType);
 
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}

@@ -7,10 +7,10 @@ namespace KiwoomRestApi.Net.Enums
 		[EnumMember(Value = "%")]
 		All,
 		[EnumMember(Value = "KRX")]
-		Krx,
+		KRX,
 		[EnumMember(Value = "NXT")]
-		Nxt,
+		NXT,
 		[EnumMember(Value = "SOR")]
-		Sor
+		SOR
 	}
 }

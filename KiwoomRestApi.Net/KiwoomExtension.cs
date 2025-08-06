@@ -4,19 +4,29 @@ namespace KiwoomRestApi.Net
 {
 	public static class KiwoomExtension
 	{
-		public static string ToCodeString<TEnum>(this TEnum enumValue) where TEnum : struct, Enum
+		public static string ToFormattedString(this object? value)
 		{
-			return Convert.ToInt32(enumValue).ToString();
-		}
+			if (value == null)
+			{
+				return string.Empty;
+			}
 
-		public static string ToKiwoomDateString(this DateTime dateTime)
-		{
-			return dateTime.ToString("yyyyMMdd");
-		}
+			if (value is DateTime dt)
+			{
+				return dt.ToString("yyyyMMdd");
+			}
 
-		public static string ToKiwoomDateString(this DateTime? dateTime)
-		{
-			return dateTime == null ? string.Empty : dateTime.Value.ToString("yyyyMMdd");
+			if (value is decimal dec)
+			{
+				return dec.ToString("F0");
+			}
+
+			if (value is Enum e)
+			{
+				return Convert.ToInt32(e).ToString();
+			}
+
+			return value.ToString() ?? string.Empty;
 		}
 	}
 }
