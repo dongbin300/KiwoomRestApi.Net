@@ -24,7 +24,7 @@ namespace KiwoomRestApi.Net.Examples
 			var endDate = new DateTime(2025, 8, 4);
 			var stockCode = "452400";
 
-			var __result__ = client.Account.GetRealizedProfitLossAsync(startDate, endDate).Result;
+			var __result__ = client.Account.GetMarginOrdersAsync("452400").Result;
 
 			//var a = client.OAuth.GetAccessToken().Result;
 			//var tokenValue = a.Data?.Token ?? string.Empty;
