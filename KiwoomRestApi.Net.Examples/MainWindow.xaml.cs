@@ -21,10 +21,10 @@ namespace KiwoomRestApi.Net.Examples
 
 			var client = KiwoomRestApiClient.Create(appKey, secretKey, true);
 			var startDate = new DateTime(2025, 8, 1);
-			var endDate = new DateTime(2025, 8, 6);
+			var endDate = new DateTime(2025, 8, 7);
 			var stockCode = "452400";
 
-			var __result__ = client.ShortSale.GetShortsTransactionsAsync(stockCode, startDate, endDate).Result;
+			var __result__ = client.SLB.GetBorrowedTradeHistoriesAsync(KiwoomMarketType2.KOSDAQ, startDate).Result;
 			//var __result__ = client.ForeignInstitution.GetContinuousTradesAsync(KiwoomQueryTypePeriod.FiveDays, KiwoomStockExchangeType2.Unified, KiwoomMarketType2.KOSPI, KiwoomNetSellAmountType.NetBuy, KiwoomStockIndustryType.Stock, KiwoomAmountQuantityType.Amount).Result;
 
 		}

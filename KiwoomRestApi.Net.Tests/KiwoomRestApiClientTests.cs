@@ -306,5 +306,47 @@ namespace KiwoomRestApi.Net.Tests
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 		#endregion
+
+		#region SLB
+		[TestCase(KiwoomQueryTypeAll.All)]
+		[TestCase(KiwoomQueryTypeAll.All, "2025-08-01")]
+		public async Task GetBorrowedTradesAsync(KiwoomQueryTypeAll queryType, string _startDate = "2025-08-01", string _endDate = "2025-08-04")
+		{
+			DateTime startDate = DateTime.Parse(_startDate);
+			DateTime endDate = DateTime.Parse(_endDate);
+			var result = await client.SLB.GetBorrowedTradesAsync(queryType, startDate, endDate);
+
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomMarketType2.KOSPI, "2025-08-01")]
+		public async Task GetBorrowedTradeTop10Async(KiwoomMarketType2 marketType, string _startDate, string _endDate = "2025-08-04")
+		{
+			DateTime startDate = DateTime.Parse(_startDate);
+			DateTime endDate = DateTime.Parse(_endDate);
+			var result = await client.SLB.GetBorrowedTradeTop10Async(marketType, startDate, endDate);
+
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase("005930")]
+		public async Task GetBorrowedTradesByStockAsync(string stockCode, KiwoomQueryTypeAll queryType = KiwoomQueryTypeAll.StockCode, string _startDate = "2025-08-01", string _endDate = "2025-08-04")
+		{
+			DateTime startDate = DateTime.Parse(_startDate);
+			DateTime endDate = DateTime.Parse(_endDate);
+			var result = await client.SLB.GetBorrowedTradesByStockAsync(stockCode, queryType, startDate, endDate);
+
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomMarketType2.KOSPI, "2025-08-01")]
+		public async Task GetBorrowedTradeHistoriesAsync(KiwoomMarketType2 marketType, string _date)
+		{
+			DateTime date = DateTime.Parse(_date);
+			var result = await client.SLB.GetBorrowedTradeHistoriesAsync(marketType, date);
+
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+		#endregion
 	}
 }

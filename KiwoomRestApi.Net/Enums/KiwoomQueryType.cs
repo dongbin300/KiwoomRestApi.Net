@@ -48,4 +48,10 @@
 		OneHundredTwentyDays = 120,
 		CustomRange = 0
 	}
+
+	public enum KiwoomQueryTypeAll
+	{
+		All = 1,
+		StockCode = 0
+	}
 }
