@@ -1,4 +1,4 @@
-﻿using KiwoomRestApi.Net.Enums;
+﻿using KiwoomRestApi.Net.Enums.ForeignInstitution;
 using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Models;
 
@@ -30,7 +30,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomForeignInstitutionGetDaily>(_endpoint, apiId, body).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomForeignInstitutionGetContinuousTrades>> GetContinuousTradesAsync(KiwoomQueryTypePeriod queryType, KiwoomStockExchangeType2 stockExchangeType, KiwoomMarketType2 marketType, KiwoomNetSellAmountType netSellAmountType, KiwoomStockIndustryType stockIndustryType, KiwoomAmountQuantityType amountQuantityType, DateTime? startDate = null, DateTime? endDate = null)
+		public async Task<KiwoomRestApiResponse<KiwoomForeignInstitutionGetContinuousTrades>> GetContinuousTradesAsync(KiwoomForeignInstitutionPeriodQueryType queryType, KiwoomForeignInstitutionStockExchangeType stockExchangeType, KiwoomForeignInstitutionMarketType marketType, KiwoomForeignInstitutionNetSellAmountType netSellAmountType, KiwoomForeignInstitutionStockIndustryType stockIndustryType, KiwoomForeignInstitutionAmountQuantityType amountQuantityType, DateTime? startDate = null, DateTime? endDate = null)
 		{
 			const string apiId = "ka10131";
 			var body = new HttpParameterMap()

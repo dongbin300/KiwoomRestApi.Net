@@ -1,6 +1,6 @@
-﻿namespace KiwoomRestApi.Net.Enums
+﻿namespace KiwoomRestApi.Net.Enums.Account
 {
-	public enum KiwoomGoodsType
+	public enum KiwoomAccountGoodsType
 	{
 		All = 0,
 		DomesticStock = 1,

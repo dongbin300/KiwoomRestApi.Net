@@ -1,5 +1,8 @@
 ﻿using KiwoomRestApi.Net.Clients;
-using KiwoomRestApi.Net.Enums;
+using KiwoomRestApi.Net.Enums.Account;
+using KiwoomRestApi.Net.Enums.ForeignInstitution;
+using KiwoomRestApi.Net.Enums.SecuritiesLendingAndBorrowing;
+using KiwoomRestApi.Net.Enums.ShortSale;
 
 namespace KiwoomRestApi.Net.Tests
 {
@@ -65,16 +68,16 @@ namespace KiwoomRestApi.Net.Tests
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomQueryType.All, KiwoomTradeType.All, KiwoomStockExchangeType.Unified)]
-		public async Task GetOutstandingOrdersAsync(KiwoomQueryType queryType, KiwoomTradeType tradeType, KiwoomStockExchangeType stockExchangeType)
+		[TestCase(KiwoomAccountQueryType.All, KiwoomAccountTradeType.All, KiwoomAccountStockExchangeType.Unified)]
+		public async Task GetOutstandingOrdersAsync(KiwoomAccountQueryType queryType, KiwoomAccountTradeType tradeType, KiwoomAccountStockExchangeType stockExchangeType)
 		{
 			var result = await client.Account.GetOutstandingOrdersAsync(queryType, tradeType, stockExchangeType);
 
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomQueryType.All, KiwoomTradeType.All, KiwoomStockExchangeType.Unified)]
-		public async Task GetContractsAsync(KiwoomQueryType queryType, KiwoomTradeType tradeType, KiwoomStockExchangeType stockExchangeType)
+		[TestCase(KiwoomAccountQueryType.All, KiwoomAccountTradeType.All, KiwoomAccountStockExchangeType.Unified)]
+		public async Task GetContractsAsync(KiwoomAccountQueryType queryType, KiwoomAccountTradeType tradeType, KiwoomAccountStockExchangeType stockExchangeType)
 		{
 			var result = await client.Account.GetContractsAsync(queryType, tradeType, stockExchangeType);
 
@@ -89,8 +92,8 @@ namespace KiwoomRestApi.Net.Tests
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomStockExchangeType.Unified)]
-		public async Task GetProfitRateAsync(KiwoomStockExchangeType stockExchangeType)
+		[TestCase(KiwoomAccountStockExchangeType.Unified)]
+		public async Task GetProfitRateAsync(KiwoomAccountStockExchangeType stockExchangeType)
 		{
 			var result = await client.Account.GetProfitRateAsync(stockExchangeType);
 
@@ -105,9 +108,9 @@ namespace KiwoomRestApi.Net.Tests
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomOddLotType.TodayBuyTodaySell, KiwoomCashCreditType.All)]
-		[TestCase(KiwoomOddLotType.TodayBuyTodaySell, KiwoomCashCreditType.All, "2025-08-01")]
-		public async Task GetTodayTradeDiariesAsync(KiwoomOddLotType oddLotType, KiwoomCashCreditType cashCreditType, string _date = "2025-01-01")
+		[TestCase(KiwoomAccountOddLotType.TodayBuyTodaySell, KiwoomAccountCashCreditType.All)]
+		[TestCase(KiwoomAccountOddLotType.TodayBuyTodaySell, KiwoomAccountCashCreditType.All, "2025-08-01")]
+		public async Task GetTodayTradeDiariesAsync(KiwoomAccountOddLotType oddLotType, KiwoomAccountCashCreditType cashCreditType, string _date = "2025-01-01")
 		{
 			DateTime date = DateTime.Parse(_date);
 			var result = await client.Account.GetTodayTradeDiariesAsync(oddLotType, cashCreditType, date);
@@ -115,8 +118,8 @@ namespace KiwoomRestApi.Net.Tests
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomQueryTypeDeposit.General)]
-		public async Task GetDepositsAsync(KiwoomQueryTypeDeposit queryType)
+		[TestCase(KiwoomAccountDepositQueryType.General)]
+		public async Task GetDepositsAsync(KiwoomAccountDepositQueryType queryType)
 		{
 			var result = await client.Account.GetDepositsAsync(queryType);
 
@@ -133,33 +136,33 @@ namespace KiwoomRestApi.Net.Tests
 			Assert.That(result.ReturnCode, Is.EqualTo(0).Or.EqualTo(20)); // 모의투자 지원불가
 		}
 
-		[TestCase(KiwoomQueryTypeDelisting.All)]
-		public async Task GetEstimatedDepositAssetAsync(KiwoomQueryTypeDelisting queryType)
+		[TestCase(KiwoomAccountDelistingQueryType.All)]
+		public async Task GetEstimatedDepositAssetAsync(KiwoomAccountDelistingQueryType queryType)
 		{
 			var result = await client.Account.GetEstimatedDepositAssetAsync(queryType);
 
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomQueryTypeDelisting.All, KiwoomStockExchangeType.Unified)]
-		public async Task GetEvaluationsAsync(KiwoomQueryTypeDelisting queryType, KiwoomStockExchangeType stockExchangeType)
+		[TestCase(KiwoomAccountDelistingQueryType.All, KiwoomAccountStockExchangeType.Unified)]
+		public async Task GetEvaluationsAsync(KiwoomAccountDelistingQueryType queryType, KiwoomAccountStockExchangeType stockExchangeType)
 		{
 			var result = await client.Account.GetEvaluationsAsync(queryType, stockExchangeType);
 
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomStockExchangeType.Unified)]
-		public async Task GetContractBalancesAsync(KiwoomStockExchangeType stockExchangeType)
+		[TestCase(KiwoomAccountStockExchangeType.Unified)]
+		public async Task GetContractBalancesAsync(KiwoomAccountStockExchangeType stockExchangeType)
 		{
 			var result = await client.Account.GetContractBalancesAsync(stockExchangeType);
 
 			Assert.That(result.ReturnCode, Is.EqualTo(0).Or.EqualTo(20)); // 모의투자 지원불가
 		}
 
-		[TestCase(KiwoomQueryTypeOrder.OrderSequence, KiwoomStockBondType.All, KiwoomTradeType.All, KiwoomDomesticStockExchangeType.All)]
-		[TestCase(KiwoomQueryTypeOrder.OrderSequence, KiwoomStockBondType.All, KiwoomTradeType.All, KiwoomDomesticStockExchangeType.All, "2025-08-01")]
-		public async Task GetOrderContractDetailsAsync(KiwoomQueryTypeOrder queryType, KiwoomStockBondType stockBondType, KiwoomTradeType tradeType, KiwoomDomesticStockExchangeType domesticStockExchangeType, string _date = "2025-01-01", string stockCode = "", string fromOrderId = "")
+		[TestCase(KiwoomAccountOrderQueryType.OrderSequence, KiwoomAccountStockBondType.All, KiwoomAccountTradeType.All, KiwoomAccountDomesticStockExchangeType.All)]
+		[TestCase(KiwoomAccountOrderQueryType.OrderSequence, KiwoomAccountStockBondType.All, KiwoomAccountTradeType.All, KiwoomAccountDomesticStockExchangeType.All, "2025-08-01")]
+		public async Task GetOrderContractDetailsAsync(KiwoomAccountOrderQueryType queryType, KiwoomAccountStockBondType stockBondType, KiwoomAccountTradeType tradeType, KiwoomAccountDomesticStockExchangeType domesticStockExchangeType, string _date = "2025-01-01", string stockCode = "", string fromOrderId = "")
 		{
 			DateTime date = DateTime.Parse(_date);
 			var result = await client.Account.GetOrderContractDetailsAsync(queryType, stockBondType, tradeType, domesticStockExchangeType, date, stockCode, fromOrderId);
@@ -176,9 +179,9 @@ namespace KiwoomRestApi.Net.Tests
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomQueryTypeOrderContract.All, KiwoomStockBondType.All, KiwoomTradeType.All, KiwoomDomesticStockExchangeType.All, KiwoomMarketType.All)]
-		[TestCase(KiwoomQueryTypeOrderContract.All, KiwoomStockBondType.All, KiwoomTradeType.All, KiwoomDomesticStockExchangeType.All, KiwoomMarketType.All, "2025-08-01")]
-		public async Task GetOrderContractsAsync(KiwoomQueryTypeOrderContract queryType, KiwoomStockBondType stockBondType, KiwoomTradeType tradeType, KiwoomDomesticStockExchangeType domesticStockExchangeType, KiwoomMarketType marketType, string _date = "2025-01-01", string stockCode = "", string fromOrderId = "")
+		[TestCase(KiwoomAccountOrderContractQueryType.All, KiwoomAccountStockBondType.All, KiwoomAccountTradeType.All, KiwoomAccountDomesticStockExchangeType.All, KiwoomAccountMarketType.All)]
+		[TestCase(KiwoomAccountOrderContractQueryType.All, KiwoomAccountStockBondType.All, KiwoomAccountTradeType.All, KiwoomAccountDomesticStockExchangeType.All, KiwoomAccountMarketType.All, "2025-08-01")]
+		public async Task GetOrderContractsAsync(KiwoomAccountOrderContractQueryType queryType, KiwoomAccountStockBondType stockBondType, KiwoomAccountTradeType tradeType, KiwoomAccountDomesticStockExchangeType domesticStockExchangeType, KiwoomAccountMarketType marketType, string _date = "2025-01-01", string stockCode = "", string fromOrderId = "")
 		{
 			DateTime date = DateTime.Parse(_date);
 			var result = await client.Account.GetOrderContractsAsync(queryType, stockBondType, tradeType, domesticStockExchangeType, marketType, date, stockCode, fromOrderId);
@@ -187,9 +190,9 @@ namespace KiwoomRestApi.Net.Tests
 		}
 
 
-		[TestCase("005930", KiwoomTradeType.All, "12345")]
-		[TestCase("005930", KiwoomTradeType.All, "12345", "2")]
-		public async Task GetMarginOrderAmountsAsync(string stockCode, KiwoomTradeType tradeType, string _buyPrice, string _buyQuantity = "0", string _inOutAmount = "0", string _expectedBuyPrice = "0")
+		[TestCase("005930", KiwoomAccountTradeType.All, "12345")]
+		[TestCase("005930", KiwoomAccountTradeType.All, "12345", "2")]
+		public async Task GetMarginOrderAmountsAsync(string stockCode, KiwoomAccountTradeType tradeType, string _buyPrice, string _buyQuantity = "0", string _inOutAmount = "0", string _expectedBuyPrice = "0")
 		{
 			decimal buyPrice = decimal.Parse(_buyPrice);
 			decimal buyQuantity = decimal.Parse(_buyQuantity);
@@ -228,9 +231,9 @@ namespace KiwoomRestApi.Net.Tests
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomTransactionType.All, KiwoomGoodsType.All, KiwoomDomesticStockExchangeType.All, "2025-08-01", "2025-08-04")]
-		[TestCase(KiwoomTransactionType.All, KiwoomGoodsType.All, KiwoomDomesticStockExchangeType.All, "2025-08-01", "2025-08-04", "005930")]
-		public async Task GetConsignmentTradesAsync(KiwoomTransactionType transactionType, KiwoomGoodsType goodsType, KiwoomDomesticStockExchangeType domesticStockExchangeType, string _startDate, string _endDate, string stockCode = "", string currencyCode = "", string foreignStockExchangeCode = "")
+		[TestCase(KiwoomAccountTransactionType.All, KiwoomAccountGoodsType.All, KiwoomAccountDomesticStockExchangeType.All, "2025-08-01", "2025-08-04")]
+		[TestCase(KiwoomAccountTransactionType.All, KiwoomAccountGoodsType.All, KiwoomAccountDomesticStockExchangeType.All, "2025-08-01", "2025-08-04", "005930")]
+		public async Task GetConsignmentTradesAsync(KiwoomAccountTransactionType transactionType, KiwoomAccountGoodsType goodsType, KiwoomAccountDomesticStockExchangeType domesticStockExchangeType, string _startDate, string _endDate, string stockCode = "", string currencyCode = "", string foreignStockExchangeCode = "")
 		{
 			DateTime startDate = DateTime.Parse(_startDate);
 			DateTime endDate = DateTime.Parse(_endDate);
@@ -257,8 +260,8 @@ namespace KiwoomRestApi.Net.Tests
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomQueryTypeEvaluationBalance.Aggregate, KiwoomDomesticStockExchangeType.All)]
-		public async Task GetEvaluationBalancesAsync(KiwoomQueryTypeEvaluationBalance queryType, KiwoomDomesticStockExchangeType domesticStockExchangeType)
+		[TestCase(KiwoomAccountEvaluationBalanceQueryType.Aggregate, KiwoomAccountDomesticStockExchangeType.All)]
+		public async Task GetEvaluationBalancesAsync(KiwoomAccountEvaluationBalanceQueryType queryType, KiwoomAccountDomesticStockExchangeType domesticStockExchangeType)
 		{
 			var result = await client.Account.GetEvaluationBalancesAsync(queryType, domesticStockExchangeType);
 
@@ -268,8 +271,8 @@ namespace KiwoomRestApi.Net.Tests
 
 		#region ShortSale
 		[TestCase("005930", "2025-08-01", "2025-08-04")]
-		[TestCase("005930", "2025-08-01", "2025-08-04", KiwoomTimeType.Period)]
-		public async Task GetShortsTransactionsAsync(string stockCode, string _startDate, string _endDate, KiwoomTimeType timeType = KiwoomTimeType.StartDate)
+		[TestCase("005930", "2025-08-01", "2025-08-04", KiwoomShortSaleTimeType.Period)]
+		public async Task GetShortsTransactionsAsync(string stockCode, string _startDate, string _endDate, KiwoomShortSaleTimeType timeType = KiwoomShortSaleTimeType.StartDate)
 		{
 			DateTime startDate = DateTime.Parse(_startDate);
 			DateTime endDate = DateTime.Parse(_endDate);
@@ -296,8 +299,8 @@ namespace KiwoomRestApi.Net.Tests
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomQueryTypePeriod.RecentDay, KiwoomStockExchangeType2.Unified, KiwoomMarketType2.KOSPI, KiwoomNetSellAmountType.NetBuy, KiwoomStockIndustryType.Stock, KiwoomAmountQuantityType.Amount)]	
-		public async Task GetContinuousTradesAsync(KiwoomQueryTypePeriod queryType, KiwoomStockExchangeType2 stockExchangeType, KiwoomMarketType2 marketType, KiwoomNetSellAmountType netSellAmountType, KiwoomStockIndustryType stockIndustryType, KiwoomAmountQuantityType amountQuantityType, string _startDate = "2025-08-01", string _endDate = "2025-08-04")
+		[TestCase(KiwoomForeignInstitutionPeriodQueryType.RecentDay, KiwoomForeignInstitutionStockExchangeType.Unified, KiwoomForeignInstitutionMarketType.KOSPI, KiwoomForeignInstitutionNetSellAmountType.NetBuy, KiwoomForeignInstitutionStockIndustryType.Stock, KiwoomForeignInstitutionAmountQuantityType.Amount)]
+		public async Task GetContinuousTradesAsync(KiwoomForeignInstitutionPeriodQueryType queryType, KiwoomForeignInstitutionStockExchangeType stockExchangeType, KiwoomForeignInstitutionMarketType marketType, KiwoomForeignInstitutionNetSellAmountType netSellAmountType, KiwoomForeignInstitutionStockIndustryType stockIndustryType, KiwoomForeignInstitutionAmountQuantityType amountQuantityType, string _startDate = "2025-08-01", string _endDate = "2025-08-04")
 		{
 			DateTime startDate = DateTime.Parse(_startDate);
 			DateTime endDate = DateTime.Parse(_endDate);
@@ -308,9 +311,9 @@ namespace KiwoomRestApi.Net.Tests
 		#endregion
 
 		#region SLB
-		[TestCase(KiwoomQueryTypeAll.All)]
-		[TestCase(KiwoomQueryTypeAll.All, "2025-08-01")]
-		public async Task GetBorrowedTradesAsync(KiwoomQueryTypeAll queryType, string _startDate = "2025-08-01", string _endDate = "2025-08-04")
+		[TestCase(KiwoomSecuritiesLendingAndBorrowingQueryType.All)]
+		[TestCase(KiwoomSecuritiesLendingAndBorrowingQueryType.All, "2025-08-01")]
+		public async Task GetBorrowedTradesAsync(KiwoomSecuritiesLendingAndBorrowingQueryType queryType, string _startDate = "2025-08-01", string _endDate = "2025-08-04")
 		{
 			DateTime startDate = DateTime.Parse(_startDate);
 			DateTime endDate = DateTime.Parse(_endDate);
@@ -319,8 +322,8 @@ namespace KiwoomRestApi.Net.Tests
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomMarketType2.KOSPI, "2025-08-01")]
-		public async Task GetBorrowedTradeTop10Async(KiwoomMarketType2 marketType, string _startDate, string _endDate = "2025-08-04")
+		[TestCase(KiwoomSecuritiesLendingAndBorrowingMarketType.KOSPI, "2025-08-01")]
+		public async Task GetBorrowedTradeTop10Async(KiwoomSecuritiesLendingAndBorrowingMarketType marketType, string _startDate, string _endDate = "2025-08-04")
 		{
 			DateTime startDate = DateTime.Parse(_startDate);
 			DateTime endDate = DateTime.Parse(_endDate);
@@ -330,7 +333,7 @@ namespace KiwoomRestApi.Net.Tests
 		}
 
 		[TestCase("005930")]
-		public async Task GetBorrowedTradesByStockAsync(string stockCode, KiwoomQueryTypeAll queryType = KiwoomQueryTypeAll.StockCode, string _startDate = "2025-08-01", string _endDate = "2025-08-04")
+		public async Task GetBorrowedTradesByStockAsync(string stockCode, KiwoomSecuritiesLendingAndBorrowingQueryType queryType = KiwoomSecuritiesLendingAndBorrowingQueryType.StockCode, string _startDate = "2025-08-01", string _endDate = "2025-08-04")
 		{
 			DateTime startDate = DateTime.Parse(_startDate);
 			DateTime endDate = DateTime.Parse(_endDate);
@@ -339,8 +342,8 @@ namespace KiwoomRestApi.Net.Tests
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomMarketType2.KOSPI, "2025-08-01")]
-		public async Task GetBorrowedTradeHistoriesAsync(KiwoomMarketType2 marketType, string _date)
+		[TestCase(KiwoomSecuritiesLendingAndBorrowingMarketType.KOSPI, "2025-08-01")]
+		public async Task GetBorrowedTradeHistoriesAsync(KiwoomSecuritiesLendingAndBorrowingMarketType marketType, string _date)
 		{
 			DateTime date = DateTime.Parse(_date);
 			var result = await client.SLB.GetBorrowedTradeHistoriesAsync(marketType, date);

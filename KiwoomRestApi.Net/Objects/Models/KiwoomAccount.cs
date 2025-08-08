@@ -1,5 +1,5 @@
 ﻿using KiwoomRestApi.Net.Converters;
-using KiwoomRestApi.Net.Enums;
+using KiwoomRestApi.Net.Enums.Account;
 
 using Newtonsoft.Json;
 
@@ -176,7 +176,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("ind_invsr")]
 		public string IndividualInvestor = string.Empty;
 		[JsonProperty("stex_tp")]
-		public KiwoomStockExchangeType StockExchangeType;
+		public KiwoomAccountStockExchangeType StockExchangeType;
 		[JsonProperty("stex_tp_txt")]
 		public string StockExchangeTypeText = string.Empty;
 		[JsonProperty("sor_yn")]
@@ -225,7 +225,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("stk_cd")]
 		public string StockCode = string.Empty;
 		[JsonProperty("stex_tp")]
-		public KiwoomStockExchangeType StockExchangeType;
+		public KiwoomAccountStockExchangeType StockExchangeType;
 		[JsonProperty("stex_tp_txt")]
 		public string StockExchangeTypeText = string.Empty;
 		[JsonProperty("sor_yn")]
@@ -339,7 +339,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("cur_prc")]
 		public decimal CurrentPrice;
 		[JsonProperty("stex_tp")]
-		public KiwoomStockExchangeType StockExchangeType;
+		public KiwoomAccountStockExchangeType StockExchangeType;
 		[JsonProperty("stex_tp_txt")]
 		public string StockExchangeTypeText = string.Empty;
 	}
@@ -984,7 +984,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("d2entra")]
 		public decimal D2EstimatedDeposit;
 		[JsonProperty("profa_rdex_aplc_tp")]
-		public KiwoomMarginReductionApplyType MarginReductionApplyType;
+		public KiwoomAccountMarginReductionApplyType MarginReductionApplyType;
 	}
 
 	public record KiwoomAccountGetMarginOrders
@@ -1258,7 +1258,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("crnc_cd")]
 		public string CurrencyCode = string.Empty;
 		[JsonProperty("trde_ocr_tp")]
-		public KiwoomTradeCategoryType TradeCategory;
+		public KiwoomAccountTradeCategoryType TradeCategory;
 		[JsonProperty("trde_kind_nm")]
 		public string TradeCategoryName = string.Empty;
 		[JsonProperty("stk_nm")]

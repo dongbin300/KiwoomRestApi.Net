@@ -1,4 +1,4 @@
-﻿using KiwoomRestApi.Net.Enums;
+﻿using KiwoomRestApi.Net.Enums.Account;
 using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Models;
 
@@ -43,7 +43,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetRealizedProfitLoss>(_endpoint, apiId, body).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetOutstandingOrders>> GetOutstandingOrdersAsync(KiwoomQueryType queryType, KiwoomTradeType tradeType, KiwoomStockExchangeType stockExchangeType, string stockCode = "")
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetOutstandingOrders>> GetOutstandingOrdersAsync(KiwoomAccountQueryType queryType, KiwoomAccountTradeType tradeType, KiwoomAccountStockExchangeType stockExchangeType, string stockCode = "")
 		{
 			const string apiId = "ka10075";
 			var body = new HttpParameterMap()
@@ -55,7 +55,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetOutstandingOrders>(_endpoint, apiId, body).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetContracts>> GetContractsAsync(KiwoomQueryType queryType, KiwoomTradeType tradeType, KiwoomStockExchangeType stockExchangeType, string stockCode = "", string orderId = "")
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetContracts>> GetContractsAsync(KiwoomAccountQueryType queryType, KiwoomAccountTradeType tradeType, KiwoomAccountStockExchangeType stockExchangeType, string stockCode = "", string orderId = "")
 		{
 			const string apiId = "ka10076";
 			var body = new HttpParameterMap()
@@ -77,7 +77,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetTodayRealizedProfitLoss>(_endpoint, apiId, body).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetProfitRate>> GetProfitRateAsync(KiwoomStockExchangeType stockExchangeType)
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetProfitRate>> GetProfitRateAsync(KiwoomAccountStockExchangeType stockExchangeType)
 		{
 			const string apiId = "ka10085";
 			var body = new HttpParameterMap()
@@ -95,7 +95,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetOutstandingPartialOrders>(_endpoint, apiId, body).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetTodayTradeDiaries>> GetTodayTradeDiariesAsync(KiwoomOddLotType oddLotType, KiwoomCashCreditType cashCreditType, DateTime? date = null)
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetTodayTradeDiaries>> GetTodayTradeDiariesAsync(KiwoomAccountOddLotType oddLotType, KiwoomAccountCashCreditType cashCreditType, DateTime? date = null)
 		{
 			const string apiId = "ka10170";
 			var body = new HttpParameterMap()
@@ -106,7 +106,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetTodayTradeDiaries>(_endpoint, apiId, body).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetDeposits>> GetDepositsAsync(KiwoomQueryTypeDeposit queryType)
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetDeposits>> GetDepositsAsync(KiwoomAccountDepositQueryType queryType)
 		{
 			const string apiId = "kt00001";
 			var body = new HttpParameterMap()
@@ -125,7 +125,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetDailyEstimatedDepositAssets>(_endpoint, apiId, body).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetEstimatedDepositAsset>> GetEstimatedDepositAssetAsync(KiwoomQueryTypeDelisting queryType)
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetEstimatedDepositAsset>> GetEstimatedDepositAssetAsync(KiwoomAccountDelistingQueryType queryType)
 		{
 			const string apiId = "kt00003";
 			var body = new HttpParameterMap()
@@ -134,7 +134,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetEstimatedDepositAsset>(_endpoint, apiId, body).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetEvaluations>> GetEvaluationsAsync(KiwoomQueryTypeDelisting queryType, KiwoomStockExchangeType stockExchangeType)
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetEvaluations>> GetEvaluationsAsync(KiwoomAccountDelistingQueryType queryType, KiwoomAccountStockExchangeType stockExchangeType)
 		{
 			const string apiId = "kt00004";
 			var body = new HttpParameterMap()
@@ -144,7 +144,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetEvaluations>(_endpoint, apiId, body).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetContractBalances>> GetContractBalancesAsync(KiwoomStockExchangeType stockExchangeType)
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetContractBalances>> GetContractBalancesAsync(KiwoomAccountStockExchangeType stockExchangeType)
 		{
 			const string apiId = "kt00005";
 			var body = new HttpParameterMap()
@@ -153,7 +153,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetContractBalances>(_endpoint, apiId, body).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetOrderContractDetails>> GetOrderContractDetailsAsync(KiwoomQueryTypeOrder queryType, KiwoomStockBondType stockBondType, KiwoomTradeType tradeType, KiwoomDomesticStockExchangeType domesticStockExchangeType, DateTime? date = null, string stockCode = "", string fromOrderId = "")
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetOrderContractDetails>> GetOrderContractDetailsAsync(KiwoomAccountOrderQueryType queryType, KiwoomAccountStockBondType stockBondType, KiwoomAccountTradeType tradeType, KiwoomAccountDomesticStockExchangeType domesticStockExchangeType, DateTime? date = null, string stockCode = "", string fromOrderId = "")
 		{
 			const string apiId = "kt00007";
 			var body = new HttpParameterMap()
@@ -177,7 +177,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetNextDaySettlements>(_endpoint, apiId, body).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetOrderContracts>> GetOrderContractsAsync(KiwoomQueryTypeOrderContract queryType, KiwoomStockBondType stockBondType, KiwoomTradeType tradeType, KiwoomDomesticStockExchangeType domesticStockExchangeType, KiwoomMarketType marketType, DateTime? date = null, string stockCode = "", string fromOrderId = "")
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetOrderContracts>> GetOrderContractsAsync(KiwoomAccountOrderContractQueryType queryType, KiwoomAccountStockBondType stockBondType, KiwoomAccountTradeType tradeType, KiwoomAccountDomesticStockExchangeType domesticStockExchangeType, KiwoomAccountMarketType marketType, DateTime? date = null, string stockCode = "", string fromOrderId = "")
 		{
 			const string apiId = "kt00009";
 			var body = new HttpParameterMap()
@@ -193,7 +193,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetOrderContracts>(_endpoint, apiId, body).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetMarginOrderAmounts>> GetMarginOrderAmountsAsync(string stockCode, KiwoomTradeType tradeType, decimal buyPrice, decimal? buyQuantity = null, decimal? inOutAmount = null, decimal? expectedBuyPrice = null)
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetMarginOrderAmounts>> GetMarginOrderAmountsAsync(string stockCode, KiwoomAccountTradeType tradeType, decimal buyPrice, decimal? buyQuantity = null, decimal? inOutAmount = null, decimal? expectedBuyPrice = null)
 		{
 			const string apiId = "kt00010";
 			var body = new HttpParameterMap()
@@ -235,7 +235,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetMarginDetails>(_endpoint, apiId, body).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetConsignmentTrades>> GetConsignmentTradesAsync(KiwoomTransactionType transactionType, KiwoomGoodsType goodsType, KiwoomDomesticStockExchangeType domesticStockExchangeType, DateTime startDate, DateTime endDate, string stockCode = "", string currencyCode = "", string foreignStockExchangeCode = "")
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetConsignmentTrades>> GetConsignmentTradesAsync(KiwoomAccountTransactionType transactionType, KiwoomAccountGoodsType goodsType, KiwoomAccountDomesticStockExchangeType domesticStockExchangeType, DateTime startDate, DateTime endDate, string stockCode = "", string currencyCode = "", string foreignStockExchangeCode = "")
 		{
 			const string apiId = "kt00015";
 			var body = new HttpParameterMap()
@@ -269,7 +269,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetDailyStatus>(_endpoint, apiId, body).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetEvaluationBalances>> GetEvaluationBalancesAsync(KiwoomQueryTypeEvaluationBalance queryType, KiwoomDomesticStockExchangeType domesticStockExchangeType)
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetEvaluationBalances>> GetEvaluationBalancesAsync(KiwoomAccountEvaluationBalanceQueryType queryType, KiwoomAccountDomesticStockExchangeType domesticStockExchangeType)
 		{
 			const string apiId = "kt00018";
 			var body = new HttpParameterMap()

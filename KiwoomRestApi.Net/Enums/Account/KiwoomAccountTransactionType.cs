@@ -1,8 +1,8 @@
 ﻿using System.Runtime.Serialization;
 
-namespace KiwoomRestApi.Net.Enums
+namespace KiwoomRestApi.Net.Enums.Account
 {
-	public enum KiwoomTransactionType
+	public enum KiwoomAccountTransactionType
 	{
 		[EnumMember(Value = "0")]
 		All,

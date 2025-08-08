@@ -1,8 +1,8 @@
 ﻿using System.Runtime.Serialization;
 
-namespace KiwoomRestApi.Net.Enums
+namespace KiwoomRestApi.Net.Enums.Account
 {
-	public enum KiwoomDomesticStockExchangeType
+	public enum KiwoomAccountDomesticStockExchangeType
 	{
 		[EnumMember(Value = "%")]
 		All,

@@ -1,6 +1,6 @@
-﻿namespace KiwoomRestApi.Net.Enums
+﻿namespace KiwoomRestApi.Net.Enums.Account
 {
-	public enum KiwoomTradeCategoryType
+	public enum KiwoomAccountTradeCategoryType
 	{
 		DepositWithdrawal = 1,
 		Fund = 2,

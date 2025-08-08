@@ -1,4 +1,4 @@
-﻿using KiwoomRestApi.Net.Enums;
+﻿using KiwoomRestApi.Net.Enums.SecuritiesLendingAndBorrowing;
 using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Models;
 
@@ -12,7 +12,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		private readonly KiwoomRestApiClient _client = client;
 		private readonly string _endpoint = "/api/dostk/slb";
 
-		public async Task<KiwoomRestApiResponse<KiwoomSecuritiesLendingAndBorrowingGetBorrowedTrades>> GetBorrowedTradesAsync(KiwoomQueryTypeAll queryType, DateTime? startDate = null, DateTime? endDate = null)
+		public async Task<KiwoomRestApiResponse<KiwoomSecuritiesLendingAndBorrowingGetBorrowedTrades>> GetBorrowedTradesAsync(KiwoomSecuritiesLendingAndBorrowingQueryType queryType, DateTime? startDate = null, DateTime? endDate = null)
 		{
 			const string apiId = "ka10068";
 			var body = new HttpParameterMap()
@@ -23,7 +23,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomSecuritiesLendingAndBorrowingGetBorrowedTrades>(_endpoint, apiId, body).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradeTop10>> GetBorrowedTradeTop10Async(KiwoomMarketType2 marketType, DateTime startDate, DateTime? endDate = null)
+		public async Task<KiwoomRestApiResponse<KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradeTop10>> GetBorrowedTradeTop10Async(KiwoomSecuritiesLendingAndBorrowingMarketType marketType, DateTime startDate, DateTime? endDate = null)
 		{
 			const string apiId = "ka10069";
 			var body = new HttpParameterMap()
@@ -34,7 +34,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradeTop10>(_endpoint, apiId, body).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradesByStock>> GetBorrowedTradesByStockAsync(string stockCode, KiwoomQueryTypeAll queryType = KiwoomQueryTypeAll.StockCode, DateTime? startDate = null, DateTime? endDate = null)
+		public async Task<KiwoomRestApiResponse<KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradesByStock>> GetBorrowedTradesByStockAsync(string stockCode, KiwoomSecuritiesLendingAndBorrowingQueryType queryType = KiwoomSecuritiesLendingAndBorrowingQueryType.StockCode, DateTime? startDate = null, DateTime? endDate = null)
 		{
 			const string apiId = "ka20068";
 			var body = new HttpParameterMap()
@@ -46,7 +46,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradesByStock>(_endpoint, apiId, body).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradeHistories>> GetBorrowedTradeHistoriesAsync(KiwoomMarketType2 marketType, DateTime date)
+		public async Task<KiwoomRestApiResponse<KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradeHistories>> GetBorrowedTradeHistoriesAsync(KiwoomSecuritiesLendingAndBorrowingMarketType marketType, DateTime date)
 		{
 			const string apiId = "ka90012";
 			var body = new HttpParameterMap()

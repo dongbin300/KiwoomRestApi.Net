@@ -26,6 +26,7 @@ namespace KiwoomRestApi.Net.Clients
 		public KiwoomRestApiClientDomesticStockShortSale ShortSale { get; set; }
 		public KiwoomRestApiClientDomesticStockForeignInstitution ForeignInstitution { get; set; }
 		public KiwoomRestApiClientDomesticStockSecuritiesLendingAndBorrowing SLB { get; set; }
+		public KiwoomRestApiClientDomesticStockRankingInfo Ranking { get; set; }
 
 		public KiwoomRestApiClient(string appKey, string secretKey, bool isMock = false)
 		: this(appKey, secretKey, null, isMock)
@@ -47,6 +48,7 @@ namespace KiwoomRestApi.Net.Clients
 			ShortSale = new KiwoomRestApiClientDomesticStockShortSale(this);
 			ForeignInstitution = new KiwoomRestApiClientDomesticStockForeignInstitution(this);
 			SLB = new KiwoomRestApiClientDomesticStockSecuritiesLendingAndBorrowing(this);
+			Ranking = new KiwoomRestApiClientDomesticStockRankingInfo(this);
 		}
 
 		public static KiwoomRestApiClient Create(string appKey, string secretKey, bool isMock = false)
@@ -65,13 +67,13 @@ namespace KiwoomRestApi.Net.Clients
 
 		public void Initialize()
 		{
-			var token = OAuth.GetAccessToken().Result.Data?.Token ?? throw new InvalidOperationException("Token is null");
+			var token = OAuth.GetAccessTokenAsync().Result.Data?.Token ?? throw new InvalidOperationException("Token is null");
 			Authorization = $"Bearer {token}";
 		}
 
 		public async Task InitializeAsync()
 		{
-			var result = await OAuth.GetAccessToken();
+			var result = await OAuth.GetAccessTokenAsync();
 			var token = result.Data?.Token ?? throw new InvalidOperationException("Token is null");
 			Authorization = $"Bearer {token}";
 		}

@@ -10,7 +10,7 @@ namespace KiwoomRestApi.Net.Clients
 	{
 		private readonly KiwoomRestApiClient _client = client;
 
-		public async Task<KiwoomRestApiResponse<KiwoomOAuthGetAccessToken>> GetAccessToken()
+		public async Task<KiwoomRestApiResponse<KiwoomOAuthGetAccessToken>> GetAccessTokenAsync()
 		{
 			const string endpoint = "/oauth2/token";
 			const string apiId = "au10001";
@@ -24,7 +24,7 @@ namespace KiwoomRestApi.Net.Clients
 			return await _client.PostKiwoomRestApiAsync<KiwoomOAuthGetAccessToken>(endpoint, apiId, bodies).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomOAuthRevokeAccessToken>> RevokeAccessToken(string token)
+		public async Task<KiwoomRestApiResponse<KiwoomOAuthRevokeAccessToken>> RevokeAccessTokenAsync(string token)
 		{
 			const string endpoint = "/oauth2/revoke";
 			const string apiId = "au10002";
