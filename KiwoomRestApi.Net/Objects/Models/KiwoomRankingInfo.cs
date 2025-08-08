@@ -62,12 +62,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public decimal TotalBuyQuantity;
 	}
 
-	public record KiwoomRankingInfoGetReqRateSuddenIncreases
+	public record KiwoomRankingInfoGetRequestRateSuddenIncreases
 	{
 		[JsonProperty("req_rt_sdnin")]
-		public IEnumerable<KiwoomRankingInfoGetReqRateSuddenIncreaseItem>? Items;
+		public IEnumerable<KiwoomRankingInfoGetRequestRateSuddenIncreaseItem>? Items;
 	}
-	public record KiwoomRankingInfoGetReqRateSuddenIncreaseItem
+	public record KiwoomRankingInfoGetRequestRateSuddenIncreaseItem
 	{
 		[JsonProperty("stk_cd")]
 		public string StockCode = string.Empty;
@@ -91,12 +91,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public decimal TotalBuyRequest;
 	}
 
-	public record KiwoomRankingInfoGetTradedQtySuddenIncreases
+	public record KiwoomRankingInfoGetTradedQuantitySuddenIncreases
 	{
 		[JsonProperty("trde_qty_sdnin")]
-		public IEnumerable<KiwoomRankingInfoGetTradedQtySuddenIncreaseItem>? Items;
+		public IEnumerable<KiwoomRankingInfoGetTradedQuantitySuddenIncreaseItem>? Items;
 	}
-	public record KiwoomRankingInfoGetTradedQtySuddenIncreaseItem
+	public record KiwoomRankingInfoGetTradedQuantitySuddenIncreaseItem
 	{
 		[JsonProperty("stk_cd")]
 		public string StockCode = string.Empty;
@@ -334,7 +334,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomRankingInfoGetForeignTradePerPeriodUpperItem
 	{
 		[JsonProperty("rank")]
-		public string Rank = string.Empty;
+		public decimal Rank;
 		[JsonProperty("stk_cd")]
 		public string StockCode = string.Empty;
 		[JsonProperty("stk_nm")]
@@ -352,7 +352,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("trde_qty")]
 		public decimal TradeQuantity;
 		[JsonProperty("netprps_qty")]
-		public decimal NetPurchaseQuantity;
+		public string NetPurchaseQuantity = string.Empty; // --
 		[JsonProperty("gain_pos_stkcnt")]
 		public decimal GainableStockCount;
 	}
@@ -385,11 +385,11 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("limit_exh_rt")]
 		public decimal LimitExhaustionRate;
 		[JsonProperty("pred_pre_1")]
-		public decimal PreviousDayChange1;
+		public decimal? PreviousDayChange1;
 		[JsonProperty("pred_pre_2")]
-		public decimal PreviousDayChange2;
+		public decimal? PreviousDayChange2;
 		[JsonProperty("pred_pre_3")]
-		public decimal PreviousDayChange3;
+		public decimal? PreviousDayChange3;
 	}
 
 	public record KiwoomRankingInfoGetForeignLimitExhaustionRateIncreases
@@ -607,7 +607,6 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("tdy_main_trde_ori")]
 		public IEnumerable<KiwoomRankingInfoGetTodayMainTradeOriginItem>? Items;
 	}
-
 	public record KiwoomRankingInfoGetTodayMainTradeOriginItem
 	{
 		[JsonProperty("sel_scesn_tm")]

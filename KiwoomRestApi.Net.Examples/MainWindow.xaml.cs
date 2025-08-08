@@ -24,9 +24,8 @@ namespace KiwoomRestApi.Net.Examples
 			var endDate = new DateTime(2025, 8, 7);
 			var stockCode = "452400";
 
-			var __result__ = client.Ranking.GetBidRequestUppersAsync(KiwoomRankingInfoMarketType.KOSPI, KiwoomRankingInfoSortType.BuyRatio, KiwoomRankingInfoTradeQuantityType.Over10K, KiwoomRankingInfoStockCondition.All, KiwoomRankingInfoCreditCondition.All, KiwoomRankingInfoStockExchangeType.Unified).Result;
+			var __result__ = client.Ranking.GetForeignContinuousNetTradeUppersAsync(KiwoomRankingInfoMarketType.All, KiwoomRankingInfoContinuousNetTradeType.ContinuousNetBuy, KiwoomRankingInfoStockExchangeType.Unified, 12).Result;
 			//var __result__ = client.ForeignInstitution.GetContinuousTradesAsync(KiwoomQueryTypePeriod.FiveDays, KiwoomStockExchangeType2.Unified, KiwoomMarketType2.KOSPI, KiwoomNetSellAmountType.NetBuy, KiwoomStockIndustryType.Stock, KiwoomAmountQuantityType.Amount).Result;
-
 		}
 	}
 }
