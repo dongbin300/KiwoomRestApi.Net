@@ -27,6 +27,7 @@ namespace KiwoomRestApi.Net.Clients
 		public KiwoomRestApiClientDomesticStockForeignInstitution ForeignInstitution { get; set; }
 		public KiwoomRestApiClientDomesticStockSecuritiesLendingAndBorrowing SLB { get; set; }
 		public KiwoomRestApiClientDomesticStockRankingInfo Ranking { get; set; }
+		public KiwoomRestApiClientDomesticStockMarketCondition MarketCondition { get; set; }
 
 		public KiwoomRestApiClient(string appKey, string secretKey, bool isMock = false)
 		: this(appKey, secretKey, null, isMock)
@@ -49,6 +50,7 @@ namespace KiwoomRestApi.Net.Clients
 			ForeignInstitution = new KiwoomRestApiClientDomesticStockForeignInstitution(this);
 			SLB = new KiwoomRestApiClientDomesticStockSecuritiesLendingAndBorrowing(this);
 			Ranking = new KiwoomRestApiClientDomesticStockRankingInfo(this);
+			MarketCondition = new KiwoomRestApiClientDomesticStockMarketCondition(this);
 		}
 
 		public static KiwoomRestApiClient Create(string appKey, string secretKey, bool isMock = false)

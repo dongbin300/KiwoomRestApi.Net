@@ -1,4 +1,6 @@
-﻿using System;
+﻿using KiwoomRestApi.Net.Objects;
+
+using System;
 
 namespace KiwoomRestApi.Net
 {
@@ -27,6 +29,35 @@ namespace KiwoomRestApi.Net
 			}
 
 			return value.ToString() ?? string.Empty;
+		}
+
+		public static KiwoomRestApiResponse<TTarget> MapResponse<TSource, TTarget>(
+		this KiwoomRestApiResponse<TSource> source,
+		Func<TSource, TTarget> mapper)
+		where TSource : class
+		where TTarget : class
+		{
+			if (source == null)
+			{
+				throw new ArgumentNullException(nameof(source));
+			}
+
+			if (mapper == null)
+			{
+				throw new ArgumentNullException(nameof(mapper));
+			}
+
+			TTarget? mappedData = source.Data != null ? mapper(source.Data) : null;
+
+			return new KiwoomRestApiResponse<TTarget>
+			{
+				Data = mappedData,
+				ReturnMessage = source.ReturnMessage,
+				ReturnCode = source.ReturnCode,
+				ApiId = source.ApiId,
+				NextKey = source.NextKey,
+				ContYn = source.ContYn
+			};
 		}
 	}
 }
