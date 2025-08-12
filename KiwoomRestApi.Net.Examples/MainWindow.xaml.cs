@@ -1,5 +1,6 @@
 ﻿using KiwoomRestApi.Net.Clients;
 using KiwoomRestApi.Net.Enums.RankingInfo;
+using KiwoomRestApi.Net.Enums.ForeignInstitution;
 
 using System.IO;
 using System.Windows;
@@ -25,7 +26,6 @@ namespace KiwoomRestApi.Net.Examples
 			var stockCode = "452400";
 
 			var __result__ = client.MarketCondition.GetOrderBookListAsync(stockCode).Result;
-			//var __result__ = client.ForeignInstitution.GetContinuousTradesAsync(KiwoomQueryTypePeriod.FiveDays, KiwoomStockExchangeType2.Unified, KiwoomMarketType2.KOSPI, KiwoomNetSellAmountType.NetBuy, KiwoomStockIndustryType.Stock, KiwoomAmountQuantityType.Amount).Result;
 		}
 	}
 }

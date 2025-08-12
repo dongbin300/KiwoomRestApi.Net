@@ -74,34 +74,46 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("prid_stkpc_flu_rt")]
 		public decimal StockPriceFluctuationRateDuringPeriod;
 		[JsonProperty("orgn_nettrde_amt")]
+		[JsonConverter(typeof(KiwoomFixNegativeDecimalConverter))]
 		public decimal InstitutionNetTradeAmount;
 		[JsonProperty("orgn_nettrde_qty")]
+		[JsonConverter(typeof(KiwoomFixNegativeDecimalConverter))]
 		public decimal InstitutionNetTradeQuantity;
 		[JsonProperty("orgn_cont_netprps_dys")]
 		public decimal InstitutionContinuousNetPurchaseDays;
 		[JsonProperty("orgn_cont_netprps_qty")]
+		[JsonConverter(typeof(KiwoomFixNegativeDecimalConverter))]
 		public decimal InstitutionContinuousNetPurchaseQuantity;
 		[JsonProperty("orgn_cont_netprps_amt")]
+		[JsonConverter(typeof(KiwoomFixNegativeDecimalConverter))]
 		public decimal InstitutionContinuousNetPurchaseAmount;
 		[JsonProperty("frgnr_nettrde_qty")]
+		[JsonConverter(typeof(KiwoomFixNegativeDecimalConverter))]
 		public decimal ForeignerNetTradeQuantity;
 		[JsonProperty("frgnr_nettrde_amt")]
+		[JsonConverter(typeof(KiwoomFixNegativeDecimalConverter))]
 		public decimal ForeignerNetTradeAmount;
 		[JsonProperty("frgnr_cont_netprps_dys")]
 		public decimal ForeignerContinuousNetPurchaseDays;
 		[JsonProperty("frgnr_cont_netprps_qty")]
+		[JsonConverter(typeof(KiwoomFixNegativeDecimalConverter))]
 		public decimal ForeignerContinuousNetPurchaseQuantity;
 		[JsonProperty("frgnr_cont_netprps_amt")]
+		[JsonConverter(typeof(KiwoomFixNegativeDecimalConverter))]
 		public decimal ForeignerContinuousNetPurchaseAmount;
 		[JsonProperty("nettrde_qty")]
+		[JsonConverter(typeof(KiwoomFixNegativeDecimalConverter))]
 		public decimal NetTradeQuantity;
 		[JsonProperty("nettrde_amt")]
+		[JsonConverter(typeof(KiwoomFixNegativeDecimalConverter))]
 		public decimal NetTradeAmount;
 		[JsonProperty("tot_cont_netprps_dys")]
 		public decimal TotalContinuousNetPurchaseDays;
 		[JsonProperty("tot_cont_nettrde_qty")]
+		[JsonConverter(typeof(KiwoomFixNegativeDecimalConverter))]
 		public decimal TotalContinuousNetTradeQuantity;
 		[JsonProperty("tot_cont_netprps_amt")]
+		[JsonConverter(typeof(KiwoomFixNegativeDecimalConverter))]
 		public decimal TotalContinuousNetPurchaseAmount;
 	}
 

@@ -23,6 +23,11 @@ namespace KiwoomRestApi.Net
 				return dec.ToString("F0");
 			}
 
+			if (value is bool boolean)
+			{
+				return boolean ? "1" : "0";
+			}
+
 			if (value is Enum e)
 			{
 				return Convert.ToInt32(e).ToString();
