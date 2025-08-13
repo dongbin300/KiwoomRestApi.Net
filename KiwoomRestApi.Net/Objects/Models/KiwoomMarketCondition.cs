@@ -3,6 +3,7 @@
 using Newtonsoft.Json;
 
 using System;
+using System.Collections.Generic;
 
 namespace KiwoomRestApi.Net.Objects.Models
 {
@@ -576,6 +577,11 @@ namespace KiwoomRestApi.Net.Objects.Models
 
 	public record KiwoomMarketConditionGetAllMarketQuoteForRightsOfferings
 	{
+		[JsonProperty("newstk_recvrht_mrpr")]
+		public IEnumerable<KiwoomMarketConditionGetAllMarketQuoteForRightsOfferingItem>? Items;
+	}
+	public record KiwoomMarketConditionGetAllMarketQuoteForRightsOfferingItem
+	{
 		[JsonProperty("stk_cd")]
 		public string StockCode = string.Empty;
 		[JsonProperty("stk_nm")]
@@ -602,7 +608,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public decimal LowPrice;
 	}
 
-	public record KiwoomMarketConditionGetDailyInstitutionTradingStock
+	public record KiwoomMarketConditionGetDailyInstitutionTradingStocks
+	{
+		[JsonProperty("daly_orgn_trde_stk")]
+		public IEnumerable<KiwoomMarketConditionGetDailyInstitutionTradingStockItem>? Items;
+	}
+	public record KiwoomMarketConditionGetDailyInstitutionTradingStockItem
 	{
 		[JsonProperty("stk_cd")]
 		public string StockCode = string.Empty;
@@ -614,12 +625,17 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public decimal NetPurchaseAmount;
 	}
 
-	public record KiwoomMarketConditionGetStockOriginTradeTrend
+	public record KiwoomMarketConditionGetStockOriginTradeTrends
 	{
 		[JsonProperty("orgn_prsm_avg_pric")]
 		public decimal InstitutionEstimatedAvgPrice;
 		[JsonProperty("for_prsm_avg_pric")]
 		public decimal ForeignEstimatedAvgPrice;
+		[JsonProperty("stk_orgn_trde_trnsn")]
+		public IEnumerable<KiwoomMarketConditionGetStockOriginTradeTrendItem>? Items;
+	}
+	public record KiwoomMarketConditionGetStockOriginTradeTrendItem
+	{
 		[JsonProperty("dt")]
 		[JsonConverter(typeof(KiwoomDateConverter))]
 		public DateTime Date;
@@ -645,7 +661,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public decimal LimitExhaustionRate;
 	}
 
-	public record KiwoomMarketConditionGetContractStrengthByTime
+	public record KiwoomMarketConditionGetHourlyContractStrengths
+	{
+		[JsonProperty("cntr_str_tm")]
+		public IEnumerable<KiwoomMarketConditionGetHourlyContractStrengthItem>? Items;
+	}
+	public record KiwoomMarketConditionGetHourlyContractStrengthItem
 	{
 		[JsonProperty("cntr_tm")]
 		[JsonConverter(typeof(KiwoomTimeConverter))]
@@ -676,7 +697,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public string ExchangeType = string.Empty;
 	}
 
-	public record KiwoomMarketConditionGetContractStrengthByDate
+	public record KiwoomMarketConditionGetDailyContractStrengths
+	{
+		[JsonProperty("cntr_str_daly")]
+		public IEnumerable<KiwoomMarketConditionGetDailyContractStrengthItem>? Items;
+	}
+	public record KiwoomMarketConditionGetDailyContractStrengthItem
 	{
 		[JsonProperty("dt")]
 		[JsonConverter(typeof(KiwoomDateConverter))]
@@ -705,7 +731,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public decimal ContractStrength60Days;
 	}
 
-	public record KiwoomMarketConditionGetIntradayInvestorTrading
+	public record KiwoomMarketConditionGetIntradayInvestorTradings
+	{
+		[JsonProperty("opmr_invsr_trde")]
+		public IEnumerable<KiwoomMarketConditionGetIntradayInvestorTradingItem>? Items;
+	}
+	public record KiwoomMarketConditionGetIntradayInvestorTradingItem
 	{
 		[JsonProperty("stk_cd")]
 		public string StockCode = string.Empty;
@@ -737,7 +768,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public decimal SellQuantityIncreaseDecrease;
 	}
 
-	public record KiwoomMarketConditionGetIntradayInvestorTradeChart
+	public record KiwoomMarketConditionGetIntradayInvestorTradeCharts
+	{
+		[JsonProperty("opaf_invsr_trde")]
+		public IEnumerable<KiwoomMarketConditionGetIntradayInvestorTradeChartItem>? Items;
+	}
+	public record KiwoomMarketConditionGetIntradayInvestorTradeChartItem
 	{
 		[JsonProperty("stk_cd")]
 		public string StockCode = string.Empty;
@@ -779,7 +815,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public decimal OtherCorporation;
 	}
 
-	public record KiwoomMarketConditionGetSecurityFirmStockTradeTrend
+	public record KiwoomMarketConditionGetSecurityFirmStockTradeTrends
+	{
+		[JsonProperty("sec_stk_trde_trend")]
+		public IEnumerable<KiwoomMarketConditionGetSecurityFirmStockTradeTrendItem>? Items;
+	}
+	public record KiwoomMarketConditionGetSecurityFirmStockTradeTrendItem
 	{
 		[JsonProperty("dt")]
 		[JsonConverter(typeof(KiwoomDateConverter))]
@@ -802,7 +843,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public decimal SellQuantity;
 	}
 
-	public record KiwoomMarketConditionGetDailyStockPrice
+	public record KiwoomMarketConditionGetDailyStockPrices
+	{
+		[JsonProperty("daly_stkpc")]
+		public IEnumerable<KiwoomMarketConditionGetDailyStockPriceItem>? Items;
+	}
+	public record KiwoomMarketConditionGetDailyStockPriceItem
 	{
 		[JsonProperty("date")]
 		[JsonConverter(typeof(KiwoomDateConverter))]
@@ -948,7 +994,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public decimal AfterHoursSinglePriceAccumulatedTradeQuantity;
 	}
 
-	public record KiwoomMarketConditionGetProgramTradeTrendByTime
+	public record KiwoomMarketConditionGetHourlyProgramTradeTrends
+	{
+		[JsonProperty("prm_trde_trnsn")]
+		public IEnumerable<KiwoomMarketConditionGetHourlyProgramTradeTrendItem>? Items;
+	}
+	public record KiwoomMarketConditionGetHourlyProgramTradeTrendItem
 	{
 		[JsonProperty("cntr_tm")]
 		public string ContractTime = string.Empty;
@@ -988,7 +1039,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public decimal Basis;
 	}
 
-	public record KiwoomMarketConditionGetProgramArbitrageBalanceTrend
+	public record KiwoomMarketConditionGetProgramArbitrageBalanceTrends
+	{
+		[JsonProperty("prm_trde_dfrt_remn_trnsn")]
+		public IEnumerable<KiwoomMarketConditionGetProgramArbitrageBalanceTrendItem>? Items;
+	}
+	public record KiwoomMarketConditionGetProgramArbitrageBalanceTrendItem
 	{
 		[JsonProperty("dt")]
 		[JsonConverter(typeof(KiwoomDateConverter))]
@@ -1007,7 +1063,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public decimal SellArbitrageTradeIncreaseDecreaseAmount;
 	}
 
-	public record KiwoomMarketConditionGetProgramTradeAccumulatedTrend
+	public record KiwoomMarketConditionGetProgramTradeAccumulatedTrends
+	{
+		[JsonProperty("prm_trde_acc_trnsn")]
+		public IEnumerable<KiwoomMarketConditionGetProgramTradeAccumulatedTrendItem>? Items;
+	}
+	public record KiwoomMarketConditionGetProgramTradeAccumulatedTrendItem
 	{
 		[JsonProperty("dt")]
 		[JsonConverter(typeof(KiwoomDateConverter))]
@@ -1030,7 +1091,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public decimal TotalAccumulated;
 	}
 
-	public record KiwoomMarketConditionGetStockTimeProgramTradeTrend
+	public record KiwoomMarketConditionGetStockTimeProgramTradeTrends
+	{
+		[JsonProperty("stk_tm_prm_trde_trnsn")]
+		public IEnumerable<KiwoomMarketConditionGetStockTimeProgramTradeTrendItem>? Items;
+	}
+	public record KiwoomMarketConditionGetStockTimeProgramTradeTrendItem
 	{
 		[JsonProperty("tm")]
 		[JsonConverter(typeof(KiwoomTimeConverter))]
@@ -1072,7 +1138,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public string ExchangeType = string.Empty;
 	}
 
-	public record KiwoomMarketConditionGetProgramTradeTrendByDate
+	public record KiwoomMarketConditionGetDailyProgramTradeTrends
+	{
+		[JsonProperty("prm_trde_trnsn")]
+		public IEnumerable<KiwoomMarketConditionGetDailyProgramTradeTrendItem>? Items;
+	}
+	public record KiwoomMarketConditionGetDailyProgramTradeTrendItem
 	{
 		[JsonProperty("cntr_tm")]
 		[JsonConverter(typeof(KiwoomTimeConverter))]
@@ -1113,7 +1184,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public decimal Basis;
 	}
 
-	public record KiwoomMarketConditionGetStockDailyProgramTradeTrend
+	public record KiwoomMarketConditionGetStockDailyProgramTradeTrends
+	{
+		[JsonProperty("stk_daly_prm_trde_trnsn")]
+		public IEnumerable<KiwoomMarketConditionGetStockDailyProgramTradeTrendItem>? Items;
+	}
+	public record KiwoomMarketConditionGetStockDailyProgramTradeTrendItem
 	{
 		[JsonProperty("dt")]
 		[JsonConverter(typeof(KiwoomDateConverter))]
