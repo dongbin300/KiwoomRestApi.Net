@@ -1,5 +1,5 @@
 ﻿using KiwoomRestApi.Net.Enums.RankingInfo;
-using KiwoomRestApi.Net.Objects;
+using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
 
 using System;

@@ -320,259 +320,395 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonConverter(typeof(KiwoomTimeConverter))]
 		public TimeSpan Time;
 		[JsonProperty("pred_close_pric")]
-		public decimal PrevClosePrice;
+		public decimal? PrevClosePrice;
 		[JsonProperty("pred_trde_qty")]
-		public decimal PrevTradeQuantity;
+		public decimal? PrevTradeQuantity;
 		[JsonProperty("upl_pric")]
-		public decimal UpperPrice;
+		public decimal? UpperPrice;
 		[JsonProperty("lst_pric")]
-		public decimal LowerPrice;
+		public decimal? LowerPrice;
 		[JsonProperty("pred_trde_prica")]
-		public decimal PrevTradeAmount;
+		public decimal? PrevTradeAmount;
 		[JsonProperty("flo_stkcnt")]
-		public decimal ListedShares;
+		public decimal? ListedShares;
 		[JsonProperty("cur_prc")]
-		public decimal CurrentPrice;
+		public decimal? CurrentPrice;
 		[JsonProperty("smbol")]
 		public string Sign = string.Empty;
 		[JsonProperty("flu_rt")]
-		public decimal FluctuationRate;
+		public decimal? FluctuationRate;
 		[JsonProperty("pred_rt")]
-		public decimal PrevRate;
+		public decimal? PrevRate;
 		[JsonProperty("open_pric")]
-		public decimal OpenPrice;
+		public decimal? OpenPrice;
 		[JsonProperty("high_pric")]
-		public decimal HighPrice;
+		public decimal? HighPrice;
 		[JsonProperty("low_pric")]
-		public decimal LowPrice;
+		public decimal? LowPrice;
 		[JsonProperty("cntr_qty")]
-		public decimal ContractQuantity;
+		public decimal? ContractQuantity;
 		[JsonProperty("trde_qty")]
-		public decimal TradeQuantity;
+		public decimal? TradeQuantity;
 		[JsonProperty("trde_prica")]
-		public decimal TradeAmount;
+		public decimal? TradeAmount;
 		[JsonProperty("exp_cntr_pric")]
-		public decimal ExpectedContractPrice;
+		public decimal? ExpectedContractPrice;
 		[JsonProperty("exp_cntr_qty")]
-		public decimal ExpectedContractQuantity;
+		public decimal? ExpectedContractQuantity;
 		[JsonProperty("exp_sel_pri_bid")]
-		public decimal ExpectedSellPriorityBid;
+		public decimal? ExpectedSellPriorityBid;
 		[JsonProperty("exp_buy_pri_bid")]
-		public decimal ExpectedBuyPriorityBid;
+		public decimal? ExpectedBuyPriorityBid;
 		[JsonProperty("trde_strt_dt")]
-		[JsonConverter(typeof(KiwoomDateConverter))]
-		public DateTime TradeStartDate;
+		[JsonConverter(typeof(KiwoomNullableDateConverter))]
+		public DateTime? TradeStartDate;
 		[JsonProperty("exec_pric")]
-		public decimal ExercisePrice;
+		public decimal? ExercisePrice;
 		[JsonProperty("hgst_pric")]
-		public decimal HighestPrice;
+		public decimal? HighestPrice;
 		[JsonProperty("lwst_pric")]
-		public decimal LowestPrice;
+		public decimal? LowestPrice;
 		[JsonProperty("hgst_pric_dt")]
-		[JsonConverter(typeof(KiwoomDateConverter))]
-		public DateTime HighestPriceDate;
+		[JsonConverter(typeof(KiwoomNullableDateConverter))]
+		public DateTime? HighestPriceDate;
 		[JsonProperty("lwst_pric_dt")]
-		[JsonConverter(typeof(KiwoomDateConverter))]
-		public DateTime LowestPriceDate;
+		[JsonConverter(typeof(KiwoomNullableDateConverter))]
+		public DateTime? LowestPriceDate;
 
 		[JsonProperty("sel_1bid")]
-		public decimal Sell1Price;
+		public decimal? Sell1Price;
 		[JsonProperty("sel_2bid")]
-		public decimal Sell2Price;
+		public decimal? Sell2Price;
 		[JsonProperty("sel_3bid")]
-		public decimal Sell3Price;
+		public decimal? Sell3Price;
 		[JsonProperty("sel_4bid")]
-		public decimal Sell4Price;
+		public decimal? Sell4Price;
 		[JsonProperty("sel_5bid")]
-		public decimal Sell5Price;
+		public decimal? Sell5Price;
 		[JsonProperty("sel_6bid")]
-		public decimal Sell6Price;
+		public decimal? Sell6Price;
 		[JsonProperty("sel_7bid")]
-		public decimal Sell7Price;
+		public decimal? Sell7Price;
 		[JsonProperty("sel_8bid")]
-		public decimal Sell8Price;
+		public decimal? Sell8Price;
 		[JsonProperty("sel_9bid")]
-		public decimal Sell9Price;
+		public decimal? Sell9Price;
 		[JsonProperty("sel_10bid")]
-		public decimal Sell10Price;
+		public decimal? Sell10Price;
 
 		[JsonProperty("buy_1bid")]
-		public decimal Buy1Price;
+		public decimal? Buy1Price;
 		[JsonProperty("buy_2bid")]
-		public decimal Buy2Price;
+		public decimal? Buy2Price;
 		[JsonProperty("buy_3bid")]
-		public decimal Buy3Price;
+		public decimal? Buy3Price;
 		[JsonProperty("buy_4bid")]
-		public decimal Buy4Price;
+		public decimal? Buy4Price;
 		[JsonProperty("buy_5bid")]
-		public decimal Buy5Price;
+		public decimal? Buy5Price;
 		[JsonProperty("buy_6bid")]
-		public decimal Buy6Price;
+		public decimal? Buy6Price;
 		[JsonProperty("buy_7bid")]
-		public decimal Buy7Price;
+		public decimal? Buy7Price;
 		[JsonProperty("buy_8bid")]
-		public decimal Buy8Price;
+		public decimal? Buy8Price;
 		[JsonProperty("buy_9bid")]
-		public decimal Buy9Price;
+		public decimal? Buy9Price;
 		[JsonProperty("buy_10bid")]
-		public decimal Buy10Price;
+		public decimal? Buy10Price;
 
 		[JsonProperty("sel_1bid_req")]
-		public decimal Sell1Quantity;
+		public decimal? Sell1Quantity;
 		[JsonProperty("sel_2bid_req")]
-		public decimal Sell2Quantity;
+		public decimal? Sell2Quantity;
 		[JsonProperty("sel_3bid_req")]
-		public decimal Sell3Quantity;
+		public decimal? Sell3Quantity;
 		[JsonProperty("sel_4bid_req")]
-		public decimal Sell4Quantity;
+		public decimal? Sell4Quantity;
 		[JsonProperty("sel_5bid_req")]
-		public decimal Sell5Quantity;
+		public decimal? Sell5Quantity;
 		[JsonProperty("sel_6bid_req")]
-		public decimal Sell6Quantity;
+		public decimal? Sell6Quantity;
 		[JsonProperty("sel_7bid_req")]
-		public decimal Sell7Quantity;
+		public decimal? Sell7Quantity;
 		[JsonProperty("sel_8bid_req")]
-		public decimal Sell8Quantity;
+		public decimal? Sell8Quantity;
 		[JsonProperty("sel_9bid_req")]
-		public decimal Sell9Quantity;
+		public decimal? Sell9Quantity;
 		[JsonProperty("sel_10bid_req")]
-		public decimal Sell10Quantity;
+		public decimal? Sell10Quantity;
 
 		[JsonProperty("buy_1bid_req")]
-		public decimal Buy1Quantity;
+		public decimal? Buy1Quantity;
 		[JsonProperty("buy_2bid_req")]
-		public decimal Buy2Quantity;
+		public decimal? Buy2Quantity;
 		[JsonProperty("buy_3bid_req")]
-		public decimal Buy3Quantity;
+		public decimal? Buy3Quantity;
 		[JsonProperty("buy_4bid_req")]
-		public decimal Buy4Quantity;
+		public decimal? Buy4Quantity;
 		[JsonProperty("buy_5bid_req")]
-		public decimal Buy5Quantity;
+		public decimal? Buy5Quantity;
 		[JsonProperty("buy_6bid_req")]
-		public decimal Buy6Quantity;
+		public decimal? Buy6Quantity;
 		[JsonProperty("buy_7bid_req")]
-		public decimal Buy7Quantity;
+		public decimal? Buy7Quantity;
 		[JsonProperty("buy_8bid_req")]
-		public decimal Buy8Quantity;
+		public decimal? Buy8Quantity;
 		[JsonProperty("buy_9bid_req")]
-		public decimal Buy9Quantity;
+		public decimal? Buy9Quantity;
 		[JsonProperty("buy_10bid_req")]
-		public decimal Buy10Quantity;
+		public decimal? Buy10Quantity;
 
 		[JsonProperty("sel_1bid_jub_pre")]
-		public decimal Sell1PrevDiff;
+		public decimal? Sell1PrevDiff;
 		[JsonProperty("sel_2bid_jub_pre")]
-		public decimal Sell2PrevDiff;
+		public decimal? Sell2PrevDiff;
 		[JsonProperty("sel_3bid_jub_pre")]
-		public decimal Sell3PrevDiff;
+		public decimal? Sell3PrevDiff;
 		[JsonProperty("sel_4bid_jub_pre")]
-		public decimal Sell4PrevDiff;
+		public decimal? Sell4PrevDiff;
 		[JsonProperty("sel_5bid_jub_pre")]
-		public decimal Sell5PrevDiff;
+		public decimal? Sell5PrevDiff;
 		[JsonProperty("sel_6bid_jub_pre")]
-		public decimal Sell6PrevDiff;
+		public decimal? Sell6PrevDiff;
 		[JsonProperty("sel_7bid_jub_pre")]
-		public decimal Sell7PrevDiff;
+		public decimal? Sell7PrevDiff;
 		[JsonProperty("sel_8bid_jub_pre")]
-		public decimal Sell8PrevDiff;
+		public decimal? Sell8PrevDiff;
 		[JsonProperty("sel_9bid_jub_pre")]
-		public decimal Sell9PrevDiff;
+		public decimal? Sell9PrevDiff;
 		[JsonProperty("sel_10bid_jub_pre")]
-		public decimal Sell10PrevDiff;
+		public decimal? Sell10PrevDiff;
 
 		[JsonProperty("buy_1bid_jub_pre")]
-		public decimal Buy1PrevDiff;
+		public decimal? Buy1PrevDiff;
 		[JsonProperty("buy_2bid_jub_pre")]
-		public decimal Buy2PrevDiff;
+		public decimal? Buy2PrevDiff;
 		[JsonProperty("buy_3bid_jub_pre")]
-		public decimal Buy3PrevDiff;
+		public decimal? Buy3PrevDiff;
 		[JsonProperty("buy_4bid_jub_pre")]
-		public decimal Buy4PrevDiff;
+		public decimal? Buy4PrevDiff;
 		[JsonProperty("buy_5bid_jub_pre")]
-		public decimal Buy5PrevDiff;
+		public decimal? Buy5PrevDiff;
 		[JsonProperty("buy_6bid_jub_pre")]
-		public decimal Buy6PrevDiff;
+		public decimal? Buy6PrevDiff;
 		[JsonProperty("buy_7bid_jub_pre")]
-		public decimal Buy7PrevDiff;
+		public decimal? Buy7PrevDiff;
 		[JsonProperty("buy_8bid_jub_pre")]
-		public decimal Buy8PrevDiff;
+		public decimal? Buy8PrevDiff;
 		[JsonProperty("buy_9bid_jub_pre")]
-		public decimal Buy9PrevDiff;
+		public decimal? Buy9PrevDiff;
 		[JsonProperty("buy_10bid_jub_pre")]
-		public decimal Buy10PrevDiff;
+		public decimal? Buy10PrevDiff;
 
 		[JsonProperty("sel_1bid_cnt")]
-		public decimal Sell1Count;
+		public decimal? Sell1Count;
 		[JsonProperty("sel_2bid_cnt")]
-		public decimal Sell2Count;
+		public decimal? Sell2Count;
 		[JsonProperty("sel_3bid_cnt")]
-		public decimal Sell3Count;
+		public decimal? Sell3Count;
 		[JsonProperty("sel_4bid_cnt")]
-		public decimal Sell4Count;
+		public decimal? Sell4Count;
 		[JsonProperty("sel_5bid_cnt")]
-		public decimal Sell5Count;
+		public decimal? Sell5Count;
 
 		[JsonProperty("buy_1bid_cnt")]
-		public decimal Buy1Count;
+		public decimal? Buy1Count;
 		[JsonProperty("buy_2bid_cnt")]
-		public decimal Buy2Count;
+		public decimal? Buy2Count;
 		[JsonProperty("buy_3bid_cnt")]
-		public decimal Buy3Count;
+		public decimal? Buy3Count;
 		[JsonProperty("buy_4bid_cnt")]
-		public decimal Buy4Count;
+		public decimal? Buy4Count;
 		[JsonProperty("buy_5bid_cnt")]
-		public decimal Buy5Count;
+		public decimal? Buy5Count;
 
 		[JsonProperty("lpsel_1bid_req")]
-		public decimal LpSell1Quantity;
+		public decimal? LpSell1Quantity;
 		[JsonProperty("lpsel_2bid_req")]
-		public decimal LpSell2Quantity;
+		public decimal? LpSell2Quantity;
 		[JsonProperty("lpsel_3bid_req")]
-		public decimal LpSell3Quantity;
+		public decimal? LpSell3Quantity;
 		[JsonProperty("lpsel_4bid_req")]
-		public decimal LpSell4Quantity;
+		public decimal? LpSell4Quantity;
 		[JsonProperty("lpsel_5bid_req")]
-		public decimal LpSell5Quantity;
+		public decimal? LpSell5Quantity;
 		[JsonProperty("lpsel_6bid_req")]
-		public decimal LpSell6Quantity;
+		public decimal? LpSell6Quantity;
 		[JsonProperty("lpsel_7bid_req")]
-		public decimal LpSell7Quantity;
+		public decimal? LpSell7Quantity;
 		[JsonProperty("lpsel_8bid_req")]
-		public decimal LpSell8Quantity;
+		public decimal? LpSell8Quantity;
 		[JsonProperty("lpsel_9bid_req")]
-		public decimal LpSell9Quantity;
+		public decimal? LpSell9Quantity;
 		[JsonProperty("lpsel_10bid_req")]
-		public decimal LpSell10Quantity;
+		public decimal? LpSell10Quantity;
 
 		[JsonProperty("lpbuy_1bid_req")]
-		public decimal LpBuy1Quantity;
+		public decimal? LpBuy1Quantity;
 		[JsonProperty("lpbuy_2bid_req")]
-		public decimal LpBuy2Quantity;
+		public decimal? LpBuy2Quantity;
 		[JsonProperty("lpbuy_3bid_req")]
-		public decimal LpBuy3Quantity;
+		public decimal? LpBuy3Quantity;
 		[JsonProperty("lpbuy_4bid_req")]
-		public decimal LpBuy4Quantity;
+		public decimal? LpBuy4Quantity;
 		[JsonProperty("lpbuy_5bid_req")]
-		public decimal LpBuy5Quantity;
+		public decimal? LpBuy5Quantity;
 		[JsonProperty("lpbuy_6bid_req")]
-		public decimal LpBuy6Quantity;
+		public decimal? LpBuy6Quantity;
 		[JsonProperty("lpbuy_7bid_req")]
-		public decimal LpBuy7Quantity;
+		public decimal? LpBuy7Quantity;
 		[JsonProperty("lpbuy_8bid_req")]
-		public decimal LpBuy8Quantity;
+		public decimal? LpBuy8Quantity;
 		[JsonProperty("lpbuy_9bid_req")]
-		public decimal LpBuy9Quantity;
+		public decimal? LpBuy9Quantity;
 		[JsonProperty("lpbuy_10bid_req")]
-		public decimal LpBuy10Quantity;
+		public decimal? LpBuy10Quantity;
 
 		[JsonProperty("tot_buy_req")]
-		public decimal TotalBuyQuantity;
+		public decimal? TotalBuyQuantity;
 		[JsonProperty("tot_sel_req")]
-		public decimal TotalSellQuantity;
+		public decimal? TotalSellQuantity;
 		[JsonProperty("tot_buy_cnt")]
-		public decimal TotalBuyCount;
+		public decimal? TotalBuyCount;
 		[JsonProperty("tot_sel_cnt")]
-		public decimal TotalSellCount;
+		public decimal? TotalSellCount;
+	}
+
+	public record KiwoomMarketConditionGetQuoteList
+	{
+		public string StockName = string.Empty;
+		public string StockCode = string.Empty;
+		public DateTime Date;
+		public TimeSpan Time;
+		public decimal? PrevClosePrice;
+		public decimal? PrevTradeQuantity;
+		public decimal? UpperPrice;
+		public decimal? LowerPrice;
+		public decimal? PrevTradeAmount;
+		public decimal? ListedShares;
+		public decimal? CurrentPrice;
+		public string Sign = string.Empty;
+		public decimal? FluctuationRate;
+		public decimal? PrevRate;
+		public decimal? OpenPrice;
+		public decimal? HighPrice;
+		public decimal? LowPrice;
+		public decimal? ContractQuantity;
+		public decimal? TradeQuantity;
+		public decimal? TradeAmount;
+		public decimal? ExpectedContractPrice;
+		public decimal? ExpectedContractQuantity;
+		public decimal? ExpectedSellPriorityBid;
+		public decimal? ExpectedBuyPriorityBid;
+		public DateTime? TradeStartDate;
+		public decimal? ExercisePrice;
+		public decimal? HighestPrice;
+		public decimal? LowestPrice;
+		public DateTime? HighestPriceDate;
+		public DateTime? LowestPriceDate;
+
+		public decimal?[] SellPrices;
+		public decimal?[] BuyPrices;
+		public decimal?[] SellQuantities;
+		public decimal?[] BuyQuantities;
+		public decimal?[] SellPrevDiffs;
+		public decimal?[] BuyPrevDiffs;
+		public decimal?[] SellCounts;
+		public decimal?[] BuyCounts;
+		public decimal?[] LpSellQuantities;
+		public decimal?[] LpBuyQuantities;
+
+		public decimal? TotalBuyQuantity;
+		public decimal? TotalSellQuantity;
+		public decimal? TotalBuyCount;
+		public decimal? TotalSellCount;
+
+		public KiwoomMarketConditionGetQuoteList(KiwoomMarketConditionGetQuote raw)
+		{
+			StockName = raw.StockName;
+			StockCode = raw.StockCode;
+			Date = raw.Date;
+			Time = raw.Time;
+			PrevClosePrice = raw.PrevClosePrice;
+			PrevTradeQuantity = raw.PrevTradeQuantity;
+			UpperPrice = raw.UpperPrice;
+			LowerPrice = raw.LowerPrice;
+			PrevTradeAmount = raw.PrevTradeAmount;
+			ListedShares = raw.ListedShares;
+			CurrentPrice = raw.CurrentPrice;
+			Sign = raw.Sign;
+			FluctuationRate = raw.FluctuationRate;
+			PrevRate = raw.PrevRate;
+			OpenPrice = raw.OpenPrice;
+			HighPrice = raw.HighPrice;
+			LowPrice = raw.LowPrice;
+			ContractQuantity = raw.ContractQuantity;
+			TradeQuantity = raw.TradeQuantity;
+			TradeAmount = raw.TradeAmount;
+			ExpectedContractPrice = raw.ExpectedContractPrice;
+			ExpectedContractQuantity = raw.ExpectedContractQuantity;
+			ExpectedSellPriorityBid = raw.ExpectedSellPriorityBid;
+			ExpectedBuyPriorityBid = raw.ExpectedBuyPriorityBid;
+			TradeStartDate = raw.TradeStartDate;
+			ExercisePrice = raw.ExercisePrice;
+			HighestPrice = raw.HighestPrice;
+			LowestPrice = raw.LowestPrice;
+			HighestPriceDate = raw.HighestPriceDate;
+			LowestPriceDate = raw.LowestPriceDate;
+			SellPrices =
+			[
+				raw.Sell1Price, raw.Sell2Price, raw.Sell3Price, raw.Sell4Price, raw.Sell5Price,
+				raw.Sell6Price, raw.Sell7Price, raw.Sell8Price, raw.Sell9Price, raw.Sell10Price
+			];
+			BuyPrices =
+			[
+				raw.Buy1Price, raw.Buy2Price, raw.Buy3Price, raw.Buy4Price, raw.Buy5Price,
+				raw.Buy6Price, raw.Buy7Price, raw.Buy8Price, raw.Buy9Price, raw.Buy10Price
+			];
+			SellQuantities =
+			[
+				raw.Sell1Quantity, raw.Sell2Quantity, raw.Sell3Quantity, raw.Sell4Quantity, raw.Sell5Quantity,
+				raw.Sell6Quantity, raw.Sell7Quantity, raw.Sell8Quantity, raw.Sell9Quantity, raw.Sell10Quantity
+			];
+			BuyQuantities =
+			[
+				raw.Buy1Quantity, raw.Buy2Quantity, raw.Buy3Quantity, raw.Buy4Quantity, raw.Buy5Quantity,
+				raw.Buy6Quantity, raw.Buy7Quantity, raw.Buy8Quantity, raw.Buy9Quantity, raw.Buy10Quantity
+			];
+			SellPrevDiffs =
+			[
+				raw.Sell1PrevDiff, raw.Sell2PrevDiff, raw.Sell3PrevDiff, raw.Sell4PrevDiff, raw.Sell5PrevDiff,
+				raw.Sell6PrevDiff, raw.Sell7PrevDiff, raw.Sell8PrevDiff, raw.Sell9PrevDiff, raw.Sell10PrevDiff
+			];
+			BuyPrevDiffs =
+			[
+				raw.Buy1PrevDiff, raw.Buy2PrevDiff, raw.Buy3PrevDiff, raw.Buy4PrevDiff, raw.Buy5PrevDiff,
+				raw.Buy6PrevDiff, raw.Buy7PrevDiff, raw.Buy8PrevDiff, raw.Buy9PrevDiff, raw.Buy10PrevDiff
+			];
+			SellCounts =
+			[
+				raw.Sell1Count, raw.Sell2Count, raw.Sell3Count, raw.Sell4Count, raw.Sell5Count
+			];
+			BuyCounts =
+			[
+				raw.Buy1Count, raw.Buy2Count, raw.Buy3Count, raw.Buy4Count, raw.Buy5Count
+			];
+			LpSellQuantities =
+			[
+				raw.LpSell1Quantity, raw.LpSell2Quantity, raw.LpSell3Quantity, raw.LpSell4Quantity, raw.LpSell5Quantity,
+				raw.LpSell6Quantity, raw.LpSell7Quantity, raw.LpSell8Quantity, raw.LpSell9Quantity, raw.LpSell10Quantity
+			];
+			LpBuyQuantities =
+			[
+				raw.LpBuy1Quantity, raw.LpBuy2Quantity, raw.LpBuy3Quantity, raw.LpBuy4Quantity, raw.LpBuy5Quantity,
+				raw.LpBuy6Quantity, raw.LpBuy7Quantity, raw.LpBuy8Quantity, raw.LpBuy9Quantity, raw.LpBuy10Quantity
+			];
+			TotalBuyQuantity = raw.TotalBuyQuantity;
+			TotalSellQuantity = raw.TotalSellQuantity;
+			TotalBuyCount = raw.TotalBuyCount;
+			TotalSellCount = raw.TotalSellCount;
+		}
 	}
 
 	public record KiwoomMarketConditionGetAllMarketQuoteForRightsOfferings
@@ -992,6 +1128,88 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public decimal AfterHoursSinglePriceFluctuationRate;
 		[JsonProperty("ovt_sigpric_acc_trde_qty")]
 		public decimal AfterHoursSinglePriceAccumulatedTradeQuantity;
+	}
+
+	public record KiwoomMarketConditionGetAfterHoursSinglePriceOrderBookList
+	{
+		public TimeSpan BidRequestBaseTime;
+		public decimal[] AfterHoursSinglePriceSellPrevDiffs;
+		public decimal[] AfterHoursSinglePriceSellQuantitys;
+		public decimal[] AfterHoursSinglePriceSellPrices;
+		public decimal[] AfterHoursSinglePriceBuyPrices;
+		public decimal[] AfterHoursSinglePriceBuyQuantities;
+		public decimal[] AfterHoursSinglePriceBuyPrevDiffs;
+		public decimal AfterHoursSinglePriceSellTotalQuantity;
+		public decimal AfterHoursSinglePriceBuyTotalQuantity;
+		public decimal SellTotalQuantityPrevDiff;
+		public decimal SellTotalQuantity;
+		public decimal BuyTotalQuantity;
+		public decimal BuyTotalQuantityPrevDiff;
+		public decimal AfterHoursSellTotalQuantityPrevDiff;
+		public decimal AfterHoursSellTotalQuantity;
+		public decimal AfterHoursBuyTotalQuantity;
+		public decimal AfterHoursBuyTotalQuantityPrevDiff;
+		public decimal AfterHoursSinglePriceCurrentPrice;
+		public string AfterHoursSinglePricePrevDiffSign = string.Empty;
+		public decimal AfterHoursSinglePricePrevDiff;
+		public decimal AfterHoursSinglePriceFluctuationRate;
+		public decimal AfterHoursSinglePriceAccumulatedTradeQuantity;
+
+		public KiwoomMarketConditionGetAfterHoursSinglePriceOrderBookList(KiwoomMarketConditionGetAfterHoursSinglePriceOrderBook raw)
+		{
+			BidRequestBaseTime = raw.BidRequestBaseTime;
+			AfterHoursSinglePriceSellPrevDiffs =
+			[
+				raw.AfterHoursSinglePriceSellPrevDiff5, raw.AfterHoursSinglePriceSellPrevDiff4,
+				raw.AfterHoursSinglePriceSellPrevDiff3, raw.AfterHoursSinglePriceSellPrevDiff2,
+				raw.AfterHoursSinglePriceSellPrevDiff1
+			];
+			AfterHoursSinglePriceSellQuantitys =
+			[
+				raw.AfterHoursSinglePriceSellQuantity5, raw.AfterHoursSinglePriceSellQuantity4,
+				raw.AfterHoursSinglePriceSellQuantity3, raw.AfterHoursSinglePriceSellQuantity2,
+				raw.AfterHoursSinglePriceSellQuantity1
+			];
+			AfterHoursSinglePriceSellPrices =
+			[
+				raw.AfterHoursSinglePriceSellPrice5, raw.AfterHoursSinglePriceSellPrice4,
+				raw.AfterHoursSinglePriceSellPrice3, raw.AfterHoursSinglePriceSellPrice2,
+				raw.AfterHoursSinglePriceSellPrice1
+			];
+			AfterHoursSinglePriceBuyPrices =
+			[
+				raw.AfterHoursSinglePriceBuyPrice1, raw.AfterHoursSinglePriceBuyPrice2,
+				raw.AfterHoursSinglePriceBuyPrice3, raw.AfterHoursSinglePriceBuyPrice4,
+				raw.AfterHoursSinglePriceBuyPrice5
+			];
+			AfterHoursSinglePriceBuyQuantities =
+			[
+				raw.AfterHoursSinglePriceBuyQuantity1, raw.AfterHoursSinglePriceBuyQuantity2,
+				raw.AfterHoursSinglePriceBuyQuantity3, raw.AfterHoursSinglePriceBuyQuantity4,
+				raw.AfterHoursSinglePriceBuyQuantity5
+			];
+			AfterHoursSinglePriceBuyPrevDiffs =
+			[
+				raw.AfterHoursSinglePriceBuyPrevDiff1, raw.AfterHoursSinglePriceBuyPrevDiff2,
+				raw.AfterHoursSinglePriceBuyPrevDiff3, raw.AfterHoursSinglePriceBuyPrevDiff4,
+				raw.AfterHoursSinglePriceBuyPrevDiff5
+			];
+			AfterHoursSinglePriceSellTotalQuantity = raw.AfterHoursSinglePriceSellTotalQuantity;
+			AfterHoursSinglePriceBuyTotalQuantity = raw.AfterHoursSinglePriceBuyTotalQuantity;
+			SellTotalQuantityPrevDiff = raw.SellTotalQuantityPrevDiff;
+			SellTotalQuantity = raw.SellTotalQuantity;
+			BuyTotalQuantity = raw.BuyTotalQuantity;
+			BuyTotalQuantityPrevDiff = raw.BuyTotalQuantityPrevDiff;
+			AfterHoursSellTotalQuantityPrevDiff = raw.AfterHoursSellTotalQuantityPrevDiff;
+			AfterHoursSellTotalQuantity = raw.AfterHoursSellTotalQuantity;
+			AfterHoursBuyTotalQuantity = raw.AfterHoursBuyTotalQuantity;
+			AfterHoursBuyTotalQuantityPrevDiff = raw.AfterHoursBuyTotalQuantityPrevDiff;
+			AfterHoursSinglePriceCurrentPrice = raw.AfterHoursSinglePriceCurrentPrice;
+			AfterHoursSinglePricePrevDiffSign = raw.AfterHoursSinglePricePrevDiffSign;
+			AfterHoursSinglePricePrevDiff = raw.AfterHoursSinglePricePrevDiff;
+			AfterHoursSinglePriceFluctuationRate = raw.AfterHoursSinglePriceFluctuationRate;
+			AfterHoursSinglePriceAccumulatedTradeQuantity = raw.AfterHoursSinglePriceAccumulatedTradeQuantity;
+		}
 	}
 
 	public record KiwoomMarketConditionGetHourlyProgramTradeTrends

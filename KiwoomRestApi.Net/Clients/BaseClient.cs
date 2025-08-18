@@ -2,6 +2,7 @@
 
 using Newtonsoft.Json;
 
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
@@ -16,22 +17,46 @@ namespace KiwoomRestApi.Net.Clients
 	}
 
 	public class BaseClient : IClient
-	{
+	{	
 		public HttpClient Client { get; set; } = default!;
+
+		#region Dispose
+		private bool _disposed = false;
+
+		public void Dispose()
+		{
+			Dispose(true);
+			GC.SuppressFinalize(this);
+		}
+
+		protected virtual void Dispose(bool disposing)
+		{
+			if (_disposed) return;
+
+			if (disposing)
+			{
+				Client?.Dispose();
+			}
+
+			// unmanaged resource
+
+			_disposed = true;
+		}
 
 		~BaseClient()
 		{
-			Client.Dispose();
+			Dispose(false);
 		}
+		#endregion
 
-		protected async Task<HttpResponseWrapper<T>> GetAsync<T>(string endpoint, IDictionary<string, string>? headers = null)
+		public async Task<HttpResponseWrapper<T>> GetAsync<T>(string endpoint, IDictionary<string, string>? headers = null)
 		{
 			using var request = CreateRequest(HttpMethod.Get, endpoint, headers);
 			using var response = await Client.SendAsync(request).ConfigureAwait(false);
 			return await CreateResponseWrapper<T>(response).ConfigureAwait(false);
 		}
 
-		protected async Task<HttpResponseWrapper<T>> PostAsync<T>(string endpoint, IDictionary<string, string>? headers = null, IDictionary<string, string>? body = null)
+		public async Task<HttpResponseWrapper<T>> PostAsync<T>(string endpoint, IDictionary<string, string>? headers = null, IDictionary<string, string>? body = null)
 		{
 			using var request = CreateRequest(HttpMethod.Post, endpoint, headers, body);
 			using var response = await Client.SendAsync(request).ConfigureAwait(false);

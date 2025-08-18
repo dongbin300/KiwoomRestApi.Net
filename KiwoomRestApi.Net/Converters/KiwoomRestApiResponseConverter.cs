@@ -1,4 +1,4 @@
-﻿using KiwoomRestApi.Net.Objects;
+﻿using KiwoomRestApi.Net.Objects.Commons;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;

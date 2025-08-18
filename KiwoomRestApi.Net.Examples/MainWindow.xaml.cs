@@ -4,6 +4,11 @@ using KiwoomRestApi.Net.Enums.ForeignInstitution;
 
 using System.IO;
 using System.Windows;
+using KiwoomRestApi.Net.Objects;
+using System.Diagnostics;
+using Newtonsoft.Json;
+using KiwoomRestApi.Net.Objects.Models;
+using KiwoomRestApi.Net.Enums.WebSocket;
 
 namespace KiwoomRestApi.Net.Examples
 {
@@ -12,6 +17,8 @@ namespace KiwoomRestApi.Net.Examples
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		KiwoomSocketClient socketClient;
+
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -25,7 +32,34 @@ namespace KiwoomRestApi.Net.Examples
 			var endDate = new DateTime(2025, 8, 7);
 			var stockCode = "452400";
 
-			var __result__ = client.MarketCondition.GetOrderBookListAsync(stockCode).Result;
+			var __result__ = client.MarketCondition.GetQuoteListAsync(stockCode).Result;
+
+			socketClient = KiwoomSocketClient.Create(client.Token, true);
+
+			socketClient.OnRealtimeStockExecutionReceived += (message) =>
+			{
+
+			};
+		}
+
+		private async void Test_Click(object sender, RoutedEventArgs e)
+		{
+			await socketClient.WebSocket.SubscribeAsync([KiwoomWebSocketServiceName.StockExecution], ["000660", "005930"]).ConfigureAwait(false);
+		}
+
+		private async void Test2_Click(object sender, RoutedEventArgs e)
+		{
+			await socketClient.DisconnectAsync().ConfigureAwait(false);
+		}
+
+		private async void Test3_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private async void Test4_Click(object sender, RoutedEventArgs e)
+		{
+
 		}
 	}
 }

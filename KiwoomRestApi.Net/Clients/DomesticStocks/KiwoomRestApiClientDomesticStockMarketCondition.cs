@@ -1,5 +1,5 @@
 ﻿using KiwoomRestApi.Net.Enums.MarketCondition;
-using KiwoomRestApi.Net.Objects;
+using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
 
 using System;
@@ -56,6 +56,16 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("stk_cd", stockCode);
 
 			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetQuote>(_endpoint, apiId, body).ConfigureAwait(false);
+		}
+
+		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetQuoteList>> GetQuoteListAsync(string stockCode)
+		{
+			const string apiId = "ka10007";
+			var body = new HttpParameterMap()
+				.AddField("stk_cd", stockCode);
+
+			var response = await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetQuote>(_endpoint, apiId, body).ConfigureAwait(false);
+			return response.MapResponse(r => new KiwoomMarketConditionGetQuoteList(r));
 		}
 
 		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetAllMarketQuoteForRightsOfferings>> GetAllMarketQuoteForRightsOfferingsAsync(KiwoomMarketConditionRightsType rightsType)
@@ -167,6 +177,16 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("stk_cd", stockCode);
 
 			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetAfterHoursSinglePriceOrderBook>(_endpoint, apiId, body).ConfigureAwait(false);
+		}
+
+		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetAfterHoursSinglePriceOrderBookList>> GetAfterHoursSinglePriceOrderBookListAsync(string stockCode)
+		{
+			const string apiId = "ka10087";
+			var body = new HttpParameterMap()
+				.AddField("stk_cd", stockCode);
+
+			var response = await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetAfterHoursSinglePriceOrderBook>(_endpoint, apiId, body).ConfigureAwait(false);
+			return response.MapResponse(r => new KiwoomMarketConditionGetAfterHoursSinglePriceOrderBookList(r));
 		}
 
 		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetHourlyProgramTradeTrends>> GetHourlyProgramTradeTrendsAsync(DateTime date, KiwoomMarketConditionAmountQuantityType3 amountQuantityType, KiwoomMarketConditionMarketType marketType, KiwoomMarketConditionMinuteTicType minuteTicType, KiwoomMarketConditionStockExchangeType stockExchangeType)

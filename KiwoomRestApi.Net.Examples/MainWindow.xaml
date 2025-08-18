@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <StackPanel>
+            <Button Height="100" x:Name="Test" Click="Test_Click"/>
+            <Button Height="100" x:Name="Test2" Click="Test2_Click"/>
+            <Button Height="100" x:Name="Test3" Click="Test3_Click"/>
+            <Button Height="100" x:Name="Test4" Click="Test4_Click"/>
+        </StackPanel>
     </Grid>
 </Window>

@@ -1,5 +1,5 @@
 ﻿using KiwoomRestApi.Net.Enums.SecuritiesLendingAndBorrowing;
-using KiwoomRestApi.Net.Objects;
+using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
 
 using System;

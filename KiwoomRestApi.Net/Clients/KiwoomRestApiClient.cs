@@ -1,6 +1,7 @@
 ﻿using KiwoomRestApi.Net.Clients.DomesticStocks;
 using KiwoomRestApi.Net.Converters;
 using KiwoomRestApi.Net.Objects;
+using KiwoomRestApi.Net.Objects.Commons;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -20,6 +21,8 @@ namespace KiwoomRestApi.Net.Clients
 		public string? Authorization { get; set; } = string.Empty;
 		public string ContYn { get; set; } = string.Empty;
 		public string NextKey { get; set; } = string.Empty;
+
+		public string Token { get; set; } = string.Empty;
 
 		public KiwoomRestApiClientOAuth OAuth { get; set; }
 		public KiwoomRestApiClientDomesticStockAccount Account { get; set; }
@@ -45,6 +48,7 @@ namespace KiwoomRestApi.Net.Clients
 			AppKey = appKey;
 			SecretKey = secretKey;
 			Authorization = token != null ? $"Bearer {token}" : null;
+			Token = token ?? string.Empty;
 
 			OAuth = new KiwoomRestApiClientOAuth(this);
 			Account = new KiwoomRestApiClientDomesticStockAccount(this);
@@ -73,15 +77,15 @@ namespace KiwoomRestApi.Net.Clients
 
 		public void Initialize()
 		{
-			var token = OAuth.GetAccessTokenAsync().Result.Data?.Token ?? throw new InvalidOperationException("Token is null");
-			Authorization = $"Bearer {token}";
+			Token = OAuth.GetAccessTokenAsync().Result.Data?.Token ?? throw new InvalidOperationException("Token is null");
+			Authorization = $"Bearer {Token}";
 		}
 
 		public async Task InitializeAsync()
 		{
 			var result = await OAuth.GetAccessTokenAsync();
-			var token = result.Data?.Token ?? throw new InvalidOperationException("Token is null");
-			Authorization = $"Bearer {token}";
+			Token = result.Data?.Token ?? throw new InvalidOperationException("Token is null");
+			Authorization = $"Bearer {Token}";
 		}
 
 		public async Task<KiwoomRestApiResponse<T>> PostKiwoomRestApiAsync<T>(string endpoint, string apiId, IDictionary<string, string>? body = null)

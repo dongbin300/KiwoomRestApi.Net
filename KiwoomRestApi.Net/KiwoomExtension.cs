@@ -1,6 +1,9 @@
-﻿using KiwoomRestApi.Net.Objects;
+﻿using KiwoomRestApi.Net.Objects.Commons;
 
 using System;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
 
 namespace KiwoomRestApi.Net
 {
@@ -30,10 +33,24 @@ namespace KiwoomRestApi.Net
 
 			if (value is Enum e)
 			{
-				return Convert.ToInt32(e).ToString();
+				return e.ToEnumString();
 			}
 
 			return value.ToString() ?? string.Empty;
+		}
+
+		public static string ToEnumString(this Enum value)
+		{
+			var memberInfo = value.GetType().GetMember(value.ToString()).FirstOrDefault();
+			if (memberInfo != null)
+			{
+				var enumMemberAttr = memberInfo.GetCustomAttribute<EnumMemberAttribute>();
+				if (enumMemberAttr != null && !string.IsNullOrEmpty(enumMemberAttr.Value))
+				{
+					return enumMemberAttr.Value;
+				}
+			}
+			return Convert.ToInt32(value).ToString();
 		}
 
 		public static KiwoomRestApiResponse<TTarget> MapResponse<TSource, TTarget>(

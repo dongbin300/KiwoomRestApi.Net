@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace KiwoomRestApi.Net.Objects
+namespace KiwoomRestApi.Net.Objects.Commons
 {
 	public record KiwoomRestApiResponse<T>
 	{

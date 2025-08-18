@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace KiwoomRestApi.Net.Objects
+namespace KiwoomRestApi.Net.Objects.Commons
 {
 	public class HttpParameterMap : Dictionary<string, string>
 	{
