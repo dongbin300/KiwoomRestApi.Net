@@ -26,7 +26,6 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public IEnumerable<string> Type = [];
 	}
 
-
 	public record KiwoomWebSocketReceiveMessage<T>
 	{
 		[JsonProperty("return_code")]
@@ -38,6 +37,25 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("data")]
 		public IEnumerable<KiwoomWebSocketRealtimeSubscription<T>>? Data;
 	}
+
+	public record KiwoomWebSocketReceiveMessage2<T>
+	{
+		[JsonProperty("return_code")]
+		public int? ReturnCode;
+		[JsonProperty("return_msg")]
+		public string? ReturnMessage;
+		[JsonProperty("trnm")]
+		public string? ServiceName;
+		[JsonProperty("seq")]
+		public decimal? Id;
+		[JsonProperty("cont-yn")]
+		public string? ContinueYn;
+		[JsonProperty("next-key")]
+		public string? NextKey;
+		[JsonProperty("data")]
+		public IEnumerable<T>? Data;
+	}
+
 	public record KiwoomWebSocketRealtimeSubscription<T>
 	{
 		[JsonProperty("type")]
@@ -1079,4 +1097,76 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("1279")]
 		public string? ExtraItem;
 	}
+
+	public record KiwoomWebSocketConditionSearchList
+	{
+		[JsonProperty("seq")]
+		public int? Id;
+		[JsonProperty("name")]
+		public string? Name;
+	}
+
+	public record KiwoomWebSocketConditionSearchRequest
+	{
+		[JsonProperty("9001")]
+		public string? StockCode;
+		[JsonProperty("302")]
+		public string? StockName;
+		[JsonProperty("10")]
+		public string? CurrentPrice;
+		[JsonProperty("25")]
+		public string? DiffSymbol;
+		[JsonProperty("11")]
+		public string? DiffAmount;
+		[JsonProperty("12")]
+		public string? FluctuationRate;
+		[JsonProperty("13")]
+		public string? AccumulatedVolume;
+		[JsonProperty("16")]
+		public string? OpenPrice;
+		[JsonProperty("17")]
+		public string? HighPrice;
+		[JsonProperty("18")]
+		public string? LowPrice;
+	}
+
+	public record KiwoomWebSocketConditionSearchRequestRealtime
+	{
+		[JsonProperty("jmcode")]
+		public string? StockCode;
+	}
+
+	public record KiwoomWebSocketConditionSearchRequestRealtime2
+	{
+		[JsonProperty("trnm")]
+		public string? ServiceName;
+		[JsonProperty("type")]
+		public string? RealType;
+		[JsonProperty("name")]
+		public string? RealName;
+		[JsonProperty("values")]
+		public KiwoomWebSocketConditionSearchRequestRealtime2Value? Values;
+	}
+	public record KiwoomWebSocketConditionSearchRequestRealtime2Value
+	{
+		[JsonProperty("841")]
+		public string? SerialNumber;
+		[JsonProperty("9001")]
+		public string? StockCode;
+		/// <summary>
+		/// I 삽입, D 삭제
+		/// </summary>
+		[JsonProperty("843")]
+		public string? InsertDeleteType;
+		[JsonProperty("20")]
+		public string? TradeTime;
+		[JsonProperty("907")]
+		public string? SellBuyType;
+	}
+
+	public record KiwoomWebSocketConditionSearchClear
+	{
+
+	}
+
 }

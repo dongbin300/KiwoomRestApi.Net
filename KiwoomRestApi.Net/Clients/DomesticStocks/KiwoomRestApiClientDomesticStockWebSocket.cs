@@ -1,4 +1,5 @@
 ﻿using KiwoomRestApi.Net.Enums.WebSocket;
+using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
 
 using System.Collections.Generic;
@@ -31,6 +32,47 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			};
 
 			await _client.SendAsync(message).ConfigureAwait(false);
+		}
+
+		public async Task GetConditionSearchListAsync()
+		{
+			var body = new HttpParameterMap()
+				.AddField("trnm", "CNSRLST");
+
+			await _client.SendAsync(body).ConfigureAwait(false);
+		}
+
+		public async Task GetConditionSearchRequestAsync(int id, string contYn = "", string nextKey = "")
+		{
+			var body = new HttpParameterMap()
+				.AddField("trnm", "CNSRREQ")
+				.AddField("seq", id)
+				.AddField("search_type", "0")
+				.AddField("stex_tp", "K")
+				.AddField("cont_yn", contYn)
+				.AddField("next_key", nextKey);
+
+			await _client.SendAsync(body).ConfigureAwait(false);
+		}
+
+		public async Task GetConditionSearchRequestRealtimeAsync(int id)
+		{
+			var body = new HttpParameterMap()
+				.AddField("trnm", "CNSRREQ")
+				.AddField("seq", id)
+				.AddField("search_type", "1")
+				.AddField("stex_tp", "K");
+
+			await _client.SendAsync(body).ConfigureAwait(false);
+		}
+
+		public async Task GetConditionSearchClearAsync(int id)
+		{
+			var body = new HttpParameterMap()
+				.AddField("trnm", "CNSRCLR")
+				.AddField("seq", id);
+
+			await _client.SendAsync(body).ConfigureAwait(false);
 		}
 
 		public async Task UnsubscribeAsync(IEnumerable<KiwoomWebSocketServiceName> serviceNames, IEnumerable<string> parameters, string groupId = "1")

@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
@@ -41,6 +42,12 @@ namespace KiwoomRestApi.Net.Clients
 		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeElwIndicator>>>? OnRealtimeElwIndicatorReceived;
 		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeProgramTrading>>>? OnRealtimeProgramTradingReceived;
 		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeViTriggeredReleased>>>? OnRealtimeViTriggeredReleasedReceived;
+
+		public event Action<IEnumerable<KiwoomWebSocketConditionSearchList>>? OnConditionSearchListReceived;
+		public event Action<IEnumerable<KiwoomWebSocketConditionSearchRequest>>? OnConditionSearchRequestReceived;
+		public event Action<IEnumerable<KiwoomWebSocketConditionSearchRequestRealtime>>? OnConditionSearchRequestRealtimeReceived;
+		public event Action<IEnumerable<KiwoomWebSocketConditionSearchRequestRealtime2>>? OnConditionSearchRequestRealtime2Received;
+		public event Action<IEnumerable<KiwoomWebSocketConditionSearchClear>>? OnConditionSearchClearReceived;
 
 		public KiwoomSocketClient() : base()
 		{
@@ -112,6 +119,8 @@ namespace KiwoomRestApi.Net.Clients
 
 					var message = Encoding.UTF8.GetString(buffer, 0, result.Count);
 
+					Debug.WriteLine($"{message}");
+
 					var json = JsonConvert.DeserializeObject<KiwoomSocketMessage>(message);
 
 					if (json == null)
@@ -150,7 +159,29 @@ namespace KiwoomRestApi.Net.Clients
 
 						case "REAL":
 							//Debug.WriteLine($"{message}");
-							InnerProcessForReceive(message);
+							InnerProcessForReceiveReal(message);
+							break;
+
+						case "CNSRLST":
+							{
+								var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage2<List<string>>>(message)?.Data?.Select(x => new KiwoomWebSocketConditionSearchList
+								{
+									Id = int.Parse(x[0]),
+									Name = x[1]
+								}).ToList();
+
+								if (data != null)
+									OnConditionSearchListReceived?.Invoke(data);
+							}
+							break;
+
+						case "CNSRREQ":
+							{
+								var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage2<KiwoomWebSocketConditionSearchRequest>>(message)?.Data;
+
+								if (data != null)
+									OnConditionSearchRequestReceived?.Invoke(data);
+							}
 							break;
 
 						default:
@@ -170,7 +201,7 @@ namespace KiwoomRestApi.Net.Clients
 			}
 		}
 
-		private void InnerProcessForReceive(string message)
+		private void InnerProcessForReceiveReal(string message)
 		{
 			var jsonReal = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage<object>>(message);
 			if (jsonReal == null || jsonReal.Data == null)

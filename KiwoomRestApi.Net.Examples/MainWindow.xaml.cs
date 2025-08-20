@@ -32,19 +32,21 @@ namespace KiwoomRestApi.Net.Examples
 			var endDate = new DateTime(2025, 8, 7);
 			var stockCode = "452400";
 
-			var __result__ = client.MarketCondition.GetQuoteListAsync(stockCode).Result;
+			//var __result__ = client.MarketCondition.GetQuoteListAsync(stockCode).Result;
 
-			socketClient = KiwoomSocketClient.Create(client.Token, true);
+			//socketClient = KiwoomSocketClient.Create(client.Token, true);
 
-			socketClient.OnRealtimeStockExecutionReceived += (message) =>
-			{
+			//socketClient.OnConditionSearchRequestReceived += (message) =>
+			//{
 
-			};
+			//};
 		}
 
 		private async void Test_Click(object sender, RoutedEventArgs e)
 		{
-			await socketClient.WebSocket.SubscribeAsync([KiwoomWebSocketServiceName.StockExecution], ["000660", "005930"]).ConfigureAwait(false);
+			//await socketClient.WebSocket.GetConditionSearchListAsync().ConfigureAwait(false);
+			//await socketClient.WebSocket.GetConditionSearchRequestAsync(20).ConfigureAwait(false);
+			//await socketClient.WebSocket.GetConditionSearchClearAsync(20).ConfigureAwait(false);
 		}
 
 		private async void Test2_Click(object sender, RoutedEventArgs e)
