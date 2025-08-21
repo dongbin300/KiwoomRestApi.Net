@@ -29,10 +29,10 @@ namespace KiwoomRestApi.Net.Examples
 
 			var client = KiwoomRestApiClient.Create(appKey, secretKey, true);
 			var startDate = new DateTime(2025, 8, 1);
-			var endDate = new DateTime(2025, 8, 7);
+			var endDate = new DateTime(2025, 8, 20);
 			var stockCode = "452400";
 
-			//var __result__ = client.MarketCondition.GetQuoteListAsync(stockCode).Result;
+			var __result__ = client.StockInfo.GetTradeOriginMomentTradeVolumesAsync(stockCode, Enums.StockInfo.KiwoomStockInfoMarketType2.All, 17348, Enums.StockInfo.KiwoomStockInfoPriceCondition.All, Enums.StockInfo.KiwoomStockInfoStockExchangeType.Unified).Result;
 
 			//socketClient = KiwoomSocketClient.Create(client.Token, true);
 

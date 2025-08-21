@@ -1,6 +1,6 @@
 ﻿namespace KiwoomRestApi.Net.Enums.RankingInfo
 {
-	public enum KiwoomRankingInfoTradeOriginRankPointType
+	public enum KiwoomRankingInfoDayType
 	{
 		Today = 0,
 		PreviousDay = 1

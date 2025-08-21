@@ -132,13 +132,11 @@ namespace KiwoomRestApi.Net.Clients
 					{
 						// PING/PONG
 						case "PING":
-							//Debug.WriteLine($"{message}");
 							OnMessageReceived?.Invoke(json);
 							await SendAsync(json);
 							break;
 
 						case "LOGIN":
-							//Debug.WriteLine($"{message}");
 							OnMessageReceived?.Invoke(json);
 							if (json.ReturnCode != 0)
 							{
@@ -152,13 +150,11 @@ namespace KiwoomRestApi.Net.Clients
 							break;
 
 						case "SYSTEM":
-							//Debug.WriteLine($"{message}");
 							OnMessageReceived?.Invoke(json);
 							//await DisconnectAsync();
 							break;
 
 						case "REAL":
-							//Debug.WriteLine($"{message}");
 							InnerProcessForReceiveReal(message);
 							break;
 
@@ -175,12 +171,23 @@ namespace KiwoomRestApi.Net.Clients
 							}
 							break;
 
+							// TODO
+							// 조건검색 요청 응답이 오지않고 있음
 						case "CNSRREQ":
 							{
 								var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage2<KiwoomWebSocketConditionSearchRequest>>(message)?.Data;
 
 								if (data != null)
 									OnConditionSearchRequestReceived?.Invoke(data);
+							}
+							break;
+
+						case "CNSRCLR":
+							{
+								var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage2<KiwoomWebSocketConditionSearchClear>>(message)?.Data;
+
+								if (data != null)
+									OnConditionSearchClearReceived?.Invoke(data);
 							}
 							break;
 
