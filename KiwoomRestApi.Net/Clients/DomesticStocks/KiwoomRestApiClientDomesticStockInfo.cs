@@ -344,7 +344,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		{
 			const string apiId = "ka90003";
 			var body = new HttpParameterMap()
-				.AddField("trde_tp", tradeUpperType)
+				.AddField("trde_upper_tp", tradeUpperType)
 				.AddField("amt_qty_tp", amountQuantityType)
 				.AddField("mrkt_tp", marketType)
 				.AddField("stex_tp", stockExchangeType);
