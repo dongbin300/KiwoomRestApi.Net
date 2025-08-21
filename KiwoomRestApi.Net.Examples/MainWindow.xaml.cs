@@ -1,6 +1,7 @@
 ﻿using KiwoomRestApi.Net.Clients;
 using KiwoomRestApi.Net.Enums.RankingInfo;
 using KiwoomRestApi.Net.Enums.ForeignInstitution;
+using KiwoomRestApi.Net.Enums.Chart;
 
 using System.IO;
 using System.Windows;
@@ -29,10 +30,10 @@ namespace KiwoomRestApi.Net.Examples
 
 			var client = KiwoomRestApiClient.Create(appKey, secretKey, true);
 			var startDate = new DateTime(2025, 8, 1);
-			var endDate = new DateTime(2025, 8, 20);
+			var endDate = new DateTime(2025, 8, 21);
 			var stockCode = "452400";
 
-			var __result__ = client.StockInfo.GetTradeOriginMomentTradeVolumesAsync(stockCode, Enums.StockInfo.KiwoomStockInfoMarketType2.All, 17348, Enums.StockInfo.KiwoomStockInfoPriceCondition.All, Enums.StockInfo.KiwoomStockInfoStockExchangeType.Unified).Result;
+			var __result__ = client.Chart.GetTickChartsAsync(stockCode, 10, KiwoomChartUseOption.Use).Result;
 
 			//socketClient = KiwoomSocketClient.Create(client.Token, true);
 

@@ -53,8 +53,8 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomAccountGetPeriodStockRealizedProfitLossItem
 	{
 		[JsonProperty("dt")]
-		[JsonConverter(typeof(KiwoomDateConverter))]
-		public DateTime Date;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? Date;
 		[JsonProperty("tdy_htssel_cmsn")]
 		public decimal TodayHtsSellCommission;
 		[JsonProperty("stk_cd")]
@@ -101,7 +101,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomAccountGetRealizedProfitLossItem
 	{
 		[JsonProperty("dt")]
-		[JsonConverter(typeof(KiwoomNullableDateConverter))]
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? Date;
 		[JsonProperty("buy_amt")]
 		public decimal? BuyAmount;
@@ -151,7 +151,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("trde_tp")]
 		public string TradeType = string.Empty;
 		[JsonProperty("tm")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan Time;
 		[JsonProperty("cntr_no")]
 		public string ContractId = string.Empty;
@@ -220,7 +220,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("orig_ord_no")]
 		public string OriginalOrderId = string.Empty;
 		[JsonProperty("ord_tm")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan OrderTime;
 		[JsonProperty("stk_cd")]
 		public string StockCode = string.Empty;
@@ -789,7 +789,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("rsrv_tp")]
 		public string ReservationType = string.Empty;
 		[JsonProperty("ord_tm")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan OrderTime;
 		[JsonProperty("ori_ord")]
 		public string OriginalOrder = string.Empty;
@@ -810,7 +810,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("mdfy_cncl")]
 		public string ModifyCancel = string.Empty;
 		[JsonProperty("cnfm_tm")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan ConfirmTime;
 		[JsonProperty("dmst_stex_tp")]
 		public string DomesticStockExchangeType = string.Empty;
@@ -821,11 +821,11 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomAccountGetNextDaySettlements
 	{
 		[JsonProperty("trde_dt")]
-		[JsonConverter(typeof(KiwoomDateConverter))]
-		public DateTime TradeDate;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? TradeDate;
 		[JsonProperty("setl_dt")]
-		[JsonConverter(typeof(KiwoomDateConverter))]
-		public DateTime SettlementDate;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? SettlementDate;
 		[JsonProperty("sell_amt_sum")]
 		public decimal SellSettlementSum;
 		[JsonProperty("buy_amt_sum")]
@@ -919,7 +919,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("mdfy_cncl_tp")]
 		public string ModifyCancelType = string.Empty;
 		[JsonProperty("cntr_tm")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan ContractTime;
 		[JsonProperty("dmst_stex_tp")]
 		public string DomesticStockExchangeType = string.Empty;
@@ -1237,8 +1237,8 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomAccountGetConsignmentTradeItem
 	{
 		[JsonProperty("trde_dt")]
-		[JsonConverter(typeof(KiwoomDateConverter))]
-		public DateTime TradeDate;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? TradeDate;
 		[JsonProperty("trde_no")]
 		public string TradeId = string.Empty;
 		[JsonProperty("rmrk_nm")]
@@ -1298,7 +1298,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("vlbl_nowrm")]
 		public decimal MarketSecuritiesBalance;
 		[JsonProperty("proc_tm")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan ProcessingTime;
 		[JsonProperty("isin_cd")]
 		public string ISINCode = string.Empty;
@@ -1317,8 +1317,8 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("rpym_sum")]
 		public decimal RepaymentSum;
 		[JsonProperty("cntr_dt")]
-		[JsonConverter(typeof(KiwoomDateConverter))]
-		public DateTime ContractDate;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? ContractDate;
 		[JsonProperty("rcpy_no")]
 		public string ReceiptId = string.Empty;
 		[JsonProperty("prcsr")]

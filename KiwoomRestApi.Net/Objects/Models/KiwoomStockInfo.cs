@@ -74,12 +74,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("exp_cntr_qty")]
 		public decimal? ExpectedContractQuantity;
 		[JsonProperty("250hgst_pric_dt")]
-		[JsonConverter(typeof(KiwoomNullableDateConverter))]
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? DateHigh250;
 		[JsonProperty("250hgst_pric_pre_rt")]
 		public decimal? RateComparedToHigh250;
 		[JsonProperty("250lwst_pric_dt")]
-		[JsonConverter(typeof(KiwoomNullableDateConverter))]
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? DateLow250;
 		[JsonProperty("250lwst_pric_pre_rt")]
 		public decimal? RateComparedToLow250;
@@ -189,7 +189,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomStockInfoGetContractItem
 	{
 		[JsonProperty("tm")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? Time;
 		[JsonProperty("cur_prc")]
 		public decimal? CurrentPrice;
@@ -223,7 +223,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomStockInfoGetCreditTradeTrendItem
 	{
 		[JsonProperty("dt")]
-		[JsonConverter(typeof(KiwoomNullableDateConverter))]
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? Date;
 		[JsonProperty("cur_prc")]
 		public decimal? CurrentPrice;
@@ -257,7 +257,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomStockInfoGetDailyTradeDetailItem
 	{
 		[JsonProperty("dt")]
-		[JsonConverter(typeof(KiwoomNullableDateConverter))]
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? Date;
 		[JsonProperty("close_pric")]
 		public decimal? ClosePrice;
@@ -579,7 +579,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomStockInfoGetTradeOriginPriceAnalysisItem
 	{
 		[JsonProperty("dt")]
-		[JsonConverter(typeof(KiwoomNullableDateConverter))]
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? Date;
 		[JsonProperty("close_pric")]
 		public decimal? ClosePrice;
@@ -607,7 +607,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomStockInfoGetTradeOriginMomentTradeVolumeItem
 	{
 		[JsonProperty("tm")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? Time;
 		[JsonProperty("stk_cd")]
 		public string? StockCode;
@@ -649,10 +649,10 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("dynm_dispty_rt")]
 		public decimal? DynamicDisparityRate;
 		[JsonProperty("trde_cntr_proc_time")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? TradeContractProcessTime;
 		[JsonProperty("virelis_time")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? ViReleaseTime;
 		[JsonProperty("viaplc_tp")]
 		public string? ViApplyType;
@@ -678,7 +678,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomStockInfoGetTodayPreviousTradeQuantityItem
 	{
 		[JsonProperty("cntr_tm")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? TradeTime;
 		[JsonProperty("cntr_pric")]
 		public decimal? TradePrice;
@@ -735,7 +735,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomStockInfoGetStockInvestorOrganizationItem
 	{
 		[JsonProperty("dt")]
-		[JsonConverter(typeof(KiwoomNullableDateConverter))]
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? Date;
 		[JsonProperty("cur_prc")]
 		public decimal? CurrentPrice;
@@ -820,7 +820,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomStockInfoGetTodayPreviousContractItem
 	{
 		[JsonProperty("tm")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? Time;
 		[JsonProperty("cur_prc")]
 		public decimal? CurrentPrice;
@@ -914,7 +914,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("close_pric")]
 		public decimal? ClosePrice;
 		[JsonProperty("cntr_tm")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? ContractTime;
 		[JsonProperty("exp_cntr_pric")]
 		public decimal? ExpectedContractPrice;
@@ -929,10 +929,10 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("stkcnt")]
 		public decimal? StockCount;
 		[JsonProperty("bid_tm")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? BidTime;
 		[JsonProperty("dt")]
-		[JsonConverter(typeof(KiwoomNullableDateConverter))]
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? Date;
 		[JsonProperty("pri_sel_req")]
 		public decimal? PrioritySellRequest;
@@ -963,7 +963,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("cnvt_rt")]
 		public decimal? ConversionRate;
 		[JsonProperty("elwexpr_dt")]
-		[JsonConverter(typeof(KiwoomNullableDateConverter))]
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? ELWExpirationDate;
 		[JsonProperty("cntr_engg")]
 		public decimal? OutstandingContracts;
@@ -1001,7 +1001,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("auditInfo")]
 		public string? AuditInfo;
 		[JsonProperty("regDay")]
-		[JsonConverter(typeof(KiwoomNullableDateConverter))]
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? ListingDate;
 		[JsonProperty("lastPrice")]
 		public decimal? PreviousClosePrice;

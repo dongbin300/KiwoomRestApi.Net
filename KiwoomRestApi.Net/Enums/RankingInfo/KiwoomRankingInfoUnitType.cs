@@ -2,7 +2,7 @@
 {
 	public enum KiwoomRankingInfoUnitType
 	{
-		SingleUnit = 1,
-		ThousandUnit = 1000
+		One = 1,
+		Thousand = 1000
 	}
 }

@@ -5,11 +5,11 @@ using System.Globalization;
 
 namespace KiwoomRestApi.Net.Converters
 {
-	public class KiwoomTimeConverter : JsonConverter<TimeSpan>
+	public class KiwoomTimeSpanConverter : JsonConverter<TimeSpan?>
 	{
 		private static readonly string[] Formats = { "hhmmss", @"hh\:mm\:ss" };
 
-		public override TimeSpan ReadJson(JsonReader reader, Type objectType, TimeSpan existingValue, bool hasExistingValue, JsonSerializer serializer)
+		public override TimeSpan? ReadJson(JsonReader reader, Type objectType, TimeSpan? existingValue, bool hasExistingValue, JsonSerializer serializer)
 		{
 			var s = reader.Value as string;
 			if (string.IsNullOrEmpty(s))
@@ -23,9 +23,9 @@ namespace KiwoomRestApi.Net.Converters
 			throw new JsonSerializationException($"Invalid time format: {s}");
 		}
 
-		public override void WriteJson(JsonWriter writer, TimeSpan value, JsonSerializer serializer)
+		public override void WriteJson(JsonWriter writer, TimeSpan? value, JsonSerializer serializer)
 		{
-			writer.WriteValue(value.ToString("hhmmss"));
+			writer.WriteValue(value?.ToString("hhmmss"));
 		}
 	}
 

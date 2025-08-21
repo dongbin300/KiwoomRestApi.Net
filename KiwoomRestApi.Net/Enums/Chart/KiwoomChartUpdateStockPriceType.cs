@@ -1,0 +1,42 @@
+﻿using System;
+
+namespace KiwoomRestApi.Net.Enums.Chart
+{
+	[Flags]
+	public enum KiwoomChartUpdateStockPriceType
+	{
+		/// <summary>
+		/// 유상증자
+		/// </summary>
+		PaidInCapitalIncrease = 1 << 0,
+		/// <summary>
+		/// 무상증자
+		/// </summary>
+		FreeCapitalIncrease = 1 << 1,
+		/// <summary>
+		/// 배당락
+		/// </summary>
+		ExDividend = 1 << 2,
+		/// <summary>
+		/// 액면분할
+		/// </summary>
+		StockSplit = 1 << 3,
+		/// <summary>
+		/// 액면병합
+		/// </summary>
+		StockReverseSplit = 1 << 4,
+		/// <summary>
+		/// 기업합병
+		/// </summary>
+		Merger = 1 << 5,
+		/// <summary>
+		/// 감자
+		/// </summary>
+		CapitalReduction = 1 << 6,
+		/// <summary>
+		/// 권리락
+		/// </summary>
+		RightsIssue = 1 << 8
+	}
+
+}

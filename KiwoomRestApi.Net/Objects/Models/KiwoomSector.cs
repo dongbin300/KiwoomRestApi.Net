@@ -133,15 +133,15 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("52wk_hgst_pric")]
 		public decimal _52WeekHighestPrice;
 		[JsonProperty("52wk_hgst_pric_dt")]
-		[JsonConverter(typeof(KiwoomDateConverter))]
-		public DateTime _52WeekHighestPriceDate;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? _52WeekHighestPriceDate;
 		[JsonProperty("52wk_hgst_pric_pre_rt")]
 		public decimal _52WeekHighestPriceRate;
 		[JsonProperty("52wk_lwst_pric")]
 		public decimal _52WeekLowestPrice;
 		[JsonProperty("52wk_lwst_pric_dt")]
-		[JsonConverter(typeof(KiwoomDateConverter))]
-		public DateTime _52WeekLowestPriceDate;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? _52WeekLowestPriceDate;
 		[JsonProperty("52wk_lwst_pric_pre_rt")]
 		public decimal _52WeekLowestPriceRate;
 		[JsonProperty("inds_cur_prc_tm")]
@@ -274,15 +274,15 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("52wk_hgst_pric")]
 		public decimal _52WeekHighestPrice;
 		[JsonProperty("52wk_hgst_pric_dt")]
-		[JsonConverter(typeof(KiwoomDateConverter))]
-		public DateTime _52WeekHighestPriceDate;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? _52WeekHighestPriceDate;
 		[JsonProperty("52wk_hgst_pric_pre_rt")]
 		public decimal _52WeekHighestPriceRate;
 		[JsonProperty("52wk_lwst_pric")]
 		public decimal _52WeekLowestPrice;
 		[JsonProperty("52wk_lwst_pric_dt")]
-		[JsonConverter(typeof(KiwoomDateConverter))]
-		public DateTime _52WeekLowestPriceDate;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? _52WeekLowestPriceDate;
 		[JsonProperty("52wk_lwst_pric_pre_rt")]
 		public decimal _52WeekLowestPriceRate;
 		[JsonProperty("inds_cur_prc_daly_rept")]
@@ -291,8 +291,8 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomSectorGetDailyIndustryPriceItem
 	{
 		[JsonProperty("dt_n")]
-		[JsonConverter(typeof(KiwoomDateConverter))]
-		public DateTime Date;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? Date;
 		[JsonProperty("cur_prc_n")]
 		public decimal CurrentPrice;
 		[JsonProperty("pred_pre_sig_n")]

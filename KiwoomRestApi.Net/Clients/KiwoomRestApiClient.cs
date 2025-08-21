@@ -35,6 +35,7 @@ namespace KiwoomRestApi.Net.Clients
 		public KiwoomRestApiClientDomesticStockSector Sector { get; set; }
 		public KiwoomRestApiClientDomesticStockInfo StockInfo { get; set; }
 		public KiwoomRestApiClientDomesticStockOrder Order { get; set; }
+		public KiwoomRestApiClientDomesticStockChart Chart { get; set; }
 
 		public KiwoomRestApiClient(string appKey, string secretKey, bool isMock = false)
 		: this(appKey, secretKey, null, isMock)
@@ -63,6 +64,7 @@ namespace KiwoomRestApi.Net.Clients
 			Sector = new KiwoomRestApiClientDomesticStockSector(this);
 			StockInfo = new KiwoomRestApiClientDomesticStockInfo(this);
 			Order = new KiwoomRestApiClientDomesticStockOrder(this);
+			Chart = new KiwoomRestApiClientDomesticStockChart(this);
 		}
 
 		public static KiwoomRestApiClient Create(string appKey, string secretKey, bool isMock = false)

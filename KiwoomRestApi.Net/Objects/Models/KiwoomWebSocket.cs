@@ -100,7 +100,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("907")]
 		public string? SellBuyClassification;
 		[JsonProperty("908")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? OrderExecutionTime;
 		[JsonProperty("909")]
 		public decimal? ExecutionNumber;
@@ -131,7 +131,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("922")]
 		public string? CreditType;
 		[JsonProperty("923")]
-		[JsonConverter(typeof(KiwoomNullableDateConverter))]
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? LoanDate;
 		[JsonProperty("10010")]
 		public decimal? AfterMarketSinglePrice;
@@ -152,7 +152,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("917")]
 		public string? CreditClassification;
 		[JsonProperty("916")]
-		[JsonConverter(typeof(KiwoomNullableDateConverter))]
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? LoanDate;
 		[JsonProperty("302")]
 		public string? SymbolName;
@@ -187,7 +187,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("958")]
 		public decimal? CreditInterest;
 		[JsonProperty("918")]
-		[JsonConverter(typeof(KiwoomNullableDateConverter))]
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? ExpirationDate;
 		[JsonProperty("990")]
 		public decimal? TodayRealizedProfitLossStock;
@@ -240,17 +240,17 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("311")]
 		public decimal? MarketCap;
 		[JsonProperty("567")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? UpperLimitTime;
 		[JsonProperty("568")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? LowerLimitTime;
 	}
 
 	public record KiwoomWebSocketRealtimeStockExecution
 	{
 		[JsonProperty("20")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? TradeTime;
 		[JsonProperty("10")]
 		public decimal? CurrentPrice;
@@ -295,21 +295,21 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("691")]
 		public decimal? KOAccessibility;
 		[JsonProperty("567")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? UpperLimitTime;
 		[JsonProperty("568")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? LowerLimitTime;
 		[JsonProperty("851")]
 		public decimal? RatioComparedPrevSameTime;
 		[JsonProperty("1890")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? OpeningTime;
 		[JsonProperty("1891")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? HighTime;
 		[JsonProperty("1892")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? LowTime;
 		[JsonProperty("1030")]
 		public decimal? SellExecutionVolume;
@@ -354,7 +354,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomWebSocketRealtimeStockAskBid
 	{
 		[JsonProperty("21")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? QuoteTime;
 		[JsonProperty("41")]
 		public decimal? SellPrice1;
@@ -685,7 +685,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomWebSocketRealtimeStockAfterHoursAsk
 	{
 		[JsonProperty("21")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? QuoteTime;
 		[JsonProperty("131")]
 		public decimal? AfterHoursTotalSellVolume;
@@ -827,7 +827,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("39")]
 		public decimal? TrackingErrorRate;
 		[JsonProperty("20")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? ExecutionTime;
 		[JsonProperty("10")]
 		public decimal? CurrentPrice;
@@ -855,7 +855,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomWebSocketRealtimeStockExpectedExecution
 	{
 		[JsonProperty("20")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? ExecutionTime;
 		[JsonProperty("10")]
 		public decimal? CurrentPrice;
@@ -874,7 +874,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomWebSocketRealtimeSectorIndex
 	{
 		[JsonProperty("20")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? ExecutionTime;
 		[JsonProperty("10")]
 		public decimal? CurrentPrice;
@@ -903,7 +903,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomWebSocketRealtimeSectorFluctuation
 	{
 		[JsonProperty("20")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? ExecutionTime;
 		[JsonProperty("252")]
 		public int? RisingStockCount;
@@ -960,7 +960,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomWebSocketRealtimeElwTheoreticalPrice
 	{
 		[JsonProperty("20")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? ExecutionTime;
 		[JsonProperty("10")]
 		public decimal? CurrentPrice;
@@ -990,17 +990,17 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("215")]
 		public string? MarketOperationDivision;
 		[JsonProperty("20")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? ExecutionTime;
 		[JsonProperty("214")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? ExpectedRemainingMarketStartTime;
 	}
 
 	public record KiwoomWebSocketRealtimeElwIndicator
 	{
 		[JsonProperty("20")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? ExecutionTime;
 		[JsonProperty("666")]
 		public decimal? ELWParity;
@@ -1017,7 +1017,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomWebSocketRealtimeProgramTrading
 	{
 		[JsonProperty("20")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? ExecutionTime;
 		[JsonProperty("10")]
 		public decimal? CurrentPrice;
@@ -1046,7 +1046,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("213")]
 		public decimal? NetBuyAmountChange;
 		[JsonProperty("214")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? ExpectedRemainingMarketStartTime;
 		[JsonProperty("215")]
 		public string? MarketOperationDivision;
@@ -1073,10 +1073,10 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("1221")]
 		public decimal? VIDispatchPrice;
 		[JsonProperty("1223")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? TradeExecutionProcessingTime;
 		[JsonProperty("1224")]
-		[JsonConverter(typeof(KiwoomTimeConverter))]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? VIReleaseTime;
 		[JsonProperty("1225")]
 		public string? VIApplicationType;

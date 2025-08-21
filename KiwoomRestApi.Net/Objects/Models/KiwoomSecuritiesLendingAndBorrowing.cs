@@ -15,8 +15,8 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradeItem
 	{
 		[JsonProperty("dt")]
-		[JsonConverter(typeof(KiwoomDateConverter))]
-		public DateTime Date;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? Date;
 		[JsonProperty("dbrt_trde_cntrcnt")]
 		public decimal BorrowedTradeContracts;
 		[JsonProperty("dbrt_trde_rpy")]
@@ -74,8 +74,8 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradeItemByStock
 	{
 		[JsonProperty("dt")]
-		[JsonConverter(typeof(KiwoomDateConverter))]
-		public DateTime Date;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? Date;
 		[JsonProperty("dbrt_trde_cntrcnt")]
 		public decimal BorrowedTradeContracts;
 		[JsonProperty("dbrt_trde_rpy")]

@@ -15,8 +15,8 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomForeignInstitutionGetStockForeignerItem
 	{
 		[JsonProperty("dt")]
-		[JsonConverter(typeof(KiwoomDateConverter))]
-		public DateTime Date;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? Date;
 		[JsonProperty("close_pric")]
 		public decimal ClosePrice;
 		[JsonProperty("pred_pre")]
@@ -42,8 +42,8 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomForeignInstitutionGetDaily
 	{
 		[JsonProperty("date")]
-		[JsonConverter(typeof(KiwoomDateConverter))]
-		public DateTime Date;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? Date;
 		[JsonProperty("close_pric")]
 		public decimal ClosePrice;
 		[JsonProperty("pre")]
