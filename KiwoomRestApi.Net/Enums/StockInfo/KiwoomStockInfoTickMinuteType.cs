@@ -1,8 +1,8 @@
 ﻿namespace KiwoomRestApi.Net.Enums.StockInfo
 {
-	public enum KiwoomStockInfoTicMinuteType
+	public enum KiwoomStockInfoTickMinuteType
 	{
-		Tic = 0,
+		Tick = 0,
 		Minute = 1
 	}
 }

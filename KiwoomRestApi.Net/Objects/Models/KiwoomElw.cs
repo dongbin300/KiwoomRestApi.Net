@@ -454,7 +454,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("elwrght_exec_way")]
 		public string? ElwRightExerciseMethod;
 		[JsonProperty("elwpblicte_orgn")]
-		public string? ElwIssuingOrganization;
+		public string? ElwIssuingInstitution;
 		[JsonProperty("dcsn_pay_amt")]
 		public decimal? DecisionPaymentAmount;
 		[JsonProperty("kobarr")]

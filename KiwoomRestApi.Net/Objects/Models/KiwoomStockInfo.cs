@@ -727,12 +727,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public decimal? PeriodTradeQuantity;
 	}
 
-	public record KiwoomStockInfoGetStockInvestorOrganizations
+	public record KiwoomStockInfoGetStockInvestorInstitutions
 	{
 		[JsonProperty("stk_invsr_orgn")]
-		public IEnumerable<KiwoomStockInfoGetStockInvestorOrganizationItem>? Items;
+		public IEnumerable<KiwoomStockInfoGetStockInvestorInstitutionItem>? Items;
 	}
-	public record KiwoomStockInfoGetStockInvestorOrganizationItem
+	public record KiwoomStockInfoGetStockInvestorInstitutionItem
 	{
 		[JsonProperty("dt")]
 		[JsonConverter(typeof(KiwoomDateTimeConverter))]
@@ -754,7 +754,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("frgnr_invsr")]
 		public string? ForeignInvestor;
 		[JsonProperty("orgn")]
-		public string? Organization;
+		public string? Institution;
 		[JsonProperty("fnnc_invt")]
 		public string? FinancialInvestment;
 		[JsonProperty("insrnc")]
@@ -777,19 +777,19 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public string? DomesticAndForeign;
 	}
 
-	public record KiwoomStockInfoGetStockInvestorOrganizationTotals
+	public record KiwoomStockInfoGetStockInvestorInstitutionTotals
 	{
 		[JsonProperty("stk_invsr_orgn_tot")]
-		public IEnumerable<KiwoomStockInfoGetStockInvestorOrganizationTotalItem>? Items;
+		public IEnumerable<KiwoomStockInfoGetStockInvestorInstitutionTotalItem>? Items;
 	}
-	public record KiwoomStockInfoGetStockInvestorOrganizationTotalItem
+	public record KiwoomStockInfoGetStockInvestorInstitutionTotalItem
 	{
 		[JsonProperty("ind_invsr")]
 		public decimal? IndividualInvestors;
 		[JsonProperty("frgnr_invsr")]
 		public decimal? ForeignInvestors;
 		[JsonProperty("orgn")]
-		public decimal? Organizations;
+		public decimal? Institutions;
 		[JsonProperty("fnnc_invt")]
 		public decimal? FinancialInvestments;
 		[JsonProperty("insrnc")]

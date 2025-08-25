@@ -1,6 +1,6 @@
 ﻿namespace KiwoomRestApi.Net.Enums.RankingInfo
 {
-	public enum KiwoomRankingInfoOrganizationType
+	public enum KiwoomRankingInfoInstitutionType
     {
         FinancialInvestment = 1000,
         Insurance = 2000,

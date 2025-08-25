@@ -271,7 +271,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("for_netprps")]
 		public decimal ForeignNetPurchase;
 		[JsonProperty("orgn_netprps")]
-		public decimal OrganizationNetPurchase;
+		public decimal InstitutionNetPurchase;
 		[JsonProperty("ind_netprps")]
 		public decimal IndividualNetPurchase;
 		[JsonProperty("crd_remn_rt")]

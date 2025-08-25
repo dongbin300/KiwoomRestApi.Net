@@ -189,7 +189,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return response.MapResponse(r => new KiwoomMarketConditionGetAfterHoursSinglePriceOrderBookList(r));
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetHourlyProgramTradeTrends>> GetHourlyProgramTradeTrendsAsync(DateTime date, KiwoomMarketConditionAmountQuantityType3 amountQuantityType, KiwoomMarketConditionMarketType marketType, KiwoomMarketConditionTicMinuteType ticMinuteType, KiwoomMarketConditionStockExchangeType stockExchangeType)
+		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetHourlyProgramTradeTrends>> GetHourlyProgramTradeTrendsAsync(DateTime date, KiwoomMarketConditionAmountQuantityType3 amountQuantityType, KiwoomMarketConditionMarketType marketType, KiwoomMarketConditionTickMinuteType tickMinuteType, KiwoomMarketConditionStockExchangeType stockExchangeType)
 		{
 			const string apiId = "ka90005";
 			string _marketType = (marketType, stockExchangeType) switch
@@ -208,7 +208,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("date", date)
 				.AddField("amt_qty_tp", amountQuantityType)
 				.AddField("mrkt_tp", _marketType)
-				.AddField("min_tic_tp", ticMinuteType)
+				.AddField("min_tic_tp", tickMinuteType)
 				.AddField("stex_tp", stockExchangeType);
 
 			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetHourlyProgramTradeTrends>(_endpoint, apiId, body).ConfigureAwait(false);
@@ -247,7 +247,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetStockTimeProgramTradeTrends>(_endpoint, apiId, body).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetDailyProgramTradeTrends>> GetDailyProgramTradeTrendsAsync(DateTime date, KiwoomMarketConditionAmountQuantityType3 amountQuantityType, KiwoomMarketConditionMarketType marketType, KiwoomMarketConditionTicMinuteType ticMinuteType, KiwoomMarketConditionStockExchangeType stockExchangeType)
+		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetDailyProgramTradeTrends>> GetDailyProgramTradeTrendsAsync(DateTime date, KiwoomMarketConditionAmountQuantityType3 amountQuantityType, KiwoomMarketConditionMarketType marketType, KiwoomMarketConditionTickMinuteType tickMinuteType, KiwoomMarketConditionStockExchangeType stockExchangeType)
 		{
 			const string apiId = "ka90010";
 			string _marketType = (marketType, stockExchangeType) switch
@@ -266,7 +266,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("date", date)
 				.AddField("amt_qty_tp", amountQuantityType)
 				.AddField("mrkt_tp", _marketType)
-				.AddField("min_tic_tp", ticMinuteType)
+				.AddField("min_tic_tp", tickMinuteType)
 				.AddField("stex_tp", stockExchangeType);
 
 			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetDailyProgramTradeTrends>(_endpoint, apiId, body).ConfigureAwait(false);

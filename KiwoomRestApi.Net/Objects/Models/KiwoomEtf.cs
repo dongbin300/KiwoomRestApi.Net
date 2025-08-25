@@ -21,7 +21,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("for_netprps_qty")]
 		public decimal? ForeignNetPurchaseQuantity;
 		[JsonProperty("orgn_netprps_qty")]
-		public decimal? OrganizationNetPurchaseQuantity;
+		public decimal? InstitutionNetPurchaseQuantity;
 	}
 
 	public record KiwoomEtfGetInfo
@@ -233,7 +233,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("for_netprps_qty")]
 		public decimal? ForeignNetPurchaseQuantity;
 		[JsonProperty("orgn_netprps_qty")]
-		public decimal? OrganizationNetPurchaseQuantity;
+		public decimal? InstitutionNetPurchaseQuantity;
 	}
 
 	public record KiwoomEtfGetNavs

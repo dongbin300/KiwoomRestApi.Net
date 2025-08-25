@@ -257,7 +257,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomStockInfoGetInvestorDailyTradeStocks>(_endpoint, apiId, body).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomStockInfoGetStockInvestorOrganizations>> GetStockInvestorOrganizationsAsync(DateTime date, string stockCode, KiwoomStockInfoAmountQuantityType amountQuantityType, KiwoomStockInfoTradeType tradeType, KiwoomStockInfoUnitType unitType)
+		public async Task<KiwoomRestApiResponse<KiwoomStockInfoGetStockInvestorInstitutions>> GetStockInvestorInstitutionsAsync(DateTime date, string stockCode, KiwoomStockInfoAmountQuantityType amountQuantityType, KiwoomStockInfoTradeType tradeType, KiwoomStockInfoUnitType unitType)
 		{
 			const string apiId = "ka10059";
 			var body = new HttpParameterMap()
@@ -267,10 +267,10 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("trde_tp", tradeType)
 				.AddField("unit_tp", unitType);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomStockInfoGetStockInvestorOrganizations>(_endpoint, apiId, body).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomStockInfoGetStockInvestorInstitutions>(_endpoint, apiId, body).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomStockInfoGetStockInvestorOrganizationTotals>> GetStockInvestorOrganizationTotalsAsync(string stockCode, DateTime startDate, DateTime endDate, KiwoomStockInfoAmountQuantityType amountQuantityType, KiwoomStockInfoTradeType tradeType, KiwoomStockInfoUnitType unitType)
+		public async Task<KiwoomRestApiResponse<KiwoomStockInfoGetStockInvestorInstitutionTotals>> GetStockInvestorInstitutionTotalsAsync(string stockCode, DateTime startDate, DateTime endDate, KiwoomStockInfoAmountQuantityType amountQuantityType, KiwoomStockInfoTradeType tradeType, KiwoomStockInfoUnitType unitType)
 		{
 			const string apiId = "ka10061";
 			var body = new HttpParameterMap()
@@ -281,16 +281,16 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("trde_tp", tradeType)
 				.AddField("unit_tp", unitType);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomStockInfoGetStockInvestorOrganizationTotals>(_endpoint, apiId, body).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomStockInfoGetStockInvestorInstitutionTotals>(_endpoint, apiId, body).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomStockInfoGetTodayPreviousContracts>> GetTodayPreviousContractsAsync(string stockCode, KiwoomStockInfoDayType2 dayType, KiwoomStockInfoTicMinuteType ticMinuteType, TimeSpan time)
+		public async Task<KiwoomRestApiResponse<KiwoomStockInfoGetTodayPreviousContracts>> GetTodayPreviousContractsAsync(string stockCode, KiwoomStockInfoDayType2 dayType, KiwoomStockInfoTickMinuteType tickMinuteType, TimeSpan time)
 		{
 			const string apiId = "ka10084";
 			var body = new HttpParameterMap()
 				.AddField("stk_cd", stockCode)
 				.AddField("tdy_pred", dayType)
-				.AddField("tic_min", ticMinuteType)
+				.AddField("tic_min", tickMinuteType)
 				.AddField("tm", time.ToString("hhmm"));
 
 			return await _client.PostKiwoomRestApiAsync<KiwoomStockInfoGetTodayPreviousContracts>(_endpoint, apiId, body).ConfigureAwait(false);

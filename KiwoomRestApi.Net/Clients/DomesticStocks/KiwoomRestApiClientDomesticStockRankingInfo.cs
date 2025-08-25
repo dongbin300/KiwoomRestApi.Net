@@ -283,13 +283,13 @@ KiwoomRankingInfoPriceCondition2 priceCondition, KiwoomRankingInfoTradePriceCond
 			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetEqualNetTradeRanks>(_endpoint, apiId, body).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetOpenMarketInvestorTradeUppers>> GetOpenMarketInvestorTradeUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoNetTradeType2 tradeType, KiwoomRankingInfoOrganizationType organizationType)
+		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetOpenMarketInvestorTradeUppers>> GetOpenMarketInvestorTradeUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoNetTradeType2 tradeType, KiwoomRankingInfoInstitutionType institutionType)
 		{
 			const string apiId = "ka10065";
 			var body = new HttpParameterMap()
 				.AddField("mrkt_tp", marketType)
 				.AddField("trde_tp", tradeType)
-				.AddField("orgn_tp", organizationType);
+				.AddField("orgn_tp", institutionType);
 
 			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetOpenMarketInvestorTradeUppers>(_endpoint, apiId, body).ConfigureAwait(false);
 		}

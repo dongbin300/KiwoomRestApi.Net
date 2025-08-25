@@ -1,8 +1,8 @@
 ﻿namespace KiwoomRestApi.Net.Enums.MarketCondition
 {
-	public enum KiwoomMarketConditionTicMinuteType
+	public enum KiwoomMarketConditionTickMinuteType
 	{
-		Tic = 0,
+		Tick = 0,
 		Minute = 1
 	}
 }
