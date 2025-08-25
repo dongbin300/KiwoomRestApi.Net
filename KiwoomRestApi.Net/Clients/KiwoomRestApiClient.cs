@@ -36,6 +36,9 @@ namespace KiwoomRestApi.Net.Clients
 		public KiwoomRestApiClientDomesticStockInfo StockInfo { get; set; }
 		public KiwoomRestApiClientDomesticStockOrder Order { get; set; }
 		public KiwoomRestApiClientDomesticStockChart Chart { get; set; }
+		public KiwoomRestApiClientDomesticStockTheme Theme { get; set; }
+		public KiwoomRestApiClientDomesticStockElw Elw { get; set; }
+		public KiwoomRestApiClientDomesticStockEtf Etf { get; set; }
 
 		public KiwoomRestApiClient(string appKey, string secretKey, bool isMock = false)
 		: this(appKey, secretKey, null, isMock)
@@ -65,6 +68,9 @@ namespace KiwoomRestApi.Net.Clients
 			StockInfo = new KiwoomRestApiClientDomesticStockInfo(this);
 			Order = new KiwoomRestApiClientDomesticStockOrder(this);
 			Chart = new KiwoomRestApiClientDomesticStockChart(this);
+			Theme = new KiwoomRestApiClientDomesticStockTheme(this);
+			Elw = new KiwoomRestApiClientDomesticStockElw(this);
+			Etf = new KiwoomRestApiClientDomesticStockEtf(this);
 		}
 
 		public static KiwoomRestApiClient Create(string appKey, string secretKey, bool isMock = false)

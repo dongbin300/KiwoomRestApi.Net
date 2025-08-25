@@ -283,5 +283,4 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("pred_close_pric")]
 		public decimal? PreviousClosePrice;
 	}
-
 }
