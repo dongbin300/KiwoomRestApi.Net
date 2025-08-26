@@ -461,46 +461,46 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public decimal? Buy10Quantity;
 
 		[JsonProperty("sel_1bid_jub_pre")]
-		public decimal? Sell1PrevDiff;
+		public KiwoomDecimal? Sell1PrevDiff;
 		[JsonProperty("sel_2bid_jub_pre")]
-		public decimal? Sell2PrevDiff;
+		public KiwoomDecimal? Sell2PrevDiff;
 		[JsonProperty("sel_3bid_jub_pre")]
-		public decimal? Sell3PrevDiff;
+		public KiwoomDecimal? Sell3PrevDiff;
 		[JsonProperty("sel_4bid_jub_pre")]
-		public decimal? Sell4PrevDiff;
+		public KiwoomDecimal? Sell4PrevDiff;
 		[JsonProperty("sel_5bid_jub_pre")]
-		public decimal? Sell5PrevDiff;
+		public KiwoomDecimal? Sell5PrevDiff;
 		[JsonProperty("sel_6bid_jub_pre")]
-		public decimal? Sell6PrevDiff;
+		public KiwoomDecimal? Sell6PrevDiff;
 		[JsonProperty("sel_7bid_jub_pre")]
-		public decimal? Sell7PrevDiff;
+		public KiwoomDecimal? Sell7PrevDiff;
 		[JsonProperty("sel_8bid_jub_pre")]
-		public decimal? Sell8PrevDiff;
+		public KiwoomDecimal? Sell8PrevDiff;
 		[JsonProperty("sel_9bid_jub_pre")]
-		public decimal? Sell9PrevDiff;
+		public KiwoomDecimal? Sell9PrevDiff;
 		[JsonProperty("sel_10bid_jub_pre")]
-		public decimal? Sell10PrevDiff;
+		public KiwoomDecimal? Sell10PrevDiff;
 
 		[JsonProperty("buy_1bid_jub_pre")]
-		public decimal? Buy1PrevDiff;
+		public KiwoomDecimal? Buy1PrevDiff;
 		[JsonProperty("buy_2bid_jub_pre")]
-		public decimal? Buy2PrevDiff;
+		public KiwoomDecimal? Buy2PrevDiff;
 		[JsonProperty("buy_3bid_jub_pre")]
-		public decimal? Buy3PrevDiff;
+		public KiwoomDecimal? Buy3PrevDiff;
 		[JsonProperty("buy_4bid_jub_pre")]
-		public decimal? Buy4PrevDiff;
+		public KiwoomDecimal? Buy4PrevDiff;
 		[JsonProperty("buy_5bid_jub_pre")]
-		public decimal? Buy5PrevDiff;
+		public KiwoomDecimal? Buy5PrevDiff;
 		[JsonProperty("buy_6bid_jub_pre")]
-		public decimal? Buy6PrevDiff;
+		public KiwoomDecimal? Buy6PrevDiff;
 		[JsonProperty("buy_7bid_jub_pre")]
-		public decimal? Buy7PrevDiff;
+		public KiwoomDecimal? Buy7PrevDiff;
 		[JsonProperty("buy_8bid_jub_pre")]
-		public decimal? Buy8PrevDiff;
+		public KiwoomDecimal? Buy8PrevDiff;
 		[JsonProperty("buy_9bid_jub_pre")]
-		public decimal? Buy9PrevDiff;
+		public KiwoomDecimal? Buy9PrevDiff;
 		[JsonProperty("buy_10bid_jub_pre")]
-		public decimal? Buy10PrevDiff;
+		public KiwoomDecimal? Buy10PrevDiff;
 
 		[JsonProperty("sel_1bid_cnt")]
 		public decimal? Sell1Count;

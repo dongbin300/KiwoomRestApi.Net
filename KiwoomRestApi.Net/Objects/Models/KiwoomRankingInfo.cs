@@ -691,11 +691,9 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("buy_upper_scesn_ori")]
 		public string? BuyUpperExitOrigin;
 		[JsonProperty("qry_dt")]
-		[JsonConverter(typeof(KiwoomDateTimeConverter))]
-		public DateTime? QueryDate;
+		public string? QueryDate;
 		[JsonProperty("qry_tm")]
-		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan? QueryTime;
+		public string? QueryTime;
 	}
 
 	public record KiwoomRankingInfoGetEqualNetTradeRanks
