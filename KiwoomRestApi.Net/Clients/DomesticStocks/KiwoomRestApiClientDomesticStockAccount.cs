@@ -1,4 +1,5 @@
 ﻿using KiwoomRestApi.Net.Enums.Account;
+using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
 
@@ -10,7 +11,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 	public class KiwoomRestApiClientDomesticStockAccount(KiwoomRestApiClient client) : BaseClient
 	{
 		private readonly KiwoomRestApiClient _client = client;
-		private readonly string _endpoint = "/api/dostk/acnt";
+		private readonly string _endpoint = ApiEndpoint.DomesticStock.Account;
 
 		public async Task<KiwoomRestApiResponse<KiwoomAccountGetDateStockRealizedProfitLoss>> GetDateStockRealizedProfitLossAsync(string stockCode, DateTime startDate)
 		{

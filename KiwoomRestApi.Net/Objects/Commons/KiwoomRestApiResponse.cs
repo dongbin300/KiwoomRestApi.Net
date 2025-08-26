@@ -9,6 +9,7 @@ namespace KiwoomRestApi.Net.Objects.Commons
 		public string ReturnMessage { get; internal set; } = string.Empty;
 		[JsonProperty("return_code")]
 		public int ReturnCode { get; internal set; }
+		public bool IsSuccess => ReturnCode == 0;
 
 		public string ApiId { get; internal set; } = string.Empty;
 		public string ContYn { get; internal set; } = string.Empty;

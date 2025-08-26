@@ -1,4 +1,5 @@
 ﻿using KiwoomRestApi.Net.Enums.Order;
+using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
 
@@ -9,7 +10,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 	public class KiwoomRestApiClientDomesticStockOrder(KiwoomRestApiClient client) : BaseClient
 	{
 		private readonly KiwoomRestApiClient _client = client;
-		private readonly string _endpoint = "/api/dostk/ordr";
+		private readonly string _endpoint = ApiEndpoint.DomesticStock.Order;
 
 		public async Task<KiwoomRestApiResponse<KiwoomOrderPlaceOrder>> PlaceOrderAsync(KiwoomOrderType orderType, KiwoomOrderDomesticStockExchangeType domesticStockExchangeType, string stockCode, decimal orderQuantity, KiwoomOrderTradeType tradeType, decimal? orderPrice = null, decimal? conditionPrice = null)
 		{

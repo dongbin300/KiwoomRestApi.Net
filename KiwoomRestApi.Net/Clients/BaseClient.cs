@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace KiwoomRestApi.Net.Clients
@@ -49,17 +50,17 @@ namespace KiwoomRestApi.Net.Clients
 		}
 		#endregion
 
-		public async Task<HttpResponseWrapper<T>> GetAsync<T>(string endpoint, IDictionary<string, string>? headers = null)
+		public async Task<HttpResponseWrapper<T>> GetAsync<T>(string endpoint, IDictionary<string, string>? headers = null, CancellationToken cancellationToken = default)
 		{
 			using var request = CreateRequest(HttpMethod.Get, endpoint, headers);
-			using var response = await Client.SendAsync(request).ConfigureAwait(false);
+			using var response = await Client.SendAsync(request, cancellationToken).ConfigureAwait(false);
 			return await CreateResponseWrapper<T>(response).ConfigureAwait(false);
 		}
 
-		public async Task<HttpResponseWrapper<T>> PostAsync<T>(string endpoint, IDictionary<string, string>? headers = null, IDictionary<string, string>? body = null)
+		public async Task<HttpResponseWrapper<T>> PostAsync<T>(string endpoint, IDictionary<string, string>? headers = null, IDictionary<string, string>? body = null, CancellationToken cancellationToken = default)
 		{
 			using var request = CreateRequest(HttpMethod.Post, endpoint, headers, body);
-			using var response = await Client.SendAsync(request).ConfigureAwait(false);
+			using var response = await Client.SendAsync(request, cancellationToken).ConfigureAwait(false);
 			return await CreateResponseWrapper<T>(response).ConfigureAwait(false);
 		}
 

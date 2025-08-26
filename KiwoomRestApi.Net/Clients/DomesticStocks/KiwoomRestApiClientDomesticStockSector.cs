@@ -1,4 +1,5 @@
 ﻿using KiwoomRestApi.Net.Enums.Sector;
+using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
 
@@ -10,7 +11,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 	public class KiwoomRestApiClientDomesticStockSector(KiwoomRestApiClient client) : BaseClient
 	{
 		private readonly KiwoomRestApiClient _client = client;
-		private readonly string _endpoint = "/api/dostk/sect";
+		private readonly string _endpoint = ApiEndpoint.DomesticStock.Sector;
 
 		public async Task<KiwoomRestApiResponse<KiwoomSectorGetStockProgramTradingInfo>> GetStockProgramTradingInfoAsync(string stockCode)
 		{

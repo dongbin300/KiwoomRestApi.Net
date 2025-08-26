@@ -1,4 +1,5 @@
 ﻿using KiwoomRestApi.Net.Enums.Etf;
+using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
 
@@ -9,7 +10,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 	public class KiwoomRestApiClientDomesticStockEtf(KiwoomRestApiClient client) : BaseClient
 	{
 		private readonly KiwoomRestApiClient _client = client;
-		private readonly string _endpoint = "/api/dostk/etf";
+		private readonly string _endpoint = ApiEndpoint.DomesticStock.Etf;
 
 		public async Task<KiwoomRestApiResponse<KiwoomEtfGetProfitRates>> GetProfitRatesAsync(string stockCode, string etfObjectIndexCode, KiwoomEtfPeriodType periodType)
 		{

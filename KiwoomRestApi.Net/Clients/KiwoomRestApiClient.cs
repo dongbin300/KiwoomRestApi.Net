@@ -1,4 +1,5 @@
 ﻿using KiwoomRestApi.Net.Clients.DomesticStocks;
+using KiwoomRestApi.Net.Configuration;
 using KiwoomRestApi.Net.Converters;
 using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
@@ -39,6 +40,21 @@ namespace KiwoomRestApi.Net.Clients
 		public KiwoomRestApiClientDomesticStockTheme Theme { get; set; }
 		public KiwoomRestApiClientDomesticStockElw Elw { get; set; }
 		public KiwoomRestApiClientDomesticStockEtf Etf { get; set; }
+
+		public KiwoomRestApiClient(KiwoomConfiguration configuration)
+			: this(configuration.AppKey, configuration.SecretKey, configuration.Token, configuration.IsMock)
+		{
+			if (configuration.HttpClient != null)
+			{
+				Client?.Dispose();
+				Client = configuration.HttpClient;
+			}
+			
+			if (configuration.RequestTimeout != default)
+			{
+				Client.Timeout = configuration.RequestTimeout;
+			}
+		}
 
 		public KiwoomRestApiClient(string appKey, string secretKey, bool isMock = false)
 		: this(appKey, secretKey, null, isMock)
@@ -98,6 +114,22 @@ namespace KiwoomRestApi.Net.Clients
 			var result = await OAuth.GetAccessTokenAsync();
 			Token = result.Data?.Token ?? throw new InvalidOperationException("Token is null");
 			Authorization = $"Bearer {Token}";
+		}
+
+		public IDictionary<string, string> GetDefaultHeaders()
+		{
+			var headers = new Dictionary<string, string>
+			{
+				["appkey"] = AppKey,
+				["appsecret"] = SecretKey
+			};
+
+			if (!string.IsNullOrEmpty(Authorization))
+			{
+				headers["authorization"] = Authorization!;
+			}
+
+			return headers;
 		}
 
 		public async Task<KiwoomRestApiResponse<T>> PostKiwoomRestApiAsync<T>(string endpoint, string apiId, IDictionary<string, string>? body = null)

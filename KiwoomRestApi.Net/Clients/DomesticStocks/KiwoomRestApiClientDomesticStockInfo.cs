@@ -1,4 +1,5 @@
 ﻿using KiwoomRestApi.Net.Enums.StockInfo;
+using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
 
@@ -10,7 +11,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 	public class KiwoomRestApiClientDomesticStockInfo(KiwoomRestApiClient client) : BaseClient
 	{
 		private readonly KiwoomRestApiClient _client = client;
-		private readonly string _endpoint = "/api/dostk/stkinfo";
+		private readonly string _endpoint = ApiEndpoint.DomesticStock.StockInfo;
 
 		public async Task<KiwoomRestApiResponse<KiwoomStockInfoGetStockInfo>> GetStockInfoAsync(string stockCode, DateTime date, KiwoomStockInfoMarginLoanType marginLoanType)
 		{

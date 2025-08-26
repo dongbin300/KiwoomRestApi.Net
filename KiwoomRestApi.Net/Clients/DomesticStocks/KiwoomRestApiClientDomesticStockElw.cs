@@ -1,4 +1,5 @@
 ﻿using KiwoomRestApi.Net.Enums.Elw;
+using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
 
@@ -10,7 +11,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 	public class KiwoomRestApiClientDomesticStockElw(KiwoomRestApiClient client) : BaseClient
 	{
 		private readonly KiwoomRestApiClient _client = client;
-		private readonly string _endpoint = "/api/dostk/elw";
+		private readonly string _endpoint = ApiEndpoint.DomesticStock.Elw;
 
 		public async Task<KiwoomRestApiResponse<KiwoomElwGetDailySensitivityIndices>> GetDailySensitivityIndicesAsync(string stockCode)
 		{

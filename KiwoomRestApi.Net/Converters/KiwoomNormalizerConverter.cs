@@ -11,10 +11,14 @@ namespace KiwoomRestApi.Net.Converters
 	{
 		public override KiwoomDecimal ReadJson(JsonReader reader, Type objectType, KiwoomDecimal? existingValue, bool hasExistingValue, JsonSerializer serializer)
 		{
-			var s = reader.Value as string;
-			if (string.IsNullOrWhiteSpace(s))
-				return new KiwoomDecimal(null);
+			var str = reader.Value as string;
 
+			if (string.IsNullOrWhiteSpace(str))
+			{
+				return new KiwoomDecimal(null);
+			}
+
+			string s = str!;
 			s = s.Trim();
 
 			string? direction = null;

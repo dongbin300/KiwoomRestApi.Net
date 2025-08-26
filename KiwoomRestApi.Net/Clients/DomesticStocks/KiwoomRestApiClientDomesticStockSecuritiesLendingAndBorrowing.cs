@@ -1,4 +1,5 @@
 ﻿using KiwoomRestApi.Net.Enums.SecuritiesLendingAndBorrowing;
+using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
 
@@ -10,7 +11,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 	public class KiwoomRestApiClientDomesticStockSecuritiesLendingAndBorrowing(KiwoomRestApiClient client) : BaseClient
 	{
 		private readonly KiwoomRestApiClient _client = client;
-		private readonly string _endpoint = "/api/dostk/slb";
+		private readonly string _endpoint = ApiEndpoint.DomesticStock.SecuritiesLendingAndBorrowing;
 
 		public async Task<KiwoomRestApiResponse<KiwoomSecuritiesLendingAndBorrowingGetBorrowedTrades>> GetBorrowedTradesAsync(KiwoomSecuritiesLendingAndBorrowingQueryType queryType, DateTime? startDate = null, DateTime? endDate = null)
 		{

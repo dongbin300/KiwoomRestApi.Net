@@ -1,4 +1,5 @@
-﻿using KiwoomRestApi.Net.Objects.Commons;
+﻿using KiwoomRestApi.Net.Objects;
+using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
 
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace KiwoomRestApi.Net.Clients
 
 		public async Task<KiwoomRestApiResponse<KiwoomOAuthGetAccessToken>> GetAccessTokenAsync()
 		{
-			const string endpoint = "/oauth2/token";
+			const string endpoint = ApiEndpoint.OAuthGet;
 			const string apiId = "au10001";
 			var bodies = new Dictionary<string, string>
 			{
@@ -26,7 +27,7 @@ namespace KiwoomRestApi.Net.Clients
 
 		public async Task<KiwoomRestApiResponse<KiwoomOAuthRevokeAccessToken>> RevokeAccessTokenAsync(string token)
 		{
-			const string endpoint = "/oauth2/revoke";
+			const string endpoint = ApiEndpoint.OAuthRevoke;
 			const string apiId = "au10002";
 			var bodies = new Dictionary<string, string>
 			{

@@ -1,4 +1,5 @@
 ﻿using KiwoomRestApi.Net.Enums.Chart;
+using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
 
@@ -10,7 +11,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 	public class KiwoomRestApiClientDomesticStockChart(KiwoomRestApiClient client) : BaseClient
 	{
 		private readonly KiwoomRestApiClient _client = client;
-		private readonly string _endpoint = "/api/dostk/chart";
+		private readonly string _endpoint = ApiEndpoint.DomesticStock.Chart;
 
 		public async Task<KiwoomRestApiResponse<KiwoomChartGetInvestorInstitutionCharts>> GetStockInvestorInstitutionChartsAsync(DateTime date, string stockCode, KiwoomChartAmountQuantityType amountQuantityType, KiwoomChartTradeType tradeType, KiwoomChartUnitType unitType)
 		{

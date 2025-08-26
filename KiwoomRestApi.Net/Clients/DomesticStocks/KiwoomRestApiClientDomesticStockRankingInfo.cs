@@ -1,4 +1,5 @@
 ﻿using KiwoomRestApi.Net.Enums.RankingInfo;
+using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
 
@@ -10,7 +11,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 	public class KiwoomRestApiClientDomesticStockRankingInfo(KiwoomRestApiClient client) : BaseClient
 	{
 		private readonly KiwoomRestApiClient _client = client;
-		private readonly string _endpoint = "/api/dostk/rkinfo";
+		private readonly string _endpoint = ApiEndpoint.DomesticStock.RankingInfo;
 
 		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetBidRequestUppers>> GetBidRequestUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoSortType sortType, KiwoomRankingInfoTradeQuantityType tradeQuantityType, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoCreditCondition creditCondition, KiwoomRankingInfoStockExchangeType stockExchangeType)
 		{

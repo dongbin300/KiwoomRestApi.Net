@@ -1,4 +1,5 @@
 ﻿using KiwoomRestApi.Net.Enums.Theme;
+using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
 
@@ -9,7 +10,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 	public class KiwoomRestApiClientDomesticStockTheme(KiwoomRestApiClient client) : BaseClient
 	{
 		private readonly KiwoomRestApiClient _client = client;
-		private readonly string _endpoint = "/api/dostk/thme";
+		private readonly string _endpoint = ApiEndpoint.DomesticStock.Theme;
 
 		public async Task<KiwoomRestApiResponse<KiwoomThemeGetGroups>> GetGroupsAsync(KiwoomThemeQueryType queryType, int daysBefore, KiwoomThemeFluctuationProfitType fluctuationProfitType, KiwoomThemeStockExchangeType stockExchangeType, string stockCode = "", string themeName = "")
 		{

@@ -1,4 +1,5 @@
 ﻿using KiwoomRestApi.Net.Enums.ForeignInstitution;
+using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
 
@@ -10,7 +11,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 	public class KiwoomRestApiClientDomesticStockForeignInstitution(KiwoomRestApiClient client) : BaseClient
 	{
 		private readonly KiwoomRestApiClient _client = client;
-		private readonly string _endpoint = "/api/dostk/frgnistt";
+		private readonly string _endpoint = ApiEndpoint.DomesticStock.ForeignInstitution;
 
 		public async Task<KiwoomRestApiResponse<KiwoomForeignInstitutionGetStockForeigners>> GetStockForeignersAsync(string stockCode)
 		{

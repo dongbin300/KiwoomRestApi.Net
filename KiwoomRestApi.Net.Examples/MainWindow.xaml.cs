@@ -11,6 +11,8 @@ using Newtonsoft.Json;
 using KiwoomRestApi.Net.Objects.Models;
 using KiwoomRestApi.Net.Enums.WebSocket;
 using KiwoomRestApi.Net.Enums.StockInfo;
+using KiwoomRestApi.Net.Extensions;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace KiwoomRestApi.Net.Examples
 {
@@ -34,8 +36,7 @@ namespace KiwoomRestApi.Net.Examples
 			var endDate = new DateTime(2025, 8, 25);
 			var stockCode = "452400";
 
-			var __result__ = client.Elw.GetAssetInfoAsync(stockCode).Result;
-
+			var __result__ = client.Account.GetProfitRateAsync(Enums.Account.KiwoomAccountStockExchangeType.Unified).Result;
 			//socketClient = KiwoomSocketClient.Create(client.Token, true);
 
 			//socketClient.OnConditionSearchRequestReceived += (message) =>

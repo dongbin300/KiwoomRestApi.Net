@@ -1,4 +1,5 @@
 ﻿using KiwoomRestApi.Net.Enums.ShortSale;
+using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
 
@@ -10,7 +11,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 	public class KiwoomRestApiClientDomesticStockShortSale(KiwoomRestApiClient client) : BaseClient
 	{
 		private readonly KiwoomRestApiClient _client = client;
-		private readonly string _endpoint = "/api/dostk/shsa";
+		private readonly string _endpoint = ApiEndpoint.DomesticStock.ShortSale;
 
 		public async Task<KiwoomRestApiResponse<KiwoomShortSaleGetShortsTransactions>> GetShortsTransactionsAsync(string stockCode, DateTime startDate, DateTime endDate, KiwoomShortSaleTimeType timeType = KiwoomShortSaleTimeType.StartDate)
 		{

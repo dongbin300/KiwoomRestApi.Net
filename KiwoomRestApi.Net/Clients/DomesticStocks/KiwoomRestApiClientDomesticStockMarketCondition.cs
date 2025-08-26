@@ -1,4 +1,5 @@
 ﻿using KiwoomRestApi.Net.Enums.MarketCondition;
+using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
 
@@ -10,7 +11,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 	public class KiwoomRestApiClientDomesticStockMarketCondition(KiwoomRestApiClient client) : BaseClient
 	{
 		private readonly KiwoomRestApiClient _client = client;
-		private readonly string _endpoint = "/api/dostk/mrkcond";
+		private readonly string _endpoint = ApiEndpoint.DomesticStock.MarketCondition;
 
 		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetOrderBook>> GetOrderBookAsync(string stockCode)
 		{

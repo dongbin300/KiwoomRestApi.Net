@@ -1,4 +1,5 @@
 ﻿using KiwoomRestApi.Net.Enums.CreditOrder;
+using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
 
@@ -10,7 +11,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 	public class KiwoomRestApiClientDomesticStockCreditOrder(KiwoomRestApiClient client) : BaseClient
 	{
 		private readonly KiwoomRestApiClient _client = client;
-		private readonly string _endpoint = "/api/dostk/crdordr";
+		private readonly string _endpoint = ApiEndpoint.DomesticStock.CreditOrder;
 
 		public async Task<KiwoomRestApiResponse<KiwoomCreditOrderGetCreditOrder>> GetCreditOrderBuyAsync(KiwoomCreditOrderDomesticStockExchangeType domesticStockExchangeType, string stockCode, decimal orderQuantity, KiwoomCreditOrderTradeType tradeType, decimal? orderPrice = null, decimal? conditionPrice = null)
 		{
