@@ -3,11 +3,34 @@
 		<TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net8.0;net9.0</TargetFrameworks>
 		<LangVersion>12.0</LangVersion>
 		<Nullable>enable</Nullable>
+		
+		<!-- Package Information -->
+		<PackageId>KiwoomRestApi.Net</PackageId>
+		<Title>Kiwoom Securities REST API wrapper for .NET</Title>
+		<Description>키움증권 OpenAPI REST API를 위한 .NET Wrapper 라이브러리입니다. 주식 거래, 조회, 실시간 데이터 등의 기능을 제공합니다.</Description>
+		<Authors>Erin Wave</Authors>
+		<PackageTags>kiwoom;securities;stock;trading;api;rest;korea</PackageTags>
+		<PackageProjectUrl>https://github.com/dongbin300/KiwoomRestApi.Net</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/dongbin300/KiwoomRestApi.Net</RepositoryUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+		
+		<!-- Documentation -->
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+		<NoWarn>$(NoWarn);1591</NoWarn>
+		
+		<!-- Source Link -->
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	</PropertyGroup>
 	<ItemGroup>
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	  <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
 	  <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.0" />
+	  <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
 	</ItemGroup>
 
 </Project>

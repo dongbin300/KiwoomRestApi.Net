@@ -1,0 +1,28 @@
+title: KiwoomRestApi.Net
+description: 키움증권 OpenAPI REST API를 위한 .NET Wrapper 라이브러리
+url: https://dongbin300.github.io
+baseurl: /KiwoomRestApi.Net
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+# Plugin settings
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Exclude files
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+# GitHub Pages settings
+repository: dongbin300/KiwoomRestApi.Net
+github_username: dongbin300

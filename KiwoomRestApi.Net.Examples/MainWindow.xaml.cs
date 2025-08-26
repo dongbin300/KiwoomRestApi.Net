@@ -34,7 +34,7 @@ namespace KiwoomRestApi.Net.Examples
 			var client = KiwoomRestApiClient.Create(appKey, secretKey, true);
 			var startDate = new DateTime(2025, 8, 1);
 			var endDate = new DateTime(2025, 8, 25);
-			var stockCode = "452400";
+			var stockCode = "005930";
 
 			var __result__ = client.Account.GetProfitRateAsync(Enums.Account.KiwoomAccountStockExchangeType.Unified).Result;
 			//socketClient = KiwoomSocketClient.Create(client.Token, true);

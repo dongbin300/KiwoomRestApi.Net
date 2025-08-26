@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KiwoomRestApi.Net - 키움증권 .NET API Wrapper 라이브러리</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .badge {
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .badge:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        
+        .quick-start {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 25px;
+            font-size: 2.2rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .section h3 {
+            color: #555;
+            margin: 25px 0 15px 0;
+            font-size: 1.4rem;
+        }
+        
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+            overflow-x: auto;
+        }
+        
+        .code-block pre {
+            margin: 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .copy-btn:hover {
+            background: #5a6fd8;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card i {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .api-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .api-table th,
+        .api-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .api-table th {
+            background: #667eea;
+            color: white;
+        }
+        
+        .api-table tr:hover {
+            background: #f5f7fa;
+        }
+        
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .status-completed {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-development {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .nav {
+            background: rgba(255,255,255,0.1);
+            padding: 15px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: background 0.3s ease;
+        }
+        
+        .nav a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .footer {
+            background: rgba(0,0,0,0.8);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+        
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .quick-start {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🚀 KiwoomRestApi.Net</h1>
+            <p>키움증권 OpenAPI REST API를 위한 현대적이고 직관적인 .NET Wrapper 라이브러리</p>
+            <div class="badges">
+                <a href="https://www.nuget.org/packages/KiwoomRestApi.Net" class="badge">
+                    <i class="fas fa-download"></i> NuGet Package
+                </a>
+                <a href="https://github.com/dongbin300/KiwoomRestApi.Net" class="badge">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="#api-docs" class="badge">
+                    <i class="fas fa-book"></i> API 문서
+                </a>
+                <a href="#examples" class="badge">
+                    <i class="fas fa-code"></i> 예제
+                </a>
+            </div>
+        </header>
+
+        <nav class="nav">
+            <a href="#quick-start">빠른 시작</a>
+            <a href="#features">주요 특징</a>
+            <a href="#api-docs">API 문서</a>
+            <a href="#examples">예제 코드</a>
+            <a href="tutorial.html">튜토리얼</a>
+        </nav>
+
+        <section id="quick-start" class="quick-start">
+            <h2><i class="fas fa-rocket"></i> 30초 만에 시작하기</h2>
+            
+            <h3>📦 설치</h3>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyToClipboard(this)">복사</button>
+                <pre><code class="language-bash"># NuGet 패키지 설치
+dotnet add package KiwoomRestApi.Net</code></pre>
+            </div>
+
+            <h3>🎯 첫 번째 API 호출</h3>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyToClipboard(this)">복사</button>
+                <pre><code class="language-csharp">using KiwoomRestApi.Net.Clients;
+
+// 1. 클라이언트 생성 및 초기화
+var client = await KiwoomRestApiClient.CreateAsync(
+    "YOUR_APP_KEY", 
+    "YOUR_SECRET_KEY", 
+    isMock: true
+);
+
+// 2. 삼성전자 주식 정보 조회
+var stockInfo = await client.StockInfo.GetPriceAsync("005930");
+Console.WriteLine($"삼성전자 현재가: {stockInfo.CurrentPrice:N0}원");
+
+// 3. 계좌 잔고 조회  
+var balance = await client.Account.GetBalanceAsync("계좌번호");
+Console.WriteLine($"평가금액: {balance.TotalEvaluationAmount:N0}원");</code></pre>
+            </div>
+        </section>
+
+        <section id="features" class="section">
+            <h2><i class="fas fa-star"></i> 주요 특징</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>완전한 비동기 지원</h3>
+                    <p>모든 API 호출이 async/await 패턴을 지원하며, CancellationToken으로 요청 취소가 가능합니다.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-plug"></i>
+                    <h3>의존성 주입 지원</h3>
+                    <p>ASP.NET Core와 완벽하게 호환되는 DI 컨테이너 지원으로 현대적인 .NET 애플리케이션에 최적화되어 있습니다.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>강타입 지원</h3>
+                    <p>컴파일 타임 타입 안정성과 IntelliSense 지원으로 개발 생산성을 극대화합니다.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-cogs"></i>
+                    <h3>유연한 설정</h3>
+                    <p>다양한 설정 옵션과 커스터마이징 가능한 HttpClient로 모든 요구사항을 충족합니다.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-wifi"></i>
+                    <h3>실시간 데이터</h3>
+                    <p>WebSocket을 통한 실시간 주식 데이터 구독으로 실시간 거래 시스템 구축이 가능합니다.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>다중 플랫폼</h3>
+                    <p>.NET Standard 2.0 지원으로 Windows, macOS, Linux, Unity, Xamarin 등에서 사용 가능합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="api-docs" class="section">
+            <h2><i class="fas fa-book"></i> 지원 기능</h2>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>기능</th>
+                        <th>설명</th>
+                        <th>상태</th>
+                        <th>주요 메서드</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><i class="fas fa-key"></i> OAuth 인증</td>
+                        <td>토큰 발급/갱신</td>
+                        <td><span class="status-badge status-completed">완료</span></td>
+                        <td><code>GetAccessTokenAsync()</code></td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-wallet"></i> 계좌 관리</td>
+                        <td>잔고조회, 주문내역</td>
+                        <td><span class="status-badge status-completed">완료</span></td>
+                        <td><code>GetBalanceAsync()</code>, <code>GetOrdersAsync()</code></td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-chart-line"></i> 주식 정보</td>
+                        <td>현재가, 호가, 체결</td>
+                        <td><span class="status-badge status-completed">완료</span></td>
+                        <td><code>GetPriceAsync()</code>, <code>GetOrderBookAsync()</code></td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-chart-bar"></i> 차트 데이터</td>
+                        <td>일/분봉 데이터</td>
+                        <td><span class="status-badge status-completed">완료</span></td>
+                        <td><code>GetDailyPriceAsync()</code>, <code>GetMinutePriceAsync()</code></td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-shopping-cart"></i> 주문 관리</td>
+                        <td>매수/매도 주문</td>
+                        <td><span class="status-badge status-completed">완료</span></td>
+                        <td><code>PlaceOrderAsync()</code>, <code>CancelOrderAsync()</code></td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-list-ol"></i> 순위 정보</td>
+                        <td>상한가, 급등주, 거래량</td>
+                        <td><span class="status-badge status-completed">완료</span></td>
+                        <td><code>GetTopPricesAsync()</code>, <code>GetVolumeRankAsync()</code></td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-broadcast-tower"></i> 실시간 데이터</td>
+                        <td>WebSocket 연결</td>
+                        <td><span class="status-badge status-completed">완료</span></td>
+                        <td><code>SubscribeAsync()</code>, <code>UnsubscribeAsync()</code></td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-globe"></i> 해외주식</td>
+                        <td>미국주식 거래</td>
+                        <td><span class="status-badge status-development">개발중</span></td>
+                        <td>예정</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="examples" class="section">
+            <h2><i class="fas fa-code"></i> 사용 예제</h2>
+            
+            <h3>🔧 의존성 주입 설정</h3>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyToClipboard(this)">복사</button>
+                <pre><code class="language-csharp">// Program.cs (ASP.NET Core)
+services.AddKiwoomRestApi(config => {
+    config.AppKey = "your-app-key";
+    config.SecretKey = "your-secret-key";
+    config.IsMock = true;
+    config.RequestTimeout = TimeSpan.FromSeconds(30);
+});
+
+// 컨트롤러에서 사용
+[ApiController]
+public class TradingController : ControllerBase
+{
+    private readonly KiwoomRestApiClient _client;
+    
+    public TradingController(KiwoomRestApiClient client)
+    {
+        _client = client;
+    }
+    
+    [HttpGet("stock/{code}")]
+    public async Task<IActionResult> GetStock(string code)
+    {
+        var stockInfo = await _client.StockInfo.GetPriceAsync(code);
+        return Ok(stockInfo);
+    }
+}</code></pre>
+            </div>
+
+            <h3>📈 주식 데이터 조회</h3>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyToClipboard(this)">복사</button>
+                <pre><code class="language-csharp">using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+
+// 현재가 조회
+var price = await client.StockInfo.GetPriceAsync("005930", cts.Token);
+Console.WriteLine($"삼성전자: {price.CurrentPrice:N0}원 ({price.ChangeRate:+0.00;-0.00}%)");
+
+// 호가 조회  
+var orderBook = await client.MarketCondition.GetOrderBookAsync("005930", cts.Token);
+Console.WriteLine($"매수1호가: {orderBook.BuyPrice1:N0}원");
+
+// 차트 데이터 조회
+var chartData = await client.Chart.GetDailyPriceAsync("005930", 
+    startDate: DateTime.Today.AddDays(-30),
+    endDate: DateTime.Today,
+    cancellationToken: cts.Token);
+    
+foreach (var candle in chartData.Take(5))
+{
+    Console.WriteLine($"{candle.Date:yyyy-MM-dd}: {candle.ClosePrice:N0}원");
+}</code></pre>
+            </div>
+
+            <h3>💰 계좌 및 주문 관리</h3>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyToClipboard(this)">복사</button>
+                <pre><code class="language-csharp">// 계좌 정보 조회
+var accounts = await client.Account.GetAccountsAsync();
+foreach (var account in accounts)
+{
+    Console.WriteLine($"계좌: {account.AccountNumber} ({account.AccountName})");
+}
+
+// 계좌 잔고 조회
+var balance = await client.Account.GetBalanceAsync(accounts.First().AccountNumber);
+Console.WriteLine($"총 평가금액: {balance.TotalEvaluationAmount:N0}원");
+Console.WriteLine($"총 손익: {balance.TotalProfitLoss:+#,0;-#,0}원");
+
+// 매수 주문 (모의투자)
+var orderRequest = new OrderRequest
+{
+    AccountNumber = accounts.First().AccountNumber,
+    StockCode = "005930",
+    OrderType = OrderType.Limit,
+    Side = OrderSide.Buy,
+    Quantity = 10,
+    Price = 80000
+};
+
+var orderResult = await client.Order.PlaceOrderAsync(orderRequest);
+if (orderResult.IsSuccess)
+{
+    Console.WriteLine($"주문 성공: {orderResult.OrderNumber}");
+}</code></pre>
+            </div>
+
+            <h3>📡 실시간 데이터 구독</h3>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyToClipboard(this)">복사</button>
+                <pre><code class="language-csharp">// WebSocket 클라이언트 생성
+var socketClient = await KiwoomSocketClient.CreateAsync(client.Token, isMock: true);
+
+// 실시간 현재가 구독
+socketClient.OnPriceReceived += (stockCode, priceInfo) => 
+{
+    Console.WriteLine($"{stockCode}: {priceInfo.CurrentPrice:N0}원 " +
+                     $"({priceInfo.ChangeRate:+0.00;-0.00}%)");
+};
+
+// 실시간 호가 구독
+socketClient.OnOrderBookReceived += (stockCode, orderBook) => 
+{
+    Console.WriteLine($"{stockCode} 매수1호가: {orderBook.BuyPrice1:N0}원 " +
+                     $"매도1호가: {orderBook.SellPrice1:N0}원");
+};
+
+// 종목 구독 시작
+await socketClient.SubscribePriceAsync("005930"); // 삼성전자
+await socketClient.SubscribePriceAsync("000660"); // SK하이닉스
+await socketClient.SubscribeOrderBookAsync("005930");
+
+// 종료시 정리
+Console.ReadKey();
+await socketClient.DisposeAsync();</code></pre>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><i class="fas fa-download"></i> 설치 및 시작하기</h2>
+            
+            <h3>📋 요구사항</h3>
+            <ul style="margin: 20px 0; padding-left: 30px;">
+                <li>.NET 6.0 이상 또는 .NET Standard 2.0 이상</li>
+                <li>키움증권 계좌 및 OpenAPI 신청</li>
+                <li>App Key 및 Secret Key 발급</li>
+            </ul>
+
+            <h3>🚀 더 많은 예제</h3>
+            <p style="margin: 20px 0;">
+                더 자세한 예제와 튜토리얼은 다음 링크에서 확인하실 수 있습니다:
+            </p>
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="tutorial.html" style="background: #667eea; color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; margin: 0 10px;">
+                    <i class="fas fa-book"></i> 상세 튜토리얼
+                </a>
+                <a href="api-reference.html" style="background: #28a745; color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; margin: 0 10px;">
+                    <i class="fas fa-code"></i> API 레퍼런스
+                </a>
+                <a href="https://github.com/dongbin300/KiwoomRestApi.Net/tree/main/examples" style="background: #17a2b8; color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; margin: 0 10px;">
+                    <i class="fab fa-github"></i> 샘플 코드
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 KiwoomRestApi.Net. All rights reserved.</p>
+            <p>
+                <a href="https://github.com/dongbin300/KiwoomRestApi.Net">GitHub</a> | 
+                <a href="https://www.nuget.org/packages/KiwoomRestApi.Net">NuGet</a> | 
+                <a href="mailto:dongbin300@gmail.com">Contact</a>
+            </p>
+            <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">
+                ⚠️ 이 라이브러리는 키움증권과 공식적인 관계가 없는 개인 프로젝트입니다.<br>
+                실제 거래 시에는 충분한 테스트를 거쳐 사용하시기 바랍니다.
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    
+    <script>
+        function copyToClipboard(button) {
+            const codeBlock = button.nextElementSibling;
+            const text = codeBlock.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.textContent;
+                button.textContent = '복사됨!';
+                button.style.background = '#28a745';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '#667eea';
+                }, 2000);
+            });
+        }
+
+        // 부드러운 스크롤
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
