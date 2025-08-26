@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using KiwoomRestApi.Net.Converters;
+
+using Newtonsoft.Json;
 
 using System;
 using System.Collections.Generic;
@@ -8,11 +10,11 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomRealtimeQuoteRequests
 	{
 		[JsonProperty("trnm")]
-		public string ServiceName = string.Empty;
+		public string? ServiceName;
 		[JsonProperty("grp_no")]
-		public string GroupNumber = string.Empty;
+		public string? GroupNumber;
 		[JsonProperty("refresh")]
-		public string Refresh = string.Empty;
+		public string? Refresh;
 		[JsonProperty("data")]
 		public IEnumerable<KiwoomRealtimeQuoteRequestItem>? Data;
 	}
@@ -30,9 +32,9 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("return_code")]
 		public int ReturnCode;
 		[JsonProperty("return_msg")]
-		public string ReturnMessage = string.Empty;
+		public string? ReturnMessage;
 		[JsonProperty("trnm")]
-		public string ServiceName = string.Empty;
+		public string? ServiceName;
 		[JsonProperty("data")]
 		public IEnumerable<KiwoomRealtimeQuoteRegistrationItem>? Data;
 	}
@@ -40,11 +42,11 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomRealtimeQuoteRegistrationItem
 	{
 		[JsonProperty("type")]
-		public string Type = string.Empty;
+		public string? Type;
 		[JsonProperty("name")]
-		public string Name = string.Empty;
+		public string? Name;
 		[JsonProperty("item")]
-		public string ItemCode = string.Empty;
+		public string? ItemCode;
 		[JsonProperty("values")]
 		public IEnumerable<KiwoomRealtimeQuoteValue>? Values;
 	}
@@ -52,59 +54,61 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomRealtimeQuoteValue
 	{
 		[JsonProperty("9201")]
-		public string AccountNumber = string.Empty;
+		public string? AccountNumber;
 		[JsonProperty("9001")]
-		public string StockOrIndustryCode = string.Empty;
+		public string? StockOrIndustryCode;
 		[JsonProperty("917")]
-		public string CreditType = string.Empty;
+		public string? CreditType;
 		[JsonProperty("916")]
-		public string LoanDate = string.Empty;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? LoanDate;
 		[JsonProperty("302")]
-		public string StockName = string.Empty;
+		public string? StockName;
 		[JsonProperty("10")]
-		public decimal CurrentPrice;
+		public decimal? CurrentPrice;
 		[JsonProperty("930")]
-		public decimal HoldingQuantity;
+		public decimal? HoldingQuantity;
 		[JsonProperty("931")]
-		public decimal PurchasePrice;
+		public decimal? PurchasePrice;
 		[JsonProperty("932")]
-		public decimal TotalPurchaseAmount;
+		public decimal? TotalPurchaseAmount;
 		[JsonProperty("933")]
-		public decimal OrderableQuantity;
+		public decimal? OrderableQuantity;
 		[JsonProperty("945")]
-		public decimal TodayNetBuyQuantity;
+		public decimal? TodayNetBuyQuantity;
 		[JsonProperty("946")]
-		public string TradeType = string.Empty;
+		public string? TradeType;
 		[JsonProperty("950")]
-		public decimal TodayTotalSellProfitLoss;
+		public decimal? TodayTotalSellProfitLoss;
 		[JsonProperty("951")]
-		public string ExtraItem1 = string.Empty;
+		public string? ExtraItem1;
 		[JsonProperty("27")]
-		public decimal BestSellOfferPrice;
+		public decimal? BestSellOfferPrice;
 		[JsonProperty("28")]
-		public decimal BestBuyOfferPrice;
+		public decimal? BestBuyOfferPrice;
 		[JsonProperty("307")]
-		public decimal BasePrice;
+		public decimal? BasePrice;
 		[JsonProperty("8019")]
-		public decimal ProfitLossRate;
+		public decimal? ProfitLossRate;
 		[JsonProperty("957")]
-		public decimal CreditAmount;
+		public decimal? CreditAmount;
 		[JsonProperty("958")]
-		public decimal CreditInterest;
+		public decimal? CreditInterest;
 		[JsonProperty("918")]
-		public string MaturityDate = string.Empty;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? MaturityDate;
 		[JsonProperty("990")]
-		public decimal TodayRealizedProfitLossCash;
+		public decimal? TodayRealizedProfitLossCash;
 		[JsonProperty("991")]
-		public decimal TodayRealizedProfitLossRateCash;
+		public decimal? TodayRealizedProfitLossRateCash;
 		[JsonProperty("992")]
-		public decimal TodayRealizedProfitLossCredit;
+		public decimal? TodayRealizedProfitLossCredit;
 		[JsonProperty("993")]
-		public decimal TodayRealizedProfitLossRateCredit;
+		public decimal? TodayRealizedProfitLossRateCredit;
 		[JsonProperty("959")]
-		public decimal CollateralLoanQuantity;
+		public decimal? CollateralLoanQuantity;
 		[JsonProperty("924")]
-		public string ExtraItem2 = string.Empty;
+		public string? ExtraItem2;
 	}
 
 }

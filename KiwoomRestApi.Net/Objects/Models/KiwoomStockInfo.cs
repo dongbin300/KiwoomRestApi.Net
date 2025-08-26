@@ -1,4 +1,5 @@
 ﻿using KiwoomRestApi.Net.Converters;
+using KiwoomRestApi.Net.Objects.Commons;
 
 using Newtonsoft.Json;
 
@@ -586,15 +587,13 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("pre_sig")]
 		public string? DifferenceSymbol;
 		[JsonProperty("pred_pre")]
-		[JsonConverter(typeof(KiwoomNormalizerConverter))]
-		public decimal? PreviousDifference;
+		public KiwoomDecimal? PreviousDifference;
 		[JsonProperty("sel_qty")]
 		public decimal? SellQuantity;
 		[JsonProperty("buy_qty")]
 		public decimal? BuyQuantity;
 		[JsonProperty("netprps_qty")]
-		[JsonConverter(typeof(KiwoomNormalizerConverter))]
-		public decimal? NetPurchaseQuantity;
+		public KiwoomDecimal? NetPurchaseQuantity;
 		[JsonProperty("trde_qty_sum")]
 		public decimal? TotalTradeQuantity;
 		[JsonProperty("trde_wght")]
@@ -722,8 +721,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("pred_pre")]
 		public decimal? PreviousDifference;
 		[JsonProperty("avg_pric_pre")]
-		[JsonConverter(typeof(KiwoomNormalizerConverter))]
-		public decimal? AveragePriceDifference;
+		public KiwoomDecimal? AveragePriceDifference;
 		[JsonProperty("pre_rt")]
 		public decimal? DifferenceRate;
 		[JsonProperty("dt_trde_qty")]
@@ -788,33 +786,25 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomStockInfoGetStockInvestorInstitutionTotalItem
 	{
 		[JsonProperty("ind_invsr")]
-		[JsonConverter(typeof(KiwoomNormalizerConverter))]
-		public decimal? IndividualInvestors;
+		public KiwoomDecimal? IndividualInvestors;
 		[JsonProperty("frgnr_invsr")]
-		[JsonConverter(typeof(KiwoomNormalizerConverter))]
-		public decimal? ForeignInvestors;
+		public KiwoomDecimal? ForeignInvestors;
 		[JsonProperty("orgn")]
-		[JsonConverter(typeof(KiwoomNormalizerConverter))]
-		public decimal? Institutions;
+		public KiwoomDecimal? Institutions;
 		[JsonProperty("fnnc_invt")]
 		public decimal? FinancialInvestments;
 		[JsonProperty("insrnc")]
-		[JsonConverter(typeof(KiwoomNormalizerConverter))]
-		public decimal? Insurances;
+		public KiwoomDecimal? Insurances;
 		[JsonProperty("invtrt")]
-		[JsonConverter(typeof(KiwoomNormalizerConverter))]
-		public decimal? InvestmentTrusts;
+		public KiwoomDecimal? InvestmentTrusts;
 		[JsonProperty("etc_fnnc")]
-		[JsonConverter(typeof(KiwoomNormalizerConverter))]
-		public decimal? OtherFinancials;
+		public KiwoomDecimal? OtherFinancials;
 		[JsonProperty("bank")]
-		[JsonConverter(typeof(KiwoomNormalizerConverter))]
-		public decimal? Banks;
+		public KiwoomDecimal? Banks;
 		[JsonProperty("penfnd_etc")]
 		public decimal? PensionEtcs;
 		[JsonProperty("samo_fund")]
-		[JsonConverter(typeof(KiwoomNormalizerConverter))]
-		public decimal? PrivateFunds;
+		public KiwoomDecimal? PrivateFunds;
 		[JsonProperty("natn")]
 		public decimal? Nations;
 		[JsonProperty("etc_corp")]

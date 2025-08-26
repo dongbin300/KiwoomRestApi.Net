@@ -6,7 +6,9 @@
       "Bash(do)",
       "Bash(echo:*)",
       "Bash(echo \"Done with $file\")",
-      "Bash(done)"
+      "Bash(done)",
+      "Bash(dotnet build:*)",
+      "Bash(do echo \"Processing $file\")"
     ],
     "deny": [],
     "ask": []

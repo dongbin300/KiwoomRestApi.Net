@@ -1,4 +1,5 @@
 ﻿using KiwoomRestApi.Net.Converters;
+using KiwoomRestApi.Net.Objects.Commons;
 
 using Newtonsoft.Json;
 
@@ -139,7 +140,8 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomEtfGetTimeIntervalTransitionItem
 	{
 		[JsonProperty("tm")]
-		public string? Time;
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
+		public TimeSpan? Time;
 		[JsonProperty("close_pric")]
 		public decimal? ClosingPrice;
 		[JsonProperty("pre_sig")]
@@ -188,7 +190,8 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomEtfGetTimeIntervalContractItem
 	{
 		[JsonProperty("cntr_tm")]
-		public string? TransactionTime;
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
+		public TimeSpan? TransactionTime;
 		[JsonProperty("cur_prc")]
 		public decimal? CurrentPrice;
 		[JsonProperty("pre_sig")]
@@ -231,11 +234,9 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("acc_trde_qty")]
 		public decimal? AccumulatedTradeVolume;
 		[JsonProperty("for_netprps_qty")]
-		[JsonConverter(typeof(KiwoomNormalizerConverter))]
-		public decimal? ForeignNetPurchaseQuantity;
+		public KiwoomDecimal? ForeignNetPurchaseQuantity;
 		[JsonProperty("orgn_netprps_qty")]
-		[JsonConverter(typeof(KiwoomNormalizerConverter))]
-		public decimal? InstitutionNetPurchaseQuantity;
+		public KiwoomDecimal? InstitutionNetPurchaseQuantity;
 	}
 
 	public record KiwoomEtfGetNavs
@@ -287,7 +288,6 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("trde_qty")]
 		public decimal? TradeVolume;
 		[JsonProperty("for_netprps")]
-		[JsonConverter(typeof(KiwoomNormalizerConverter))]
-		public decimal? ForeignNetPurchase;
+		public KiwoomDecimal? ForeignNetPurchase;
 	}
 }

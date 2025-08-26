@@ -3,6 +3,7 @@ using KiwoomRestApi.Net.Objects.Commons;
 
 using Newtonsoft.Json;
 
+using System;
 using System.Collections.Generic;
 
 namespace KiwoomRestApi.Net.Objects.Models
@@ -12,6 +13,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("bid_req_upper")]
 		public IEnumerable<KiwoomRankingInfoGetBidRequestUpperItem>? Items;
 	}
+
 	public record KiwoomRankingInfoGetBidRequestUpperItem
 	{
 		[JsonProperty("stk_cd")]
@@ -41,6 +43,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("bid_req_sdnin")]
 		public IEnumerable<KiwoomRankingInfoGetBidRequestSuddenIncreaseItem>? Items;
 	}
+
 	public record KiwoomRankingInfoGetBidRequestSuddenIncreaseItem
 	{
 		[JsonProperty("stk_cd")]
@@ -70,6 +73,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("req_rt_sdnin")]
 		public IEnumerable<KiwoomRankingInfoGetRequestRateSuddenIncreaseItem>? Items;
 	}
+
 	public record KiwoomRankingInfoGetRequestRateSuddenIncreaseItem
 	{
 		[JsonProperty("stk_cd")]
@@ -99,6 +103,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("trde_qty_sdnin")]
 		public IEnumerable<KiwoomRankingInfoGetTradedQuantitySuddenIncreaseItem>? Items;
 	}
+
 	public record KiwoomRankingInfoGetTradedQuantitySuddenIncreaseItem
 	{
 		[JsonProperty("stk_cd")]
@@ -128,6 +133,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("pred_pre_flu_rt_upper")]
 		public IEnumerable<KiwoomRankingInfoGetPreviousDayFluctuationRateUpperItem>? Items;
 	}
+
 	public record KiwoomRankingInfoGetPreviousDayFluctuationRateUpperItem
 	{
 		[JsonProperty("stk_cls")]
@@ -161,6 +167,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("exp_cntr_flu_rt_upper")]
 		public IEnumerable<KiwoomRankingInfoGetExpectedContractFluctuationRateUpperItem>? Items;
 	}
+
 	public record KiwoomRankingInfoGetExpectedContractFluctuationRateUpperItem
 	{
 		[JsonProperty("stk_cd")]
@@ -194,6 +201,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("tdy_trde_qty_upper")]
 		public IEnumerable<KiwoomRankingInfoGetTodayTradeQuantityUpperItem>? Items;
 	}
+
 	public record KiwoomRankingInfoGetTodayTradeQuantityUpperItem
 	{
 		[JsonProperty("stk_cd")]
@@ -247,6 +255,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("pred_trde_qty_upper")]
 		public IEnumerable<KiwoomRankingInfoGetPreviousTradeQuantityUpperItem>? Items;
 	}
+
 	public record KiwoomRankingInfoGetPreviousTradeQuantityUpperItem
 	{
 		[JsonProperty("stk_cd")]
@@ -268,6 +277,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("trde_prica_upper")]
 		public IEnumerable<KiwoomRankingInfoGetTradePriceUpperItem>? Items;
 	}
+
 	public record KiwoomRankingInfoGetTradePriceUpperItem
 	{
 		[JsonProperty("stk_cd")]
@@ -303,6 +313,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("crd_rt_upper")]
 		public IEnumerable<KiwoomRankingInfoGetCreditRateUpperItem>? Items;
 	}
+
 	public record KiwoomRankingInfoGetCreditRateUpperItem
 	{
 		[JsonProperty("stk_infr")]
@@ -334,6 +345,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("for_dt_trde_upper")]
 		public IEnumerable<KiwoomRankingInfoGetForeignTradePerPeriodUpperItem>? Items;
 	}
+
 	public record KiwoomRankingInfoGetForeignTradePerPeriodUpperItem
 	{
 		[JsonProperty("rank")]
@@ -365,6 +377,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("for_cont_nettrde_upper")]
 		public IEnumerable<KiwoomRankingInfoGetForeignContinuousNetTradeUpperItem>? Items;
 	}
+
 	public record KiwoomRankingInfoGetForeignContinuousNetTradeUpperItem
 	{
 		[JsonProperty("stk_cd")]
@@ -400,6 +413,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("for_limit_exh_rt_incrs_upper")]
 		public IEnumerable<KiwoomRankingInfoGetForeignLimitExhaustionRateIncreaseItem>? Items;
 	}
+
 	public record KiwoomRankingInfoGetForeignLimitExhaustionRateIncreaseItem
 	{
 		[JsonProperty("rank")]
@@ -433,6 +447,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("frgn_wicket_trde_upper")]
 		public IEnumerable<KiwoomRankingInfoGetForeignWicketTradeUpperItem>? Items;
 	}
+
 	public record KiwoomRankingInfoGetForeignWicketTradeUpperItem
 	{
 		[JsonProperty("rank")]
@@ -476,6 +491,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("stk_sec_rank")]
 		public IEnumerable<KiwoomRankingInfoGetStockSecuritiesRankItem>? Items;
 	}
+
 	public record KiwoomRankingInfoGetStockSecuritiesRankItem
 	{
 		[JsonProperty("rank")]
@@ -495,6 +511,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("sec_trde_upper")]
 		public IEnumerable<KiwoomRankingInfoGetSecuritiesTradeUpperItem>? Items;
 	}
+
 	public record KiwoomRankingInfoGetSecuritiesTradeUpperItem
 	{
 		[JsonProperty("rank")]
@@ -610,24 +627,29 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("tdy_main_trde_ori")]
 		public IEnumerable<KiwoomRankingInfoGetTodayMainTradeOriginItem>? Items;
 	}
+
 	public record KiwoomRankingInfoGetTodayMainTradeOriginItem
 	{
 		[JsonProperty("sel_scesn_tm")]
-		public string? SellExitTime;
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
+		public TimeSpan? SellExitTime;
 		[JsonProperty("sell_qty")]
 		public string? SellQuantity;
 		[JsonProperty("sel_upper_scesn_ori")]
 		public string? SellTopExitOrigin;
 		[JsonProperty("buy_scesn_tm")]
-		public string? BuyExitTime;
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
+		public TimeSpan? BuyExitTime;
 		[JsonProperty("buy_qty")]
 		public string? BuyQuantity;
 		[JsonProperty("buy_upper_scesn_ori")]
 		public string? BuyTopExitOrigin;
 		[JsonProperty("qry_dt")]
-		public string? QueryDate;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? QueryDate;
 		[JsonProperty("qry_tm")]
-		public string? QueryTime;
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
+		public TimeSpan? QueryTime;
 	}
 
 	public record KiwoomRankingInfoGetNetPurchaseTradeOriginRanks
@@ -635,6 +657,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("netprps_trde_ori_rank")]
 		public IEnumerable<KiwoomRankingInfoGetNetPurchaseTradeOriginRankItem>? Items;
 	}
+
 	public record KiwoomRankingInfoGetNetPurchaseTradeOriginRankItem
 	{
 		[JsonProperty("rank")]
@@ -650,24 +673,29 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("tdy_upper_scesn_ori")]
 		public IEnumerable<KiwoomRankingInfoGetTodayUpperSecessionOriginItem>? Items;
 	}
+
 	public record KiwoomRankingInfoGetTodayUpperSecessionOriginItem
 	{
 		[JsonProperty("sel_scesn_tm")]
-		public string? SellExitTime;
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
+		public TimeSpan? SellExitTime;
 		[JsonProperty("sell_qty")]
 		public string? SellQuantity;
 		[JsonProperty("sel_upper_scesn_ori")]
 		public string? SellUpperExitOrigin;
 		[JsonProperty("buy_scesn_tm")]
-		public string? BuyExitTime;
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
+		public TimeSpan? BuyExitTime;
 		[JsonProperty("buy_qty")]
 		public string? BuyQuantity;
 		[JsonProperty("buy_upper_scesn_ori")]
 		public string? BuyUpperExitOrigin;
 		[JsonProperty("qry_dt")]
-		public string? QueryDate;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? QueryDate;
 		[JsonProperty("qry_tm")]
-		public string? QueryTime;
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
+		public TimeSpan? QueryTime;
 	}
 
 	public record KiwoomRankingInfoGetEqualNetTradeRanks
@@ -675,6 +703,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("eql_nettrde_rank")]
 		public IEnumerable<KiwoomRankingInfoGetEqualNetTradeRankItem>? Items;
 	}
+
 	public record KiwoomRankingInfoGetEqualNetTradeRankItem
 	{
 		[JsonProperty("stk_cd")]
@@ -684,31 +713,31 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("stk_nm")]
 		public string? StockName;
 		[JsonProperty("cur_prc")]
-		public KiwoomDecimal CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		[JsonProperty("pre_sig")]
 		public string? ChangeSign;
 		[JsonProperty("pred_pre")]
-		public KiwoomDecimal PreviousDayChange;
+		public KiwoomDecimal? PreviousDayChange;
 		[JsonProperty("flu_rt")]
-		public KiwoomDecimal FluctuationRate;
+		public KiwoomDecimal? FluctuationRate;
 		[JsonProperty("acc_trde_qty")]
 		public decimal? AccumulatedTradeQuantity;
 		[JsonProperty("orgn_nettrde_qty")]
-		public KiwoomDecimal InstitutionNetTradeQuantity;
+		public KiwoomDecimal? InstitutionNetTradeQuantity;
 		[JsonProperty("orgn_nettrde_amt")]
-		public KiwoomDecimal InstitutionNetTradeAmount;
+		public KiwoomDecimal? InstitutionNetTradeAmount;
 		[JsonProperty("orgn_nettrde_avg_pric")]
 		public decimal? InstitutionNetTradeAveragePrice;
 		[JsonProperty("for_nettrde_qty")]
-		public KiwoomDecimal ForeignerNetTradeQuantity;
+		public KiwoomDecimal? ForeignerNetTradeQuantity;
 		[JsonProperty("for_nettrde_amt")]
-		public KiwoomDecimal ForeignerNetTradeAmount;
+		public KiwoomDecimal? ForeignerNetTradeAmount;
 		[JsonProperty("for_nettrde_avg_pric")]
 		public decimal? ForeignerNetTradeAveragePrice;
 		[JsonProperty("nettrde_qty")]
-		public KiwoomDecimal NetTradeQuantity;
+		public KiwoomDecimal? NetTradeQuantity;
 		[JsonProperty("nettrde_amt")]
-		public KiwoomDecimal NetTradeAmount;
+		public KiwoomDecimal? NetTradeAmount;
 	}
 
 	public record KiwoomRankingInfoGetOpenMarketInvestorTradeUppers
@@ -716,6 +745,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("opmr_invsr_trde_upper")]
 		public IEnumerable<KiwoomRankingInfoGetOpenMarketInvestorTradeUpperItem>? Items;
 	}
+
 	public record KiwoomRankingInfoGetOpenMarketInvestorTradeUpperItem
 	{
 		[JsonProperty("stk_cd")]
@@ -735,6 +765,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("ovt_sigpric_flu_rt_rank")]
 		public IEnumerable<KiwoomRankingInfoGetOvertimeSinglePriceFluctuationRateRankItem>? Items;
 	}
+
 	public record KiwoomRankingInfoGetOvertimeSinglePriceFluctuationRateRankItem
 	{
 		[JsonProperty("rank")]
@@ -770,6 +801,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("frgnr_orgn_trde_upper")]
 		public IEnumerable<KiwoomRankingInfoGetForeignInstitutionTradeUpperItem>? Items;
 	}
+
 	public record KiwoomRankingInfoGetForeignInstitutionTradeUpperItem
 	{
 		[JsonProperty("for_netslmt_stk_cd")]

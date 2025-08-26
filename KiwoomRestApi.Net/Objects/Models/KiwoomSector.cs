@@ -52,6 +52,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("inds_netprps")]
 		public IEnumerable<KiwoomSectorGetIndustryNetPurchaseItem>? Items;
 	}
+
 	public record KiwoomSectorGetIndustryNetPurchaseItem
 	{
 		[JsonProperty("inds_cd")]
@@ -147,6 +148,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("inds_cur_prc_tm")]
 		public IEnumerable<KiwoomSectorGetIndustryCurrentPriceItem>? Items;
 	}
+
 	public record KiwoomSectorGetIndustryCurrentPriceItem
 	{
 		[JsonProperty("tm_n")]
@@ -170,6 +172,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("inds_stkpc")]
 		public IEnumerable<KiwoomSectorGetIndustryStockPriceItem>? Items;
 	}
+
 	public record KiwoomSectorGetIndustryStockPriceItem
 	{
 		[JsonProperty("stk_cd")]
@@ -203,6 +206,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("all_inds_idex")]
 		public IEnumerable<KiwoomSectorGetAllIndustryIndexItem>? Items;
 	}
+
 	public record KiwoomSectorGetAllIndustryIndexItem
 	{
 		[JsonProperty("stk_cd")]
@@ -288,6 +292,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("inds_cur_prc_daly_rept")]
 		public IEnumerable<KiwoomSectorGetDailyIndustryPriceItem>? Items;
 	}
+
 	public record KiwoomSectorGetDailyIndustryPriceItem
 	{
 		[JsonProperty("dt_n")]

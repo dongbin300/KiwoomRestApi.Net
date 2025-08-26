@@ -12,6 +12,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("dbrt_trde_trnsn")]
 		public IEnumerable<KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradeItem>? Items;
 	}
+
 	public record KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradeItem
 	{
 		[JsonProperty("dt")]
@@ -50,12 +51,13 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("dbrt_trde_upper_10stk")]
 		public IEnumerable<KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradeTop10Item>? Items;
 	}
+
 	public record KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradeTop10Item
 	{
 		[JsonProperty("stk_nm")]
-		public string StockName = string.Empty;
+		public string? StockName;
 		[JsonProperty("stk_cd")]
-		public string StockCode = string.Empty;
+		public string? StockCode;
 		[JsonProperty("dbrt_trde_cntrcnt")]
 		public decimal BorrowedTradeContracts;
 		[JsonProperty("dbrt_trde_rpy")]
@@ -71,6 +73,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("dbrt_trde_trnsn")]
 		public IEnumerable<KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradeItemByStock>? Items;
 	}
+
 	public record KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradeItemByStock
 	{
 		[JsonProperty("dt")]
@@ -93,12 +96,13 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("dbrt_trde_prps")]
 		public IEnumerable<KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradeHistoryItem>? Items;
 	}
+
 	public record KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradeHistoryItem
 	{
 		[JsonProperty("stk_nm")]
-		public string StockName = string.Empty;
+		public string? StockName;
 		[JsonProperty("stk_cd")]
-		public string StockCode = string.Empty;
+		public string? StockCode;
 		[JsonProperty("dbrt_trde_cntrcnt")]
 		public decimal BorrowedTradeContracts;
 		[JsonProperty("dbrt_trde_rpy")]

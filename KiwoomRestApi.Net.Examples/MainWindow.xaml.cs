@@ -34,7 +34,7 @@ namespace KiwoomRestApi.Net.Examples
 			var endDate = new DateTime(2025, 8, 25);
 			var stockCode = "452400";
 
-			var __result__ = client.Ranking.GetEqualNetTradeRanksAsync(KiwoomRankingInfoMarketType.KOSPI, KiwoomRankingInfoNetTradeType2.NetBuy, KiwoomRankingInfoEqualNetTradeRankSortType.Amount, KiwoomRankingInfoUnitType.One, KiwoomRankingInfoStockExchangeType.KRX, startDate, endDate).Result;
+			var __result__ = client.Elw.GetAssetInfoAsync(stockCode).Result;
 
 			//socketClient = KiwoomSocketClient.Create(client.Token, true);
 

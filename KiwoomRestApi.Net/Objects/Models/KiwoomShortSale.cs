@@ -12,30 +12,31 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("shrts_trnsn")]
 		public IEnumerable<KiwoomShortSaleGetShortsTransactionItem>? Items;
 	}
+
 	public record KiwoomShortSaleGetShortsTransactionItem
 	{
 		[JsonProperty("dt")]
 		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? Date;
 		[JsonProperty("close_pric")]
-		public decimal ClosePrice;
+		public decimal? ClosePrice;
 		[JsonProperty("pred_pre_sig")]
-		public string PreviousDayChangeSign = string.Empty;
+		public string? PreviousDayChangeSign;
 		[JsonProperty("pred_pre")]
-		public decimal PreviousDayChange;
+		public decimal? PreviousDayChange;
 		[JsonProperty("flu_rt")]
-		public decimal FluctuationRate;
+		public decimal? FluctuationRate;
 		[JsonProperty("trde_qty")]
-		public decimal TradeQuantity;
+		public decimal? TradeQuantity;
 		[JsonProperty("shrts_qty")]
-		public decimal ShortsQuantity;
+		public decimal? ShortsQuantity;
 		[JsonProperty("ovr_shrts_qty")]
-		public decimal AccumulatedShortsQuantity;
+		public decimal? AccumulatedShortsQuantity;
 		[JsonProperty("trde_wght")]
-		public decimal TradeWeight;
+		public decimal? TradeWeight;
 		[JsonProperty("shrts_trde_prica")]
-		public decimal ShortsTradeAmount;
+		public decimal? ShortsTradeAmount;
 		[JsonProperty("shrts_avg_pric")]
-		public decimal ShortsAveragePrice;
+		public decimal? ShortsAveragePrice;
 	}
 }

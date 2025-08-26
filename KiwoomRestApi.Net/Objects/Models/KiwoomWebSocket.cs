@@ -10,14 +10,15 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomWebSocketSendMessage
 	{
 		[JsonProperty("trnm")]
-		public string ServiceName = string.Empty;
+		public string? ServiceName;
 		[JsonProperty("grp_no")]
-		public string GroupId = string.Empty;
+		public string? GroupId;
 		[JsonProperty("refresh")]
-		public string Refresh = string.Empty;
+		public string? Refresh;
 		[JsonProperty("data")]
 		public IEnumerable<KiwoomWebSocketSendMessageItem> Data = [];
 	}
+
 	public record KiwoomWebSocketSendMessageItem
 	{
 		[JsonProperty("item")]
@@ -1159,7 +1160,8 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("843")]
 		public string? InsertDeleteType;
 		[JsonProperty("20")]
-		public string? TradeTime;
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
+		public TimeSpan? TradeTime;
 		[JsonProperty("907")]
 		public string? SellBuyType;
 	}

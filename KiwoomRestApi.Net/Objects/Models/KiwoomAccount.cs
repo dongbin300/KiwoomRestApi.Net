@@ -16,9 +16,9 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomAccountGetDateStockRealizedProfitLossItem
 	{
 		[JsonProperty("stk_cd")]
-		public string StockCode = string.Empty;
+		public string? StockCode;
 		[JsonProperty("stk_nm")]
-		public string StockName = string.Empty;
+		public string? StockName;
 		[JsonProperty("cntr_qty")]
 		public decimal? ContractQuantity;
 		[JsonProperty("cntr_pric")]
@@ -36,11 +36,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("wthd_alowa")]
 		public decimal? WithdrawalAllowable;
 		[JsonProperty("loan_dt")]
-		public string LoanDate = string.Empty;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? LoanDate;
 		[JsonProperty("crd_tp")]
-		public string CreditType = string.Empty;
+		public string? CreditType;
 		[JsonProperty("stk_cd_1")]
-		public string StockCode1 = string.Empty;
+		public string? StockCode1;
 		[JsonProperty("tdy_sel_pl_1")]
 		public decimal? TodaySellProfitLoss1;
 	}
@@ -58,9 +59,9 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("tdy_htssel_cmsn")]
 		public decimal? TodayHtsSellCommission;
 		[JsonProperty("stk_cd")]
-		public string StockCode = string.Empty;
+		public string? StockCode;
 		[JsonProperty("stk_nm")]
-		public string StockName = string.Empty;
+		public string? StockName;
 		[JsonProperty("cntr_qty")]
 		public decimal? ContractQuantity;
 		[JsonProperty("cntr_pric")]
@@ -78,9 +79,10 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("wthd_alowa")]
 		public decimal? WithdrawalAllowable;
 		[JsonProperty("loan_dt")]
-		public string LoanDate = string.Empty;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? LoanDate;
 		[JsonProperty("crd_tp")]
-		public string CreditType = string.Empty;
+		public string? CreditType;
 	}
 
 	public record KiwoomAccountGetRealizedProfitLoss
@@ -123,19 +125,19 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomAccountGetOutstandingOrderItem
 	{
 		[JsonProperty("acnt_no")]
-		public string AccountId = string.Empty;
+		public string? AccountId;
 		[JsonProperty("ord_no")]
-		public string OrderId = string.Empty;
+		public string? OrderId;
 		[JsonProperty("mang_empno")]
-		public string ManagerEmployeeId = string.Empty;
+		public string? ManagerEmployeeId;
 		[JsonProperty("stk_cd")]
-		public string StockCode = string.Empty;
+		public string? StockCode;
 		[JsonProperty("tsk_tp")]
-		public string TaskType = string.Empty;
+		public string? TaskType;
 		[JsonProperty("ord_stt")]
-		public string OrderStatus = string.Empty;
+		public string? OrderStatus;
 		[JsonProperty("stk_nm")]
-		public string StockName = string.Empty;
+		public string? StockName;
 		[JsonProperty("ord_qty")]
 		public decimal? OrderQuantity;
 		[JsonProperty("ord_pric")]
@@ -145,16 +147,16 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("cntr_tot_amt")]
 		public decimal? ContractTotalAmount;
 		[JsonProperty("orig_ord_no")]
-		public string OriginalOrderId = string.Empty;
+		public string? OriginalOrderId;
 		[JsonProperty("io_tp_nm")]
-		public string OrderTypeName = string.Empty;
+		public string? OrderTypeName;
 		[JsonProperty("trde_tp")]
-		public string TradeType = string.Empty;
+		public string? TradeType;
 		[JsonProperty("tm")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? Time;
 		[JsonProperty("cntr_no")]
-		public string ContractId = string.Empty;
+		public string? ContractId;
 		[JsonProperty("cntr_pric")]
 		public decimal? ContractPrice;
 		[JsonProperty("cntr_qty")]
@@ -174,11 +176,11 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("tdy_trde_tax")]
 		public decimal? TodayTradeTax;
 		[JsonProperty("ind_invsr")]
-		public string IndividualInvestor = string.Empty;
+		public string? IndividualInvestor;
 		[JsonProperty("stex_tp")]
 		public KiwoomAccountStockExchangeType? StockExchangeType;
 		[JsonProperty("stex_tp_txt")]
-		public string StockExchangeTypeText = string.Empty;
+		public string? StockExchangeTypeText;
 		[JsonProperty("sor_yn")]
 		[JsonConverter(typeof(KiwoomBoolConverter))]
 		public bool? SorIndicator;
@@ -194,11 +196,11 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomAccountGetContractItem
 	{
 		[JsonProperty("ord_no")]
-		public string OrderId = string.Empty;
+		public string? OrderId;
 		[JsonProperty("stk_nm")]
-		public string StockName = string.Empty;
+		public string? StockName;
 		[JsonProperty("io_tp_nm")]
-		public string OrderTypeName = string.Empty;
+		public string? OrderTypeName;
 		[JsonProperty("ord_pric")]
 		public decimal? OrderPrice;
 		[JsonProperty("ord_qty")]
@@ -214,20 +216,20 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("tdy_trde_tax")]
 		public decimal? TodayTradeTax;
 		[JsonProperty("ord_stt")]
-		public string OrderStatus = string.Empty;
+		public string? OrderStatus;
 		[JsonProperty("trde_tp")]
-		public string TradeType = string.Empty;
+		public string? TradeType;
 		[JsonProperty("orig_ord_no")]
-		public string OriginalOrderId = string.Empty;
+		public string? OriginalOrderId;
 		[JsonProperty("ord_tm")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? OrderTime;
 		[JsonProperty("stk_cd")]
-		public string StockCode = string.Empty;
+		public string? StockCode;
 		[JsonProperty("stex_tp")]
 		public KiwoomAccountStockExchangeType? StockExchangeType;
 		[JsonProperty("stex_tp_txt")]
-		public string StockExchangeTypeText = string.Empty;
+		public string? StockExchangeTypeText;
 		[JsonProperty("sor_yn")]
 		[JsonConverter(typeof(KiwoomBoolConverter))]
 		public bool? SorIndicator;
@@ -245,7 +247,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomAccountGetTodayRealizedProfitLossItem
 	{
 		[JsonProperty("stk_nm")]
-		public string StockName = string.Empty;
+		public string? StockName;
 		[JsonProperty("cntr_qty")]
 		public decimal? ContractQuantity;
 		[JsonProperty("buy_uv")]
@@ -261,7 +263,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("tdy_trde_tax")]
 		public decimal? TodayTradeTax;
 		[JsonProperty("stk_cd")]
-		public string StockCode = string.Empty;
+		public string? StockCode;
 	}
 
 	public record KiwoomAccountGetProfitRate
@@ -272,11 +274,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomAccountGetProfitRateItem
 	{
 		[JsonProperty("dt")]
-		public string Date = string.Empty;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? Date;
 		[JsonProperty("stk_cd")]
-		public string StockCode = string.Empty;
+		public string? StockCode;
 		[JsonProperty("stk_nm")]
-		public string StockName = string.Empty;
+		public string? StockName;
 		[JsonProperty("cur_prc")]
 		public decimal? CurrentPrice;
 		[JsonProperty("pur_pric")]
@@ -292,9 +295,10 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("tdy_trde_tax")]
 		public decimal? TodayTradeTax;
 		[JsonProperty("crd_tp")]
-		public string CreditType = string.Empty;
+		public string? CreditType;
 		[JsonProperty("loan_dt")]
-		public string LoanDate = string.Empty;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? LoanDate;
 		[JsonProperty("setl_remn")]
 		public decimal? SettlementRemain;
 		[JsonProperty("clrn_alow_qty")]
@@ -304,7 +308,8 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("crd_int")]
 		public decimal? CreditInterest;
 		[JsonProperty("expr_dt")]
-		public string ExpireDate = string.Empty;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? ExpireDate;
 	}
 
 	public record KiwoomAccountGetOutstandingPartialOrders
@@ -315,11 +320,11 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomAccountGetOutstandingPartialOrderItem
 	{
 		[JsonProperty("stk_cd")]
-		public string StockCode = string.Empty;
+		public string? StockCode;
 		[JsonProperty("stk_nm")]
-		public string StockName = string.Empty;
+		public string? StockName;
 		[JsonProperty("ord_no")]
-		public string OrderId = string.Empty;
+		public string? OrderId;
 		[JsonProperty("ord_qty")]
 		public decimal? OrderQuantity;
 		[JsonProperty("ord_pric")]
@@ -327,21 +332,21 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("osop_qty")]
 		public decimal? OutstandingQuantity;
 		[JsonProperty("io_tp_nm")]
-		public string OrderTypeName = string.Empty;
+		public string? OrderTypeName;
 		[JsonProperty("trde_tp")]
-		public string TradeType = string.Empty;
+		public string? TradeType;
 		[JsonProperty("sell_tp")]
-		public string SellType = string.Empty;
+		public string? SellType;
 		[JsonProperty("cntr_qty")]
 		public decimal? ContractQuantity;
 		[JsonProperty("ord_stt")]
-		public string OrderStatus = string.Empty;
+		public string? OrderStatus;
 		[JsonProperty("cur_prc")]
 		public decimal? CurrentPrice;
 		[JsonProperty("stex_tp")]
 		public KiwoomAccountStockExchangeType? StockExchangeType;
 		[JsonProperty("stex_tp_txt")]
-		public string StockExchangeTypeText = string.Empty;
+		public string? StockExchangeTypeText;
 	}
 
 	public record KiwoomAccountGetTodayTradeDiaries
@@ -364,7 +369,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomAccountGetTodayTradeDiaryItem
 	{
 		[JsonProperty("stk_nm")]
-		public string StockName = string.Empty;
+		public string? StockName;
 		[JsonProperty("buy_avg_pric")]
 		public decimal? BuyAveragePrice;
 		[JsonProperty("buy_qty")]
@@ -384,7 +389,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("prft_rt")]
 		public decimal? ProfitRate;
 		[JsonProperty("stk_cd")]
-		public string StockCode = string.Empty;
+		public string? StockCode;
 	}
 
 	public record KiwoomAccountGetDeposits
@@ -492,7 +497,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("mdstrm_usfe")]
 		public decimal? MidtermUsageFee;
 		[JsonProperty("min_ord_alow_yn")]
-		public string MinOrderAllowedYn = string.Empty;
+		public string? MinOrderAllowedYn;
 		[JsonProperty("loan_remn_evlt_amt")]
 		public decimal? LoanRemainingEvaluationAmount;
 		[JsonProperty("dpst_grntl_remn")]
@@ -533,7 +538,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomAccountGetDepositItem
 	{
 		[JsonProperty("crnc_cd")]
-		public string CurrencyCode = string.Empty;
+		public string? CurrencyCode;
 		[JsonProperty("fx_entr")]
 		public decimal? ForeignCurrencyDeposit;
 		[JsonProperty("fc_krw_repl_evlta")]
@@ -570,7 +575,8 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomAccountGetDailyEstimatedDepositAssetItem
 	{
 		[JsonProperty("dt")]
-		public string Date = string.Empty;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? Date;
 		[JsonProperty("entr")]
 		public decimal? DepositAmount;
 		[JsonProperty("grnt_use_amt")]
@@ -596,9 +602,9 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomAccountGetEvaluations
 	{
 		[JsonProperty("acnt_nm")]
-		public string AccountName = string.Empty;
+		public string? AccountName;
 		[JsonProperty("brch_nm")]
-		public string BranchName = string.Empty;
+		public string? BranchName;
 		[JsonProperty("entr")]
 		public decimal? DepositAmount;
 		[JsonProperty("d2_entra")]
@@ -637,9 +643,9 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomAccountGetEvaluationItem
 	{
 		[JsonProperty("stk_cd")]
-		public string StockCode = string.Empty;
+		public string? StockCode;
 		[JsonProperty("stk_nm")]
-		public string StockName = string.Empty;
+		public string? StockName;
 		[JsonProperty("rmnd_qty")]
 		public decimal? RemainingQuantity;
 		[JsonProperty("avg_prc")]
@@ -653,7 +659,8 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("pl_rt")]
 		public decimal? ProfitLossRate;
 		[JsonProperty("loan_dt")]
-		public string LoanDate = string.Empty;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? LoanDate;
 		[JsonProperty("pur_amt")]
 		public decimal? PurchaseAmount;
 		[JsonProperty("setl_remn")]
@@ -736,15 +743,17 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomAccountGetContractBalanceItem
 	{
 		[JsonProperty("crd_tp")]
-		public string CreditType = string.Empty;
+		public string? CreditType;
 		[JsonProperty("loan_dt")]
-		public string LoanDate = string.Empty;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? LoanDate;
 		[JsonProperty("expr_dt")]
-		public string ExpireDate = string.Empty;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? ExpireDate;
 		[JsonProperty("stk_cd")]
-		public string StockCode = string.Empty;
+		public string? StockCode;
 		[JsonProperty("stk_nm")]
-		public string StockName = string.Empty;
+		public string? StockName;
 		[JsonProperty("setl_remn")]
 		public decimal? SettlementBalance;
 		[JsonProperty("cur_qty")]
@@ -771,13 +780,13 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomAccountGetOrderContractDetailItem
 	{
 		[JsonProperty("ord_no")]
-		public string OrderId = string.Empty;
+		public string? OrderId;
 		[JsonProperty("stk_cd")]
-		public string StockCode = string.Empty;
+		public string? StockCode;
 		[JsonProperty("trde_tp")]
-		public string TradeType = string.Empty;
+		public string? TradeType;
 		[JsonProperty("crd_tp")]
-		public string CreditType = string.Empty;
+		public string? CreditType;
 		[JsonProperty("ord_qty")]
 		public decimal? OrderQuantity;
 		[JsonProperty("ord_uv")]
@@ -785,20 +794,21 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("cnfm_qty")]
 		public decimal? ConfirmedQuantity;
 		[JsonProperty("acpt_tp")]
-		public string AcceptanceType = string.Empty;
+		public string? AcceptanceType;
 		[JsonProperty("rsrv_tp")]
-		public string ReservationType = string.Empty;
+		public string? ReservationType;
 		[JsonProperty("ord_tm")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? OrderTime;
 		[JsonProperty("ori_ord")]
-		public string OriginalOrder = string.Empty;
+		public string? OriginalOrder;
 		[JsonProperty("stk_nm")]
-		public string StockName = string.Empty;
+		public string? StockName;
 		[JsonProperty("io_tp_nm")]
-		public string OrderTypeName = string.Empty;
+		public string? OrderTypeName;
 		[JsonProperty("loan_dt")]
-		public string LoanDate = string.Empty;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? LoanDate;
 		[JsonProperty("cntr_qty")]
 		public decimal? ContractQuantity;
 		[JsonProperty("cntr_uv")]
@@ -806,14 +816,14 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("ord_remnq")]
 		public decimal? OrderRemainingQuantity;
 		[JsonProperty("comm_ord_tp")]
-		public string CommunicationOrderType = string.Empty;
+		public string? CommunicationOrderType;
 		[JsonProperty("mdfy_cncl")]
-		public string ModifyCancel = string.Empty;
+		public string? ModifyCancel;
 		[JsonProperty("cnfm_tm")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? ConfirmTime;
 		[JsonProperty("dmst_stex_tp")]
-		public string DomesticStockExchangeType = string.Empty;
+		public string? DomesticStockExchangeType;
 		[JsonProperty("cond_uv")]
 		public decimal? ConditionUnitPrice;
 	}
@@ -836,11 +846,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomAccountGetNextDaySettlementItem
 	{
 		[JsonProperty("seq")]
-		public string SequenceId = string.Empty;
+		public string? SequenceId;
 		[JsonProperty("stk_cd")]
-		public string StockCode = string.Empty;
+		public string? StockCode;
 		[JsonProperty("loan_dt")]
-		public string LoanDate = string.Empty;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? LoanDate;
 		[JsonProperty("qty")]
 		public decimal? Quantity;
 		[JsonProperty("engg_amt")]
@@ -852,9 +863,9 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("rstx")]
 		public decimal? SpecialTax;
 		[JsonProperty("stk_nm")]
-		public string StockName = string.Empty;
+		public string? StockName;
 		[JsonProperty("sell_tp")]
-		public string SellType = string.Empty;
+		public string? SellType;
 		[JsonProperty("unp")]
 		public decimal? UnitPrice;
 		[JsonProperty("exct_amt")]
@@ -864,7 +875,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("resi_tax")]
 		public decimal? ResidentTax;
 		[JsonProperty("crd_tp")]
-		public string CreditType = string.Empty;
+		public string? CreditType;
 	}
 
 	public record KiwoomAccountGetOrderContracts
@@ -881,15 +892,15 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomAccountGetOrderContractItem
 	{
 		[JsonProperty("stk_bond_tp")]
-		public string StockBondType = string.Empty;
+		public string? StockBondType;
 		[JsonProperty("ord_no")]
-		public string OrderId = string.Empty;
+		public string? OrderId;
 		[JsonProperty("stk_cd")]
-		public string StockCode = string.Empty;
+		public string? StockCode;
 		[JsonProperty("trde_tp")]
-		public string TradeType = string.Empty;
+		public string? TradeType;
 		[JsonProperty("io_tp_nm")]
-		public string OrderTypeName = string.Empty;
+		public string? OrderTypeName;
 		[JsonProperty("ord_qty")]
 		public decimal? OrderQuantity;
 		[JsonProperty("ord_uv")]
@@ -897,32 +908,32 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("cnfm_qty")]
 		public decimal? ConfirmedQuantity;
 		[JsonProperty("rsrv_oppo")]
-		public string ReservationOpposite = string.Empty;
+		public string? ReservationOpposite;
 		[JsonProperty("cntr_no")]
-		public string ContractId = string.Empty;
+		public string? ContractId;
 		[JsonProperty("acpt_tp")]
-		public string AcceptanceType = string.Empty;
+		public string? AcceptanceType;
 		[JsonProperty("orig_ord_no")]
-		public string OriginalOrderId = string.Empty;
+		public string? OriginalOrderId;
 		[JsonProperty("stk_nm")]
-		public string StockName = string.Empty;
+		public string? StockName;
 		[JsonProperty("setl_tp")]
-		public string SettlementType = string.Empty;
+		public string? SettlementType;
 		[JsonProperty("crd_deal_tp")]
-		public string CreditTransactionType = string.Empty;
+		public string? CreditTransactionType;
 		[JsonProperty("cntr_qty")]
 		public decimal? ContractQuantity;
 		[JsonProperty("cntr_uv")]
 		public decimal? ContractUnitPrice;
 		[JsonProperty("comm_ord_tp")]
-		public string CommunicationOrderType = string.Empty;
+		public string? CommunicationOrderType;
 		[JsonProperty("mdfy_cncl_tp")]
-		public string ModifyCancelType = string.Empty;
+		public string? ModifyCancelType;
 		[JsonProperty("cntr_tm")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? ContractTime;
 		[JsonProperty("dmst_stex_tp")]
-		public string DomesticStockExchangeType = string.Empty;
+		public string? DomesticStockExchangeType;
 		[JsonProperty("cond_uv")]
 		public decimal? ConditionUnitPrice;
 	}
@@ -1071,7 +1082,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("stk_assr_rt")]
 		public decimal? StockAssuranceRate;
 		[JsonProperty("stk_assr_rt_nm")]
-		public string StockAssuranceRateName = string.Empty;
+		public string? StockAssuranceRateName;
 		[JsonProperty("assr_30ord_alow_amt")]
 		public decimal? AssuranceOrderAllowedAmount30Percent;
 		[JsonProperty("assr_30ord_alowq")]
@@ -1240,11 +1251,11 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? TradeDate;
 		[JsonProperty("trde_no")]
-		public string TradeId = string.Empty;
+		public string? TradeId;
 		[JsonProperty("rmrk_nm")]
-		public string RemarkName = string.Empty;
+		public string? RemarkName;
 		[JsonProperty("crd_deal_tp_nm")]
-		public string CreditDealTypeName = string.Empty;
+		public string? CreditDealTypeName;
 		[JsonProperty("exct_amt")]
 		public decimal? SettlementAmount;
 		[JsonProperty("loan_amt_rpya")]
@@ -1256,13 +1267,13 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("entra_remn")]
 		public decimal? DepositBalance;
 		[JsonProperty("crnc_cd")]
-		public string CurrencyCode = string.Empty;
+		public string? CurrencyCode;
 		[JsonProperty("trde_ocr_tp")]
 		public KiwoomAccountTradeCategoryType? TradeCategory;
 		[JsonProperty("trde_kind_nm")]
-		public string TradeCategoryName = string.Empty;
+		public string? TradeCategoryName;
 		[JsonProperty("stk_nm")]
-		public string StockName = string.Empty;
+		public string? StockName;
 		[JsonProperty("trde_amt")]
 		public decimal? TradeAmount;
 		[JsonProperty("trde_agri_tax")]
@@ -1276,15 +1287,15 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("fc_entra")]
 		public decimal? ForeignDepositBalance;
 		[JsonProperty("mdia_tp_nm")]
-		public string MediaTypeName = string.Empty;
+		public string? MediaTypeName;
 		[JsonProperty("io_tp")]
-		public string InOutTypeCode = string.Empty;
+		public string? InOutTypeCode;
 		[JsonProperty("io_tp_nm")]
-		public string InOutTypeName = string.Empty;
+		public string? InOutTypeName;
 		[JsonProperty("orig_deal_no")]
-		public string OriginalTradeId = string.Empty;
+		public string? OriginalTradeId;
 		[JsonProperty("stk_cd")]
-		public string StockCode = string.Empty;
+		public string? StockCode;
 		[JsonProperty("trde_qty_jwa_cnt")]
 		public decimal? TradeQuantityOrShareCount;
 		[JsonProperty("cmsn")]
@@ -1301,17 +1312,18 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
 		public TimeSpan? ProcessingTime;
 		[JsonProperty("isin_cd")]
-		public string ISINCode = string.Empty;
+		public string? ISINCode;
 		[JsonProperty("stex_cd")]
-		public string StockExchangeCode = string.Empty;
+		public string? StockExchangeCode;
 		[JsonProperty("stex_nm")]
-		public string StockExchangeName = string.Empty;
+		public string? StockExchangeName;
 		[JsonProperty("trde_unit")]
 		public decimal? TradeUnitOrExchangeRate;
 		[JsonProperty("incm_resi_tax")]
 		public decimal? IncomeResidentTax;
 		[JsonProperty("loan_dt")]
-		public string LoanDate = string.Empty;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? LoanDate;
 		[JsonProperty("uncl_ocr")]
 		public decimal? UnsettledAmountOriginal;
 		[JsonProperty("rpym_sum")]
@@ -1320,13 +1332,13 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? ContractDate;
 		[JsonProperty("rcpy_no")]
-		public string ReceiptId = string.Empty;
+		public string? ReceiptId;
 		[JsonProperty("prcsr")]
-		public string Processor = string.Empty;
+		public string? Processor;
 		[JsonProperty("proc_brch")]
-		public string ProcessingBranch = string.Empty;
+		public string? ProcessingBranch;
 		[JsonProperty("trde_stle")]
-		public string TradeTypeDetail = string.Empty;
+		public string? TradeTypeDetail;
 		[JsonProperty("txon_base_pric")]
 		public decimal? TaxBasePrice;
 		[JsonProperty("tax_sum_cmsn")]
@@ -1338,19 +1350,19 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("rpym_sum_fr")]
 		public decimal? RepaymentSumForeign;
 		[JsonProperty("rcpmnyer")]
-		public string Depositor = string.Empty;
+		public string? Depositor;
 		[JsonProperty("trde_prtc_tp")]
-		public string TradeDetailType = string.Empty;
+		public string? TradeDetailType;
 	}
 
 	public record KiwoomAccountGetDailyProfitRateDetails
 	{
 		[JsonProperty("mang_empno")]
-		public string ManagerEmployeeId = string.Empty;
+		public string? ManagerEmployeeId;
 		[JsonProperty("mngr_nm")]
-		public string ManagerName = string.Empty;
+		public string? ManagerName;
 		[JsonProperty("dept_nm")]
-		public string ManagerBranch = string.Empty;
+		public string? ManagerBranch;
 		[JsonProperty("entr_fr")]
 		public decimal? DepositAmountStart;
 		[JsonProperty("entr_to")]
@@ -1503,9 +1515,9 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomAccountGetEvaluationBalanceItem
 	{
 		[JsonProperty("stk_cd")]
-		public string StockCode = string.Empty;
+		public string? StockCode;
 		[JsonProperty("stk_nm")]
-		public string StockName = string.Empty;
+		public string? StockName;
 		[JsonProperty("evltv_prft")]
 		public decimal? EvaluationProfitLoss;
 		[JsonProperty("prft_rt")]
@@ -1543,11 +1555,11 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("poss_rt")]
 		public decimal? HoldingRatio;
 		[JsonProperty("crd_tp")]
-		public string CreditType = string.Empty;
+		public string? CreditType;
 		[JsonProperty("crd_tp_nm")]
-		public string CreditTypeName = string.Empty;
+		public string? CreditTypeName;
 		[JsonProperty("crd_loan_dt")]
-		public string CreditLoanDate = string.Empty;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? CreditLoanDate;
 	}
-
 }

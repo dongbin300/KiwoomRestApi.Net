@@ -1,4 +1,5 @@
 ﻿using KiwoomRestApi.Net.Converters;
+using KiwoomRestApi.Net.Objects.Commons;
 
 using Newtonsoft.Json;
 
@@ -66,55 +67,43 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomForeignInstitutionGetContinuousTradeItem
 	{
 		[JsonProperty("rank")]
-		public string Rank = string.Empty;
+		public string? Rank;
 		[JsonProperty("stk_cd")]
-		public string StockCode = string.Empty;
+		public string? StockCode;
 		[JsonProperty("stk_nm")]
-		public string StockName = string.Empty;
+		public string? StockName;
 		[JsonProperty("prid_stkpc_flu_rt")]
 		public decimal? StockPriceFluctuationRateDuringPeriod;
 		[JsonProperty("orgn_nettrde_amt")]
-		[JsonConverter(typeof(KiwoomNormalizerConverter))]
-		public decimal? InstitutionNetTradeAmount;
+		public KiwoomDecimal? InstitutionNetTradeAmount;
 		[JsonProperty("orgn_nettrde_qty")]
-		[JsonConverter(typeof(KiwoomNormalizerConverter))]
-		public decimal? InstitutionNetTradeQuantity;
+		public KiwoomDecimal? InstitutionNetTradeQuantity;
 		[JsonProperty("orgn_cont_netprps_dys")]
 		public decimal? InstitutionContinuousNetPurchaseDays;
 		[JsonProperty("orgn_cont_netprps_qty")]
-		[JsonConverter(typeof(KiwoomNormalizerConverter))]
-		public decimal? InstitutionContinuousNetPurchaseQuantity;
+		public KiwoomDecimal? InstitutionContinuousNetPurchaseQuantity;
 		[JsonProperty("orgn_cont_netprps_amt")]
-		[JsonConverter(typeof(KiwoomNormalizerConverter))]
-		public decimal? InstitutionContinuousNetPurchaseAmount;
+		public KiwoomDecimal? InstitutionContinuousNetPurchaseAmount;
 		[JsonProperty("frgnr_nettrde_qty")]
-		[JsonConverter(typeof(KiwoomNormalizerConverter))]
-		public decimal? ForeignerNetTradeQuantity;
+		public KiwoomDecimal? ForeignerNetTradeQuantity;
 		[JsonProperty("frgnr_nettrde_amt")]
-		[JsonConverter(typeof(KiwoomNormalizerConverter))]
-		public decimal? ForeignerNetTradeAmount;
+		public KiwoomDecimal? ForeignerNetTradeAmount;
 		[JsonProperty("frgnr_cont_netprps_dys")]
 		public decimal? ForeignerContinuousNetPurchaseDays;
 		[JsonProperty("frgnr_cont_netprps_qty")]
-		[JsonConverter(typeof(KiwoomNormalizerConverter))]
-		public decimal? ForeignerContinuousNetPurchaseQuantity;
+		public KiwoomDecimal? ForeignerContinuousNetPurchaseQuantity;
 		[JsonProperty("frgnr_cont_netprps_amt")]
-		[JsonConverter(typeof(KiwoomNormalizerConverter))]
-		public decimal? ForeignerContinuousNetPurchaseAmount;
+		public KiwoomDecimal? ForeignerContinuousNetPurchaseAmount;
 		[JsonProperty("nettrde_qty")]
-		[JsonConverter(typeof(KiwoomNormalizerConverter))]
-		public decimal? NetTradeQuantity;
+		public KiwoomDecimal? NetTradeQuantity;
 		[JsonProperty("nettrde_amt")]
-		[JsonConverter(typeof(KiwoomNormalizerConverter))]
-		public decimal? NetTradeAmount;
+		public KiwoomDecimal? NetTradeAmount;
 		[JsonProperty("tot_cont_netprps_dys")]
 		public decimal? TotalContinuousNetPurchaseDays;
 		[JsonProperty("tot_cont_nettrde_qty")]
-		[JsonConverter(typeof(KiwoomNormalizerConverter))]
-		public decimal? TotalContinuousNetTradeQuantity;
+		public KiwoomDecimal? TotalContinuousNetTradeQuantity;
 		[JsonProperty("tot_cont_netprps_amt")]
-		[JsonConverter(typeof(KiwoomNormalizerConverter))]
-		public decimal? TotalContinuousNetPurchaseAmount;
+		public KiwoomDecimal? TotalContinuousNetPurchaseAmount;
 	}
 
 }

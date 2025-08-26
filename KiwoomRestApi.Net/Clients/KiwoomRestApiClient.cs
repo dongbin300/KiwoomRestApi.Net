@@ -18,7 +18,7 @@ namespace KiwoomRestApi.Net.Clients
 	{
 		public string AppKey { get; private set; } = string.Empty;
 		public string SecretKey { get; private set; } = string.Empty;
-		public string? Authorization { get; set; } = string.Empty;
+		public string? Authorization { get; set; }
 		public string ContYn { get; set; } = string.Empty;
 		public string NextKey { get; set; } = string.Empty;
 
