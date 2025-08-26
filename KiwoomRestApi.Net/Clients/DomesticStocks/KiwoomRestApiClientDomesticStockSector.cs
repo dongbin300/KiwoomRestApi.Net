@@ -56,7 +56,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 
 		public async Task<KiwoomRestApiResponse<KiwoomSectorGetAllIndustryIndices>> GetAllIndustryIndicesAsync(KiwoomSectorMarketType2 marketType)
 		{
-			const string apiId = "ka20002";
+			const string apiId = "ka20003";
 			var body = new HttpParameterMap()
 				.AddField("inds_cd", marketType);
 

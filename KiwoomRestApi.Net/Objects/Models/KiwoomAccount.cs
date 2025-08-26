@@ -20,21 +20,21 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("stk_nm")]
 		public string StockName = string.Empty;
 		[JsonProperty("cntr_qty")]
-		public decimal ContractQuantity;
+		public decimal? ContractQuantity;
 		[JsonProperty("cntr_pric")]
-		public decimal ContractPrice;
+		public decimal? ContractPrice;
 		[JsonProperty("buy_uv")]
-		public decimal BuyUnitValue;
+		public decimal? BuyUnitValue;
 		[JsonProperty("tdy_sel_pl")]
-		public decimal TodaySellProfitLoss;
+		public decimal? TodaySellProfitLoss;
 		[JsonProperty("pl_rt")]
-		public decimal ProfitLossRate;
+		public decimal? ProfitLossRate;
 		[JsonProperty("tdy_trde_cmsn")]
-		public decimal TodayTradeCommission;
+		public decimal? TodayTradeCommission;
 		[JsonProperty("tdy_trde_tax")]
-		public decimal TodayTradeTax;
+		public decimal? TodayTradeTax;
 		[JsonProperty("wthd_alowa")]
-		public decimal WithdrawalAllowable;
+		public decimal? WithdrawalAllowable;
 		[JsonProperty("loan_dt")]
 		public string LoanDate = string.Empty;
 		[JsonProperty("crd_tp")]
@@ -42,7 +42,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("stk_cd_1")]
 		public string StockCode1 = string.Empty;
 		[JsonProperty("tdy_sel_pl_1")]
-		public decimal TodaySellProfitLoss1;
+		public decimal? TodaySellProfitLoss1;
 	}
 
 	public record KiwoomAccountGetPeriodStockRealizedProfitLoss
@@ -56,27 +56,27 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? Date;
 		[JsonProperty("tdy_htssel_cmsn")]
-		public decimal TodayHtsSellCommission;
+		public decimal? TodayHtsSellCommission;
 		[JsonProperty("stk_cd")]
 		public string StockCode = string.Empty;
 		[JsonProperty("stk_nm")]
 		public string StockName = string.Empty;
 		[JsonProperty("cntr_qty")]
-		public decimal ContractQuantity;
+		public decimal? ContractQuantity;
 		[JsonProperty("cntr_pric")]
-		public decimal ContractPrice;
+		public decimal? ContractPrice;
 		[JsonProperty("buy_uv")]
-		public decimal BuyUnitValue;
+		public decimal? BuyUnitValue;
 		[JsonProperty("tdy_sel_pl")]
-		public decimal TodaySellProfitLoss;
+		public decimal? TodaySellProfitLoss;
 		[JsonProperty("pl_rt")]
-		public decimal ProfitLossRate;
+		public decimal? ProfitLossRate;
 		[JsonProperty("tdy_trde_cmsn")]
-		public decimal TodayTradeCommission;
+		public decimal? TodayTradeCommission;
 		[JsonProperty("tdy_trde_tax")]
-		public decimal TodayTradeTax;
+		public decimal? TodayTradeTax;
 		[JsonProperty("wthd_alowa")]
-		public decimal WithdrawalAllowable;
+		public decimal? WithdrawalAllowable;
 		[JsonProperty("loan_dt")]
 		public string LoanDate = string.Empty;
 		[JsonProperty("crd_tp")]
@@ -86,15 +86,15 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomAccountGetRealizedProfitLoss
 	{
 		[JsonProperty("tot_buy_amt")]
-		public decimal TotalBuyAmount;
+		public decimal? TotalBuyAmount;
 		[JsonProperty("tot_sell_amt")]
-		public decimal TotalSellAmount;
+		public decimal? TotalSellAmount;
 		[JsonProperty("rlzt_pl")]
-		public decimal RealizedProfitLoss;
+		public decimal? RealizedProfitLoss;
 		[JsonProperty("trde_cmsn")]
-		public decimal TradeCommission;
+		public decimal? TradeCommission;
 		[JsonProperty("trde_tax")]
-		public decimal TradeTax;
+		public decimal? TradeTax;
 		[JsonProperty("dt_rlzt_pl")]
 		public IEnumerable<KiwoomAccountGetRealizedProfitLossItem>? Items;
 	}
@@ -137,13 +137,13 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("stk_nm")]
 		public string StockName = string.Empty;
 		[JsonProperty("ord_qty")]
-		public decimal OrderQuantity;
+		public decimal? OrderQuantity;
 		[JsonProperty("ord_pric")]
-		public decimal OrderPrice;
+		public decimal? OrderPrice;
 		[JsonProperty("oso_qty")]
-		public decimal OutstandingQuantity;
+		public decimal? OutstandingQuantity;
 		[JsonProperty("cntr_tot_amt")]
-		public decimal ContractTotalAmount;
+		public decimal? ContractTotalAmount;
 		[JsonProperty("orig_ord_no")]
 		public string OriginalOrderId = string.Empty;
 		[JsonProperty("io_tp_nm")]
@@ -152,38 +152,38 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public string TradeType = string.Empty;
 		[JsonProperty("tm")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan Time;
+		public TimeSpan? Time;
 		[JsonProperty("cntr_no")]
 		public string ContractId = string.Empty;
 		[JsonProperty("cntr_pric")]
-		public decimal ContractPrice;
+		public decimal? ContractPrice;
 		[JsonProperty("cntr_qty")]
-		public decimal ContractQuantity;
+		public decimal? ContractQuantity;
 		[JsonProperty("cur_prc")]
-		public decimal CurrentPrice;
+		public decimal? CurrentPrice;
 		[JsonProperty("sel_bid")]
-		public decimal SellBid;
+		public decimal? SellBid;
 		[JsonProperty("buy_bid")]
-		public decimal BuyBid;
+		public decimal? BuyBid;
 		[JsonProperty("unit_cntr_pric")]
 		public decimal? UnitContractPrice;
 		[JsonProperty("unit_cntr_qty")]
 		public decimal? UnitContractQuantity;
 		[JsonProperty("tdy_trde_cmsn")]
-		public decimal TodayTradeCommission;
+		public decimal? TodayTradeCommission;
 		[JsonProperty("tdy_trde_tax")]
-		public decimal TodayTradeTax;
+		public decimal? TodayTradeTax;
 		[JsonProperty("ind_invsr")]
 		public string IndividualInvestor = string.Empty;
 		[JsonProperty("stex_tp")]
-		public KiwoomAccountStockExchangeType StockExchangeType;
+		public KiwoomAccountStockExchangeType? StockExchangeType;
 		[JsonProperty("stex_tp_txt")]
 		public string StockExchangeTypeText = string.Empty;
 		[JsonProperty("sor_yn")]
 		[JsonConverter(typeof(KiwoomBoolConverter))]
-		public bool SorIndicator;
+		public bool? SorIndicator;
 		[JsonProperty("stop_pric")]
-		public decimal StopPrice;
+		public decimal? StopPrice;
 	}
 
 	public record KiwoomAccountGetContracts
@@ -200,19 +200,19 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("io_tp_nm")]
 		public string OrderTypeName = string.Empty;
 		[JsonProperty("ord_pric")]
-		public decimal OrderPrice;
+		public decimal? OrderPrice;
 		[JsonProperty("ord_qty")]
-		public decimal OrderQuantity;
+		public decimal? OrderQuantity;
 		[JsonProperty("cntr_pric")]
-		public decimal ContractPrice;
+		public decimal? ContractPrice;
 		[JsonProperty("cntr_qty")]
-		public decimal ContractQuantity;
+		public decimal? ContractQuantity;
 		[JsonProperty("oso_qty")]
-		public decimal OutstandingQuantity;
+		public decimal? OutstandingQuantity;
 		[JsonProperty("tdy_trde_cmsn")]
-		public decimal TodayTradeCommission;
+		public decimal? TodayTradeCommission;
 		[JsonProperty("tdy_trde_tax")]
-		public decimal TodayTradeTax;
+		public decimal? TodayTradeTax;
 		[JsonProperty("ord_stt")]
 		public string OrderStatus = string.Empty;
 		[JsonProperty("trde_tp")]
@@ -221,24 +221,24 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public string OriginalOrderId = string.Empty;
 		[JsonProperty("ord_tm")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan OrderTime;
+		public TimeSpan? OrderTime;
 		[JsonProperty("stk_cd")]
 		public string StockCode = string.Empty;
 		[JsonProperty("stex_tp")]
-		public KiwoomAccountStockExchangeType StockExchangeType;
+		public KiwoomAccountStockExchangeType? StockExchangeType;
 		[JsonProperty("stex_tp_txt")]
 		public string StockExchangeTypeText = string.Empty;
 		[JsonProperty("sor_yn")]
 		[JsonConverter(typeof(KiwoomBoolConverter))]
-		public bool SorIndicator;
+		public bool? SorIndicator;
 		[JsonProperty("stop_pric")]
-		public decimal StopPrice;
+		public decimal? StopPrice;
 	}
 
 	public record KiwoomAccountGetTodayRealizedProfitLoss
 	{
 		[JsonProperty("tdy_rlzt_pl")]
-		public decimal TodayRealizedProfitLoss;
+		public decimal? TodayRealizedProfitLoss;
 		[JsonProperty("tdy_rlzt_pl_dtl")]
 		public IEnumerable<KiwoomAccountGetTodayRealizedProfitLossItem>? Items;
 	}
@@ -278,31 +278,31 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("stk_nm")]
 		public string StockName = string.Empty;
 		[JsonProperty("cur_prc")]
-		public decimal CurrentPrice;
+		public decimal? CurrentPrice;
 		[JsonProperty("pur_pric")]
-		public decimal PurchasePrice;
+		public decimal? PurchasePrice;
 		[JsonProperty("pur_amt")]
-		public decimal PurchaseAmount;
+		public decimal? PurchaseAmount;
 		[JsonProperty("rmnd_qty")]
-		public decimal RemainQuantity;
+		public decimal? RemainQuantity;
 		[JsonProperty("tdy_sel_pl")]
-		public decimal TodaySellProfitLoss;
+		public decimal? TodaySellProfitLoss;
 		[JsonProperty("tdy_trde_cmsn")]
-		public decimal TodayTradeCommission;
+		public decimal? TodayTradeCommission;
 		[JsonProperty("tdy_trde_tax")]
-		public decimal TodayTradeTax;
+		public decimal? TodayTradeTax;
 		[JsonProperty("crd_tp")]
 		public string CreditType = string.Empty;
 		[JsonProperty("loan_dt")]
 		public string LoanDate = string.Empty;
 		[JsonProperty("setl_remn")]
-		public decimal SettlementRemain;
+		public decimal? SettlementRemain;
 		[JsonProperty("clrn_alow_qty")]
-		public decimal ClearanceAllowQuantity;
+		public decimal? ClearanceAllowQuantity;
 		[JsonProperty("crd_amt")]
-		public decimal CreditAmount;
+		public decimal? CreditAmount;
 		[JsonProperty("crd_int")]
-		public decimal CreditInterest;
+		public decimal? CreditInterest;
 		[JsonProperty("expr_dt")]
 		public string ExpireDate = string.Empty;
 	}
@@ -321,11 +321,11 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("ord_no")]
 		public string OrderId = string.Empty;
 		[JsonProperty("ord_qty")]
-		public decimal OrderQuantity;
+		public decimal? OrderQuantity;
 		[JsonProperty("ord_pric")]
-		public decimal OrderPrice;
+		public decimal? OrderPrice;
 		[JsonProperty("osop_qty")]
-		public decimal OutstandingQuantity;
+		public decimal? OutstandingQuantity;
 		[JsonProperty("io_tp_nm")]
 		public string OrderTypeName = string.Empty;
 		[JsonProperty("trde_tp")]
@@ -333,13 +333,13 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("sell_tp")]
 		public string SellType = string.Empty;
 		[JsonProperty("cntr_qty")]
-		public decimal ContractQuantity;
+		public decimal? ContractQuantity;
 		[JsonProperty("ord_stt")]
 		public string OrderStatus = string.Empty;
 		[JsonProperty("cur_prc")]
-		public decimal CurrentPrice;
+		public decimal? CurrentPrice;
 		[JsonProperty("stex_tp")]
-		public KiwoomAccountStockExchangeType StockExchangeType;
+		public KiwoomAccountStockExchangeType? StockExchangeType;
 		[JsonProperty("stex_tp_txt")]
 		public string StockExchangeTypeText = string.Empty;
 	}
@@ -390,143 +390,143 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomAccountGetDeposits
 	{
 		[JsonProperty("entr")]
-		public decimal DepositAmount;
+		public decimal? DepositAmount;
 		[JsonProperty("profa_ch")]
-		public decimal StockMarginCash;
+		public decimal? StockMarginCash;
 		[JsonProperty("bncr_profa_ch")]
-		public decimal BeneficiaryMarginCash;
+		public decimal? BeneficiaryMarginCash;
 		[JsonProperty("nxdy_bncr_sell_exct")]
-		public decimal NextDayBeneficiarySellSettlementAmount;
+		public decimal? NextDayBeneficiarySellSettlementAmount;
 		[JsonProperty("fc_stk_krw_repl_set_amt")]
-		public decimal OverseasStockKRWReplenishmentAmount;
+		public decimal? OverseasStockKRWReplenishmentAmount;
 		[JsonProperty("crd_grnta_ch")]
-		public decimal CreditGuaranteeCash;
+		public decimal? CreditGuaranteeCash;
 		[JsonProperty("crd_grnt_ch")]
-		public decimal CreditCollateralCash;
+		public decimal? CreditCollateralCash;
 		[JsonProperty("add_grnt_ch")]
-		public decimal AdditionalCollateralCash;
+		public decimal? AdditionalCollateralCash;
 		[JsonProperty("etc_profa")]
-		public decimal OtherMargin;
+		public decimal? OtherMargin;
 		[JsonProperty("uncl_stk_amt")]
-		public decimal UnsettledAmount;
+		public decimal? UnsettledAmount;
 		[JsonProperty("shrts_prica")]
-		public decimal ShortSaleAmount;
+		public decimal? ShortSaleAmount;
 		[JsonProperty("crd_set_grnta")]
-		public decimal CreditSettlementGuaranteeAmount;
+		public decimal? CreditSettlementGuaranteeAmount;
 		[JsonProperty("chck_ina_amt")]
-		public decimal CheckDepositAmount;
+		public decimal? CheckDepositAmount;
 		[JsonProperty("etc_chck_ina_amt")]
-		public decimal OtherCheckDepositAmount;
+		public decimal? OtherCheckDepositAmount;
 		[JsonProperty("crd_grnt_ruse")]
-		public decimal CreditCollateralReuse;
+		public decimal? CreditCollateralReuse;
 		[JsonProperty("knx_asset_evltv")]
-		public decimal KONEXBasicDeposit;
+		public decimal? KONEXBasicDeposit;
 		[JsonProperty("elwdpst_evlta")]
-		public decimal ELWDepositEvaluation;
+		public decimal? ELWDepositEvaluation;
 		[JsonProperty("crd_ls_rght_frcs_amt")]
-		public decimal CreditLoanRightsExpectedAmount;
+		public decimal? CreditLoanRightsExpectedAmount;
 		[JsonProperty("lvlh_join_amt")]
-		public decimal LivelihoodTypeJoinAmount;
+		public decimal? LivelihoodTypeJoinAmount;
 		[JsonProperty("lvlh_trns_alowa")]
-		public decimal LivelihoodTypeWithdrawalAllowedAmount;
+		public decimal? LivelihoodTypeWithdrawalAllowedAmount;
 		[JsonProperty("repl_amt")]
-		public decimal ReplenishmentEvaluationAmount;
+		public decimal? ReplenishmentEvaluationAmount;
 		[JsonProperty("remn_repl_evlta")]
-		public decimal RemainingReplenishmentEvaluationAmount;
+		public decimal? RemainingReplenishmentEvaluationAmount;
 		[JsonProperty("trst_remn_repl_evlta")]
-		public decimal EntrustedRemainingReplenishmentEvaluationAmount;
+		public decimal? EntrustedRemainingReplenishmentEvaluationAmount;
 		[JsonProperty("bncr_remn_repl_evlta")]
-		public decimal BeneficiaryRemainingReplenishmentEvaluationAmount;
+		public decimal? BeneficiaryRemainingReplenishmentEvaluationAmount;
 		[JsonProperty("profa_repl")]
-		public decimal EntrustedMarginReplenishment;
+		public decimal? EntrustedMarginReplenishment;
 		[JsonProperty("crd_grnta_repl")]
-		public decimal CreditGuaranteeReplenishment;
+		public decimal? CreditGuaranteeReplenishment;
 		[JsonProperty("crd_grnt_repl")]
-		public decimal CreditCollateralReplenishment;
+		public decimal? CreditCollateralReplenishment;
 		[JsonProperty("add_grnt_repl")]
-		public decimal AdditionalCollateralReplenishment;
+		public decimal? AdditionalCollateralReplenishment;
 		[JsonProperty("rght_repl_amt")]
-		public decimal RightsReplenishmentAmount;
+		public decimal? RightsReplenishmentAmount;
 		[JsonProperty("pymn_alow_amt")]
-		public decimal WithdrawalAllowedAmount;
+		public decimal? WithdrawalAllowedAmount;
 		[JsonProperty("wrap_pymn_alow_amt")]
-		public decimal WrapWithdrawalAllowedAmount;
+		public decimal? WrapWithdrawalAllowedAmount;
 		[JsonProperty("ord_alow_amt")]
-		public decimal OrderAllowedAmount;
+		public decimal? OrderAllowedAmount;
 		[JsonProperty("bncr_buy_alowa")]
-		public decimal BeneficiaryBuyAllowedAmount;
+		public decimal? BeneficiaryBuyAllowedAmount;
 		[JsonProperty("20stk_ord_alow_amt")]
-		public decimal OrderAllowedAmount20Percent;
+		public decimal? OrderAllowedAmount20Percent;
 		[JsonProperty("30stk_ord_alow_amt")]
-		public decimal OrderAllowedAmount30Percent;
+		public decimal? OrderAllowedAmount30Percent;
 		[JsonProperty("40stk_ord_alow_amt")]
-		public decimal OrderAllowedAmount40Percent;
+		public decimal? OrderAllowedAmount40Percent;
 		[JsonProperty("100stk_ord_alow_amt")]
-		public decimal OrderAllowedAmount100Percent;
+		public decimal? OrderAllowedAmount100Percent;
 		[JsonProperty("ch_uncla")]
-		public decimal CashUnsettledAmount;
+		public decimal? CashUnsettledAmount;
 		[JsonProperty("ch_uncla_dlfe")]
-		public decimal CashUnsettledLateFee;
+		public decimal? CashUnsettledLateFee;
 		[JsonProperty("ch_uncla_tot")]
-		public decimal CashUnsettledTotal;
+		public decimal? CashUnsettledTotal;
 		[JsonProperty("crd_int_npay")]
-		public decimal CreditInterestUnpaid;
+		public decimal? CreditInterestUnpaid;
 		[JsonProperty("int_npay_amt_dlfe")]
-		public decimal CreditInterestUnpaidLateFee;
+		public decimal? CreditInterestUnpaidLateFee;
 		[JsonProperty("int_npay_amt_tot")]
-		public decimal CreditInterestUnpaidTotal;
+		public decimal? CreditInterestUnpaidTotal;
 		[JsonProperty("etc_loana")]
-		public decimal OtherLoanAmount;
+		public decimal? OtherLoanAmount;
 		[JsonProperty("etc_loana_dlfe")]
-		public decimal OtherLoanLateFee;
+		public decimal? OtherLoanLateFee;
 		[JsonProperty("etc_loan_tot")]
-		public decimal OtherLoanTotal;
+		public decimal? OtherLoanTotal;
 		[JsonProperty("nrpy_loan")]
-		public decimal UnpaidLoanAmount;
+		public decimal? UnpaidLoanAmount;
 		[JsonProperty("loan_sum")]
-		public decimal LoanTotalAmount;
+		public decimal? LoanTotalAmount;
 		[JsonProperty("ls_sum")]
-		public decimal LoanSum;
+		public decimal? LoanSum;
 		[JsonProperty("crd_grnt_rt")]
-		public decimal CreditCollateralRate;
+		public decimal? CreditCollateralRate;
 		[JsonProperty("mdstrm_usfe")]
-		public decimal MidtermUsageFee;
+		public decimal? MidtermUsageFee;
 		[JsonProperty("min_ord_alow_yn")]
 		public string MinOrderAllowedYn = string.Empty;
 		[JsonProperty("loan_remn_evlt_amt")]
-		public decimal LoanRemainingEvaluationAmount;
+		public decimal? LoanRemainingEvaluationAmount;
 		[JsonProperty("dpst_grntl_remn")]
-		public decimal DepositCollateralLoanBalance;
+		public decimal? DepositCollateralLoanBalance;
 		[JsonProperty("sell_grntl_remn")]
-		public decimal SellCollateralLoanBalance;
+		public decimal? SellCollateralLoanBalance;
 		[JsonProperty("d1_entra")]
-		public decimal D1EstimatedDeposit;
+		public decimal? D1EstimatedDeposit;
 		[JsonProperty("d1_slby_exct_amt")]
-		public decimal D1SellBuySettlementAmount;
+		public decimal? D1SellBuySettlementAmount;
 		[JsonProperty("d1_buy_exct_amt")]
-		public decimal D1BuySettlementAmount;
+		public decimal? D1BuySettlementAmount;
 		[JsonProperty("d1_out_rep_mor")]
-		public decimal D1UnpaidRepaymentRequiredAmount;
+		public decimal? D1UnpaidRepaymentRequiredAmount;
 		[JsonProperty("d1_sel_exct_amt")]
-		public decimal D1SellSettlementAmount;
+		public decimal? D1SellSettlementAmount;
 		[JsonProperty("d1_pymn_alow_amt")]
-		public decimal D1WithdrawalAllowedAmount;
+		public decimal? D1WithdrawalAllowedAmount;
 		[JsonProperty("d2_entra")]
-		public decimal D2EstimatedDeposit;
+		public decimal? D2EstimatedDeposit;
 		[JsonProperty("d2_slby_exct_amt")]
-		public decimal D2SellBuySettlementAmount;
+		public decimal? D2SellBuySettlementAmount;
 		[JsonProperty("d2_buy_exct_amt")]
-		public decimal D2BuySettlementAmount;
+		public decimal? D2BuySettlementAmount;
 		[JsonProperty("d2_out_rep_mor")]
-		public decimal D2UnpaidRepaymentRequiredAmount;
+		public decimal? D2UnpaidRepaymentRequiredAmount;
 		[JsonProperty("d2_sel_exct_amt")]
-		public decimal D2SellSettlementAmount;
+		public decimal? D2SellSettlementAmount;
 		[JsonProperty("d2_pymn_alow_amt")]
-		public decimal D2WithdrawalAllowedAmount;
+		public decimal? D2WithdrawalAllowedAmount;
 		[JsonProperty("50stk_ord_alow_amt")]
-		public decimal OrderAllowedAmount50Percent;
+		public decimal? OrderAllowedAmount50Percent;
 		[JsonProperty("60stk_ord_alow_amt")]
-		public decimal OrderAllowedAmount60Percent;
+		public decimal? OrderAllowedAmount60Percent;
 		[JsonProperty("stk_entr_prst")]
 		public IEnumerable<KiwoomAccountGetDepositItem>? StockDepositItems;
 	}
@@ -535,31 +535,31 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("crnc_cd")]
 		public string CurrencyCode = string.Empty;
 		[JsonProperty("fx_entr")]
-		public decimal ForeignCurrencyDeposit;
+		public decimal? ForeignCurrencyDeposit;
 		[JsonProperty("fc_krw_repl_evlta")]
-		public decimal KRWReplenishmentEvaluationAmount;
+		public decimal? KRWReplenishmentEvaluationAmount;
 		[JsonProperty("fc_trst_profa")]
-		public decimal OverseasStockMargin;
+		public decimal? OverseasStockMargin;
 		[JsonProperty("pymn_alow_amt")]
-		public decimal WithdrawalAllowedAmount;
+		public decimal? WithdrawalAllowedAmount;
 		[JsonProperty("pymn_alow_amt_entr")]
-		public decimal WithdrawalAllowedAmountDeposit;
+		public decimal? WithdrawalAllowedAmountDeposit;
 		[JsonProperty("ord_alow_amt_entr")]
-		public decimal OrderAllowedAmountDeposit;
+		public decimal? OrderAllowedAmountDeposit;
 		[JsonProperty("fc_uncla")]
-		public decimal ForeignCurrencyUnpaidTotal;
+		public decimal? ForeignCurrencyUnpaidTotal;
 		[JsonProperty("fc_ch_uncla")]
-		public decimal ForeignCurrencyCashUnpaid;
+		public decimal? ForeignCurrencyCashUnpaid;
 		[JsonProperty("dly_amt")]
-		public decimal DelinquencyAmount;
+		public decimal? DelinquencyAmount;
 		[JsonProperty("d1_fx_entr")]
-		public decimal D1ForeignCurrencyDeposit;
+		public decimal? D1ForeignCurrencyDeposit;
 		[JsonProperty("d2_fx_entr")]
-		public decimal D2ForeignCurrencyDeposit;
+		public decimal? D2ForeignCurrencyDeposit;
 		[JsonProperty("d3_fx_entr")]
-		public decimal D3ForeignCurrencyDeposit;
+		public decimal? D3ForeignCurrencyDeposit;
 		[JsonProperty("d4_fx_entr")]
-		public decimal D4ForeignCurrencyDeposit;
+		public decimal? D4ForeignCurrencyDeposit;
 	}
 
 	public record KiwoomAccountGetDailyEstimatedDepositAssets
@@ -572,25 +572,25 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("dt")]
 		public string Date = string.Empty;
 		[JsonProperty("entr")]
-		public decimal DepositAmount;
+		public decimal? DepositAmount;
 		[JsonProperty("grnt_use_amt")]
-		public decimal CollateralLoanAmount;
+		public decimal? CollateralLoanAmount;
 		[JsonProperty("crd_loan")]
-		public decimal CreditLoanAmount;
+		public decimal? CreditLoanAmount;
 		[JsonProperty("ls_grnt")]
-		public decimal LoanCollateralAmount;
+		public decimal? LoanCollateralAmount;
 		[JsonProperty("repl_amt")]
-		public decimal ReplenishmentAmount;
+		public decimal? ReplenishmentAmount;
 		[JsonProperty("prsm_dpst_aset_amt")]
-		public decimal EstimatedDepositAssetAmount;
+		public decimal? EstimatedDepositAssetAmount;
 		[JsonProperty("prsm_dpst_aset_amt_bncr_skip")]
-		public decimal EstimatedDepositAssetAmountExcludingBeneficiarySecurities;
+		public decimal? EstimatedDepositAssetAmountExcludingBeneficiarySecurities;
 	}
 
 	public record KiwoomAccountGetEstimatedDepositAsset
 	{
 		[JsonProperty("prsm_dpst_aset_amt")]
-		public decimal EstimatedDepositAssetAmount;
+		public decimal? EstimatedDepositAssetAmount;
 	}
 
 	public record KiwoomAccountGetEvaluations
@@ -600,37 +600,37 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("brch_nm")]
 		public string BranchName = string.Empty;
 		[JsonProperty("entr")]
-		public decimal DepositAmount;
+		public decimal? DepositAmount;
 		[JsonProperty("d2_entra")]
-		public decimal D2EstimatedDeposit;
+		public decimal? D2EstimatedDeposit;
 		[JsonProperty("tot_est_amt")]
-		public decimal TotalStockBalanceEvaluationAmount;
+		public decimal? TotalStockBalanceEvaluationAmount;
 		[JsonProperty("aset_evlt_amt")]
-		public decimal DepositAssetEvaluationAmount;
+		public decimal? DepositAssetEvaluationAmount;
 		[JsonProperty("tot_pur_amt")]
-		public decimal TotalPurchaseAmount;
+		public decimal? TotalPurchaseAmount;
 		[JsonProperty("prsm_dpst_aset_amt")]
-		public decimal EstimatedDepositAssetAmount;
+		public decimal? EstimatedDepositAssetAmount;
 		[JsonProperty("tot_grnt_sella")]
-		public decimal TotalSellCollateralLoanAmount;
+		public decimal? TotalSellCollateralLoanAmount;
 		[JsonProperty("tdy_lspft_amt")]
-		public decimal TodayInvestmentPrincipalAmount;
+		public decimal? TodayInvestmentPrincipalAmount;
 		[JsonProperty("invt_bsamt")]
-		public decimal CurrentMonthInvestmentPrincipalAmount;
+		public decimal? CurrentMonthInvestmentPrincipalAmount;
 		[JsonProperty("lspft_amt")]
-		public decimal CumulativeInvestmentPrincipalAmount;
+		public decimal? CumulativeInvestmentPrincipalAmount;
 		[JsonProperty("tdy_lspft")]
-		public decimal TodayInvestmentProfitLoss;
+		public decimal? TodayInvestmentProfitLoss;
 		[JsonProperty("lspft2")]
-		public decimal CurrentMonthInvestmentProfitLoss;
+		public decimal? CurrentMonthInvestmentProfitLoss;
 		[JsonProperty("lspft")]
-		public decimal CumulativeInvestmentProfitLoss;
+		public decimal? CumulativeInvestmentProfitLoss;
 		[JsonProperty("tdy_lspft_rt")]
-		public decimal TodayProfitLossRate;
+		public decimal? TodayProfitLossRate;
 		[JsonProperty("lspft_ratio")]
-		public decimal CurrentMonthProfitLossRate;
+		public decimal? CurrentMonthProfitLossRate;
 		[JsonProperty("lspft_rt")]
-		public decimal CumulativeProfitLossRate;
+		public decimal? CumulativeProfitLossRate;
 		[JsonProperty("stk_acnt_evlt_prst")]
 		public IEnumerable<KiwoomAccountGetEvaluationItem>? Items;
 	}
@@ -641,95 +641,95 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("stk_nm")]
 		public string StockName = string.Empty;
 		[JsonProperty("rmnd_qty")]
-		public decimal RemainingQuantity;
+		public decimal? RemainingQuantity;
 		[JsonProperty("avg_prc")]
-		public decimal AveragePrice;
+		public decimal? AveragePrice;
 		[JsonProperty("cur_prc")]
-		public decimal CurrentPrice;
+		public decimal? CurrentPrice;
 		[JsonProperty("evlt_amt")]
-		public decimal EvaluationAmount;
+		public decimal? EvaluationAmount;
 		[JsonProperty("pl_amt")]
-		public decimal ProfitLossAmount;
+		public decimal? ProfitLossAmount;
 		[JsonProperty("pl_rt")]
-		public decimal ProfitLossRate;
+		public decimal? ProfitLossRate;
 		[JsonProperty("loan_dt")]
 		public string LoanDate = string.Empty;
 		[JsonProperty("pur_amt")]
-		public decimal PurchaseAmount;
+		public decimal? PurchaseAmount;
 		[JsonProperty("setl_remn")]
-		public decimal SettlementBalance;
+		public decimal? SettlementBalance;
 		[JsonProperty("pred_buyq")]
-		public decimal PreviousDayBuyQuantity;
+		public decimal? PreviousDayBuyQuantity;
 		[JsonProperty("pred_sellq")]
-		public decimal PreviousDaySellQuantity;
+		public decimal? PreviousDaySellQuantity;
 		[JsonProperty("tdy_buyq")]
-		public decimal TodayBuyQuantity;
+		public decimal? TodayBuyQuantity;
 		[JsonProperty("tdy_sellq")]
-		public decimal TodaySellQuantity;
+		public decimal? TodaySellQuantity;
 	}
 
 	public record KiwoomAccountGetContractBalances
 	{
 		[JsonProperty("entr")]
-		public decimal DepositAmount;
+		public decimal? DepositAmount;
 		[JsonProperty("entr_d1")]
-		public decimal DepositAmountD1;
+		public decimal? DepositAmountD1;
 		[JsonProperty("entr_d2")]
-		public decimal DepositAmountD2;
+		public decimal? DepositAmountD2;
 		[JsonProperty("pymn_alow_amt")]
-		public decimal WithdrawalAllowedAmount;
+		public decimal? WithdrawalAllowedAmount;
 		[JsonProperty("uncl_stk_amt")]
-		public decimal UnsettledAmount;
+		public decimal? UnsettledAmount;
 		[JsonProperty("repl_amt")]
-		public decimal ReplenishmentAmount;
+		public decimal? ReplenishmentAmount;
 		[JsonProperty("rght_repl_amt")]
-		public decimal RightsReplenishmentAmount;
+		public decimal? RightsReplenishmentAmount;
 		[JsonProperty("ord_alowa")]
-		public decimal CashOrderAllowedAmount;
+		public decimal? CashOrderAllowedAmount;
 		[JsonProperty("ch_uncla")]
-		public decimal CashUnsettledAmount;
+		public decimal? CashUnsettledAmount;
 		[JsonProperty("crd_int_npay_gold")]
-		public decimal CreditInterestUnpaidAmount;
+		public decimal? CreditInterestUnpaidAmount;
 		[JsonProperty("etc_loana")]
-		public decimal OtherLoanAmount;
+		public decimal? OtherLoanAmount;
 		[JsonProperty("nrpy_loan")]
-		public decimal UnpaidLoanAmount;
+		public decimal? UnpaidLoanAmount;
 		[JsonProperty("profa_ch")]
-		public decimal MarginCash;
+		public decimal? MarginCash;
 		[JsonProperty("repl_profa")]
-		public decimal MarginReplenishment;
+		public decimal? MarginReplenishment;
 		[JsonProperty("stk_buy_tot_amt")]
-		public decimal TotalStockPurchaseAmount;
+		public decimal? TotalStockPurchaseAmount;
 		[JsonProperty("evlt_amt_tot")]
-		public decimal TotalEvaluationAmount;
+		public decimal? TotalEvaluationAmount;
 		[JsonProperty("tot_pl_tot")]
-		public decimal TotalProfitLossAmount;
+		public decimal? TotalProfitLossAmount;
 		[JsonProperty("tot_pl_rt")]
-		public decimal TotalProfitLossRate;
+		public decimal? TotalProfitLossRate;
 		[JsonProperty("tot_re_buy_alowa")]
-		public decimal TotalRebuyAllowedAmount;
+		public decimal? TotalRebuyAllowedAmount;
 		[JsonProperty("20ord_alow_amt")]
-		public decimal OrderAllowedAmount20Percent;
+		public decimal? OrderAllowedAmount20Percent;
 		[JsonProperty("30ord_alow_amt")]
-		public decimal OrderAllowedAmount30Percent;
+		public decimal? OrderAllowedAmount30Percent;
 		[JsonProperty("40ord_alow_amt")]
-		public decimal OrderAllowedAmount40Percent;
+		public decimal? OrderAllowedAmount40Percent;
 		[JsonProperty("50ord_alow_amt")]
-		public decimal OrderAllowedAmount50Percent;
+		public decimal? OrderAllowedAmount50Percent;
 		[JsonProperty("60ord_alow_amt")]
-		public decimal OrderAllowedAmount60Percent;
+		public decimal? OrderAllowedAmount60Percent;
 		[JsonProperty("100ord_alow_amt")]
-		public decimal OrderAllowedAmount100Percent;
+		public decimal? OrderAllowedAmount100Percent;
 		[JsonProperty("crd_loan_tot")]
-		public decimal TotalCreditLoan;
+		public decimal? TotalCreditLoan;
 		[JsonProperty("crd_loan_ls_tot")]
-		public decimal TotalCreditLoanAndLoan;
+		public decimal? TotalCreditLoanAndLoan;
 		[JsonProperty("crd_grnt_rt")]
-		public decimal CreditCollateralRatio;
+		public decimal? CreditCollateralRatio;
 		[JsonProperty("dpst_grnt_use_amt_amt")]
-		public decimal DepositCollateralLoanAmount;
+		public decimal? DepositCollateralLoanAmount;
 		[JsonProperty("grnt_loan_amt")]
-		public decimal SellCollateralLoanAmount;
+		public decimal? SellCollateralLoanAmount;
 		[JsonProperty("stk_cntr_remn")]
 		public IEnumerable<KiwoomAccountGetContractBalanceItem>? Items;
 	}
@@ -746,21 +746,21 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("stk_nm")]
 		public string StockName = string.Empty;
 		[JsonProperty("setl_remn")]
-		public decimal SettlementBalance;
+		public decimal? SettlementBalance;
 		[JsonProperty("cur_qty")]
-		public decimal CurrentQuantity;
+		public decimal? CurrentQuantity;
 		[JsonProperty("cur_prc")]
-		public decimal CurrentPrice;
+		public decimal? CurrentPrice;
 		[JsonProperty("buy_uv")]
-		public decimal BuyUnitPrice;
+		public decimal? BuyUnitPrice;
 		[JsonProperty("pur_amt")]
-		public decimal PurchaseAmount;
+		public decimal? PurchaseAmount;
 		[JsonProperty("evlt_amt")]
-		public decimal EvaluationAmount;
+		public decimal? EvaluationAmount;
 		[JsonProperty("evltv_prft")]
-		public decimal EvaluationProfitLoss;
+		public decimal? EvaluationProfitLoss;
 		[JsonProperty("pl_rt")]
-		public decimal ProfitLossRate;
+		public decimal? ProfitLossRate;
 	}
 
 	public record KiwoomAccountGetOrderContractDetails
@@ -779,18 +779,18 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("crd_tp")]
 		public string CreditType = string.Empty;
 		[JsonProperty("ord_qty")]
-		public decimal OrderQuantity;
+		public decimal? OrderQuantity;
 		[JsonProperty("ord_uv")]
-		public decimal OrderUnitPrice;
+		public decimal? OrderUnitPrice;
 		[JsonProperty("cnfm_qty")]
-		public decimal ConfirmedQuantity;
+		public decimal? ConfirmedQuantity;
 		[JsonProperty("acpt_tp")]
 		public string AcceptanceType = string.Empty;
 		[JsonProperty("rsrv_tp")]
 		public string ReservationType = string.Empty;
 		[JsonProperty("ord_tm")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan OrderTime;
+		public TimeSpan? OrderTime;
 		[JsonProperty("ori_ord")]
 		public string OriginalOrder = string.Empty;
 		[JsonProperty("stk_nm")]
@@ -800,22 +800,22 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("loan_dt")]
 		public string LoanDate = string.Empty;
 		[JsonProperty("cntr_qty")]
-		public decimal ContractQuantity;
+		public decimal? ContractQuantity;
 		[JsonProperty("cntr_uv")]
-		public decimal ContractUnitPrice;
+		public decimal? ContractUnitPrice;
 		[JsonProperty("ord_remnq")]
-		public decimal OrderRemainingQuantity;
+		public decimal? OrderRemainingQuantity;
 		[JsonProperty("comm_ord_tp")]
 		public string CommunicationOrderType = string.Empty;
 		[JsonProperty("mdfy_cncl")]
 		public string ModifyCancel = string.Empty;
 		[JsonProperty("cnfm_tm")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan ConfirmTime;
+		public TimeSpan? ConfirmTime;
 		[JsonProperty("dmst_stex_tp")]
 		public string DomesticStockExchangeType = string.Empty;
 		[JsonProperty("cond_uv")]
-		public decimal ConditionUnitPrice;
+		public decimal? ConditionUnitPrice;
 	}
 
 	public record KiwoomAccountGetNextDaySettlements
@@ -827,9 +827,9 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? SettlementDate;
 		[JsonProperty("sell_amt_sum")]
-		public decimal SellSettlementSum;
+		public decimal? SellSettlementSum;
 		[JsonProperty("buy_amt_sum")]
-		public decimal BuySettlementSum;
+		public decimal? BuySettlementSum;
 		[JsonProperty("acnt_nxdy_setl_frcs_array")]
 		public IEnumerable<KiwoomAccountGetNextDaySettlementItem>? Items;
 	}
@@ -842,27 +842,27 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("loan_dt")]
 		public string LoanDate = string.Empty;
 		[JsonProperty("qty")]
-		public decimal Quantity;
+		public decimal? Quantity;
 		[JsonProperty("engg_amt")]
-		public decimal ContractAmount;
+		public decimal? ContractAmount;
 		[JsonProperty("cmsn")]
-		public decimal Commission;
+		public decimal? Commission;
 		[JsonProperty("incm_tax")]
-		public decimal IncomeTax;
+		public decimal? IncomeTax;
 		[JsonProperty("rstx")]
-		public decimal SpecialTax;
+		public decimal? SpecialTax;
 		[JsonProperty("stk_nm")]
 		public string StockName = string.Empty;
 		[JsonProperty("sell_tp")]
 		public string SellType = string.Empty;
 		[JsonProperty("unp")]
-		public decimal UnitPrice;
+		public decimal? UnitPrice;
 		[JsonProperty("exct_amt")]
-		public decimal SettlementAmount;
+		public decimal? SettlementAmount;
 		[JsonProperty("trde_tax")]
-		public decimal TradeTax;
+		public decimal? TradeTax;
 		[JsonProperty("resi_tax")]
-		public decimal ResidentTax;
+		public decimal? ResidentTax;
 		[JsonProperty("crd_tp")]
 		public string CreditType = string.Empty;
 	}
@@ -891,11 +891,11 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("io_tp_nm")]
 		public string OrderTypeName = string.Empty;
 		[JsonProperty("ord_qty")]
-		public decimal OrderQuantity;
+		public decimal? OrderQuantity;
 		[JsonProperty("ord_uv")]
-		public decimal OrderUnitPrice;
+		public decimal? OrderUnitPrice;
 		[JsonProperty("cnfm_qty")]
-		public decimal ConfirmedQuantity;
+		public decimal? ConfirmedQuantity;
 		[JsonProperty("rsrv_oppo")]
 		public string ReservationOpposite = string.Empty;
 		[JsonProperty("cntr_no")]
@@ -911,321 +911,321 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("crd_deal_tp")]
 		public string CreditTransactionType = string.Empty;
 		[JsonProperty("cntr_qty")]
-		public decimal ContractQuantity;
+		public decimal? ContractQuantity;
 		[JsonProperty("cntr_uv")]
-		public decimal ContractUnitPrice;
+		public decimal? ContractUnitPrice;
 		[JsonProperty("comm_ord_tp")]
 		public string CommunicationOrderType = string.Empty;
 		[JsonProperty("mdfy_cncl_tp")]
 		public string ModifyCancelType = string.Empty;
 		[JsonProperty("cntr_tm")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan ContractTime;
+		public TimeSpan? ContractTime;
 		[JsonProperty("dmst_stex_tp")]
 		public string DomesticStockExchangeType = string.Empty;
 		[JsonProperty("cond_uv")]
-		public decimal ConditionUnitPrice;
+		public decimal? ConditionUnitPrice;
 	}
 
 	public record KiwoomAccountGetMarginOrderAmounts
 	{
 		[JsonProperty("profa_20ord_alow_amt")]
-		public decimal MarginOrderAllowedAmount20Percent;
+		public decimal? MarginOrderAllowedAmount20Percent;
 		[JsonProperty("profa_20ord_alowq")]
-		public decimal MarginOrderAllowedQuantity20Percent;
+		public decimal? MarginOrderAllowedQuantity20Percent;
 		[JsonProperty("profa_30ord_alow_amt")]
-		public decimal MarginOrderAllowedAmount30Percent;
+		public decimal? MarginOrderAllowedAmount30Percent;
 		[JsonProperty("profa_30ord_alowq")]
-		public decimal MarginOrderAllowedQuantity30Percent;
+		public decimal? MarginOrderAllowedQuantity30Percent;
 		[JsonProperty("profa_40ord_alow_amt")]
-		public decimal MarginOrderAllowedAmount40Percent;
+		public decimal? MarginOrderAllowedAmount40Percent;
 		[JsonProperty("profa_40ord_alowq")]
-		public decimal MarginOrderAllowedQuantity40Percent;
+		public decimal? MarginOrderAllowedQuantity40Percent;
 		[JsonProperty("profa_50ord_alow_amt")]
-		public decimal MarginOrderAllowedAmount50Percent;
+		public decimal? MarginOrderAllowedAmount50Percent;
 		[JsonProperty("profa_50ord_alowq")]
-		public decimal MarginOrderAllowedQuantity50Percent;
+		public decimal? MarginOrderAllowedQuantity50Percent;
 		[JsonProperty("profa_60ord_alow_amt")]
-		public decimal MarginOrderAllowedAmount60Percent;
+		public decimal? MarginOrderAllowedAmount60Percent;
 		[JsonProperty("profa_60ord_alowq")]
-		public decimal MarginOrderAllowedQuantity60Percent;
+		public decimal? MarginOrderAllowedQuantity60Percent;
 		[JsonProperty("profa_rdex_60ord_alow_amt")]
-		public decimal MarginReduced60OrderAllowedAmount;
+		public decimal? MarginReduced60OrderAllowedAmount;
 		[JsonProperty("profa_rdex_60ord_alowq")]
-		public decimal MarginReduced60OrderAllowedQuantity;
+		public decimal? MarginReduced60OrderAllowedQuantity;
 		[JsonProperty("profa_100ord_alow_amt")]
-		public decimal MarginOrderAllowedAmount100Percent;
+		public decimal? MarginOrderAllowedAmount100Percent;
 		[JsonProperty("profa_100ord_alowq")]
-		public decimal MarginOrderAllowedQuantity100Percent;
+		public decimal? MarginOrderAllowedQuantity100Percent;
 		[JsonProperty("pred_reu_alowa")]
-		public decimal PreviousDayReuseAllowedAmount;
+		public decimal? PreviousDayReuseAllowedAmount;
 		[JsonProperty("tdy_reu_alowa")]
-		public decimal TodayReuseAllowedAmount;
+		public decimal? TodayReuseAllowedAmount;
 		[JsonProperty("entr")]
-		public decimal DepositAmount;
+		public decimal? DepositAmount;
 		[JsonProperty("repl_amt")]
-		public decimal ReplenishmentAmount;
+		public decimal? ReplenishmentAmount;
 		[JsonProperty("uncla")]
-		public decimal UnsettledAmount;
+		public decimal? UnsettledAmount;
 		[JsonProperty("ord_pos_repl")]
-		public decimal OrderAllowedReplenishment;
+		public decimal? OrderAllowedReplenishment;
 		[JsonProperty("ord_alowa")]
-		public decimal OrderAllowedCash;
+		public decimal? OrderAllowedCash;
 		[JsonProperty("wthd_alowa")]
-		public decimal WithdrawalAllowedAmount;
+		public decimal? WithdrawalAllowedAmount;
 		[JsonProperty("nxdy_wthd_alowa")]
-		public decimal NextDayWithdrawalAllowedAmount;
+		public decimal? NextDayWithdrawalAllowedAmount;
 		[JsonProperty("pur_amt")]
-		public decimal PurchaseAmount;
+		public decimal? PurchaseAmount;
 		[JsonProperty("cmsn")]
-		public decimal Commission;
+		public decimal? Commission;
 		[JsonProperty("pur_exct_amt")]
-		public decimal PurchaseSettlementAmount;
+		public decimal? PurchaseSettlementAmount;
 		[JsonProperty("d2entra")]
-		public decimal D2EstimatedDeposit;
+		public decimal? D2EstimatedDeposit;
 		[JsonProperty("profa_rdex_aplc_tp")]
-		public KiwoomAccountMarginReductionApplyType MarginReductionApplyType;
+		public KiwoomAccountMarginReductionApplyType? MarginReductionApplyType;
 	}
 
 	public record KiwoomAccountGetMarginOrders
 	{
 		[JsonProperty("stk_profa_rt")]
 		[JsonConverter(typeof(KiwoomPercentConverter))]
-		public decimal StockMarginRate;
+		public decimal? StockMarginRate;
 		[JsonProperty("profa_rt")]
 		[JsonConverter(typeof(KiwoomPercentConverter))]
-		public decimal AccountMarginRate;
+		public decimal? AccountMarginRate;
 		[JsonProperty("aplc_rt")]
 		[JsonConverter(typeof(KiwoomPercentConverter))]
-		public decimal AppliedMarginRate;
+		public decimal? AppliedMarginRate;
 		[JsonProperty("profa_20ord_alow_amt")]
-		public decimal MarginOrderAllowedAmount20Percent;
+		public decimal? MarginOrderAllowedAmount20Percent;
 		[JsonProperty("profa_20ord_alowq")]
-		public decimal MarginOrderAllowedQuantity20Percent;
+		public decimal? MarginOrderAllowedQuantity20Percent;
 		[JsonProperty("profa_20pred_reu_amt")]
-		public decimal MarginPreviousDayReuseAmount20Percent;
+		public decimal? MarginPreviousDayReuseAmount20Percent;
 		[JsonProperty("profa_20tdy_reu_amt")]
-		public decimal MarginTodayReuseAmount20Percent;
+		public decimal? MarginTodayReuseAmount20Percent;
 		[JsonProperty("profa_30ord_alow_amt")]
-		public decimal MarginOrderAllowedAmount30Percent;
+		public decimal? MarginOrderAllowedAmount30Percent;
 		[JsonProperty("profa_30ord_alowq")]
-		public decimal MarginOrderAllowedQuantity30Percent;
+		public decimal? MarginOrderAllowedQuantity30Percent;
 		[JsonProperty("profa_30pred_reu_amt")]
-		public decimal MarginPreviousDayReuseAmount30Percent;
+		public decimal? MarginPreviousDayReuseAmount30Percent;
 		[JsonProperty("profa_30tdy_reu_amt")]
-		public decimal MarginTodayReuseAmount30Percent;
+		public decimal? MarginTodayReuseAmount30Percent;
 		[JsonProperty("profa_40ord_alow_amt")]
-		public decimal MarginOrderAllowedAmount40Percent;
+		public decimal? MarginOrderAllowedAmount40Percent;
 		[JsonProperty("profa_40ord_alowq")]
-		public decimal MarginOrderAllowedQuantity40Percent;
+		public decimal? MarginOrderAllowedQuantity40Percent;
 		[JsonProperty("profa_40pred_reu_amt")]
-		public decimal MarginPreviousDayReuseAmount40Percent;
+		public decimal? MarginPreviousDayReuseAmount40Percent;
 		[JsonProperty("profa_40tdy_reu_amt")]
-		public decimal MarginTodayReuseAmount40Percent;
+		public decimal? MarginTodayReuseAmount40Percent;
 		[JsonProperty("profa_50ord_alow_amt")]
-		public decimal MarginOrderAllowedAmount50Percent;
+		public decimal? MarginOrderAllowedAmount50Percent;
 		[JsonProperty("profa_50ord_alowq")]
-		public decimal MarginOrderAllowedQuantity50Percent;
+		public decimal? MarginOrderAllowedQuantity50Percent;
 		[JsonProperty("profa_50pred_reu_amt")]
-		public decimal MarginPreviousDayReuseAmount50Percent;
+		public decimal? MarginPreviousDayReuseAmount50Percent;
 		[JsonProperty("profa_50tdy_reu_amt")]
-		public decimal MarginTodayReuseAmount50Percent;
+		public decimal? MarginTodayReuseAmount50Percent;
 		[JsonProperty("profa_60ord_alow_amt")]
-		public decimal MarginOrderAllowedAmount60Percent;
+		public decimal? MarginOrderAllowedAmount60Percent;
 		[JsonProperty("profa_60ord_alowq")]
-		public decimal MarginOrderAllowedQuantity60Percent;
+		public decimal? MarginOrderAllowedQuantity60Percent;
 		[JsonProperty("profa_60pred_reu_amt")]
-		public decimal MarginPreviousDayReuseAmount60Percent;
+		public decimal? MarginPreviousDayReuseAmount60Percent;
 		[JsonProperty("profa_60tdy_reu_amt")]
-		public decimal MarginTodayReuseAmount60Percent;
+		public decimal? MarginTodayReuseAmount60Percent;
 		[JsonProperty("profa_100ord_alow_amt")]
-		public decimal MarginOrderAllowedAmount100Percent;
+		public decimal? MarginOrderAllowedAmount100Percent;
 		[JsonProperty("profa_100ord_alowq")]
-		public decimal MarginOrderAllowedQuantity100Percent;
+		public decimal? MarginOrderAllowedQuantity100Percent;
 		[JsonProperty("profa_100pred_reu_amt")]
-		public decimal MarginPreviousDayReuseAmount100Percent;
+		public decimal? MarginPreviousDayReuseAmount100Percent;
 		[JsonProperty("profa_100tdy_reu_amt")]
-		public decimal MarginTodayReuseAmount100Percent;
+		public decimal? MarginTodayReuseAmount100Percent;
 		[JsonProperty("min_ord_alow_amt")]
-		public decimal MinOrderAllowedAmount;
+		public decimal? MinOrderAllowedAmount;
 		[JsonProperty("min_ord_alowq")]
-		public decimal MinOrderAllowedQuantity;
+		public decimal? MinOrderAllowedQuantity;
 		[JsonProperty("min_pred_reu_amt")]
-		public decimal MinPreviousDayReuseAmount;
+		public decimal? MinPreviousDayReuseAmount;
 		[JsonProperty("min_tdy_reu_amt")]
-		public decimal MinTodayReuseAmount;
+		public decimal? MinTodayReuseAmount;
 		[JsonProperty("entr")]
-		public decimal DepositAmount;
+		public decimal? DepositAmount;
 		[JsonProperty("repl_amt")]
-		public decimal ReplenishmentAmount;
+		public decimal? ReplenishmentAmount;
 		[JsonProperty("uncla")]
-		public decimal UnsettledAmount;
+		public decimal? UnsettledAmount;
 		[JsonProperty("ord_pos_repl")]
-		public decimal OrderAllowedReplenishment;
+		public decimal? OrderAllowedReplenishment;
 		[JsonProperty("ord_alowa")]
-		public decimal OrderAllowedCash;
+		public decimal? OrderAllowedCash;
 	}
 
 	public record KiwoomAccountGetAssuranceMarginOrders
 	{
 		[JsonProperty("stk_assr_rt")]
-		public decimal StockAssuranceRate;
+		public decimal? StockAssuranceRate;
 		[JsonProperty("stk_assr_rt_nm")]
 		public string StockAssuranceRateName = string.Empty;
 		[JsonProperty("assr_30ord_alow_amt")]
-		public decimal AssuranceOrderAllowedAmount30Percent;
+		public decimal? AssuranceOrderAllowedAmount30Percent;
 		[JsonProperty("assr_30ord_alowq")]
-		public decimal AssuranceOrderAllowedQuantity30Percent;
+		public decimal? AssuranceOrderAllowedQuantity30Percent;
 		[JsonProperty("assr_30pred_reu_amt")]
-		public decimal AssurancePreviousDayReuseAmount30Percent;
+		public decimal? AssurancePreviousDayReuseAmount30Percent;
 		[JsonProperty("assr_30tdy_reu_amt")]
-		public decimal AssuranceTodayReuseAmount30Percent;
+		public decimal? AssuranceTodayReuseAmount30Percent;
 		[JsonProperty("assr_40ord_alow_amt")]
-		public decimal AssuranceOrderAllowedAmount40Percent;
+		public decimal? AssuranceOrderAllowedAmount40Percent;
 		[JsonProperty("assr_40ord_alowq")]
-		public decimal AssuranceOrderAllowedQuantity40Percent;
+		public decimal? AssuranceOrderAllowedQuantity40Percent;
 		[JsonProperty("assr_40pred_reu_amt")]
-		public decimal AssurancePreviousDayReuseAmount40Percent;
+		public decimal? AssurancePreviousDayReuseAmount40Percent;
 		[JsonProperty("assr_40tdy_reu_amt")]
-		public decimal AssuranceTodayReuseAmount40Percent;
+		public decimal? AssuranceTodayReuseAmount40Percent;
 		[JsonProperty("assr_50ord_alow_amt")]
-		public decimal AssuranceOrderAllowedAmount50Percent;
+		public decimal? AssuranceOrderAllowedAmount50Percent;
 		[JsonProperty("assr_50ord_alowq")]
-		public decimal AssuranceOrderAllowedQuantity50Percent;
+		public decimal? AssuranceOrderAllowedQuantity50Percent;
 		[JsonProperty("assr_50pred_reu_amt")]
-		public decimal AssurancePreviousDayReuseAmount50Percent;
+		public decimal? AssurancePreviousDayReuseAmount50Percent;
 		[JsonProperty("assr_50tdy_reu_amt")]
-		public decimal AssuranceTodayReuseAmount50Percent;
+		public decimal? AssuranceTodayReuseAmount50Percent;
 		[JsonProperty("assr_60ord_alow_amt")]
-		public decimal AssuranceOrderAllowedAmount60Percent;
+		public decimal? AssuranceOrderAllowedAmount60Percent;
 		[JsonProperty("assr_60ord_alowq")]
-		public decimal AssuranceOrderAllowedQuantity60Percent;
+		public decimal? AssuranceOrderAllowedQuantity60Percent;
 		[JsonProperty("assr_60pred_reu_amt")]
-		public decimal AssurancePreviousDayReuseAmount60Percent;
+		public decimal? AssurancePreviousDayReuseAmount60Percent;
 		[JsonProperty("assr_60tdy_reu_amt")]
-		public decimal AssuranceTodayReuseAmount60Percent;
+		public decimal? AssuranceTodayReuseAmount60Percent;
 		[JsonProperty("entr")]
-		public decimal DepositAmount;
+		public decimal? DepositAmount;
 		[JsonProperty("repl_amt")]
-		public decimal ReplenishmentAmount;
+		public decimal? ReplenishmentAmount;
 		[JsonProperty("uncla")]
-		public decimal UnsettledAmount;
+		public decimal? UnsettledAmount;
 		[JsonProperty("ord_pos_repl")]
-		public decimal OrderAllowedReplenishment;
+		public decimal? OrderAllowedReplenishment;
 		[JsonProperty("ord_alowa")]
-		public decimal OrderAllowedCash;
+		public decimal? OrderAllowedCash;
 		[JsonProperty("out_alowa")]
-		public decimal UnsettledAllowedAmount;
+		public decimal? UnsettledAllowedAmount;
 		[JsonProperty("out_pos_qty")]
-		public decimal UnsettledAllowedQuantity;
+		public decimal? UnsettledAllowedQuantity;
 		[JsonProperty("min_amt")]
-		public decimal MinimumAmountNotAllowedUnsettled;
+		public decimal? MinimumAmountNotAllowedUnsettled;
 		[JsonProperty("min_qty")]
-		public decimal MinimumQuantityNotAllowedUnsettled;
+		public decimal? MinimumQuantityNotAllowedUnsettled;
 	}
 
 	public record KiwoomAccountGetMarginDetails
 	{
 		[JsonProperty("tdy_reu_objt_amt")]
-		public decimal TodayReuseTargetAmount;
+		public decimal? TodayReuseTargetAmount;
 		[JsonProperty("tdy_reu_use_amt")]
-		public decimal TodayReuseUsedAmount;
+		public decimal? TodayReuseUsedAmount;
 		[JsonProperty("tdy_reu_alowa")]
-		public decimal TodayReuseAllowedAmount;
+		public decimal? TodayReuseAllowedAmount;
 		[JsonProperty("tdy_reu_lmtt_amt")]
-		public decimal TodayReuseLimitAmount;
+		public decimal? TodayReuseLimitAmount;
 		[JsonProperty("tdy_reu_alowa_fin")]
-		public decimal TodayReuseAllowedFinalAmount;
+		public decimal? TodayReuseAllowedFinalAmount;
 		[JsonProperty("pred_reu_objt_amt")]
-		public decimal PreviousDayReuseTargetAmount;
+		public decimal? PreviousDayReuseTargetAmount;
 		[JsonProperty("pred_reu_use_amt")]
-		public decimal PreviousDayReuseUsedAmount;
+		public decimal? PreviousDayReuseUsedAmount;
 		[JsonProperty("pred_reu_alowa")]
-		public decimal PreviousDayReuseAllowedAmount;
+		public decimal? PreviousDayReuseAllowedAmount;
 		[JsonProperty("pred_reu_lmtt_amt")]
-		public decimal PreviousDayReuseLimitAmount;
+		public decimal? PreviousDayReuseLimitAmount;
 		[JsonProperty("pred_reu_alowa_fin")]
-		public decimal PreviousDayReuseAllowedFinalAmount;
+		public decimal? PreviousDayReuseAllowedFinalAmount;
 		[JsonProperty("ch_amt")]
-		public decimal CashAmount;
+		public decimal? CashAmount;
 		[JsonProperty("ch_profa")]
-		public decimal CashMargin;
+		public decimal? CashMargin;
 		[JsonProperty("use_pos_ch")]
-		public decimal CashUsableAmount;
+		public decimal? CashUsableAmount;
 		[JsonProperty("ch_use_lmtt_amt")]
-		public decimal CashUseLimitAmount;
+		public decimal? CashUseLimitAmount;
 		[JsonProperty("use_pos_ch_fin")]
-		public decimal CashUsableFinalAmount;
+		public decimal? CashUsableFinalAmount;
 		[JsonProperty("repl_amt_amt")]
-		public decimal ReplenishmentAmount;
+		public decimal? ReplenishmentAmount;
 		[JsonProperty("repl_profa")]
-		public decimal ReplenishmentMargin;
+		public decimal? ReplenishmentMargin;
 		[JsonProperty("use_pos_repl")]
-		public decimal ReplenishmentUsableAmount;
+		public decimal? ReplenishmentUsableAmount;
 		[JsonProperty("repl_use_lmtt_amt")]
-		public decimal ReplenishmentUseLimitAmount;
+		public decimal? ReplenishmentUseLimitAmount;
 		[JsonProperty("use_pos_repl_fin")]
-		public decimal ReplenishmentUsableFinalAmount;
+		public decimal? ReplenishmentUsableFinalAmount;
 		[JsonProperty("crd_grnta_ch")]
-		public decimal CreditGuaranteeCash;
+		public decimal? CreditGuaranteeCash;
 		[JsonProperty("crd_grnta_repl")]
-		public decimal CreditGuaranteeReplenishment;
+		public decimal? CreditGuaranteeReplenishment;
 		[JsonProperty("crd_grnt_ch")]
-		public decimal CreditCollateralCash;
+		public decimal? CreditCollateralCash;
 		[JsonProperty("crd_grnt_repl")]
-		public decimal CreditCollateralReplenishment;
+		public decimal? CreditCollateralReplenishment;
 		[JsonProperty("uncla")]
-		public decimal UnsettledAmount;
+		public decimal? UnsettledAmount;
 		[JsonProperty("ls_grnt_reu_gold")]
-		public decimal LoanCollateralReuseAmount;
+		public decimal? LoanCollateralReuseAmount;
 		[JsonProperty("20ord_alow_amt")]
-		public decimal OrderAllowedAmount20Percent;
+		public decimal? OrderAllowedAmount20Percent;
 		[JsonProperty("30ord_alow_amt")]
-		public decimal OrderAllowedAmount30Percent;
+		public decimal? OrderAllowedAmount30Percent;
 		[JsonProperty("40ord_alow_amt")]
-		public decimal OrderAllowedAmount40Percent;
+		public decimal? OrderAllowedAmount40Percent;
 		[JsonProperty("50ord_alow_amt")]
-		public decimal OrderAllowedAmount50Percent;
+		public decimal? OrderAllowedAmount50Percent;
 		[JsonProperty("60ord_alow_amt")]
-		public decimal OrderAllowedAmount60Percent;
+		public decimal? OrderAllowedAmount60Percent;
 		[JsonProperty("100ord_alow_amt")]
-		public decimal OrderAllowedAmount100Percent;
+		public decimal? OrderAllowedAmount100Percent;
 		[JsonProperty("tdy_crd_rpya_loss_amt")]
-		public decimal TodayCreditRepaymentLossAmount;
+		public decimal? TodayCreditRepaymentLossAmount;
 		[JsonProperty("pred_crd_rpya_loss_amt")]
-		public decimal PreviousDayCreditRepaymentLossAmount;
+		public decimal? PreviousDayCreditRepaymentLossAmount;
 		[JsonProperty("tdy_ls_rpya_loss_repl_profa")]
-		public decimal TodayLoanRepaymentLossReplenishmentMargin;
+		public decimal? TodayLoanRepaymentLossReplenishmentMargin;
 		[JsonProperty("pred_ls_rpya_loss_repl_profa")]
-		public decimal PreviousDayLoanRepaymentLossReplenishmentMargin;
+		public decimal? PreviousDayLoanRepaymentLossReplenishmentMargin;
 		[JsonProperty("evlt_repl_amt_spg_use_skip")]
-		public decimal EvaluationReplenishmentAmountExcludeSpotUse;
+		public decimal? EvaluationReplenishmentAmountExcludeSpotUse;
 		[JsonProperty("evlt_repl_rt")]
-		public decimal EvaluationReplenishmentRate;
+		public decimal? EvaluationReplenishmentRate;
 		[JsonProperty("crd_repl_profa")]
-		public decimal CreditReplenishmentMargin;
+		public decimal? CreditReplenishmentMargin;
 		[JsonProperty("ch_ord_repl_profa")]
-		public decimal CashOrderReplenishmentMargin;
+		public decimal? CashOrderReplenishmentMargin;
 		[JsonProperty("crd_ord_repl_profa")]
-		public decimal CreditOrderReplenishmentMargin;
+		public decimal? CreditOrderReplenishmentMargin;
 		[JsonProperty("crd_repl_conv_gold")]
-		public decimal CreditReplenishmentConvertedAmount;
+		public decimal? CreditReplenishmentConvertedAmount;
 		[JsonProperty("repl_alowa")]
-		public decimal ReplenishmentAllowedAmountCashLimit;
+		public decimal? ReplenishmentAllowedAmountCashLimit;
 		[JsonProperty("repl_alowa_2")]
-		public decimal ReplenishmentAllowedAmountCreditLimit;
+		public decimal? ReplenishmentAllowedAmountCreditLimit;
 		[JsonProperty("ch_repl_lck_gold")]
-		public decimal CashReplenishmentShortageAmount;
+		public decimal? CashReplenishmentShortageAmount;
 		[JsonProperty("crd_repl_lck_gold")]
-		public decimal CreditReplenishmentShortageAmount;
+		public decimal? CreditReplenishmentShortageAmount;
 		[JsonProperty("ch_ord_alow_repla")]
-		public decimal CashOrderAllowedReplenishmentAmount;
+		public decimal? CashOrderAllowedReplenishmentAmount;
 		[JsonProperty("crd_ord_alow_repla")]
-		public decimal CreditOrderAllowedReplenishmentAmount;
+		public decimal? CreditOrderAllowedReplenishmentAmount;
 		[JsonProperty("d2vexct_entr")]
-		public decimal D2EstimatedSettlementDeposit;
+		public decimal? D2EstimatedSettlementDeposit;
 		[JsonProperty("d2ch_ord_alow_amt")]
-		public decimal D2CashOrderAllowedAmount;
+		public decimal? D2CashOrderAllowedAmount;
 	}
 
 	public record KiwoomAccountGetConsignmentTrades
@@ -1246,35 +1246,35 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("crd_deal_tp_nm")]
 		public string CreditDealTypeName = string.Empty;
 		[JsonProperty("exct_amt")]
-		public decimal SettlementAmount;
+		public decimal? SettlementAmount;
 		[JsonProperty("loan_amt_rpya")]
-		public decimal LoanRepaymentAmount;
+		public decimal? LoanRepaymentAmount;
 		[JsonProperty("fc_trde_amt")]
-		public decimal ForeignTradeAmount;
+		public decimal? ForeignTradeAmount;
 		[JsonProperty("fc_exct_amt")]
-		public decimal ForeignSettlementAmount;
+		public decimal? ForeignSettlementAmount;
 		[JsonProperty("entra_remn")]
-		public decimal DepositBalance;
+		public decimal? DepositBalance;
 		[JsonProperty("crnc_cd")]
 		public string CurrencyCode = string.Empty;
 		[JsonProperty("trde_ocr_tp")]
-		public KiwoomAccountTradeCategoryType TradeCategory;
+		public KiwoomAccountTradeCategoryType? TradeCategory;
 		[JsonProperty("trde_kind_nm")]
 		public string TradeCategoryName = string.Empty;
 		[JsonProperty("stk_nm")]
 		public string StockName = string.Empty;
 		[JsonProperty("trde_amt")]
-		public decimal TradeAmount;
+		public decimal? TradeAmount;
 		[JsonProperty("trde_agri_tax")]
-		public decimal TradeAndSpecialTax;
+		public decimal? TradeAndSpecialTax;
 		[JsonProperty("rpy_diffa")]
-		public decimal RepaymentDifference;
+		public decimal? RepaymentDifference;
 		[JsonProperty("fc_trde_tax")]
-		public decimal ForeignTradeTax;
+		public decimal? ForeignTradeTax;
 		[JsonProperty("dly_sum")]
-		public decimal OverdueSum;
+		public decimal? OverdueSum;
 		[JsonProperty("fc_entra")]
-		public decimal ForeignDepositBalance;
+		public decimal? ForeignDepositBalance;
 		[JsonProperty("mdia_tp_nm")]
 		public string MediaTypeName = string.Empty;
 		[JsonProperty("io_tp")]
@@ -1286,20 +1286,20 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("stk_cd")]
 		public string StockCode = string.Empty;
 		[JsonProperty("trde_qty_jwa_cnt")]
-		public decimal TradeQuantityOrShareCount;
+		public decimal? TradeQuantityOrShareCount;
 		[JsonProperty("cmsn")]
-		public decimal Commission;
+		public decimal? Commission;
 		[JsonProperty("int_ls_usfe")]
-		public decimal InterestOrLoanUsageFee;
+		public decimal? InterestOrLoanUsageFee;
 		[JsonProperty("fc_cmsn")]
-		public decimal ForeignCommission;
+		public decimal? ForeignCommission;
 		[JsonProperty("fc_dly_sum")]
-		public decimal ForeignOverdueSum;
+		public decimal? ForeignOverdueSum;
 		[JsonProperty("vlbl_nowrm")]
-		public decimal MarketSecuritiesBalance;
+		public decimal? MarketSecuritiesBalance;
 		[JsonProperty("proc_tm")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan ProcessingTime;
+		public TimeSpan? ProcessingTime;
 		[JsonProperty("isin_cd")]
 		public string ISINCode = string.Empty;
 		[JsonProperty("stex_cd")]
@@ -1307,15 +1307,15 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("stex_nm")]
 		public string StockExchangeName = string.Empty;
 		[JsonProperty("trde_unit")]
-		public decimal TradeUnitOrExchangeRate;
+		public decimal? TradeUnitOrExchangeRate;
 		[JsonProperty("incm_resi_tax")]
-		public decimal IncomeResidentTax;
+		public decimal? IncomeResidentTax;
 		[JsonProperty("loan_dt")]
 		public string LoanDate = string.Empty;
 		[JsonProperty("uncl_ocr")]
-		public decimal UnsettledAmountOriginal;
+		public decimal? UnsettledAmountOriginal;
 		[JsonProperty("rpym_sum")]
-		public decimal RepaymentSum;
+		public decimal? RepaymentSum;
 		[JsonProperty("cntr_dt")]
 		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? ContractDate;
@@ -1328,15 +1328,15 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("trde_stle")]
 		public string TradeTypeDetail = string.Empty;
 		[JsonProperty("txon_base_pric")]
-		public decimal TaxBasePrice;
+		public decimal? TaxBasePrice;
 		[JsonProperty("tax_sum_cmsn")]
-		public decimal TaxCommissionSum;
+		public decimal? TaxCommissionSum;
 		[JsonProperty("frgn_pay_txam")]
-		public decimal ForeignPaymentTaxAmount;
+		public decimal? ForeignPaymentTaxAmount;
 		[JsonProperty("fc_uncl_ocr")]
-		public decimal ForeignUnsettledAmount;
+		public decimal? ForeignUnsettledAmount;
 		[JsonProperty("rpym_sum_fr")]
-		public decimal RepaymentSumForeign;
+		public decimal? RepaymentSumForeign;
 		[JsonProperty("rcpmnyer")]
 		public string Depositor = string.Empty;
 		[JsonProperty("trde_prtc_tp")]
@@ -1352,151 +1352,151 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("dept_nm")]
 		public string ManagerBranch = string.Empty;
 		[JsonProperty("entr_fr")]
-		public decimal DepositAmountStart;
+		public decimal? DepositAmountStart;
 		[JsonProperty("entr_to")]
-		public decimal DepositAmountEnd;
+		public decimal? DepositAmountEnd;
 		[JsonProperty("scrt_evlt_amt_fr")]
-		public decimal SecuritiesEvaluationAmountStart;
+		public decimal? SecuritiesEvaluationAmountStart;
 		[JsonProperty("scrt_evlt_amt_to")]
-		public decimal SecuritiesEvaluationAmountEnd;
+		public decimal? SecuritiesEvaluationAmountEnd;
 		[JsonProperty("ls_grnt_fr")]
-		public decimal LoanCollateralStart;
+		public decimal? LoanCollateralStart;
 		[JsonProperty("ls_grnt_to")]
-		public decimal LoanCollateralEnd;
+		public decimal? LoanCollateralEnd;
 		[JsonProperty("crd_loan_fr")]
-		public decimal CreditLoanAmountStart;
+		public decimal? CreditLoanAmountStart;
 		[JsonProperty("crd_loan_to")]
-		public decimal CreditLoanAmountEnd;
+		public decimal? CreditLoanAmountEnd;
 		[JsonProperty("ch_uncla_fr")]
-		public decimal CashUnsettledAmountStart;
+		public decimal? CashUnsettledAmountStart;
 		[JsonProperty("ch_uncla_to")]
-		public decimal CashUnsettledAmountEnd;
+		public decimal? CashUnsettledAmountEnd;
 		[JsonProperty("krw_asgna_fr")]
-		public decimal KRWSubstituteAmountStart;
+		public decimal? KRWSubstituteAmountStart;
 		[JsonProperty("krw_asgna_to")]
-		public decimal KRWSubstituteAmountEnd;
+		public decimal? KRWSubstituteAmountEnd;
 		[JsonProperty("ls_evlta_fr")]
-		public decimal LoanEvaluationAmountStart;
+		public decimal? LoanEvaluationAmountStart;
 		[JsonProperty("ls_evlta_to")]
-		public decimal LoanEvaluationAmountEnd;
+		public decimal? LoanEvaluationAmountEnd;
 		[JsonProperty("rght_evlta_fr")]
-		public decimal RightEvaluationAmountStart;
+		public decimal? RightEvaluationAmountStart;
 		[JsonProperty("rght_evlta_to")]
-		public decimal RightEvaluationAmountEnd;
+		public decimal? RightEvaluationAmountEnd;
 		[JsonProperty("loan_amt_fr")]
-		public decimal LoanAmountStart;
+		public decimal? LoanAmountStart;
 		[JsonProperty("loan_amt_to")]
-		public decimal LoanAmountEnd;
+		public decimal? LoanAmountEnd;
 		[JsonProperty("etc_loana_fr")]
-		public decimal OtherLoanAmountStart;
+		public decimal? OtherLoanAmountStart;
 		[JsonProperty("etc_loana_to")]
-		public decimal OtherLoanAmountEnd;
+		public decimal? OtherLoanAmountEnd;
 		[JsonProperty("crd_int_npay_gold_fr")]
-		public decimal CreditInterestUnpaidAmountStart;
+		public decimal? CreditInterestUnpaidAmountStart;
 		[JsonProperty("crd_int_npay_gold_to")]
-		public decimal CreditInterestUnpaidAmountEnd;
+		public decimal? CreditInterestUnpaidAmountEnd;
 		[JsonProperty("crd_int_fr")]
-		public decimal CreditInterestStart;
+		public decimal? CreditInterestStart;
 		[JsonProperty("crd_int_to")]
-		public decimal CreditInterestEnd;
+		public decimal? CreditInterestEnd;
 		[JsonProperty("tot_amt_fr")]
-		public decimal TotalNetAssetAmountStart;
+		public decimal? TotalNetAssetAmountStart;
 		[JsonProperty("tot_amt_to")]
-		public decimal TotalNetAssetAmountEnd;
+		public decimal? TotalNetAssetAmountEnd;
 		[JsonProperty("invt_bsamt")]
-		public decimal AverageInvestmentPrincipalAmount;
+		public decimal? AverageInvestmentPrincipalAmount;
 		[JsonProperty("evltv_prft")]
-		public decimal EvaluationProfitLoss;
+		public decimal? EvaluationProfitLoss;
 		[JsonProperty("prft_rt")]
-		public decimal ProfitRate;
+		public decimal? ProfitRate;
 		[JsonProperty("tern_rt")]
-		public decimal TurnoverRate;
+		public decimal? TurnoverRate;
 		[JsonProperty("termin_tot_trns")]
-		public decimal TotalDepositDuringPeriod;
+		public decimal? TotalDepositDuringPeriod;
 		[JsonProperty("termin_tot_pymn")]
-		public decimal TotalWithdrawalDuringPeriod;
+		public decimal? TotalWithdrawalDuringPeriod;
 		[JsonProperty("termin_tot_inq")]
-		public decimal TotalInwardQuantityDuringPeriod;
+		public decimal? TotalInwardQuantityDuringPeriod;
 		[JsonProperty("termin_tot_outq")]
-		public decimal TotalOutwardQuantityDuringPeriod;
+		public decimal? TotalOutwardQuantityDuringPeriod;
 		[JsonProperty("futr_repl_sella")]
-		public decimal FuturesSubstituteSellAmount;
+		public decimal? FuturesSubstituteSellAmount;
 		[JsonProperty("trst_repl_sella")]
-		public decimal ConsignmentSubstituteSellAmount;
+		public decimal? ConsignmentSubstituteSellAmount;
 	}
 
 	public record KiwoomAccountGetDailyStatus
 	{
 		[JsonProperty("d2_entra")]
-		public decimal D2EstimatedDeposit;
+		public decimal? D2EstimatedDeposit;
 		[JsonProperty("crd_int_npay_gold")]
-		public decimal CreditInterestUnpaidAmount;
+		public decimal? CreditInterestUnpaidAmount;
 		[JsonProperty("etc_loana")]
-		public decimal OtherLoans;
+		public decimal? OtherLoans;
 		[JsonProperty("gnrl_stk_evlt_amt_d2")]
-		public decimal GeneralStockEvaluationAmountD2;
+		public decimal? GeneralStockEvaluationAmountD2;
 		[JsonProperty("dpst_grnt_use_amt_d2")]
-		public decimal DepositCollateralLoanAmountD2;
+		public decimal? DepositCollateralLoanAmountD2;
 		[JsonProperty("crd_stk_evlt_amt_d2")]
-		public decimal CreditCollateralStockEvaluationAmountD2;
+		public decimal? CreditCollateralStockEvaluationAmountD2;
 		[JsonProperty("crd_loan_d2")]
-		public decimal CreditLoanD2;
+		public decimal? CreditLoanD2;
 		[JsonProperty("crd_loan_evlta_d2")]
-		public decimal CreditLoanEvaluationD2;
+		public decimal? CreditLoanEvaluationD2;
 		[JsonProperty("crd_ls_grnt_d2")]
-		public decimal CreditLoanCollateralD2;
+		public decimal? CreditLoanCollateralD2;
 		[JsonProperty("crd_ls_evlta_d2")]
-		public decimal CreditLoanEvaluationAmountD2;
+		public decimal? CreditLoanEvaluationAmountD2;
 		[JsonProperty("ina_amt")]
-		public decimal DepositAmount;
+		public decimal? DepositAmount;
 		[JsonProperty("outa")]
-		public decimal WithdrawalAmount;
+		public decimal? WithdrawalAmount;
 		[JsonProperty("inq_amt")]
-		public decimal IncomingAmount;
+		public decimal? IncomingAmount;
 		[JsonProperty("outq_amt")]
-		public decimal OutgoingAmount;
+		public decimal? OutgoingAmount;
 		[JsonProperty("sell_amt")]
-		public decimal SellAmount;
+		public decimal? SellAmount;
 		[JsonProperty("buy_amt")]
-		public decimal BuyAmount;
+		public decimal? BuyAmount;
 		[JsonProperty("cmsn")]
-		public decimal Commission;
+		public decimal? Commission;
 		[JsonProperty("tax")]
-		public decimal TaxAmount;
+		public decimal? TaxAmount;
 		[JsonProperty("stk_pur_cptal_loan_amt")]
-		public decimal StockPurchaseCapitalLoanAmount;
+		public decimal? StockPurchaseCapitalLoanAmount;
 		[JsonProperty("rp_evlt_amt")]
-		public decimal RPAssessmentAmount;
+		public decimal? RPAssessmentAmount;
 		[JsonProperty("bd_evlt_amt")]
-		public decimal BondAssessmentAmount;
+		public decimal? BondAssessmentAmount;
 		[JsonProperty("elsevlt_amt")]
-		public decimal ELSAssessmentAmount;
+		public decimal? ELSAssessmentAmount;
 		[JsonProperty("crd_int_amt")]
-		public decimal CreditInterestAmount;
+		public decimal? CreditInterestAmount;
 		[JsonProperty("sel_prica_grnt_loan_int_amt_amt")]
-		public decimal SellProceedsCollateralLoanInterestAmount;
+		public decimal? SellProceedsCollateralLoanInterestAmount;
 		[JsonProperty("dvida_amt")]
-		public decimal DividendAmount;
+		public decimal? DividendAmount;
 	}
 
 	public record KiwoomAccountGetEvaluationBalances
 	{
 		[JsonProperty("tot_pur_amt")]
-		public decimal TotalPurchaseAmount;
+		public decimal? TotalPurchaseAmount;
 		[JsonProperty("tot_evlt_amt")]
-		public decimal TotalEvaluationAmount;
+		public decimal? TotalEvaluationAmount;
 		[JsonProperty("tot_evlt_pl")]
-		public decimal TotalEvaluationProfitLossAmount;
+		public decimal? TotalEvaluationProfitLossAmount;
 		[JsonProperty("tot_prft_rt")]
-		public decimal TotalProfitRate;
+		public decimal? TotalProfitRate;
 		[JsonProperty("prsm_dpst_aset_amt")]
-		public decimal EstimatedDepositAssetAmount;
+		public decimal? EstimatedDepositAssetAmount;
 		[JsonProperty("tot_loan_amt")]
-		public decimal TotalLoanAmount;
+		public decimal? TotalLoanAmount;
 		[JsonProperty("tot_crd_loan_amt")]
-		public decimal TotalCreditLoanAmount;
+		public decimal? TotalCreditLoanAmount;
 		[JsonProperty("tot_crd_ls_amt")]
-		public decimal TotalLoanCollateralAmount;
+		public decimal? TotalLoanCollateralAmount;
 		[JsonProperty("acnt_evlt_remn_indv_tot")]
 		public IEnumerable<KiwoomAccountGetEvaluationBalanceItem>? Items;
 	}
@@ -1507,41 +1507,41 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("stk_nm")]
 		public string StockName = string.Empty;
 		[JsonProperty("evltv_prft")]
-		public decimal EvaluationProfitLoss;
+		public decimal? EvaluationProfitLoss;
 		[JsonProperty("prft_rt")]
-		public decimal ProfitRate;
+		public decimal? ProfitRate;
 		[JsonProperty("pur_pric")]
-		public decimal PurchasePrice;
+		public decimal? PurchasePrice;
 		[JsonProperty("pred_close_pric")]
-		public decimal PreviousClosePrice;
+		public decimal? PreviousClosePrice;
 		[JsonProperty("rmnd_qty")]
-		public decimal RemainingQuantity;
+		public decimal? RemainingQuantity;
 		[JsonProperty("trde_able_qty")]
-		public decimal TradableQuantity;
+		public decimal? TradableQuantity;
 		[JsonProperty("cur_prc")]
-		public decimal CurrentPrice;
+		public decimal? CurrentPrice;
 		[JsonProperty("pred_buyq")]
-		public decimal PreviousDayBuyQuantity;
+		public decimal? PreviousDayBuyQuantity;
 		[JsonProperty("pred_sellq")]
-		public decimal PreviousDaySellQuantity;
+		public decimal? PreviousDaySellQuantity;
 		[JsonProperty("tdy_buyq")]
-		public decimal TodayBuyQuantity;
+		public decimal? TodayBuyQuantity;
 		[JsonProperty("tdy_sellq")]
-		public decimal TodaySellQuantity;
+		public decimal? TodaySellQuantity;
 		[JsonProperty("pur_amt")]
-		public decimal PurchaseAmount;
+		public decimal? PurchaseAmount;
 		[JsonProperty("pur_cmsn")]
-		public decimal PurchaseCommission;
+		public decimal? PurchaseCommission;
 		[JsonProperty("evlt_amt")]
-		public decimal EvaluationAmount;
+		public decimal? EvaluationAmount;
 		[JsonProperty("sell_cmsn")]
-		public decimal EvaluationCommission;
+		public decimal? EvaluationCommission;
 		[JsonProperty("tax")]
-		public decimal TaxAmount;
+		public decimal? TaxAmount;
 		[JsonProperty("sum_cmsn")]
-		public decimal TotalCommission;
+		public decimal? TotalCommission;
 		[JsonProperty("poss_rt")]
-		public decimal HoldingRatio;
+		public decimal? HoldingRatio;
 		[JsonProperty("crd_tp")]
 		public string CreditType = string.Empty;
 		[JsonProperty("crd_tp_nm")]

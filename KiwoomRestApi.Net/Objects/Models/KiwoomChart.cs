@@ -211,8 +211,8 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("trde_qty")]
 		public decimal? TradeVolume;
 		[JsonProperty("cntr_tm")]
-		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan? ContractTime;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? ContractTime;
 		[JsonProperty("open_pric")]
 		public decimal? OpenPrice;
 		[JsonProperty("high_pric")]

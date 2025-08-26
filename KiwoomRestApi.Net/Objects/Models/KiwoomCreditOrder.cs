@@ -17,7 +17,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("base_orig_ord_no")]
 		public string BaseOriginalOrderId = string.Empty;
 		[JsonProperty("mdfy_qty")]
-		public decimal ModifyQuantity;
+		public decimal? ModifyQuantity;
 		[JsonProperty("dmst_stex_tp")]
 		public string DomesticExchangeType = string.Empty;
 	}
@@ -29,6 +29,6 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("base_orig_ord_no")]
 		public string BaseOriginalOrderId = string.Empty;
 		[JsonProperty("cncl_qty")]
-		public decimal CancelQuantity;
+		public decimal? CancelQuantity;
 	}
 }

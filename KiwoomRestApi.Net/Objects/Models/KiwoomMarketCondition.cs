@@ -11,174 +11,186 @@ namespace KiwoomRestApi.Net.Objects.Models
 	{
 		[JsonProperty("bid_req_base_tm")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan BidRequestBaseTime;
+		public TimeSpan? BidRequestBaseTime;
 
 		[JsonProperty("sel_10th_pre_req_pre")]
-		public decimal AskLevel10PrevDiff;
+		public decimal? AskLevel10PrevDiff;
 		[JsonProperty("sel_10th_pre_req")]
-		public decimal AskLevel10Quantity;
+		public decimal? AskLevel10Quantity;
 		[JsonProperty("sel_10th_pre_bid")]
-		public decimal AskLevel10Price;
+		public decimal? AskLevel10Price;
 
 		[JsonProperty("sel_9th_pre_req_pre")]
-		public decimal AskLevel9PrevDiff;
+		public decimal? AskLevel9PrevDiff;
 		[JsonProperty("sel_9th_pre_req")]
-		public decimal AskLevel9Quantity;
+		public decimal? AskLevel9Quantity;
 		[JsonProperty("sel_9th_pre_bid")]
-		public decimal AskLevel9Price;
+		public decimal? AskLevel9Price;
 
 		[JsonProperty("sel_8th_pre_req_pre")]
-		public decimal AskLevel8PrevDiff;
+		public decimal? AskLevel8PrevDiff;
 		[JsonProperty("sel_8th_pre_req")]
-		public decimal AskLevel8Quantity;
+		public decimal? AskLevel8Quantity;
 		[JsonProperty("sel_8th_pre_bid")]
-		public decimal AskLevel8Price;
+		public decimal? AskLevel8Price;
 
 		[JsonProperty("sel_7th_pre_req_pre")]
-		public decimal AskLevel7PrevDiff;
+		public decimal? AskLevel7PrevDiff;
 		[JsonProperty("sel_7th_pre_req")]
-		public decimal AskLevel7Quantity;
+		public decimal? AskLevel7Quantity;
 		[JsonProperty("sel_7th_pre_bid")]
-		public decimal AskLevel7Price;
+		public decimal? AskLevel7Price;
 
 		[JsonProperty("sel_6th_pre_req_pre")]
-		public decimal AskLevel6PrevDiff;
+		public decimal? AskLevel6PrevDiff;
 		[JsonProperty("sel_6th_pre_req")]
-		public decimal AskLevel6Quantity;
+		public decimal? AskLevel6Quantity;
 		[JsonProperty("sel_6th_pre_bid")]
-		public decimal AskLevel6Price;
+		public decimal? AskLevel6Price;
 
 		[JsonProperty("sel_5th_pre_req_pre")]
-		public decimal AskLevel5PrevDiff;
+		public decimal? AskLevel5PrevDiff;
 		[JsonProperty("sel_5th_pre_req")]
-		public decimal AskLevel5Quantity;
+		public decimal? AskLevel5Quantity;
 		[JsonProperty("sel_5th_pre_bid")]
-		public decimal AskLevel5Price;
+		public decimal? AskLevel5Price;
 
 		[JsonProperty("sel_4th_pre_req_pre")]
-		public decimal AskLevel4PrevDiff;
+		public decimal? AskLevel4PrevDiff;
 		[JsonProperty("sel_4th_pre_req")]
-		public decimal AskLevel4Quantity;
+		public decimal? AskLevel4Quantity;
 		[JsonProperty("sel_4th_pre_bid")]
-		public decimal AskLevel4Price;
+		public decimal? AskLevel4Price;
 
 		[JsonProperty("sel_3th_pre_req_pre")]
-		public decimal AskLevel3PrevDiff;
+		public decimal? AskLevel3PrevDiff;
 		[JsonProperty("sel_3th_pre_req")]
-		public decimal AskLevel3Quantity;
+		public decimal? AskLevel3Quantity;
 		[JsonProperty("sel_3th_pre_bid")]
-		public decimal AskLevel3Price;
+		public decimal? AskLevel3Price;
 
 		[JsonProperty("sel_2th_pre_req_pre")]
-		public decimal AskLevel2PrevDiff;
+		public decimal? AskLevel2PrevDiff;
 		[JsonProperty("sel_2th_pre_req")]
-		public decimal AskLevel2Quantity;
+		public decimal? AskLevel2Quantity;
 		[JsonProperty("sel_2th_pre_bid")]
-		public decimal AskLevel2Price;
+		public decimal? AskLevel2Price;
 
 		[JsonProperty("sel_1th_pre_req_pre")]
-		public decimal AskLevel1PrevDiff;
+		public decimal? AskLevel1PrevDiff;
 		[JsonProperty("sel_fpr_req")]
-		public decimal AskLevel1Quantity;
+		public decimal? AskLevel1Quantity;
 		[JsonProperty("sel_fpr_bid")]
-		public decimal AskLevel1Price;
+		public decimal? AskLevel1Price;
 
 		[JsonProperty("buy_fpr_bid")]
-		public decimal BidLevel1Price;
+		public decimal? BidLevel1Price;
 		[JsonProperty("buy_fpr_req")]
-		public decimal BidLevel1Quantity;
+		public decimal? BidLevel1Quantity;
 		[JsonProperty("buy_1th_pre_req_pre")]
-		public decimal BidLevel1PrevDiff;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? BidLevel1PrevDiff;
 
 		[JsonProperty("buy_2th_pre_bid")]
-		public decimal BidLevel2Price;
+		public decimal? BidLevel2Price;
 		[JsonProperty("buy_2th_pre_req")]
-		public decimal BidLevel2Quantity;
+		public decimal? BidLevel2Quantity;
 		[JsonProperty("buy_2th_pre_req_pre")]
-		public decimal BidLevel2PrevDiff;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? BidLevel2PrevDiff;
 
 		[JsonProperty("buy_3th_pre_bid")]
-		public decimal BidLevel3Price;
+		public decimal? BidLevel3Price;
 		[JsonProperty("buy_3th_pre_req")]
-		public decimal BidLevel3Quantity;
+		public decimal? BidLevel3Quantity;
 		[JsonProperty("buy_3th_pre_req_pre")]
-		public decimal BidLevel3PrevDiff;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? BidLevel3PrevDiff;
 
 		[JsonProperty("buy_4th_pre_bid")]
-		public decimal BidLevel4Price;
+		public decimal? BidLevel4Price;
 		[JsonProperty("buy_4th_pre_req")]
-		public decimal BidLevel4Quantity;
+		public decimal? BidLevel4Quantity;
 		[JsonProperty("buy_4th_pre_req_pre")]
-		public decimal BidLevel4PrevDiff;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? BidLevel4PrevDiff;
 
 		[JsonProperty("buy_5th_pre_bid")]
-		public decimal BidLevel5Price;
+		public decimal? BidLevel5Price;
 		[JsonProperty("buy_5th_pre_req")]
-		public decimal BidLevel5Quantity;
+		public decimal? BidLevel5Quantity;
 		[JsonProperty("buy_5th_pre_req_pre")]
-		public decimal BidLevel5PrevDiff;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? BidLevel5PrevDiff;
 
 		[JsonProperty("buy_6th_pre_bid")]
-		public decimal BidLevel6Price;
+		public decimal? BidLevel6Price;
 		[JsonProperty("buy_6th_pre_req")]
-		public decimal BidLevel6Quantity;
+		public decimal? BidLevel6Quantity;
 		[JsonProperty("buy_6th_pre_req_pre")]
-		public decimal BidLevel6PrevDiff;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? BidLevel6PrevDiff;
 
 		[JsonProperty("buy_7th_pre_bid")]
-		public decimal BidLevel7Price;
+		public decimal? BidLevel7Price;
 		[JsonProperty("buy_7th_pre_req")]
-		public decimal BidLevel7Quantity;
+		public decimal? BidLevel7Quantity;
 		[JsonProperty("buy_7th_pre_req_pre")]
-		public decimal BidLevel7PrevDiff;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? BidLevel7PrevDiff;
 
 		[JsonProperty("buy_8th_pre_bid")]
-		public decimal BidLevel8Price;
+		public decimal? BidLevel8Price;
 		[JsonProperty("buy_8th_pre_req")]
-		public decimal BidLevel8Quantity;
+		public decimal? BidLevel8Quantity;
 		[JsonProperty("buy_8th_pre_req_pre")]
-		public decimal BidLevel8PrevDiff;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? BidLevel8PrevDiff;
 
 		[JsonProperty("buy_9th_pre_bid")]
-		public decimal BidLevel9Price;
+		public decimal? BidLevel9Price;
 		[JsonProperty("buy_9th_pre_req")]
-		public decimal BidLevel9Quantity;
+		public decimal? BidLevel9Quantity;
 		[JsonProperty("buy_9th_pre_req_pre")]
-		public decimal BidLevel9PrevDiff;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? BidLevel9PrevDiff;
 
 		[JsonProperty("buy_10th_pre_bid")]
-		public decimal BidLevel10Price;
+		public decimal? BidLevel10Price;
 		[JsonProperty("buy_10th_pre_req")]
-		public decimal BidLevel10Quantity;
+		public decimal? BidLevel10Quantity;
 		[JsonProperty("buy_10th_pre_req_pre")]
-		public decimal BidLevel10PrevDiff;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? BidLevel10PrevDiff;
 
 		[JsonProperty("tot_sel_req_jub_pre")]
-		public decimal TotalAskQuantityPrevDiff;
+		public decimal? TotalAskQuantityPrevDiff;
 		[JsonProperty("tot_sel_req")]
-		public decimal TotalAskQuantity;
+		public decimal? TotalAskQuantity;
 		[JsonProperty("tot_buy_req")]
-		public decimal TotalBidQuantity;
+		public decimal? TotalBidQuantity;
 		[JsonProperty("tot_buy_req_jub_pre")]
-		public decimal TotalBidQuantityPrevDiff;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? TotalBidQuantityPrevDiff;
 
 		[JsonProperty("ovt_sel_req_pre")]
-		public decimal AfterHoursAskQuantityPrevDiff;
+		public decimal? AfterHoursAskQuantityPrevDiff;
 		[JsonProperty("ovt_sel_req")]
-		public decimal AfterHoursAskQuantity;
+		public decimal? AfterHoursAskQuantity;
 		[JsonProperty("ovt_buy_req")]
-		public decimal AfterHoursBidQuantity;
+		public decimal? AfterHoursBidQuantity;
 		[JsonProperty("ovt_buy_req_pre")]
-		public decimal AfterHoursBidQuantityPrevDiff;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? AfterHoursBidQuantityPrevDiff;
 	}
 
 	public record PriceVolumeDiff
 	{
-		public decimal Price;
-		public decimal Quantity;
-		public decimal PrevDiff;
+		public decimal? Price;
+		public decimal? Quantity;
+		public decimal? PrevDiff;
 
-		public PriceVolumeDiff(decimal price, decimal quantity, decimal prevDiff)
+		public PriceVolumeDiff(decimal? price, decimal? quantity, decimal? prevDiff)
 		{
 			Price = price;
 			Quantity = quantity;
@@ -188,17 +200,17 @@ namespace KiwoomRestApi.Net.Objects.Models
 
 	public record KiwoomMarketConditionGetOrderBookList
 	{
-		public TimeSpan BidRequestBaseTime;
+		public TimeSpan? BidRequestBaseTime;
 		public PriceVolumeDiff[] AskLevels;
 		public PriceVolumeDiff[] BidLevels;
-		public decimal TotalAskQuantityPrevDiff;
-		public decimal TotalAskQuantity;
-		public decimal TotalBidQuantity;
-		public decimal TotalBidQuantityPrevDiff;
-		public decimal AfterHoursAskQuantityPrevDiff;
-		public decimal AfterHoursAskQuantity;
-		public decimal AfterHoursBidQuantity;
-		public decimal AfterHoursBidQuantityPrevDiff;
+		public decimal? TotalAskQuantityPrevDiff;
+		public decimal? TotalAskQuantity;
+		public decimal? TotalBidQuantity;
+		public decimal? TotalBidQuantityPrevDiff;
+		public decimal? AfterHoursAskQuantityPrevDiff;
+		public decimal? AfterHoursAskQuantity;
+		public decimal? AfterHoursBidQuantity;
+		public decimal? AfterHoursBidQuantityPrevDiff;
 
 		public KiwoomMarketConditionGetOrderBookList(KiwoomMarketConditionGetOrderBook raw)
 		{
@@ -249,37 +261,37 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? Date;
 		[JsonProperty("open_pric")]
-		public decimal OpenPrice;
+		public decimal? OpenPrice;
 		[JsonProperty("high_pric")]
-		public decimal HighPrice;
+		public decimal? HighPrice;
 		[JsonProperty("low_pric")]
-		public decimal LowPrice;
+		public decimal? LowPrice;
 		[JsonProperty("close_pric")]
-		public decimal ClosePrice;
+		public decimal? ClosePrice;
 		[JsonProperty("pre")]
-		public decimal PrevDiff;
+		public decimal? PrevDiff;
 		[JsonProperty("flu_rt")]
-		public decimal FluctuationRate;
+		public decimal? FluctuationRate;
 		[JsonProperty("trde_qty")]
-		public decimal TradeQuantity;
+		public decimal? TradeQuantity;
 		[JsonProperty("trde_prica")]
-		public decimal TradeAmount;
+		public decimal? TradeAmount;
 		[JsonProperty("for_poss")]
-		public decimal ForeignPossession;
+		public decimal? ForeignPossession;
 		[JsonProperty("for_wght")]
-		public decimal ForeignWeight;
+		public decimal? ForeignWeight;
 		[JsonProperty("for_netprps")]
-		public decimal ForeignNetPurchase;
+		public decimal? ForeignNetPurchase;
 		[JsonProperty("orgn_netprps")]
-		public decimal InstitutionNetPurchase;
+		public decimal? InstitutionNetPurchase;
 		[JsonProperty("ind_netprps")]
-		public decimal IndividualNetPurchase;
+		public decimal? IndividualNetPurchase;
 		[JsonProperty("crd_remn_rt")]
-		public decimal CreditRemainingRate;
+		public decimal? CreditRemainingRate;
 		[JsonProperty("frgn")]
-		public decimal ForeignBrokerage;
+		public decimal? ForeignBrokerage;
 		[JsonProperty("prm")]
-		public decimal ProgramTrading;
+		public decimal? ProgramTrading;
 	}
 
 	public record KiwoomMarketConditionGetHourMinute
@@ -288,23 +300,23 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? Date;
 		[JsonProperty("open_pric")]
-		public decimal OpenPrice;
+		public decimal? OpenPrice;
 		[JsonProperty("high_pric")]
-		public decimal HighPrice;
+		public decimal? HighPrice;
 		[JsonProperty("low_pric")]
-		public decimal LowPrice;
+		public decimal? LowPrice;
 		[JsonProperty("close_pric")]
-		public decimal ClosePrice;
+		public decimal? ClosePrice;
 		[JsonProperty("pre")]
-		public decimal PrevDiff;
+		public decimal? PrevDiff;
 		[JsonProperty("flu_rt")]
-		public decimal FluctuationRate;
+		public decimal? FluctuationRate;
 		[JsonProperty("trde_qty")]
-		public decimal TradeQuantity;
+		public decimal? TradeQuantity;
 		[JsonProperty("trde_prica")]
-		public decimal TradeAmount;
+		public decimal? TradeAmount;
 		[JsonProperty("cntr_str")]
-		public decimal ContractStrength;
+		public decimal? ContractStrength;
 	}
 
 	public record KiwoomMarketConditionGetQuote
@@ -318,7 +330,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public DateTime? Date;
 		[JsonProperty("tm")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan Time;
+		public TimeSpan? Time;
 		[JsonProperty("pred_close_pric")]
 		public decimal? PrevClosePrice;
 		[JsonProperty("pred_trde_qty")]
@@ -580,7 +592,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public string StockName = string.Empty;
 		public string StockCode = string.Empty;
 		public DateTime? Date;
-		public TimeSpan Time;
+		public TimeSpan? Time;
 		public decimal? PrevClosePrice;
 		public decimal? PrevTradeQuantity;
 		public decimal? UpperPrice;
@@ -723,25 +735,25 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("stk_nm")]
 		public string StockName = string.Empty;
 		[JsonProperty("cur_prc")]
-		public decimal CurrentPrice;
+		public decimal? CurrentPrice;
 		[JsonProperty("pred_pre_sig")]
 		public string PrevDiffSign = string.Empty;
 		[JsonProperty("pred_pre")]
-		public decimal PrevDiff;
+		public decimal? PrevDiff;
 		[JsonProperty("flu_rt")]
-		public decimal FluctuationRate;
+		public decimal? FluctuationRate;
 		[JsonProperty("fpr_sel_bid")]
-		public decimal FirstPrioritySellBid;
+		public decimal? FirstPrioritySellBid;
 		[JsonProperty("fpr_buy_bid")]
-		public decimal FirstPriorityBuyBid;
+		public decimal? FirstPriorityBuyBid;
 		[JsonProperty("acc_trde_qty")]
-		public decimal AccumulatedTradeQuantity;
+		public decimal? AccumulatedTradeQuantity;
 		[JsonProperty("open_pric")]
-		public decimal OpenPrice;
+		public decimal? OpenPrice;
 		[JsonProperty("high_pric")]
-		public decimal HighPrice;
+		public decimal? HighPrice;
 		[JsonProperty("low_pric")]
-		public decimal LowPrice;
+		public decimal? LowPrice;
 	}
 
 	public record KiwoomMarketConditionGetDailyInstitutionTradingStocks
@@ -756,17 +768,17 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("stk_nm")]
 		public string StockName = string.Empty;
 		[JsonProperty("netprps_qty")]
-		public decimal NetPurchaseQuantity;
+		public decimal? NetPurchaseQuantity;
 		[JsonProperty("netprps_amt")]
-		public decimal NetPurchaseAmount;
+		public decimal? NetPurchaseAmount;
 	}
 
 	public record KiwoomMarketConditionGetStockOriginTradeTrends
 	{
 		[JsonProperty("orgn_prsm_avg_pric")]
-		public decimal InstitutionEstimatedAvgPrice;
+		public decimal? InstitutionEstimatedAvgPrice;
 		[JsonProperty("for_prsm_avg_pric")]
-		public decimal ForeignEstimatedAvgPrice;
+		public decimal? ForeignEstimatedAvgPrice;
 		[JsonProperty("stk_orgn_trde_trnsn")]
 		public IEnumerable<KiwoomMarketConditionGetStockOriginTradeTrendItem>? Items;
 	}
@@ -776,25 +788,25 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? Date;
 		[JsonProperty("close_pric")]
-		public decimal ClosePrice;
+		public decimal? ClosePrice;
 		[JsonProperty("pre_sig")]
 		public string PrevDiffSign = string.Empty;
 		[JsonProperty("pred_pre")]
-		public decimal PrevDiff;
+		public decimal? PrevDiff;
 		[JsonProperty("flu_rt")]
-		public decimal FluctuationRate;
+		public decimal? FluctuationRate;
 		[JsonProperty("trde_qty")]
-		public decimal TradeQuantity;
+		public decimal? TradeQuantity;
 		[JsonProperty("orgn_dt_acc")]
-		public decimal InstitutionPeriodAccumulation;
+		public decimal? InstitutionPeriodAccumulation;
 		[JsonProperty("orgn_daly_nettrde_qty")]
-		public decimal InstitutionDailyNetTradeQuantity;
+		public decimal? InstitutionDailyNetTradeQuantity;
 		[JsonProperty("for_dt_acc")]
-		public decimal ForeignPeriodAccumulation;
+		public decimal? ForeignPeriodAccumulation;
 		[JsonProperty("for_daly_nettrde_qty")]
-		public decimal ForeignDailyNetTradeQuantity;
+		public decimal? ForeignDailyNetTradeQuantity;
 		[JsonProperty("limit_exh_rt")]
-		public decimal LimitExhaustionRate;
+		public decimal? LimitExhaustionRate;
 	}
 
 	public record KiwoomMarketConditionGetHourlyContractStrengths
@@ -806,29 +818,29 @@ namespace KiwoomRestApi.Net.Objects.Models
 	{
 		[JsonProperty("cntr_tm")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan ContractTime;
+		public TimeSpan? ContractTime;
 		[JsonProperty("cur_prc")]
-		public decimal CurrentPrice;
+		public decimal? CurrentPrice;
 		[JsonProperty("pred_pre")]
-		public decimal PrevDiff;
+		public decimal? PrevDiff;
 		[JsonProperty("pred_pre_sig")]
 		public string PrevDiffSign = string.Empty;
 		[JsonProperty("flu_rt")]
-		public decimal FluctuationRate;
+		public decimal? FluctuationRate;
 		[JsonProperty("trde_qty")]
-		public decimal TradeQuantity;
+		public decimal? TradeQuantity;
 		[JsonProperty("acc_trde_prica")]
-		public decimal AccumulatedTradeAmount;
+		public decimal? AccumulatedTradeAmount;
 		[JsonProperty("acc_trde_qty")]
-		public decimal AccumulatedTradeQuantity;
+		public decimal? AccumulatedTradeQuantity;
 		[JsonProperty("cntr_str")]
-		public decimal ContractStrength;
+		public decimal? ContractStrength;
 		[JsonProperty("cntr_str_5min")]
-		public decimal ContractStrength5Min;
+		public decimal? ContractStrength5Min;
 		[JsonProperty("cntr_str_20min")]
-		public decimal ContractStrength20Min;
+		public decimal? ContractStrength20Min;
 		[JsonProperty("cntr_str_60min")]
-		public decimal ContractStrength60Min;
+		public decimal? ContractStrength60Min;
 		[JsonProperty("stex_tp")]
 		public string ExchangeType = string.Empty;
 	}
@@ -844,27 +856,27 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? Date;
 		[JsonProperty("cur_prc")]
-		public decimal CurrentPrice;
+		public decimal? CurrentPrice;
 		[JsonProperty("pred_pre")]
-		public decimal PrevDiff;
+		public decimal? PrevDiff;
 		[JsonProperty("pred_pre_sig")]
-		public string PrevDiffSign = string.Empty;
+		public string? PrevDiffSign = string.Empty;
 		[JsonProperty("flu_rt")]
-		public decimal FluctuationRate;
+		public decimal? FluctuationRate;
 		[JsonProperty("trde_qty")]
-		public decimal TradeQuantity;
+		public decimal? TradeQuantity;
 		[JsonProperty("acc_trde_prica")]
-		public decimal AccumulatedTradeAmount;
+		public decimal? AccumulatedTradeAmount;
 		[JsonProperty("acc_trde_qty")]
-		public decimal AccumulatedTradeQuantity;
+		public decimal? AccumulatedTradeQuantity;
 		[JsonProperty("cntr_str")]
-		public decimal ContractStrength;
+		public decimal? ContractStrength;
 		[JsonProperty("cntr_str_5min")]
-		public decimal ContractStrength5Days;
+		public decimal? ContractStrength5Days;
 		[JsonProperty("cntr_str_20min")]
-		public decimal ContractStrength20Days;
+		public decimal? ContractStrength20Days;
 		[JsonProperty("cntr_str_60min")]
-		public decimal ContractStrength60Days;
+		public decimal? ContractStrength60Days;
 	}
 
 	public record KiwoomMarketConditionGetIntradayInvestorTradings
@@ -879,29 +891,34 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("stk_nm")]
 		public string StockName = string.Empty;
 		[JsonProperty("cur_prc")]
-		public decimal CurrentPrice;
+		public decimal? CurrentPrice;
 		[JsonProperty("pre_sig")]
 		public string PrevDiffSign = string.Empty;
 		[JsonProperty("pred_pre")]
-		public decimal PrevDiff;
+		public decimal? PrevDiff;
 		[JsonProperty("flu_rt")]
-		public decimal FluctuationRate;
+		public decimal? FluctuationRate;
 		[JsonProperty("acc_trde_qty")]
-		public decimal AccumulatedTradeQuantity;
+		public decimal? AccumulatedTradeQuantity;
 		[JsonProperty("netprps_qty")]
-		public decimal NetPurchaseQuantity;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? NetPurchaseQuantity;
 		[JsonProperty("prev_pot_netprps_qty")]
-		public decimal PreviousPointNetPurchaseQuantity;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? PreviousPointNetPurchaseQuantity;
 		[JsonProperty("netprps_irds")]
-		public decimal NetPurchaseIncreaseDecrease;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? NetPurchaseIncreaseDecrease;
 		[JsonProperty("buy_qty")]
-		public decimal BuyQuantity;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? BuyQuantity;
 		[JsonProperty("buy_qty_irds")]
-		public decimal BuyQuantityIncreaseDecrease;
+		public decimal? BuyQuantityIncreaseDecrease;
 		[JsonProperty("sell_qty")]
-		public decimal SellQuantity;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? SellQuantity;
 		[JsonProperty("sell_qty_irds")]
-		public decimal SellQuantityIncreaseDecrease;
+		public decimal? SellQuantityIncreaseDecrease;
 	}
 
 	public record KiwoomMarketConditionGetIntradayInvestorTradeCharts
@@ -916,39 +933,39 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("stk_nm")]
 		public string StockName = string.Empty;
 		[JsonProperty("cur_prc")]
-		public decimal CurrentPrice;
+		public decimal? CurrentPrice;
 		[JsonProperty("pre_sig")]
 		public string PrevDiffSign = string.Empty;
 		[JsonProperty("pred_pre")]
-		public decimal PrevDiff;
+		public decimal? PrevDiff;
 		[JsonProperty("flu_rt")]
-		public decimal FluctuationRate;
+		public decimal? FluctuationRate;
 		[JsonProperty("trde_qty")]
-		public decimal TradeQuantity;
+		public decimal? TradeQuantity;
 		[JsonProperty("ind_invsr")]
-		public decimal IndividualInvestor;
+		public decimal? IndividualInvestor;
 		[JsonProperty("frgnr_invsr")]
-		public decimal ForeignInvestor;
+		public decimal? ForeignInvestor;
 		[JsonProperty("orgn")]
-		public decimal Institution;
+		public decimal? Institution;
 		[JsonProperty("fnnc_invt")]
-		public decimal FinancialInvestment;
+		public decimal? FinancialInvestment;
 		[JsonProperty("insrnc")]
-		public decimal Insurance;
+		public decimal? Insurance;
 		[JsonProperty("invtrt")]
-		public decimal InvestmentTrust;
+		public decimal? InvestmentTrust;
 		[JsonProperty("etc_fnnc")]
-		public decimal OtherFinancials;
+		public decimal? OtherFinancials;
 		[JsonProperty("bank")]
-		public decimal Bank;
+		public decimal? Bank;
 		[JsonProperty("penfnd_etc")]
-		public decimal PensionEtc;
+		public decimal? PensionEtc;
 		[JsonProperty("samo_fund")]
-		public decimal PrivateFund;
+		public decimal? PrivateFund;
 		[JsonProperty("natn")]
-		public decimal Nation;
+		public decimal? Nation;
 		[JsonProperty("etc_corp")]
-		public decimal OtherCorporation;
+		public decimal? OtherCorporation;
 	}
 
 	public record KiwoomMarketConditionGetSecurityFirmStockTradeTrends
@@ -962,21 +979,21 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? Date;
 		[JsonProperty("cur_prc")]
-		public decimal CurrentPrice;
+		public decimal? CurrentPrice;
 		[JsonProperty("pre_sig")]
 		public string PrevDiffSign = string.Empty;
 		[JsonProperty("pred_pre")]
-		public decimal PrevDiff;
+		public decimal? PrevDiff;
 		[JsonProperty("flu_rt")]
-		public decimal FluctuationRate;
+		public decimal? FluctuationRate;
 		[JsonProperty("acc_trde_qty")]
-		public decimal AccumulatedTradeQuantity;
+		public decimal? AccumulatedTradeQuantity;
 		[JsonProperty("netprps_qty")]
-		public decimal NetPurchaseQuantity;
+		public decimal? NetPurchaseQuantity;
 		[JsonProperty("buy_qty")]
-		public decimal BuyQuantity;
+		public decimal? BuyQuantity;
 		[JsonProperty("sell_qty")]
-		public decimal SellQuantity;
+		public decimal? SellQuantity;
 	}
 
 	public record KiwoomMarketConditionGetDailyStockPrices
@@ -990,170 +1007,179 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? Date;
 		[JsonProperty("open_pric")]
-		public decimal OpenPrice;
+		public decimal? OpenPrice;
 		[JsonProperty("high_pric")]
-		public decimal HighPrice;
+		public decimal? HighPrice;
 		[JsonProperty("low_pric")]
-		public decimal LowPrice;
+		public decimal? LowPrice;
 		[JsonProperty("close_pric")]
-		public decimal ClosePrice;
+		public decimal? ClosePrice;
 		[JsonProperty("pred_rt")]
-		public decimal PreviousRate;
+		public decimal? PreviousRate;
 		[JsonProperty("flu_rt")]
-		public decimal FluctuationRate;
+		public decimal? FluctuationRate;
 		[JsonProperty("trde_qty")]
-		public decimal TradeQuantity;
+		public decimal? TradeQuantity;
 		[JsonProperty("amt_mn")]
-		public decimal AmountMillion;
+		public decimal? AmountMillion;
 		[JsonProperty("crd_rt")]
-		public decimal CreditRate;
+		public decimal? CreditRate;
 		[JsonProperty("ind")]
-		public decimal Individual;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? Individual;
 		[JsonProperty("orgn")]
-		public decimal Institution;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? Institution;
 		[JsonProperty("for_qty")]
-		public decimal ForeignQuantity;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? ForeignQuantity;
 		[JsonProperty("frgn")]
-		public decimal ForeignBrokerage;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? ForeignBrokerage;
 		[JsonProperty("prm")]
-		public decimal Program;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? Program;
 		[JsonProperty("for_rt")]
-		public decimal ForeignRate;
+		public decimal? ForeignRate;
 		[JsonProperty("for_poss")]
-		public decimal ForeignPossession;
+		public decimal? ForeignPossession;
 		[JsonProperty("for_wght")]
-		public decimal ForeignWeight;
+		public decimal? ForeignWeight;
 		[JsonProperty("for_netprps")]
-		public decimal ForeignNetPurchase;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? ForeignNetPurchase;
 		[JsonProperty("orgn_netprps")]
-		public decimal InstitutionNetPurchase;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? InstitutionNetPurchase;
 		[JsonProperty("ind_netprps")]
-		public decimal IndividualNetPurchase;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? IndividualNetPurchase;
 		[JsonProperty("crd_remn_rt")]
-		public decimal CreditRemainingRate;
+		public decimal? CreditRemainingRate;
 	}
 
 	public record KiwoomMarketConditionGetAfterHoursSinglePriceOrderBook
 	{
 		[JsonProperty("bid_req_base_tm")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan BidRequestBaseTime;
+		public TimeSpan? BidRequestBaseTime;
 		[JsonProperty("ovt_sigpric_sel_bid_jub_pre_5")]
-		public decimal AfterHoursSinglePriceSellPrevDiff5;
+		public decimal? AfterHoursSinglePriceSellPrevDiff5;
 		[JsonProperty("ovt_sigpric_sel_bid_jub_pre_4")]
-		public decimal AfterHoursSinglePriceSellPrevDiff4;
+		public decimal? AfterHoursSinglePriceSellPrevDiff4;
 		[JsonProperty("ovt_sigpric_sel_bid_jub_pre_3")]
-		public decimal AfterHoursSinglePriceSellPrevDiff3;
+		public decimal? AfterHoursSinglePriceSellPrevDiff3;
 		[JsonProperty("ovt_sigpric_sel_bid_jub_pre_2")]
-		public decimal AfterHoursSinglePriceSellPrevDiff2;
+		public decimal? AfterHoursSinglePriceSellPrevDiff2;
 		[JsonProperty("ovt_sigpric_sel_bid_jub_pre_1")]
-		public decimal AfterHoursSinglePriceSellPrevDiff1;
+		public decimal? AfterHoursSinglePriceSellPrevDiff1;
 		[JsonProperty("ovt_sigpric_sel_bid_qty_5")]
-		public decimal AfterHoursSinglePriceSellQuantity5;
+		public decimal? AfterHoursSinglePriceSellQuantity5;
 		[JsonProperty("ovt_sigpric_sel_bid_qty_4")]
-		public decimal AfterHoursSinglePriceSellQuantity4;
+		public decimal? AfterHoursSinglePriceSellQuantity4;
 		[JsonProperty("ovt_sigpric_sel_bid_qty_3")]
-		public decimal AfterHoursSinglePriceSellQuantity3;
+		public decimal? AfterHoursSinglePriceSellQuantity3;
 		[JsonProperty("ovt_sigpric_sel_bid_qty_2")]
-		public decimal AfterHoursSinglePriceSellQuantity2;
+		public decimal? AfterHoursSinglePriceSellQuantity2;
 		[JsonProperty("ovt_sigpric_sel_bid_qty_1")]
-		public decimal AfterHoursSinglePriceSellQuantity1;
+		public decimal? AfterHoursSinglePriceSellQuantity1;
 		[JsonProperty("ovt_sigpric_sel_bid_5")]
-		public decimal AfterHoursSinglePriceSellPrice5;
+		public decimal? AfterHoursSinglePriceSellPrice5;
 		[JsonProperty("ovt_sigpric_sel_bid_4")]
-		public decimal AfterHoursSinglePriceSellPrice4;
+		public decimal? AfterHoursSinglePriceSellPrice4;
 		[JsonProperty("ovt_sigpric_sel_bid_3")]
-		public decimal AfterHoursSinglePriceSellPrice3;
+		public decimal? AfterHoursSinglePriceSellPrice3;
 		[JsonProperty("ovt_sigpric_sel_bid_2")]
-		public decimal AfterHoursSinglePriceSellPrice2;
+		public decimal? AfterHoursSinglePriceSellPrice2;
 		[JsonProperty("ovt_sigpric_sel_bid_1")]
-		public decimal AfterHoursSinglePriceSellPrice1;
+		public decimal? AfterHoursSinglePriceSellPrice1;
 		[JsonProperty("ovt_sigpric_buy_bid_1")]
-		public decimal AfterHoursSinglePriceBuyPrice1;
+		public decimal? AfterHoursSinglePriceBuyPrice1;
 		[JsonProperty("ovt_sigpric_buy_bid_2")]
-		public decimal AfterHoursSinglePriceBuyPrice2;
+		public decimal? AfterHoursSinglePriceBuyPrice2;
 		[JsonProperty("ovt_sigpric_buy_bid_3")]
-		public decimal AfterHoursSinglePriceBuyPrice3;
+		public decimal? AfterHoursSinglePriceBuyPrice3;
 		[JsonProperty("ovt_sigpric_buy_bid_4")]
-		public decimal AfterHoursSinglePriceBuyPrice4;
+		public decimal? AfterHoursSinglePriceBuyPrice4;
 		[JsonProperty("ovt_sigpric_buy_bid_5")]
-		public decimal AfterHoursSinglePriceBuyPrice5;
+		public decimal? AfterHoursSinglePriceBuyPrice5;
 		[JsonProperty("ovt_sigpric_buy_bid_qty_1")]
-		public decimal AfterHoursSinglePriceBuyQuantity1;
+		public decimal? AfterHoursSinglePriceBuyQuantity1;
 		[JsonProperty("ovt_sigpric_buy_bid_qty_2")]
-		public decimal AfterHoursSinglePriceBuyQuantity2;
+		public decimal? AfterHoursSinglePriceBuyQuantity2;
 		[JsonProperty("ovt_sigpric_buy_bid_qty_3")]
-		public decimal AfterHoursSinglePriceBuyQuantity3;
+		public decimal? AfterHoursSinglePriceBuyQuantity3;
 		[JsonProperty("ovt_sigpric_buy_bid_qty_4")]
-		public decimal AfterHoursSinglePriceBuyQuantity4;
+		public decimal? AfterHoursSinglePriceBuyQuantity4;
 		[JsonProperty("ovt_sigpric_buy_bid_qty_5")]
-		public decimal AfterHoursSinglePriceBuyQuantity5;
+		public decimal? AfterHoursSinglePriceBuyQuantity5;
 		[JsonProperty("ovt_sigpric_buy_bid_jub_pre_1")]
-		public decimal AfterHoursSinglePriceBuyPrevDiff1;
+		public decimal? AfterHoursSinglePriceBuyPrevDiff1;
 		[JsonProperty("ovt_sigpric_buy_bid_jub_pre_2")]
-		public decimal AfterHoursSinglePriceBuyPrevDiff2;
+		public decimal? AfterHoursSinglePriceBuyPrevDiff2;
 		[JsonProperty("ovt_sigpric_buy_bid_jub_pre_3")]
-		public decimal AfterHoursSinglePriceBuyPrevDiff3;
+		public decimal? AfterHoursSinglePriceBuyPrevDiff3;
 		[JsonProperty("ovt_sigpric_buy_bid_jub_pre_4")]
-		public decimal AfterHoursSinglePriceBuyPrevDiff4;
+		public decimal? AfterHoursSinglePriceBuyPrevDiff4;
 		[JsonProperty("ovt_sigpric_buy_bid_jub_pre_5")]
-		public decimal AfterHoursSinglePriceBuyPrevDiff5;
+		public decimal? AfterHoursSinglePriceBuyPrevDiff5;
 		[JsonProperty("ovt_sigpric_sel_bid_tot_req")]
-		public decimal AfterHoursSinglePriceSellTotalQuantity;
+		public decimal? AfterHoursSinglePriceSellTotalQuantity;
 		[JsonProperty("ovt_sigpric_buy_bid_tot_req")]
-		public decimal AfterHoursSinglePriceBuyTotalQuantity;
+		public decimal? AfterHoursSinglePriceBuyTotalQuantity;
 		[JsonProperty("sel_bid_tot_req_jub_pre")]
-		public decimal SellTotalQuantityPrevDiff;
+		public decimal? SellTotalQuantityPrevDiff;
 		[JsonProperty("sel_bid_tot_req")]
-		public decimal SellTotalQuantity;
+		public decimal? SellTotalQuantity;
 		[JsonProperty("buy_bid_tot_req")]
-		public decimal BuyTotalQuantity;
+		public decimal? BuyTotalQuantity;
 		[JsonProperty("buy_bid_tot_req_jub_pre")]
-		public decimal BuyTotalQuantityPrevDiff;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? BuyTotalQuantityPrevDiff;
 		[JsonProperty("ovt_sel_bid_tot_req_jub_pre")]
-		public decimal AfterHoursSellTotalQuantityPrevDiff;
+		public decimal? AfterHoursSellTotalQuantityPrevDiff;
 		[JsonProperty("ovt_sel_bid_tot_req")]
-		public decimal AfterHoursSellTotalQuantity;
+		public decimal? AfterHoursSellTotalQuantity;
 		[JsonProperty("ovt_buy_bid_tot_req")]
-		public decimal AfterHoursBuyTotalQuantity;
+		public decimal? AfterHoursBuyTotalQuantity;
 		[JsonProperty("ovt_buy_bid_tot_req_jub_pre")]
-		public decimal AfterHoursBuyTotalQuantityPrevDiff;
+		public decimal? AfterHoursBuyTotalQuantityPrevDiff;
 		[JsonProperty("ovt_sigpric_cur_prc")]
-		public decimal AfterHoursSinglePriceCurrentPrice;
+		public decimal? AfterHoursSinglePriceCurrentPrice;
 		[JsonProperty("ovt_sigpric_pred_pre_sig")]
 		public string AfterHoursSinglePricePrevDiffSign = string.Empty;
 		[JsonProperty("ovt_sigpric_pred_pre")]
-		public decimal AfterHoursSinglePricePrevDiff;
+		public decimal? AfterHoursSinglePricePrevDiff;
 		[JsonProperty("ovt_sigpric_flu_rt")]
-		public decimal AfterHoursSinglePriceFluctuationRate;
+		public decimal? AfterHoursSinglePriceFluctuationRate;
 		[JsonProperty("ovt_sigpric_acc_trde_qty")]
-		public decimal AfterHoursSinglePriceAccumulatedTradeQuantity;
+		public decimal? AfterHoursSinglePriceAccumulatedTradeQuantity;
 	}
 
 	public record KiwoomMarketConditionGetAfterHoursSinglePriceOrderBookList
 	{
-		public TimeSpan BidRequestBaseTime;
-		public decimal[] AfterHoursSinglePriceSellPrevDiffs;
-		public decimal[] AfterHoursSinglePriceSellQuantitys;
-		public decimal[] AfterHoursSinglePriceSellPrices;
-		public decimal[] AfterHoursSinglePriceBuyPrices;
-		public decimal[] AfterHoursSinglePriceBuyQuantities;
-		public decimal[] AfterHoursSinglePriceBuyPrevDiffs;
-		public decimal AfterHoursSinglePriceSellTotalQuantity;
-		public decimal AfterHoursSinglePriceBuyTotalQuantity;
-		public decimal SellTotalQuantityPrevDiff;
-		public decimal SellTotalQuantity;
-		public decimal BuyTotalQuantity;
-		public decimal BuyTotalQuantityPrevDiff;
-		public decimal AfterHoursSellTotalQuantityPrevDiff;
-		public decimal AfterHoursSellTotalQuantity;
-		public decimal AfterHoursBuyTotalQuantity;
-		public decimal AfterHoursBuyTotalQuantityPrevDiff;
-		public decimal AfterHoursSinglePriceCurrentPrice;
-		public string AfterHoursSinglePricePrevDiffSign = string.Empty;
-		public decimal AfterHoursSinglePricePrevDiff;
-		public decimal AfterHoursSinglePriceFluctuationRate;
-		public decimal AfterHoursSinglePriceAccumulatedTradeQuantity;
+		public TimeSpan? BidRequestBaseTime;
+		public decimal?[] AfterHoursSinglePriceSellPrevDiffs;
+		public decimal?[] AfterHoursSinglePriceSellQuantitys;
+		public decimal?[] AfterHoursSinglePriceSellPrices;
+		public decimal?[] AfterHoursSinglePriceBuyPrices;
+		public decimal?[] AfterHoursSinglePriceBuyQuantities;
+		public decimal?[] AfterHoursSinglePriceBuyPrevDiffs;
+		public decimal? AfterHoursSinglePriceSellTotalQuantity;
+		public decimal? AfterHoursSinglePriceBuyTotalQuantity;
+		public decimal? SellTotalQuantityPrevDiff;
+		public decimal? SellTotalQuantity;
+		public decimal? BuyTotalQuantity;
+		public decimal? BuyTotalQuantityPrevDiff;
+		public decimal? AfterHoursSellTotalQuantityPrevDiff;
+		public decimal? AfterHoursSellTotalQuantity;
+		public decimal? AfterHoursBuyTotalQuantity;
+		public decimal? AfterHoursBuyTotalQuantityPrevDiff;
+		public decimal? AfterHoursSinglePriceCurrentPrice;
+		public string? AfterHoursSinglePricePrevDiffSign;
+		public decimal? AfterHoursSinglePricePrevDiff;
+		public decimal? AfterHoursSinglePriceFluctuationRate;
+		public decimal? AfterHoursSinglePriceAccumulatedTradeQuantity;
 
 		public KiwoomMarketConditionGetAfterHoursSinglePriceOrderBookList(KiwoomMarketConditionGetAfterHoursSinglePriceOrderBook raw)
 		{
@@ -1220,41 +1246,46 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomMarketConditionGetHourlyProgramTradeTrendItem
 	{
 		[JsonProperty("cntr_tm")]
-		public string ContractTime = string.Empty;
+		public string? ContractTime;
 		[JsonProperty("dfrt_trde_sel")]
-		public decimal ArbitrageTradeSell;
+		public decimal? ArbitrageTradeSell;
 		[JsonProperty("dfrt_trde_buy")]
-		public decimal ArbitrageTradeBuy;
+		public decimal? ArbitrageTradeBuy;
 		[JsonProperty("dfrt_trde_netprps")]
-		public decimal ArbitrageTradeNetPurchase;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? ArbitrageTradeNetPurchase;
 		[JsonProperty("ndiffpro_trde_sel")]
-		public decimal NonArbitrageTradeSell;
+		public decimal? NonArbitrageTradeSell;
 		[JsonProperty("ndiffpro_trde_buy")]
-		public decimal NonArbitrageTradeBuy;
+		public decimal? NonArbitrageTradeBuy;
 		[JsonProperty("ndiffpro_trde_netprps")]
-		public decimal NonArbitrageTradeNetPurchase;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? NonArbitrageTradeNetPurchase;
 		[JsonProperty("dfrt_trde_sell_qty")]
-		public decimal ArbitrageTradeSellQuantity;
+		public decimal? ArbitrageTradeSellQuantity;
 		[JsonProperty("dfrt_trde_buy_qty")]
-		public decimal ArbitrageTradeBuyQuantity;
+		public decimal? ArbitrageTradeBuyQuantity;
 		[JsonProperty("dfrt_trde_netprps_qty")]
-		public decimal ArbitrageTradeNetPurchaseQuantity;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? ArbitrageTradeNetPurchaseQuantity;
 		[JsonProperty("ndiffpro_trde_sell_qty")]
-		public decimal NonArbitrageTradeSellQuantity;
+		public decimal? NonArbitrageTradeSellQuantity;
 		[JsonProperty("ndiffpro_trde_buy_qty")]
-		public decimal NonArbitrageTradeBuyQuantity;
+		public decimal? NonArbitrageTradeBuyQuantity;
 		[JsonProperty("ndiffpro_trde_netprps_qty")]
-		public decimal NonArbitrageTradeNetPurchaseQuantity;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? NonArbitrageTradeNetPurchaseQuantity;
 		[JsonProperty("all_sel")]
-		public decimal TotalSell;
+		public decimal? TotalSell;
 		[JsonProperty("all_buy")]
-		public decimal TotalBuy;
+		public decimal? TotalBuy;
 		[JsonProperty("all_netprps")]
-		public decimal TotalNetPurchase;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? TotalNetPurchase;
 		[JsonProperty("kospi200")]
-		public decimal Kospi200;
+		public decimal? Kospi200;
 		[JsonProperty("basis")]
-		public decimal Basis;
+		public decimal? Basis;
 	}
 
 	public record KiwoomMarketConditionGetProgramArbitrageBalanceTrends
@@ -1268,17 +1299,17 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? Date;
 		[JsonProperty("buy_dfrt_trde_qty")]
-		public decimal BuyArbitrageTradeQuantity;
+		public decimal? BuyArbitrageTradeQuantity;
 		[JsonProperty("buy_dfrt_trde_amt")]
-		public decimal BuyArbitrageTradeAmount;
+		public decimal? BuyArbitrageTradeAmount;
 		[JsonProperty("buy_dfrt_trde_irds_amt")]
-		public decimal BuyArbitrageTradeIncreaseDecreaseAmount;
+		public decimal? BuyArbitrageTradeIncreaseDecreaseAmount;
 		[JsonProperty("sel_dfrt_trde_qty")]
-		public decimal SellArbitrageTradeQuantity;
+		public decimal? SellArbitrageTradeQuantity;
 		[JsonProperty("sel_dfrt_trde_amt")]
-		public decimal SellArbitrageTradeAmount;
+		public decimal? SellArbitrageTradeAmount;
 		[JsonProperty("sel_dfrt_trde_irds_amt")]
-		public decimal SellArbitrageTradeIncreaseDecreaseAmount;
+		public decimal? SellArbitrageTradeIncreaseDecreaseAmount;
 	}
 
 	public record KiwoomMarketConditionGetProgramTradeAccumulatedTrends
@@ -1292,21 +1323,27 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? Date;
 		[JsonProperty("kospi200")]
-		public decimal Kospi200;
+		public decimal? Kospi200;
 		[JsonProperty("basis")]
-		public decimal Basis;
+		public decimal? Basis;
 		[JsonProperty("dfrt_trde_tdy")]
-		public decimal ArbitrageTradeToday;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? ArbitrageTradeToday;
 		[JsonProperty("dfrt_trde_acc")]
-		public decimal ArbitrageTradeAccumulated;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? ArbitrageTradeAccumulated;
 		[JsonProperty("ndiffpro_trde_tdy")]
-		public decimal NonArbitrageTradeToday;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? NonArbitrageTradeToday;
 		[JsonProperty("ndiffpro_trde_acc")]
-		public decimal NonArbitrageTradeAccumulated;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? NonArbitrageTradeAccumulated;
 		[JsonProperty("all_tdy")]
-		public decimal TotalToday;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? TotalToday;
 		[JsonProperty("all_acc")]
-		public decimal TotalAccumulated;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? TotalAccumulated;
 	}
 
 	public record KiwoomMarketConditionGetStockTimeProgramTradeTrends
@@ -1318,40 +1355,44 @@ namespace KiwoomRestApi.Net.Objects.Models
 	{
 		[JsonProperty("tm")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan Time;
+		public TimeSpan? Time;
 		[JsonProperty("cur_prc")]
-		public decimal CurrentPrice;
+		public decimal? CurrentPrice;
 		[JsonProperty("pre_sig")]
 		public string PrevDiffSign = string.Empty;
 		[JsonProperty("pred_pre")]
-		public decimal PrevDiff;
+		public decimal? PrevDiff;
 		[JsonProperty("flu_rt")]
-		public decimal FluctuationRate;
+		public decimal? FluctuationRate;
 		[JsonProperty("trde_qty")]
-		public decimal TradeQuantity;
+		public decimal? TradeQuantity;
 		[JsonProperty("prm_sell_amt")]
-		public decimal ProgramSellAmount;
+		public decimal? ProgramSellAmount;
 		[JsonProperty("prm_buy_amt")]
-		public decimal ProgramBuyAmount;
+		public decimal? ProgramBuyAmount;
 		[JsonProperty("prm_netprps_amt")]
-		public decimal ProgramNetPurchaseAmount;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? ProgramNetPurchaseAmount;
 		[JsonProperty("prm_netprps_amt_irds")]
-		public decimal ProgramNetPurchaseAmountChange;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? ProgramNetPurchaseAmountChange;
 		[JsonProperty("prm_sell_qty")]
-		public decimal ProgramSellQuantity;
+		public decimal? ProgramSellQuantity;
 		[JsonProperty("prm_buy_qty")]
-		public decimal ProgramBuyQuantity;
+		public decimal? ProgramBuyQuantity;
 		[JsonProperty("prm_netprps_qty")]
-		public decimal ProgramNetPurchaseQuantity;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? ProgramNetPurchaseQuantity;
 		[JsonProperty("prm_netprps_qty_irds")]
-		public decimal ProgramNetPurchaseQuantityChange;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? ProgramNetPurchaseQuantityChange;
 		[JsonProperty("base_pric_tm")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan BasePriceTime;
+		public TimeSpan? BasePriceTime;
 		[JsonProperty("dbrt_trde_rpy_sum")]
-		public decimal StockLoanRepaymentSum;
+		public decimal? StockLoanRepaymentSum;
 		[JsonProperty("remn_rcvord_sum")]
-		public decimal RemainingOrderSum;
+		public decimal? RemainingOrderSum;
 		[JsonProperty("stex_tp")]
 		public string ExchangeType = string.Empty;
 	}
@@ -1364,42 +1405,42 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomMarketConditionGetDailyProgramTradeTrendItem
 	{
 		[JsonProperty("cntr_tm")]
-		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan ContractTime;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? ContractTime;
 		[JsonProperty("dfrt_trde_sel")]
-		public decimal ArbitrageTradeSell;
+		public decimal? ArbitrageTradeSell;
 		[JsonProperty("dfrt_trde_buy")]
-		public decimal ArbitrageTradeBuy;
+		public decimal? ArbitrageTradeBuy;
 		[JsonProperty("dfrt_trde_netprps")]
-		public decimal ArbitrageTradeNetPurchase;
+		public decimal? ArbitrageTradeNetPurchase;
 		[JsonProperty("ndiffpro_trde_sel")]
-		public decimal NonArbitrageTradeSell;
+		public decimal? NonArbitrageTradeSell;
 		[JsonProperty("ndiffpro_trde_buy")]
-		public decimal NonArbitrageTradeBuy;
+		public decimal? NonArbitrageTradeBuy;
 		[JsonProperty("ndiffpro_trde_netprps")]
-		public decimal NonArbitrageTradeNetPurchase;
+		public decimal? NonArbitrageTradeNetPurchase;
 		[JsonProperty("dfrt_trde_sell_qty")]
-		public decimal ArbitrageTradeSellQuantity;
+		public decimal? ArbitrageTradeSellQuantity;
 		[JsonProperty("dfrt_trde_buy_qty")]
-		public decimal ArbitrageTradeBuyQuantity;
+		public decimal? ArbitrageTradeBuyQuantity;
 		[JsonProperty("dfrt_trde_netprps_qty")]
-		public decimal ArbitrageTradeNetPurchaseQuantity;
+		public decimal? ArbitrageTradeNetPurchaseQuantity;
 		[JsonProperty("ndiffpro_trde_sell_qty")]
-		public decimal NonArbitrageTradeSellQuantity;
+		public decimal? NonArbitrageTradeSellQuantity;
 		[JsonProperty("ndiffpro_trde_buy_qty")]
-		public decimal NonArbitrageTradeBuyQuantity;
+		public decimal? NonArbitrageTradeBuyQuantity;
 		[JsonProperty("ndiffpro_trde_netprps_qty")]
-		public decimal NonArbitrageTradeNetPurchaseQuantity;
+		public decimal? NonArbitrageTradeNetPurchaseQuantity;
 		[JsonProperty("all_sel")]
-		public decimal TotalSell;
+		public decimal? TotalSell;
 		[JsonProperty("all_buy")]
-		public decimal TotalBuy;
+		public decimal? TotalBuy;
 		[JsonProperty("all_netprps")]
-		public decimal TotalNetPurchase;
+		public decimal? TotalNetPurchase;
 		[JsonProperty("kospi200")]
-		public decimal Kospi200;
+		public decimal? Kospi200;
 		[JsonProperty("basis")]
-		public decimal Basis;
+		public decimal? Basis;
 	}
 
 	public record KiwoomMarketConditionGetStockDailyProgramTradeTrends
@@ -1413,40 +1454,44 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? Date;
 		[JsonProperty("cur_prc")]
-		public decimal CurrentPrice;
+		public decimal? CurrentPrice;
 		[JsonProperty("pre_sig")]
-		public string PrevDiffSign = string.Empty;
+		public string? PrevDiffSign;
 		[JsonProperty("pred_pre")]
-		public decimal PrevDiff;
+		public decimal? PrevDiff;
 		[JsonProperty("flu_rt")]
-		public decimal FluctuationRate;
+		public decimal? FluctuationRate;
 		[JsonProperty("trde_qty")]
-		public decimal TradeQuantity;
+		public decimal? TradeQuantity;
 		[JsonProperty("prm_sell_amt")]
-		public decimal ProgramSellAmount;
+		public decimal? ProgramSellAmount;
 		[JsonProperty("prm_buy_amt")]
-		public decimal ProgramBuyAmount;
+		public decimal? ProgramBuyAmount;
 		[JsonProperty("prm_netprps_amt")]
-		public decimal ProgramNetPurchaseAmount;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? ProgramNetPurchaseAmount;
 		[JsonProperty("prm_netprps_amt_irds")]
-		public decimal ProgramNetPurchaseAmountChange;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? ProgramNetPurchaseAmountChange;
 		[JsonProperty("prm_sell_qty")]
-		public decimal ProgramSellQuantity;
+		public decimal? ProgramSellQuantity;
 		[JsonProperty("prm_buy_qty")]
-		public decimal ProgramBuyQuantity;
+		public decimal? ProgramBuyQuantity;
 		[JsonProperty("prm_netprps_qty")]
-		public decimal ProgramNetPurchaseQuantity;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? ProgramNetPurchaseQuantity;
 		[JsonProperty("prm_netprps_qty_irds")]
-		public decimal ProgramNetPurchaseQuantityChange;
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
+		public decimal? ProgramNetPurchaseQuantityChange;
 		[JsonProperty("base_pric_tm")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan BasePriceTime;
+		public TimeSpan? BasePriceTime;
 		[JsonProperty("dbrt_trde_rpy_sum")]
-		public decimal StockLoanRepaymentSum;
+		public decimal? StockLoanRepaymentSum;
 		[JsonProperty("remn_rcvord_sum")]
-		public decimal RemainingOrderSum;
+		public decimal? RemainingOrderSum;
 		[JsonProperty("stex_tp")]
-		public string ExchangeType = string.Empty;
+		public string? ExchangeType;
 	}
 
 }

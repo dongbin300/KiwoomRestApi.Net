@@ -231,8 +231,10 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("acc_trde_qty")]
 		public decimal? AccumulatedTradeVolume;
 		[JsonProperty("for_netprps_qty")]
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
 		public decimal? ForeignNetPurchaseQuantity;
 		[JsonProperty("orgn_netprps_qty")]
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
 		public decimal? InstitutionNetPurchaseQuantity;
 	}
 
@@ -285,6 +287,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("trde_qty")]
 		public decimal? TradeVolume;
 		[JsonProperty("for_netprps")]
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
 		public decimal? ForeignNetPurchase;
 	}
 }

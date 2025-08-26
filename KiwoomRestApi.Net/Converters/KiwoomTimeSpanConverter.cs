@@ -13,7 +13,9 @@ namespace KiwoomRestApi.Net.Converters
 		{
 			var s = reader.Value as string;
 			if (string.IsNullOrEmpty(s))
-				throw new JsonSerializationException("Time value is null or empty.");
+			{
+				return null;
+			}
 
 			if (TimeSpan.TryParseExact(s, Formats, CultureInfo.InvariantCulture, out var ts))
 			{

@@ -169,7 +169,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			const string apiId = "ka10028";
 			var body = new HttpParameterMap()
 				.AddField("sort_tp", sortType)
-				.AddField("trde_qty_tp", tradeQuantityType)
+				.AddField("trde_qty_cnd", tradeQuantityType)
 				.AddField("mrkt_tp", marketType)
 				.AddField("updown_incls", upDownInclusion)
 				.AddField("stk_cnd", stockCondition)

@@ -10,6 +10,7 @@ using System.Diagnostics;
 using Newtonsoft.Json;
 using KiwoomRestApi.Net.Objects.Models;
 using KiwoomRestApi.Net.Enums.WebSocket;
+using KiwoomRestApi.Net.Enums.StockInfo;
 
 namespace KiwoomRestApi.Net.Examples
 {
@@ -30,10 +31,10 @@ namespace KiwoomRestApi.Net.Examples
 
 			var client = KiwoomRestApiClient.Create(appKey, secretKey, true);
 			var startDate = new DateTime(2025, 8, 1);
-			var endDate = new DateTime(2025, 8, 21);
+			var endDate = new DateTime(2025, 8, 25);
 			var stockCode = "452400";
 
-			var __result__ = client.Chart.GetTickChartsAsync(stockCode, 10, KiwoomChartUseOption.Use).Result;
+			var __result__ = client.Ranking.GetEqualNetTradeRanksAsync(KiwoomRankingInfoMarketType.KOSPI, KiwoomRankingInfoNetTradeType2.NetBuy, KiwoomRankingInfoEqualNetTradeRankSortType.Amount, KiwoomRankingInfoUnitType.One, KiwoomRankingInfoStockExchangeType.KRX, startDate, endDate).Result;
 
 			//socketClient = KiwoomSocketClient.Create(client.Token, true);
 

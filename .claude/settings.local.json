@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sed:*)",
+      "Bash(for file in \"KiwoomRankingInfo.cs\" \"KiwoomRealtimeQuote.cs\" \"KiwoomSector.cs\" \"KiwoomSecuritiesLendingAndBorrowing.cs\" \"KiwoomShortSale.cs\" \"KiwoomWebSocket.cs\")",
+      "Bash(do)",
+      "Bash(echo:*)",
+      "Bash(echo \"Done with $file\")",
+      "Bash(done)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

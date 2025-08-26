@@ -586,12 +586,14 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("pre_sig")]
 		public string? DifferenceSymbol;
 		[JsonProperty("pred_pre")]
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
 		public decimal? PreviousDifference;
 		[JsonProperty("sel_qty")]
 		public decimal? SellQuantity;
 		[JsonProperty("buy_qty")]
 		public decimal? BuyQuantity;
 		[JsonProperty("netprps_qty")]
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
 		public decimal? NetPurchaseQuantity;
 		[JsonProperty("trde_qty_sum")]
 		public decimal? TotalTradeQuantity;
@@ -720,6 +722,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("pred_pre")]
 		public decimal? PreviousDifference;
 		[JsonProperty("avg_pric_pre")]
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
 		public decimal? AveragePriceDifference;
 		[JsonProperty("pre_rt")]
 		public decimal? DifferenceRate;
@@ -785,24 +788,32 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomStockInfoGetStockInvestorInstitutionTotalItem
 	{
 		[JsonProperty("ind_invsr")]
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
 		public decimal? IndividualInvestors;
 		[JsonProperty("frgnr_invsr")]
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
 		public decimal? ForeignInvestors;
 		[JsonProperty("orgn")]
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
 		public decimal? Institutions;
 		[JsonProperty("fnnc_invt")]
 		public decimal? FinancialInvestments;
 		[JsonProperty("insrnc")]
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
 		public decimal? Insurances;
 		[JsonProperty("invtrt")]
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
 		public decimal? InvestmentTrusts;
 		[JsonProperty("etc_fnnc")]
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
 		public decimal? OtherFinancials;
 		[JsonProperty("bank")]
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
 		public decimal? Banks;
 		[JsonProperty("penfnd_etc")]
 		public decimal? PensionEtcs;
 		[JsonProperty("samo_fund")]
+		[JsonConverter(typeof(KiwoomNormalizerConverter))]
 		public decimal? PrivateFunds;
 		[JsonProperty("natn")]
 		public decimal? Nations;
