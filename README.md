@@ -23,32 +23,21 @@ using KiwoomRestApi.Net.Clients;
 var client = await KiwoomRestApiClient.CreateAsync("YOUR_APP_KEY", "YOUR_SECRET_KEY", isMock: true);
 
 // 2. 삼성전자 주식 정보 조회
-var stockInfo = await client.StockInfo.GetPriceAsync("005930");
-Console.WriteLine($"삼성전자 현재가: {stockInfo.CurrentPrice:N0}원");
+var stockInfo = await client.StockInfo.GetStockInfoAsync("005930", DateTime.Today, KiwoomStockInfoMarginLoanType.Loan);
+Console.WriteLine($"삼성전자 현재가: {stockInfo.Data.CurrentPrice}원");
 
-// 3. 계좌 잔고 조회  
-var balance = await client.Account.GetBalanceAsync("계좌번호");
-Console.WriteLine($"평가금액: {balance.TotalEvaluationAmount:N0}원");
+// 3. 당일 삼성전자 실현손익 조회  
+var todayRealizedProfitLoss = await client.Account.GetTodayRealizedProfitLossAsync("005930");
+Console.WriteLine($"평가금액: {todayRealizedProfitLoss.ProfitLossRate}%");
 ```
 
 ## ✨ 주요 특징
-
-### 🎯 **직관적인 API 설계**
-```csharp
-// 메서드 체이닝 지원
-var client = new KiwoomRestApiClient(config)
-    .WithToken("bearer-token")
-    .WithTimeout(TimeSpan.FromSeconds(60));
-
-// 강타입 지원
-await client.GetAsync<StockInfo>(ApiEndpoint.DomesticStock.StockInfo, cancellationToken);
-```
 
 ### ⚡ **완전한 비동기 지원**
 ```csharp
 // CancellationToken 지원
 using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
-var result = await client.StockInfo.GetPriceAsync("005930", cts.Token);
+var result = await client.Account.GetDailyStatusAsync(cts.Token);
 ```
 
 ### 🔧 **의존성 주입 (DI) 지원**
@@ -73,32 +62,18 @@ public class TradingController : ControllerBase
 }
 ```
 
-### 🛡️ **안전하고 견고한 설계**
-```csharp
-// Result<T> 패턴으로 안전한 에러 핸들링
-var result = await client.TryGetStockInfoAsync("005930");
-if (result.IsSuccess)
-{
-    Console.WriteLine($"주가: {result.Value.CurrentPrice}");
-}
-else
-{
-    Console.WriteLine($"오류: {result.Error.Message}");
-}
-```
-
 ## 📋 지원 기능
 
-| 기능 | 설명 | 상태 |
-|------|------|------|
-| 🔐 **OAuth 인증** | 토큰 발급/갱신 | ✅ |
-| 💰 **계좌 관리** | 잔고조회, 주문내역 | ✅ |
-| 📈 **주식 정보** | 현재가, 호가, 체결 | ✅ |
-| 📊 **차트 데이터** | 일/분봉 데이터 | ✅ |
-| 🛒 **주문 관리** | 매수/매도 주문 | ✅ |
-| 📊 **시장 정보** | 업종, 테마, 순위 | ✅ |
-| 📡 **실시간 데이터** | WebSocket 연결 | ✅ |
-| 🌍 **해외주식** | 미국주식 거래 | 🔄 개발중 |
+| 기능 | 설명 | 상세 기능 | 상태 |
+|------|------|----------|------|
+| 🔐 **OAuth 인증** | 토큰 발급/갱신 | 액세스 토큰, 리프레시 토큰 관리 | ✅ |
+| 💰 **계좌 관리** | 잔고조회, 주문내역 | 예수금, 평가잔고, 실현손익, 미체결주문 | ✅ |
+| 📈 **주식 정보** | 현재가, 호가, 체결 | 주식기본정보, 호가정보, 체결정보 | ✅ |
+| 📊 **차트 데이터** | 일/분봉 데이터 | 일봉, 분봉, 기간별 차트 | ✅ |
+| 🛒 **주문 관리** | 매수/매도 주문 | 신규주문, 정정주문, 취소주문 | ✅ |
+| 📊 **시장 정보** | 업종, 테마, 순위 | 업종지수, 테마정보, 순위정보 | ✅ |
+| 📡 **실시간 데이터** | WebSocket 연결 | 실시간 주식체결, 호가, 체결강도 | ✅ |
+| 🔍 **종목 검색** | 종목 정보 조회 | ETF, ELW, 외국인/기관 정보 | ✅ |
 
 ## 🚀 사용 예제
 
@@ -106,59 +81,69 @@ else
 
 ```csharp
 using KiwoomRestApi.Net.Clients;
-using KiwoomRestApi.Net.Configuration;
 
-// 설정 기반 초기화
-var config = new KiwoomConfiguration
-{
-    AppKey = "your-app-key",
-    SecretKey = "your-secret-key", 
-    IsMock = true,
-    RequestTimeout = TimeSpan.FromSeconds(30)
-};
-
-var client = new KiwoomRestApiClient(config);
-await client.InitializeAsync();
+var client = KiwoomRestApiClient.Create(appKey, secretKey, true);
 ```
 
 ### 주식 정보 조회
 
 ```csharp
 // 현재가 조회
-var price = await client.StockInfo.GetPriceAsync("005930");
-Console.WriteLine($"삼성전자: {price.CurrentPrice:N0}원 ({price.ChangeRate:+0.00;-0.00}%)");
+var stockInfo = await client.StockInfo.GetStockInfoAsync("005930", DateTime.Today, KiwoomStockInfoMarginLoanType.Loan);
+Console.WriteLine($"삼성전자 현재가: {stockInfo.Data.CurrentPrice}원");
 
 // 호가 조회  
 var orderBook = await client.MarketCondition.GetOrderBookAsync("005930");
-Console.WriteLine($"매수1호가: {orderBook.BuyPrice1:N0}원");
+Console.WriteLine($"매수1호가: {orderBook.Data.BidLevel1Price}원");
 
 // 차트 데이터 조회
-var chartData = await client.Chart.GetDailyPriceAsync("005930", 
-    startDate: DateTime.Today.AddDays(-30),
-    endDate: DateTime.Today);
+var chartData = await client.Chart.GetDailyChartsAsync("005930", DateTime.Today, KiwoomChartUseOption.Use);
+Console.WriteLine($"삼성전자 전일종가: {chartData.Data.Items.ElementAt(1).CurrentPrice}원");
 ```
 
 ### 계좌 및 주문 관리
 
 ```csharp
-// 계좌 잔고 조회
-var accounts = await client.Account.GetAccountsAsync();
-var balance = await client.Account.GetBalanceAsync(accounts.First().AccountNumber);
+// 예수금 조회
+var deposits = await client.Account.GetDepositsAsync(KiwoomAccountDepositQueryType.General);
+Console.WriteLine($"예수금: {deposits.Data.DepositAmount}원");
 
 // 매수 주문
-var buyOrder = new OrderRequest
-{
-    AccountNumber = "계좌번호",
-    StockCode = "005930", 
-    OrderType = OrderType.Limit,
-    Side = OrderSide.Buy,
-    Quantity = 10,
-    Price = 80000
-};
-var orderResult = await client.Order.PlaceOrderAsync(buyOrder);
+var buyOrderResult = await client.Order.PlaceOrderAsync(
+	KiwoomOrderType.Buy,                                    // 매수
+	KiwoomOrderDomesticStockExchangeType.KRX,               // 거래소
+	"005930",                                               // 삼성전자
+	10,                                                     // 주문수량
+	KiwoomOrderTradeType.Normal,                            // 지정가
+	80000);                                                 // 주문가격
 
-// 주문 내역 조회
-var orders = await client.Order.GetOrdersAsync("계좌번호");
+// 매도 주문
+var sellOrderResult = await client.Order.PlaceOrderAsync(
+	KiwoomOrderType.Sell,                                   // 매도
+	KiwoomOrderDomesticStockExchangeType.KRX,               // 거래소
+	"005930",                                               // 삼성전자
+	5,                                                      // 주문수량
+	KiwoomOrderTradeType.Market);                          // 시장가
+
+// 미체결 주문 조회
+var outstandingOrders = await client.Account.GetOutstandingOrdersAsync(
+	KiwoomAccountQueryType.All,
+	KiwoomAccountTradeType.All,
+	KiwoomAccountStockExchangeType.Unified);
+
+// 주문 수정
+var modifyResult = await client.Order.ModifyOrderAsync(
+	KiwoomOrderDomesticStockExchangeType.KRX,               // 거래소
+	"원주문번호",                                            // 원주문번호
+	"005930",                                               // 종목코드
+	8,                                                      // 수정수량
+	82000);                                                 // 수정가격
+
+// 주문 취소
+var cancelResult = await client.Order.CancelOrderAsync(
+	KiwoomOrderDomesticStockExchangeType.KRX,               // 거래소
+	"원주문번호",                                            // 원주문번호
+	"005930");                                              // 종목코드
 ```
 
 ### 실시간 데이터 구독
@@ -168,56 +153,44 @@ using KiwoomRestApi.Net.Clients;
 
 var socketClient = await KiwoomSocketClient.CreateAsync(client.Token, isMock: true);
 
-// 실시간 호가 구독
-socketClient.OnOrderBookReceived += (stockCode, orderBook) => 
+// 실시간 주식체결 수신
+socketClient.OnRealtimeStockExecutionReceived += (message) => 
 {
-    Console.WriteLine($"{stockCode}: {orderBook.BuyPrice1:N0}원");
+    Console.WriteLine($"체결가: {message.ElementAt(0).Values.CurrentPrice}원");
 };
 
-await socketClient.SubscribeOrderBookAsync("005930");
+// 실시간 주식체결 구독
+await socketClient.WebSocket.SubscribeAsync([KiwoomWebSocketServiceName.StockExecution], ["005930", "000660"]);
 ```
 
-## ⚙️ 고급 설정
+## ⚡ 성능 최적화 팁
 
-### 재시도 정책
+### 📊 API 제한사항
+
+| 구분 | 제한사항 | 권장사항 |
+|------|----------|----------|
+| **API 호출** | 초당 20회 | Rate limiting 구현 권장 |
+| **실시간 구독** | 동시 40종목 | 필요한 종목만 구독 |
+| **WebSocket** | 연결당 1개 | 연결 상태 모니터링 필요 |
+| **토큰 유효기간** | 24시간 | 자동 갱신 로직 구현 |
+
+### 🚀 최적화 가이드
 
 ```csharp
-var config = new KiwoomConfiguration
-{
-    AppKey = "your-app-key",
-    SecretKey = "your-secret-key",
-    RetryOptions = new RetryOptions
-    {
-        MaxRetries = 3,
-        DelayBetweenRetries = TimeSpan.FromSeconds(1),
-        ExponentialBackoff = true
-    }
-};
+// ✅ 좋은 예: CancellationToken 사용
+using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+var result = await client.StockInfo.GetStockInfoAsync("005930", DateTime.Today, 
+    KiwoomStockInfoMarginLoanType.Loan, cts.Token);
+
+// ✅ 좋은 예: 배치 처리
+var stockCodes = new[] { "005930", "000660", "035420" };
+var tasks = stockCodes.Select(code => 
+    client.StockInfo.GetStockInfoAsync(code, DateTime.Today, KiwoomStockInfoMarginLoanType.Loan));
+var results = await Task.WhenAll(tasks);
+
+// ❌ 나쁜 예: 동기 블로킹 호출
+// var result = client.StockInfo.GetStockInfoAsync("005930", DateTime.Today, KiwoomStockInfoMarginLoanType.Loan).Result;
 ```
-
-### 커스텀 HttpClient
-
-```csharp
-var httpClient = new HttpClient();
-httpClient.DefaultRequestHeaders.Add("User-Agent", "MyApp/1.0");
-
-var config = new KiwoomConfiguration
-{
-    AppKey = "your-app-key", 
-    SecretKey = "your-secret-key",
-    HttpClient = httpClient,
-    DisposeHttpClient = false // HttpClient를 직접 관리
-};
-```
-
-## 📊 성능 및 제한사항
-
-| 구분 | 제한사항 |
-|------|----------|
-| **API 호출** | 초당 20회 |
-| **실시간 구독** | 동시 40종목 |
-| **WebSocket** | 연결당 1개 |
-| **토큰 유효기간** | 24시간 |
 
 ## 🏗️ 지원 플랫폼
 

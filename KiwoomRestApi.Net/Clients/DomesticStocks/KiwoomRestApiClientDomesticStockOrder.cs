@@ -3,6 +3,7 @@ using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
 
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace KiwoomRestApi.Net.Clients.DomesticStocks
@@ -12,7 +13,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		private readonly KiwoomRestApiClient _client = client;
 		private readonly string _endpoint = ApiEndpoint.DomesticStock.Order;
 
-		public async Task<KiwoomRestApiResponse<KiwoomOrderPlaceOrder>> PlaceOrderAsync(KiwoomOrderType orderType, KiwoomOrderDomesticStockExchangeType domesticStockExchangeType, string stockCode, decimal orderQuantity, KiwoomOrderTradeType tradeType, decimal? orderPrice = null, decimal? conditionPrice = null)
+		public async Task<KiwoomRestApiResponse<KiwoomOrderPlaceOrder>> PlaceOrderAsync(KiwoomOrderType orderType, KiwoomOrderDomesticStockExchangeType domesticStockExchangeType, string stockCode, decimal orderQuantity, KiwoomOrderTradeType tradeType, decimal? orderPrice = null, decimal? conditionPrice = null, CancellationToken cancellationToken = default)
 		{
 			string apiId = orderType == KiwoomOrderType.Buy ? "kt10000" : "kt10001";
 			var body = new HttpParameterMap()
@@ -23,10 +24,10 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("ord_uv", orderPrice)
 				.AddField("cond_uv", conditionPrice);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomOrderPlaceOrder>(_endpoint, apiId, body).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomOrderPlaceOrder>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomOrderModifyOrder>> ModifyOrderAsync(KiwoomOrderDomesticStockExchangeType domesticStockExchangeType, string originalOrderId, string stockCode, decimal modifyQuantity, decimal modifyPrice, decimal? modifyConditionPrice = null)
+		public async Task<KiwoomRestApiResponse<KiwoomOrderModifyOrder>> ModifyOrderAsync(KiwoomOrderDomesticStockExchangeType domesticStockExchangeType, string originalOrderId, string stockCode, decimal modifyQuantity, decimal modifyPrice, decimal? modifyConditionPrice = null, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "kt10002";
 			var body = new HttpParameterMap()
@@ -37,10 +38,10 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("mdfy_uv", modifyPrice)
 				.AddField("mdfy_cond_uv", modifyConditionPrice);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomOrderModifyOrder>(_endpoint, apiId, body).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomOrderModifyOrder>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomOrderCancelOrder>> CancelOrderAsync(KiwoomOrderDomesticStockExchangeType domesticStockExchangeType, string originalOrderId, string stockCode, decimal? cancelQuantity = null)
+		public async Task<KiwoomRestApiResponse<KiwoomOrderCancelOrder>> CancelOrderAsync(KiwoomOrderDomesticStockExchangeType domesticStockExchangeType, string originalOrderId, string stockCode, decimal? cancelQuantity = null, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "kt10002";
 
@@ -53,7 +54,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("stk_cd", stockCode)
 				.AddField("cncl_qty", _cancelQuantity);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomOrderCancelOrder>(_endpoint, apiId, body).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomOrderCancelOrder>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 	}
 }

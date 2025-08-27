@@ -1,9 +1,11 @@
 ﻿using KiwoomRestApi.Net.Enums.WebSocket;
+using KiwoomRestApi.Net.Extensions;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace KiwoomRestApi.Net.Clients.DomesticStocks
@@ -12,7 +14,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 	{
 		private readonly KiwoomSocketClient _client = client;
 
-		public async Task SubscribeAsync(IEnumerable<KiwoomWebSocketServiceName> serviceNames, IEnumerable<string> parameters, string groupId = "1")
+		public async Task SubscribeAsync(IEnumerable<KiwoomWebSocketServiceName> serviceNames, IEnumerable<string> parameters, string groupId = "1", CancellationToken cancellationToken = default)
 		{
 			var _serviceNames = serviceNames.Select(s => s.ToEnumString());
 
@@ -31,18 +33,18 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				]
 			};
 
-			await _client.SendAsync(message).ConfigureAwait(false);
+			await _client.SendAsync(message, cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task GetConditionSearchListAsync()
+		public async Task GetConditionSearchListAsync(CancellationToken cancellationToken = default)
 		{
 			var body = new HttpParameterMap()
 				.AddField("trnm", "CNSRLST");
 
-			await _client.SendAsync(body).ConfigureAwait(false);
+			await _client.SendAsync(body, cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task GetConditionSearchRequestAsync(int id, string contYn = "", string nextKey = "")
+		public async Task GetConditionSearchRequestAsync(int id, string contYn = "", string nextKey = "", CancellationToken cancellationToken = default)
 		{
 			var body = new HttpParameterMap()
 				.AddField("trnm", "CNSRREQ")
@@ -52,10 +54,10 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("cont_yn", contYn)
 				.AddField("next_key", nextKey);
 
-			await _client.SendAsync(body).ConfigureAwait(false);
+			await _client.SendAsync(body, cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task GetConditionSearchRequestRealtimeAsync(int id)
+		public async Task GetConditionSearchRequestRealtimeAsync(int id, CancellationToken cancellationToken = default)
 		{
 			var body = new HttpParameterMap()
 				.AddField("trnm", "CNSRREQ")
@@ -63,19 +65,19 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("search_type", "1")
 				.AddField("stex_tp", "K");
 
-			await _client.SendAsync(body).ConfigureAwait(false);
+			await _client.SendAsync(body, cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task GetConditionSearchClearAsync(int id)
+		public async Task GetConditionSearchClearAsync(int id, CancellationToken cancellationToken = default)
 		{
 			var body = new HttpParameterMap()
 				.AddField("trnm", "CNSRCLR")
 				.AddField("seq", id);
 
-			await _client.SendAsync(body).ConfigureAwait(false);
+			await _client.SendAsync(body, cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task UnsubscribeAsync(IEnumerable<KiwoomWebSocketServiceName> serviceNames, IEnumerable<string> parameters, string groupId = "1")
+		public async Task UnsubscribeAsync(IEnumerable<KiwoomWebSocketServiceName> serviceNames, IEnumerable<string> parameters, string groupId = "1", CancellationToken cancellationToken = default)
 		{
 			var _serviceNames = serviceNames.Select(s => s.ToEnumString());
 
@@ -94,10 +96,10 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				]
 			};
 
-			await _client.SendAsync(message).ConfigureAwait(false);
+			await _client.SendAsync(message, cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task UnsubscribeAllAsync(string groupId = "1")
+		public async Task UnsubscribeAllAsync(string groupId = "1", CancellationToken cancellationToken = default)
 		{
 			var message = new KiwoomWebSocketSendMessage()
 			{
@@ -114,7 +116,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				//]
 			};
 
-			await _client.SendAsync(message).ConfigureAwait(false);
+			await _client.SendAsync(message, cancellationToken).ConfigureAwait(false);
 		}
 	}
 }

@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace KiwoomRestApi.Net.Clients
@@ -273,7 +274,7 @@ namespace KiwoomRestApi.Net.Clients
 			return headers;
 		}
 
-		public async Task<KiwoomRestApiResponse<T>> PostKiwoomRestApiAsync<T>(string endpoint, string apiId, IDictionary<string, string>? body = null)
+		public async Task<KiwoomRestApiResponse<T>> PostKiwoomRestApiAsync<T>(string endpoint, string apiId, IDictionary<string, string>? body = null, CancellationToken cancellationToken = default)
 		{
 			var headers = new HttpParameterMap()
 				.AddField("api-id", apiId)
@@ -281,7 +282,7 @@ namespace KiwoomRestApi.Net.Clients
 				.AddField("cont-yn", ContYn)
 				.AddField("next-key", NextKey);
 
-			var response = await PostAsync<JObject>(endpoint, headers, body).ConfigureAwait(false);
+			var response = await PostAsync<JObject>(endpoint, headers, body, cancellationToken).ConfigureAwait(false);
 
 			if (response.Body == null)
 				return new KiwoomRestApiResponse<T>();

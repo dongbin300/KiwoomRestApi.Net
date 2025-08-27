@@ -4,6 +4,7 @@ using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
 
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace KiwoomRestApi.Net.Clients.DomesticStocks
@@ -13,7 +14,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		private readonly KiwoomRestApiClient _client = client;
 		private readonly string _endpoint = ApiEndpoint.DomesticStock.ShortSale;
 
-		public async Task<KiwoomRestApiResponse<KiwoomShortSaleGetShortsTransactions>> GetShortsTransactionsAsync(string stockCode, DateTime startDate, DateTime endDate, KiwoomShortSaleTimeType timeType = KiwoomShortSaleTimeType.StartDate)
+		public async Task<KiwoomRestApiResponse<KiwoomShortSaleGetShortsTransactions>> GetShortsTransactionsAsync(string stockCode, DateTime startDate, DateTime endDate, KiwoomShortSaleTimeType timeType = KiwoomShortSaleTimeType.StartDate, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10014";
 			var body = new HttpParameterMap()
@@ -22,7 +23,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("end_dt", endDate)
 				.AddField("tm_tp", timeType);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomShortSaleGetShortsTransactions>(_endpoint, apiId, body).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomShortSaleGetShortsTransactions>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 	}
 }

@@ -3,6 +3,7 @@ using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
 
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace KiwoomRestApi.Net.Clients.DomesticStocks
@@ -12,7 +13,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		private readonly KiwoomRestApiClient _client = client;
 		private readonly string _endpoint = ApiEndpoint.DomesticStock.Theme;
 
-		public async Task<KiwoomRestApiResponse<KiwoomThemeGetGroups>> GetGroupsAsync(KiwoomThemeQueryType queryType, int daysBefore, KiwoomThemeFluctuationProfitType fluctuationProfitType, KiwoomThemeStockExchangeType stockExchangeType, string stockCode = "", string themeName = "")
+		public async Task<KiwoomRestApiResponse<KiwoomThemeGetGroups>> GetGroupsAsync(KiwoomThemeQueryType queryType, int daysBefore, KiwoomThemeFluctuationProfitType fluctuationProfitType, KiwoomThemeStockExchangeType stockExchangeType, string stockCode = "", string themeName = "", CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka90001";
 			var body = new HttpParameterMap()
@@ -23,10 +24,10 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("stk_cd", stockCode)
 				.AddField("thema_nm", themeName);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomThemeGetGroups>(_endpoint, apiId, body).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomThemeGetGroups>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomThemeGetComponentStocks>> GetComponentStocksAsync(string themeGroupCode, KiwoomThemeStockExchangeType stockExchangeType, int daysBefore = 1)
+		public async Task<KiwoomRestApiResponse<KiwoomThemeGetComponentStocks>> GetComponentStocksAsync(string themeGroupCode, KiwoomThemeStockExchangeType stockExchangeType, int daysBefore = 1, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka90002";
 			var body = new HttpParameterMap()
@@ -34,7 +35,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("stex_tp", stockExchangeType)
 				.AddField("date_tp", daysBefore);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomThemeGetComponentStocks>(_endpoint, apiId, body).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomThemeGetComponentStocks>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 	}
 }

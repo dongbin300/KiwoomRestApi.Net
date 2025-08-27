@@ -4,6 +4,7 @@ using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
 
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace KiwoomRestApi.Net.Clients.DomesticStocks
@@ -13,25 +14,25 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		private readonly KiwoomRestApiClient _client = client;
 		private readonly string _endpoint = ApiEndpoint.DomesticStock.Elw;
 
-		public async Task<KiwoomRestApiResponse<KiwoomElwGetDailySensitivityIndices>> GetDailySensitivityIndicesAsync(string stockCode)
+		public async Task<KiwoomRestApiResponse<KiwoomElwGetDailySensitivityIndices>> GetDailySensitivityIndicesAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10048";
 			var body = new HttpParameterMap()
 				.AddField("stk_cd", stockCode);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetDailySensitivityIndices>(_endpoint, apiId, body).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetDailySensitivityIndices>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomElwGetSensitivityIndeices>> GetSensitivityIndeicesAsync(string stockCode)
+		public async Task<KiwoomRestApiResponse<KiwoomElwGetSensitivityIndeices>> GetSensitivityIndeicesAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10050";
 			var body = new HttpParameterMap()
 				.AddField("stk_cd", stockCode);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetSensitivityIndeices>(_endpoint, apiId, body).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetSensitivityIndeices>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomElwGetPriceJumpFluctuations>> GetPriceJumpFluctuationsAsync(KiwoomElwFluctuationType fluctuationType, KiwoomElwTimeType timeType, int timeValue, KiwoomElwTradeQuantityType tradeQuantityType, KiwoomElwCompanyCode issuerCompanyCode, string baseAssetCode, KiwoomElwRightType rightType, KiwoomElwCompanyCode lpCode, bool isExcludeEndedElw)
+		public async Task<KiwoomRestApiResponse<KiwoomElwGetPriceJumpFluctuations>> GetPriceJumpFluctuationsAsync(KiwoomElwFluctuationType fluctuationType, KiwoomElwTimeType timeType, int timeValue, KiwoomElwTradeQuantityType tradeQuantityType, KiwoomElwCompanyCode issuerCompanyCode, string baseAssetCode, KiwoomElwRightType rightType, KiwoomElwCompanyCode lpCode, bool isExcludeEndedElw, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka30001";
 			var body = new HttpParameterMap()
@@ -45,10 +46,10 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("lpcd", lpCode)
 				.AddField("trde_end_elwskip", isExcludeEndedElw);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetPriceJumpFluctuations>(_endpoint, apiId, body).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetPriceJumpFluctuations>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomElwGetNetTradeTopByTraders>> GetNetTradeTopByTradersAsync(KiwoomElwCompanyCode issuerCompanyCode, KiwoomElwTradeQuantityType tradeQuantityType, KiwoomElwNetTradeType tradeType, int period, bool isExcludeEndedElw)
+		public async Task<KiwoomRestApiResponse<KiwoomElwGetNetTradeTopByTraders>> GetNetTradeTopByTradersAsync(KiwoomElwCompanyCode issuerCompanyCode, KiwoomElwTradeQuantityType tradeQuantityType, KiwoomElwNetTradeType tradeType, int period, bool isExcludeEndedElw, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka30002";
 			var body = new HttpParameterMap()
@@ -58,20 +59,20 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("dt", period)
 				.AddField("trde_end_elwskip", isExcludeEndedElw);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetNetTradeTopByTraders>(_endpoint, apiId, body).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetNetTradeTopByTraders>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomElwGetLpHoldingDailyTrends>> GetLpHoldingDailyTrendsAsync(string baseAssetCode, DateTime date)
+		public async Task<KiwoomRestApiResponse<KiwoomElwGetLpHoldingDailyTrends>> GetLpHoldingDailyTrendsAsync(string baseAssetCode, DateTime date, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka30003";
 			var body = new HttpParameterMap()
 				.AddField("bsis_aset_cd", baseAssetCode)
 				.AddField("base_dt", date);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetLpHoldingDailyTrends>(_endpoint, apiId, body).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetLpHoldingDailyTrends>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomElwGetDisparityRates>> GetDisparityRatesAsync(KiwoomElwCompanyCode issuerCompanyCode, string baseAssetCode, KiwoomElwRightType rightType, KiwoomElwCompanyCode lpCode, bool isExcludeEndedElw)
+		public async Task<KiwoomRestApiResponse<KiwoomElwGetDisparityRates>> GetDisparityRatesAsync(KiwoomElwCompanyCode issuerCompanyCode, string baseAssetCode, KiwoomElwRightType rightType, KiwoomElwCompanyCode lpCode, bool isExcludeEndedElw, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka30004";
 			var body = new HttpParameterMap()
@@ -81,10 +82,10 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("lpcd", lpCode)
 				.AddField("trde_end_elwskip", isExcludeEndedElw);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetDisparityRates>(_endpoint, apiId, body).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetDisparityRates>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomElwGetConditionSearchs>> GetConditionSearchsAsync(KiwoomElwCompanyCode issuerCompanyCode, string baseAssetCode, KiwoomElwRightType rightType, KiwoomElwCompanyCode lpCode, KiwoomElwSortType sortType)
+		public async Task<KiwoomRestApiResponse<KiwoomElwGetConditionSearchs>> GetConditionSearchsAsync(KiwoomElwCompanyCode issuerCompanyCode, string baseAssetCode, KiwoomElwRightType rightType, KiwoomElwCompanyCode lpCode, KiwoomElwSortType sortType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka30005";
 			var body = new HttpParameterMap()
@@ -94,10 +95,10 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("lpcd", lpCode)
 				.AddField("sort_tp", sortType);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetConditionSearchs>(_endpoint, apiId, body).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetConditionSearchs>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomElwGetFluctuationRateRanks>> GetFluctuationRateRanksAsync(KiwoomElwSortType sortType, KiwoomElwRightType rightType, bool isExcludeEnded)
+		public async Task<KiwoomRestApiResponse<KiwoomElwGetFluctuationRateRanks>> GetFluctuationRateRanksAsync(KiwoomElwSortType sortType, KiwoomElwRightType rightType, bool isExcludeEnded, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka30009";
 			var body = new HttpParameterMap()
@@ -105,10 +106,10 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("rght_tp", rightType)
 				.AddField("trde_end_skip", isExcludeEnded);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetFluctuationRateRanks>(_endpoint, apiId, body).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetFluctuationRateRanks>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomElwGetRequestRanks>> GetRequestRanksAsync(KiwoomElwSortType2 sortType, KiwoomElwRightType rightType, bool isExcludeEnded)
+		public async Task<KiwoomRestApiResponse<KiwoomElwGetRequestRanks>> GetRequestRanksAsync(KiwoomElwSortType2 sortType, KiwoomElwRightType rightType, bool isExcludeEnded, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka30010";
 			var body = new HttpParameterMap()
@@ -116,25 +117,25 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("rght_tp", rightType)
 				.AddField("trde_end_skip", isExcludeEnded);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetRequestRanks>(_endpoint, apiId, body).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetRequestRanks>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomElwGetProximityRates>> GetProximityRatesAsync(string stockCode)
+		public async Task<KiwoomRestApiResponse<KiwoomElwGetProximityRates>> GetProximityRatesAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka30011";
 			var body = new HttpParameterMap()
 				.AddField("stk_cd", stockCode);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetProximityRates>(_endpoint, apiId, body).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetProximityRates>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomElwGetAssetInfo>> GetAssetInfoAsync(string stockCode)
+		public async Task<KiwoomRestApiResponse<KiwoomElwGetAssetInfo>> GetAssetInfoAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka30012";
 			var body = new HttpParameterMap()
 				.AddField("stk_cd", stockCode);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetAssetInfo>(_endpoint, apiId, body).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetAssetInfo>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 	}
 }

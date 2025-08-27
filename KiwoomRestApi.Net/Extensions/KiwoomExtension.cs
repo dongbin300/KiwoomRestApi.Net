@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 
-namespace KiwoomRestApi.Net
+namespace KiwoomRestApi.Net.Extensions
 {
 	public static class KiwoomExtension
 	{

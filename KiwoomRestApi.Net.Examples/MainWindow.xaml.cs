@@ -1,18 +1,24 @@
 ﻿using KiwoomRestApi.Net.Clients;
-using KiwoomRestApi.Net.Enums.RankingInfo;
-using KiwoomRestApi.Net.Enums.ForeignInstitution;
+using KiwoomRestApi.Net.Configuration;
+using KiwoomRestApi.Net.Enums.Account;
 using KiwoomRestApi.Net.Enums.Chart;
-
-using System.IO;
-using System.Windows;
-using KiwoomRestApi.Net.Objects;
-using System.Diagnostics;
-using Newtonsoft.Json;
-using KiwoomRestApi.Net.Objects.Models;
-using KiwoomRestApi.Net.Enums.WebSocket;
+using KiwoomRestApi.Net.Enums.ForeignInstitution;
+using KiwoomRestApi.Net.Enums.Order;
+using KiwoomRestApi.Net.Enums.RankingInfo;
 using KiwoomRestApi.Net.Enums.StockInfo;
+using KiwoomRestApi.Net.Enums.WebSocket;
 using KiwoomRestApi.Net.Extensions;
+using KiwoomRestApi.Net.Objects;
+using KiwoomRestApi.Net.Objects.Models;
+
 using Microsoft.Extensions.DependencyInjection;
+
+using Newtonsoft.Json;
+
+using System.Diagnostics;
+using System.IO;
+using System.Net.Http;
+using System.Windows;
 
 namespace KiwoomRestApi.Net.Examples
 {
@@ -36,13 +42,14 @@ namespace KiwoomRestApi.Net.Examples
 			var endDate = new DateTime(2025, 8, 25);
 			var stockCode = "005930";
 
-			var __result__ = client.Account.GetProfitRateAsync(Enums.Account.KiwoomAccountStockExchangeType.Unified).Result;
+			var __result__ = client.Chart.GetDailyChartsAsync("005930", DateTime.Today, KiwoomChartUseOption.Use).Result;
 			//socketClient = KiwoomSocketClient.Create(client.Token, true);
 
 			//socketClient.OnConditionSearchRequestReceived += (message) =>
 			//{
 
 			//};
+
 		}
 
 		private async void Test_Click(object sender, RoutedEventArgs e)
@@ -50,6 +57,9 @@ namespace KiwoomRestApi.Net.Examples
 			//await socketClient.WebSocket.GetConditionSearchListAsync().ConfigureAwait(false);
 			//await socketClient.WebSocket.GetConditionSearchRequestAsync(20).ConfigureAwait(false);
 			//await socketClient.WebSocket.GetConditionSearchClearAsync(20).ConfigureAwait(false);
+
+			var client = KiwoomRestApiClient.Create(appKey, secretKey, true);
+
 		}
 
 		private async void Test2_Click(object sender, RoutedEventArgs e)

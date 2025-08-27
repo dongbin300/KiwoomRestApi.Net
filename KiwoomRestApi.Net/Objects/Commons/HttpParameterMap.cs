@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using KiwoomRestApi.Net.Extensions;
+
+using System.Collections.Generic;
 using System.Linq;
 
 namespace KiwoomRestApi.Net.Objects.Commons
