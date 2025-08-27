@@ -55,7 +55,7 @@ namespace KiwoomRestApi.Net.Clients
 		}
 		#endregion
 
-		public async Task SendAsync(object messageObject)
+		public async Task SendAsync(object messageObject, CancellationToken cancellationToken = default)
 		{
 			if (!_isConnect)
 			{
@@ -64,7 +64,8 @@ namespace KiwoomRestApi.Net.Clients
 
 			var messageJson = JsonConvert.SerializeObject(messageObject);
 			var bytes = Encoding.UTF8.GetBytes(messageJson);
-			await ClientWebSocket.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, CancellationTokenSource.Token);
+			var _cancellationToken = cancellationToken == default ? CancellationTokenSource.Token : cancellationToken;
+			await ClientWebSocket.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, _cancellationToken);
 
 			Debug.WriteLine($"메시지 전송: {messageJson}");
 		}

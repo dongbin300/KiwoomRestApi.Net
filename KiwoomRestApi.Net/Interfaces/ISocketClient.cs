@@ -10,7 +10,7 @@ namespace KiwoomRestApi.Net.Interfaces
 		ClientWebSocket ClientWebSocket { get; }
 		CancellationTokenSource CancellationTokenSource { get; }
 
-		Task SendAsync(object messageObject);
+		Task SendAsync(object messageObject, CancellationToken cancellationToken);
 		Task ReceiveAsync(CancellationToken cancellationToken);
 		Task DisconnectAsync();
 

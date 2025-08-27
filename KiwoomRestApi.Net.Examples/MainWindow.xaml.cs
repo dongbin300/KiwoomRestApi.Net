@@ -59,9 +59,6 @@ namespace KiwoomRestApi.Net.Examples
 			//await socketClient.WebSocket.GetConditionSearchListAsync().ConfigureAwait(false);
 			//await socketClient.WebSocket.GetConditionSearchRequestAsync(20).ConfigureAwait(false);
 			//await socketClient.WebSocket.GetConditionSearchClearAsync(20).ConfigureAwait(false);
-
-			var client = KiwoomRestApiClient.Create(appKey, secretKey, true);
-
 		}
 
 		private async void Test2_Click(object sender, RoutedEventArgs e)

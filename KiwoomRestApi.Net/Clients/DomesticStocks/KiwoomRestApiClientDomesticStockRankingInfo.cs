@@ -125,7 +125,7 @@ KiwoomRankingInfoPriceCondition2 priceCondition, KiwoomRankingInfoTradePriceCond
 			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetTodayTradeQuantityUppers>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetPreviousTradeQuantityUppers>> GetPreviousTradeQuantityUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoPreviousTradeQuantityQueryType queryType, KiwoomRankingInfoStockExchangeType stockExchangeType, int startRank, int endRank)
+		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetPreviousTradeQuantityUppers>> GetPreviousTradeQuantityUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoPreviousTradeQuantityQueryType queryType, KiwoomRankingInfoStockExchangeType stockExchangeType, int startRank, int endRank, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10031";
 			var body = new HttpParameterMap()
@@ -285,7 +285,7 @@ KiwoomRankingInfoPriceCondition2 priceCondition, KiwoomRankingInfoTradePriceCond
 			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetEqualNetTradeRanks>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetOpenMarketInvestorTradeUppers>> GetOpenMarketInvestorTradeUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoNetTradeType2 tradeType, KiwoomRankingInfoInstitutionType institutionType)
+		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetOpenMarketInvestorTradeUppers>> GetOpenMarketInvestorTradeUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoNetTradeType2 tradeType, KiwoomRankingInfoInstitutionType institutionType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10065";
 			var body = new HttpParameterMap()
@@ -296,7 +296,7 @@ KiwoomRankingInfoPriceCondition2 priceCondition, KiwoomRankingInfoTradePriceCond
 			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetOpenMarketInvestorTradeUppers>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetOvertimeSinglePriceFluctuationRateRanks>> GetOvertimeSinglePriceFluctuationRateRanksAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoFluctuationSortType sortType, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoTradeQuantityType tradeQuantityType, KiwoomRankingInfoCreditCondition creditCondition, KiwoomRankingInfoTradePriceCondition tradePriceCondition)
+		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetOvertimeSinglePriceFluctuationRateRanks>> GetOvertimeSinglePriceFluctuationRateRanksAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoFluctuationSortType sortType, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoTradeQuantityType tradeQuantityType, KiwoomRankingInfoCreditCondition creditCondition, KiwoomRankingInfoTradePriceCondition tradePriceCondition, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10098";
 			var body = new HttpParameterMap()
