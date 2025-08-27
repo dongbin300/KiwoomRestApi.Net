@@ -1,5 +1,9 @@
 # 🚀 KiwoomRestApi.Net
 
+현재 comment, doc 작업 중입니다.
+일관성 유지 및 api 테스트 작업을 추가로 진행해야 합니다.
+
+
 [![NuGet Version](https://img.shields.io/nuget/v/KiwoomRestApi.Net.svg)](https://www.nuget.org/packages/KiwoomRestApi.Net)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/KiwoomRestApi.Net.svg)](https://www.nuget.org/packages/KiwoomRestApi.Net)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/dongbin300/KiwoomRestApi.Net/ci.yml?branch=main)](https://github.com/dongbin300/KiwoomRestApi.Net/actions)
@@ -51,6 +55,7 @@ services.AddKiwoomRestApi(config => {
 });
 
 // 컨트롤러에서 사용
+[ApiController]
 public class TradingController : ControllerBase
 {
     private readonly KiwoomRestApiClient _client;

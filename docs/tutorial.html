@@ -248,10 +248,10 @@
                 <pre><code class="language-csharp">using KiwoomRestApi.Net.Clients;
 
 // 실거래용
-var client = KiwoomRestApiClient.Create("your-app-key", "your-secret-key", false);
+var client = await KiwoomRestApiClient.CreateAsync("your-app-key", "your-secret-key", false);
 
 // 모의투자용
-var mockClient = KiwoomRestApiClient.Create("your-app-key", "your-secret-key", true);</code></pre>
+var mockClient = await KiwoomRestApiClient.CreateAsync("your-app-key", "your-secret-key", true);</code></pre>
             </div>
 
             <h3>2.2 의존성 주입 사용 (권장)</h3>
@@ -305,13 +305,13 @@ public class StockController : ControllerBase
             <div class="code-block">
                 <button class="copy-btn" onclick="copyCode(this)">복사</button>
                 <pre><code class="language-csharp">// 삼성전자 현재가 조회
-var stockInfo = await client.StockInfo.GetPresentPriceAsync("005930");
+var stockInfo = await client.DomesticStockInfo.GetStockCurrentPriceAsync("005930");
 
-if (stockInfo.IsSuccess && stockInfo.Body != null)
+if (stockInfo.ReturnCode == "0")
 {
-    Console.WriteLine($"종목명: {stockInfo.Body.Data.StockName}");
-    Console.WriteLine($"현재가: {stockInfo.Body.Data.CurrentPrice}");
-    Console.WriteLine($"전일대비: {stockInfo.Body.Data.PrevDiff}");
+    Console.WriteLine($"종목명: {stockInfo.Output.StockName}");
+    Console.WriteLine($"현재가: {stockInfo.Output.StockPrice}");
+    Console.WriteLine($"전일대비: {stockInfo.Output.PriceDifference}");
 }</code></pre>
             </div>
 
@@ -319,17 +319,17 @@ if (stockInfo.IsSuccess && stockInfo.Body != null)
             <div class="code-block">
                 <button class="copy-btn" onclick="copyCode(this)">복사</button>
                 <pre><code class="language-csharp">// 계좌 목록 조회
-var accounts = await client.Account.GetAccountListAsync();
+var accounts = await client.DomesticStockAccount.GetAccountsAsync();
 
-foreach (var account in accounts.Body.Data)
+foreach (var account in accounts.Output)
 {
     Console.WriteLine($"계좌번호: {account.AccountNumber}");
-    Console.WriteLine($"계좌명: {account.AccountName}");
+    Console.WriteLine($"계좌타입: {account.AccountType}");
 }
 
 // 계좌 잔고 조회
-var balance = await client.Account.GetBalanceAsync();
-Console.WriteLine($"예수금: {balance.Body.Data.Deposit}");</code></pre>
+var balance = await client.DomesticStockAccount.GetAccountBalanceAsync();
+Console.WriteLine($"총 평가금액: {balance.Output1.TotalEvaluationAmount}");</code></pre>
             </div>
 
             <h3>3.3 차트 데이터 조회</h3>
@@ -338,14 +338,14 @@ Console.WriteLine($"예수금: {balance.Body.Data.Deposit}");</code></pre>
                 <pre><code class="language-csharp">using KiwoomRestApi.Net.Enums.Chart;
 
 // 일봉 데이터 조회 (최근 30일)
-var chartData = await client.Chart.GetDailyChartAsync(
+var chartData = await client.DomesticStockChart.GetDailyChartsAsync(
     "005930", 
-    ChartPeriod.Day, 
-    30);
+    DateTime.Today.AddDays(-30), 
+    KiwoomChartUseOption.Use);
 
-foreach (var candle in chartData.Body.Data)
+foreach (var candle in chartData.Output2)
 {
-    Console.WriteLine($"날짜: {candle.Date}, 종가: {candle.Close}, 거래량: {candle.Volume}");
+    Console.WriteLine($"날짜: {candle.BusinessDate}, 종가: {candle.ClosePrice}, 거래량: {candle.Volume}");
 }</code></pre>
             </div>
         </section>
@@ -357,15 +357,18 @@ foreach (var candle in chartData.Body.Data)
             <div class="code-block">
                 <button class="copy-btn" onclick="copyCode(this)">복사</button>
                 <pre><code class="language-csharp">// WebSocket 클라이언트 생성
-var socketClient = KiwoomSocketClient.Create(client.Token, true);
+var socketClient = await KiwoomSocketClient.CreateAsync(client.Authorization, true);
 
-// 실시간 호가 구독
-socketClient.OnRealtimeQuoteReceived += (quote) =>
+// 실시간 주식체결 구독
+socketClient.OnRealtimeStockExecutionReceived += (data) =>
 {
-    Console.WriteLine($"종목: {quote.StockCode}, 현재가: {quote.CurrentPrice}");
+    foreach (var item in data)
+    {
+        Console.WriteLine($"종목: {item.Key}, 현재가: {item.Value.StockPrice}");
+    }
 };
 
-await socketClient.WebSocket.SubscribeRealtimeQuoteAsync("005930");</code></pre>
+await socketClient.WebSocket.SubscribeAsync([KiwoomWebSocketServiceName.StockExecution], ["005930"]);</code></pre>
             </div>
 
             <h3>4.2 CancellationToken 사용</h3>
@@ -376,7 +379,7 @@ using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
 
 try
 {
-    var stockInfo = await client.StockInfo.GetPresentPriceAsync("005930", cts.Token);
+    var stockInfo = await client.DomesticStockInfo.GetStockCurrentPriceAsync("005930", cts.Token);
     // 처리 로직
 }
 catch (OperationCanceledException)
@@ -390,13 +393,13 @@ catch (OperationCanceledException)
                 <button class="copy-btn" onclick="copyCode(this)">복사</button>
                 <pre><code class="language-csharp">// 여러 종목의 현재가를 병렬로 조회
 var stockCodes = new[] { "005930", "000660", "035420" };
-var tasks = stockCodes.Select(code => client.StockInfo.GetPresentPriceAsync(code));
+var tasks = stockCodes.Select(code => client.DomesticStockInfo.GetStockCurrentPriceAsync(code));
 
 var results = await Task.WhenAll(tasks);
 
-foreach (var result in results.Where(r => r.IsSuccess))
+foreach (var result in results.Where(r => r.ReturnCode == "0"))
 {
-    var data = result.Body.Data;
+    var data = result.Output;
     Console.WriteLine($"{data.StockName}: {data.CurrentPrice}");
 }</code></pre>
             </div>

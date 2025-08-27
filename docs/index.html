@@ -262,8 +262,8 @@
                 <a href="https://github.com/dongbin300/KiwoomRestApi.Net" class="badge">
                     <i class="fab fa-github"></i> GitHub
                 </a>
-                <a href="#api-docs" class="badge">
-                    <i class="fas fa-book"></i> API 문서
+                <a href="api-reference.html" class="badge">
+                    <i class="fas fa-book"></i> API Reference
                 </a>
                 <a href="#examples" class="badge">
                     <i class="fas fa-code"></i> 예제
@@ -274,9 +274,8 @@
         <nav class="nav">
             <a href="#quick-start">빠른 시작</a>
             <a href="#features">주요 특징</a>
-            <a href="#api-docs">API 문서</a>
+            <a href="api-reference.html">API Reference</a>
             <a href="#examples">예제 코드</a>
-            <a href="tutorial.html">튜토리얼</a>
         </nav>
 
         <section id="quick-start" class="quick-start">
@@ -295,19 +294,11 @@ dotnet add package KiwoomRestApi.Net</code></pre>
                 <pre><code class="language-csharp">using KiwoomRestApi.Net.Clients;
 
 // 1. 클라이언트 생성 및 초기화
-var client = await KiwoomRestApiClient.CreateAsync(
-    "YOUR_APP_KEY", 
-    "YOUR_SECRET_KEY", 
-    isMock: true
-);
+var client = await KiwoomRestApiClient.CreateAsync("YOUR_APP_KEY", "YOUR_SECRET_KEY", isMock: true);
 
 // 2. 삼성전자 주식 정보 조회
-var stockInfo = await client.StockInfo.GetPriceAsync("005930");
-Console.WriteLine($"삼성전자 현재가: {stockInfo.CurrentPrice:N0}원");
-
-// 3. 계좌 잔고 조회  
-var balance = await client.Account.GetBalanceAsync("계좌번호");
-Console.WriteLine($"평가금액: {balance.TotalEvaluationAmount:N0}원");</code></pre>
+var stockInfo = await client.StockInfo.GetStockInfoAsync("005930", DateTime.Today, KiwoomStockInfoMarginLoanType.Loan);
+Console.WriteLine($"삼성전자 현재가: {stockInfo.Data.CurrentPrice}원");</code></pre>
             </div>
         </section>
 
@@ -325,18 +316,6 @@ Console.WriteLine($"평가금액: {balance.TotalEvaluationAmount:N0}원");</code
                     <i class="fas fa-plug"></i>
                     <h3>의존성 주입 지원</h3>
                     <p>ASP.NET Core와 완벽하게 호환되는 DI 컨테이너 지원으로 현대적인 .NET 애플리케이션에 최적화되어 있습니다.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <i class="fas fa-shield-alt"></i>
-                    <h3>강타입 지원</h3>
-                    <p>컴파일 타임 타입 안정성과 IntelliSense 지원으로 개발 생산성을 극대화합니다.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <i class="fas fa-cogs"></i>
-                    <h3>유연한 설정</h3>
-                    <p>다양한 설정 옵션과 커스터마이징 가능한 HttpClient로 모든 요구사항을 충족합니다.</p>
                 </div>
                 
                 <div class="feature-card">
@@ -362,7 +341,6 @@ Console.WriteLine($"평가금액: {balance.TotalEvaluationAmount:N0}원");</code
                         <th>기능</th>
                         <th>설명</th>
                         <th>상태</th>
-                        <th>주요 메서드</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -370,49 +348,41 @@ Console.WriteLine($"평가금액: {balance.TotalEvaluationAmount:N0}원");</code
                         <td><i class="fas fa-key"></i> OAuth 인증</td>
                         <td>토큰 발급/갱신</td>
                         <td><span class="status-badge status-completed">완료</span></td>
-                        <td><code>GetAccessTokenAsync()</code></td>
                     </tr>
                     <tr>
                         <td><i class="fas fa-wallet"></i> 계좌 관리</td>
                         <td>잔고조회, 주문내역</td>
                         <td><span class="status-badge status-completed">완료</span></td>
-                        <td><code>GetBalanceAsync()</code>, <code>GetOrdersAsync()</code></td>
                     </tr>
                     <tr>
                         <td><i class="fas fa-chart-line"></i> 주식 정보</td>
                         <td>현재가, 호가, 체결</td>
                         <td><span class="status-badge status-completed">완료</span></td>
-                        <td><code>GetPriceAsync()</code>, <code>GetOrderBookAsync()</code></td>
                     </tr>
                     <tr>
                         <td><i class="fas fa-chart-bar"></i> 차트 데이터</td>
                         <td>일/분봉 데이터</td>
                         <td><span class="status-badge status-completed">완료</span></td>
-                        <td><code>GetDailyPriceAsync()</code>, <code>GetMinutePriceAsync()</code></td>
                     </tr>
                     <tr>
                         <td><i class="fas fa-shopping-cart"></i> 주문 관리</td>
                         <td>매수/매도 주문</td>
                         <td><span class="status-badge status-completed">완료</span></td>
-                        <td><code>PlaceOrderAsync()</code>, <code>CancelOrderAsync()</code></td>
                     </tr>
                     <tr>
                         <td><i class="fas fa-list-ol"></i> 순위 정보</td>
                         <td>상한가, 급등주, 거래량</td>
                         <td><span class="status-badge status-completed">완료</span></td>
-                        <td><code>GetTopPricesAsync()</code>, <code>GetVolumeRankAsync()</code></td>
                     </tr>
                     <tr>
                         <td><i class="fas fa-broadcast-tower"></i> 실시간 데이터</td>
                         <td>WebSocket 연결</td>
                         <td><span class="status-badge status-completed">완료</span></td>
-                        <td><code>SubscribeAsync()</code>, <code>UnsubscribeAsync()</code></td>
                     </tr>
                     <tr>
-                        <td><i class="fas fa-globe"></i> 해외주식</td>
-                        <td>미국주식 거래</td>
-                        <td><span class="status-badge status-development">개발중</span></td>
-                        <td>예정</td>
+                        <td><i class="fas fa-search"></i> 조건검색</td>
+                        <td>조건검색 및 실시간 알림</td>
+                        <td><span class="status-badge status-completed">완료</span></td>
                     </tr>
                 </tbody>
             </table>
@@ -424,10 +394,10 @@ Console.WriteLine($"평가금액: {balance.TotalEvaluationAmount:N0}원");</code
             <h3>🔧 의존성 주입 설정</h3>
             <div class="code-block">
                 <button class="copy-btn" onclick="copyToClipboard(this)">복사</button>
-                <pre><code class="language-csharp">// Program.cs (ASP.NET Core)
+                <pre><code class="language-csharp">// Startup.cs 또는 Program.cs (ASP.NET Core)
 services.AddKiwoomRestApi(config => {
     config.AppKey = "your-app-key";
-    config.SecretKey = "your-secret-key";
+    config.SecretKey = "your-secret-key"; 
     config.IsMock = true;
     config.RequestTimeout = TimeSpan.FromSeconds(30);
 });
@@ -442,102 +412,85 @@ public class TradingController : ControllerBase
     {
         _client = client;
     }
-    
-    [HttpGet("stock/{code}")]
-    public async Task<IActionResult> GetStock(string code)
-    {
-        var stockInfo = await _client.StockInfo.GetPriceAsync(code);
-        return Ok(stockInfo);
-    }
 }</code></pre>
             </div>
 
             <h3>📈 주식 데이터 조회</h3>
             <div class="code-block">
                 <button class="copy-btn" onclick="copyToClipboard(this)">복사</button>
-                <pre><code class="language-csharp">using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
-
-// 현재가 조회
-var price = await client.StockInfo.GetPriceAsync("005930", cts.Token);
-Console.WriteLine($"삼성전자: {price.CurrentPrice:N0}원 ({price.ChangeRate:+0.00;-0.00}%)");
+                <pre><code class="language-csharp">// 현재가 조회
+var stockInfo = await client.StockInfo.GetStockInfoAsync("005930", DateTime.Today, KiwoomStockInfoMarginLoanType.Loan);
+Console.WriteLine($"삼성전자 현재가: {stockInfo.Data.CurrentPrice}원");
 
 // 호가 조회  
-var orderBook = await client.MarketCondition.GetOrderBookAsync("005930", cts.Token);
-Console.WriteLine($"매수1호가: {orderBook.BuyPrice1:N0}원");
+var orderBook = await client.MarketCondition.GetOrderBookAsync("005930");
+Console.WriteLine($"매수1호가: {orderBook.Data.BidLevel1Price}원");
 
 // 차트 데이터 조회
-var chartData = await client.Chart.GetDailyPriceAsync("005930", 
-    startDate: DateTime.Today.AddDays(-30),
-    endDate: DateTime.Today,
-    cancellationToken: cts.Token);
-    
-foreach (var candle in chartData.Take(5))
-{
-    Console.WriteLine($"{candle.Date:yyyy-MM-dd}: {candle.ClosePrice:N0}원");
-}</code></pre>
+var chartData = await client.Chart.GetDailyChartsAsync("005930", DateTime.Today, KiwoomChartUseOption.Use);
+Console.WriteLine($"삼성전자 전일종가: {chartData.Data.Items.ElementAt(1).CurrentPrice}원");</code></pre>
             </div>
 
             <h3>💰 계좌 및 주문 관리</h3>
             <div class="code-block">
                 <button class="copy-btn" onclick="copyToClipboard(this)">복사</button>
-                <pre><code class="language-csharp">// 계좌 정보 조회
-var accounts = await client.Account.GetAccountsAsync();
-foreach (var account in accounts)
-{
-    Console.WriteLine($"계좌: {account.AccountNumber} ({account.AccountName})");
-}
+                <pre><code class="language-csharp">// 예수금 조회
+var deposits = await client.Account.GetDepositsAsync(KiwoomAccountDepositQueryType.General);
+Console.WriteLine($"예수금: {deposits.Data.DepositAmount}원");
 
-// 계좌 잔고 조회
-var balance = await client.Account.GetBalanceAsync(accounts.First().AccountNumber);
-Console.WriteLine($"총 평가금액: {balance.TotalEvaluationAmount:N0}원");
-Console.WriteLine($"총 손익: {balance.TotalProfitLoss:+#,0;-#,0}원");
+// 매수 주문
+var buyOrderResult = await client.Order.PlaceOrderAsync(
+	KiwoomOrderType.Buy,                                    // 매수
+	KiwoomOrderDomesticStockExchangeType.KRX,               // 거래소
+	"005930",                                               // 삼성전자
+	10,                                                     // 주문수량
+	KiwoomOrderTradeType.Normal,                            // 지정가
+	80000);                                                 // 주문가격
 
-// 매수 주문 (모의투자)
-var orderRequest = new OrderRequest
-{
-    AccountNumber = accounts.First().AccountNumber,
-    StockCode = "005930",
-    OrderType = OrderType.Limit,
-    Side = OrderSide.Buy,
-    Quantity = 10,
-    Price = 80000
-};
+// 매도 주문
+var sellOrderResult = await client.Order.PlaceOrderAsync(
+	KiwoomOrderType.Sell,                                   // 매도
+	KiwoomOrderDomesticStockExchangeType.KRX,               // 거래소
+	"005930",                                               // 삼성전자
+	5,                                                      // 주문수량
+	KiwoomOrderTradeType.Market);                          // 시장가
 
-var orderResult = await client.Order.PlaceOrderAsync(orderRequest);
-if (orderResult.IsSuccess)
-{
-    Console.WriteLine($"주문 성공: {orderResult.OrderNumber}");
-}</code></pre>
+// 미체결 주문 조회
+var outstandingOrders = await client.Account.GetOutstandingOrdersAsync(
+	KiwoomAccountQueryType.All,
+	KiwoomAccountTradeType.All,
+	KiwoomAccountStockExchangeType.Unified);
+
+// 주문 수정
+var modifyResult = await client.Order.ModifyOrderAsync(
+	KiwoomOrderDomesticStockExchangeType.KRX,               // 거래소
+	"원주문번호",                                            // 원주문번호
+	"005930",                                               // 종목코드
+	8,                                                      // 수정수량
+	82000);                                                 // 수정가격
+
+// 주문 취소
+var cancelResult = await client.Order.CancelOrderAsync(
+	KiwoomOrderDomesticStockExchangeType.KRX,               // 거래소
+	"원주문번호",                                            // 원주문번호
+	"005930");                                              // 종목코드</code></pre>
             </div>
 
             <h3>📡 실시간 데이터 구독</h3>
             <div class="code-block">
                 <button class="copy-btn" onclick="copyToClipboard(this)">복사</button>
-                <pre><code class="language-csharp">// WebSocket 클라이언트 생성
+                <pre><code class="language-csharp">using KiwoomRestApi.Net.Clients;
+
 var socketClient = await KiwoomSocketClient.CreateAsync(client.Token, isMock: true);
 
-// 실시간 현재가 구독
-socketClient.OnPriceReceived += (stockCode, priceInfo) => 
+// 실시간 주식체결 수신
+socketClient.OnRealtimeStockExecutionReceived += (message) => 
 {
-    Console.WriteLine($"{stockCode}: {priceInfo.CurrentPrice:N0}원 " +
-                     $"({priceInfo.ChangeRate:+0.00;-0.00}%)");
+    Console.WriteLine($"체결가: {message.ElementAt(0).Values.CurrentPrice}원");
 };
 
-// 실시간 호가 구독
-socketClient.OnOrderBookReceived += (stockCode, orderBook) => 
-{
-    Console.WriteLine($"{stockCode} 매수1호가: {orderBook.BuyPrice1:N0}원 " +
-                     $"매도1호가: {orderBook.SellPrice1:N0}원");
-};
-
-// 종목 구독 시작
-await socketClient.SubscribePriceAsync("005930"); // 삼성전자
-await socketClient.SubscribePriceAsync("000660"); // SK하이닉스
-await socketClient.SubscribeOrderBookAsync("005930");
-
-// 종료시 정리
-Console.ReadKey();
-await socketClient.DisposeAsync();</code></pre>
+// 실시간 주식체결 구독
+await socketClient.WebSocket.SubscribeAsync([KiwoomWebSocketServiceName.StockExecution], ["005930", "000660"]);</code></pre>
             </div>
         </section>
 
@@ -556,11 +509,11 @@ await socketClient.DisposeAsync();</code></pre>
                 더 자세한 예제와 튜토리얼은 다음 링크에서 확인하실 수 있습니다:
             </p>
             <div style="text-align: center; margin: 30px 0;">
-                <a href="tutorial.html" style="background: #667eea; color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; margin: 0 10px;">
-                    <i class="fas fa-book"></i> 상세 튜토리얼
-                </a>
                 <a href="api-reference.html" style="background: #28a745; color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; margin: 0 10px;">
-                    <i class="fas fa-code"></i> API 레퍼런스
+                    <i class="fas fa-code"></i> API Reference
+                </a>
+                <a href="https://github.com/dongbin300/KiwoomRestApi.Net/blob/main/docs/FAQ.md" style="background: #6f42c1; color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; margin: 0 10px;">
+                    <i class="fas fa-question-circle"></i> FAQ
                 </a>
                 <a href="https://github.com/dongbin300/KiwoomRestApi.Net/tree/main/examples" style="background: #17a2b8; color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; margin: 0 10px;">
                     <i class="fab fa-github"></i> 샘플 코드

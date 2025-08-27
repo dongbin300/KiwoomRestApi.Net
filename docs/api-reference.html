@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Reference - KiwoomRestApi.Net</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .nav {
+            background: #2c3e50;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .nav li {
+            margin: 0;
+        }
+
+        .nav a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            font-weight: 500;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav a:hover {
+            background: #34495e;
+            border-bottom-color: #667eea;
+        }
+
+        .nav a.active {
+            background: #34495e;
+            border-bottom-color: #667eea;
+        }
+
+        .content {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .sidebar {
+            width: 300px;
+            background: #f8f9fa;
+            border-right: 1px solid #e9ecef;
+            padding: 20px 0;
+            position: sticky;
+            top: 73px;
+            height: calc(100vh - 73px);
+            overflow-y: auto;
+        }
+
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+
+        .sidebar-section h3 {
+            color: #2c3e50;
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            background: #e9ecef;
+            border-left: 4px solid #667eea;
+        }
+
+        .sidebar-section ul {
+            list-style: none;
+        }
+
+        .sidebar-section li {
+            margin: 2px 0;
+        }
+
+        .sidebar-section a {
+            display: block;
+            color: #495057;
+            text-decoration: none;
+            padding: 8px 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .sidebar-section a:hover {
+            color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+            padding-left: 25px;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .api-section {
+            margin-bottom: 60px;
+        }
+
+        .api-section h2 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .method-card {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .method-header {
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .method-name {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+        }
+
+        .method-description {
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+
+        .method-body {
+            padding: 20px;
+        }
+
+        .method-signature {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+
+        .parameters {
+            margin: 20px 0;
+        }
+
+        .parameters h4 {
+            color: #495057;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .parameter-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .parameter-table th,
+        .parameter-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+            vertical-align: top;
+        }
+
+        .parameter-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .parameter-table code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.85rem;
+        }
+
+        .enum-section {
+            margin-bottom: 50px;
+        }
+
+        .enum-section h3 {
+            color: #495057;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            border-left: 4px solid #667eea;
+            padding-left: 15px;
+        }
+
+        .enum-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .enum-card {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .enum-card h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+        }
+
+        .enum-values {
+            list-style: none;
+            margin: 10px 0;
+        }
+
+        .enum-values li {
+            padding: 2px 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #495057;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+        }
+
+        .back-to-top:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            background: #667eea;
+            color: white;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            margin-left: 10px;
+        }
+
+        .badge.async {
+            background: #28a745;
+        }
+
+        .badge.enum {
+            background: #17a2b8;
+        }
+
+        .search-box {
+            margin: 20px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-box input:focus {
+            border-color: #667eea;
+        }
+
+        .search-box i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                position: static;
+                height: auto;
+                order: 2;
+            }
+            
+            .main-content {
+                padding: 20px;
+                order: 1;
+            }
+            
+            .nav ul {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-book"></i> KiwoomRestApi.Net API Reference</h1>
+            <p>완전한 API 메서드, 열거형 및 클래스 명세서</p>
+        </div>
+
+        <nav class="nav">
+            <ul>
+                <li><a href="#overview" class="active">개요</a></li>
+                <li><a href="#client-methods">클라이언트 메서드</a></li>
+                <li><a href="#enums">열거형 (Enums)</a></li>
+                <li><a href="#models">데이터 모델</a></li>
+                <li><a href="index.html">← 메인 문서</a></li>
+            </ul>
+        </nav>
+
+        <div class="content">
+            <aside class="sidebar">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="API 검색...">
+                    <i class="fas fa-search"></i>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-code"></i> 클라이언트</h3>
+                    <ul>
+                        <li><a href="#oauth">OAuth 인증</a></li>
+                        <li><a href="#account">계좌 관리</a></li>
+                        <li><a href="#stock-info">주식 정보</a></li>
+                        <li><a href="#chart">차트 데이터</a></li>
+                        <li><a href="#order">주문 관리</a></li>
+                        <li><a href="#market-condition">시장 상황</a></li>
+                        <li><a href="#ranking-info">순위 정보</a></li>
+                        <li><a href="#websocket">실시간 데이터</a></li>
+                        <li><a href="#foreign-institution">외국인/기관</a></li>
+                        <li><a href="#sector">업종</a></li>
+                        <li><a href="#theme">테마</a></li>
+                        <li><a href="#etf">ETF</a></li>
+                        <li><a href="#elw">ELW</a></li>
+                        <li><a href="#credit-order">신용 주문</a></li>
+                        <li><a href="#short-sale">공매도</a></li>
+                        <li><a href="#securities-lending">증권대차</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-list"></i> 열거형</h3>
+                    <ul>
+                        <li><a href="#account-enums">계좌 관련</a></li>
+                        <li><a href="#chart-enums">차트 관련</a></li>
+                        <li><a href="#order-enums">주문 관련</a></li>
+                        <li><a href="#market-enums">시장 관련</a></li>
+                        <li><a href="#websocket-enums">WebSocket 관련</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-database"></i> 데이터 모델</h3>
+                    <ul>
+                        <li><a href="#response-models">응답 모델</a></li>
+                        <li><a href="#request-models">요청 모델</a></li>
+                        <li><a href="#websocket-models">WebSocket 모델</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <section id="overview" class="api-section">
+                    <h2><i class="fas fa-info-circle"></i> API 개요</h2>
+                    <p>KiwoomRestApi.Net은 키움증권 OpenAPI REST API를 .NET 환경에서 쉽게 사용할 수 있도록 래핑한 라이브러리입니다.</p>
+                    
+                    <h3>주요 클라이언트 클래스</h3>
+                    <ul style="margin: 20px 0; padding-left: 30px;">
+                        <li><strong>KiwoomRestApiClient</strong>: 메인 클라이언트 클래스</li>
+                        <li><strong>KiwoomSocketClient</strong>: 실시간 WebSocket 클라이언트</li>
+                    </ul>
+
+                    <h3>네임스페이스 구조</h3>
+                    <ul style="margin: 20px 0; padding-left: 30px;">
+                        <li><code>KiwoomRestApi.Net.Clients</code>: 클라이언트 클래스들</li>
+                        <li><code>KiwoomRestApi.Net.Enums</code>: 열거형 정의</li>
+                        <li><code>KiwoomRestApi.Net.Objects.Models</code>: 데이터 모델</li>
+                        <li><code>KiwoomRestApi.Net.Configuration</code>: 설정 관련</li>
+                    </ul>
+                </section>
+
+                <section id="client-methods" class="api-section">
+                    <h2><i class="fas fa-cogs"></i> 클라이언트 메서드</h2>
+
+                    <!-- OAuth 인증 -->
+                    <div id="oauth" class="api-section">
+                        <h3><i class="fas fa-key"></i> OAuth 인증</h3>
+                        
+                        <div class="method-card">
+                            <div class="method-header">
+                                <div class="method-name">GetOAuthTokenAsync <span class="badge async">ASYNC</span></div>
+                                <div class="method-description">OAuth 액세스 토큰을 발급받습니다.</div>
+                            </div>
+                            <div class="method-body">
+                                <div class="method-signature">
+public async Task&lt;KiwoomRestApiResponse&lt;KiwoomOAuthGetAccessToken&gt;&gt; GetOAuthTokenAsync(
+    CancellationToken cancellationToken = default
+)</div>
+                                <div class="parameters">
+                                    <h4>매개변수</h4>
+                                    <table class="parameter-table">
+                                        <thead>
+                                            <tr><th>매개변수</th><th>타입</th><th>설명</th><th>기본값</th></tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><code>cancellationToken</code></td>
+                                                <td><code>CancellationToken</code></td>
+                                                <td>요청 취소 토큰</td>
+                                                <td><code>default</code></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="method-card">
+                            <div class="method-header">
+                                <div class="method-name">RevokeAccessTokenAsync <span class="badge async">ASYNC</span></div>
+                                <div class="method-description">OAuth 액세스 토큰을 무효화합니다.</div>
+                            </div>
+                            <div class="method-body">
+                                <div class="method-signature">
+public async Task&lt;KiwoomRestApiResponse&lt;KiwoomOAuthRevokeAccessToken&gt;&gt; RevokeAccessTokenAsync(
+    string token,
+    CancellationToken cancellationToken = default
+)</div>
+                                <div class="parameters">
+                                    <h4>매개변수</h4>
+                                    <table class="parameter-table">
+                                        <thead>
+                                            <tr><th>매개변수</th><th>타입</th><th>설명</th><th>기본값</th></tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><code>token</code></td>
+                                                <td><code>string</code></td>
+                                                <td>무효화할 액세스 토큰</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>cancellationToken</code></td>
+                                                <td><code>CancellationToken</code></td>
+                                                <td>요청 취소 토큰</td>
+                                                <td><code>default</code></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 계좌 관리 -->
+                    <div id="account" class="api-section">
+                        <h3><i class="fas fa-wallet"></i> 계좌 관리</h3>
+                        
+                        <div class="method-card">
+                            <div class="method-header">
+                                <div class="method-name">GetAccountBalanceAsync <span class="badge async">ASYNC</span></div>
+                                <div class="method-description">계좌 잔고 및 평가 정보를 조회합니다.</div>
+                            </div>
+                            <div class="method-body">
+                                <div class="method-signature">
+public async Task&lt;KiwoomRestApiResponse&lt;KiwoomAccountGetEvaluationBalances&gt;&gt; GetAccountBalanceAsync(
+    KiwoomAccountEvaluationBalanceQueryType queryType,
+    KiwoomAccountDomesticStockExchangeType domesticStockExchangeType,
+    CancellationToken cancellationToken = default
+)</div>
+                            </div>
+                        </div>
+
+                        <div class="method-card">
+                            <div class="method-header">
+                                <div class="method-name">GetOutstandingOrdersAsync <span class="badge async">ASYNC</span></div>
+                                <div class="method-description">미체결 주문 내역을 조회합니다.</div>
+                            </div>
+                            <div class="method-body">
+                                <div class="method-signature">
+public async Task&lt;KiwoomRestApiResponse&lt;KiwoomAccountGetOutstandingOrders&gt;&gt; GetOutstandingOrdersAsync(
+    KiwoomAccountQueryType queryType,
+    KiwoomAccountTradeType tradeType,
+    KiwoomAccountStockExchangeType stockExchangeType,
+    string stockCode = "",
+    CancellationToken cancellationToken = default
+)</div>
+                            </div>
+                        </div>
+
+                        <div class="method-card">
+                            <div class="method-header">
+                                <div class="method-name">GetDepositsAsync <span class="badge async">ASYNC</span></div>
+                                <div class="method-description">예수금 정보를 조회합니다.</div>
+                            </div>
+                            <div class="method-body">
+                                <div class="method-signature">
+public async Task&lt;KiwoomRestApiResponse&lt;KiwoomAccountGetDeposits&gt;&gt; GetDepositsAsync(
+    KiwoomAccountDepositQueryType queryType,
+    CancellationToken cancellationToken = default
+)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 주식 정보 -->
+                    <div id="stock-info" class="api-section">
+                        <h3><i class="fas fa-chart-line"></i> 주식 정보</h3>
+                        
+                        <div class="method-card">
+                            <div class="method-header">
+                                <div class="method-name">GetStockCurrentPriceAsync <span class="badge async">ASYNC</span></div>
+                                <div class="method-description">주식 현재가 정보를 조회합니다.</div>
+                            </div>
+                            <div class="method-body">
+                                <div class="method-signature">
+public async Task&lt;KiwoomRestApiResponse&lt;KiwoomStockInfoGetStockCurrentPrice&gt;&gt; GetStockCurrentPriceAsync(
+    string stockCode,
+    CancellationToken cancellationToken = default
+)</div>
+                            </div>
+                        </div>
+
+                        <div class="method-card">
+                            <div class="method-header">
+                                <div class="method-name">GetStockInfoAsync <span class="badge async">ASYNC</span></div>
+                                <div class="method-description">주식 정보를 조회합니다.</div>
+                            </div>
+                            <div class="method-body">
+                                <div class="method-signature">
+public async Task&lt;KiwoomRestApiResponse&lt;KiwoomStockInfoGetStockInfo&gt;&gt; GetStockInfoAsync(
+    string stockCode,
+    DateTime date,
+    KiwoomStockInfoMarginLoanType marginLoanType,
+    CancellationToken cancellationToken = default
+)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 차트 데이터 -->
+                    <div id="chart" class="api-section">
+                        <h3><i class="fas fa-chart-bar"></i> 차트 데이터</h3>
+                        
+                        <div class="method-card">
+                            <div class="method-header">
+                                <div class="method-name">GetDailyChartsAsync <span class="badge async">ASYNC</span></div>
+                                <div class="method-description">일봉 차트 데이터를 조회합니다.</div>
+                            </div>
+                            <div class="method-body">
+                                <div class="method-signature">
+public async Task&lt;KiwoomRestApiResponse&lt;KiwoomChartGetDailyCharts&gt;&gt; GetDailyChartsAsync(
+    string stockCode,
+    DateTime date,
+    KiwoomChartUseOption updateStockPrice,
+    CancellationToken cancellationToken = default
+)</div>
+                            </div>
+                        </div>
+
+                        <div class="method-card">
+                            <div class="method-header">
+                                <div class="method-name">GetMinuteChartsAsync <span class="badge async">ASYNC</span></div>
+                                <div class="method-description">분봉 차트 데이터를 조회합니다.</div>
+                            </div>
+                            <div class="method-body">
+                                <div class="method-signature">
+public async Task&lt;KiwoomRestApiResponse&lt;KiwoomChartGetMinuteCharts&gt;&gt; GetMinuteChartsAsync(
+    string stockCode,
+    int tickCount,
+    KiwoomChartUseOption updateStockPrice,
+    CancellationToken cancellationToken = default
+)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 주문 관리 -->
+                    <div id="order" class="api-section">
+                        <h3><i class="fas fa-shopping-cart"></i> 주문 관리</h3>
+                        
+                        <div class="method-card">
+                            <div class="method-header">
+                                <div class="method-name">PlaceOrderAsync <span class="badge async">ASYNC</span></div>
+                                <div class="method-description">매수/매도 주문을 실행합니다.</div>
+                            </div>
+                            <div class="method-body">
+                                <div class="method-signature">
+public async Task&lt;KiwoomRestApiResponse&lt;KiwoomOrderPlaceOrder&gt;&gt; PlaceOrderAsync(
+    KiwoomOrderType orderType,
+    KiwoomOrderDomesticStockExchangeType domesticStockExchangeType,
+    string stockCode,
+    decimal orderQuantity,
+    KiwoomOrderTradeType tradeType,
+    decimal? orderPrice = null,
+    decimal? conditionPrice = null,
+    CancellationToken cancellationToken = default
+)</div>
+                            </div>
+                        </div>
+
+                        <div class="method-card">
+                            <div class="method-header">
+                                <div class="method-name">ModifyOrderAsync <span class="badge async">ASYNC</span></div>
+                                <div class="method-description">주문을 수정합니다.</div>
+                            </div>
+                            <div class="method-body">
+                                <div class="method-signature">
+public async Task&lt;KiwoomRestApiResponse&lt;KiwoomOrderModifyOrder&gt;&gt; ModifyOrderAsync(
+    KiwoomOrderDomesticStockExchangeType domesticStockExchangeType,
+    string originalOrderId,
+    string stockCode,
+    decimal modifyQuantity,
+    decimal modifyPrice,
+    decimal? modifyConditionPrice = null,
+    CancellationToken cancellationToken = default
+)</div>
+                            </div>
+                        </div>
+
+                        <div class="method-card">
+                            <div class="method-header">
+                                <div class="method-name">CancelOrderAsync <span class="badge async">ASYNC</span></div>
+                                <div class="method-description">주문을 취소합니다.</div>
+                            </div>
+                            <div class="method-body">
+                                <div class="method-signature">
+public async Task&lt;KiwoomRestApiResponse&lt;KiwoomOrderCancelOrder&gt;&gt; CancelOrderAsync(
+    KiwoomOrderDomesticStockExchangeType domesticStockExchangeType,
+    string originalOrderId,
+    string stockCode,
+    decimal? cancelQuantity = null,
+    CancellationToken cancellationToken = default
+)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- WebSocket 실시간 데이터 -->
+                    <div id="websocket" class="api-section">
+                        <h3><i class="fas fa-broadcast-tower"></i> 실시간 데이터 (WebSocket)</h3>
+                        
+                        <div class="method-card">
+                            <div class="method-header">
+                                <div class="method-name">SubscribeAsync <span class="badge async">ASYNC</span></div>
+                                <div class="method-description">실시간 데이터 구독을 시작합니다.</div>
+                            </div>
+                            <div class="method-body">
+                                <div class="method-signature">
+public async Task SubscribeAsync(
+    KiwoomWebSocketServiceName[] serviceNames,
+    string[] stockCodes
+)</div>
+                                <div class="parameters">
+                                    <h4>매개변수</h4>
+                                    <table class="parameter-table">
+                                        <thead>
+                                            <tr><th>매개변수</th><th>타입</th><th>설명</th></tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><code>serviceNames</code></td>
+                                                <td><code>KiwoomWebSocketServiceName[]</code></td>
+                                                <td>구독할 서비스 이름 배열</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>stockCodes</code></td>
+                                                <td><code>string[]</code></td>
+                                                <td>구독할 종목코드 배열</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="method-card">
+                            <div class="method-header">
+                                <div class="method-name">UnsubscribeAsync <span class="badge async">ASYNC</span></div>
+                                <div class="method-description">실시간 데이터 구독을 해제합니다.</div>
+                            </div>
+                            <div class="method-body">
+                                <div class="method-signature">
+public async Task UnsubscribeAsync(
+    KiwoomWebSocketServiceName[] serviceNames,
+    string[] stockCodes
+)</div>
+                            </div>
+                        </div>
+
+                        <div class="method-card">
+                            <div class="method-header">
+                                <div class="method-name">GetConditionSearchListAsync <span class="badge async">ASYNC</span></div>
+                                <div class="method-description">조건검색 목록을 조회합니다.</div>
+                            </div>
+                            <div class="method-body">
+                                <div class="method-signature">
+public async Task GetConditionSearchListAsync()</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="enums" class="api-section">
+                    <h2><i class="fas fa-list"></i> 열거형 (Enums)</h2>
+
+                    <!-- 계좌 관련 열거형 -->
+                    <div id="account-enums" class="enum-section">
+                        <h3>계좌 관련 열거형</h3>
+                        <div class="enum-list">
+                            <div class="enum-card">
+                                <h4>KiwoomAccountQueryType <span class="badge enum">ENUM</span></h4>
+                                <p>계좌 조회 타입</p>
+                                <ul class="enum-values">
+                                    <li>All - 전체</li>
+                                    <li>Buy - 매수</li>
+                                    <li>Sell - 매도</li>
+                                </ul>
+                            </div>
+
+                            <div class="enum-card">
+                                <h4>KiwoomAccountTradeType <span class="badge enum">ENUM</span></h4>
+                                <p>거래 유형</p>
+                                <ul class="enum-values">
+                                    <li>All - 전체</li>
+                                    <li>Buy - 매수</li>
+                                    <li>Sell - 매도</li>
+                                </ul>
+                            </div>
+
+                            <div class="enum-card">
+                                <h4>KiwoomAccountStockExchangeType <span class="badge enum">ENUM</span></h4>
+                                <p>주식 거래소 타입</p>
+                                <ul class="enum-values">
+                                    <li>Unified - 통합</li>
+                                    <li>Kospi - 코스피</li>
+                                    <li>Kosdaq - 코스닥</li>
+                                </ul>
+                            </div>
+
+                            <div class="enum-card">
+                                <h4>KiwoomAccountDepositQueryType <span class="badge enum">ENUM</span></h4>
+                                <p>예수금 조회 타입</p>
+                                <ul class="enum-values">
+                                    <li>General - 일반</li>
+                                    <li>Foreign - 해외</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 차트 관련 열거형 -->
+                    <div id="chart-enums" class="enum-section">
+                        <h3>차트 관련 열거형</h3>
+                        <div class="enum-list">
+                            <div class="enum-card">
+                                <h4>KiwoomChartUseOption <span class="badge enum">ENUM</span></h4>
+                                <p>차트 사용 옵션</p>
+                                <ul class="enum-values">
+                                    <li>Use - 사용</li>
+                                    <li>NotUse - 미사용</li>
+                                </ul>
+                            </div>
+
+                            <div class="enum-card">
+                                <h4>KiwoomChartAmountQuantityType <span class="badge enum">ENUM</span></h4>
+                                <p>차트 금액/수량 타입</p>
+                                <ul class="enum-values">
+                                    <li>Amount - 금액</li>
+                                    <li>Quantity - 수량</li>
+                                </ul>
+                            </div>
+
+                            <div class="enum-card">
+                                <h4>KiwoomChartTradeType <span class="badge enum">ENUM</span></h4>
+                                <p>차트 거래 타입</p>
+                                <ul class="enum-values">
+                                    <li>All - 전체</li>
+                                    <li>Buy - 매수</li>
+                                    <li>Sell - 매도</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 주문 관련 열거형 -->
+                    <div id="order-enums" class="enum-section">
+                        <h3>주문 관련 열거형</h3>
+                        <div class="enum-list">
+                            <div class="enum-card">
+                                <h4>KiwoomOrderType <span class="badge enum">ENUM</span></h4>
+                                <p>주문 타입</p>
+                                <ul class="enum-values">
+                                    <li>Buy - 매수</li>
+                                    <li>Sell - 매도</li>
+                                </ul>
+                            </div>
+
+                            <div class="enum-card">
+                                <h4>KiwoomOrderTradeType <span class="badge enum">ENUM</span></h4>
+                                <p>주문 거래 타입</p>
+                                <ul class="enum-values">
+                                    <li>LimitOrder - 지정가</li>
+                                    <li>MarketOrder - 시장가</li>
+                                    <li>ConditionalOrder - 조건부지정가</li>
+                                    <li>BestOrder - 최유리지정가</li>
+                                    <li>ImmediateOrCancel - 즉시체결후잔량취소</li>
+                                    <li>FillOrKill - 전량체결또는취소</li>
+                                </ul>
+                            </div>
+
+                            <div class="enum-card">
+                                <h4>KiwoomOrderDomesticStockExchangeType <span class="badge enum">ENUM</span></h4>
+                                <p>국내주식 거래소 타입</p>
+                                <ul class="enum-values">
+                                    <li>KoreanStock - 한국주식</li>
+                                    <li>KRX - KRX</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- WebSocket 관련 열거형 -->
+                    <div id="websocket-enums" class="enum-section">
+                        <h3>WebSocket 관련 열거형</h3>
+                        <div class="enum-list">
+                            <div class="enum-card">
+                                <h4>KiwoomWebSocketServiceName <span class="badge enum">ENUM</span></h4>
+                                <p>WebSocket 서비스 이름</p>
+                                <ul class="enum-values">
+                                    <li>StockExecution - 주식체결</li>
+                                    <li>StockAskBid - 주식호가</li>
+                                    <li>StockTrend - 주식우선호가</li>
+                                    <li>StockExpectedExecution - 주식예상체결</li>
+                                    <li>StockAfterHoursAsk - 주식시간외호가</li>
+                                    <li>StockDailyTrader - 주식당일거래원</li>
+                                    <li>EtfNav - ETF NAV</li>
+                                    <li>SectorIndex - 업종지수</li>
+                                    <li>SectorFluctuation - 업종등락</li>
+                                    <li>ElwTheoreticalPrice - ELW이론가</li>
+                                    <li>ElwIndicator - ELW지표</li>
+                                    <li>MarketOpenTime - 장운영시간</li>
+                                    <li>ProgramTrading - 프로그램매매</li>
+                                    <li>ViTriggeredReleased - VI발동해제</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="models" class="api-section">
+                    <h2><i class="fas fa-database"></i> 데이터 모델</h2>
+
+                    <div id="response-models" class="enum-section">
+                        <h3>주요 응답 모델</h3>
+                        <div class="enum-list">
+                            <div class="enum-card">
+                                <h4>KiwoomRestApiResponse&lt;T&gt;</h4>
+                                <p>모든 API 호출의 기본 응답 구조</p>
+                                <ul class="enum-values">
+                                    <li>ReturnCode - 응답 코드</li>
+                                    <li>Message - 응답 메시지</li>
+                                    <li>Output - 응답 데이터</li>
+                                    <li>Output1 - 추가 응답 데이터</li>
+                                    <li>Output2 - 목록 데이터</li>
+                                </ul>
+                            </div>
+
+                            <div class="enum-card">
+                                <h4>KiwoomStockInfoGetStockCurrentPrice</h4>
+                                <p>주식 현재가 정보</p>
+                                <ul class="enum-values">
+                                    <li>StockCode - 종목코드</li>
+                                    <li>StockName - 종목명</li>
+                                    <li>StockPrice - 현재가</li>
+                                    <li>PriceDifference - 전일대비</li>
+                                    <li>ChangeRate - 등락률</li>
+                                    <li>Volume - 거래량</li>
+                                </ul>
+                            </div>
+
+                            <div class="enum-card">
+                                <h4>KiwoomChartGetDailyCharts</h4>
+                                <p>일봉 차트 데이터</p>
+                                <ul class="enum-values">
+                                    <li>BusinessDate - 영업일자</li>
+                                    <li>OpenPrice - 시가</li>
+                                    <li>HighPrice - 고가</li>
+                                    <li>LowPrice - 저가</li>
+                                    <li>ClosePrice - 종가</li>
+                                    <li>Volume - 거래량</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="websocket-models" class="enum-section">
+                        <h3>WebSocket 모델</h3>
+                        <div class="enum-list">
+                            <div class="enum-card">
+                                <h4>KiwoomWebSocketRealtimeStockExecution</h4>
+                                <p>실시간 주식체결 데이터</p>
+                                <ul class="enum-values">
+                                    <li>StockCode - 종목코드</li>
+                                    <li>StockPrice - 현재가</li>
+                                    <li>ChangeRate - 등락률</li>
+                                    <li>Volume - 거래량</li>
+                                    <li>TransactionAmount - 거래대금</li>
+                                </ul>
+                            </div>
+
+                            <div class="enum-card">
+                                <h4>KiwoomWebSocketRealtimeStockAskBid</h4>
+                                <p>실시간 주식호가 데이터</p>
+                                <ul class="enum-values">
+                                    <li>StockCode - 종목코드</li>
+                                    <li>AskPrice1 ~ AskPrice10 - 매도호가1~10</li>
+                                    <li>BidPrice1 ~ BidPrice10 - 매수호가1~10</li>
+                                    <li>AskQuantity1 ~ AskQuantity10 - 매도잔량1~10</li>
+                                    <li>BidQuantity1 ~ BidQuantity10 - 매수잔량1~10</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <button class="back-to-top" onclick="scrollToTop()">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <script>
+        // 검색 기능
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const methodCards = document.querySelectorAll('.method-card, .enum-card');
+            
+            methodCards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // 네비게이션 활성화
+        document.querySelectorAll('.nav a, .sidebar a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Back to top 버튼
+        window.addEventListener('scroll', function() {
+            const backToTopBtn = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // 활성 네비게이션 업데이트
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.api-section, .enum-section');
+            const navLinks = document.querySelectorAll('.nav a');
+            
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
