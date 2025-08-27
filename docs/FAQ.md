@@ -28,7 +28,7 @@
 
 ```csharp
 // 올바른 초기화 방법
-var client = await KiwoomRestApiClient.CreateAsync("앱키", "시크릿키", isMock: true);
+var client = await KiwoomRestApiClient.CreateAsync("your-app-key", "your-secret-key", isMock: true);
 ```
 
 ### Q: 토큰 유효기간이 얼마나 되나요?
@@ -56,11 +56,18 @@ var client = await KiwoomRestApiClient.CreateAsync("앱키", "시크릿키", isM
 **A:** 네, WebSocket을 통한 실시간 데이터를 지원합니다:
 
 ```csharp
+using KiwoomRestApi.Net.Clients;
+
 var socketClient = await KiwoomSocketClient.CreateAsync(client.Token, isMock: true);
-socketClient.OnPriceReceived += (stockCode, price) => {
-    Console.WriteLine($"{stockCode}: {price}원");
+
+// 실시간 주식체결 수신
+socketClient.OnRealtimeStockExecutionReceived += (message) => 
+{
+    Console.WriteLine($"체결가: {message.ElementAt(0).Values.CurrentPrice}원");
 };
-await socketClient.SubscribeAsync("005930");
+
+// 실시간 주식체결 구독
+await socketClient.WebSocket.SubscribeAsync([KiwoomWebSocketServiceName.StockExecution], ["005930", "000660"]);
 ```
 
 ## 💰 계좌 및 주문
@@ -72,15 +79,42 @@ await socketClient.SubscribeAsync("005930");
 **A:** 네, 실거래 모드에서는 실제 주문이 가능합니다. 단, 충분한 테스트 후 사용하시기 바랍니다.
 
 ```csharp
-// 주의: 실거래 주문 예제
-var orderResult = await client.Order.PlaceOrderAsync(new OrderRequest {
-    AccountNumber = "계좌번호",
-    StockCode = "005930",
-    OrderType = OrderType.Limit,
-    Side = OrderSide.Buy,
-    Quantity = 10,
-    Price = 80000
-});
+// 매수 주문
+var buyOrderResult = await client.Order.PlaceOrderAsync(
+	KiwoomOrderType.Buy,                                    // 매수
+	KiwoomOrderDomesticStockExchangeType.KRX,               // 거래소
+	"005930",                                               // 삼성전자
+	10,                                                     // 주문수량
+	KiwoomOrderTradeType.Normal,                            // 지정가
+	80000);                                                 // 주문가격
+
+// 매도 주문
+var sellOrderResult = await client.Order.PlaceOrderAsync(
+	KiwoomOrderType.Sell,                                   // 매도
+	KiwoomOrderDomesticStockExchangeType.KRX,               // 거래소
+	"005930",                                               // 삼성전자
+	5,                                                      // 주문수량
+	KiwoomOrderTradeType.Market);                          // 시장가
+
+// 미체결 주문 조회
+var outstandingOrders = await client.Account.GetOutstandingOrdersAsync(
+	KiwoomAccountQueryType.All,
+	KiwoomAccountTradeType.All,
+	KiwoomAccountStockExchangeType.Unified);
+
+// 주문 수정
+var modifyResult = await client.Order.ModifyOrderAsync(
+	KiwoomOrderDomesticStockExchangeType.KRX,               // 거래소
+	"원주문번호",                                            // 원주문번호
+	"005930",                                               // 종목코드
+	8,                                                      // 수정수량
+	82000);                                                 // 수정가격
+
+// 주문 취소
+var cancelResult = await client.Order.CancelOrderAsync(
+	KiwoomOrderDomesticStockExchangeType.KRX,               // 거래소
+	"원주문번호",                                            // 원주문번호
+	"005930");                                              // 종목코드
 ```
 
 ## 🚫 제한사항 및 오류
@@ -100,7 +134,7 @@ var orderResult = await client.Order.PlaceOrderAsync(new OrderRequest {
 ```csharp
 // 호출 간격 조절 예제
 await Task.Delay(100); // 100ms 대기
-var result = await client.StockInfo.GetPriceAsync("005930");
+var orderBook = await client.MarketCondition.GetOrderBookAsync("005930");
 ```
 
 ### Q: 특정 시간에만 API가 동작하나요?
@@ -122,10 +156,10 @@ var result = await client.StockInfo.GetPriceAsync("005930");
 
 ```csharp
 // 비동기 (권장)
-var result = await client.StockInfo.GetPriceAsync("005930");
+var orderBook = await client.MarketCondition.GetOrderBookAsync("005930");
 
 // 동기 (권장하지 않음)  
-var result = client.StockInfo.GetPriceAsync("005930").Result;
+var orderBook = client.MarketCondition.GetOrderBookAsync("005930").Result;
 ```
 
 ### Q: 메모리 누수가 발생합니다.
@@ -133,10 +167,10 @@ var result = client.StockInfo.GetPriceAsync("005930").Result;
 
 ```csharp
 // using 문 사용 (권장)
-using var client = await KiwoomRestApiClient.CreateAsync("key", "secret");
+using var client = await KiwoomRestApiClient.CreateAsync("your-app-key", "your-secret-key");
 
 // 또는 명시적 해제
-var client = await KiwoomRestApiClient.CreateAsync("key", "secret");
+var client = await KiwoomRestApiClient.CreateAsync("your-app-key", "your-secret-key");
 try { /* 작업 */ }
 finally { client.Dispose(); }
 ```
@@ -147,10 +181,10 @@ finally { client.Dispose(); }
 **A:** 네, ASP.NET Core에서 쉽게 사용할 수 있습니다:
 
 ```csharp
-// Program.cs
-services.AddKiwoomRestApi(config => {
-    config.AppKey = "your-app-key";
-    config.SecretKey = "your-secret-key";
+// Program.cs (DI 등록 방법은 실제 구현에 따라 다를 수 있음)
+services.AddSingleton<KiwoomRestApiClient>(provider => 
+{
+    return KiwoomRestApiClient.CreateAsync("your-app-key", "your-secret-key").GetAwaiter().GetResult();
 });
 ```
 
@@ -167,12 +201,20 @@ services.AddKiwoomRestApi(config => {
 }
 ```
 
+```csharp
+// Microsoft.Extensions.Configuration.Json 패키지 설치 후
+services.Configure<KiwoomConfiguration>(configuration.GetSection("KiwoomApi"));
+```
+
 ### Q: 로깅은 어떻게 설정하나요?
 **A:** .NET의 표준 로깅 인터페이스를 지원합니다:
 
 ```csharp
 services.AddLogging();
-services.AddKiwoomRestApi(/* 설정 */);
+services.AddSingleton<KiwoomRestApiClient>(provider => 
+{
+    return KiwoomRestApiClient.CreateAsync("your-app-key", "your-secret-key").GetAwaiter().GetResult();
+});
 ```
 
 ## 🆘 문제 해결

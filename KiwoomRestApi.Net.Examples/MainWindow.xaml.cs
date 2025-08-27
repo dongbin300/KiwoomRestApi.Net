@@ -43,6 +43,8 @@ namespace KiwoomRestApi.Net.Examples
 			var stockCode = "005930";
 
 			var __result__ = client.Chart.GetDailyChartsAsync("005930", DateTime.Today, KiwoomChartUseOption.Use).Result;
+
+
 			//socketClient = KiwoomSocketClient.Create(client.Token, true);
 
 			//socketClient.OnConditionSearchRequestReceived += (message) =>
