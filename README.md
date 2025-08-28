@@ -1,12 +1,13 @@
 # 🚀 KiwoomRestApi.Net
 
-현재 comment, doc 작업 중입니다.
-일관성 유지 및 api 테스트 작업을 추가로 진행해야 합니다.
+<span style="color:#ffd33d">
+현재 comment, doc 작업 중입니다.</br>
+일관성 유지 및 api 테스트 작업을 추가로 진행해야 합니다.</br>
+</span>
 
 
 [![NuGet Version](https://img.shields.io/nuget/v/KiwoomRestApi.Net.svg)](https://www.nuget.org/packages/KiwoomRestApi.Net)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/KiwoomRestApi.Net.svg)](https://www.nuget.org/packages/KiwoomRestApi.Net)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/dongbin300/KiwoomRestApi.Net/ci.yml?branch=main)](https://github.com/dongbin300/KiwoomRestApi.Net/actions)
 [![License](https://img.shields.io/github/license/dongbin300/KiwoomRestApi.Net.svg)](https://github.com/dongbin300/KiwoomRestApi.Net/blob/main/LICENSE)
 
 **키움증권 OpenAPI REST API를 위한 현대적이고 직관적인 .NET Wrapper 라이브러리**
