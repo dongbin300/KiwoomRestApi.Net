@@ -1,0 +1,66 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">KiwoomRestApi.Net Examples</h1>
+    <p class="lead">ASP.NET Core MVC example for KiwoomRestApi.Net library</p>
+    
+    @if (!string.IsNullOrEmpty(ViewBag.KiwoomToken))
+    {
+        <div class="alert alert-success">
+            <strong>✅ KiwoomRestApiClient is ready!</strong><br>
+            <small>Token: @ViewBag.KiwoomToken.Substring(0, Math.Min(20, ViewBag.KiwoomToken.Length))...</small>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-danger">
+            <strong>❌ KiwoomRestApiClient failed to initialize</strong>
+        </div>
+    }
+    
+    <div class="mt-4">
+        <a class="btn btn-primary btn-lg" asp-controller="Home" asp-action="Kiwoom">
+            🚀 Test KiwoomRestApi
+        </a>
+    </div>
+    
+    <div class="mt-4">
+        <h3>Available Features</h3>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">📊 Stock Info</h5>
+                        <p class="card-text">Get detailed stock information including prices, financial ratios, and more.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">📈 Trade Info</h5>
+                        <p class="card-text">Retrieve trading information and market data for stocks.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">📉 Chart Data</h5>
+                        <p class="card-text">Access daily chart data and historical price information.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">🔧 Debug Tools</h5>
+                        <p class="card-text">Debug API responses and troubleshoot data issues.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

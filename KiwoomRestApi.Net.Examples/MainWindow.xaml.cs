@@ -1,79 +1,295 @@
-﻿using KiwoomRestApi.Net.Clients;
-using KiwoomRestApi.Net.Configuration;
-using KiwoomRestApi.Net.Enums.Account;
+using KiwoomRestApi.Net.Clients;
 using KiwoomRestApi.Net.Enums.Chart;
-using KiwoomRestApi.Net.Enums.ForeignInstitution;
-using KiwoomRestApi.Net.Enums.Order;
-using KiwoomRestApi.Net.Enums.RankingInfo;
 using KiwoomRestApi.Net.Enums.StockInfo;
-using KiwoomRestApi.Net.Enums.WebSocket;
-using KiwoomRestApi.Net.Extensions;
-using KiwoomRestApi.Net.Objects;
-using KiwoomRestApi.Net.Objects.Models;
-
-using Microsoft.Extensions.DependencyInjection;
-
 using Newtonsoft.Json;
-
-using System.Diagnostics;
 using System.IO;
-using System.Net.Http;
 using System.Windows;
 
 namespace KiwoomRestApi.Net.Examples
 {
-	/// <summary>
-	/// Interaction logic for MainWindow.xaml
-	/// </summary>
-	public partial class MainWindow : Window
-	{
-		KiwoomSocketClient socketClient;
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        private KiwoomRestApiClient _kiwoomClient = default!;
+        private KiwoomSocketClient? _socketClient;
 
-		public MainWindow()
-		{
-			InitializeComponent();
+        public MainWindow()
+        {
+            InitializeComponent();
+            InitializeKiwoomClient();
+        }
 
-			var appKey = File.ReadAllText("D:\\Assets\\kiwoom_appkey_mock.txt");
-			var secretKey = File.ReadAllText("D:\\Assets\\kiwoom_secretkey_mock.txt");
-			//var token = File.ReadAllText("D:\\Assets\\kiwoom_token.txt");
+        private void InitializeKiwoomClient()
+        {
+            try
+            {
+                StatusText.Text = "Initializing KiwoomRestApiClient...";
+                
+                var appKey = File.ReadAllText("D:\\Assets\\kiwoom_appkey_mock.txt");
+                var secretKey = File.ReadAllText("D:\\Assets\\kiwoom_secretkey_mock.txt");
+                
+                _kiwoomClient = KiwoomRestApiClient.Create(appKey, secretKey, isMock: true);
+                
+                StatusText.Text = $"✅ Ready! Token: {_kiwoomClient.Token.Substring(0, Math.Min(20, _kiwoomClient.Token.Length))}...";
+                
+                LogMessage("🚀 KiwoomRestApiClient initialized successfully!");
+                LogMessage($"📝 Token: {_kiwoomClient.Token}");
+                LogMessage($"🎯 Mock Mode: Enabled");
+                LogMessage($"📊 Ready to test APIs!");
+            }
+            catch (Exception ex)
+            {
+                StatusText.Text = "❌ Failed to initialize";
+                LogError("Failed to initialize KiwoomRestApiClient", ex);
+            }
+        }
 
-			var client = KiwoomRestApiClient.Create(appKey, secretKey, true);
-			var startDate = new DateTime(2025, 8, 1);
-			var endDate = new DateTime(2025, 8, 25);
-			var stockCode = "005930";
+        private void LogMessage(string message)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                var timestamp = DateTime.Now.ToString("HH:mm:ss");
+                ResultsTextBox.AppendText($"[{timestamp}] {message}\n");
+                ResultsTextBox.ScrollToEnd();
+            });
+        }
 
-			var __result__ = client.Chart.GetDailyChartsAsync("005930", DateTime.Today, KiwoomChartUseOption.Use).Result;
+        private void LogError(string message, Exception ex)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                var timestamp = DateTime.Now.ToString("HH:mm:ss");
+                ResultsTextBox.AppendText($"[{timestamp}] ❌ ERROR: {message}\n");
+                ResultsTextBox.AppendText($"Exception: {ex.Message}\n");
+                ResultsTextBox.AppendText($"StackTrace: {ex.StackTrace}\n\n");
+                ResultsTextBox.ScrollToEnd();
+            });
+        }
 
+        private void LogResult(string operation, object result)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                var timestamp = DateTime.Now.ToString("HH:mm:ss");
+                var json = JsonConvert.SerializeObject(result, Formatting.Indented);
+                ResultsTextBox.AppendText($"[{timestamp}] 📊 {operation} Result:\n");
+                ResultsTextBox.AppendText($"{json}\n\n");
+                ResultsTextBox.ScrollToEnd();
+            });
+        }
 
-			//socketClient = KiwoomSocketClient.Create(client.Token, true);
+        private void TestConnection_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                LogMessage("🔗 Testing connection...");
+                
+                if (_kiwoomClient == null)
+                {
+                    LogMessage("❌ KiwoomRestApiClient not initialized");
+                    return;
+                }
 
-			//socketClient.OnConditionSearchRequestReceived += (message) =>
-			//{
+                var result = new
+                {
+                    success = true,
+                    message = "KiwoomRestApiClient is ready",
+                    token = _kiwoomClient.Token,
+                    isMock = true,
+                    timestamp = DateTime.Now
+                };
 
-			//};
+                LogResult("Connection Test", result);
+            }
+            catch (Exception ex)
+            {
+                LogError("Connection test failed", ex);
+            }
+        }
 
-		}
+        private async void GetStockInfo_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var stockCode = StockCodeTextBox.Text.Trim();
+                if (string.IsNullOrEmpty(stockCode))
+                {
+                    LogMessage("❌ Please enter a stock code");
+                    return;
+                }
 
-		private async void Test_Click(object sender, RoutedEventArgs e)
-		{
-			//await socketClient.WebSocket.GetConditionSearchListAsync().ConfigureAwait(false);
-			//await socketClient.WebSocket.GetConditionSearchRequestAsync(20).ConfigureAwait(false);
-			//await socketClient.WebSocket.GetConditionSearchClearAsync(20).ConfigureAwait(false);
-		}
+                LogMessage($"📊 Getting stock info for {stockCode}...");
 
-		private async void Test2_Click(object sender, RoutedEventArgs e)
-		{
-			await socketClient.DisconnectAsync().ConfigureAwait(false);
-		}
+                var result = await _kiwoomClient.StockInfo.GetStockInfoAsync(
+                    stockCode, 
+                    DateTime.Today, 
+                    KiwoomStockInfoMarginLoanType.Loan
+                );
 
-		private async void Test3_Click(object sender, RoutedEventArgs e)
-		{
+                LogMessage($"API Response - ReturnCode: {result.ReturnCode}, Message: {result.ReturnMessage}");
 
-		}
+                if (result.Data != null)
+                {
+                    LogMessage($"✅ Stock info received: {result.Data.StockName} - {result.Data.CurrentPrice}원");
+                }
+                else
+                {
+                    LogMessage("⚠️ Stock info data is null");
+                }
 
-		private async void Test4_Click(object sender, RoutedEventArgs e)
-		{
+                LogResult($"Stock Info ({stockCode})", result);
+            }
+            catch (Exception ex)
+            {
+                LogError($"Getting stock info failed", ex);
+            }
+        }
 
-		}
-	}
+        private async void GetTradeInfo_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var stockCode = StockCodeTextBox.Text.Trim();
+                if (string.IsNullOrEmpty(stockCode))
+                {
+                    LogMessage("❌ Please enter a stock code");
+                    return;
+                }
+
+                LogMessage($"📈 Getting trade info for {stockCode}...");
+
+                var result = await _kiwoomClient.StockInfo.GetTradeInfoAsync(stockCode);
+                
+                LogMessage($"API Response - ReturnCode: {result.ReturnCode}, Message: {result.ReturnMessage}");
+                LogResult($"Trade Info ({stockCode})", result);
+            }
+            catch (Exception ex)
+            {
+                LogError($"Getting trade info failed", ex);
+            }
+        }
+
+        private async void GetChart_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var stockCode = StockCodeTextBox.Text.Trim();
+                if (string.IsNullOrEmpty(stockCode))
+                {
+                    LogMessage("❌ Please enter a stock code");
+                    return;
+                }
+
+                LogMessage($"📉 Getting chart data for {stockCode}...");
+
+                var result = await _kiwoomClient.Chart.GetDailyChartsAsync(
+                    stockCode, 
+                    DateTime.Today, 
+                    KiwoomChartUseOption.Use
+                );
+                
+                LogMessage($"API Response - ReturnCode: {result.ReturnCode}, Message: {result.ReturnMessage}");
+                LogResult($"Chart Data ({stockCode})", result);
+            }
+            catch (Exception ex)
+            {
+                LogError($"Getting chart data failed", ex);
+            }
+        }
+
+        private async void Debug_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var stockCode = StockCodeTextBox.Text.Trim();
+                if (string.IsNullOrEmpty(stockCode))
+                {
+                    LogMessage("❌ Please enter a stock code");
+                    return;
+                }
+
+                LogMessage($"🔧 Starting debug analysis for {stockCode}...");
+
+                // Test different margin loan types
+                var marginTypes = new[]
+                {
+                    KiwoomStockInfoMarginLoanType.Loan,
+                    KiwoomStockInfoMarginLoanType.ShortSale
+                };
+
+                var debugResults = new List<object>();
+
+                foreach (var marginType in marginTypes)
+                {
+                    try
+                    {
+                        LogMessage($"Testing with margin type: {marginType}");
+                        
+                        var result = await _kiwoomClient.StockInfo.GetStockInfoAsync(
+                            stockCode, 
+                            DateTime.Today, 
+                            marginType
+                        );
+
+                        var debugInfo = new
+                        {
+                            marginType = marginType.ToString(),
+                            returnCode = result.ReturnCode,
+                            returnMessage = result.ReturnMessage,
+                            isSuccess = result.IsSuccess,
+                            dataIsNull = result.Data == null,
+                            stockCode = result.Data?.StockCode,
+                            stockName = result.Data?.StockName,
+                            currentPrice = result.Data?.CurrentPrice,
+                            basePrice = result.Data?.BasePrice,
+                            openPrice = result.Data?.OpenPrice,
+                            highPrice = result.Data?.HighPrice,
+                            lowPrice = result.Data?.LowPrice
+                        };
+
+                        debugResults.Add(debugInfo);
+
+                        LogMessage($"Margin type {marginType} result: Code={result.ReturnCode}, Message={result.ReturnMessage}, DataNull={result.Data == null}");
+
+                        if (result.Data != null && !string.IsNullOrEmpty(result.Data.StockCode))
+                        {
+                            LogMessage($"✅ SUCCESS: Found data with margin type {marginType}");
+                            break; // Found working data, no need to test others
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        LogError($"Error testing margin type {marginType}", ex);
+                        debugResults.Add(new 
+                        { 
+                            marginType = marginType.ToString(), 
+                            error = ex.Message 
+                        });
+                    }
+                }
+
+                var finalResult = new
+                {
+                    stockCode,
+                    testDate = DateTime.Today.ToString("yyyy-MM-dd"),
+                    clientToken = _kiwoomClient.Token,
+                    results = debugResults
+                };
+
+                LogResult($"Debug Analysis ({stockCode})", finalResult);
+            }
+            catch (Exception ex)
+            {
+                LogError($"Debug analysis failed", ex);
+            }
+        }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            ResultsTextBox.Clear();
+            LogMessage("🗑️ Results cleared");
+        }
+    }
 }

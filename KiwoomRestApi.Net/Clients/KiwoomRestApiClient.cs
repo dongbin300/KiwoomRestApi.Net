@@ -22,9 +22,9 @@ namespace KiwoomRestApi.Net.Clients
 	/// </summary>
 	/// <example>
 	/// <code>
-	/// var client = new KiwoomRestApiClient("appKey", "secretKey", isMock: true);
-	/// await client.InitializeAsync();
-	/// var stockInfo = await client.StockInfo.GetPriceAsync("005930");
+	/// var client = KiwoomRestApiClient.Create(appKey, secretKey, true);
+	/// var stockInfo = await client.StockInfo.GetStockInfoAsync("005930", DateTime.Today, KiwoomStockInfoMarginLoanType.Loan);
+	/// Console.WriteLine($"삼성전자 현재가: {stockInfo.Data.CurrentPrice}원");
 	/// </code>
 	/// </example>
 	public class KiwoomRestApiClient : BaseClient

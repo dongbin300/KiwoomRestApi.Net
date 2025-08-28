@@ -1,0 +1,194 @@
+@{
+    ViewData["Title"] = "KiwoomRestApi Test";
+}
+
+<div class="text-center">
+    <h1 class="display-4">KiwoomRestApi.Net Test</h1>
+    <p>Test KiwoomRestApi.Net functionality</p>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3>API Test</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="stockCode" class="form-label">Stock Code:</label>
+                        <input type="text" class="form-control" id="stockCode" value="005930" placeholder="Enter stock code (e.g., 005930)">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-primary" onclick="testConnection()">Test Connection</button>
+                            <button type="button" class="btn btn-success" onclick="getStockInfo()">Get Stock Info</button>
+                            <button type="button" class="btn btn-info" onclick="getTradeInfo()">Get Trade Info</button>
+                            <button type="button" class="btn btn-secondary" onclick="getChart()">Get Chart</button>
+                            <button type="button" class="btn btn-warning" onclick="debugStockInfo()">Debug</button>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <button type="button" class="btn btn-danger btn-sm" onclick="clearResults()">Clear Results</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5>API Endpoints</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        <li><code>GET /api/kiwoom/test</code></li>
+                        <li><code>GET /api/kiwoom/stockinfo/{code}</code></li>
+                        <li><code>GET /api/kiwoom/tradeinfo/{code}</code></li>
+                        <li><code>GET /api/kiwoom/chart/{code}</code></li>
+                        <li><code>GET /api/kiwoom/debug/{code}</code></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Results</h5>
+                </div>
+                <div class="card-body">
+                    <div id="loading" style="display: none;">
+                        <div class="text-center">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <pre id="results" style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; max-height: 600px; overflow-y: auto;"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showLoading() {
+        document.getElementById('loading').style.display = 'block';
+        document.getElementById('results').innerHTML = '';
+    }
+    
+    function hideLoading() {
+        document.getElementById('loading').style.display = 'none';
+    }
+    
+    function displayResult(data) {
+        const resultsElement = document.getElementById('results');
+        resultsElement.innerHTML = JSON.stringify(data, null, 2);
+    }
+    
+    function displayError(error) {
+        const resultsElement = document.getElementById('results');
+        resultsElement.innerHTML = `ERROR: ${error}`;
+        resultsElement.style.color = 'red';
+    }
+    
+    function clearResults() {
+        const resultsElement = document.getElementById('results');
+        resultsElement.innerHTML = '';
+        resultsElement.style.color = 'inherit';
+    }
+    
+    async function testConnection() {
+        showLoading();
+        try {
+            const response = await fetch('/api/kiwoom/test');
+            const data = await response.json();
+            displayResult(data);
+        } catch (error) {
+            displayError(error.message);
+        } finally {
+            hideLoading();
+        }
+    }
+    
+    async function getStockInfo() {
+        const stockCode = document.getElementById('stockCode').value;
+        if (!stockCode) {
+            alert('Please enter a stock code');
+            return;
+        }
+        
+        showLoading();
+        try {
+            const response = await fetch(`/api/kiwoom/stockinfo/${stockCode}`);
+            const data = await response.json();
+            displayResult(data);
+        } catch (error) {
+            displayError(error.message);
+        } finally {
+            hideLoading();
+        }
+    }
+    
+    async function getTradeInfo() {
+        const stockCode = document.getElementById('stockCode').value;
+        if (!stockCode) {
+            alert('Please enter a stock code');
+            return;
+        }
+        
+        showLoading();
+        try {
+            const response = await fetch(`/api/kiwoom/tradeinfo/${stockCode}`);
+            const data = await response.json();
+            displayResult(data);
+        } catch (error) {
+            displayError(error.message);
+        } finally {
+            hideLoading();
+        }
+    }
+    
+    async function getChart() {
+        const stockCode = document.getElementById('stockCode').value;
+        if (!stockCode) {
+            alert('Please enter a stock code');
+            return;
+        }
+        
+        showLoading();
+        try {
+            const response = await fetch(`/api/kiwoom/chart/${stockCode}`);
+            const data = await response.json();
+            displayResult(data);
+        } catch (error) {
+            displayError(error.message);
+        } finally {
+            hideLoading();
+        }
+    }
+    
+    async function debugStockInfo() {
+        const stockCode = document.getElementById('stockCode').value;
+        if (!stockCode) {
+            alert('Please enter a stock code');
+            return;
+        }
+        
+        showLoading();
+        try {
+            const response = await fetch(`/api/kiwoom/debug/${stockCode}`);
+            const data = await response.json();
+            displayResult(data);
+        } catch (error) {
+            displayError(error.message);
+        } finally {
+            hideLoading();
+        }
+    }
+</script>
