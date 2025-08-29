@@ -2,6 +2,9 @@
 
 namespace KiwoomRestApi.Net.Enums.Chart
 {
+	/// <summary>
+	/// 수정주가구분
+	/// </summary>
 	[Flags]
 	public enum KiwoomChartUpdateStockPriceType
 	{

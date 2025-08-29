@@ -1,5 +1,8 @@
 ﻿namespace KiwoomRestApi.Net.Enums.StockInfo
 {
+	/// <summary>
+	/// 투자자구분
+	/// </summary>
 	public enum KiwoomStockInfoInvestorType
 	{
 		/// <summary>

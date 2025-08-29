@@ -1,5 +1,8 @@
 ﻿namespace KiwoomRestApi.Net.Enums.Theme
 {
+	/// <summary>
+	/// 등락수익구분
+	/// </summary>
 	public enum KiwoomThemeFluctuationProfitType
 	{
 		/// <summary>

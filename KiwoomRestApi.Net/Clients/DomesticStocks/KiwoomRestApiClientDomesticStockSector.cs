@@ -9,11 +9,21 @@ using System.Threading.Tasks;
 
 namespace KiwoomRestApi.Net.Clients.DomesticStocks
 {
+	/// <summary>
+	/// 업종 API 클라이언트
+	/// </summary>
+	/// <param name="client"></param>
 	public class KiwoomRestApiClientDomesticStockSector(KiwoomRestApiClient client) : BaseClient
 	{
 		private readonly KiwoomRestApiClient _client = client;
 		private readonly string _endpoint = ApiEndpoint.DomesticStock.Sector;
 
+		/// <summary>
+		/// | ka10010 | 업종프로그램요청
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomSectorGetStockProgramTradingInfo>> GetStockProgramTradingInfoAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10010";
@@ -23,6 +33,15 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomSectorGetStockProgramTradingInfo>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka10051 | 업종별투자자순매수요청
+		/// </summary>
+		/// <param name="marketType"></param>
+		/// <param name="amountQuantityType"></param>
+		/// <param name="stockExchangeType"></param>
+		/// <param name="date"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomSectorGetIndustryNetPurchases>> GetIndustryNetPurchasesAsync(KiwoomSectorMarketType marketType, KiwoomSectorAmountQuantityType amountQuantityType, KiwoomSectorStockExchangeType stockExchangeType, DateTime? date = null, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10051";
@@ -35,6 +54,13 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomSectorGetIndustryNetPurchases>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka20001 | 업종현재가요청
+		/// </summary>
+		/// <param name="marketType"></param>
+		/// <param name="industryCode"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomSectorGetIndustryCurrentPrices>> GetIndustryCurrentPricesAsync(KiwoomSectorMarketType marketType, KiwoomSectorIndustryCode industryCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka20001";
@@ -45,6 +71,14 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomSectorGetIndustryCurrentPrices>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka20002 | 업종별주가요청
+		/// </summary>
+		/// <param name="marketType"></param>
+		/// <param name="industryCode"></param>
+		/// <param name="stockExchangeType"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomSectorGetIndustryStockPrices>> GetIndustryStockPricesAsync(KiwoomSectorMarketType marketType, KiwoomSectorIndustryCode industryCode, KiwoomSectorStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka20002";
@@ -56,6 +90,12 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomSectorGetIndustryStockPrices>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka20003 | 전업종지수요청
+		/// </summary>
+		/// <param name="marketType"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomSectorGetAllIndustryIndices>> GetAllIndustryIndicesAsync(KiwoomSectorMarketType2 marketType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka20003";
@@ -65,6 +105,13 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomSectorGetAllIndustryIndices>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka20009 | 업종현재가일별요청
+		/// </summary>
+		/// <param name="marketType"></param>
+		/// <param name="industryCode"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomSectorGetDailyIndustryPrices>> GetDailyIndustryPricesAsync(KiwoomSectorMarketType marketType, KiwoomSectorIndustryCode industryCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka20009";

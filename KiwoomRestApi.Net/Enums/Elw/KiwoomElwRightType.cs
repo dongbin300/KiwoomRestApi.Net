@@ -2,6 +2,9 @@
 
 namespace KiwoomRestApi.Net.Enums.Elw
 {
+	/// <summary>
+	/// 권리구분
+	/// </summary>
 	public enum KiwoomElwRightType
 	{
 		/// <summary>

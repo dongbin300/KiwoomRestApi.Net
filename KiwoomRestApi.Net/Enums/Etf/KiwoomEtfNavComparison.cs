@@ -1,5 +1,8 @@
 ﻿namespace KiwoomRestApi.Net.Enums.Etf
 {
+	/// <summary>
+	/// NAV대비
+	/// </summary>
 	public enum KiwoomEtfNavComparison
 	{
 		/// <summary>

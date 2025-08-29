@@ -2,6 +2,9 @@
 
 namespace KiwoomRestApi.Net.Enums.StockInfo
 {
+	/// <summary>
+	/// 제외종목
+	/// </summary>
 	[Flags]
 	public enum KiwoomStockInfoSkipStockType
 	{

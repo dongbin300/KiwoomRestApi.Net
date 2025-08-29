@@ -1,17 +1,17 @@
 ﻿namespace KiwoomRestApi.Net.Enums.MarketCondition
 {
 	/// <summary>
-	/// 매매구분
+	/// 단가구분
 	/// </summary>
-	public enum KiwoomMarketConditionNetTradeType
+	public enum KiwoomMarketConditionUnitPriceType
 	{
 		/// <summary>
-		/// 순매도
+		/// 매수단가
 		/// </summary>
-		NetSell = 1,
+		BuyUnitPrice = 1,
 		/// <summary>
-		/// 순매수
+		/// 매도단가
 		/// </summary>
-		NetBuy = 2
+		SellUnitPrice = 2
 	}
 }

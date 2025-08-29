@@ -8,10 +8,19 @@ using System.Threading.Tasks;
 
 namespace KiwoomRestApi.Net.Clients
 {
+	/// <summary>
+	/// OAuth 인증 API 클라이언트
+	/// </summary>
+	/// <param name="client"></param>
 	public class KiwoomRestApiClientOAuth(KiwoomRestApiClient client) : BaseClient
 	{
 		private readonly KiwoomRestApiClient _client = client;
 
+		/// <summary>
+		/// | au10001 | 접근토큰 발급
+		/// </summary>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomOAuthGetAccessToken>> GetAccessTokenAsync(CancellationToken cancellationToken = default)
 		{
 			const string endpoint = ApiEndpoint.OAuthGet;
@@ -26,6 +35,12 @@ namespace KiwoomRestApi.Net.Clients
 			return await _client.PostKiwoomRestApiAsync<KiwoomOAuthGetAccessToken>(endpoint, apiId, bodies, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | au10002 | 접근토큰폐기
+		/// </summary>
+		/// <param name="token"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomOAuthRevokeAccessToken>> RevokeAccessTokenAsync(string token, CancellationToken cancellationToken = default)
 		{
 			const string endpoint = ApiEndpoint.OAuthRevoke;

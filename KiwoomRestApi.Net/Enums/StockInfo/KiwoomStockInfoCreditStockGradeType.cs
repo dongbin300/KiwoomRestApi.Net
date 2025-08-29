@@ -2,6 +2,9 @@
 
 namespace KiwoomRestApi.Net.Enums.StockInfo
 {
+	/// <summary>
+	/// 신용종목등급구분
+	/// </summary>
 	public enum KiwoomStockInfoCreditStockGradeType
 	{
 		/// <summary>

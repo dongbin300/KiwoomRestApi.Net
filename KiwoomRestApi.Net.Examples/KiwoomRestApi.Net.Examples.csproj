@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="KiwoomRestApi.Net" Version="0.1.2" />
+    <ProjectReference Include="..\KiwoomRestApi.Net\KiwoomRestApi.Net.csproj" />
   </ItemGroup>
 
 </Project>

@@ -8,11 +8,26 @@ using System.Threading.Tasks;
 
 namespace KiwoomRestApi.Net.Clients.DomesticStocks
 {
+	/// <summary>
+	/// 테마 API 클라이언트
+	/// </summary>
+	/// <param name="client"></param>
 	public class KiwoomRestApiClientDomesticStockTheme(KiwoomRestApiClient client) : BaseClient
 	{
 		private readonly KiwoomRestApiClient _client = client;
 		private readonly string _endpoint = ApiEndpoint.DomesticStock.Theme;
 
+		/// <summary>
+		/// | ka90001 | 테마그룹별요청
+		/// </summary>
+		/// <param name="queryType"></param>
+		/// <param name="daysBefore"></param>
+		/// <param name="fluctuationProfitType"></param>
+		/// <param name="stockExchangeType"></param>
+		/// <param name="stockCode"></param>
+		/// <param name="themeName"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomThemeGetGroups>> GetGroupsAsync(KiwoomThemeQueryType queryType, int daysBefore, KiwoomThemeFluctuationProfitType fluctuationProfitType, KiwoomThemeStockExchangeType stockExchangeType, string stockCode = "", string themeName = "", CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka90001";
@@ -27,6 +42,14 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomThemeGetGroups>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka90002 | 테마구성종목요청
+		/// </summary>
+		/// <param name="themeGroupCode"></param>
+		/// <param name="stockExchangeType"></param>
+		/// <param name="daysBefore"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomThemeGetComponentStocks>> GetComponentStocksAsync(string themeGroupCode, KiwoomThemeStockExchangeType stockExchangeType, int daysBefore = 1, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka90002";

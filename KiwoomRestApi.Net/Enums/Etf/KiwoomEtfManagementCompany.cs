@@ -1,10 +1,16 @@
-﻿namespace KiwoomRestApi.Net.Enums.Etf
+﻿using System.Runtime.Serialization;
+
+namespace KiwoomRestApi.Net.Enums.Etf
 {
+	/// <summary>
+	/// 운용사
+	/// </summary>
 	public enum KiwoomEtfManagementCompany
 	{
 		/// <summary>
 		/// 전체
 		/// </summary>
+		[EnumMember(Value = "0000")]
 		All = 0,
 		/// <summary>
 		/// KODEX (삼성)

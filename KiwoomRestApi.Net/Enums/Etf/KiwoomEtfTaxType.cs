@@ -1,5 +1,8 @@
 ﻿namespace KiwoomRestApi.Net.Enums.Etf
 {
+	/// <summary>
+	/// 과세유형
+	/// </summary>
 	public enum KiwoomEtfTaxType
 	{
 		/// <summary>

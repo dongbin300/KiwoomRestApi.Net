@@ -229,6 +229,53 @@ var results = await Task.WhenAll(tasks);
 - [GitHub 리포지토리](https://github.com/dongbin300/KiwoomRestApi.Net)
 - [버그 리포트](https://github.com/dongbin300/KiwoomRestApi.Net/issues)
 
+## 📋 릴리즈 노트
+
+### v0.2.0 (2025-08-29)
+- 소스코드 주석 추가
+- | ka00198 | 실시간종목조회순위 API 추가
+- KiwoomStockInfoStockCondition.ExcludeManagedAndPreferredAndCaution 추가
+- KiwoomWebSocketStockExchangeType.Unified, NXT 추가
+- | ka10061 | 종목별투자자기관별합계요청의 trde_tp 값 "0"으로 고정
+- | kt10003 | 주식 취소주문의 API ID를 kt10002로 잘못 호출하고 있던 문제 수정
+- KiwoomAccountDelistingQueryType을 bool로 수정 (isExcludeDelisted)
+- KiwoomChartUseOption을 bool로 수정 (isUpdateStockPrice)
+- KiwoomRankingInfoInclusionOption을 bool로 수정
+- KiwoomStockInfonInclusionOption을 bool로 수정
+- KiwoomStockInfoUseOption을 bool로 수정
+- KiwoomElwTradeQuantityType을 decimal로 수정 (minVolume)
+- KiwoomRankingInfoTradeQuantityType을 decimal로 수정 (minVolume)
+- KiwoomRankingInfoTradePriceCondition을 decimal로 수정 (minTransactionAmount)
+- KiwoomStockInfoTradeQuantityType을 decimal로 수정 (minVolume)
+- KiwoomForeignInstitutionPeriodQueryType을 int로 수정 (period)
+- KiwoomAccountDepositQueryType.General을 KiwoomAccountDepositQueryType.Normal로 수정
+- KiwoomMarketConditionEstimatedUnitPriceType을 KiwoomMarketConditionUnitPriceType로 수정
+- KiwoomRankingInfoTradeQuantitySortType.TradingVolume을 Volume로 수정
+- KiwoomRankingInfoTradeQuantitySortType.TradingAmount을 TransactionAmount로 수정
+- KiwoomRankingInfoPreviousTradeQuantityQueryType.Top100ByYesterdayTradingAmount을 Top100ByYesterdayTransactionAmount로 수정
+- KiwoomWebSocketRealtimeOrderExecution.ExchangeType 타입을 KiwoomWebSocketStockExchangeType로 수정
+- KiwoomWebSocketRealtimeStockExecution.ExchangeType 타입을 KiwoomWebSocketStockExchangeType로 수정
+- KiwoomForeignInstitutionNetSellAmountType 삭제 ('2' 고정값)
+- KiwoomSecuritiesLendingAndBorrowingQueryType 삭제
+
+---
+
+### v0.1.2 (2025-08-27)
+- 아이콘 업데이트 및 NuGet 패키지 메타데이터 개선
+- 코드 문서화 개선
+- 프로젝트 아이콘 변경
+- README 문서 구조 개선
+
+---
+
+### v0.1.1 (2025-08-27)
+- NuGet 패키지 최초 릴리즈
+- 패키지 메타데이터 및 설명 추가
+- API 문서화 개선
+- 빌드 설정 최적화
+- FAQ 문서 추가
+- 패키지 참조 오류 수정
+
 ---
 
 ⭐ 이 프로젝트가 도움이 되었다면 스타를 눌러주세요!

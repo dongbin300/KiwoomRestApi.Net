@@ -10,11 +10,21 @@ using System.Threading.Tasks;
 
 namespace KiwoomRestApi.Net.Clients.DomesticStocks
 {
+	/// <summary>
+	/// 시세 API 클라이언트
+	/// </summary>
+	/// <param name="client"></param>
 	public class KiwoomRestApiClientDomesticStockMarketCondition(KiwoomRestApiClient client) : BaseClient
 	{
 		private readonly KiwoomRestApiClient _client = client;
 		private readonly string _endpoint = ApiEndpoint.DomesticStock.MarketCondition;
 
+		/// <summary>
+		/// | ka10004 | 주식호가요청
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetOrderBook>> GetOrderBookAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10004";
@@ -24,6 +34,12 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetOrderBook>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka10004 | 주식호가요청 (Array)
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetOrderBookList>> GetOrderBookListAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10004";
@@ -34,6 +50,12 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return response.MapResponse(r => new KiwoomMarketConditionGetOrderBookList(r));
 		}
 
+		/// <summary>
+		/// | ka10005 | 주식일주월시분요청
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetDailyWeeklyMonthly>> GetDailyWeeklyMonthlyAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10005";
@@ -43,6 +65,12 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetDailyWeeklyMonthly>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka10006 | 주식시분요청
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetHourMinute>> GetHourMinuteAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10006";
@@ -52,6 +80,12 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetHourMinute>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka10007 | 시세표성정보요청
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetQuote>> GetQuoteAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10007";
@@ -61,6 +95,12 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetQuote>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka10007 | 시세표성정보요청 (Array)
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetQuoteList>> GetQuoteListAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10007";
@@ -71,6 +111,12 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return response.MapResponse(r => new KiwoomMarketConditionGetQuoteList(r));
 		}
 
+		/// <summary>
+		/// | ka10011 | 신주인수권전체시세요청
+		/// </summary>
+		/// <param name="rightsType"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetAllMarketQuoteForRightsOfferings>> GetAllMarketQuoteForRightsOfferingsAsync(KiwoomMarketConditionRightsType rightsType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10011";
@@ -80,6 +126,16 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetAllMarketQuoteForRightsOfferings>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka10044 | 일별기관매매종목요청
+		/// </summary>
+		/// <param name="marketType"></param>
+		/// <param name="tradeType"></param>
+		/// <param name="stockExchangeType"></param>
+		/// <param name="startDate"></param>
+		/// <param name="endDate"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetDailyInstitutionTradingStocks>> GetDailyInstitutionTradingStocksAsync(KiwoomMarketConditionMarketType marketType, KiwoomMarketConditionNetTradeType tradeType, KiwoomMarketConditionStockExchangeType stockExchangeType, DateTime startDate, DateTime endDate, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10044";
@@ -93,7 +149,17 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetDailyInstitutionTradingStocks>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetStockOriginTradeTrends>> GetStockOriginTradeTrendsAsync(string stockCode, DateTime startDate, DateTime endDate, KiwoomMarketConditionEstimatedUnitPriceType institutionEstimatedUnitPriceType, KiwoomMarketConditionEstimatedUnitPriceType foreignEstimatedUnitPriceType, CancellationToken cancellationToken = default)
+		/// <summary>
+		/// | ka10045 | 종목별기관매매추이요청
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="startDate"></param>
+		/// <param name="endDate"></param>
+		/// <param name="institutionEstimatedUnitPriceType"></param>
+		/// <param name="foreignEstimatedUnitPriceType"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetStockOriginTradeTrends>> GetStockOriginTradeTrendsAsync(string stockCode, DateTime startDate, DateTime endDate, KiwoomMarketConditionUnitPriceType institutionEstimatedUnitPriceType, KiwoomMarketConditionUnitPriceType foreignEstimatedUnitPriceType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10045";
 			var body = new HttpParameterMap()
@@ -106,6 +172,12 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetStockOriginTradeTrends>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka10046 | 체결강도추이시간별요청
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetHourlyContractStrengths>> GetHourlyContractStrengthsAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10046";
@@ -115,6 +187,12 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetHourlyContractStrengths>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka10047 | 체결강도추이일별요청
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetDailyContractStrengths>> GetDailyContractStrengthsAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10047";
@@ -124,6 +202,17 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetDailyContractStrengths>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka10063 | 장중투자자별매매요청
+		/// </summary>
+		/// <param name="marketType"></param>
+		/// <param name="amountQuantityType"></param>
+		/// <param name="investorType"></param>
+		/// <param name="isForeignAll"></param>
+		/// <param name="isSimultaneousNetPurchaseType"></param>
+		/// <param name="stockExchangeType"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetIntradayInvestorTradings>> GetIntradayInvestorTradingsAsync(KiwoomMarketConditionMarketType marketType, KiwoomMarketConditionAmountQuantityType amountQuantityType, KiwoomMarketConditionInvestorType investorType, bool isForeignAll, bool isSimultaneousNetPurchaseType, KiwoomMarketConditionStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10063";
@@ -138,6 +227,15 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetIntradayInvestorTradings>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka10066 | 장마감후투자자별매매요청
+		/// </summary>
+		/// <param name="marketType"></param>
+		/// <param name="amountQuantityType"></param>
+		/// <param name="tradeType"></param>
+		/// <param name="stockExchangeType"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetIntradayInvestorTradeCharts>> GetIntradayInvestorTradeChartsAsync(KiwoomMarketConditionMarketType marketType, KiwoomMarketConditionAmountQuantityType amountQuantityType, KiwoomMarketConditionTradeType tradeType, KiwoomMarketConditionStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10066";
@@ -150,6 +248,15 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetIntradayInvestorTradeCharts>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka10078 | 증권사별종목매매동향요청
+		/// </summary>
+		/// <param name="memberCompanyCode"></param>
+		/// <param name="stockCode"></param>
+		/// <param name="startDate"></param>
+		/// <param name="endDate"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetSecurityFirmStockTradeTrends>> GetSecurityFirmStockTradeTrendsAsync(string memberCompanyCode, string stockCode, DateTime startDate, DateTime endDate, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10078";
@@ -162,6 +269,14 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetSecurityFirmStockTradeTrends>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka10086 | 일별주가요청
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="date"></param>
+		/// <param name="amountQuantityType"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetDailyStockPrices>> GetDailyStockPricesAsync(string stockCode, DateTime date, KiwoomMarketConditionAmountQuantityType2 amountQuantityType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10086";
@@ -173,6 +288,12 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetDailyStockPrices>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka10087 | 시간외단일가요청
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetAfterHoursSinglePriceOrderBook>> GetAfterHoursSinglePriceOrderBookAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10087";
@@ -182,6 +303,12 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetAfterHoursSinglePriceOrderBook>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka10087 | 시간외단일가요청 (Array)
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetAfterHoursSinglePriceOrderBookList>> GetAfterHoursSinglePriceOrderBookListAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10087";
@@ -192,6 +319,16 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return response.MapResponse(r => new KiwoomMarketConditionGetAfterHoursSinglePriceOrderBookList(r));
 		}
 
+		/// <summary>
+		/// | ka90005 | 프로그램매매추이요청 시간대별
+		/// </summary>
+		/// <param name="date"></param>
+		/// <param name="amountQuantityType"></param>
+		/// <param name="marketType"></param>
+		/// <param name="tickMinuteType"></param>
+		/// <param name="stockExchangeType"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetHourlyProgramTradeTrends>> GetHourlyProgramTradeTrendsAsync(DateTime date, KiwoomMarketConditionAmountQuantityType3 amountQuantityType, KiwoomMarketConditionMarketType marketType, KiwoomMarketConditionTickMinuteType tickMinuteType, KiwoomMarketConditionStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka90005";
@@ -217,6 +354,13 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetHourlyProgramTradeTrends>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka90006 | 프로그램매매차익잔고추이요청
+		/// </summary>
+		/// <param name="date"></param>
+		/// <param name="stockExchangeType"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetProgramArbitrageBalanceTrends>> GetProgramArbitrageBalanceTrendsAsync(DateTime date, KiwoomMarketConditionStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka90006";
@@ -227,6 +371,15 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetProgramArbitrageBalanceTrends>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka90007 | 프로그램매매누적추이요청
+		/// </summary>
+		/// <param name="date"></param>
+		/// <param name="amountQuantityType"></param>
+		/// <param name="marketType"></param>
+		/// <param name="stockExchangeType"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetProgramTradeAccumulatedTrends>> GetProgramTradeAccumulatedTrendsAsync(DateTime date, KiwoomMarketConditionAmountQuantityType amountQuantityType, KiwoomMarketConditionMarketType2 marketType, KiwoomMarketConditionStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka90007";
@@ -239,6 +392,14 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetProgramTradeAccumulatedTrends>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka90008 | 종목시간별프로그램매매추이요청
+		/// </summary>
+		/// <param name="date"></param>
+		/// <param name="stockCode"></param>
+		/// <param name="amountQuantityType"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetStockTimeProgramTradeTrends>> GetStockTimeProgramTradeTrendsAsync(DateTime date, string stockCode, KiwoomMarketConditionAmountQuantityType amountQuantityType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka90008";
@@ -250,6 +411,16 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetStockTimeProgramTradeTrends>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka90010 | 프로그램매매추이요청 일자별
+		/// </summary>
+		/// <param name="date"></param>
+		/// <param name="amountQuantityType"></param>
+		/// <param name="marketType"></param>
+		/// <param name="tickMinuteType"></param>
+		/// <param name="stockExchangeType"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetDailyProgramTradeTrends>> GetDailyProgramTradeTrendsAsync(DateTime date, KiwoomMarketConditionAmountQuantityType3 amountQuantityType, KiwoomMarketConditionMarketType marketType, KiwoomMarketConditionTickMinuteType tickMinuteType, KiwoomMarketConditionStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka90010";
@@ -275,6 +446,14 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetDailyProgramTradeTrends>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka90013 | 종목일별프로그램매매추이요청
+		/// </summary>
+		/// <param name="date"></param>
+		/// <param name="stockCode"></param>
+		/// <param name="amountQuantityType"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetStockDailyProgramTradeTrends>> GetStockDailyProgramTradeTrendsAsync(DateTime date, string stockCode, KiwoomMarketConditionAmountQuantityType amountQuantityType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka90013";

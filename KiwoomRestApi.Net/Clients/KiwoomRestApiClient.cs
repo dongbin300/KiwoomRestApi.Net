@@ -19,6 +19,7 @@ namespace KiwoomRestApi.Net.Clients
 	/// <summary>
 	/// 키움증권 OpenAPI REST API 클라이언트입니다.
 	/// 주식 거래, 조회, 실시간 데이터 등의 기능을 제공합니다.
+	/// <para><a href="https://openapi.kiwoom.com/guide/apiguide"/></para>
 	/// </summary>
 	/// <example>
 	/// <code>
@@ -274,6 +275,17 @@ namespace KiwoomRestApi.Net.Clients
 			return headers;
 		}
 
+		/// <summary>
+		/// 키움 REST API에 POST 요청을 보내고 응답을 받습니다.
+		/// </summary>
+		/// <typeparam name="T">응답 데이터의 타입</typeparam>
+		/// <param name="endpoint">API 엔드포인트 경로</param>
+		/// <param name="apiId">키움 API ID (예: "ka10001")</param>
+		/// <param name="body">요청 본문 데이터 (키-값 쌍)</param>
+		/// <param name="cancellationToken">취소 토큰</param>
+		/// <returns>키움 API 응답을 포함한 Task</returns>
+		/// <exception cref="HttpRequestException">HTTP 요청 실패 시</exception>
+		/// <exception cref="JsonException">JSON 역직렬화 실패 시</exception>
 		public async Task<KiwoomRestApiResponse<T>> PostKiwoomRestApiAsync<T>(string endpoint, string apiId, IDictionary<string, string>? body = null, CancellationToken cancellationToken = default)
 		{
 			var headers = new HttpParameterMap()
@@ -301,6 +313,12 @@ namespace KiwoomRestApi.Net.Clients
 			return result;
 		}
 
+		/// <summary>
+		/// HTTP 응답 헤더를 키움 API 응답 객체에 할당합니다.
+		/// </summary>
+		/// <typeparam name="T">응답 데이터의 타입</typeparam>
+		/// <param name="response">키움 API 응답 객체</param>
+		/// <param name="headers">HTTP 응답 헤더</param>
 		private void AssignHeadersToResponse<T>(KiwoomRestApiResponse<T> response, IDictionary<string, IEnumerable<string>>? headers)
 		{
 			if (headers == null)

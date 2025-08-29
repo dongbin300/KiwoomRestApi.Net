@@ -1,4 +1,5 @@
 ﻿using KiwoomRestApi.Net.Converters;
+using KiwoomRestApi.Net.Objects.Commons;
 
 using Newtonsoft.Json;
 
@@ -106,7 +107,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("stk_nm")]
 		public string? StockName;
 		[JsonProperty("stkpc_flu")]
-		public decimal? PriceFluctuation;
+		public KiwoomDecimal? PriceFluctuation;
 		[JsonProperty("flu_rt")]
 		public decimal? FluctuationRate;
 		[JsonProperty("trde_qty")]
@@ -168,9 +169,9 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("rght_tp")]
 		public string? RightType;
 		[JsonProperty("dispty_rt")]
-		public decimal? DisparityRate;
+		public KiwoomDecimal? DisparityRate;
 		[JsonProperty("basis")]
-		public decimal? Basis;
+		public KiwoomDecimal? Basis;
 		[JsonProperty("srvive_dys")]
 		public int? RemainingDays;
 		[JsonProperty("theory_pric")]

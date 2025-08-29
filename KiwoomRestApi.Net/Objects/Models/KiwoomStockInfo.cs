@@ -8,6 +8,79 @@ using System.Collections.Generic;
 
 namespace KiwoomRestApi.Net.Objects.Models
 {
+	public record KiwoomStockInfoGetRealtimeStockRanks
+	{
+		/// <summary>
+		/// 실시간종목조회순위
+		/// </summary>
+		[JsonProperty("item_inq_rank")]
+		public IEnumerable<KiwoomStockInfoGetRealtimeStockRankItem>? Items;
+	}
+	public record KiwoomStockInfoGetRealtimeStockRankItem
+	{
+		/// <summary>
+		/// 종목명
+		/// </summary>
+		[JsonProperty("stk_nm")]
+		public string? StockName;
+		/// <summary>
+		/// 빅데이터 순위
+		/// </summary>
+		[JsonProperty("bigd_rank")]
+		public string? BigDataRank;
+		/// <summary>
+		/// 순위 등락
+		/// </summary>
+		[JsonProperty("rank_chg")]
+		public string? RankChange;
+		/// <summary>
+		/// 순위 등락 부호
+		/// </summary>
+		[JsonProperty("rank_chg_sign")]
+		public string? RankChangeSign;
+		/// <summary>
+		/// 과거 현재가
+		/// </summary>
+		[JsonProperty("past_curr_prc")]
+		public string? PastCurrentPrice;
+		/// <summary>
+		/// 기준가 대비 부호
+		/// </summary>
+		[JsonProperty("base_comp_sign")]
+		public string? BaseCompareSign;
+		/// <summary>
+		/// 기준가 대비 등락율
+		/// </summary>
+		[JsonProperty("base_comp_chgr")]
+		public string? BaseCompareChangeRate;
+		/// <summary>
+		/// 직전 기준 대비 부호
+		/// </summary>
+		[JsonProperty("prev_base_sign")]
+		public string? PrevBaseSign;
+		/// <summary>
+		/// 직전 기준 대비 등락율
+		/// </summary>
+		[JsonProperty("prev_base_chgr")]
+		public string? PrevBaseChangeRate;
+		/// <summary>
+		/// 일자
+		/// </summary>
+		[JsonProperty("dt")]
+		public string? Date;
+		/// <summary>
+		/// 시간
+		/// </summary>
+		[JsonProperty("tm")]
+		public string? Time;
+		/// <summary>
+		/// 종목코드
+		/// </summary>
+		[JsonProperty("stk_cd")]
+		public string? StockCode;
+	}
+
+
 	public record KiwoomStockInfoGetStockInfo
 	{
 		[JsonProperty("stk_cd")]

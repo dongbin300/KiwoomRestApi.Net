@@ -10,10 +10,22 @@ using System.Threading.Tasks;
 
 namespace KiwoomRestApi.Net.Clients.DomesticStocks
 {
+	/// <summary>
+	/// 실시간시세 및 조건검색 API 클라이언트 (WebSocket)
+	/// </summary>
+	/// <param name="client"></param>
 	public class KiwoomRestApiClientDomesticStockWebSocket(KiwoomSocketClient client) : BaseClient
 	{
 		private readonly KiwoomSocketClient _client = client;
 
+		/// <summary>
+		/// 실시간시세의 특정 서비스를 구독합니다.
+		/// </summary>
+		/// <param name="serviceNames"></param>
+		/// <param name="parameters"></param>
+		/// <param name="groupId"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task SubscribeAsync(IEnumerable<KiwoomWebSocketServiceName> serviceNames, IEnumerable<string> parameters, string groupId = "1", CancellationToken cancellationToken = default)
 		{
 			var _serviceNames = serviceNames.Select(s => s.ToEnumString());
@@ -36,6 +48,11 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			await _client.SendAsync(message, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka10171 | 조건검색 목록조회
+		/// </summary>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task GetConditionSearchListAsync(CancellationToken cancellationToken = default)
 		{
 			var body = new HttpParameterMap()
@@ -44,6 +61,14 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			await _client.SendAsync(body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka10172 | 조건검색 요청 일반
+		/// </summary>
+		/// <param name="id"></param>
+		/// <param name="contYn"></param>
+		/// <param name="nextKey"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task GetConditionSearchRequestAsync(int id, string contYn = "", string nextKey = "", CancellationToken cancellationToken = default)
 		{
 			var body = new HttpParameterMap()
@@ -57,6 +82,12 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			await _client.SendAsync(body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka10173 | 조건검색 요청 실시간
+		/// </summary>
+		/// <param name="id"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task GetConditionSearchRequestRealtimeAsync(int id, CancellationToken cancellationToken = default)
 		{
 			var body = new HttpParameterMap()
@@ -68,6 +99,12 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			await _client.SendAsync(body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka10174 | 조건검색 실시간 해제
+		/// </summary>
+		/// <param name="id"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task GetConditionSearchClearAsync(int id, CancellationToken cancellationToken = default)
 		{
 			var body = new HttpParameterMap()
@@ -77,6 +114,14 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			await _client.SendAsync(body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// 실시간시세의 특정 서비스를 구독 해제합니다.
+		/// </summary>
+		/// <param name="serviceNames"></param>
+		/// <param name="parameters"></param>
+		/// <param name="groupId"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task UnsubscribeAsync(IEnumerable<KiwoomWebSocketServiceName> serviceNames, IEnumerable<string> parameters, string groupId = "1", CancellationToken cancellationToken = default)
 		{
 			var _serviceNames = serviceNames.Select(s => s.ToEnumString());
@@ -99,6 +144,12 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			await _client.SendAsync(message, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// 모든 구독을 해제합니다.
+		/// </summary>
+		/// <param name="groupId"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task UnsubscribeAllAsync(string groupId = "1", CancellationToken cancellationToken = default)
 		{
 			var message = new KiwoomWebSocketSendMessage()

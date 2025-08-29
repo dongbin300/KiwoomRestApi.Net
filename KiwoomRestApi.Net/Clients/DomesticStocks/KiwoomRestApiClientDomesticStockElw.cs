@@ -9,11 +9,21 @@ using System.Threading.Tasks;
 
 namespace KiwoomRestApi.Net.Clients.DomesticStocks
 {
+	/// <summary>
+	/// ELW API 클라이언트
+	/// </summary>
+	/// <param name="client"></param>
 	public class KiwoomRestApiClientDomesticStockElw(KiwoomRestApiClient client) : BaseClient
 	{
 		private readonly KiwoomRestApiClient _client = client;
 		private readonly string _endpoint = ApiEndpoint.DomesticStock.Elw;
 
+		/// <summary>
+		/// | ka10048 | ELW일별민감도지표요청
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomElwGetDailySensitivityIndices>> GetDailySensitivityIndicesAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10048";
@@ -23,6 +33,12 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetDailySensitivityIndices>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka10050 | ELW민감도지표요청
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomElwGetSensitivityIndeices>> GetSensitivityIndeicesAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10050";
@@ -32,14 +48,28 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetSensitivityIndeices>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomElwGetPriceJumpFluctuations>> GetPriceJumpFluctuationsAsync(KiwoomElwFluctuationType fluctuationType, KiwoomElwTimeType timeType, int timeValue, KiwoomElwTradeQuantityType tradeQuantityType, KiwoomElwCompanyCode issuerCompanyCode, string baseAssetCode, KiwoomElwRightType rightType, KiwoomElwCompanyCode lpCode, bool isExcludeEndedElw, CancellationToken cancellationToken = default)
+		/// <summary>
+		/// | ka30001 | ELW가격급등락요청
+		/// </summary>
+		/// <param name="fluctuationType"></param>
+		/// <param name="timeType"></param>
+		/// <param name="timeValue"></param>
+		/// <param name="minVolume"></param>
+		/// <param name="issuerCompanyCode"></param>
+		/// <param name="baseAssetCode"></param>
+		/// <param name="rightType"></param>
+		/// <param name="lpCode"></param>
+		/// <param name="isExcludeEndedElw"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		public async Task<KiwoomRestApiResponse<KiwoomElwGetPriceJumpFluctuations>> GetPriceJumpFluctuationsAsync(KiwoomElwFluctuationType fluctuationType, KiwoomElwTimeType timeType, int timeValue, decimal minVolume, KiwoomElwCompanyCode issuerCompanyCode, string baseAssetCode, KiwoomElwRightType rightType, KiwoomElwCompanyCode lpCode, bool isExcludeEndedElw, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka30001";
 			var body = new HttpParameterMap()
 				.AddField("flu_tp", fluctuationType)
 				.AddField("tm_tp", timeType)
 				.AddField("tm", timeValue)
-				.AddField("trde_qty_tp", tradeQuantityType)
+				.AddField("trde_qty_tp", minVolume / 1000)
 				.AddField("isscomp_cd", issuerCompanyCode)
 				.AddField("bsis_aset_cd", baseAssetCode)
 				.AddField("rght_tp", rightType)
@@ -49,12 +79,22 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetPriceJumpFluctuations>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomElwGetNetTradeTopByTraders>> GetNetTradeTopByTradersAsync(KiwoomElwCompanyCode issuerCompanyCode, KiwoomElwTradeQuantityType tradeQuantityType, KiwoomElwNetTradeType tradeType, int period, bool isExcludeEndedElw, CancellationToken cancellationToken = default)
+		/// <summary>
+		/// | ka30002 | 거래원별ELW순매매상위요청
+		/// </summary>
+		/// <param name="issuerCompanyCode"></param>
+		/// <param name="minVolume"></param>
+		/// <param name="tradeType"></param>
+		/// <param name="period"></param>
+		/// <param name="isExcludeEndedElw"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		public async Task<KiwoomRestApiResponse<KiwoomElwGetNetTradeTopByTraders>> GetNetTradeTopByTradersAsync(KiwoomElwCompanyCode issuerCompanyCode, decimal minVolume, KiwoomElwNetTradeType tradeType, int period, bool isExcludeEndedElw, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka30002";
 			var body = new HttpParameterMap()
 				.AddField("isscomp_cd", issuerCompanyCode)
-				.AddField("trde_qty_tp", tradeQuantityType)
+				.AddField("trde_qty_tp", minVolume / 1000)
 				.AddField("trde_tp", tradeType)
 				.AddField("dt", period)
 				.AddField("trde_end_elwskip", isExcludeEndedElw);
@@ -62,6 +102,13 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetNetTradeTopByTraders>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka30003 | ELWLP보유일별추이요청
+		/// </summary>
+		/// <param name="baseAssetCode"></param>
+		/// <param name="date"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomElwGetLpHoldingDailyTrends>> GetLpHoldingDailyTrendsAsync(string baseAssetCode, DateTime date, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka30003";
@@ -72,6 +119,16 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetLpHoldingDailyTrends>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka30004 | ELW괴리율요청
+		/// </summary>
+		/// <param name="issuerCompanyCode"></param>
+		/// <param name="baseAssetCode"></param>
+		/// <param name="rightType"></param>
+		/// <param name="lpCode"></param>
+		/// <param name="isExcludeEndedElw"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomElwGetDisparityRates>> GetDisparityRatesAsync(KiwoomElwCompanyCode issuerCompanyCode, string baseAssetCode, KiwoomElwRightType rightType, KiwoomElwCompanyCode lpCode, bool isExcludeEndedElw, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka30004";
@@ -85,6 +142,16 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetDisparityRates>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka30005 | ELW조건검색요청
+		/// </summary>
+		/// <param name="issuerCompanyCode"></param>
+		/// <param name="baseAssetCode"></param>
+		/// <param name="rightType"></param>
+		/// <param name="lpCode"></param>
+		/// <param name="sortType"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomElwGetConditionSearchs>> GetConditionSearchsAsync(KiwoomElwCompanyCode issuerCompanyCode, string baseAssetCode, KiwoomElwRightType rightType, KiwoomElwCompanyCode lpCode, KiwoomElwSortType sortType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka30005";
@@ -98,6 +165,14 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetConditionSearchs>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka30009 | ELW등락율순위요청
+		/// </summary>
+		/// <param name="sortType"></param>
+		/// <param name="rightType"></param>
+		/// <param name="isExcludeEnded"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomElwGetFluctuationRateRanks>> GetFluctuationRateRanksAsync(KiwoomElwSortType sortType, KiwoomElwRightType rightType, bool isExcludeEnded, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka30009";
@@ -109,6 +184,14 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetFluctuationRateRanks>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka30010 | ELW잔량순위요청
+		/// </summary>
+		/// <param name="sortType"></param>
+		/// <param name="rightType"></param>
+		/// <param name="isExcludeEnded"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomElwGetRequestRanks>> GetRequestRanksAsync(KiwoomElwSortType2 sortType, KiwoomElwRightType rightType, bool isExcludeEnded, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka30010";
@@ -120,6 +203,12 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetRequestRanks>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka30011 | ELW근접율요청
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomElwGetProximityRates>> GetProximityRatesAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka30011";
@@ -129,6 +218,12 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomElwGetProximityRates>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka30012 | ELW종목상세정보요청
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomElwGetAssetInfo>> GetAssetInfoAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka30012";

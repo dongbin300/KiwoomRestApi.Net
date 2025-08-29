@@ -1,5 +1,8 @@
 ﻿namespace KiwoomRestApi.Net.Enums.Elw
 {
+	/// <summary>
+	/// 정렬구분
+	/// </summary>
 	public enum KiwoomElwSortType
 	{
 		/// <summary>
@@ -36,6 +39,9 @@
 		RemainingDays = 7,
 	}
 
+	/// <summary>
+	/// 정렬구분
+	/// </summary>
 	public enum KiwoomElwSortType2
 	{
 		/// <summary>

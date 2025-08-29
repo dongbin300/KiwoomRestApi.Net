@@ -9,11 +9,22 @@ using System.Threading.Tasks;
 
 namespace KiwoomRestApi.Net.Clients.DomesticStocks
 {
+	/// <summary>
+	/// 계좌 API 클라이언트
+	/// </summary>
+	/// <param name="client"></param>
 	public class KiwoomRestApiClientDomesticStockAccount(KiwoomRestApiClient client) : BaseClient
 	{
 		private readonly KiwoomRestApiClient _client = client;
 		private readonly string _endpoint = ApiEndpoint.DomesticStock.Account;
 
+		/// <summary>
+		/// | ka10072 | 일자별종목별실현손익요청_일자
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="startDate"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomAccountGetDateStockRealizedProfitLoss>> GetDateStockRealizedProfitLossAsync(string stockCode, DateTime startDate, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10072";
@@ -24,6 +35,14 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetDateStockRealizedProfitLoss>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka10073 | 일자별종목별실현손익요청_기간
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="startDate"></param>
+		/// <param name="endDate"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomAccountGetPeriodStockRealizedProfitLoss>> GetPeriodStockRealizedProfitLossAsync(string stockCode, DateTime startDate, DateTime endDate, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10073";
@@ -35,6 +54,13 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetPeriodStockRealizedProfitLoss>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka10074 | 일자별실현손익요청
+		/// </summary>
+		/// <param name="startDate"></param>
+		/// <param name="endDate"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomAccountGetRealizedProfitLoss>> GetRealizedProfitLossAsync(DateTime startDate, DateTime endDate, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10074";
@@ -45,6 +71,15 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetRealizedProfitLoss>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka10075 | 미체결요청
+		/// </summary>
+		/// <param name="queryType"></param>
+		/// <param name="tradeType"></param>
+		/// <param name="stockExchangeType"></param>
+		/// <param name="stockCode"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomAccountGetOutstandingOrders>> GetOutstandingOrdersAsync(KiwoomAccountQueryType queryType, KiwoomAccountTradeType tradeType, KiwoomAccountStockExchangeType stockExchangeType, string stockCode = "", CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10075";
@@ -57,6 +92,16 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetOutstandingOrders>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka10076 | 체결요청
+		/// </summary>
+		/// <param name="queryType"></param>
+		/// <param name="tradeType"></param>
+		/// <param name="stockExchangeType"></param>
+		/// <param name="stockCode"></param>
+		/// <param name="orderId"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomAccountGetContracts>> GetContractsAsync(KiwoomAccountQueryType queryType, KiwoomAccountTradeType tradeType, KiwoomAccountStockExchangeType stockExchangeType, string stockCode = "", string orderId = "", CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10076";
@@ -70,6 +115,12 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetContracts>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka10077 | 당일실현손익상세요청
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomAccountGetTodayRealizedProfitLoss>> GetTodayRealizedProfitLossAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10077";
@@ -79,6 +130,12 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetTodayRealizedProfitLoss>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka10085 | 계좌수익률요청
+		/// </summary>
+		/// <param name="stockExchangeType"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomAccountGetProfitRate>> GetProfitRateAsync(KiwoomAccountStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10085";
@@ -88,6 +145,12 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetProfitRate>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka10088 | 미체결 분할주문 상세
+		/// </summary>
+		/// <param name="orderId"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomAccountGetOutstandingPartialOrders>> GetOutstandingPartialOrdersAsync(string orderId, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10088";
@@ -97,6 +160,14 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetOutstandingPartialOrders>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka10170 | 당일매매일지요청
+		/// </summary>
+		/// <param name="oddLotType"></param>
+		/// <param name="cashCreditType"></param>
+		/// <param name="date"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomAccountGetTodayTradeDiaries>> GetTodayTradeDiariesAsync(KiwoomAccountOddLotType oddLotType, KiwoomAccountCashCreditType cashCreditType, DateTime? date = null, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10170";
@@ -108,6 +179,12 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetTodayTradeDiaries>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | kt00001 | 예수금상세현황요청
+		/// </summary>
+		/// <param name="queryType"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomAccountGetDeposits>> GetDepositsAsync(KiwoomAccountDepositQueryType queryType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "kt00001";
@@ -117,6 +194,13 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetDeposits>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | kt00002 | 일별추정예탁자산현황요청
+		/// </summary>
+		/// <param name="startDate"></param>
+		/// <param name="endDate"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomAccountGetDailyEstimatedDepositAssets>> GetDailyEstimatedDepositAssetsAsync(DateTime startDate, DateTime endDate, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "kt00002";
@@ -127,25 +211,44 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetDailyEstimatedDepositAssets>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetEstimatedDepositAsset>> GetEstimatedDepositAssetAsync(KiwoomAccountDelistingQueryType queryType, CancellationToken cancellationToken = default)
+		/// <summary>
+		/// | kt00003 | 추정자산조회요청
+		/// </summary>
+		/// <param name="isExcludeDelisted"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetEstimatedDepositAsset>> GetEstimatedDepositAssetAsync(bool isExcludeDelisted, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "kt00003";
 			var body = new HttpParameterMap()
-				.AddField("qry_tp", queryType);
+				.AddField("qry_tp", isExcludeDelisted);
 
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetEstimatedDepositAsset>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetEvaluations>> GetEvaluationsAsync(KiwoomAccountDelistingQueryType queryType, KiwoomAccountStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
+		/// <summary>
+		/// | kt00004 | 계좌평가현황요청
+		/// </summary>
+		/// <param name="isExcludeDelisted"></param>
+		/// <param name="stockExchangeType"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetEvaluations>> GetEvaluationsAsync(bool isExcludeDelisted, KiwoomAccountStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "kt00004";
 			var body = new HttpParameterMap()
-				.AddField("qry_tp", queryType)
+				.AddField("qry_tp", isExcludeDelisted)
 				.AddField("dmst_stex_tp", stockExchangeType);
 
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetEvaluations>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | kt00005 | 체결잔고요청
+		/// </summary>
+		/// <param name="stockExchangeType"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomAccountGetContractBalances>> GetContractBalancesAsync(KiwoomAccountStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "kt00005";
@@ -155,6 +258,18 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetContractBalances>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | kt00007 | 계좌별주문체결내역상세요청
+		/// </summary>
+		/// <param name="queryType"></param>
+		/// <param name="stockBondType"></param>
+		/// <param name="tradeType"></param>
+		/// <param name="domesticStockExchangeType"></param>
+		/// <param name="date"></param>
+		/// <param name="stockCode"></param>
+		/// <param name="fromOrderId"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomAccountGetOrderContractDetails>> GetOrderContractDetailsAsync(KiwoomAccountOrderQueryType queryType, KiwoomAccountStockBondType stockBondType, KiwoomAccountTradeType tradeType, KiwoomAccountDomesticStockExchangeType domesticStockExchangeType, DateTime? date = null, string stockCode = "", string fromOrderId = "", CancellationToken cancellationToken = default)
 		{
 			const string apiId = "kt00007";
@@ -170,6 +285,12 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetOrderContractDetails>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | kt00008 | 계좌별익일결제예정내역요청
+		/// </summary>
+		/// <param name="startDealCodeId"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomAccountGetNextDaySettlements>> GetNextDaySettlementsAsync(string startDealCodeId = "", CancellationToken cancellationToken = default)
 		{
 			const string apiId = "kt00008";
@@ -179,6 +300,19 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetNextDaySettlements>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | kt00009 | 계좌별주문체결현황요청
+		/// </summary>
+		/// <param name="queryType"></param>
+		/// <param name="stockBondType"></param>
+		/// <param name="tradeType"></param>
+		/// <param name="domesticStockExchangeType"></param>
+		/// <param name="marketType"></param>
+		/// <param name="date"></param>
+		/// <param name="stockCode"></param>
+		/// <param name="fromOrderId"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomAccountGetOrderContracts>> GetOrderContractsAsync(KiwoomAccountOrderContractQueryType queryType, KiwoomAccountStockBondType stockBondType, KiwoomAccountTradeType tradeType, KiwoomAccountDomesticStockExchangeType domesticStockExchangeType, KiwoomAccountMarketType marketType, DateTime? date = null, string stockCode = "", string fromOrderId = "", CancellationToken cancellationToken = default)
 		{
 			const string apiId = "kt00009";
@@ -195,6 +329,17 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetOrderContracts>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | kt00010 | 주문인출가능금액요청
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="tradeType"></param>
+		/// <param name="buyPrice"></param>
+		/// <param name="buyQuantity"></param>
+		/// <param name="inOutAmount"></param>
+		/// <param name="expectedBuyPrice"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomAccountGetMarginOrderAmounts>> GetMarginOrderAmountsAsync(string stockCode, KiwoomAccountTradeType tradeType, decimal buyPrice, decimal? buyQuantity = null, decimal? inOutAmount = null, decimal? expectedBuyPrice = null, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "kt00010";
@@ -209,6 +354,13 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetMarginOrderAmounts>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | kt00011 | 증거금율별주문가능수량조회요청
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="buyPrice"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomAccountGetMarginOrders>> GetMarginOrdersAsync(string stockCode, decimal? buyPrice = null, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "kt00011";
@@ -219,6 +371,13 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetMarginOrders>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | kt00012 | 신용보증금율별주문가능수량조회요청
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="buyPrice"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomAccountGetAssuranceMarginOrders>> GetAssuranceMarginOrdersAsync(string stockCode, decimal? buyPrice = null, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "kt00012";
@@ -229,6 +388,11 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetAssuranceMarginOrders>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | kt00013 | 증거금세부내역조회요청
+		/// </summary>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomAccountGetMarginDetails>> GetMarginDetailsAsync(CancellationToken cancellationToken = default)
 		{
 			const string apiId = "kt00013";
@@ -237,6 +401,19 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetMarginDetails>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | kt00015 | 위탁종합거래내역요청
+		/// </summary>
+		/// <param name="transactionType"></param>
+		/// <param name="goodsType"></param>
+		/// <param name="domesticStockExchangeType"></param>
+		/// <param name="startDate"></param>
+		/// <param name="endDate"></param>
+		/// <param name="stockCode"></param>
+		/// <param name="currencyCode"></param>
+		/// <param name="foreignStockExchangeCode"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomAccountGetConsignmentTrades>> GetConsignmentTradesAsync(KiwoomAccountTransactionType transactionType, KiwoomAccountGoodsType goodsType, KiwoomAccountDomesticStockExchangeType domesticStockExchangeType, DateTime startDate, DateTime endDate, string stockCode = "", string currencyCode = "", string foreignStockExchangeCode = "", CancellationToken cancellationToken = default)
 		{
 			const string apiId = "kt00015";
@@ -253,6 +430,13 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetConsignmentTrades>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | kt00016 | 일별계좌수익률상세현황요청
+		/// </summary>
+		/// <param name="startDate"></param>
+		/// <param name="endDate"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomAccountGetDailyProfitRateDetails>> GetDailyProfitRateDetailsAsync(DateTime startDate, DateTime endDate, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "kt00016";
@@ -263,6 +447,11 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetDailyProfitRateDetails>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | kt00017 | 계좌별당일현황요청
+		/// </summary>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomAccountGetDailyStatus>> GetDailyStatusAsync(CancellationToken cancellationToken = default)
 		{
 			const string apiId = "kt00017";
@@ -271,6 +460,13 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetDailyStatus>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | kt00018 | 계좌평가잔고내역요청
+		/// </summary>
+		/// <param name="queryType"></param>
+		/// <param name="domesticStockExchangeType"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomAccountGetEvaluationBalances>> GetEvaluationBalancesAsync(KiwoomAccountEvaluationBalanceQueryType queryType, KiwoomAccountDomesticStockExchangeType domesticStockExchangeType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "kt00018";

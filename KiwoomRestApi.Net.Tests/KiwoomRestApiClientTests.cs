@@ -66,54 +66,54 @@ namespace KiwoomRestApi.Net.Tests
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase("005930", 100, KiwoomChartUseOption.Use)]
-		public async Task GetTickChartsAsync(string stockCode, int tickCount, KiwoomChartUseOption updateStockPrice)
+		[TestCase("005930", 100, true)]
+		public async Task GetTickChartsAsync(string stockCode, int tickCount, bool isUpdateStockPrice)
 		{
-			var result = await client.Chart.GetTickChartsAsync(stockCode, tickCount, updateStockPrice);
+			var result = await client.Chart.GetTickChartsAsync(stockCode, tickCount, isUpdateStockPrice);
 
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase("005930", 100, KiwoomChartUseOption.Use)]
-		public async Task GetMinuteChartsAsync(string stockCode, int tickCount, KiwoomChartUseOption updateStockPrice)
+		[TestCase("005930", 100, true)]
+		public async Task GetMinuteChartsAsync(string stockCode, int tickCount, bool isUpdateStockPrice)
 		{
-			var result = await client.Chart.GetMinuteChartsAsync(stockCode, tickCount, updateStockPrice);
+			var result = await client.Chart.GetMinuteChartsAsync(stockCode, tickCount, isUpdateStockPrice);
 
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase("005930", "2025-08-01", KiwoomChartUseOption.Use)]
-		public async Task GetDailyChartsAsync(string stockCode, string _date, KiwoomChartUseOption updateStockPrice)
+		[TestCase("005930", "2025-08-01", true)]
+		public async Task GetDailyChartsAsync(string stockCode, string _date, bool isUpdateStockPrice)
 		{
 			DateTime date = DateTime.Parse(_date);
-			var result = await client.Chart.GetDailyChartsAsync(stockCode, date, updateStockPrice);
+			var result = await client.Chart.GetDailyChartsAsync(stockCode, date, isUpdateStockPrice);
 
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase("005930", "2025-08-01", KiwoomChartUseOption.Use)]
-		public async Task GetWeeklyChartsAsync(string stockCode, string _date, KiwoomChartUseOption updateStockPrice)
+		[TestCase("005930", "2025-08-01", true)]
+		public async Task GetWeeklyChartsAsync(string stockCode, string _date, bool isUpdateStockPrice)
 		{
 			DateTime date = DateTime.Parse(_date);
-			var result = await client.Chart.GetWeeklyChartsAsync(stockCode, date, updateStockPrice);
+			var result = await client.Chart.GetWeeklyChartsAsync(stockCode, date, isUpdateStockPrice);
 
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase("005930", "2025-08-01", KiwoomChartUseOption.Use)]
-		public async Task GetMonthlyChartsAsync(string stockCode, string _date, KiwoomChartUseOption updateStockPrice)
+		[TestCase("005930", "2025-08-01", true)]
+		public async Task GetMonthlyChartsAsync(string stockCode, string _date, bool isUpdateStockPrice)
 		{
 			DateTime date = DateTime.Parse(_date);
-			var result = await client.Chart.GetMonthlyChartsAsync(stockCode, date, updateStockPrice);
+			var result = await client.Chart.GetMonthlyChartsAsync(stockCode, date, isUpdateStockPrice);
 
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase("005930", "2025-08-01", KiwoomChartUseOption.Use)]
-		public async Task GetYearlyChartsAsync(string stockCode, string _date, KiwoomChartUseOption updateStockPrice)
+		[TestCase("005930", "2025-08-01", true)]
+		public async Task GetYearlyChartsAsync(string stockCode, string _date, bool isUpdateStockPrice)
 		{
 			DateTime date = DateTime.Parse(_date);
-			var result = await client.Chart.GetYearlyChartsAsync(stockCode, date, updateStockPrice);
+			var result = await client.Chart.GetYearlyChartsAsync(stockCode, date, isUpdateStockPrice);
 
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
@@ -311,7 +311,7 @@ namespace KiwoomRestApi.Net.Tests
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomAccountDepositQueryType.General)]
+		[TestCase(KiwoomAccountDepositQueryType.Normal)]
 		public async Task GetDepositsAsync(KiwoomAccountDepositQueryType queryType)
 		{
 			var result = await client.Account.GetDepositsAsync(queryType);
@@ -329,18 +329,18 @@ namespace KiwoomRestApi.Net.Tests
 			Assert.That(result.ReturnCode, Is.EqualTo(0).Or.EqualTo(20));
 		}
 
-		[TestCase(KiwoomAccountDelistingQueryType.All)]
-		public async Task GetEstimatedDepositAssetAsync(KiwoomAccountDelistingQueryType queryType)
+		[TestCase(false)]
+		public async Task GetEstimatedDepositAssetAsync(bool isExcludeDelisted)
 		{
-			var result = await client.Account.GetEstimatedDepositAssetAsync(queryType);
+			var result = await client.Account.GetEstimatedDepositAssetAsync(isExcludeDelisted);
 
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomAccountDelistingQueryType.All, KiwoomAccountStockExchangeType.Unified)]
-		public async Task GetEvaluationsAsync(KiwoomAccountDelistingQueryType queryType, KiwoomAccountStockExchangeType stockExchangeType)
+		[TestCase(false, KiwoomAccountStockExchangeType.Unified)]
+		public async Task GetEvaluationsAsync(bool isExcludeDelisted, KiwoomAccountStockExchangeType stockExchangeType)
 		{
-			var result = await client.Account.GetEvaluationsAsync(queryType, stockExchangeType);
+			var result = await client.Account.GetEvaluationsAsync(isExcludeDelisted, stockExchangeType);
 
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
@@ -492,25 +492,25 @@ namespace KiwoomRestApi.Net.Tests
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomForeignInstitutionPeriodQueryType.RecentDay, KiwoomForeignInstitutionStockExchangeType.Unified, KiwoomForeignInstitutionMarketType.KOSPI, KiwoomForeignInstitutionNetSellAmountType.NetBuy, KiwoomForeignInstitutionStockIndustryType.Stock, KiwoomForeignInstitutionAmountQuantityType.Amount)]
-		public async Task GetContinuousTradesAsync(KiwoomForeignInstitutionPeriodQueryType queryType, KiwoomForeignInstitutionStockExchangeType stockExchangeType, KiwoomForeignInstitutionMarketType marketType, KiwoomForeignInstitutionNetSellAmountType netSellAmountType, KiwoomForeignInstitutionStockIndustryType stockIndustryType, KiwoomForeignInstitutionAmountQuantityType amountQuantityType, string _startDate = "2025-08-01", string _endDate = "2025-08-04")
+		[TestCase(KiwoomForeignInstitutionStockExchangeType.Unified, KiwoomForeignInstitutionMarketType.KOSPI, KiwoomForeignInstitutionStockIndustryType.Stock, KiwoomForeignInstitutionAmountQuantityType.Amount, 7)]
+		public async Task GetContinuousTradesAsync(KiwoomForeignInstitutionStockExchangeType stockExchangeType, KiwoomForeignInstitutionMarketType marketType, KiwoomForeignInstitutionStockIndustryType stockIndustryType, KiwoomForeignInstitutionAmountQuantityType amountQuantityType, int period = 0, string _startDate = "2025-08-01", string _endDate = "2025-08-04")
 		{
 			DateTime startDate = DateTime.Parse(_startDate);
 			DateTime endDate = DateTime.Parse(_endDate);
-			var result = await client.ForeignInstitution.GetContinuousTradesAsync(queryType, stockExchangeType, marketType, netSellAmountType, stockIndustryType, amountQuantityType, startDate, endDate);
+			var result = await client.ForeignInstitution.GetContinuousTradesAsync(stockExchangeType, marketType, stockIndustryType, amountQuantityType, period, startDate, endDate);
 
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 		#endregion
 
 		#region SLB
-		[TestCase(KiwoomSecuritiesLendingAndBorrowingQueryType.All)]
-		[TestCase(KiwoomSecuritiesLendingAndBorrowingQueryType.All, "2025-08-01")]
-		public async Task GetBorrowedTradesAsync(KiwoomSecuritiesLendingAndBorrowingQueryType queryType, string _startDate = "2025-08-01", string _endDate = "2025-08-04")
+		[TestCase()]
+		[TestCase("2025-08-01")]
+		public async Task GetBorrowedTradesAsync(string _startDate = "2025-08-01", string _endDate = "2025-08-04")
 		{
 			DateTime startDate = DateTime.Parse(_startDate);
 			DateTime endDate = DateTime.Parse(_endDate);
-			var result = await client.SLB.GetBorrowedTradesAsync(queryType, startDate, endDate);
+			var result = await client.SLB.GetBorrowedTradesAsync(startDate, endDate);
 
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
@@ -526,11 +526,11 @@ namespace KiwoomRestApi.Net.Tests
 		}
 
 		[TestCase("005930")]
-		public async Task GetBorrowedTradesByStockAsync(string stockCode, KiwoomSecuritiesLendingAndBorrowingQueryType queryType = KiwoomSecuritiesLendingAndBorrowingQueryType.StockCode, string _startDate = "2025-08-01", string _endDate = "2025-08-04")
+		public async Task GetBorrowedTradesByStockAsync(string stockCode, string _startDate = "2025-08-01", string _endDate = "2025-08-04")
 		{
 			DateTime startDate = DateTime.Parse(_startDate);
 			DateTime endDate = DateTime.Parse(_endDate);
-			var result = await client.SLB.GetBorrowedTradesByStockAsync(stockCode, queryType, startDate, endDate);
+			var result = await client.SLB.GetBorrowedTradesByStockAsync(stockCode, startDate, endDate);
 
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
@@ -562,18 +562,18 @@ namespace KiwoomRestApi.Net.Tests
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomElwFluctuationType.SuddenIncrease, KiwoomElwTimeType.Minute, 30, KiwoomElwTradeQuantityType.Over0, KiwoomElwCompanyCode.All, "005930", KiwoomElwRightType.Call, KiwoomElwCompanyCode.All, false)]
-		public async Task GetPriceJumpFluctuationsAsync(KiwoomElwFluctuationType fluctuationType, KiwoomElwTimeType timeType, int timeValue, KiwoomElwTradeQuantityType tradeQuantityType, KiwoomElwCompanyCode issuerCompanyCode, string baseAssetCode, KiwoomElwRightType rightType, KiwoomElwCompanyCode lpCode, bool isExcludeEndedElw)
+		[TestCase(KiwoomElwFluctuationType.SuddenIncrease, KiwoomElwTimeType.Minute, 30, 712, KiwoomElwCompanyCode.All, "005930", KiwoomElwRightType.Call, KiwoomElwCompanyCode.All, false)]
+		public async Task GetPriceJumpFluctuationsAsync(KiwoomElwFluctuationType fluctuationType, KiwoomElwTimeType timeType, int timeValue, decimal minVolume, KiwoomElwCompanyCode issuerCompanyCode, string baseAssetCode, KiwoomElwRightType rightType, KiwoomElwCompanyCode lpCode, bool isExcludeEndedElw)
 		{
-			var result = await client.Elw.GetPriceJumpFluctuationsAsync(fluctuationType, timeType, timeValue, tradeQuantityType, issuerCompanyCode, baseAssetCode, rightType, lpCode, isExcludeEndedElw);
+			var result = await client.Elw.GetPriceJumpFluctuationsAsync(fluctuationType, timeType, timeValue, minVolume, issuerCompanyCode, baseAssetCode, rightType, lpCode, isExcludeEndedElw);
 
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomElwCompanyCode.All, KiwoomElwTradeQuantityType.Over0, KiwoomElwNetTradeType.NetBuy, 30, false)]
-		public async Task GetNetTradeTopByTradersAsync(KiwoomElwCompanyCode issuerCompanyCode, KiwoomElwTradeQuantityType tradeQuantityType, KiwoomElwNetTradeType tradeType, int period, bool isExcludeEndedElw)
+		[TestCase(KiwoomElwCompanyCode.All, 715, KiwoomElwNetTradeType.NetBuy, 30, false)]
+		public async Task GetNetTradeTopByTradersAsync(KiwoomElwCompanyCode issuerCompanyCode, decimal minVolume, KiwoomElwNetTradeType tradeType, int period, bool isExcludeEndedElw)
 		{
-			var result = await client.Elw.GetNetTradeTopByTradersAsync(issuerCompanyCode, tradeQuantityType, tradeType, period, isExcludeEndedElw);
+			var result = await client.Elw.GetNetTradeTopByTradersAsync(issuerCompanyCode, minVolume, tradeType, period, isExcludeEndedElw);
 
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
@@ -749,45 +749,45 @@ namespace KiwoomRestApi.Net.Tests
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomStockInfoMarketType.KOSPI, KiwoomStockInfoNewHighLowType.NewHigh, KiwoomStockInfoHighLowCloseType.HighLow, KiwoomStockInfoStockCondition.All, KiwoomStockInfoTradeQuantityType.Over0, KiwoomStockInfoCreditCondition.All, KiwoomStockInfonInclusionOption.Include, 30, KiwoomStockInfoStockExchangeType.KRX)]
-		public async Task GetLowPricesAsync(KiwoomStockInfoMarketType marketType, KiwoomStockInfoNewHighLowType newHighLowType, KiwoomStockInfoHighLowCloseType highLowCloseType, KiwoomStockInfoStockCondition stockCondition, KiwoomStockInfoTradeQuantityType tradeQuantityType, KiwoomStockInfoCreditCondition creditCondition, KiwoomStockInfonInclusionOption upDownInclusion, int period, KiwoomStockInfoStockExchangeType stockExchangeType)
+		[TestCase(KiwoomStockInfoMarketType.KOSPI, KiwoomStockInfoNewHighLowType.NewHigh, KiwoomStockInfoHighLowCloseType.HighLow, KiwoomStockInfoStockCondition.All, 0, KiwoomStockInfoCreditCondition.All, true, 30, KiwoomStockInfoStockExchangeType.KRX)]
+		public async Task GetLowPricesAsync(KiwoomStockInfoMarketType marketType, KiwoomStockInfoNewHighLowType newHighLowType, KiwoomStockInfoHighLowCloseType highLowCloseType, KiwoomStockInfoStockCondition stockCondition, decimal minVolume, KiwoomStockInfoCreditCondition creditCondition, bool isIncludeUpDown, int period, KiwoomStockInfoStockExchangeType stockExchangeType)
 		{
-			var result = await client.StockInfo.GetLowPricesAsync(marketType, newHighLowType, highLowCloseType, stockCondition, tradeQuantityType, creditCondition, upDownInclusion, period, stockExchangeType);
+			var result = await client.StockInfo.GetLowPricesAsync(marketType, newHighLowType, highLowCloseType, stockCondition, minVolume, creditCondition, isIncludeUpDown, period, stockExchangeType);
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomStockInfoMarketType.KOSPI, KiwoomStockInfoUpDownType.Rise, KiwoomStockInfoUpDownPriceSortType.StockCode, KiwoomStockInfoStockCondition.All, KiwoomStockInfoTradeQuantityType.Over0, KiwoomStockInfoCreditCondition.All, KiwoomStockInfoPriceCondition.All, KiwoomStockInfoStockExchangeType.KRX)]
-		public async Task GetUpdownPricesAsync(KiwoomStockInfoMarketType marketType, KiwoomStockInfoUpDownType upDownType, KiwoomStockInfoUpDownPriceSortType sortType, KiwoomStockInfoStockCondition stockCondition, KiwoomStockInfoTradeQuantityType tradeQuantityType, KiwoomStockInfoCreditCondition creditCondition, KiwoomStockInfoPriceCondition tradeAmountType, KiwoomStockInfoStockExchangeType stockExchangeType)
+		[TestCase(KiwoomStockInfoMarketType.KOSPI, KiwoomStockInfoUpDownType.Rise, KiwoomStockInfoUpDownPriceSortType.StockCode, KiwoomStockInfoStockCondition.All, 0, KiwoomStockInfoCreditCondition.All, KiwoomStockInfoPriceCondition.All, KiwoomStockInfoStockExchangeType.KRX)]
+		public async Task GetUpdownPricesAsync(KiwoomStockInfoMarketType marketType, KiwoomStockInfoUpDownType upDownType, KiwoomStockInfoUpDownPriceSortType sortType, KiwoomStockInfoStockCondition stockCondition, decimal minVolume, KiwoomStockInfoCreditCondition creditCondition, KiwoomStockInfoPriceCondition tradeAmountType, KiwoomStockInfoStockExchangeType stockExchangeType)
 		{
-			var result = await client.StockInfo.GetUpdownPricesAsync(marketType, upDownType, sortType, stockCondition, tradeQuantityType, creditCondition, tradeAmountType, stockExchangeType);
+			var result = await client.StockInfo.GetUpdownPricesAsync(marketType, upDownType, sortType, stockCondition, minVolume, creditCondition, tradeAmountType, stockExchangeType);
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomStockInfoNewHighLowType.NewHigh, 0.05, KiwoomStockInfoMarketType.KOSPI, KiwoomStockInfoTradeQuantityType.Over0, KiwoomStockInfoStockCondition.All, KiwoomStockInfoCreditCondition.All, KiwoomStockInfoStockExchangeType.KRX)]
-		public async Task GetHighLowPriceProximitiesAsync(KiwoomStockInfoNewHighLowType newHighLowType, decimal approachRate, KiwoomStockInfoMarketType marketType, KiwoomStockInfoTradeQuantityType tradeQuantityType, KiwoomStockInfoStockCondition stockCondition, KiwoomStockInfoCreditCondition creditCondition, KiwoomStockInfoStockExchangeType stockExchangeType)
+		[TestCase(KiwoomStockInfoNewHighLowType.NewHigh, 0.05, KiwoomStockInfoMarketType.KOSPI, 0, KiwoomStockInfoStockCondition.All, KiwoomStockInfoCreditCondition.All, KiwoomStockInfoStockExchangeType.KRX)]
+		public async Task GetHighLowPriceProximitiesAsync(KiwoomStockInfoNewHighLowType newHighLowType, decimal approachRate, KiwoomStockInfoMarketType marketType, decimal minVolume, KiwoomStockInfoStockCondition stockCondition, KiwoomStockInfoCreditCondition creditCondition, KiwoomStockInfoStockExchangeType stockExchangeType)
 		{
-			var result = await client.StockInfo.GetHighLowPriceProximitiesAsync(newHighLowType, approachRate, marketType, tradeQuantityType, stockCondition, creditCondition, stockExchangeType);
+			var result = await client.StockInfo.GetHighLowPriceProximitiesAsync(newHighLowType, approachRate, marketType, minVolume, stockCondition, creditCondition, stockExchangeType);
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomStockInfoMarketType.KOSPI, KiwoomStockInfoFluctuationType.SharpRise, KiwoomStockInfoTimeType.MinutesAgo, 30, KiwoomStockInfoTradeQuantityType.Over0, KiwoomStockInfoStockCondition.All, KiwoomStockInfoCreditCondition.All, KiwoomStockInfoPriceCondition.All, KiwoomStockInfonInclusionOption.Include, KiwoomStockInfoStockExchangeType.KRX)]
-		public async Task GetPriceJumpFluctuationsAsync(KiwoomStockInfoMarketType marketType, KiwoomStockInfoFluctuationType fluctuationType, KiwoomStockInfoTimeType timeType, int timeValue, KiwoomStockInfoTradeQuantityType tradeQuantityType, KiwoomStockInfoStockCondition stockCondition, KiwoomStockInfoCreditCondition creditCondition, KiwoomStockInfoPriceCondition priceCondition, KiwoomStockInfonInclusionOption upDownInclusion, KiwoomStockInfoStockExchangeType stockExchangeType)
+		[TestCase(KiwoomStockInfoMarketType.KOSPI, KiwoomStockInfoFluctuationType.SharpRise, KiwoomStockInfoTimeType.MinutesAgo, 30, 0, KiwoomStockInfoStockCondition.All, KiwoomStockInfoCreditCondition.All, KiwoomStockInfoPriceCondition.All, true, KiwoomStockInfoStockExchangeType.KRX)]
+		public async Task GetPriceJumpFluctuationsAsync(KiwoomStockInfoMarketType marketType, KiwoomStockInfoFluctuationType fluctuationType, KiwoomStockInfoTimeType timeType, int timeValue, decimal minVolume, KiwoomStockInfoStockCondition stockCondition, KiwoomStockInfoCreditCondition creditCondition, KiwoomStockInfoPriceCondition priceCondition, bool isIncludeUpDown, KiwoomStockInfoStockExchangeType stockExchangeType)
 		{
-			var result = await client.StockInfo.GetPriceJumpFluctuationsAsync(marketType, fluctuationType, timeType, timeValue, tradeQuantityType, stockCondition, creditCondition, priceCondition, upDownInclusion, stockExchangeType);
+			var result = await client.StockInfo.GetPriceJumpFluctuationsAsync(marketType, fluctuationType, timeType, timeValue, minVolume, stockCondition, creditCondition, priceCondition, isIncludeUpDown, stockExchangeType);
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomStockInfoMarketType.KOSPI, 5, KiwoomStockInfoTradeQuantityType.Over0, KiwoomStockInfoStockExchangeType.KRX)]
-		public async Task GetTradeVolumeUpdatesAsync(KiwoomStockInfoMarketType marketType, int cycleDays, KiwoomStockInfoTradeQuantityType tradeQuantityType, KiwoomStockInfoStockExchangeType stockExchangeType)
+		[TestCase(KiwoomStockInfoMarketType.KOSPI, 5, 0, KiwoomStockInfoStockExchangeType.KRX)]
+		public async Task GetTradeVolumeUpdatesAsync(KiwoomStockInfoMarketType marketType, int cycleDays, decimal minVolume, KiwoomStockInfoStockExchangeType stockExchangeType)
 		{
-			var result = await client.StockInfo.GetTradeVolumeUpdatesAsync(marketType, cycleDays, tradeQuantityType, stockExchangeType);
+			var result = await client.StockInfo.GetTradeVolumeUpdatesAsync(marketType, cycleDays, minVolume, stockExchangeType);
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomStockInfoMarketType.KOSPI, 0.1, KiwoomStockInfonInclusionOption.Include, 10, 5, KiwoomStockInfoStockExchangeType.KRX)]
-		public async Task GetPriceConcentrationsAsync(KiwoomStockInfoMarketType marketType, decimal propertyConcentrationRate, KiwoomStockInfonInclusionOption currentPriceEntryInclusion, int propertyCount, int cycleDays, KiwoomStockInfoStockExchangeType stockExchangeType)
+		[TestCase(KiwoomStockInfoMarketType.KOSPI, 0.1, true, 10, 5, KiwoomStockInfoStockExchangeType.KRX)]
+		public async Task GetPriceConcentrationsAsync(KiwoomStockInfoMarketType marketType, decimal propertyConcentrationRate, bool isIncludeCurrentPriceEntry, int propertyCount, int cycleDays, KiwoomStockInfoStockExchangeType stockExchangeType)
 		{
-			var result = await client.StockInfo.GetPriceConcentrationsAsync(marketType, propertyConcentrationRate, currentPriceEntryInclusion, propertyCount, cycleDays, stockExchangeType);
+			var result = await client.StockInfo.GetPriceConcentrationsAsync(marketType, propertyConcentrationRate, isIncludeCurrentPriceEntry, propertyCount, cycleDays, stockExchangeType);
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
@@ -798,10 +798,10 @@ namespace KiwoomRestApi.Net.Tests
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomStockInfoFluctuationSortType.OpenPrice, KiwoomStockInfoTradeQuantityType.Over0, KiwoomStockInfoMarketType.KOSPI, KiwoomStockInfonInclusionOption.Include, KiwoomStockInfoStockCondition.All, KiwoomStockInfoCreditCondition.All, KiwoomStockInfoPriceCondition.All, KiwoomStockInfoFluctuationCondition.Upper, KiwoomStockInfoStockExchangeType.KRX)]
-		public async Task GetOpenPriceCompareFluctuationsAsync(KiwoomStockInfoFluctuationSortType sortType, KiwoomStockInfoTradeQuantityType tradeQuantityType, KiwoomStockInfoMarketType marketType, KiwoomStockInfonInclusionOption upDownInclusion, KiwoomStockInfoStockCondition stockCondition, KiwoomStockInfoCreditCondition creditCondition, KiwoomStockInfoPriceCondition tradeAmountCondition, KiwoomStockInfoFluctuationCondition fluctuationCondition, KiwoomStockInfoStockExchangeType stockExchangeType)
+		[TestCase(KiwoomStockInfoFluctuationSortType.OpenPrice, 0, KiwoomStockInfoMarketType.KOSPI, true, KiwoomStockInfoStockCondition.All, KiwoomStockInfoCreditCondition.All, KiwoomStockInfoPriceCondition.All, KiwoomStockInfoFluctuationCondition.Upper, KiwoomStockInfoStockExchangeType.KRX)]
+		public async Task GetOpenPriceCompareFluctuationsAsync(KiwoomStockInfoFluctuationSortType sortType, decimal minVolume, KiwoomStockInfoMarketType marketType, bool isIncludeUpDown, KiwoomStockInfoStockCondition stockCondition, KiwoomStockInfoCreditCondition creditCondition, KiwoomStockInfoPriceCondition tradeAmountCondition, KiwoomStockInfoFluctuationCondition fluctuationCondition, KiwoomStockInfoStockExchangeType stockExchangeType)
 		{
-			var result = await client.StockInfo.GetOpenPriceCompareFluctuationsAsync(sortType, tradeQuantityType, marketType, upDownInclusion, stockCondition, creditCondition, tradeAmountCondition, fluctuationCondition, stockExchangeType);
+			var result = await client.StockInfo.GetOpenPriceCompareFluctuationsAsync(sortType, minVolume, marketType, isIncludeUpDown, stockCondition, creditCondition, tradeAmountCondition, fluctuationCondition, stockExchangeType);
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
@@ -822,11 +822,11 @@ namespace KiwoomRestApi.Net.Tests
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomStockInfoMarketType.KOSPI, KiwoomStockInfoBeforeMarketType.All, KiwoomStockInfoTriggerType.All, KiwoomStockInfoSkipStockType.Preferred, KiwoomStockInfoUseOption.Use, 1000, 10000, KiwoomStockInfoUseOption.Use, 1000000, 10000000, KiwoomStockInfoTriggerDirection.All, KiwoomStockInfoStockExchangeType.KRX, "005930")]
-		[TestCase(KiwoomStockInfoMarketType.KOSPI, KiwoomStockInfoBeforeMarketType.All, KiwoomStockInfoTriggerType.All, KiwoomStockInfoSkipStockType.Preferred, KiwoomStockInfoUseOption.Use, 1000, 10000, KiwoomStockInfoUseOption.Use, 1000000, 10000000, KiwoomStockInfoTriggerDirection.All, KiwoomStockInfoStockExchangeType.KRX, "")]
-		public async Task GetMotionStocksAsync(KiwoomStockInfoMarketType marketType, KiwoomStockInfoBeforeMarketType beforeMarketType, KiwoomStockInfoTriggerType triggerType, KiwoomStockInfoSkipStockType skipStockType, KiwoomStockInfoUseOption tradeQuantityOption, decimal minTradeQuantity, decimal maxTradeQuantity, KiwoomStockInfoUseOption tradeAmountOption, decimal minTradeAmount, decimal maxTradeAmount, KiwoomStockInfoTriggerDirection triggerDirection, KiwoomStockInfoStockExchangeType stockExchangeType, string stockCode)
+		[TestCase(KiwoomStockInfoMarketType.KOSPI, KiwoomStockInfoBeforeMarketType.All, KiwoomStockInfoTriggerType.All, KiwoomStockInfoSkipStockType.Preferred, true, 1000, 10000, true, 1000000, 10000000, KiwoomStockInfoTriggerDirection.All, KiwoomStockInfoStockExchangeType.KRX, "005930")]
+		[TestCase(KiwoomStockInfoMarketType.KOSPI, KiwoomStockInfoBeforeMarketType.All, KiwoomStockInfoTriggerType.All, KiwoomStockInfoSkipStockType.Preferred, true, 1000, 10000, true, 1000000, 10000000, KiwoomStockInfoTriggerDirection.All, KiwoomStockInfoStockExchangeType.KRX, "")]
+		public async Task GetMotionStocksAsync(KiwoomStockInfoMarketType marketType, KiwoomStockInfoBeforeMarketType beforeMarketType, KiwoomStockInfoTriggerType triggerType, KiwoomStockInfoSkipStockType skipStockType, bool isUseVolumeOption, decimal minTradeQuantity, decimal maxTradeQuantity, bool isUseTransactionAmountOption, decimal minTradeAmount, decimal maxTradeAmount, KiwoomStockInfoTriggerDirection triggerDirection, KiwoomStockInfoStockExchangeType stockExchangeType, string stockCode)
 		{
-			var result = await client.StockInfo.GetMotionStocksAsync(marketType, beforeMarketType, triggerType, skipStockType, tradeQuantityOption, minTradeQuantity, maxTradeQuantity, tradeAmountOption, minTradeAmount, maxTradeAmount, triggerDirection, stockExchangeType, stockCode);
+			var result = await client.StockInfo.GetMotionStocksAsync(marketType, beforeMarketType, triggerType, skipStockType, isUseVolumeOption, minTradeQuantity, maxTradeQuantity, isUseTransactionAmountOption, minTradeAmount, maxTradeAmount, triggerDirection, stockExchangeType, stockCode);
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
@@ -854,12 +854,12 @@ namespace KiwoomRestApi.Net.Tests
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase("005930", "2025-08-01", "2025-08-15", KiwoomStockInfoAmountQuantityType.Amount, KiwoomStockInfoTradeType.NetBuy, KiwoomStockInfoUnitType.One)]
-		public async Task GetStockInvestorInstitutionTotalsAsync(string stockCode, string startDateStr, string endDateStr, KiwoomStockInfoAmountQuantityType amountQuantityType, KiwoomStockInfoTradeType tradeType, KiwoomStockInfoUnitType unitType)
+		[TestCase("005930", "2025-08-01", "2025-08-15", KiwoomStockInfoAmountQuantityType.Amount, KiwoomStockInfoUnitType.One)]
+		public async Task GetStockInvestorInstitutionTotalsAsync(string stockCode, string startDateStr, string endDateStr, KiwoomStockInfoAmountQuantityType amountQuantityType, KiwoomStockInfoUnitType unitType)
 		{
 			var startDate = DateTime.Parse(startDateStr);
 			var endDate = DateTime.Parse(endDateStr);
-			var result = await client.StockInfo.GetStockInvestorInstitutionTotalsAsync(stockCode, startDate, endDate, amountQuantityType, tradeType, unitType);
+			var result = await client.StockInfo.GetStockInvestorInstitutionTotalsAsync(stockCode, startDate, endDate, amountQuantityType, unitType);
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
@@ -998,8 +998,8 @@ namespace KiwoomRestApi.Net.Tests
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase("005930", "2025-08-01", "2025-08-25", KiwoomMarketConditionEstimatedUnitPriceType.BuyUnitPrice, KiwoomMarketConditionEstimatedUnitPriceType.SellUnitPrice)]
-		public async Task GetStockOriginTradeTrendsAsync(string stockCode, string startDateStr, string endDateStr, KiwoomMarketConditionEstimatedUnitPriceType institutionEstimatedUnitPriceType, KiwoomMarketConditionEstimatedUnitPriceType foreignEstimatedUnitPriceType)
+		[TestCase("005930", "2025-08-01", "2025-08-25", KiwoomMarketConditionUnitPriceType.BuyUnitPrice, KiwoomMarketConditionUnitPriceType.SellUnitPrice)]
+		public async Task GetStockOriginTradeTrendsAsync(string stockCode, string startDateStr, string endDateStr, KiwoomMarketConditionUnitPriceType institutionEstimatedUnitPriceType, KiwoomMarketConditionUnitPriceType foreignEstimatedUnitPriceType)
 		{
 			var startDate = DateTime.Parse(startDateStr);
 			var endDate = DateTime.Parse(endDateStr);
@@ -1118,52 +1118,52 @@ namespace KiwoomRestApi.Net.Tests
 
 		#region RankingInfo
 
-		[TestCase(KiwoomRankingInfoMarketType.KOSPI, KiwoomRankingInfoSortType.NetBuyQuantity, KiwoomRankingInfoTradeQuantityType.Over0, KiwoomRankingInfoStockCondition.All, KiwoomRankingInfoCreditCondition.All, KiwoomRankingInfoStockExchangeType.KRX)]
-		public async Task GetBidRequestUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoSortType sortType, KiwoomRankingInfoTradeQuantityType tradeQuantityType, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoCreditCondition creditCondition, KiwoomRankingInfoStockExchangeType stockExchangeType)
+		[TestCase(KiwoomRankingInfoMarketType.KOSPI, KiwoomRankingInfoSortType.NetBuyQuantity, 0, KiwoomRankingInfoStockCondition.All, KiwoomRankingInfoCreditCondition.All, KiwoomRankingInfoStockExchangeType.KRX)]
+		public async Task GetBidRequestUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoSortType sortType, decimal minVolume, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoCreditCondition creditCondition, KiwoomRankingInfoStockExchangeType stockExchangeType)
 		{
-			var result = await client.Ranking.GetBidRequestUppersAsync(marketType, sortType, tradeQuantityType, stockCondition, creditCondition, stockExchangeType);
+			var result = await client.Ranking.GetBidRequestUppersAsync(marketType, sortType, minVolume, stockCondition, creditCondition, stockExchangeType);
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomRankingInfoMarketType.KOSDAQ, KiwoomRankingInfoTradeType.BuyQuantity, KiwoomRankingInfoSuddenIncreaseSortType.SuddenIncreaseRate, KiwoomRankingInfoTradeQuantityType.Over1K, KiwoomRankingInfoStockCondition.ExcludeManaged, KiwoomRankingInfoStockExchangeType.KRX, 10)]
-		public async Task GetBidRequestSuddenIncreasesAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoTradeType tradeType, KiwoomRankingInfoSuddenIncreaseSortType sortType, KiwoomRankingInfoTradeQuantityType tradeQuantityType, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoStockExchangeType stockExchangeType, int timeMinute)
+		[TestCase(KiwoomRankingInfoMarketType.KOSDAQ, KiwoomRankingInfoTradeType.BuyQuantity, KiwoomRankingInfoSuddenIncreaseSortType.SuddenIncreaseRate, 1000, KiwoomRankingInfoStockCondition.ExcludeManaged, KiwoomRankingInfoStockExchangeType.KRX, 10)]
+		public async Task GetBidRequestSuddenIncreasesAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoTradeType tradeType, KiwoomRankingInfoSuddenIncreaseSortType sortType, decimal minVolume, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoStockExchangeType stockExchangeType, int timeMinute)
 		{
-			var result = await client.Ranking.GetBidRequestSuddenIncreasesAsync(marketType, tradeType, sortType, tradeQuantityType, stockCondition, stockExchangeType, timeMinute);
+			var result = await client.Ranking.GetBidRequestSuddenIncreasesAsync(marketType, tradeType, sortType, minVolume, stockCondition, stockExchangeType, timeMinute);
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomRankingInfoMarketType.KOSPI, KiwoomRankingInfoRatioType.BuyToSellRatio, KiwoomRankingInfoTradeQuantityType.Over5K, KiwoomRankingInfoStockCondition.All, KiwoomRankingInfoStockExchangeType.KRX, 15)]
-		public async Task GetRequestRateSuddenIncreasesAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoRatioType ratioType, KiwoomRankingInfoTradeQuantityType tradeQuantityType, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoStockExchangeType stockExchangeType, int timeMinute)
+		[TestCase(KiwoomRankingInfoMarketType.KOSPI, KiwoomRankingInfoRatioType.BuyToSellRatio, 5000, KiwoomRankingInfoStockCondition.All, KiwoomRankingInfoStockExchangeType.KRX, 15)]
+		public async Task GetRequestRateSuddenIncreasesAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoRatioType ratioType, decimal minVolume, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoStockExchangeType stockExchangeType, int timeMinute)
 		{
-			var result = await client.Ranking.GetRequestRateSuddenIncreasesAsync(marketType, ratioType, tradeQuantityType, stockCondition, stockExchangeType, timeMinute);
+			var result = await client.Ranking.GetRequestRateSuddenIncreasesAsync(marketType, ratioType, minVolume, stockCondition, stockExchangeType, timeMinute);
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomRankingInfoMarketType.KOSDAQ, KiwoomRankingInfoSuddenIncreaseSortType.SuddenIncreaseAmount, KiwoomRankingInfoTimeType.Minute, KiwoomRankingInfoTradeQuantityType.Over10K, KiwoomRankingInfoStockCondition.OnlyKOSPI100, KiwoomRankingInfoPriceType.Over1K, KiwoomRankingInfoStockExchangeType.KRX, 30)]
-		public async Task GetTradedQuantitySuddenIncreasesAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoSuddenIncreaseSortType sortType, KiwoomRankingInfoTimeType timeType, KiwoomRankingInfoTradeQuantityType tradeQuantityType, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoPriceType priceType, KiwoomRankingInfoStockExchangeType stockExchangeType, int timeMinute)
+		[TestCase(KiwoomRankingInfoMarketType.KOSDAQ, KiwoomRankingInfoSuddenIncreaseSortType.SuddenIncreaseAmount, KiwoomRankingInfoTimeType.Minute, 10000, KiwoomRankingInfoStockCondition.OnlyKOSPI100, KiwoomRankingInfoPriceType.Over1K, KiwoomRankingInfoStockExchangeType.KRX, 30)]
+		public async Task GetTradedQuantitySuddenIncreasesAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoSuddenIncreaseSortType sortType, KiwoomRankingInfoTimeType timeType, decimal minVolume, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoPriceType priceType, KiwoomRankingInfoStockExchangeType stockExchangeType, int timeMinute)
 		{
-			var result = await client.Ranking.GetTradedQuantitySuddenIncreasesAsync(marketType, sortType, timeType, tradeQuantityType, stockCondition, priceType, stockExchangeType, timeMinute);
+			var result = await client.Ranking.GetTradedQuantitySuddenIncreasesAsync(marketType, sortType, timeType, minVolume, stockCondition, priceType, stockExchangeType, timeMinute);
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomRankingInfoMarketType.KOSPI, KiwoomRankingInfoFluctuationSortType.IncreaseRate, KiwoomRankingInfoTradeQuantityType.Over50K, KiwoomRankingInfoStockCondition.ExcludePreferredStock, KiwoomRankingInfoCreditCondition.CreditA, KiwoomRankingInfoInclusionOption.Include, KiwoomRankingInfoPriceCondition.Over1K, KiwoomRankingInfoTradePriceCondition.Over50M, KiwoomRankingInfoStockExchangeType.KRX)]
-		public async Task GetPreviousDayFluctuationRateUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoFluctuationSortType sortType, KiwoomRankingInfoTradeQuantityType tradeQuantityType, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoCreditCondition creditCondition, KiwoomRankingInfoInclusionOption upDownInclusion, KiwoomRankingInfoPriceCondition priceCondition, KiwoomRankingInfoTradePriceCondition tradePriceCondition, KiwoomRankingInfoStockExchangeType stockExchangeType)
+		[TestCase(KiwoomRankingInfoMarketType.KOSPI, KiwoomRankingInfoFluctuationSortType.IncreaseRate, 50000, KiwoomRankingInfoStockCondition.ExcludePreferredStock, KiwoomRankingInfoCreditCondition.CreditA, true, KiwoomRankingInfoPriceCondition.Over1K, 50_000_000, KiwoomRankingInfoStockExchangeType.KRX)]
+		public async Task GetPreviousDayFluctuationRateUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoFluctuationSortType sortType, decimal minVolume, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoCreditCondition creditCondition, bool isIncludeUpDown, KiwoomRankingInfoPriceCondition priceCondition, decimal minTransactionAmount, KiwoomRankingInfoStockExchangeType stockExchangeType)
 		{
-			var result = await client.Ranking.GetPreviousDayFluctuationRateUppersAsync(marketType, sortType, tradeQuantityType, stockCondition, creditCondition, upDownInclusion, priceCondition, tradePriceCondition, stockExchangeType);
+			var result = await client.Ranking.GetPreviousDayFluctuationRateUppersAsync(marketType, sortType, minVolume, stockCondition, creditCondition, isIncludeUpDown, priceCondition, minTransactionAmount, stockExchangeType);
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomRankingInfoMarketType.KOSDAQ, KiwoomRankingInfoContractFluctuationSortType.IncreaseAmount, KiwoomRankingInfoTradeQuantityType.Over100K, KiwoomRankingInfoStockCondition.All, KiwoomRankingInfoCreditCondition.All, KiwoomRankingInfoPriceCondition.Range1KTo2K, KiwoomRankingInfoStockExchangeType.KRX)]
-		public async Task GetExpectedContractFluctuationRateUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoContractFluctuationSortType sortType, KiwoomRankingInfoTradeQuantityType tradeQuantityType, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoCreditCondition creditCondition, KiwoomRankingInfoPriceCondition priceCondition, KiwoomRankingInfoStockExchangeType stockExchangeType)
+		[TestCase(KiwoomRankingInfoMarketType.KOSDAQ, KiwoomRankingInfoContractFluctuationSortType.IncreaseAmount, 100_000, KiwoomRankingInfoStockCondition.All, KiwoomRankingInfoCreditCondition.All, KiwoomRankingInfoPriceCondition.Range1KTo2K, KiwoomRankingInfoStockExchangeType.KRX)]
+		public async Task GetExpectedContractFluctuationRateUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoContractFluctuationSortType sortType, decimal minVolume, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoCreditCondition creditCondition, KiwoomRankingInfoPriceCondition priceCondition, KiwoomRankingInfoStockExchangeType stockExchangeType)
 		{
-			var result = await client.Ranking.GetExpectedContractFluctuationRateUppersAsync(marketType, sortType, tradeQuantityType, stockCondition, creditCondition, priceCondition, stockExchangeType);
+			var result = await client.Ranking.GetExpectedContractFluctuationRateUppersAsync(marketType, sortType, minVolume, stockCondition, creditCondition, priceCondition, stockExchangeType);
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomRankingInfoMarketType.KOSPI, KiwoomRankingInfoTradeQuantitySortType.TradingVolume, KiwoomRankingInfoStockCondition.ExcludeManagedAndPreferred, KiwoomRankingInfoCreditCondition.CreditB, KiwoomRankingInfoTradeQuantityType.Over150K, KiwoomRankingInfoPriceCondition2.Range2KTo5K, KiwoomRankingInfoTradePriceCondition.Over100M, KiwoomRankingInfoMarketOpenType.DuringMarket, KiwoomRankingInfoStockExchangeType.KRX)]
-		public async Task GetTodayTradeQuantityUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoTradeQuantitySortType sortType, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoCreditCondition creditCondition, KiwoomRankingInfoTradeQuantityType tradeQuantityType, KiwoomRankingInfoPriceCondition2 priceCondition, KiwoomRankingInfoTradePriceCondition tradePriceCondition, KiwoomRankingInfoMarketOpenType marketOpenType, KiwoomRankingInfoStockExchangeType stockExchangeType)
+		[TestCase(KiwoomRankingInfoMarketType.KOSPI, KiwoomRankingInfoTradeQuantitySortType.Volume, KiwoomRankingInfoStockCondition.ExcludeManagedAndPreferred, KiwoomRankingInfoCreditCondition.CreditB, 150_000, KiwoomRankingInfoPriceCondition2.Range2KTo5K, 100_000_000, KiwoomRankingInfoMarketOpenType.DuringMarket, KiwoomRankingInfoStockExchangeType.KRX)]
+		public async Task GetTodayTradeQuantityUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoTradeQuantitySortType sortType, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoCreditCondition creditCondition, decimal minVolume, KiwoomRankingInfoPriceCondition2 priceCondition, decimal minTransactionAmount, KiwoomRankingInfoMarketOpenType marketOpenType, KiwoomRankingInfoStockExchangeType stockExchangeType)
 		{
-			var result = await client.Ranking.GetTodayTradeQuantityUppersAsync(marketType, sortType, stockCondition, creditCondition, tradeQuantityType, priceCondition, tradePriceCondition, marketOpenType, stockExchangeType);
+			var result = await client.Ranking.GetTodayTradeQuantityUppersAsync(marketType, sortType, stockCondition, creditCondition, minVolume, priceCondition, minTransactionAmount, marketOpenType, stockExchangeType);
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
@@ -1174,17 +1174,17 @@ namespace KiwoomRestApi.Net.Tests
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomRankingInfoMarketType.KOSPI, KiwoomRankingInfoInclusionOption.Exclude, KiwoomRankingInfoStockExchangeType.KRX)]
-		public async Task GetTradePriceUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoInclusionOption managedStockInclusion, KiwoomRankingInfoStockExchangeType stockExchangeType)
+		[TestCase(KiwoomRankingInfoMarketType.KOSPI, false, KiwoomRankingInfoStockExchangeType.KRX)]
+		public async Task GetTradePriceUppersAsync(KiwoomRankingInfoMarketType marketType, bool isIncludeManagedStock, KiwoomRankingInfoStockExchangeType stockExchangeType)
 		{
-			var result = await client.Ranking.GetTradePriceUppersAsync(marketType, managedStockInclusion, stockExchangeType);
+			var result = await client.Ranking.GetTradePriceUppersAsync(marketType, isIncludeManagedStock, stockExchangeType);
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomRankingInfoMarketType.KOSDAQ, KiwoomRankingInfoTradeQuantityType.Over200K, KiwoomRankingInfoStockCondition.OnlyKOSPI50, KiwoomRankingInfoInclusionOption.Include, KiwoomRankingInfoCreditCondition.CreditC, KiwoomRankingInfoStockExchangeType.KRX)]
-		public async Task GetCreditRateUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoTradeQuantityType tradeQuantityType, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoInclusionOption upDownInclusion, KiwoomRankingInfoCreditCondition creditCondition, KiwoomRankingInfoStockExchangeType stockExchangeType)
+		[TestCase(KiwoomRankingInfoMarketType.KOSDAQ, 200_000, KiwoomRankingInfoStockCondition.OnlyKOSPI50, true, KiwoomRankingInfoCreditCondition.CreditC, KiwoomRankingInfoStockExchangeType.KRX)]
+		public async Task GetCreditRateUppersAsync(KiwoomRankingInfoMarketType marketType, decimal minVolume, KiwoomRankingInfoStockCondition stockCondition, bool isIncludeUpDown, KiwoomRankingInfoCreditCondition creditCondition, KiwoomRankingInfoStockExchangeType stockExchangeType)
 		{
-			var result = await client.Ranking.GetCreditRateUppersAsync(marketType, tradeQuantityType, stockCondition, upDownInclusion, creditCondition, stockExchangeType);
+			var result = await client.Ranking.GetCreditRateUppersAsync(marketType, minVolume, stockCondition, isIncludeUpDown, creditCondition, stockExchangeType);
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
@@ -1225,10 +1225,10 @@ namespace KiwoomRestApi.Net.Tests
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomRankingInfoTradeQuantityType.Over300K, KiwoomRankingInfoNetTradeType2.NetBuy, KiwoomRankingInfoStockExchangeType.KRX, "001", 3)]
-		public async Task GetSecuritiesTradeUppersAsync(KiwoomRankingInfoTradeQuantityType tradeQuantityType, KiwoomRankingInfoNetTradeType2 tradeType, KiwoomRankingInfoStockExchangeType stockExchangeType, string memberCompanyCode, int period)
+		[TestCase(300_000, KiwoomRankingInfoNetTradeType2.NetBuy, KiwoomRankingInfoStockExchangeType.KRX, "001", 3)]
+		public async Task GetSecuritiesTradeUppersAsync(decimal minVolume, KiwoomRankingInfoNetTradeType2 tradeType, KiwoomRankingInfoStockExchangeType stockExchangeType, string memberCompanyCode, int period)
 		{
-			var result = await client.Ranking.GetSecuritiesTradeUppersAsync(tradeQuantityType, tradeType, stockExchangeType, memberCompanyCode, period);
+			var result = await client.Ranking.GetSecuritiesTradeUppersAsync(minVolume, tradeType, stockExchangeType, memberCompanyCode, period);
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
@@ -1273,19 +1273,19 @@ namespace KiwoomRestApi.Net.Tests
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomRankingInfoMarketType.KOSDAQ, KiwoomRankingInfoFluctuationSortType.DecreaseRate, KiwoomRankingInfoStockCondition.OnlyKOSPI30, KiwoomRankingInfoTradeQuantityType.Over500K, KiwoomRankingInfoCreditCondition.CreditD, KiwoomRankingInfoTradePriceCondition.Over300M)]
-		public async Task GetOvertimeSinglePriceFluctuationRateRanksAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoFluctuationSortType sortType, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoTradeQuantityType tradeQuantityType, KiwoomRankingInfoCreditCondition creditCondition, KiwoomRankingInfoTradePriceCondition tradePriceCondition)
+		[TestCase(KiwoomRankingInfoMarketType.KOSDAQ, KiwoomRankingInfoFluctuationSortType.DecreaseRate, KiwoomRankingInfoStockCondition.OnlyKOSPI30, 500_000, KiwoomRankingInfoCreditCondition.CreditD, 300_000_000)]
+		public async Task GetOvertimeSinglePriceFluctuationRateRanksAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoFluctuationSortType sortType, KiwoomRankingInfoStockCondition stockCondition, decimal minVolume, KiwoomRankingInfoCreditCondition creditCondition, decimal minTransactionAmount)
 		{
-			var result = await client.Ranking.GetOvertimeSinglePriceFluctuationRateRanksAsync(marketType, sortType, stockCondition, tradeQuantityType, creditCondition, tradePriceCondition);
+			var result = await client.Ranking.GetOvertimeSinglePriceFluctuationRateRanksAsync(marketType, sortType, stockCondition, minVolume, creditCondition, minTransactionAmount);
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase(KiwoomRankingInfoMarketType.KOSPI, KiwoomRankingInfoAmountQuantityType.Quantity, KiwoomRankingInfoInclusionOption.Include, KiwoomRankingInfoStockExchangeType.KRX, "2025-08-25")]
-		[TestCase(KiwoomRankingInfoMarketType.KOSDAQ, KiwoomRankingInfoAmountQuantityType.Amount, KiwoomRankingInfoInclusionOption.Exclude, KiwoomRankingInfoStockExchangeType.KRX, "2025-08-25")]
-		public async Task GetForeignInstitutionTradeUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoAmountQuantityType amountQuantityType, KiwoomRankingInfoInclusionOption queryDateInclusion, KiwoomRankingInfoStockExchangeType stockExchangeType, string dateStr)
+		[TestCase(KiwoomRankingInfoMarketType.KOSPI, KiwoomRankingInfoAmountQuantityType.Quantity, true, KiwoomRankingInfoStockExchangeType.KRX, "2025-08-25")]
+		[TestCase(KiwoomRankingInfoMarketType.KOSDAQ, KiwoomRankingInfoAmountQuantityType.Amount, false, KiwoomRankingInfoStockExchangeType.KRX, "2025-08-25")]
+		public async Task GetForeignInstitutionTradeUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoAmountQuantityType amountQuantityType, bool isIncludeQueryDate, KiwoomRankingInfoStockExchangeType stockExchangeType, string dateStr)
 		{
 			DateTime? date = string.IsNullOrEmpty(dateStr) ? null : DateTime.Parse(dateStr);
-			var result = await client.Ranking.GetForeignInstitutionTradeUppersAsync(marketType, amountQuantityType, queryDateInclusion, stockExchangeType, date);
+			var result = await client.Ranking.GetForeignInstitutionTradeUppersAsync(marketType, amountQuantityType, isIncludeQueryDate, stockExchangeType, date);
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 

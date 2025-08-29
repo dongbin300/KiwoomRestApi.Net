@@ -1,6 +1,8 @@
 using KiwoomRestApi.Net.Clients;
 using KiwoomRestApi.Net.Enums.Chart;
 using KiwoomRestApi.Net.Enums.StockInfo;
+using KiwoomRestApi.Net.Enums.WebSocket;
+
 using Newtonsoft.Json;
 using System.IO;
 using System.Windows;
@@ -27,20 +29,25 @@ namespace KiwoomRestApi.Net.Examples
 			var endDate = new DateTime(2025, 8, 25);
 			var stockCode = "005930";
 
-			var __result__ = client.Chart.GetDailyChartsAsync("005930", DateTime.Today, KiwoomChartUseOption.Use).Result;
+			//var __result__ = client.Ranking.GetTodayTradeQuantityUppersAsync(Enums.RankingInfo.KiwoomRankingInfoMarketType.All, Enums.RankingInfo.KiwoomRankingInfoTradeQuantitySortType.Volume, Enums.RankingInfo.KiwoomRankingInfoStockCondition.All, Enums.RankingInfo.KiwoomRankingInfoCreditCondition.All, 7, Enums.RankingInfo.KiwoomRankingInfoPriceCondition2.All, 728345893, Enums.RankingInfo.KiwoomRankingInfoMarketOpenType.All, Enums.RankingInfo.KiwoomRankingInfoStockExchangeType.Unified).Result;
 
+			socketClient = KiwoomSocketClient.Create(client.Token, true);
 
-			//socketClient = KiwoomSocketClient.Create(client.Token, true);
+			socketClient.OnRealtimeOrderExecutionReceived += (message) =>
+			{
 
-			//socketClient.OnConditionSearchRequestReceived += (message) =>
-			//{
+			};
 
-			//};
+			socketClient.OnRealtimeStockExecutionReceived += (message) =>
+			{
+
+			};
 
 		}
 
 		private async void Test_Click(object sender, RoutedEventArgs e)
 		{
+			await socketClient.WebSocket.SubscribeAsync([KiwoomWebSocketServiceName.OrderExecution | KiwoomWebSocketServiceName.StockExecution], ["005930"]);
 			//await socketClient.WebSocket.GetConditionSearchListAsync().ConfigureAwait(false);
 			//await socketClient.WebSocket.GetConditionSearchRequestAsync(20).ConfigureAwait(false);
 			//await socketClient.WebSocket.GetConditionSearchClearAsync(20).ConfigureAwait(false);

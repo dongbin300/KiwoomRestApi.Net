@@ -2,22 +2,55 @@
 
 namespace KiwoomRestApi.Net.Enums.StockInfo
 {
+	/// <summary>
+	/// 시장구분
+	/// </summary>
 	public enum KiwoomStockInfoMarketType
 	{
+		/// <summary>
+		/// 전체
+		/// </summary>
 		All = 0,
+		/// <summary>
+		/// 코스피
+		/// </summary>
 		KOSPI = 1,
+		/// <summary>
+		/// 코스닥
+		/// </summary>
 		KOSDAQ = 101,
+		/// <summary>
+		/// 코스피200
+		/// </summary>
 		KOSPI200 = 201
 	}
 
+	/// <summary>
+	/// 시장구분
+	/// </summary>
 	public enum KiwoomStockInfoMarketType2
 	{
+		/// <summary>
+		/// 전체
+		/// </summary>
 		All = 0,
+		/// <summary>
+		/// 코스피
+		/// </summary>
 		KOSPI = 1,
+		/// <summary>
+		/// 코스닥
+		/// </summary>
 		KOSDAQ = 2,
+		/// <summary>
+		/// 종목
+		/// </summary>
 		Stock = 3
 	}
 
+	/// <summary>
+	/// 시장구분
+	/// </summary>
 	public enum KiwoomStockInfoMarketType3
 	{
 		/// <summary>
@@ -62,6 +95,9 @@ namespace KiwoomRestApi.Net.Enums.StockInfo
 		KONEX = 50
 	}
 
+	/// <summary>
+	/// 시장구분
+	/// </summary>
 	public enum KiwoomStockInfoMarketType4
 	{
 		/// <summary>
@@ -86,10 +122,19 @@ namespace KiwoomRestApi.Net.Enums.StockInfo
 		KRX100 = 7
 	}
 
+	/// <summary>
+	/// 시장구분
+	/// </summary>
 	public enum KiwoomStockInfoMarketType5
 	{
+		/// <summary>
+		/// 코스피
+		/// </summary>
 		[EnumMember(Value = "P00101")]
 		KOSPI,
+		/// <summary>
+		/// 코스닥
+		/// </summary>
 		[EnumMember(Value = "P10102")]
 		KOSDAQ
 	}

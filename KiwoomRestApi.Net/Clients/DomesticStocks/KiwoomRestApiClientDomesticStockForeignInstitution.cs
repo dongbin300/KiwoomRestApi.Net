@@ -9,11 +9,21 @@ using System.Threading.Tasks;
 
 namespace KiwoomRestApi.Net.Clients.DomesticStocks
 {
+	/// <summary>
+	/// 기관/외국인 API 클라이언트
+	/// </summary>
+	/// <param name="client"></param>
 	public class KiwoomRestApiClientDomesticStockForeignInstitution(KiwoomRestApiClient client) : BaseClient
 	{
 		private readonly KiwoomRestApiClient _client = client;
 		private readonly string _endpoint = ApiEndpoint.DomesticStock.ForeignInstitution;
 
+		/// <summary>
+		/// | ka10008 | 주식외국인종목별매매동향
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomForeignInstitutionGetStockForeigners>> GetStockForeignersAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10008";
@@ -23,6 +33,12 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomForeignInstitutionGetStockForeigners>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// | ka10009 | 주식기관요청
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		public async Task<KiwoomRestApiResponse<KiwoomForeignInstitutionGetDaily>> GetDailyAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10009";
@@ -32,14 +48,26 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			return await _client.PostKiwoomRestApiAsync<KiwoomForeignInstitutionGetDaily>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
-		public async Task<KiwoomRestApiResponse<KiwoomForeignInstitutionGetContinuousTrades>> GetContinuousTradesAsync(KiwoomForeignInstitutionPeriodQueryType queryType, KiwoomForeignInstitutionStockExchangeType stockExchangeType, KiwoomForeignInstitutionMarketType marketType, KiwoomForeignInstitutionNetSellAmountType netSellAmountType, KiwoomForeignInstitutionStockIndustryType stockIndustryType, KiwoomForeignInstitutionAmountQuantityType amountQuantityType, DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default)
+		/// <summary>
+		/// | ka10131 | 기관외국인연속매매현황요청
+		/// </summary>
+		/// <param name="stockExchangeType"></param>
+		/// <param name="marketType"></param>
+		/// <param name="stockIndustryType"></param>
+		/// <param name="amountQuantityType"></param>
+		/// <param name="period">기간: 0이면 startDate, endDate로 조회</param>
+		/// <param name="startDate"></param>
+		/// <param name="endDate"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		public async Task<KiwoomRestApiResponse<KiwoomForeignInstitutionGetContinuousTrades>> GetContinuousTradesAsync(KiwoomForeignInstitutionStockExchangeType stockExchangeType, KiwoomForeignInstitutionMarketType marketType,  KiwoomForeignInstitutionStockIndustryType stockIndustryType, KiwoomForeignInstitutionAmountQuantityType amountQuantityType, int period = 0, DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10131";
 			var body = new HttpParameterMap()
-				.AddField("dt", queryType)
+				.AddField("dt", period)
 				.AddField("stex_tp", stockExchangeType)
 				.AddField("mrkt_tp", marketType)
-				.AddField("netslmt_tp", netSellAmountType)
+				.AddField("netslmt_tp", "2") // 순매수(고정값)
 				.AddField("stk_inds_tp", stockIndustryType)
 				.AddField("amt_qty_tp", amountQuantityType)
 				.AddField("strt_dt", startDate)

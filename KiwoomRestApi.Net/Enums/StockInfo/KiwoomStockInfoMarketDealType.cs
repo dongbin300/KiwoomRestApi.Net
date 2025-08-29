@@ -2,6 +2,9 @@
 
 namespace KiwoomRestApi.Net.Enums.StockInfo
 {
+	/// <summary>
+	/// 시장거래구분
+	/// </summary>
 	public enum KiwoomStockInfoMarketDealType
 	{
 		/// <summary>

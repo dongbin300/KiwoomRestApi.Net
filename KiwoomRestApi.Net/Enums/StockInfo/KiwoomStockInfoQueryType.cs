@@ -1,33 +1,29 @@
 ﻿namespace KiwoomRestApi.Net.Enums.StockInfo
 {
 	/// <summary>
-	/// PER구분
+	/// 구분
 	/// </summary>
-	public enum KiwoomStockInfoPerType
+	public enum KiwoomStockInfoQueryType
 	{
 		/// <summary>
-		/// 저PBR
+		/// 1분
 		/// </summary>
-		LowPbr = 1,
+		OneMinute = 1,
 		/// <summary>
-		/// 고PBR
+		/// 10분
 		/// </summary>
-		HighPbr = 2,
+		TenMinutes = 2,
 		/// <summary>
-		/// 저PER
+		/// 1시간
 		/// </summary>
-		LowPer = 3,
+		OneHour = 3,
 		/// <summary>
-		/// 고PER
+		/// 당일 누적
 		/// </summary>
-		HighPer = 4,
+		DailyTotal = 4,
 		/// <summary>
-		/// 저ROE
+		/// 30초
 		/// </summary>
-		LowRoe = 5,
-		/// <summary>
-		/// 고ROE
-		/// </summary>
-		HighRoe = 6
+		ThirtySeconds = 5
 	}
 }

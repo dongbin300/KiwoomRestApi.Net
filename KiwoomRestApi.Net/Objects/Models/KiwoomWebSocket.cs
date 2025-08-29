@@ -1,4 +1,5 @@
 ﻿using KiwoomRestApi.Net.Converters;
+using KiwoomRestApi.Net.Enums.WebSocket;
 
 using Newtonsoft.Json;
 
@@ -137,7 +138,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("10010")]
 		public decimal? AfterMarketSinglePrice;
 		[JsonProperty("2134")]
-		public string? ExchangeType;
+		public KiwoomWebSocketStockExchangeType? ExchangeType;
 		[JsonProperty("2135")]
 		public string? ExchangeTypeName;
 		[JsonProperty("2136")]
@@ -341,7 +342,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("852")]
 		public decimal? ShortSellingCost;
 		[JsonProperty("9081")]
-		public string? ExchangeType;
+		public KiwoomWebSocketStockExchangeType? ExchangeType;
 	}
 
 	public record KiwoomWebSocketRealtimeStockPriorAsk
