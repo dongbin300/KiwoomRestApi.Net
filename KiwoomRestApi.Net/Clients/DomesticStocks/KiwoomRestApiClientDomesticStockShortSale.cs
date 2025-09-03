@@ -11,6 +11,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 {
 	/// <summary>
 	/// 공매도 API 클라이언트
+	/// 현재 1개
 	/// </summary>
 	/// <param name="client"></param>
 	public class KiwoomRestApiClientDomesticStockShortSale(KiwoomRestApiClient client) : BaseClient

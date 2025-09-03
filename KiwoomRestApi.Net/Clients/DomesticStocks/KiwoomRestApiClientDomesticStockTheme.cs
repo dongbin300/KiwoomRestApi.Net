@@ -10,6 +10,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 {
 	/// <summary>
 	/// 테마 API 클라이언트
+	/// 현재 2개
 	/// </summary>
 	/// <param name="client"></param>
 	public class KiwoomRestApiClientDomesticStockTheme(KiwoomRestApiClient client) : BaseClient

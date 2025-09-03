@@ -12,6 +12,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 {
 	/// <summary>
 	/// 실시간시세 및 조건검색 API 클라이언트 (WebSocket)
+	/// 현재 4개
 	/// </summary>
 	/// <param name="client"></param>
 	public class KiwoomRestApiClientDomesticStockWebSocket(KiwoomSocketClient client) : BaseClient

@@ -1,10 +1,6 @@
 # 🚀 KiwoomRestApi.Net
 
-<span style="color:#ffd33d">
-현재 comment, doc 작업 중입니다.</br>
-일관성 유지 및 api 테스트 작업을 추가로 진행해야 합니다.</br>
-</span>
-
+현재 일관성 유지, api 테스트 작업, doc 작업 중입니다.</br>
 
 [![NuGet Version](https://img.shields.io/nuget/v/KiwoomRestApi.Net.svg)](https://www.nuget.org/packages/KiwoomRestApi.Net)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/KiwoomRestApi.Net.svg)](https://www.nuget.org/packages/KiwoomRestApi.Net)
@@ -230,6 +226,17 @@ var results = await Task.WhenAll(tasks);
 - [버그 리포트](https://github.com/dongbin300/KiwoomRestApi.Net/issues)
 
 ## 📋 릴리즈 노트
+
+### v0.2.1 (2025-09-03)
+- 소스코드 주석 추가
+- | ka01690 | 일별잔고수익률 API 추가
+- KiwoomRealtimeQuoteRequests 삭제
+- KiwoomRealtimeQuoteRegistrations 삭제
+- KiwoomRealtimeQuoteRequestItem 삭제
+- KiwoomRealtimeQuoteRegistrationItem 삭제
+- KiwoomRealtimeQuoteValue 삭제
+- KiwoomRankingInfoGetForeignTradePerPeriodUpperItem.NetPurchaseQuantity을 KiwoomDecimal로 수정
+- 종속성 라이브러리 버전별 분기
 
 ### v0.2.0 (2025-08-29)
 - 소스코드 주석 추가

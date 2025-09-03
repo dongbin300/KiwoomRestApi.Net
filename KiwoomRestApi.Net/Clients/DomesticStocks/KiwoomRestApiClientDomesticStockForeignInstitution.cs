@@ -11,6 +11,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 {
 	/// <summary>
 	/// 기관/외국인 API 클라이언트
+	/// 현재 3개
 	/// </summary>
 	/// <param name="client"></param>
 	public class KiwoomRestApiClientDomesticStockForeignInstitution(KiwoomRestApiClient client) : BaseClient

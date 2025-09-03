@@ -14,7 +14,7 @@ namespace KiwoomRestApi.Net.Examples
     /// </summary>
     public partial class MainWindow : Window
     {
-		KiwoomSocketClient socketClient;
+		KiwoomSocketClient socketClient = default!;
 
 		public MainWindow()
 		{
@@ -29,25 +29,25 @@ namespace KiwoomRestApi.Net.Examples
 			var endDate = new DateTime(2025, 8, 25);
 			var stockCode = "005930";
 
-			//var __result__ = client.Ranking.GetTodayTradeQuantityUppersAsync(Enums.RankingInfo.KiwoomRankingInfoMarketType.All, Enums.RankingInfo.KiwoomRankingInfoTradeQuantitySortType.Volume, Enums.RankingInfo.KiwoomRankingInfoStockCondition.All, Enums.RankingInfo.KiwoomRankingInfoCreditCondition.All, 7, Enums.RankingInfo.KiwoomRankingInfoPriceCondition2.All, 728345893, Enums.RankingInfo.KiwoomRankingInfoMarketOpenType.All, Enums.RankingInfo.KiwoomRankingInfoStockExchangeType.Unified).Result;
+			var __result__ = client.ShortSale.GetShortsTransactionsAsync(stockCode, startDate, endDate).Result;
 
-			socketClient = KiwoomSocketClient.Create(client.Token, true);
+			//socketClient = KiwoomSocketClient.Create(client.Token, true);
 
-			socketClient.OnRealtimeOrderExecutionReceived += (message) =>
-			{
+			//socketClient.OnRealtimeOrderExecutionReceived += (message) =>
+			//{
 
-			};
+			//};
 
-			socketClient.OnRealtimeStockExecutionReceived += (message) =>
-			{
+			//socketClient.OnRealtimeStockExecutionReceived += (message) =>
+			//{
 
-			};
+			//};
 
 		}
 
 		private async void Test_Click(object sender, RoutedEventArgs e)
 		{
-			await socketClient.WebSocket.SubscribeAsync([KiwoomWebSocketServiceName.OrderExecution | KiwoomWebSocketServiceName.StockExecution], ["005930"]);
+			//await socketClient.WebSocket.SubscribeAsync([KiwoomWebSocketServiceName.OrderExecution | KiwoomWebSocketServiceName.StockExecution], ["005930"]);
 			//await socketClient.WebSocket.GetConditionSearchListAsync().ConfigureAwait(false);
 			//await socketClient.WebSocket.GetConditionSearchRequestAsync(20).ConfigureAwait(false);
 			//await socketClient.WebSocket.GetConditionSearchClearAsync(20).ConfigureAwait(false);

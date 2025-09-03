@@ -11,6 +11,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 {
 	/// <summary>
 	/// 종목정보 API 클라이언트
+	/// 현재 31개
 	/// </summary>
 	/// <param name="client"></param>
 	public class KiwoomRestApiClientDomesticStockInfo(KiwoomRestApiClient client) : BaseClient

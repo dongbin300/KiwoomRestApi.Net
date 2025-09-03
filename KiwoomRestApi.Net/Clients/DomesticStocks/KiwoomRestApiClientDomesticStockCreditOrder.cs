@@ -11,6 +11,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 {
 	/// <summary>
 	/// 신용주문 API 클라이언트
+	/// 현재 4개
 	/// </summary>
 	/// <param name="client"></param>
 	public class KiwoomRestApiClientDomesticStockCreditOrder(KiwoomRestApiClient client) : BaseClient

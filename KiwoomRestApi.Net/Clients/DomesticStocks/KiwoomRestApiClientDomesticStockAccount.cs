@@ -11,12 +11,28 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 {
 	/// <summary>
 	/// 계좌 API 클라이언트
+	/// 현재 26개
 	/// </summary>
 	/// <param name="client"></param>
 	public class KiwoomRestApiClientDomesticStockAccount(KiwoomRestApiClient client) : BaseClient
 	{
 		private readonly KiwoomRestApiClient _client = client;
 		private readonly string _endpoint = ApiEndpoint.DomesticStock.Account;
+
+		/// <summary>
+		/// | ka01690 | 일별잔고수익률
+		/// </summary>
+		/// <param name="date"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetDailyBalanceReturns>> GetDailyBalanceReturnsAsync(DateTime date, CancellationToken cancellationToken = default)
+		{
+			const string apiId = "ka01690";
+			var body = new HttpParameterMap()
+				.AddField("qry_dt", date);
+
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetDailyBalanceReturns>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+		}
 
 		/// <summary>
 		/// | ka10072 | 일자별종목별실현손익요청_일자

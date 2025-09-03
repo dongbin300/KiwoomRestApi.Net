@@ -10,6 +10,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 {
 	/// <summary>
 	/// ETF API 클라이언트
+	/// 현재 9개
 	/// </summary>
 	/// <param name="client"></param>
 	public class KiwoomRestApiClientDomesticStockEtf(KiwoomRestApiClient client) : BaseClient

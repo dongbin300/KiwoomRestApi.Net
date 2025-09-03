@@ -189,7 +189,7 @@ namespace KiwoomRestApi.Net.Examples.Wpf
 				var result = await _kiwoomClient.Chart.GetDailyChartsAsync(
 					stockCode,
 					DateTime.Today,
-					KiwoomChartUseOption.Use
+					true
 				);
 
 				LogMessage($"API Response - ReturnCode: {result.ReturnCode}, Message: {result.ReturnMessage}");

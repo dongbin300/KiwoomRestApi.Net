@@ -11,6 +11,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 {
 	/// <summary>
 	/// 업종 API 클라이언트
+	/// 현재 6개
 	/// </summary>
 	/// <param name="client"></param>
 	public class KiwoomRestApiClientDomesticStockSector(KiwoomRestApiClient client) : BaseClient

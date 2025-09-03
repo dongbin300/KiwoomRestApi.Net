@@ -11,6 +11,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 {
 	/// <summary>
 	/// 순위정보 API 클라이언트
+	/// 현재 23개
 	/// </summary>
 	/// <param name="client"></param>
 	public class KiwoomRestApiClientDomesticStockRankingInfo(KiwoomRestApiClient client) : BaseClient
@@ -101,7 +102,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="marketType"></param>
 		/// <param name="sortType"></param>
 		/// <param name="timeType"></param>
-		/// <param name="tradeQuantityType"></param>
+		/// <param name="minVolume"></param>
 		/// <param name="stockCondition"></param>
 		/// <param name="priceType"></param>
 		/// <param name="stockExchangeType"></param>

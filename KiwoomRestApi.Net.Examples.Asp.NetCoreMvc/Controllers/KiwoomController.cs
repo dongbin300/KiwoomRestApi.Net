@@ -106,8 +106,8 @@ namespace KiwoomRestApi.Net.Examples.Asp.NetCoreMvc.Controllers
                 
                 var result = await _kiwoomClient.Chart.GetDailyChartsAsync(
                     stockCode, 
-                    chartDate, 
-                    KiwoomRestApi.Net.Enums.Chart.KiwoomChartUseOption.Use
+                    chartDate,
+                    true
                 );
                 
                 _logger.LogInformation("Chart API Response - ReturnCode: {ReturnCode}, Message: {Message}", 

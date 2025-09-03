@@ -227,11 +227,20 @@ namespace KiwoomRestApi.Net.Tests
 		{
 			var result = await client.Order.CancelOrderAsync(domesticStockExchangeType, originalOrderId, stockCode, cancelQuantity);
 
-			Assert.That(result.ReturnCode, Is.EqualTo(0).Or.EqualTo(2));
+			Assert.That(result.ReturnCode, Is.EqualTo(0).Or.EqualTo(20));
 		}
 		#endregion
 
 		#region Account
+		[TestCase("2025-08-04")]
+		public async Task GetDailyBalanceReturnsAsync(string _date)
+		{
+			DateTime date = DateTime.Parse(_date);
+			var result = await client.Account.GetDailyBalanceReturnsAsync(date);
+
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
 		[TestCase("005930", "2025-08-04")]
 		public async Task GetDateStockRealizedProfitLossAsync(string stockCode, string _date)
 		{
@@ -711,6 +720,13 @@ namespace KiwoomRestApi.Net.Tests
 		#endregion
 
 		#region StockInfo
+		[TestCase(KiwoomStockInfoQueryType.OneHour)]
+		public async Task GetRealtimeStockRanksAsync(KiwoomStockInfoQueryType queryType)
+		{
+			var result = await client.StockInfo.GetRealtimeStockRanksAsync(queryType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
 		[TestCase("005930", "2025-08-01", KiwoomStockInfoMarginLoanType.Loan)]
 		public async Task GetStockInfoAsync(string stockCode, string dateStr, KiwoomStockInfoMarginLoanType marginLoanType)
 		{
