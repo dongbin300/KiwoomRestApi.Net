@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using KiwoomRestApi.Net.Objects.Commons;
+
+using Newtonsoft.Json;
 
 using System.Collections.Generic;
 
@@ -38,7 +40,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? ChangeRate;
+		public KiwoomDecimal? ChangeRate;
 		/// <summary>
 		/// 상승종목수
 		/// </summary>
@@ -53,7 +55,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 기간수익률
 		/// </summary>
 		[JsonProperty("dt_prft_rt")]
-		public decimal? PeriodProfitRate;
+		public KiwoomDecimal? PeriodProfitRate;
 		/// <summary>
 		/// 주요종목
 		/// </summary>
@@ -85,7 +87,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 등락기호
 		/// </summary>
@@ -95,12 +97,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? ChangeRate;
+		public KiwoomDecimal? ChangeRate;
 		/// <summary>
 		/// 누적거래량
 		/// </summary>
@@ -110,7 +112,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매도호가
 		/// </summary>
 		[JsonProperty("sel_bid")]
-		public decimal? SellQuote;
+		public KiwoomDecimal? SellQuote;
 		/// <summary>
 		/// 매도잔량
 		/// </summary>
@@ -120,14 +122,14 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매수호가
 		/// </summary>
 		[JsonProperty("buy_bid")]
-		public decimal? BuyQuote;
+		public KiwoomDecimal? BuyQuote;
 		/// <summary>
 		/// 매수잔량
 		/// </summary>
 		[JsonProperty("buy_req")]
 		public decimal? BuyRemainQuantity;
 		/// <summary>
-		/// 기간수익률n
+		/// 기간수익률
 		/// </summary>
 		[JsonProperty("dt_prft_rt_n")]
 		public decimal? PeriodProfitRate;

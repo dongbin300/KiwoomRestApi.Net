@@ -1,4 +1,5 @@
 ﻿using KiwoomRestApi.Net.Converters;
+using KiwoomRestApi.Net.Objects.Commons;
 
 using Newtonsoft.Json;
 
@@ -28,7 +29,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 종가
 		/// </summary>
 		[JsonProperty("close_pric")]
-		public decimal? Close;
+		public KiwoomDecimal? Close;
 		/// <summary>
 		/// 전일대비기호
 		/// </summary>
@@ -38,12 +39,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? ChangeRate;
+		public KiwoomDecimal? ChangeRate;
 		/// <summary>
 		/// 거래량
 		/// </summary>
@@ -63,7 +64,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매매비중
 		/// </summary>
 		[JsonProperty("trde_wght")]
-		public decimal? TransactionWeight;
+		public KiwoomDecimal? TransactionWeight;
 		/// <summary>
 		/// 공매도거래대금
 		/// </summary>

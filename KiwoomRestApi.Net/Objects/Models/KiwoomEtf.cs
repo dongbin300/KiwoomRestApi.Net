@@ -22,12 +22,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// ETF수익률
 		/// </summary>
 		[JsonProperty("etfprft_rt")]
-		public decimal? EtfProfitRate;
+		public KiwoomDecimal? EtfProfitRate;
 		/// <summary>
 		/// 체결수익률
 		/// </summary>
 		[JsonProperty("cntr_prft_rt")]
-		public decimal? TradeProfitRate;
+		public KiwoomDecimal? TradeProfitRate;
 		/// <summary>
 		/// 외인순매수수량
 		/// </summary>
@@ -89,7 +89,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 대비기호
 		/// </summary>
@@ -99,12 +99,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 대비율
 		/// </summary>
 		[JsonProperty("pre_rt")]
-		public decimal? ChangeRate;
+		public KiwoomDecimal? ChangeRate;
 		/// <summary>
 		/// 거래량
 		/// </summary>
@@ -114,7 +114,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// NAV
 		/// </summary>
 		[JsonProperty("nav")]
-		public decimal? Nav;
+		public KiwoomDecimal? Nav;
 		/// <summary>
 		/// 누적거래대금
 		/// </summary>
@@ -181,7 +181,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 종가
 		/// </summary>
 		[JsonProperty("close_pric")]
-		public decimal? Close;
+		public KiwoomDecimal? Close;
 		/// <summary>
 		/// 대비기호
 		/// </summary>
@@ -191,12 +191,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 대비율
 		/// </summary>
 		[JsonProperty("pre_rt")]
-		public decimal? ChangeRate;
+		public KiwoomDecimal? ChangeRate;
 		/// <summary>
 		/// 거래량
 		/// </summary>
@@ -274,7 +274,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 종가
 		/// </summary>
 		[JsonProperty("close_pric")]
-		public decimal? Close;
+		public KiwoomDecimal? Close;
 		/// <summary>
 		/// 대비기호
 		/// </summary>
@@ -284,12 +284,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? ChangeRate;
+		public KiwoomDecimal? ChangeRate;
 		/// <summary>
 		/// 거래량
 		/// </summary>
@@ -299,7 +299,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// NAV
 		/// </summary>
 		[JsonProperty("nav")]
-		public decimal? Nav;
+		public KiwoomDecimal? Nav;
 		/// <summary>
 		/// 거래대금
 		/// </summary>
@@ -309,12 +309,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// NAV지수
 		/// </summary>
 		[JsonProperty("navidex")]
-		public decimal? NavIndex;
+		public KiwoomDecimal? NavIndex;
 		/// <summary>
 		/// NAVETF
 		/// </summary>
 		[JsonProperty("navetf")]
-		public decimal? NavEtf;
+		public KiwoomDecimal? NavEtf;
 		/// <summary>
 		/// 추적
 		/// </summary>
@@ -324,12 +324,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 추적지수
 		/// </summary>
 		[JsonProperty("trace_idex")]
-		public decimal? TrackingIndex;
+		public KiwoomDecimal? TrackingIndex;
 		/// <summary>
 		/// 추적지수전일대비
 		/// </summary>
 		[JsonProperty("trace_idex_pred_pre")]
-		public decimal? TrackingIndexChange;
+		public KiwoomDecimal? TrackingIndexChange;
 		/// <summary>
 		/// 추적지수전일대비기호
 		/// </summary>
@@ -368,7 +368,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 원주가격
 		/// </summary>
 		[JsonProperty("wonju_pric")]
-		public decimal? OriginalPrice;
+		public KiwoomDecimal? OriginalPrice;
 		/// <summary>
 		/// ETF시간대별체결배열 리스트
 		/// </summary>
@@ -387,7 +387,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 대비기호
 		/// </summary>
@@ -397,7 +397,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 거래량
 		/// </summary>
@@ -422,7 +422,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 대비기호
 		/// </summary>
@@ -432,7 +432,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 거래량
 		/// </summary>
@@ -453,20 +453,20 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? Date;
 		/// <summary>
-		/// 현재가n
+		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc_n")]
-		public decimal? CurrentPriceN;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
-		/// 대비기호n
+		/// 대비기호
 		/// </summary>
 		[JsonProperty("pre_sig_n")]
-		public string? ChangeSignN;
+		public string? ChangeSign;
 		/// <summary>
-		/// 전일대비n
+		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre_n")]
-		public decimal? ChangeN;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 누적거래량
 		/// </summary>
@@ -570,7 +570,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 대비기호
 		/// </summary>
@@ -580,7 +580,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 거래량
 		/// </summary>

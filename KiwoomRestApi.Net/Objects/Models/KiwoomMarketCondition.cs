@@ -363,7 +363,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// <summary>
 		/// 가격
 		/// </summary>
-		public decimal? Price;
+		public KiwoomDecimal? Price;
 		/// <summary>
 		/// 수량
 		/// </summary>
@@ -371,7 +371,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// <summary>
 		/// 전일대비 차이
 		/// </summary>
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 
 		public PriceVolumeDiff(decimal? price, decimal? quantity, decimal? change)
 		{
@@ -482,32 +482,32 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 시가
 		/// </summary>
 		[JsonProperty("open_pric")]
-		public decimal? Open;
+		public KiwoomDecimal? Open;
 		/// <summary>
 		/// 고가
 		/// </summary>
 		[JsonProperty("high_pric")]
-		public decimal? High;
+		public KiwoomDecimal? High;
 		/// <summary>
 		/// 저가
 		/// </summary>
 		[JsonProperty("low_pric")]
-		public decimal? Low;
+		public KiwoomDecimal? Low;
 		/// <summary>
 		/// 종가
 		/// </summary>
 		[JsonProperty("close_pric")]
-		public decimal? Close;
+		public KiwoomDecimal? Close;
 		/// <summary>
 		/// 대비
 		/// </summary>
 		[JsonProperty("pre")]
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 등락률
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? ChangeRate;
+		public KiwoomDecimal? ChangeRate;
 		/// <summary>
 		/// 거래량
 		/// </summary>
@@ -522,12 +522,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 외인보유
 		/// </summary>
 		[JsonProperty("for_poss")]
-		public decimal? ForeignHolding;
+		public KiwoomDecimal? ForeignHolding;
 		/// <summary>
 		/// 외인비중
 		/// </summary>
 		[JsonProperty("for_wght")]
-		public decimal? ForeignWeight;
+		public KiwoomDecimal? ForeignWeight;
 		/// <summary>
 		/// 외인순매수
 		/// </summary>
@@ -572,32 +572,32 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 시가
 		/// </summary>
 		[JsonProperty("open_pric")]
-		public decimal? Open;
+		public KiwoomDecimal? Open;
 		/// <summary>
 		/// 고가
 		/// </summary>
 		[JsonProperty("high_pric")]
-		public decimal? High;
+		public KiwoomDecimal? High;
 		/// <summary>
 		/// 저가
 		/// </summary>
 		[JsonProperty("low_pric")]
-		public decimal? Low;
+		public KiwoomDecimal? Low;
 		/// <summary>
 		/// 종가
 		/// </summary>
 		[JsonProperty("close_pric")]
-		public decimal? Close;
+		public KiwoomDecimal? Close;
 		/// <summary>
 		/// 대비
 		/// </summary>
 		[JsonProperty("pre")]
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 등락률
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? ChangeRate;
+		public KiwoomDecimal? ChangeRate;
 		/// <summary>
 		/// 거래량
 		/// </summary>
@@ -653,12 +653,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 상한가
 		/// </summary>
 		[JsonProperty("upl_pric")]
-		public decimal? UpperPrice;
+		public KiwoomDecimal? UpperPrice;
 		/// <summary>
 		/// 하한가
 		/// </summary>
 		[JsonProperty("lst_pric")]
-		public decimal? LowerPrice;
+		public KiwoomDecimal? LowerPrice;
 		/// <summary>
 		/// 전일거래대금
 		/// </summary>
@@ -673,7 +673,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 부호
 		/// </summary>
@@ -683,27 +683,27 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 등락률
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? ChangeRate;
+		public KiwoomDecimal? ChangeRate;
 		/// <summary>
 		/// 전일비
 		/// </summary>
 		[JsonProperty("pred_rt")]
-		public decimal? PreviousDayRate;
+		public KiwoomDecimal? PreviousDayRate;
 		/// <summary>
 		/// 시가
 		/// </summary>
 		[JsonProperty("open_pric")]
-		public decimal? Open;
+		public KiwoomDecimal? Open;
 		/// <summary>
 		/// 고가
 		/// </summary>
 		[JsonProperty("high_pric")]
-		public decimal? High;
+		public KiwoomDecimal? High;
 		/// <summary>
 		/// 저가
 		/// </summary>
 		[JsonProperty("low_pric")]
-		public decimal? Low;
+		public KiwoomDecimal? Low;
 		/// <summary>
 		/// 체결량
 		/// </summary>
@@ -723,7 +723,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 예상체결가
 		/// </summary>
 		[JsonProperty("exp_cntr_pric")]
-		public decimal? ExpectedTradePrice;
+		public KiwoomDecimal? ExpectedTradePrice;
 		/// <summary>
 		/// 예상체결량
 		/// </summary>
@@ -1289,7 +1289,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// <summary>
 		/// 현재가
 		/// </summary>
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 부호
 		/// </summary>
@@ -1297,23 +1297,23 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// <summary>
 		/// 등락률
 		/// </summary>
-		public decimal? ChangeRate;
+		public KiwoomDecimal? ChangeRate;
 		/// <summary>
 		/// 전일비
 		/// </summary>
-		public decimal? PreviousDayRate;
+		public KiwoomDecimal? PreviousDayRate;
 		/// <summary>
 		/// 시가
 		/// </summary>
-		public decimal? Open;
+		public KiwoomDecimal? Open;
 		/// <summary>
 		/// 고가
 		/// </summary>
-		public decimal? High;
+		public KiwoomDecimal? High;
 		/// <summary>
 		/// 저가
 		/// </summary>
-		public decimal? Low;
+		public KiwoomDecimal? Low;
 		/// <summary>
 		/// 체결량
 		/// </summary>
@@ -1536,7 +1536,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 전일대비기호
 		/// </summary>
@@ -1546,22 +1546,22 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? ChangeRate;
+		public KiwoomDecimal? ChangeRate;
 		/// <summary>
 		/// 최우선매도호가
 		/// </summary>
 		[JsonProperty("fpr_sel_bid")]
-		public decimal? BestSellQuote;
+		public KiwoomDecimal? BestSellQuote;
 		/// <summary>
 		/// 최우선매수호가
 		/// </summary>
 		[JsonProperty("fpr_buy_bid")]
-		public decimal? BestBuyQuote;
+		public KiwoomDecimal? BestBuyQuote;
 		/// <summary>
 		/// 누적거래량
 		/// </summary>
@@ -1571,17 +1571,17 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 시가
 		/// </summary>
 		[JsonProperty("open_pric")]
-		public decimal? Open;
+		public KiwoomDecimal? Open;
 		/// <summary>
 		/// 고가
 		/// </summary>
 		[JsonProperty("high_pric")]
-		public decimal? High;
+		public KiwoomDecimal? High;
 		/// <summary>
 		/// 저가
 		/// </summary>
 		[JsonProperty("low_pric")]
-		public decimal? Low;
+		public KiwoomDecimal? Low;
 	}
 
 	public record KiwoomMarketConditionGetDailyInstitutionTradingStocks
@@ -1608,12 +1608,32 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 순매수수량
 		/// </summary>
 		[JsonProperty("netprps_qty")]
-		public decimal? NetBuyQuantity;
+		public KiwoomDecimal? NetBuyQuantity;
 		/// <summary>
 		/// 순매수금액
 		/// </summary>
 		[JsonProperty("netprps_amt")]
-		public decimal? NetBuyAmount;
+		public KiwoomDecimal? NetBuyAmount;
+		/// <summary>
+		/// 추정평균가
+		/// </summary>
+		[JsonProperty("prsm_avg_pric")]
+		public decimal? EstimatedAveragePrice;
+		/// <summary>
+		/// 현재가
+		/// </summary>
+		[JsonProperty("cur_prc")]
+		public KiwoomDecimal? CurrentPrice;
+		/// <summary>
+		/// 평균가대비
+		/// </summary>
+		[JsonProperty("avg_pric_pre")]
+		public KiwoomDecimal? AveragePriceChange;
+		/// <summary>
+		/// 대비율
+		/// </summary>
+		[JsonProperty("pre_rt")]
+		public KiwoomDecimal? ChangeRate;
 	}
 
 	public record KiwoomMarketConditionGetStockOriginTradeTrends
@@ -1646,7 +1666,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 종가
 		/// </summary>
 		[JsonProperty("close_pric")]
-		public decimal? Close;
+		public KiwoomDecimal? Close;
 		/// <summary>
 		/// 대비기호
 		/// </summary>
@@ -1656,12 +1676,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? ChangeRate;
+		public KiwoomDecimal? ChangeRate;
 		/// <summary>
 		/// 거래량
 		/// </summary>
@@ -1691,7 +1711,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 한도소진율
 		/// </summary>
 		[JsonProperty("limit_exh_rt")]
-		public decimal? LimitUsageRate;
+		public KiwoomDecimal? LimitUsageRate;
 	}
 
 	public record KiwoomMarketConditionGetHourlyTradeMomentums
@@ -1714,12 +1734,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 전일대비기호
 		/// </summary>
@@ -1729,12 +1749,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? ChangeRate;
+		public KiwoomDecimal? ChangeRate;
 		/// <summary>
 		/// 거래량
 		/// </summary>
 		[JsonProperty("trde_qty")]
-		public decimal? Volume;
+		public KiwoomDecimal? Volume;
 		/// <summary>
 		/// 누적거래대금
 		/// </summary>
@@ -1792,12 +1812,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 전일대비기호
 		/// </summary>
@@ -1807,12 +1827,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? ChangeRate;
+		public KiwoomDecimal? ChangeRate;
 		/// <summary>
 		/// 거래량
 		/// </summary>
 		[JsonProperty("trde_qty")]
-		public decimal? Volume;
+		public KiwoomDecimal? Volume;
 		/// <summary>
 		/// 누적거래대금
 		/// </summary>
@@ -1869,7 +1889,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 대비기호
 		/// </summary>
@@ -1879,12 +1899,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? ChangeRate;
+		public KiwoomDecimal? ChangeRate;
 		/// <summary>
 		/// 누적거래량
 		/// </summary>
@@ -1914,7 +1934,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매수수량증감
 		/// </summary>
 		[JsonProperty("buy_qty_irds")]
-		public decimal? BuyQuantityChange;
+		public KiwoomDecimal? BuyQuantityChange;
 		/// <summary>
 		/// 매도수량
 		/// </summary>
@@ -1924,7 +1944,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매도수량증감
 		/// </summary>
 		[JsonProperty("sell_qty_irds")]
-		public decimal? SellQuantityChange;
+		public KiwoomDecimal? SellQuantityChange;
 	}
 
 	public record KiwoomMarketConditionGetIntradayInvestorTradeCharts
@@ -1951,7 +1971,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 대비기호
 		/// </summary>
@@ -1961,12 +1981,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 등락률
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? ChangeRate;
+		public KiwoomDecimal? ChangeRate;
 		/// <summary>
 		/// 거래량
 		/// </summary>
@@ -2054,7 +2074,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 대비기호
 		/// </summary>
@@ -2064,12 +2084,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? ChangeRate;
+		public KiwoomDecimal? ChangeRate;
 		/// <summary>
 		/// 누적거래량
 		/// </summary>
@@ -2079,7 +2099,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 순매수수량
 		/// </summary>
 		[JsonProperty("netprps_qty")]
-		public decimal? NetBuyQuantity;
+		public KiwoomDecimal? NetBuyQuantity;
 		/// <summary>
 		/// 매수수량
 		/// </summary>
@@ -2112,32 +2132,32 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 시가
 		/// </summary>
 		[JsonProperty("open_pric")]
-		public decimal? Open;
+		public KiwoomDecimal? Open;
 		/// <summary>
 		/// 고가
 		/// </summary>
 		[JsonProperty("high_pric")]
-		public decimal? High;
+		public KiwoomDecimal? High;
 		/// <summary>
 		/// 저가
 		/// </summary>
 		[JsonProperty("low_pric")]
-		public decimal? Low;
+		public KiwoomDecimal? Low;
 		/// <summary>
 		/// 종가
 		/// </summary>
 		[JsonProperty("close_pric")]
-		public decimal? Close;
+		public KiwoomDecimal? Close;
 		/// <summary>
 		/// 전일비
 		/// </summary>
 		[JsonProperty("pred_rt")]
-		public decimal? PreviousDayRate;
+		public KiwoomDecimal? PreviousDayRate;
 		/// <summary>
 		/// 등락률
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? ChangeRate;
+		public KiwoomDecimal? ChangeRate;
 		/// <summary>
 		/// 거래량
 		/// </summary>
@@ -2182,17 +2202,17 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 외인비
 		/// </summary>
 		[JsonProperty("for_rt")]
-		public decimal? ForeignRate;
+		public KiwoomDecimal? ForeignRate;
 		/// <summary>
 		/// 외인보유
 		/// </summary>
 		[JsonProperty("for_poss")]
-		public decimal? ForeignHolding;
+		public KiwoomDecimal? ForeignHolding;
 		/// <summary>
 		/// 외인비중
 		/// </summary>
 		[JsonProperty("for_wght")]
-		public decimal? ForeignWeight;
+		public KiwoomDecimal? ForeignWeight;
 		/// <summary>
 		/// 외인순매수
 		/// </summary>
@@ -2277,52 +2297,52 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 시간외단일가 매도호가5
 		/// </summary>
 		[JsonProperty("ovt_sigpric_sel_bid_5")]
-		public decimal? AfterMarketSinglePriceSellPrice5;
+		public KiwoomDecimal? AfterMarketSinglePriceSellPrice5;
 		/// <summary>
 		/// 시간외단일가 매도호가4
 		/// </summary>
 		[JsonProperty("ovt_sigpric_sel_bid_4")]
-		public decimal? AfterMarketSinglePriceSellPrice4;
+		public KiwoomDecimal? AfterMarketSinglePriceSellPrice4;
 		/// <summary>
 		/// 시간외단일가 매도호가3
 		/// </summary>
 		[JsonProperty("ovt_sigpric_sel_bid_3")]
-		public decimal? AfterMarketSinglePriceSellPrice3;
+		public KiwoomDecimal? AfterMarketSinglePriceSellPrice3;
 		/// <summary>
 		/// 시간외단일가 매도호가2
 		/// </summary>
 		[JsonProperty("ovt_sigpric_sel_bid_2")]
-		public decimal? AfterMarketSinglePriceSellPrice2;
+		public KiwoomDecimal? AfterMarketSinglePriceSellPrice2;
 		/// <summary>
 		/// 시간외단일가 매도호가1
 		/// </summary>
 		[JsonProperty("ovt_sigpric_sel_bid_1")]
-		public decimal? AfterMarketSinglePriceSellPrice1;
+		public KiwoomDecimal? AfterMarketSinglePriceSellPrice1;
 		/// <summary>
 		/// 시간외단일가 매수호가1
 		/// </summary>
 		[JsonProperty("ovt_sigpric_buy_bid_1")]
-		public decimal? AfterMarketSinglePriceBuyPrice1;
+		public KiwoomDecimal? AfterMarketSinglePriceBuyPrice1;
 		/// <summary>
 		/// 시간외단일가 매수호가2
 		/// </summary>
 		[JsonProperty("ovt_sigpric_buy_bid_2")]
-		public decimal? AfterMarketSinglePriceBuyPrice2;
+		public KiwoomDecimal? AfterMarketSinglePriceBuyPrice2;
 		/// <summary>
 		/// 시간외단일가 매수호가3
 		/// </summary>
 		[JsonProperty("ovt_sigpric_buy_bid_3")]
-		public decimal? AfterMarketSinglePriceBuyPrice3;
+		public KiwoomDecimal? AfterMarketSinglePriceBuyPrice3;
 		/// <summary>
 		/// 시간외단일가 매수호가4
 		/// </summary>
 		[JsonProperty("ovt_sigpric_buy_bid_4")]
-		public decimal? AfterMarketSinglePriceBuyPrice4;
+		public KiwoomDecimal? AfterMarketSinglePriceBuyPrice4;
 		/// <summary>
 		/// 시간외단일가 매수호가5
 		/// </summary>
 		[JsonProperty("ovt_sigpric_buy_bid_5")]
-		public decimal? AfterMarketSinglePriceBuyPrice5;
+		public KiwoomDecimal? AfterMarketSinglePriceBuyPrice5;
 		/// <summary>
 		/// 시간외단일가 매수호가수량1
 		/// </summary>
@@ -2467,11 +2487,11 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// <summary>
 		/// 시간외단일가 매도호가
 		/// </summary>
-		public decimal?[] AfterMarketSinglePriceSellPrices;
+		public KiwoomDecimal?[] AfterMarketSinglePriceSellPrices;
 		/// <summary>
 		/// 시간외단일가 매수호가
 		/// </summary>
-		public decimal?[] AfterMarketSinglePriceBuyPrices;
+		public KiwoomDecimal?[] AfterMarketSinglePriceBuyPrices;
 		/// <summary>
 		/// 시간외단일가 매수호가수량
 		/// </summary>
@@ -2693,12 +2713,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// KOSPI200
 		/// </summary>
 		[JsonProperty("kospi200")]
-		public decimal? Kospi200;
+		public KiwoomDecimal? Kospi200;
 		/// <summary>
 		/// BASIS
 		/// </summary>
 		[JsonProperty("basis")]
-		public decimal? Basis;
+		public KiwoomDecimal? Basis;
 	}
 
 	public record KiwoomMarketConditionGetProgramArbitrageBalanceTrends
@@ -2726,12 +2746,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매수차익거래금액
 		/// </summary>
 		[JsonProperty("buy_dfrt_trde_amt")]
-		public decimal? BuyArbitrageTransactionAmount;
+		public KiwoomDecimal? BuyArbitrageTransactionAmount;
 		/// <summary>
 		/// 매수차익거래증감액
 		/// </summary>
 		[JsonProperty("buy_dfrt_trde_irds_amt")]
-		public decimal? BuyArbitrageChangeAmount;
+		public KiwoomDecimal? BuyArbitrageChangeAmount;
 		/// <summary>
 		/// 매도차익거래수량
 		/// </summary>
@@ -2769,12 +2789,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// KOSPI200
 		/// </summary>
 		[JsonProperty("kospi200")]
-		public decimal? Kospi200;
+		public KiwoomDecimal? Kospi200;
 		/// <summary>
 		/// BASIS
 		/// </summary>
 		[JsonProperty("basis")]
-		public decimal? Basis;
+		public KiwoomDecimal? Basis;
 		/// <summary>
 		/// 차익거래당일
 		/// </summary>
@@ -2827,7 +2847,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 대비기호
 		/// </summary>
@@ -2837,12 +2857,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? ChangeRate;
+		public KiwoomDecimal? ChangeRate;
 		/// <summary>
 		/// 거래량
 		/// </summary>
@@ -2941,7 +2961,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 차익거래순매수
 		/// </summary>
 		[JsonProperty("dfrt_trde_netprps")]
-		public decimal? ArbitrageTransactionNetBuy;
+		public KiwoomDecimal? ArbitrageTransactionNetBuy;
 		/// <summary>
 		/// 비차익거래매도
 		/// </summary>
@@ -2956,7 +2976,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 비차익거래순매수
 		/// </summary>
 		[JsonProperty("ndiffpro_trde_netprps")]
-		public decimal? NonArbitrageTransactionNetBuy;
+		public KiwoomDecimal? NonArbitrageTransactionNetBuy;
 		/// <summary>
 		/// 차익거래매도수량
 		/// </summary>
@@ -2971,7 +2991,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 차익거래순매수수량
 		/// </summary>
 		[JsonProperty("dfrt_trde_netprps_qty")]
-		public decimal? ArbitrageNetBuyVolume;
+		public KiwoomDecimal? ArbitrageNetBuyVolume;
 		/// <summary>
 		/// 비차익거래매도수량
 		/// </summary>
@@ -2986,7 +3006,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 비차익거래순매수수량
 		/// </summary>
 		[JsonProperty("ndiffpro_trde_netprps_qty")]
-		public decimal? NonArbitrageNetBuyVolume;
+		public KiwoomDecimal? NonArbitrageNetBuyVolume;
 		/// <summary>
 		/// 전체매도
 		/// </summary>
@@ -3001,17 +3021,17 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전체순매수
 		/// </summary>
 		[JsonProperty("all_netprps")]
-		public decimal? TotalNetBuy;
+		public KiwoomDecimal? TotalNetBuy;
 		/// <summary>
 		/// KOSPI200
 		/// </summary>
 		[JsonProperty("kospi200")]
-		public decimal? Kospi200;
+		public KiwoomDecimal? Kospi200;
 		/// <summary>
 		/// BASIS
 		/// </summary>
 		[JsonProperty("basis")]
-		public decimal? Basis;
+		public KiwoomDecimal? Basis;
 	}
 
 	public record KiwoomMarketConditionGetStockDailyProgramTradeTrends
@@ -3034,7 +3054,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 대비기호
 		/// </summary>
@@ -3044,12 +3064,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? ChangeRate;
+		public KiwoomDecimal? ChangeRate;
 		/// <summary>
 		/// 거래량
 		/// </summary>

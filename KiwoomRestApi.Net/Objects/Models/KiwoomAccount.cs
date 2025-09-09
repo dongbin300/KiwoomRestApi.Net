@@ -64,7 +64,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 종목코드
 		/// </summary>
@@ -851,7 +851,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 거래소구분 - 0 : 통합, 1 : KRX, 2 : NXT
 		/// </summary>
@@ -1574,7 +1574,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 평가금액
 		/// </summary>
@@ -1829,7 +1829,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 매입단가
 		/// </summary>
@@ -2069,7 +2069,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 단가
 		/// </summary>
 		[JsonProperty("unp")]
-		public decimal? Price;
+		public KiwoomDecimal? Price;
 		/// <summary>
 		/// 정산금액
 		/// </summary>
@@ -3647,7 +3647,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 전일매수수량
 		/// </summary>

@@ -29,8 +29,7 @@ namespace KiwoomRestApi.Net.Examples
 			var endDate = new DateTime(2025, 8, 25);
 			var stockCode = "005930";
 
-			//var __result__ = client.Account.GetFilledOrdersAsync(Enums.Account.KiwoomAccountQueryType.All, Enums.Account.KiwoomAccountTransactionType.All, Enums.Account.KiwoomAccountStockExchangeType.Unified).Result;
-			var __result__ = client.Account.GetUnfilledOrdersAsync(Enums.Account.KiwoomAccountQueryType.All, Enums.Account.KiwoomAccountTransactionType.All, Enums.Account.KiwoomAccountStockExchangeType.Unified).Result;
+			var __result__ = client.Etf.GetHourlyTransactionsAsync("152100").Result;
 
 			//socketClient = KiwoomSocketClient.Create(client.Token, true);
 

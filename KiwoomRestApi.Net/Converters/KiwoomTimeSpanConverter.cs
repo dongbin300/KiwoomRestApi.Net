@@ -21,8 +21,10 @@ namespace KiwoomRestApi.Net.Converters
 			{
 				return ts;
 			}
-
-			throw new JsonSerializationException($"Invalid time format: {s}");
+			else
+			{
+				return default!;
+			}
 		}
 
 		public override void WriteJson(JsonWriter writer, TimeSpan? value, JsonSerializer serializer)

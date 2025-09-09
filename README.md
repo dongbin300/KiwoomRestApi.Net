@@ -227,6 +227,15 @@ var results = await Task.WhenAll(tasks);
 
 ## 📋 릴리즈 노트
 
+### v0.3.1 (2025-09-09)
+- KiwoomString 타입 추가
+- KiwoomDecimal로 변환 작업
+- Rank 필드를 string에서 decimal로 수정
+- KiwoomMarketConditionGetDailyInstitutionTradingStockItem에 누락된 필드 추가
+- KiwoomTimeSpanConverter에서 파싱 실패하는 경우는 null로 반환하도록 수정
+
+---
+
 ### v0.3.0 (2025-09-09)
 #### 금융 시스템 네이밍 체계화
 ##### 1. 기본 수치 개념

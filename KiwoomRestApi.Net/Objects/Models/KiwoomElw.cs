@@ -43,7 +43,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 쎄타
 		/// </summary>
 		[JsonProperty("theta")]
-		public decimal? Theta;
+		public KiwoomDecimal? Theta;
 		/// <summary>
 		/// 베가
 		/// </summary>
@@ -81,7 +81,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// ELW이론가
 		/// </summary>
@@ -106,7 +106,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 쎄타
 		/// </summary>
 		[JsonProperty("theta")]
-		public decimal? Theta;
+		public KiwoomDecimal? Theta;
 		/// <summary>
 		/// 베가
 		/// </summary>
@@ -163,7 +163,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 거래종료ELW기준가
 		/// </summary>
@@ -173,12 +173,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 기준대비
 		/// </summary>
 		[JsonProperty("base_pre")]
-		public decimal? BaseChange;
+		public KiwoomDecimal? BaseChange;
 		/// <summary>
 		/// 거래량
 		/// </summary>
@@ -220,7 +220,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? ChangeRate;
+		public KiwoomDecimal? ChangeRate;
 		/// <summary>
 		/// 거래량
 		/// </summary>
@@ -230,17 +230,17 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 순매수
 		/// </summary>
 		[JsonProperty("netprps")]
-		public decimal? NetBuy;
+		public KiwoomDecimal? NetBuy;
 		/// <summary>
 		/// 매수거래량
 		/// </summary>
 		[JsonProperty("buy_trde_qty")]
-		public decimal? BuyVolume;
+		public KiwoomDecimal? BuyVolume;
 		/// <summary>
 		/// 매도거래량
 		/// </summary>
 		[JsonProperty("sel_trde_qty")]
-		public decimal? SellVolume;
+		public KiwoomDecimal? SellVolume;
 	}
 
 	public record KiwoomElwGetLpHoldingDailyTrends
@@ -263,7 +263,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 대비구분
 		/// </summary>
@@ -273,12 +273,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? ChangeRate;
+		public KiwoomDecimal? ChangeRate;
 		/// <summary>
 		/// 거래량
 		/// </summary>
@@ -303,7 +303,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 비중
 		/// </summary>
 		[JsonProperty("wght")]
-		public decimal? Weight;
+		public KiwoomDecimal? Weight;
 	}
 
 	public record KiwoomElwGetDisparityRates
@@ -365,7 +365,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 대비구분
 		/// </summary>
@@ -375,12 +375,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? ChangeRate;
+		public KiwoomDecimal? ChangeRate;
 		/// <summary>
 		/// 거래량
 		/// </summary>
@@ -438,7 +438,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 대비구분
 		/// </summary>
@@ -448,12 +448,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? ChangeRate;
+		public KiwoomDecimal? ChangeRate;
 		/// <summary>
 		/// 거래량
 		/// </summary>
@@ -498,7 +498,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 손익분기율
 		/// </summary>
 		[JsonProperty("pl_qutr_rt")]
-		public decimal? BreakEvenRate;
+		public KiwoomDecimal? BreakEvenRate;
 		/// <summary>
 		/// 자본지지점
 		/// </summary>
@@ -538,12 +538,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// LP보유비율
 		/// </summary>
 		[JsonProperty("lpposs_rt")]
-		public decimal? LpHoldingRate;
+		public KiwoomDecimal? LpHoldingRate;
 		/// <summary>
 		/// 손익분기점
 		/// </summary>
 		[JsonProperty("pl_qutr_pt")]
-		public decimal? BreakEvenPoint;
+		public KiwoomDecimal? BreakEvenPoint;
 		/// <summary>
 		/// 최종거래일
 		/// </summary>
@@ -576,7 +576,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 괴리율
 		/// </summary>
 		[JsonProperty("dispty_rt")]
-		public decimal? DisparityRate;
+		public KiwoomDecimal? DisparityRate;
 		/// <summary>
 		/// LP회원사명
 		/// </summary>
@@ -633,7 +633,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 대비기호
 		/// </summary>
@@ -643,12 +643,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 등락률
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? ChangeRate;
+		public KiwoomDecimal? ChangeRate;
 		/// <summary>
 		/// 매도잔량
 		/// </summary>
@@ -700,7 +700,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 대비기호
 		/// </summary>
@@ -710,12 +710,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 등락률
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? ChangeRate;
+		public KiwoomDecimal? ChangeRate;
 		/// <summary>
 		/// 거래량
 		/// </summary>
@@ -767,7 +767,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 대비기호
 		/// </summary>
@@ -777,12 +777,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? ChangeRate;
+		public KiwoomDecimal? ChangeRate;
 		/// <summary>
 		/// 누적거래량
 		/// </summary>
@@ -806,7 +806,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 전일대비기호
 		/// </summary>
@@ -816,12 +816,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? ChangeRate;
+		public KiwoomDecimal? ChangeRate;
 		/// <summary>
 		/// LP회원사명
 		/// </summary>
@@ -856,7 +856,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 괴리율
 		/// </summary>
 		[JsonProperty("dispty_rt")]
-		public decimal? DisparityRate;
+		public KiwoomDecimal? DisparityRate;
 		/// <summary>
 		/// ELW내재변동성
 		/// </summary>
@@ -871,7 +871,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// ELW손익분기율
 		/// </summary>
 		[JsonProperty("elwpl_qutr_rt")]
-		public decimal? ElwBreakEvenRate;
+		public KiwoomDecimal? ElwBreakEvenRate;
 		/// <summary>
 		/// ELW행사가
 		/// </summary>
@@ -916,7 +916,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// LP보유비율
 		/// </summary>
 		[JsonProperty("lpposs_rt")]
-		public decimal? LpHoldingRate;
+		public KiwoomDecimal? LpHoldingRate;
 		/// <summary>
 		/// LP보유수량
 		/// </summary>

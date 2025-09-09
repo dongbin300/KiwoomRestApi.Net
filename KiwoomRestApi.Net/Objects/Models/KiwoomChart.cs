@@ -1,5 +1,6 @@
 ﻿using KiwoomRestApi.Net.Converters;
 using KiwoomRestApi.Net.Enums.Chart;
+using KiwoomRestApi.Net.Objects.Commons;
 
 using Newtonsoft.Json;
 
@@ -28,12 +29,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? Change;
+		public KiwoomDecimal? Change;
 		/// <summary>
 		/// 누적거래대금
 		/// </summary>
@@ -43,67 +44,67 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 개인투자자
 		/// </summary>
 		[JsonProperty("ind_invsr")]
-		public decimal? RetailInvestor;
+		public KiwoomDecimal? RetailInvestor;
 		/// <summary>
 		/// 외국인투자자
 		/// </summary>
 		[JsonProperty("frgnr_invsr")]
-		public decimal? ForeignInvestor;
+		public KiwoomDecimal? ForeignInvestor;
 		/// <summary>
 		/// 기관계
 		/// </summary>
 		[JsonProperty("orgn")]
-		public decimal? Institution;
+		public KiwoomDecimal? Institution;
 		/// <summary>
 		/// 금융투자
 		/// </summary>
 		[JsonProperty("fnnc_invt")]
-		public decimal? FinancialInvestment;
+		public KiwoomDecimal? FinancialInvestment;
 		/// <summary>
 		/// 보험
 		/// </summary>
 		[JsonProperty("insrnc")]
-		public decimal? Insurance;
+		public KiwoomDecimal? Insurance;
 		/// <summary>
 		/// 투신
 		/// </summary>
 		[JsonProperty("invtrt")]
-		public decimal? InvestmentTrust;
+		public KiwoomDecimal? InvestmentTrust;
 		/// <summary>
 		/// 기타금융
 		/// </summary>
 		[JsonProperty("etc_fnnc")]
-		public decimal? OtherFinancials;
+		public KiwoomDecimal? OtherFinancials;
 		/// <summary>
 		/// 은행
 		/// </summary>
 		[JsonProperty("bank")]
-		public decimal? Bank;
+		public KiwoomDecimal? Bank;
 		/// <summary>
 		/// 연기금등
 		/// </summary>
 		[JsonProperty("penfnd_etc")]
-		public decimal? PensionFundEtc;
+		public KiwoomDecimal? PensionFundEtc;
 		/// <summary>
 		/// 사모펀드
 		/// </summary>
 		[JsonProperty("samo_fund")]
-		public decimal? PrivateFund;
+		public KiwoomDecimal? PrivateFund;
 		/// <summary>
 		/// 국가
 		/// </summary>
 		[JsonProperty("natn")]
-		public decimal? Nation;
+		public KiwoomDecimal? Nation;
 		/// <summary>
 		/// 기타법인
 		/// </summary>
 		[JsonProperty("etc_corp")]
-		public decimal? OtherCorporations;
+		public KiwoomDecimal? OtherCorporations;
 		/// <summary>
 		/// 내외국인
 		/// </summary>
 		[JsonProperty("natfor")]
-		public decimal? DomesticForeign;
+		public KiwoomDecimal? DomesticForeign;
 	}
 
 	public record KiwoomChartGetIntradayInvestorTradeCharts
@@ -126,42 +127,42 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 외국인투자자
 		/// </summary>
 		[JsonProperty("frgnr_invsr")]
-		public decimal? ForeignInvestor;
+		public KiwoomDecimal? ForeignInvestor;
 		/// <summary>
 		/// 기관계
 		/// </summary>
 		[JsonProperty("orgn")]
-		public decimal? Institution;
+		public KiwoomDecimal? Institution;
 		/// <summary>
 		/// 투신
 		/// </summary>
 		[JsonProperty("invtrt")]
-		public decimal? InvestmentTrust;
+		public KiwoomDecimal? InvestmentTrust;
 		/// <summary>
 		/// 보험
 		/// </summary>
 		[JsonProperty("insrnc")]
-		public decimal? Insurance;
+		public KiwoomDecimal? Insurance;
 		/// <summary>
 		/// 은행
 		/// </summary>
 		[JsonProperty("bank")]
-		public decimal? Bank;
+		public KiwoomDecimal? Bank;
 		/// <summary>
 		/// 연기금등
 		/// </summary>
 		[JsonProperty("penfnd_etc")]
-		public decimal? PensionFundEtc;
+		public KiwoomDecimal? PensionFundEtc;
 		/// <summary>
 		/// 기타법인
 		/// </summary>
 		[JsonProperty("etc_corp")]
-		public decimal? OtherCorporations;
+		public KiwoomDecimal? OtherCorporations;
 		/// <summary>
 		/// 국가
 		/// </summary>
 		[JsonProperty("natn")]
-		public decimal? Nation;
+		public KiwoomDecimal? Nation;
 	}
 
 	public record KiwoomChartGetTickCharts
@@ -201,7 +202,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 거래량
 		/// </summary>
@@ -217,17 +218,17 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 시가
 		/// </summary>
 		[JsonProperty("open_pric")]
-		public decimal? Open;
+		public KiwoomDecimal? Open;
 		/// <summary>
 		/// 고가
 		/// </summary>
 		[JsonProperty("high_pric")]
-		public decimal? High;
+		public KiwoomDecimal? High;
 		/// <summary>
 		/// 저가
 		/// </summary>
 		[JsonProperty("low_pric")]
-		public decimal? Low;
+		public KiwoomDecimal? Low;
 		/// <summary>
 		/// 수정주가구분 - 1:유상증자, 2:무상증자, 4:배당락, 8:액면분할, 16:액면병합, 32:기업합병, 64:감자, 256:권리락
 		/// </summary>
@@ -238,7 +239,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 수정비율
 		/// </summary>
 		[JsonProperty("upd_rt")]
-		public decimal? AdjustmentRate;
+		public KiwoomDecimal? AdjustmentRate;
 		/// <summary>
 		/// 대업종구분
 		/// </summary>
@@ -324,7 +325,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 거래량
 		/// </summary>
@@ -345,17 +346,17 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 시가
 		/// </summary>
 		[JsonProperty("open_pric")]
-		public decimal? Open;
+		public KiwoomDecimal? Open;
 		/// <summary>
 		/// 고가
 		/// </summary>
 		[JsonProperty("high_pric")]
-		public decimal? High;
+		public KiwoomDecimal? High;
 		/// <summary>
 		/// 저가
 		/// </summary>
 		[JsonProperty("low_pric")]
-		public decimal? Low;
+		public KiwoomDecimal? Low;
 		/// <summary>
 		/// 수정주가구분 - 1:유상증자, 2:무상증자, 4:배당락, 8:액면분할, 16:액면병합, 32:기업합병, 64:감자, 256:권리락
 		/// </summary>
@@ -366,7 +367,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 수정비율
 		/// </summary>
 		[JsonProperty("upd_rt")]
-		public decimal? AdjustmentRate;
+		public KiwoomDecimal? AdjustmentRate;
 		/// <summary>
 		/// 대업종구분
 		/// </summary>
@@ -426,7 +427,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 거래량
 		/// </summary>
@@ -442,17 +443,17 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 시가
 		/// </summary>
 		[JsonProperty("open_pric")]
-		public decimal? Open;
+		public KiwoomDecimal? Open;
 		/// <summary>
 		/// 고가
 		/// </summary>
 		[JsonProperty("high_pric")]
-		public decimal? High;
+		public KiwoomDecimal? High;
 		/// <summary>
 		/// 저가
 		/// </summary>
 		[JsonProperty("low_pric")]
-		public decimal? Low;
+		public KiwoomDecimal? Low;
 		/// <summary>
 		/// 대업종구분
 		/// </summary>
@@ -533,7 +534,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 거래량
 		/// </summary>
@@ -549,17 +550,17 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 시가
 		/// </summary>
 		[JsonProperty("open_pric")]
-		public decimal? Open;
+		public KiwoomDecimal? Open;
 		/// <summary>
 		/// 고가
 		/// </summary>
 		[JsonProperty("high_pric")]
-		public decimal? High;
+		public KiwoomDecimal? High;
 		/// <summary>
 		/// 저가
 		/// </summary>
 		[JsonProperty("low_pric")]
-		public decimal? Low;
+		public KiwoomDecimal? Low;
 		/// <summary>
 		/// 거래대금
 		/// </summary>
