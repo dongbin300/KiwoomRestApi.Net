@@ -15,347 +15,347 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// </summary>
 		[JsonProperty("bid_req_base_tm")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan? BidRequestBaseTime;
+		public TimeSpan? OrderBookTime;
 		/// <summary>
 		/// 매도10차선잔량대비
 		/// </summary>
 		[JsonProperty("sel_10th_pre_req_pre")]
-		public decimal? AskLevel10PrevDiff;
+		public KiwoomDecimal? SellQuantityChange10;
 		/// <summary>
 		/// 매도10차선잔량
 		/// </summary>
 		[JsonProperty("sel_10th_pre_req")]
-		public decimal? AskLevel10Quantity;
+		public decimal? SellQuantity10;
 		/// <summary>
 		/// 매도10차선호가
 		/// </summary>
 		[JsonProperty("sel_10th_pre_bid")]
-		public decimal? AskLevel10Price;
+		public decimal? SellPrice10;
 		/// <summary>
 		/// 매도9차선잔량대비
 		/// </summary>
 		[JsonProperty("sel_9th_pre_req_pre")]
-		public decimal? AskLevel9PrevDiff;
+		public KiwoomDecimal? SellQuantityChange9;
 		/// <summary>
 		/// 매도9차선잔량
 		/// </summary>
 		[JsonProperty("sel_9th_pre_req")]
-		public decimal? AskLevel9Quantity;
+		public decimal? SellQuantity9;
 		/// <summary>
 		/// 매도9차선호가
 		/// </summary>
 		[JsonProperty("sel_9th_pre_bid")]
-		public decimal? AskLevel9Price;
+		public decimal? SellPrice9;
 		/// <summary>
 		/// 매도8차선잔량대비
 		/// </summary>
 		[JsonProperty("sel_8th_pre_req_pre")]
-		public decimal? AskLevel8PrevDiff;
+		public KiwoomDecimal? SellQuantityChange8;
 		/// <summary>
 		/// 매도8차선잔량
 		/// </summary>
 		[JsonProperty("sel_8th_pre_req")]
-		public decimal? AskLevel8Quantity;
+		public decimal? SellQuantity8;
 		/// <summary>
 		/// 매도8차선호가
 		/// </summary>
 		[JsonProperty("sel_8th_pre_bid")]
-		public decimal? AskLevel8Price;
+		public decimal? SellPrice8;
 		/// <summary>
 		/// 매도7차선잔량대비
 		/// </summary>
 		[JsonProperty("sel_7th_pre_req_pre")]
-		public decimal? AskLevel7PrevDiff;
+		public KiwoomDecimal? SellQuantityChange7;
 		/// <summary>
 		/// 매도7차선잔량
 		/// </summary>
 		[JsonProperty("sel_7th_pre_req")]
-		public decimal? AskLevel7Quantity;
+		public decimal? SellQuantity7;
 		/// <summary>
 		/// 매도7차선호가
 		/// </summary>
 		[JsonProperty("sel_7th_pre_bid")]
-		public decimal? AskLevel7Price;
+		public decimal? SellPrice7;
 		/// <summary>
 		/// 매도6차선잔량대비
 		/// </summary>
 		[JsonProperty("sel_6th_pre_req_pre")]
-		public decimal? AskLevel6PrevDiff;
+		public KiwoomDecimal? SellQuantityChange6;
 		/// <summary>
 		/// 매도6차선잔량
 		/// </summary>
 		[JsonProperty("sel_6th_pre_req")]
-		public decimal? AskLevel6Quantity;
+		public decimal? SellQuantity6;
 		/// <summary>
 		/// 매도6차선호가
 		/// </summary>
 		[JsonProperty("sel_6th_pre_bid")]
-		public decimal? AskLevel6Price;
+		public decimal? SellPrice6;
 		/// <summary>
 		/// 매도5차선잔량대비
 		/// </summary>
 		[JsonProperty("sel_5th_pre_req_pre")]
-		public decimal? AskLevel5PrevDiff;
+		public KiwoomDecimal? SellQuantityChange5;
 		/// <summary>
 		/// 매도5차선잔량
 		/// </summary>
 		[JsonProperty("sel_5th_pre_req")]
-		public decimal? AskLevel5Quantity;
+		public decimal? SellQuantity5;
 		/// <summary>
 		/// 매도5차선호가
 		/// </summary>
 		[JsonProperty("sel_5th_pre_bid")]
-		public decimal? AskLevel5Price;
+		public decimal? SellPrice5;
 		/// <summary>
 		/// 매도4차선잔량대비
 		/// </summary>
 		[JsonProperty("sel_4th_pre_req_pre")]
-		public decimal? AskLevel4PrevDiff;
+		public KiwoomDecimal? SellQuantityChange4;
 		/// <summary>
 		/// 매도4차선잔량
 		/// </summary>
 		[JsonProperty("sel_4th_pre_req")]
-		public decimal? AskLevel4Quantity;
+		public decimal? SellQuantity4;
 		/// <summary>
 		/// 매도4차선호가
 		/// </summary>
 		[JsonProperty("sel_4th_pre_bid")]
-		public decimal? AskLevel4Price;
+		public decimal? SellPrice4;
 		/// <summary>
 		/// 매도3차선잔량대비
 		/// </summary>
 		[JsonProperty("sel_3th_pre_req_pre")]
-		public decimal? AskLevel3PrevDiff;
+		public KiwoomDecimal? SellQuantityChange3;
 		/// <summary>
 		/// 매도3차선잔량
 		/// </summary>
 		[JsonProperty("sel_3th_pre_req")]
-		public decimal? AskLevel3Quantity;
+		public decimal? SellQuantity3;
 		/// <summary>
 		/// 매도3차선호가
 		/// </summary>
 		[JsonProperty("sel_3th_pre_bid")]
-		public decimal? AskLevel3Price;
+		public decimal? SellPrice3;
 		/// <summary>
 		/// 매도2차선잔량대비
 		/// </summary>
 		[JsonProperty("sel_2th_pre_req_pre")]
-		public decimal? AskLevel2PrevDiff;
+		public KiwoomDecimal? SellQuantityChange2;
 		/// <summary>
 		/// 매도2차선잔량
 		/// </summary>
 		[JsonProperty("sel_2th_pre_req")]
-		public decimal? AskLevel2Quantity;
+		public decimal? SellQuantity2;
 		/// <summary>
 		/// 매도2차선호가
 		/// </summary>
 		[JsonProperty("sel_2th_pre_bid")]
-		public decimal? AskLevel2Price;
+		public decimal? SellPrice2;
 		/// <summary>
 		/// 매도1차선잔량대비
 		/// </summary>
 		[JsonProperty("sel_1th_pre_req_pre")]
-		public decimal? AskLevel1PrevDiff;
+		public KiwoomDecimal? SellQuantityChange1;
 		/// <summary>
 		/// 매도최우선잔량
 		/// </summary>
 		[JsonProperty("sel_fpr_req")]
-		public decimal? AskLevel1Quantity;
+		public decimal? SellQuantity1;
 		/// <summary>
 		/// 매도최우선호가
 		/// </summary>
 		[JsonProperty("sel_fpr_bid")]
-		public decimal? AskLevel1Price;
+		public decimal? SellPrice1;
 		/// <summary>
 		/// 매수최우선호가
 		/// </summary>
 		[JsonProperty("buy_fpr_bid")]
-		public decimal? BidLevel1Price;
+		public decimal? BuyPrice1;
 		/// <summary>
 		/// 매수최우선잔량
 		/// </summary>
 		[JsonProperty("buy_fpr_req")]
-		public decimal? BidLevel1Quantity;
+		public decimal? BuyQuantity1;
 		/// <summary>
 		/// 매수1차선잔량대비
 		/// </summary>
 		[JsonProperty("buy_1th_pre_req_pre")]
-		public KiwoomDecimal? BidLevel1PrevDiff;
+		public KiwoomDecimal? BuyQuantityChange1;
 		/// <summary>
 		/// 매수2차선호가
 		/// </summary>
 		[JsonProperty("buy_2th_pre_bid")]
-		public decimal? BidLevel2Price;
+		public decimal? BuyPrice2;
 		/// <summary>
 		/// 매수2차선잔량
 		/// </summary>
 		[JsonProperty("buy_2th_pre_req")]
-		public decimal? BidLevel2Quantity;
+		public decimal? BuyQuantity2;
 		/// <summary>
 		/// 매수2차선잔량대비
 		/// </summary>
 		[JsonProperty("buy_2th_pre_req_pre")]
-		public KiwoomDecimal? BidLevel2PrevDiff;
+		public KiwoomDecimal? BuyQuantityChange2;
 		/// <summary>
 		/// 매수3차선호가
 		/// </summary>
 		[JsonProperty("buy_3th_pre_bid")]
-		public decimal? BidLevel3Price;
+		public decimal? BuyPrice3;
 		/// <summary>
 		/// 매수3차선잔량
 		/// </summary>
 		[JsonProperty("buy_3th_pre_req")]
-		public decimal? BidLevel3Quantity;
+		public decimal? BuyQuantity3;
 		/// <summary>
 		/// 매수3차선잔량대비
 		/// </summary>
 		[JsonProperty("buy_3th_pre_req_pre")]
-		public KiwoomDecimal? BidLevel3PrevDiff;
+		public KiwoomDecimal? BuyQuantityChange3;
 		/// <summary>
 		/// 매수4차선호가
 		/// </summary>
 		[JsonProperty("buy_4th_pre_bid")]
-		public decimal? BidLevel4Price;
+		public decimal? BuyPrice4;
 		/// <summary>
 		/// 매수4차선잔량
 		/// </summary>
 		[JsonProperty("buy_4th_pre_req")]
-		public decimal? BidLevel4Quantity;
+		public decimal? BuyQuantity4;
 		/// <summary>
 		/// 매수4차선잔량대비
 		/// </summary>
 		[JsonProperty("buy_4th_pre_req_pre")]
-		public KiwoomDecimal? BidLevel4PrevDiff;
+		public KiwoomDecimal? BuyQuantityChange4;
 		/// <summary>
 		/// 매수5차선호가
 		/// </summary>
 		[JsonProperty("buy_5th_pre_bid")]
-		public decimal? BidLevel5Price;
+		public decimal? BuyPrice5;
 		/// <summary>
 		/// 매수5차선잔량
 		/// </summary>
 		[JsonProperty("buy_5th_pre_req")]
-		public decimal? BidLevel5Quantity;
+		public decimal? BuyQuantity5;
 		/// <summary>
 		/// 매수5차선잔량대비
 		/// </summary>
 		[JsonProperty("buy_5th_pre_req_pre")]
-		public KiwoomDecimal? BidLevel5PrevDiff;
+		public KiwoomDecimal? BuyQuantityChange5;
 		/// <summary>
 		/// 매수6차선호가
 		/// </summary>
 		[JsonProperty("buy_6th_pre_bid")]
-		public decimal? BidLevel6Price;
+		public decimal? BuyPrice6;
 		/// <summary>
 		/// 매수6차선잔량
 		/// </summary>
 		[JsonProperty("buy_6th_pre_req")]
-		public decimal? BidLevel6Quantity;
+		public decimal? BuyQuantity6;
 		/// <summary>
 		/// 매수6차선잔량대비
 		/// </summary>
 		[JsonProperty("buy_6th_pre_req_pre")]
-		public KiwoomDecimal? BidLevel6PrevDiff;
+		public KiwoomDecimal? BuyQuantityChange6;
 		/// <summary>
 		/// 매수7차선호가
 		/// </summary>
 		[JsonProperty("buy_7th_pre_bid")]
-		public decimal? BidLevel7Price;
+		public decimal? BuyPrice7;
 		/// <summary>
 		/// 매수7차선잔량
 		/// </summary>
 		[JsonProperty("buy_7th_pre_req")]
-		public decimal? BidLevel7Quantity;
+		public decimal? BuyQuantity7;
 		/// <summary>
 		/// 매수7차선잔량대비
 		/// </summary>
 		[JsonProperty("buy_7th_pre_req_pre")]
-		public KiwoomDecimal? BidLevel7PrevDiff;
+		public KiwoomDecimal? BuyQuantityChange7;
 		/// <summary>
 		/// 매수8차선호가
 		/// </summary>
 		[JsonProperty("buy_8th_pre_bid")]
-		public decimal? BidLevel8Price;
+		public decimal? BuyPrice8;
 		/// <summary>
 		/// 매수8차선잔량
 		/// </summary>
 		[JsonProperty("buy_8th_pre_req")]
-		public decimal? BidLevel8Quantity;
+		public decimal? BuyQuantity8;
 		/// <summary>
 		/// 매수8차선잔량대비
 		/// </summary>
 		[JsonProperty("buy_8th_pre_req_pre")]
-		public KiwoomDecimal? BidLevel8PrevDiff;
+		public KiwoomDecimal? BuyQuantityChange8;
 		/// <summary>
 		/// 매수9차선호가
 		/// </summary>
 		[JsonProperty("buy_9th_pre_bid")]
-		public decimal? BidLevel9Price;
+		public decimal? BuyPrice9;
 		/// <summary>
 		/// 매수9차선잔량
 		/// </summary>
 		[JsonProperty("buy_9th_pre_req")]
-		public decimal? BidLevel9Quantity;
+		public decimal? BuyQuantity9;
 		/// <summary>
 		/// 매수9차선잔량대비
 		/// </summary>
 		[JsonProperty("buy_9th_pre_req_pre")]
-		public KiwoomDecimal? BidLevel9PrevDiff;
+		public KiwoomDecimal? BuyQuantityChange9;
 		/// <summary>
 		/// 매수10차선호가
 		/// </summary>
 		[JsonProperty("buy_10th_pre_bid")]
-		public decimal? BidLevel10Price;
+		public decimal? BuyPrice10;
 		/// <summary>
 		/// 매수10차선잔량
 		/// </summary>
 		[JsonProperty("buy_10th_pre_req")]
-		public decimal? BidLevel10Quantity;
+		public decimal? BuyQuantity10;
 		/// <summary>
 		/// 매수10차선잔량대비
 		/// </summary>
 		[JsonProperty("buy_10th_pre_req_pre")]
-		public KiwoomDecimal? BidLevel10PrevDiff;
+		public KiwoomDecimal? BuyQuantityChange10;
 		/// <summary>
 		/// 총매도잔량직전대비
 		/// </summary>
 		[JsonProperty("tot_sel_req_jub_pre")]
-		public decimal? TotalAskQuantityPrevDiff;
+		public KiwoomDecimal? TotalSellQuantityChange;
 		/// <summary>
 		/// 총매도잔량
 		/// </summary>
 		[JsonProperty("tot_sel_req")]
-		public decimal? TotalAskQuantity;
+		public decimal? TotalSellQuantity;
 		/// <summary>
 		/// 총매수잔량
 		/// </summary>
 		[JsonProperty("tot_buy_req")]
-		public decimal? TotalBidQuantity;
+		public decimal? TotalBuyQuantity;
 		/// <summary>
 		/// 총매수잔량직전대비
 		/// </summary>
 		[JsonProperty("tot_buy_req_jub_pre")]
-		public KiwoomDecimal? TotalBidQuantityPrevDiff;
+		public KiwoomDecimal? TotalBuyQuantityChange;
 		/// <summary>
 		/// 시간외매도잔량대비
 		/// </summary>
 		[JsonProperty("ovt_sel_req_pre")]
-		public decimal? AfterHoursAskQuantityPrevDiff;
+		public KiwoomDecimal? AfterMarketSellQuantityChange;
 		/// <summary>
 		/// 시간외매도잔량
 		/// </summary>
 		[JsonProperty("ovt_sel_req")]
-		public decimal? AfterHoursAskQuantity;
+		public decimal? AfterMarketSellQuantity;
 		/// <summary>
 		/// 시간외매수잔량
 		/// </summary>
 		[JsonProperty("ovt_buy_req")]
-		public decimal? AfterHoursBidQuantity;
+		public decimal? AfterMarketBuyQuantity;
 		/// <summary>
 		/// 시간외매수잔량대비
 		/// </summary>
 		[JsonProperty("ovt_buy_req_pre")]
-		public KiwoomDecimal? AfterHoursBidQuantityPrevDiff;
+		public KiwoomDecimal? AfterMarketBuyQuantityChange;
 	}
 
 	public record PriceVolumeDiff
@@ -371,13 +371,13 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// <summary>
 		/// 전일대비 차이
 		/// </summary>
-		public decimal? PrevDiff;
+		public decimal? Change;
 
-		public PriceVolumeDiff(decimal? price, decimal? quantity, decimal? prevDiff)
+		public PriceVolumeDiff(decimal? price, decimal? quantity, decimal? change)
 		{
 			Price = price;
 			Quantity = quantity;
-			PrevDiff = prevDiff;
+			Change = change;
 		}
 	}
 
@@ -386,88 +386,87 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// <summary>
 		/// 호가잔량기준시간
 		/// </summary>
-		public TimeSpan? BidRequestBaseTime;
+		public TimeSpan? OrderBookTime;
 		/// <summary>
 		/// 매도호가
 		/// </summary>
-		public PriceVolumeDiff[] AskLevels;
+		public PriceVolumeDiff[] SellQuotes;
 		/// <summary>
 		/// 매수호가
 		/// </summary>
-		public PriceVolumeDiff[] BidLevels;
+		public PriceVolumeDiff[] BuyQuotes;
 		/// <summary>
 		/// 총매도잔량직전대비
 		/// </summary>
-		public decimal? TotalAskQuantityPrevDiff;
+		public decimal? TotalSellRemainQuantityChange;
 		/// <summary>
 		/// 총매도잔량
 		/// </summary>
-		public decimal? TotalAskQuantity;
+		public decimal? TotalSellRemainQuantity;
 		/// <summary>
 		/// 총매수잔량
 		/// </summary>
-		public decimal? TotalBidQuantity;
+		public decimal? TotalBuyRemainQuantity;
 		/// <summary>
 		/// 총매수잔량직전대비
 		/// </summary>
-		public decimal? TotalBidQuantityPrevDiff;
+		public decimal? TotalBuyRemainQuantityChange;
 		/// <summary>
 		/// 시간외매도잔량대비
 		/// </summary>
-		public decimal? AfterHoursAskQuantityPrevDiff;
+		public decimal? AfterMarketSellRemainQuantityChange;
 		/// <summary>
 		/// 시간외매도잔량
 		/// </summary>
-		public decimal? AfterHoursAskQuantity;
+		public decimal? AfterMarketSellRemainQuantity;
 		/// <summary>
 		/// 시간외매수잔량
 		/// </summary>
-		public decimal? AfterHoursBidQuantity;
+		public decimal? AfterMarketBuyRemainQuantity;
 		/// <summary>
 		/// 시간외매수잔량대비
 		/// </summary>
-		public decimal? AfterHoursBidQuantityPrevDiff;
+		public decimal? AfterMarketBuyRemainQuantityChange;
 
 		public KiwoomMarketConditionGetOrderBookList(KiwoomMarketConditionGetOrderBook raw)
 		{
-			BidRequestBaseTime = raw.BidRequestBaseTime;
+			OrderBookTime = raw.OrderBookTime;
 
-			AskLevels =
+			SellQuotes =
 			[
-				new(raw.AskLevel1Price, raw.AskLevel1Quantity, raw.AskLevel1PrevDiff),
-				new(raw.AskLevel2Price, raw.AskLevel2Quantity, raw.AskLevel2PrevDiff),
-				new(raw.AskLevel3Price, raw.AskLevel3Quantity, raw.AskLevel3PrevDiff),
-				new(raw.AskLevel4Price, raw.AskLevel4Quantity, raw.AskLevel4PrevDiff),
-				new(raw.AskLevel5Price, raw.AskLevel5Quantity, raw.AskLevel5PrevDiff),
-				new(raw.AskLevel6Price, raw.AskLevel6Quantity, raw.AskLevel6PrevDiff),
-				new(raw.AskLevel7Price, raw.AskLevel7Quantity, raw.AskLevel7PrevDiff),
-				new(raw.AskLevel8Price, raw.AskLevel8Quantity, raw.AskLevel8PrevDiff),
-				new(raw.AskLevel9Price, raw.AskLevel9Quantity, raw.AskLevel9PrevDiff),
-				new(raw.AskLevel10Price, raw.AskLevel10Quantity, raw.AskLevel10PrevDiff)
+				new(raw.SellPrice1, raw.SellQuantity1, raw.SellQuantityChange1),
+				new(raw.SellPrice2, raw.SellQuantity2, raw.SellQuantityChange2),
+				new(raw.SellPrice3, raw.SellQuantity3, raw.SellQuantityChange3),
+				new(raw.SellPrice4, raw.SellQuantity4, raw.SellQuantityChange4),
+				new(raw.SellPrice5, raw.SellQuantity5, raw.SellQuantityChange5),
+				new(raw.SellPrice6, raw.SellQuantity6, raw.SellQuantityChange6),
+				new(raw.SellPrice7, raw.SellQuantity7, raw.SellQuantityChange7),
+				new(raw.SellPrice8, raw.SellQuantity8, raw.SellQuantityChange8),
+				new(raw.SellPrice9, raw.SellQuantity9, raw.SellQuantityChange9),
+				new(raw.SellPrice10, raw.SellQuantity10, raw.SellQuantityChange10)
+			];
+			BuyQuotes =
+			[
+				new(raw.BuyPrice1, raw.BuyQuantity1, raw.BuyQuantityChange1),
+				new(raw.BuyPrice2, raw.BuyQuantity2, raw.BuyQuantityChange2),
+				new(raw.BuyPrice3, raw.BuyQuantity3, raw.BuyQuantityChange3),
+				new(raw.BuyPrice4, raw.BuyQuantity4, raw.BuyQuantityChange4),
+				new(raw.BuyPrice5, raw.BuyQuantity5, raw.BuyQuantityChange5),
+				new(raw.BuyPrice6, raw.BuyQuantity6, raw.BuyQuantityChange6),
+				new(raw.BuyPrice7, raw.BuyQuantity7, raw.BuyQuantityChange7),
+				new(raw.BuyPrice8, raw.BuyQuantity8, raw.BuyQuantityChange8),
+				new(raw.BuyPrice9, raw.BuyQuantity9, raw.BuyQuantityChange9),
+				new(raw.BuyPrice10, raw.BuyQuantity10, raw.BuyQuantityChange10)
 			];
 
-			BidLevels =
-			[
-				new(raw.BidLevel1Price, raw.BidLevel1Quantity, raw.BidLevel1PrevDiff),
-				new(raw.BidLevel2Price, raw.BidLevel2Quantity, raw.BidLevel2PrevDiff),
-				new(raw.BidLevel3Price, raw.BidLevel3Quantity, raw.BidLevel3PrevDiff),
-				new(raw.BidLevel4Price, raw.BidLevel4Quantity, raw.BidLevel4PrevDiff),
-				new(raw.BidLevel5Price, raw.BidLevel5Quantity, raw.BidLevel5PrevDiff),
-				new(raw.BidLevel6Price, raw.BidLevel6Quantity, raw.BidLevel6PrevDiff),
-				new(raw.BidLevel7Price, raw.BidLevel7Quantity, raw.BidLevel7PrevDiff),
-				new(raw.BidLevel8Price, raw.BidLevel8Quantity, raw.BidLevel8PrevDiff),
-				new(raw.BidLevel9Price, raw.BidLevel9Quantity, raw.BidLevel9PrevDiff),
-				new(raw.BidLevel10Price, raw.BidLevel10Quantity, raw.BidLevel10PrevDiff)
-			];
-
-			TotalAskQuantityPrevDiff = raw.TotalAskQuantityPrevDiff;
-			TotalAskQuantity = raw.TotalAskQuantity;
-			TotalBidQuantity = raw.TotalBidQuantity;
-			TotalBidQuantityPrevDiff = raw.TotalBidQuantityPrevDiff;
-			AfterHoursAskQuantityPrevDiff = raw.AfterHoursAskQuantityPrevDiff;
-			AfterHoursAskQuantity = raw.AfterHoursAskQuantity;
-			AfterHoursBidQuantity = raw.AfterHoursBidQuantity;
-			AfterHoursBidQuantityPrevDiff = raw.AfterHoursBidQuantityPrevDiff;
+			TotalSellRemainQuantityChange = raw.TotalSellQuantityChange;
+			TotalSellRemainQuantity = raw.TotalSellQuantity;
+			TotalBuyRemainQuantity = raw.TotalBuyQuantity;
+			TotalBuyRemainQuantityChange = raw.TotalBuyQuantityChange;
+			AfterMarketSellRemainQuantityChange = raw.AfterMarketSellQuantityChange;
+			AfterMarketSellRemainQuantity = raw.AfterMarketSellQuantity;
+			AfterMarketBuyRemainQuantity = raw.AfterMarketBuyQuantity;
+			AfterMarketBuyRemainQuantityChange = raw.AfterMarketBuyQuantityChange;
 		}
 	}
 
@@ -483,47 +482,47 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 시가
 		/// </summary>
 		[JsonProperty("open_pric")]
-		public decimal? OpenPrice;
+		public decimal? Open;
 		/// <summary>
 		/// 고가
 		/// </summary>
 		[JsonProperty("high_pric")]
-		public decimal? HighPrice;
+		public decimal? High;
 		/// <summary>
 		/// 저가
 		/// </summary>
 		[JsonProperty("low_pric")]
-		public decimal? LowPrice;
+		public decimal? Low;
 		/// <summary>
 		/// 종가
 		/// </summary>
 		[JsonProperty("close_pric")]
-		public decimal? ClosePrice;
+		public decimal? Close;
 		/// <summary>
 		/// 대비
 		/// </summary>
 		[JsonProperty("pre")]
-		public decimal? PrevDiff;
+		public decimal? Change;
 		/// <summary>
 		/// 등락률
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? FluctuationRate;
+		public decimal? ChangeRate;
 		/// <summary>
 		/// 거래량
 		/// </summary>
 		[JsonProperty("trde_qty")]
-		public decimal? TradeQuantity;
+		public decimal? Volume;
 		/// <summary>
 		/// 거래대금
 		/// </summary>
 		[JsonProperty("trde_prica")]
-		public decimal? TradeAmount;
+		public decimal? TransactionAmount;
 		/// <summary>
 		/// 외인보유
 		/// </summary>
 		[JsonProperty("for_poss")]
-		public decimal? ForeignPossession;
+		public decimal? ForeignHolding;
 		/// <summary>
 		/// 외인비중
 		/// </summary>
@@ -533,32 +532,32 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 외인순매수
 		/// </summary>
 		[JsonProperty("for_netprps")]
-		public decimal? ForeignNetPurchase;
+		public decimal? ForeignNetBuy;
 		/// <summary>
 		/// 기관순매수
 		/// </summary>
 		[JsonProperty("orgn_netprps")]
-		public decimal? InstitutionNetPurchase;
+		public decimal? InstitutionNetBuy;
 		/// <summary>
 		/// 개인순매수
 		/// </summary>
 		[JsonProperty("ind_netprps")]
-		public decimal? IndividualNetPurchase;
+		public decimal? RetailNetBuy;
 		/// <summary>
 		/// 신용잔고율
 		/// </summary>
 		[JsonProperty("crd_remn_rt")]
-		public decimal? CreditRemainingRate;
+		public decimal? CreditBalanceRate;
 		/// <summary>
 		/// 외국계
 		/// </summary>
 		[JsonProperty("frgn")]
-		public decimal? ForeignBrokerage;
+		public decimal? ForeignInvestorRate;
 		/// <summary>
 		/// 프로그램
 		/// </summary>
 		[JsonProperty("prm")]
-		public decimal? ProgramTrading;
+		public decimal? ProgramTradingRate;
 	}
 
 	public record KiwoomMarketConditionGetHourMinute
@@ -573,47 +572,47 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 시가
 		/// </summary>
 		[JsonProperty("open_pric")]
-		public decimal? OpenPrice;
+		public decimal? Open;
 		/// <summary>
 		/// 고가
 		/// </summary>
 		[JsonProperty("high_pric")]
-		public decimal? HighPrice;
+		public decimal? High;
 		/// <summary>
 		/// 저가
 		/// </summary>
 		[JsonProperty("low_pric")]
-		public decimal? LowPrice;
+		public decimal? Low;
 		/// <summary>
 		/// 종가
 		/// </summary>
 		[JsonProperty("close_pric")]
-		public decimal? ClosePrice;
+		public decimal? Close;
 		/// <summary>
 		/// 대비
 		/// </summary>
 		[JsonProperty("pre")]
-		public decimal? PrevDiff;
+		public decimal? Change;
 		/// <summary>
 		/// 등락률
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? FluctuationRate;
+		public decimal? ChangeRate;
 		/// <summary>
 		/// 거래량
 		/// </summary>
 		[JsonProperty("trde_qty")]
-		public decimal? TradeQuantity;
+		public decimal? Volume;
 		/// <summary>
 		/// 거래대금
 		/// </summary>
 		[JsonProperty("trde_prica")]
-		public decimal? TradeAmount;
+		public decimal? TransactionAmount;
 		/// <summary>
 		/// 체결강도
 		/// </summary>
 		[JsonProperty("cntr_str")]
-		public decimal? ContractStrength;
+		public decimal? TradeMomentum;
 	}
 
 	public record KiwoomMarketConditionGetQuote
@@ -644,12 +643,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일종가
 		/// </summary>
 		[JsonProperty("pred_close_pric")]
-		public decimal? PrevClosePrice;
+		public decimal? PreviousDayClose;
 		/// <summary>
 		/// 전일거래량
 		/// </summary>
 		[JsonProperty("pred_trde_qty")]
-		public decimal? PrevTradeQuantity;
+		public decimal? PreviousDayVolume;
 		/// <summary>
 		/// 상한가
 		/// </summary>
@@ -664,12 +663,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일거래대금
 		/// </summary>
 		[JsonProperty("pred_trde_prica")]
-		public decimal? PrevTradeAmount;
+		public decimal? PreviousDayTransactionAmount;
 		/// <summary>
 		/// 상장주식수
 		/// </summary>
 		[JsonProperty("flo_stkcnt")]
-		public decimal? ListedShares;
+		public decimal? ListedQuantity;
 		/// <summary>
 		/// 현재가
 		/// </summary>
@@ -684,62 +683,62 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 등락률
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? FluctuationRate;
+		public decimal? ChangeRate;
 		/// <summary>
 		/// 전일비
 		/// </summary>
 		[JsonProperty("pred_rt")]
-		public decimal? PrevRate;
+		public decimal? PreviousDayRate;
 		/// <summary>
 		/// 시가
 		/// </summary>
 		[JsonProperty("open_pric")]
-		public decimal? OpenPrice;
+		public decimal? Open;
 		/// <summary>
 		/// 고가
 		/// </summary>
 		[JsonProperty("high_pric")]
-		public decimal? HighPrice;
+		public decimal? High;
 		/// <summary>
 		/// 저가
 		/// </summary>
 		[JsonProperty("low_pric")]
-		public decimal? LowPrice;
+		public decimal? Low;
 		/// <summary>
 		/// 체결량
 		/// </summary>
 		[JsonProperty("cntr_qty")]
-		public decimal? ContractQuantity;
+		public decimal? TradeQuantity;
 		/// <summary>
 		/// 거래량
 		/// </summary>
 		[JsonProperty("trde_qty")]
-		public decimal? TradeQuantity;
+		public decimal? Volume;
 		/// <summary>
 		/// 거래대금
 		/// </summary>
 		[JsonProperty("trde_prica")]
-		public decimal? TradeAmount;
+		public decimal? TransactionAmount;
 		/// <summary>
 		/// 예상체결가
 		/// </summary>
 		[JsonProperty("exp_cntr_pric")]
-		public decimal? ExpectedContractPrice;
+		public decimal? ExpectedTradePrice;
 		/// <summary>
 		/// 예상체결량
 		/// </summary>
 		[JsonProperty("exp_cntr_qty")]
-		public decimal? ExpectedContractQuantity;
+		public decimal? ExpectedTradeQuantity;
 		/// <summary>
 		/// 예상매도우선호가
 		/// </summary>
 		[JsonProperty("exp_sel_pri_bid")]
-		public decimal? ExpectedSellPriorityBid;
+		public decimal? ExpectedBestSellQuote;
 		/// <summary>
 		/// 예상매수우선호가
 		/// </summary>
 		[JsonProperty("exp_buy_pri_bid")]
-		public decimal? ExpectedBuyPriorityBid;
+		public decimal? ExpectedBestBuyQuote;
 		/// <summary>
 		/// 거래시작일
 		/// </summary>
@@ -777,452 +776,452 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매도1호가
 		/// </summary>
 		[JsonProperty("sel_1bid")]
-		public decimal? Sell1Price;
+		public decimal? SellPrice1;
 		/// <summary>
 		/// 매도2호가
 		/// </summary>
 		[JsonProperty("sel_2bid")]
-		public decimal? Sell2Price;
+		public decimal? SellPrice2;
 		/// <summary>
 		/// 매도3호가
 		/// </summary>
 		[JsonProperty("sel_3bid")]
-		public decimal? Sell3Price;
+		public decimal? SellPrice3;
 		/// <summary>
 		/// 매도4호가
 		/// </summary>
 		[JsonProperty("sel_4bid")]
-		public decimal? Sell4Price;
+		public decimal? SellPrice4;
 		/// <summary>
 		/// 매도5호가
 		/// </summary>
 		[JsonProperty("sel_5bid")]
-		public decimal? Sell5Price;
+		public decimal? SellPrice5;
 		/// <summary>
 		/// 매도6호가
 		/// </summary>
 		[JsonProperty("sel_6bid")]
-		public decimal? Sell6Price;
+		public decimal? SellPrice6;
 		/// <summary>
 		/// 매도7호가
 		/// </summary>
 		[JsonProperty("sel_7bid")]
-		public decimal? Sell7Price;
+		public decimal? SellPrice7;
 		/// <summary>
 		/// 매도8호가
 		/// </summary>
 		[JsonProperty("sel_8bid")]
-		public decimal? Sell8Price;
+		public decimal? SellPrice8;
 		/// <summary>
 		/// 매도9호가
 		/// </summary>
 		[JsonProperty("sel_9bid")]
-		public decimal? Sell9Price;
+		public decimal? SellPrice9;
 		/// <summary>
 		/// 매도10호가
 		/// </summary>
 		[JsonProperty("sel_10bid")]
-		public decimal? Sell10Price;
+		public decimal? SellPrice10;
 		/// <summary>
 		/// 매수1호가
 		/// </summary>
 		[JsonProperty("buy_1bid")]
-		public decimal? Buy1Price;
+		public decimal? BuyPrice1;
 		/// <summary>
 		/// 매수2호가
 		/// </summary>
 		[JsonProperty("buy_2bid")]
-		public decimal? Buy2Price;
+		public decimal? BuyPrice2;
 		/// <summary>
 		/// 매수3호가
 		/// </summary>
 		[JsonProperty("buy_3bid")]
-		public decimal? Buy3Price;
+		public decimal? BuyPrice3;
 		/// <summary>
 		/// 매수4호가
 		/// </summary>
 		[JsonProperty("buy_4bid")]
-		public decimal? Buy4Price;
+		public decimal? BuyPrice4;
 		/// <summary>
 		/// 매수5호가
 		/// </summary>
 		[JsonProperty("buy_5bid")]
-		public decimal? Buy5Price;
+		public decimal? BuyPrice5;
 		/// <summary>
 		/// 매수6호가
 		/// </summary>
 		[JsonProperty("buy_6bid")]
-		public decimal? Buy6Price;
+		public decimal? BuyPrice6;
 		/// <summary>
 		/// 매수7호가
 		/// </summary>
 		[JsonProperty("buy_7bid")]
-		public decimal? Buy7Price;
+		public decimal? BuyPrice7;
 		/// <summary>
 		/// 매수8호가
 		/// </summary>
 		[JsonProperty("buy_8bid")]
-		public decimal? Buy8Price;
+		public decimal? BuyPrice8;
 		/// <summary>
 		/// 매수9호가
 		/// </summary>
 		[JsonProperty("buy_9bid")]
-		public decimal? Buy9Price;
+		public decimal? BuyPrice9;
 		/// <summary>
 		/// 매수10호가
 		/// </summary>
 		[JsonProperty("buy_10bid")]
-		public decimal? Buy10Price;
+		public decimal? BuyPrice10;
 		/// <summary>
 		/// 매도1호가잔량
 		/// </summary>
 		[JsonProperty("sel_1bid_req")]
-		public decimal? Sell1Quantity;
+		public decimal? SellQuantity1;
 		/// <summary>
 		/// 매도2호가잔량
 		/// </summary>
 		[JsonProperty("sel_2bid_req")]
-		public decimal? Sell2Quantity;
+		public decimal? SellQuantity2;
 		/// <summary>
 		/// 매도3호가잔량
 		/// </summary>
 		[JsonProperty("sel_3bid_req")]
-		public decimal? Sell3Quantity;
+		public decimal? SellQuantity3;
 		/// <summary>
 		/// 매도4호가잔량
 		/// </summary>
 		[JsonProperty("sel_4bid_req")]
-		public decimal? Sell4Quantity;
+		public decimal? SellQuantity4;
 		/// <summary>
 		/// 매도5호가잔량
 		/// </summary>
 		[JsonProperty("sel_5bid_req")]
-		public decimal? Sell5Quantity;
+		public decimal? SellQuantity5;
 		/// <summary>
 		/// 매도6호가잔량
 		/// </summary>
 		[JsonProperty("sel_6bid_req")]
-		public decimal? Sell6Quantity;
+		public decimal? SellQuantity6;
 		/// <summary>
 		/// 매도7호가잔량
 		/// </summary>
 		[JsonProperty("sel_7bid_req")]
-		public decimal? Sell7Quantity;
+		public decimal? SellQuantity7;
 		/// <summary>
 		/// 매도8호가잔량
 		/// </summary>
 		[JsonProperty("sel_8bid_req")]
-		public decimal? Sell8Quantity;
+		public decimal? SellQuantity8;
 		/// <summary>
 		/// 매도9호가잔량
 		/// </summary>
 		[JsonProperty("sel_9bid_req")]
-		public decimal? Sell9Quantity;
+		public decimal? SellQuantity9;
 		/// <summary>
 		/// 매도10호가잔량
 		/// </summary>
 		[JsonProperty("sel_10bid_req")]
-		public decimal? Sell10Quantity;
+		public decimal? SellQuantity10;
 		/// <summary>
 		/// 매수1호가잔량
 		/// </summary>
 		[JsonProperty("buy_1bid_req")]
-		public decimal? Buy1Quantity;
+		public decimal? BuyQuantity1;
 		/// <summary>
 		/// 매수2호가잔량
 		/// </summary>
 		[JsonProperty("buy_2bid_req")]
-		public decimal? Buy2Quantity;
+		public decimal? BuyQuantity2;
 		/// <summary>
 		/// 매수3호가잔량
 		/// </summary>
 		[JsonProperty("buy_3bid_req")]
-		public decimal? Buy3Quantity;
+		public decimal? BuyQuantity3;
 		/// <summary>
 		/// 매수4호가잔량
 		/// </summary>
 		[JsonProperty("buy_4bid_req")]
-		public decimal? Buy4Quantity;
+		public decimal? BuyQuantity4;
 		/// <summary>
 		/// 매수5호가잔량
 		/// </summary>
 		[JsonProperty("buy_5bid_req")]
-		public decimal? Buy5Quantity;
+		public decimal? BuyQuantity5;
 		/// <summary>
 		/// 매수6호가잔량
 		/// </summary>
 		[JsonProperty("buy_6bid_req")]
-		public decimal? Buy6Quantity;
+		public decimal? BuyQuantity6;
 		/// <summary>
 		/// 매수7호가잔량
 		/// </summary>
 		[JsonProperty("buy_7bid_req")]
-		public decimal? Buy7Quantity;
+		public decimal? BuyQuantity7;
 		/// <summary>
 		/// 매수8호가잔량
 		/// </summary>
 		[JsonProperty("buy_8bid_req")]
-		public decimal? Buy8Quantity;
+		public decimal? BuyQuantity8;
 		/// <summary>
 		/// 매수9호가잔량
 		/// </summary>
 		[JsonProperty("buy_9bid_req")]
-		public decimal? Buy9Quantity;
+		public decimal? BuyQuantity9;
 		/// <summary>
 		/// 매수10호가잔량
 		/// </summary>
 		[JsonProperty("buy_10bid_req")]
-		public decimal? Buy10Quantity;
+		public decimal? BuyQuantity10;
 		/// <summary>
 		/// 매도1호가직전대비
 		/// </summary>
 		[JsonProperty("sel_1bid_jub_pre")]
-		public KiwoomDecimal? Sell1PrevDiff;
+		public KiwoomDecimal? SellChange1;
 		/// <summary>
 		/// 매도2호가직전대비
 		/// </summary>
 		[JsonProperty("sel_2bid_jub_pre")]
-		public KiwoomDecimal? Sell2PrevDiff;
+		public KiwoomDecimal? SellChange2;
 		/// <summary>
 		/// 매도3호가직전대비
 		/// </summary>
 		[JsonProperty("sel_3bid_jub_pre")]
-		public KiwoomDecimal? Sell3PrevDiff;
+		public KiwoomDecimal? SellChange3;
 		/// <summary>
 		/// 매도4호가직전대비
 		/// </summary>
 		[JsonProperty("sel_4bid_jub_pre")]
-		public KiwoomDecimal? Sell4PrevDiff;
+		public KiwoomDecimal? SellChange4;
 		/// <summary>
 		/// 매도5호가직전대비
 		/// </summary>
 		[JsonProperty("sel_5bid_jub_pre")]
-		public KiwoomDecimal? Sell5PrevDiff;
+		public KiwoomDecimal? SellChange5;
 		/// <summary>
 		/// 매도6호가직전대비
 		/// </summary>
 		[JsonProperty("sel_6bid_jub_pre")]
-		public KiwoomDecimal? Sell6PrevDiff;
+		public KiwoomDecimal? SellChange6;
 		/// <summary>
 		/// 매도7호가직전대비
 		/// </summary>
 		[JsonProperty("sel_7bid_jub_pre")]
-		public KiwoomDecimal? Sell7PrevDiff;
+		public KiwoomDecimal? SellChange7;
 		/// <summary>
 		/// 매도8호가직전대비
 		/// </summary>
 		[JsonProperty("sel_8bid_jub_pre")]
-		public KiwoomDecimal? Sell8PrevDiff;
+		public KiwoomDecimal? SellChange8;
 		/// <summary>
 		/// 매도9호가직전대비
 		/// </summary>
 		[JsonProperty("sel_9bid_jub_pre")]
-		public KiwoomDecimal? Sell9PrevDiff;
+		public KiwoomDecimal? SellChange9;
 		/// <summary>
 		/// 매도10호가직전대비
 		/// </summary>
 		[JsonProperty("sel_10bid_jub_pre")]
-		public KiwoomDecimal? Sell10PrevDiff;
+		public KiwoomDecimal? SellChange10;
 		/// <summary>
 		/// 매수1호가직전대비
 		/// </summary>
 		[JsonProperty("buy_1bid_jub_pre")]
-		public KiwoomDecimal? Buy1PrevDiff;
+		public KiwoomDecimal? BuyChange1;
 		/// <summary>
 		/// 매수2호가직전대비
 		/// </summary>
 		[JsonProperty("buy_2bid_jub_pre")]
-		public KiwoomDecimal? Buy2PrevDiff;
+		public KiwoomDecimal? BuyChange2;
 		/// <summary>
 		/// 매수3호가직전대비
 		/// </summary>
 		[JsonProperty("buy_3bid_jub_pre")]
-		public KiwoomDecimal? Buy3PrevDiff;
+		public KiwoomDecimal? BuyChange3;
 		/// <summary>
 		/// 매수4호가직전대비
 		/// </summary>
 		[JsonProperty("buy_4bid_jub_pre")]
-		public KiwoomDecimal? Buy4PrevDiff;
+		public KiwoomDecimal? BuyChange4;
 		/// <summary>
 		/// 매수5호가직전대비
 		/// </summary>
 		[JsonProperty("buy_5bid_jub_pre")]
-		public KiwoomDecimal? Buy5PrevDiff;
+		public KiwoomDecimal? BuyChange5;
 		/// <summary>
 		/// 매수6호가직전대비
 		/// </summary>
 		[JsonProperty("buy_6bid_jub_pre")]
-		public KiwoomDecimal? Buy6PrevDiff;
+		public KiwoomDecimal? BuyChange6;
 		/// <summary>
 		/// 매수7호가직전대비
 		/// </summary>
 		[JsonProperty("buy_7bid_jub_pre")]
-		public KiwoomDecimal? Buy7PrevDiff;
+		public KiwoomDecimal? BuyChange7;
 		/// <summary>
 		/// 매수8호가직전대비
 		/// </summary>
 		[JsonProperty("buy_8bid_jub_pre")]
-		public KiwoomDecimal? Buy8PrevDiff;
+		public KiwoomDecimal? BuyChange8;
 		/// <summary>
 		/// 매수9호가직전대비
 		/// </summary>
 		[JsonProperty("buy_9bid_jub_pre")]
-		public KiwoomDecimal? Buy9PrevDiff;
+		public KiwoomDecimal? BuyChange9;
 		/// <summary>
 		/// 매수10호가직전대비
 		/// </summary>
 		[JsonProperty("buy_10bid_jub_pre")]
-		public KiwoomDecimal? Buy10PrevDiff;
+		public KiwoomDecimal? BuyChange10;
 		/// <summary>
 		/// 매도1호가건수
 		/// </summary>
 		[JsonProperty("sel_1bid_cnt")]
-		public decimal? Sell1Count;
+		public decimal? SellCount1;
 		/// <summary>
 		/// 매도2호가건수
 		/// </summary>
 		[JsonProperty("sel_2bid_cnt")]
-		public decimal? Sell2Count;
+		public decimal? SellCount2;
 		/// <summary>
 		/// 매도3호가건수
 		/// </summary>
 		[JsonProperty("sel_3bid_cnt")]
-		public decimal? Sell3Count;
+		public decimal? SellCount3;
 		/// <summary>
 		/// 매도4호가건수
 		/// </summary>
 		[JsonProperty("sel_4bid_cnt")]
-		public decimal? Sell4Count;
+		public decimal? SellCount4;
 		/// <summary>
 		/// 매도5호가건수
 		/// </summary>
 		[JsonProperty("sel_5bid_cnt")]
-		public decimal? Sell5Count;
+		public decimal? SellCount5;
 		/// <summary>
 		/// 매수1호가건수
 		/// </summary>
 		[JsonProperty("buy_1bid_cnt")]
-		public decimal? Buy1Count;
+		public decimal? BuyCount1;
 		/// <summary>
 		/// 매수2호가건수
 		/// </summary>
 		[JsonProperty("buy_2bid_cnt")]
-		public decimal? Buy2Count;
+		public decimal? BuyCount2;
 		/// <summary>
 		/// 매수3호가건수
 		/// </summary>
 		[JsonProperty("buy_3bid_cnt")]
-		public decimal? Buy3Count;
+		public decimal? BuyCount3;
 		/// <summary>
 		/// 매수4호가건수
 		/// </summary>
 		[JsonProperty("buy_4bid_cnt")]
-		public decimal? Buy4Count;
+		public decimal? BuyCount4;
 		/// <summary>
 		/// 매수5호가건수
 		/// </summary>
 		[JsonProperty("buy_5bid_cnt")]
-		public decimal? Buy5Count;
+		public decimal? BuyCount5;
 		/// <summary>
 		/// LP매도1호가잔량
 		/// </summary>
 		[JsonProperty("lpsel_1bid_req")]
-		public decimal? LpSell1Quantity;
+		public decimal? LpSellQuantity1;
 		/// <summary>
 		/// LP매도2호가잔량
 		/// </summary>
 		[JsonProperty("lpsel_2bid_req")]
-		public decimal? LpSell2Quantity;
+		public decimal? LpSellQuantity2;
 		/// <summary>
 		/// LP매도3호가잔량
 		/// </summary>
 		[JsonProperty("lpsel_3bid_req")]
-		public decimal? LpSell3Quantity;
+		public decimal? LpSellQuantity3;
 		/// <summary>
 		/// LP매도4호가잔량
 		/// </summary>
 		[JsonProperty("lpsel_4bid_req")]
-		public decimal? LpSell4Quantity;
+		public decimal? LpSellQuantity4;
 		/// <summary>
 		/// LP매도5호가잔량
 		/// </summary>
 		[JsonProperty("lpsel_5bid_req")]
-		public decimal? LpSell5Quantity;
+		public decimal? LpSellQuantity5;
 		/// <summary>
 		/// LP매도6호가잔량
 		/// </summary>
 		[JsonProperty("lpsel_6bid_req")]
-		public decimal? LpSell6Quantity;
+		public decimal? LpSellQuantity6;
 		/// <summary>
 		/// LP매도7호가잔량
 		/// </summary>
 		[JsonProperty("lpsel_7bid_req")]
-		public decimal? LpSell7Quantity;
+		public decimal? LpSellQuantity7;
 		/// <summary>
 		/// LP매도8호가잔량
 		/// </summary>
 		[JsonProperty("lpsel_8bid_req")]
-		public decimal? LpSell8Quantity;
+		public decimal? LpSellQuantity8;
 		/// <summary>
 		/// LP매도9호가잔량
 		/// </summary>
 		[JsonProperty("lpsel_9bid_req")]
-		public decimal? LpSell9Quantity;
+		public decimal? LpSellQuantity9;
 		/// <summary>
 		/// LP매도10호가잔량
 		/// </summary>
 		[JsonProperty("lpsel_10bid_req")]
-		public decimal? LpSell10Quantity;
+		public decimal? LpSellQuantity10;
 		/// <summary>
 		/// LP매수1호가잔량
 		/// </summary>
 		[JsonProperty("lpbuy_1bid_req")]
-		public decimal? LpBuy1Quantity;
+		public decimal? LpBuyQuantity1;
 		/// <summary>
 		/// LP매수2호가잔량
 		/// </summary>
 		[JsonProperty("lpbuy_2bid_req")]
-		public decimal? LpBuy2Quantity;
+		public decimal? LpBuyQuantity2;
 		/// <summary>
 		/// LP매수3호가잔량
 		/// </summary>
 		[JsonProperty("lpbuy_3bid_req")]
-		public decimal? LpBuy3Quantity;
+		public decimal? LpBuyQuantity3;
 		/// <summary>
 		/// LP매수4호가잔량
 		/// </summary>
 		[JsonProperty("lpbuy_4bid_req")]
-		public decimal? LpBuy4Quantity;
+		public decimal? LpBuyQuantity4;
 		/// <summary>
 		/// LP매수5호가잔량
 		/// </summary>
 		[JsonProperty("lpbuy_5bid_req")]
-		public decimal? LpBuy5Quantity;
+		public decimal? LpBuyQuantity5;
 		/// <summary>
 		/// LP매수6호가잔량
 		/// </summary>
 		[JsonProperty("lpbuy_6bid_req")]
-		public decimal? LpBuy6Quantity;
+		public decimal? LpBuyQuantity6;
 		/// <summary>
 		/// LP매수7호가잔량
 		/// </summary>
 		[JsonProperty("lpbuy_7bid_req")]
-		public decimal? LpBuy7Quantity;
+		public decimal? LpBuyQuantity7;
 		/// <summary>
 		/// LP매수8호가잔량
 		/// </summary>
 		[JsonProperty("lpbuy_8bid_req")]
-		public decimal? LpBuy8Quantity;
+		public decimal? LpBuyQuantity8;
 		/// <summary>
 		/// LP매수9호가잔량
 		/// </summary>
 		[JsonProperty("lpbuy_9bid_req")]
-		public decimal? LpBuy9Quantity;
+		public decimal? LpBuyQuantity9;
 		/// <summary>
 		/// LP매수10호가잔량
 		/// </summary>
 		[JsonProperty("lpbuy_10bid_req")]
-		public decimal? LpBuy10Quantity;
+		public decimal? LpBuyQuantity10;
 		/// <summary>
 		/// 총매수잔량
 		/// </summary>
@@ -1266,11 +1265,11 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// <summary>
 		/// 전일종가
 		/// </summary>
-		public decimal? PrevClosePrice;
+		public decimal? PreviousDayClose;
 		/// <summary>
 		/// 전일거래량
 		/// </summary>
-		public decimal? PrevTradeQuantity;
+		public decimal? PreviousDayVolume;
 		/// <summary>
 		/// 상한가
 		/// </summary>
@@ -1282,11 +1281,11 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// <summary>
 		/// 전일거래대금
 		/// </summary>
-		public decimal? PrevTradeAmount;
+		public decimal? PreviousDayTransactionAmount;
 		/// <summary>
 		/// 상장주식수
 		/// </summary>
-		public decimal? ListedShares;
+		public decimal? ListedQuantity;
 		/// <summary>
 		/// 현재가
 		/// </summary>
@@ -1298,51 +1297,51 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// <summary>
 		/// 등락률
 		/// </summary>
-		public decimal? FluctuationRate;
+		public decimal? ChangeRate;
 		/// <summary>
 		/// 전일비
 		/// </summary>
-		public decimal? PrevRate;
+		public decimal? PreviousDayRate;
 		/// <summary>
 		/// 시가
 		/// </summary>
-		public decimal? OpenPrice;
+		public decimal? Open;
 		/// <summary>
 		/// 고가
 		/// </summary>
-		public decimal? HighPrice;
+		public decimal? High;
 		/// <summary>
 		/// 저가
 		/// </summary>
-		public decimal? LowPrice;
+		public decimal? Low;
 		/// <summary>
 		/// 체결량
 		/// </summary>
-		public decimal? ContractQuantity;
+		public decimal? TradeQuantity;
 		/// <summary>
 		/// 거래량
 		/// </summary>
-		public decimal? TradeQuantity;
+		public decimal? Volume;
 		/// <summary>
 		/// 거래대금
 		/// </summary>
-		public decimal? TradeAmount;
+		public decimal? TransactionAmount;
 		/// <summary>
 		/// 예상체결가
 		/// </summary>
-		public decimal? ExpectedContractPrice;
+		public decimal? ExpectedTradePrice;
 		/// <summary>
 		/// 예상체결량
 		/// </summary>
-		public decimal? ExpectedContractQuantity;
+		public decimal? ExpectedTradeQuantity;
 		/// <summary>
 		/// 예상매도우선호가
 		/// </summary>
-		public decimal? ExpectedSellPriorityBid;
+		public decimal? ExpectedBestSellQuote;
 		/// <summary>
 		/// 예상매수우선호가
 		/// </summary>
-		public decimal? ExpectedBuyPriorityBid;
+		public decimal? ExpectedBestBuyQuote;
 		/// <summary>
 		/// 거래시작일
 		/// </summary>
@@ -1387,11 +1386,11 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// <summary>
 		/// 매도호가직전대비
 		/// </summary>
-		public decimal?[] SellPrevDiffs;
+		public decimal?[] SellChanges;
 		/// <summary>
 		/// 매수호가직전대비
 		/// </summary>
-		public decimal?[] BuyPrevDiffs;
+		public decimal?[] BuyChanges;
 		/// <summary>
 		/// 매도호가건수
 		/// </summary>
@@ -1432,26 +1431,26 @@ namespace KiwoomRestApi.Net.Objects.Models
 			StockCode = raw.StockCode;
 			Date = raw.Date;
 			Time = raw.Time;
-			PrevClosePrice = raw.PrevClosePrice;
-			PrevTradeQuantity = raw.PrevTradeQuantity;
+			PreviousDayClose = raw.PreviousDayClose;
+			PreviousDayVolume = raw.PreviousDayVolume;
 			UpperPrice = raw.UpperPrice;
 			LowerPrice = raw.LowerPrice;
-			PrevTradeAmount = raw.PrevTradeAmount;
-			ListedShares = raw.ListedShares;
+			PreviousDayTransactionAmount = raw.PreviousDayTransactionAmount;
+			ListedQuantity = raw.ListedQuantity;
 			CurrentPrice = raw.CurrentPrice;
 			Sign = raw.Sign;
-			FluctuationRate = raw.FluctuationRate;
-			PrevRate = raw.PrevRate;
-			OpenPrice = raw.OpenPrice;
-			HighPrice = raw.HighPrice;
-			LowPrice = raw.LowPrice;
-			ContractQuantity = raw.ContractQuantity;
+			ChangeRate = raw.ChangeRate;
+			PreviousDayRate = raw.PreviousDayRate;
+			Open = raw.Open;
+			High = raw.High;
+			Low = raw.Low;
 			TradeQuantity = raw.TradeQuantity;
-			TradeAmount = raw.TradeAmount;
-			ExpectedContractPrice = raw.ExpectedContractPrice;
-			ExpectedContractQuantity = raw.ExpectedContractQuantity;
-			ExpectedSellPriorityBid = raw.ExpectedSellPriorityBid;
-			ExpectedBuyPriorityBid = raw.ExpectedBuyPriorityBid;
+			Volume = raw.Volume;
+			TransactionAmount = raw.TransactionAmount;
+			ExpectedTradePrice = raw.ExpectedTradePrice;
+			ExpectedTradeQuantity = raw.ExpectedTradeQuantity;
+			ExpectedBestSellQuote = raw.ExpectedBestSellQuote;
+			ExpectedBestBuyQuote = raw.ExpectedBestBuyQuote;
 			TradeStartDate = raw.TradeStartDate;
 			ExercisePrice = raw.ExercisePrice;
 			HighestPrice = raw.HighestPrice;
@@ -1460,51 +1459,51 @@ namespace KiwoomRestApi.Net.Objects.Models
 			LowestPriceDate = raw.LowestPriceDate;
 			SellPrices =
 			[
-				raw.Sell1Price, raw.Sell2Price, raw.Sell3Price, raw.Sell4Price, raw.Sell5Price,
-				raw.Sell6Price, raw.Sell7Price, raw.Sell8Price, raw.Sell9Price, raw.Sell10Price
+				raw.SellPrice1, raw.SellPrice2, raw.SellPrice3, raw.SellPrice4, raw.SellPrice5,
+				raw.SellPrice6, raw.SellPrice7, raw.SellPrice8, raw.SellPrice9, raw.SellPrice10
 			];
 			BuyPrices =
 			[
-				raw.Buy1Price, raw.Buy2Price, raw.Buy3Price, raw.Buy4Price, raw.Buy5Price,
-				raw.Buy6Price, raw.Buy7Price, raw.Buy8Price, raw.Buy9Price, raw.Buy10Price
+				raw.BuyPrice1, raw.BuyPrice2, raw.BuyPrice3, raw.BuyPrice4, raw.BuyPrice5,
+				raw.BuyPrice6, raw.BuyPrice7, raw.BuyPrice8, raw.BuyPrice9, raw.BuyPrice10
 			];
 			SellQuantities =
 			[
-				raw.Sell1Quantity, raw.Sell2Quantity, raw.Sell3Quantity, raw.Sell4Quantity, raw.Sell5Quantity,
-				raw.Sell6Quantity, raw.Sell7Quantity, raw.Sell8Quantity, raw.Sell9Quantity, raw.Sell10Quantity
+				raw.SellQuantity1, raw.SellQuantity2, raw.SellQuantity3, raw.SellQuantity4, raw.SellQuantity5,
+				raw.SellQuantity6, raw.SellQuantity7, raw.SellQuantity8, raw.SellQuantity9, raw.SellQuantity10
 			];
 			BuyQuantities =
 			[
-				raw.Buy1Quantity, raw.Buy2Quantity, raw.Buy3Quantity, raw.Buy4Quantity, raw.Buy5Quantity,
-				raw.Buy6Quantity, raw.Buy7Quantity, raw.Buy8Quantity, raw.Buy9Quantity, raw.Buy10Quantity
+				raw.BuyQuantity1, raw.BuyQuantity2, raw.BuyQuantity3, raw.BuyQuantity4, raw.BuyQuantity5,
+				raw.BuyQuantity6, raw.BuyQuantity7, raw.BuyQuantity8, raw.BuyQuantity9, raw.BuyQuantity10
 			];
-			SellPrevDiffs =
+			SellChanges =
 			[
-				raw.Sell1PrevDiff, raw.Sell2PrevDiff, raw.Sell3PrevDiff, raw.Sell4PrevDiff, raw.Sell5PrevDiff,
-				raw.Sell6PrevDiff, raw.Sell7PrevDiff, raw.Sell8PrevDiff, raw.Sell9PrevDiff, raw.Sell10PrevDiff
+				raw.SellChange1, raw.SellChange2, raw.SellChange3, raw.SellChange4, raw.SellChange5,
+				raw.SellChange6, raw.SellChange7, raw.SellChange8, raw.SellChange9, raw.SellChange10
 			];
-			BuyPrevDiffs =
+			BuyChanges =
 			[
-				raw.Buy1PrevDiff, raw.Buy2PrevDiff, raw.Buy3PrevDiff, raw.Buy4PrevDiff, raw.Buy5PrevDiff,
-				raw.Buy6PrevDiff, raw.Buy7PrevDiff, raw.Buy8PrevDiff, raw.Buy9PrevDiff, raw.Buy10PrevDiff
+				raw.BuyChange1, raw.BuyChange2, raw.BuyChange3, raw.BuyChange4, raw.BuyChange5,
+				raw.BuyChange6, raw.BuyChange7, raw.BuyChange8, raw.BuyChange9, raw.BuyChange10
 			];
 			SellCounts =
 			[
-				raw.Sell1Count, raw.Sell2Count, raw.Sell3Count, raw.Sell4Count, raw.Sell5Count
+				raw.SellCount1, raw.SellCount2, raw.SellCount3, raw.SellCount4, raw.SellCount5
 			];
 			BuyCounts =
 			[
-				raw.Buy1Count, raw.Buy2Count, raw.Buy3Count, raw.Buy4Count, raw.Buy5Count
+				raw.BuyCount1, raw.BuyCount2, raw.BuyCount3, raw.BuyCount4, raw.BuyCount5
 			];
 			LpSellQuantities =
 			[
-				raw.LpSell1Quantity, raw.LpSell2Quantity, raw.LpSell3Quantity, raw.LpSell4Quantity, raw.LpSell5Quantity,
-				raw.LpSell6Quantity, raw.LpSell7Quantity, raw.LpSell8Quantity, raw.LpSell9Quantity, raw.LpSell10Quantity
+				raw.LpSellQuantity1, raw.LpSellQuantity2, raw.LpSellQuantity3, raw.LpSellQuantity4, raw.LpSellQuantity5,
+				raw.LpSellQuantity6, raw.LpSellQuantity7, raw.LpSellQuantity8, raw.LpSellQuantity9, raw.LpSellQuantity10
 			];
 			LpBuyQuantities =
 			[
-				raw.LpBuy1Quantity, raw.LpBuy2Quantity, raw.LpBuy3Quantity, raw.LpBuy4Quantity, raw.LpBuy5Quantity,
-				raw.LpBuy6Quantity, raw.LpBuy7Quantity, raw.LpBuy8Quantity, raw.LpBuy9Quantity, raw.LpBuy10Quantity
+				raw.LpBuyQuantity1, raw.LpBuyQuantity2, raw.LpBuyQuantity3, raw.LpBuyQuantity4, raw.LpBuyQuantity5,
+				raw.LpBuyQuantity6, raw.LpBuyQuantity7, raw.LpBuyQuantity8, raw.LpBuyQuantity9, raw.LpBuyQuantity10
 			];
 			TotalBuyQuantity = raw.TotalBuyQuantity;
 			TotalSellQuantity = raw.TotalSellQuantity;
@@ -1542,47 +1541,47 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비기호
 		/// </summary>
 		[JsonProperty("pred_pre_sig")]
-		public string? PrevDiffSign;
+		public string? ChangeSign;
 		/// <summary>
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? PrevDiff;
+		public decimal? Change;
 		/// <summary>
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? FluctuationRate;
+		public decimal? ChangeRate;
 		/// <summary>
 		/// 최우선매도호가
 		/// </summary>
 		[JsonProperty("fpr_sel_bid")]
-		public decimal? FirstPrioritySellBid;
+		public decimal? BestSellQuote;
 		/// <summary>
 		/// 최우선매수호가
 		/// </summary>
 		[JsonProperty("fpr_buy_bid")]
-		public decimal? FirstPriorityBuyBid;
+		public decimal? BestBuyQuote;
 		/// <summary>
 		/// 누적거래량
 		/// </summary>
 		[JsonProperty("acc_trde_qty")]
-		public decimal? AccumulatedTradeQuantity;
+		public decimal? AccumulatedVolume;
 		/// <summary>
 		/// 시가
 		/// </summary>
 		[JsonProperty("open_pric")]
-		public decimal? OpenPrice;
+		public decimal? Open;
 		/// <summary>
 		/// 고가
 		/// </summary>
 		[JsonProperty("high_pric")]
-		public decimal? HighPrice;
+		public decimal? High;
 		/// <summary>
 		/// 저가
 		/// </summary>
 		[JsonProperty("low_pric")]
-		public decimal? LowPrice;
+		public decimal? Low;
 	}
 
 	public record KiwoomMarketConditionGetDailyInstitutionTradingStocks
@@ -1609,12 +1608,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 순매수수량
 		/// </summary>
 		[JsonProperty("netprps_qty")]
-		public decimal? NetPurchaseQuantity;
+		public decimal? NetBuyQuantity;
 		/// <summary>
 		/// 순매수금액
 		/// </summary>
 		[JsonProperty("netprps_amt")]
-		public decimal? NetPurchaseAmount;
+		public decimal? NetBuyAmount;
 	}
 
 	public record KiwoomMarketConditionGetStockOriginTradeTrends
@@ -1623,12 +1622,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 기관추정평균가
 		/// </summary>
 		[JsonProperty("orgn_prsm_avg_pric")]
-		public decimal? InstitutionEstimatedAvgPrice;
+		public decimal? InstitutionEstimatedAveragePrice;
 		/// <summary>
 		/// 외인추정평균가
 		/// </summary>
 		[JsonProperty("for_prsm_avg_pric")]
-		public decimal? ForeignEstimatedAvgPrice;
+		public decimal? ForeignEstimatedAveragePrice;
 		/// <summary>
 		/// 종목별기관매매추이
 		/// </summary>
@@ -1647,27 +1646,27 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 종가
 		/// </summary>
 		[JsonProperty("close_pric")]
-		public decimal? ClosePrice;
+		public decimal? Close;
 		/// <summary>
 		/// 대비기호
 		/// </summary>
 		[JsonProperty("pre_sig")]
-		public string? PrevDiffSign;
+		public string? ChangeSign;
 		/// <summary>
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? PrevDiff;
+		public decimal? Change;
 		/// <summary>
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? FluctuationRate;
+		public decimal? ChangeRate;
 		/// <summary>
 		/// 거래량
 		/// </summary>
 		[JsonProperty("trde_qty")]
-		public decimal? TradeQuantity;
+		public decimal? Volume;
 		/// <summary>
 		/// 기관기간누적
 		/// </summary>
@@ -1677,7 +1676,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 기관일별순매매수량
 		/// </summary>
 		[JsonProperty("orgn_daly_nettrde_qty")]
-		public decimal? InstitutionDailyNetTradeQuantity;
+		public decimal? InstitutionDailyNetVolume;
 		/// <summary>
 		/// 외인기간누적
 		/// </summary>
@@ -1687,30 +1686,30 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 외인일별순매매수량
 		/// </summary>
 		[JsonProperty("for_daly_nettrde_qty")]
-		public decimal? ForeignDailyNetTradeQuantity;
+		public decimal? ForeignDailyNetVolume;
 		/// <summary>
 		/// 한도소진율
 		/// </summary>
 		[JsonProperty("limit_exh_rt")]
-		public decimal? LimitExhaustionRate;
+		public decimal? LimitUsageRate;
 	}
 
-	public record KiwoomMarketConditionGetHourlyContractStrengths
+	public record KiwoomMarketConditionGetHourlyTradeMomentums
 	{
 		/// <summary>
 		/// 체결강도시간별
 		/// </summary>
 		[JsonProperty("cntr_str_tm")]
-		public IEnumerable<KiwoomMarketConditionGetHourlyContractStrengthItem>? Items;
+		public IEnumerable<KiwoomMarketConditionGetHourlyTradeMomentumItem>? Items;
 	}
-	public record KiwoomMarketConditionGetHourlyContractStrengthItem
+	public record KiwoomMarketConditionGetHourlyTradeMomentumItem
 	{
 		/// <summary>
 		/// 체결시간
 		/// </summary>
 		[JsonProperty("cntr_tm")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan? ContractTime;
+		public TimeSpan? TradeTime;
 		/// <summary>
 		/// 현재가
 		/// </summary>
@@ -1720,52 +1719,52 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? PrevDiff;
+		public decimal? Change;
 		/// <summary>
 		/// 전일대비기호
 		/// </summary>
 		[JsonProperty("pred_pre_sig")]
-		public string? PrevDiffSign;
+		public string? ChangeSign;
 		/// <summary>
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? FluctuationRate;
+		public decimal? ChangeRate;
 		/// <summary>
 		/// 거래량
 		/// </summary>
 		[JsonProperty("trde_qty")]
-		public decimal? TradeQuantity;
+		public decimal? Volume;
 		/// <summary>
 		/// 누적거래대금
 		/// </summary>
 		[JsonProperty("acc_trde_prica")]
-		public decimal? AccumulatedTradeAmount;
+		public decimal? AccumulatedTransactionAmount;
 		/// <summary>
 		/// 누적거래량
 		/// </summary>
 		[JsonProperty("acc_trde_qty")]
-		public decimal? AccumulatedTradeQuantity;
+		public decimal? AccumulatedVolume;
 		/// <summary>
 		/// 체결강도
 		/// </summary>
 		[JsonProperty("cntr_str")]
-		public decimal? ContractStrength;
+		public decimal? TradeMomentum;
 		/// <summary>
 		/// 체결강도5분
 		/// </summary>
 		[JsonProperty("cntr_str_5min")]
-		public decimal? ContractStrength5Min;
+		public decimal? TradeMomentum5m;
 		/// <summary>
 		/// 체결강도20분
 		/// </summary>
 		[JsonProperty("cntr_str_20min")]
-		public decimal? ContractStrength20Min;
+		public decimal? TradeMomentum20m;
 		/// <summary>
 		/// 체결강도60분
 		/// </summary>
 		[JsonProperty("cntr_str_60min")]
-		public decimal? ContractStrength60Min;
+		public decimal? TradeMomentum60m;
 		/// <summary>
 		/// 거래소구분
 		/// </summary>
@@ -1773,15 +1772,15 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public string? ExchangeType;
 	}
 
-	public record KiwoomMarketConditionGetDailyContractStrengths
+	public record KiwoomMarketConditionGetDailyTradeMomentums
 	{
 		/// <summary>
 		/// 체결강도일별
 		/// </summary>
 		[JsonProperty("cntr_str_daly")]
-		public IEnumerable<KiwoomMarketConditionGetDailyContractStrengthItem>? Items;
+		public IEnumerable<KiwoomMarketConditionGetDailyTradeMomentumItem>? Items;
 	}
-	public record KiwoomMarketConditionGetDailyContractStrengthItem
+	public record KiwoomMarketConditionGetDailyTradeMomentumItem
 	{
 		/// <summary>
 		/// 일자
@@ -1798,52 +1797,52 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? PrevDiff;
+		public decimal? Change;
 		/// <summary>
 		/// 전일대비기호
 		/// </summary>
 		[JsonProperty("pred_pre_sig")]
-		public string? PrevDiffSign;
+		public string? ChangeSign;
 		/// <summary>
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? FluctuationRate;
+		public decimal? ChangeRate;
 		/// <summary>
 		/// 거래량
 		/// </summary>
 		[JsonProperty("trde_qty")]
-		public decimal? TradeQuantity;
+		public decimal? Volume;
 		/// <summary>
 		/// 누적거래대금
 		/// </summary>
 		[JsonProperty("acc_trde_prica")]
-		public decimal? AccumulatedTradeAmount;
+		public decimal? AccumulatedTransactionAmount;
 		/// <summary>
 		/// 누적거래량
 		/// </summary>
 		[JsonProperty("acc_trde_qty")]
-		public decimal? AccumulatedTradeQuantity;
+		public decimal? AccumulatedVolume;
 		/// <summary>
 		/// 체결강도
 		/// </summary>
 		[JsonProperty("cntr_str")]
-		public decimal? ContractStrength;
+		public decimal? TradeMomentum;
 		/// <summary>
 		/// 체결강도5일
 		/// </summary>
 		[JsonProperty("cntr_str_5min")]
-		public decimal? ContractStrength5Days;
+		public decimal? TradeMomentum5d;
 		/// <summary>
 		/// 체결강도20일
 		/// </summary>
 		[JsonProperty("cntr_str_20min")]
-		public decimal? ContractStrength20Days;
+		public decimal? TradeMomentum20d;
 		/// <summary>
 		/// 체결강도60일
 		/// </summary>
 		[JsonProperty("cntr_str_60min")]
-		public decimal? ContractStrength60Days;
+		public decimal? TradeMomentum60d;
 	}
 
 	public record KiwoomMarketConditionGetIntradayInvestorTradings
@@ -1875,37 +1874,37 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 대비기호
 		/// </summary>
 		[JsonProperty("pre_sig")]
-		public string? PrevDiffSign;
+		public string? ChangeSign;
 		/// <summary>
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? PrevDiff;
+		public decimal? Change;
 		/// <summary>
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? FluctuationRate;
+		public decimal? ChangeRate;
 		/// <summary>
 		/// 누적거래량
 		/// </summary>
 		[JsonProperty("acc_trde_qty")]
-		public decimal? AccumulatedTradeQuantity;
+		public decimal? AccumulatedVolume;
 		/// <summary>
 		/// 순매수수량
 		/// </summary>
 		[JsonProperty("netprps_qty")]
-		public KiwoomDecimal? NetPurchaseQuantity;
+		public KiwoomDecimal? NetBuyQuantity;
 		/// <summary>
 		/// 이전시점순매수수량
 		/// </summary>
 		[JsonProperty("prev_pot_netprps_qty")]
-		public KiwoomDecimal? PreviousPointNetPurchaseQuantity;
+		public KiwoomDecimal? PreviousNetBuyQuantity;
 		/// <summary>
 		/// 순매수증감
 		/// </summary>
 		[JsonProperty("netprps_irds")]
-		public KiwoomDecimal? NetPurchaseIncreaseDecrease;
+		public KiwoomDecimal? NetBuyChange;
 		/// <summary>
 		/// 매수수량
 		/// </summary>
@@ -1915,7 +1914,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매수수량증감
 		/// </summary>
 		[JsonProperty("buy_qty_irds")]
-		public decimal? BuyQuantityIncreaseDecrease;
+		public decimal? BuyQuantityChange;
 		/// <summary>
 		/// 매도수량
 		/// </summary>
@@ -1925,7 +1924,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매도수량증감
 		/// </summary>
 		[JsonProperty("sell_qty_irds")]
-		public decimal? SellQuantityIncreaseDecrease;
+		public decimal? SellQuantityChange;
 	}
 
 	public record KiwoomMarketConditionGetIntradayInvestorTradeCharts
@@ -1957,27 +1956,27 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 대비기호
 		/// </summary>
 		[JsonProperty("pre_sig")]
-		public string? PrevDiffSign;
+		public string? ChangeSign;
 		/// <summary>
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? PrevDiff;
+		public decimal? Change;
 		/// <summary>
 		/// 등락률
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? FluctuationRate;
+		public decimal? ChangeRate;
 		/// <summary>
 		/// 거래량
 		/// </summary>
 		[JsonProperty("trde_qty")]
-		public decimal? TradeQuantity;
+		public decimal? Volume;
 		/// <summary>
 		/// 개인투자자
 		/// </summary>
 		[JsonProperty("ind_invsr")]
-		public decimal? IndividualInvestor;
+		public decimal? RetailInvestor;
 		/// <summary>
 		/// 외국인투자자
 		/// </summary>
@@ -2032,7 +2031,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 기타법인
 		/// </summary>
 		[JsonProperty("etc_corp")]
-		public decimal? OtherCorporation;
+		public decimal? OtherCorporations;
 	}
 
 	public record KiwoomMarketConditionGetSecurityFirmStockTradeTrends
@@ -2060,27 +2059,27 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 대비기호
 		/// </summary>
 		[JsonProperty("pre_sig")]
-		public string? PrevDiffSign;
+		public string? ChangeSign;
 		/// <summary>
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? PrevDiff;
+		public decimal? Change;
 		/// <summary>
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? FluctuationRate;
+		public decimal? ChangeRate;
 		/// <summary>
 		/// 누적거래량
 		/// </summary>
 		[JsonProperty("acc_trde_qty")]
-		public decimal? AccumulatedTradeQuantity;
+		public decimal? AccumulatedVolume;
 		/// <summary>
 		/// 순매수수량
 		/// </summary>
 		[JsonProperty("netprps_qty")]
-		public decimal? NetPurchaseQuantity;
+		public decimal? NetBuyQuantity;
 		/// <summary>
 		/// 매수수량
 		/// </summary>
@@ -2113,42 +2112,42 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 시가
 		/// </summary>
 		[JsonProperty("open_pric")]
-		public decimal? OpenPrice;
+		public decimal? Open;
 		/// <summary>
 		/// 고가
 		/// </summary>
 		[JsonProperty("high_pric")]
-		public decimal? HighPrice;
+		public decimal? High;
 		/// <summary>
 		/// 저가
 		/// </summary>
 		[JsonProperty("low_pric")]
-		public decimal? LowPrice;
+		public decimal? Low;
 		/// <summary>
 		/// 종가
 		/// </summary>
 		[JsonProperty("close_pric")]
-		public decimal? ClosePrice;
+		public decimal? Close;
 		/// <summary>
 		/// 전일비
 		/// </summary>
 		[JsonProperty("pred_rt")]
-		public decimal? PreviousRate;
+		public decimal? PreviousDayRate;
 		/// <summary>
 		/// 등락률
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? FluctuationRate;
+		public decimal? ChangeRate;
 		/// <summary>
 		/// 거래량
 		/// </summary>
 		[JsonProperty("trde_qty")]
-		public decimal? TradeQuantity;
+		public decimal? Volume;
 		/// <summary>
 		/// 금액(백만)
 		/// </summary>
 		[JsonProperty("amt_mn")]
-		public decimal? AmountMillion;
+		public decimal? AmountInMillions;
 		/// <summary>
 		/// 신용비
 		/// </summary>
@@ -2158,7 +2157,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 개인
 		/// </summary>
 		[JsonProperty("ind")]
-		public KiwoomDecimal? Individual;
+		public KiwoomDecimal? Retail;
 		/// <summary>
 		/// 기관
 		/// </summary>
@@ -2173,7 +2172,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 외국계
 		/// </summary>
 		[JsonProperty("frgn")]
-		public KiwoomDecimal? ForeignBrokerage;
+		public KiwoomDecimal? Foreign;
 		/// <summary>
 		/// 프로그램
 		/// </summary>
@@ -2188,7 +2187,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 외인보유
 		/// </summary>
 		[JsonProperty("for_poss")]
-		public decimal? ForeignPossession;
+		public decimal? ForeignHolding;
 		/// <summary>
 		/// 외인비중
 		/// </summary>
@@ -2198,404 +2197,404 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 외인순매수
 		/// </summary>
 		[JsonProperty("for_netprps")]
-		public KiwoomDecimal? ForeignNetPurchase;
+		public KiwoomDecimal? ForeignNetBuy;
 		/// <summary>
 		/// 기관순매수
 		/// </summary>
 		[JsonProperty("orgn_netprps")]
-		public KiwoomDecimal? InstitutionNetPurchase;
+		public KiwoomDecimal? InstitutionNetBuy;
 		/// <summary>
 		/// 개인순매수
 		/// </summary>
 		[JsonProperty("ind_netprps")]
-		public KiwoomDecimal? IndividualNetPurchase;
+		public KiwoomDecimal? RetailNetBuy;
 		/// <summary>
 		/// 신용잔고율
 		/// </summary>
 		[JsonProperty("crd_remn_rt")]
-		public decimal? CreditRemainingRate;
+		public decimal? CreditBalanceRate;
 	}
 
-	public record KiwoomMarketConditionGetAfterHoursSinglePriceOrderBook
+	public record KiwoomMarketConditionGetAfterMarketSinglePriceOrderBook
 	{
 		/// <summary>
 		/// 호가잔량기준시간
 		/// </summary>
 		[JsonProperty("bid_req_base_tm")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan? BidRequestBaseTime;
+		public TimeSpan? OrderBookTime;
 		/// <summary>
 		/// 시간외단일가 매도호가직전대비5
 		/// </summary>
 		[JsonProperty("ovt_sigpric_sel_bid_jub_pre_5")]
-		public decimal? AfterHoursSinglePriceSellPrevDiff5;
+		public decimal? AfterMarketSinglePriceSellChange5;
 		/// <summary>
 		/// 시간외단일가 매도호가직전대비4
 		/// </summary>
 		[JsonProperty("ovt_sigpric_sel_bid_jub_pre_4")]
-		public decimal? AfterHoursSinglePriceSellPrevDiff4;
+		public decimal? AfterMarketSinglePriceSellChange4;
 		/// <summary>
 		/// 시간외단일가 매도호가직전대비3
 		/// </summary>
 		[JsonProperty("ovt_sigpric_sel_bid_jub_pre_3")]
-		public decimal? AfterHoursSinglePriceSellPrevDiff3;
+		public decimal? AfterMarketSinglePriceSellChange3;
 		/// <summary>
 		/// 시간외단일가 매도호가직전대비2
 		/// </summary>
 		[JsonProperty("ovt_sigpric_sel_bid_jub_pre_2")]
-		public decimal? AfterHoursSinglePriceSellPrevDiff2;
+		public decimal? AfterMarketSinglePriceSellChange2;
 		/// <summary>
 		/// 시간외단일가 매도호가직전대비1
 		/// </summary>
 		[JsonProperty("ovt_sigpric_sel_bid_jub_pre_1")]
-		public decimal? AfterHoursSinglePriceSellPrevDiff1;
+		public decimal? AfterMarketSinglePriceSellChange1;
 		/// <summary>
 		/// 시간외단일가 매도호가수량5
 		/// </summary>
 		[JsonProperty("ovt_sigpric_sel_bid_qty_5")]
-		public decimal? AfterHoursSinglePriceSellQuantity5;
+		public decimal? AfterMarketSinglePriceSellQuantity5;
 		/// <summary>
 		/// 시간외단일가 매도호가수량4
 		/// </summary>
 		[JsonProperty("ovt_sigpric_sel_bid_qty_4")]
-		public decimal? AfterHoursSinglePriceSellQuantity4;
+		public decimal? AfterMarketSinglePriceSellQuantity4;
 		/// <summary>
 		/// 시간외단일가 매도호가수량3
 		/// </summary>
 		[JsonProperty("ovt_sigpric_sel_bid_qty_3")]
-		public decimal? AfterHoursSinglePriceSellQuantity3;
+		public decimal? AfterMarketSinglePriceSellQuantity3;
 		/// <summary>
 		/// 시간외단일가 매도호가수량2
 		/// </summary>
 		[JsonProperty("ovt_sigpric_sel_bid_qty_2")]
-		public decimal? AfterHoursSinglePriceSellQuantity2;
+		public decimal? AfterMarketSinglePriceSellQuantity2;
 		/// <summary>
 		/// 시간외단일가 매도호가수량1
 		/// </summary>
 		[JsonProperty("ovt_sigpric_sel_bid_qty_1")]
-		public decimal? AfterHoursSinglePriceSellQuantity1;
+		public decimal? AfterMarketSinglePriceSellQuantity1;
 		/// <summary>
 		/// 시간외단일가 매도호가5
 		/// </summary>
 		[JsonProperty("ovt_sigpric_sel_bid_5")]
-		public decimal? AfterHoursSinglePriceSellPrice5;
+		public decimal? AfterMarketSinglePriceSellPrice5;
 		/// <summary>
 		/// 시간외단일가 매도호가4
 		/// </summary>
 		[JsonProperty("ovt_sigpric_sel_bid_4")]
-		public decimal? AfterHoursSinglePriceSellPrice4;
+		public decimal? AfterMarketSinglePriceSellPrice4;
 		/// <summary>
 		/// 시간외단일가 매도호가3
 		/// </summary>
 		[JsonProperty("ovt_sigpric_sel_bid_3")]
-		public decimal? AfterHoursSinglePriceSellPrice3;
+		public decimal? AfterMarketSinglePriceSellPrice3;
 		/// <summary>
 		/// 시간외단일가 매도호가2
 		/// </summary>
 		[JsonProperty("ovt_sigpric_sel_bid_2")]
-		public decimal? AfterHoursSinglePriceSellPrice2;
+		public decimal? AfterMarketSinglePriceSellPrice2;
 		/// <summary>
 		/// 시간외단일가 매도호가1
 		/// </summary>
 		[JsonProperty("ovt_sigpric_sel_bid_1")]
-		public decimal? AfterHoursSinglePriceSellPrice1;
+		public decimal? AfterMarketSinglePriceSellPrice1;
 		/// <summary>
 		/// 시간외단일가 매수호가1
 		/// </summary>
 		[JsonProperty("ovt_sigpric_buy_bid_1")]
-		public decimal? AfterHoursSinglePriceBuyPrice1;
+		public decimal? AfterMarketSinglePriceBuyPrice1;
 		/// <summary>
 		/// 시간외단일가 매수호가2
 		/// </summary>
 		[JsonProperty("ovt_sigpric_buy_bid_2")]
-		public decimal? AfterHoursSinglePriceBuyPrice2;
+		public decimal? AfterMarketSinglePriceBuyPrice2;
 		/// <summary>
 		/// 시간외단일가 매수호가3
 		/// </summary>
 		[JsonProperty("ovt_sigpric_buy_bid_3")]
-		public decimal? AfterHoursSinglePriceBuyPrice3;
+		public decimal? AfterMarketSinglePriceBuyPrice3;
 		/// <summary>
 		/// 시간외단일가 매수호가4
 		/// </summary>
 		[JsonProperty("ovt_sigpric_buy_bid_4")]
-		public decimal? AfterHoursSinglePriceBuyPrice4;
+		public decimal? AfterMarketSinglePriceBuyPrice4;
 		/// <summary>
 		/// 시간외단일가 매수호가5
 		/// </summary>
 		[JsonProperty("ovt_sigpric_buy_bid_5")]
-		public decimal? AfterHoursSinglePriceBuyPrice5;
+		public decimal? AfterMarketSinglePriceBuyPrice5;
 		/// <summary>
 		/// 시간외단일가 매수호가수량1
 		/// </summary>
 		[JsonProperty("ovt_sigpric_buy_bid_qty_1")]
-		public decimal? AfterHoursSinglePriceBuyQuantity1;
+		public decimal? AfterMarketSinglePriceBuyQuantity1;
 		/// <summary>
 		/// 시간외단일가 매수호가수량2
 		/// </summary>
 		[JsonProperty("ovt_sigpric_buy_bid_qty_2")]
-		public decimal? AfterHoursSinglePriceBuyQuantity2;
+		public decimal? AfterMarketSinglePriceBuyQuantity2;
 		/// <summary>
 		/// 시간외단일가 매수호가수량3
 		/// </summary>
 		[JsonProperty("ovt_sigpric_buy_bid_qty_3")]
-		public decimal? AfterHoursSinglePriceBuyQuantity3;
+		public decimal? AfterMarketSinglePriceBuyQuantity3;
 		/// <summary>
 		/// 시간외단일가 매수호가수량4
 		/// </summary>
 		[JsonProperty("ovt_sigpric_buy_bid_qty_4")]
-		public decimal? AfterHoursSinglePriceBuyQuantity4;
+		public decimal? AfterMarketSinglePriceBuyQuantity4;
 		/// <summary>
 		/// 시간외단일가 매수호가수량5
 		/// </summary>
 		[JsonProperty("ovt_sigpric_buy_bid_qty_5")]
-		public decimal? AfterHoursSinglePriceBuyQuantity5;
+		public decimal? AfterMarketSinglePriceBuyQuantity5;
 		/// <summary>
 		/// 시간외단일가 매수호가직전대비1
 		/// </summary>
 		[JsonProperty("ovt_sigpric_buy_bid_jub_pre_1")]
-		public decimal? AfterHoursSinglePriceBuyPrevDiff1;
+		public decimal? AfterMarketSinglePriceBuyChange1;
 		/// <summary>
 		/// 시간외단일가 매수호가직전대비2
 		/// </summary>
 		[JsonProperty("ovt_sigpric_buy_bid_jub_pre_2")]
-		public decimal? AfterHoursSinglePriceBuyPrevDiff2;
+		public decimal? AfterMarketSinglePriceBuyChange2;
 		/// <summary>
 		/// 시간외단일가 매수호가직전대비3
 		/// </summary>
 		[JsonProperty("ovt_sigpric_buy_bid_jub_pre_3")]
-		public decimal? AfterHoursSinglePriceBuyPrevDiff3;
+		public decimal? AfterMarketSinglePriceBuyChange3;
 		/// <summary>
 		/// 시간외단일가 매수호가직전대비4
 		/// </summary>
 		[JsonProperty("ovt_sigpric_buy_bid_jub_pre_4")]
-		public decimal? AfterHoursSinglePriceBuyPrevDiff4;
+		public decimal? AfterMarketSinglePriceBuyChange4;
 		/// <summary>
 		/// 시간외단일가 매수호가직전대비5
 		/// </summary>
 		[JsonProperty("ovt_sigpric_buy_bid_jub_pre_5")]
-		public decimal? AfterHoursSinglePriceBuyPrevDiff5;
+		public decimal? AfterMarketSinglePriceBuyChange5;
 		/// <summary>
 		/// 시간외단일가 매도호가총잔량
 		/// </summary>
 		[JsonProperty("ovt_sigpric_sel_bid_tot_req")]
-		public decimal? AfterHoursSinglePriceSellTotalQuantity;
+		public decimal? TotalAfterMarketSinglePriceSellQuantity;
 		/// <summary>
 		/// 시간외단일가 매수호가총잔량
 		/// </summary>
 		[JsonProperty("ovt_sigpric_buy_bid_tot_req")]
-		public decimal? AfterHoursSinglePriceBuyTotalQuantity;
+		public decimal? TotalAfterMarketSinglePriceBuyQuantity;
 		/// <summary>
 		/// 매도호가총잔량직전대비
 		/// </summary>
 		[JsonProperty("sel_bid_tot_req_jub_pre")]
-		public decimal? SellTotalQuantityPrevDiff;
+		public decimal? TotalSellQuantityChange;
 		/// <summary>
 		/// 매도호가총잔량
 		/// </summary>
 		[JsonProperty("sel_bid_tot_req")]
-		public decimal? SellTotalQuantity;
+		public decimal? TotalSellQuantity;
 		/// <summary>
 		/// 매수호가총잔량
 		/// </summary>
 		[JsonProperty("buy_bid_tot_req")]
-		public decimal? BuyTotalQuantity;
+		public decimal? TotalBuyQuantity;
 		/// <summary>
 		/// 매수호가총잔량직전대비
 		/// </summary>
 		[JsonProperty("buy_bid_tot_req_jub_pre")]
-		public KiwoomDecimal? BuyTotalQuantityPrevDiff;
+		public KiwoomDecimal? TotalBuyQuantityChange;
 		/// <summary>
 		/// 시간외매도호가총잔량직전대비
 		/// </summary>
 		[JsonProperty("ovt_sel_bid_tot_req_jub_pre")]
-		public decimal? AfterHoursSellTotalQuantityPrevDiff;
+		public decimal? TotalAfterMarketSellQuantityChange;
 		/// <summary>
 		/// 시간외매도호가총잔량
 		/// </summary>
 		[JsonProperty("ovt_sel_bid_tot_req")]
-		public decimal? AfterHoursSellTotalQuantity;
+		public decimal? TotalAfterMarketSellQuantity;
 		/// <summary>
 		/// 시간외매수호가총잔량
 		/// </summary>
 		[JsonProperty("ovt_buy_bid_tot_req")]
-		public decimal? AfterHoursBuyTotalQuantity;
+		public decimal? TotalAfterMarketBuyQuantity;
 		/// <summary>
 		/// 시간외매수호가총잔량직전대비
 		/// </summary>
 		[JsonProperty("ovt_buy_bid_tot_req_jub_pre")]
-		public decimal? AfterHoursBuyTotalQuantityPrevDiff;
+		public decimal? TotalAfterMarketBuyQuantityChange;
 		/// <summary>
 		/// 시간외단일가 현재가
 		/// </summary>
 		[JsonProperty("ovt_sigpric_cur_prc")]
-		public decimal? AfterHoursSinglePriceCurrentPrice;
+		public decimal? AfterMarketSinglePriceCurrentPrice;
 		/// <summary>
 		/// 시간외단일가 전일대비기호
 		/// </summary>
 		[JsonProperty("ovt_sigpric_pred_pre_sig")]
-		public string? AfterHoursSinglePricePrevDiffSign;
+		public string? AfterMarketSinglePriceChangeSign;
 		/// <summary>
 		/// 시간외단일가 전일대비
 		/// </summary>
 		[JsonProperty("ovt_sigpric_pred_pre")]
-		public decimal? AfterHoursSinglePricePrevDiff;
+		public decimal? AfterMarketSinglePriceChange;
 		/// <summary>
 		/// 시간외단일가 등락률
 		/// </summary>
 		[JsonProperty("ovt_sigpric_flu_rt")]
-		public decimal? AfterHoursSinglePriceFluctuationRate;
+		public decimal? AfterMarketSinglePriceChangeRate;
 		/// <summary>
 		/// 시간외단일가 누적거래량
 		/// </summary>
 		[JsonProperty("ovt_sigpric_acc_trde_qty")]
-		public decimal? AfterHoursSinglePriceAccumulatedTradeQuantity;
+		public decimal? AfterMarketSinglePriceAccumulatedVolume;
 	}
 
-	public record KiwoomMarketConditionGetAfterHoursSinglePriceOrderBookList
+	public record KiwoomMarketConditionGetAfterMarketSinglePriceOrderBookList
 	{
 		/// <summary>
 		/// 호가잔량기준시간
 		/// </summary>
-		public TimeSpan? BidRequestBaseTime;
+		public TimeSpan? OrderbookTime;
 		/// <summary>
 		/// 시간외단일가 매도호가직전대비
 		/// </summary>
-		public decimal?[] AfterHoursSinglePriceSellPrevDiffs;
+		public decimal?[] AfterMarketSinglePriceSellChanges;
 		/// <summary>
 		/// 시간외단일가 매도호가수량
 		/// </summary>
-		public decimal?[] AfterHoursSinglePriceSellQuantities;
+		public decimal?[] AfterMarketSinglePriceSellQuantities;
 		/// <summary>
 		/// 시간외단일가 매도호가
 		/// </summary>
-		public decimal?[] AfterHoursSinglePriceSellPrices;
+		public decimal?[] AfterMarketSinglePriceSellPrices;
 		/// <summary>
 		/// 시간외단일가 매수호가
 		/// </summary>
-		public decimal?[] AfterHoursSinglePriceBuyPrices;
+		public decimal?[] AfterMarketSinglePriceBuyPrices;
 		/// <summary>
 		/// 시간외단일가 매수호가수량
 		/// </summary>
-		public decimal?[] AfterHoursSinglePriceBuyQuantities;
+		public decimal?[] AfterMarketSinglePriceBuyQuantities;
 		/// <summary>
 		/// 시간외단일가 매수호가직전대비
 		/// </summary>
-		public decimal?[] AfterHoursSinglePriceBuyPrevDiffs;
+		public decimal?[] AfterMarketSinglePriceBuyChanges;
 		/// <summary>
 		/// 시간외단일가 매도호가총잔량
 		/// </summary>
-		public decimal? AfterHoursSinglePriceSellTotalQuantity;
+		public decimal? TotalAfterMarketSinglePriceSellQuantity;
 		/// <summary>
 		/// 시간외단일가 매수호가총잔량
 		/// </summary>
-		public decimal? AfterHoursSinglePriceBuyTotalQuantity;
+		public decimal? TotalAfterMarketSinglePriceBuyQuantity;
 		/// <summary>
 		/// 매도호가총잔량직전대비
 		/// </summary>
-		public decimal? SellTotalQuantityPrevDiff;
+		public decimal? TotalSellQuantityChange;
 		/// <summary>
 		/// 매도호가총잔량
 		/// </summary>
-		public decimal? SellTotalQuantity;
+		public decimal? TotalSellQuantity;
 		/// <summary>
 		/// 매수호가총잔량
 		/// </summary>
-		public decimal? BuyTotalQuantity;
+		public decimal? TotalBuyQuantity;
 		/// <summary>
 		/// 매수호가총잔량직전대비
 		/// </summary>
-		public decimal? BuyTotalQuantityPrevDiff;
+		public decimal? TotalBuyQuantityChange;
 		/// <summary>
 		/// 시간외매도호가총잔량직전대비
 		/// </summary>
-		public decimal? AfterHoursSellTotalQuantityPrevDiff;
+		public decimal? TotalAfterMarketSellQuantityChange;
 		/// <summary>
 		/// 시간외매도호가총잔량
 		/// </summary>
-		public decimal? AfterHoursSellTotalQuantity;
+		public decimal? TotalAfterMarketSellQuantity;
 		/// <summary>
 		/// 시간외매수호가총잔량
 		/// </summary>
-		public decimal? AfterHoursBuyTotalQuantity;
+		public decimal? TotalAfterMarketBuyQuantity;
 		/// <summary>
 		/// 시간외매수호가총잔량직전대비
 		/// </summary>
-		public decimal? AfterHoursBuyTotalQuantityPrevDiff;
+		public decimal? TotalAfterMarketBuyQuantityChange;
 		/// <summary>
 		/// 시간외단일가 현재가
 		/// </summary>
-		public decimal? AfterHoursSinglePriceCurrentPrice;
+		public decimal? AfterMarketSinglePriceCurrentPrice;
 		/// <summary>
 		/// 시간외단일가 전일대비기호
 		/// </summary>
-		public string? AfterHoursSinglePricePrevDiffSign;
+		public string? AfterMarketSinglePriceChangeSign;
 		/// <summary>
 		/// 시간외단일가 전일대비
 		/// </summary>
-		public decimal? AfterHoursSinglePricePrevDiff;
+		public decimal? AfterMarketSinglePriceChange;
 		/// <summary>
 		/// 시간외단일가 등락률
 		/// </summary>
-		public decimal? AfterHoursSinglePriceFluctuationRate;
+		public decimal? AfterMarketSinglePriceChangeRate;
 		/// <summary>
 		/// 시간외단일가 누적거래량
 		/// </summary>
-		public decimal? AfterHoursSinglePriceAccumulatedTradeQuantity;
+		public decimal? AfterMarketSinglePriceAccumulatedVolume;
 
-		public KiwoomMarketConditionGetAfterHoursSinglePriceOrderBookList(KiwoomMarketConditionGetAfterHoursSinglePriceOrderBook raw)
+		public KiwoomMarketConditionGetAfterMarketSinglePriceOrderBookList(KiwoomMarketConditionGetAfterMarketSinglePriceOrderBook raw)
 		{
-			BidRequestBaseTime = raw.BidRequestBaseTime;
-			AfterHoursSinglePriceSellPrevDiffs =
+			OrderbookTime = raw.OrderBookTime;
+			AfterMarketSinglePriceSellChanges =
 			[
-				raw.AfterHoursSinglePriceSellPrevDiff5, raw.AfterHoursSinglePriceSellPrevDiff4,
-				raw.AfterHoursSinglePriceSellPrevDiff3, raw.AfterHoursSinglePriceSellPrevDiff2,
-				raw.AfterHoursSinglePriceSellPrevDiff1
+				raw.AfterMarketSinglePriceSellChange5, raw.AfterMarketSinglePriceSellChange4,
+				raw.AfterMarketSinglePriceSellChange3, raw.AfterMarketSinglePriceSellChange2,
+				raw.AfterMarketSinglePriceSellChange1
 			];
-			AfterHoursSinglePriceSellQuantities =
+			AfterMarketSinglePriceSellQuantities =
 			[
-				raw.AfterHoursSinglePriceSellQuantity5, raw.AfterHoursSinglePriceSellQuantity4,
-				raw.AfterHoursSinglePriceSellQuantity3, raw.AfterHoursSinglePriceSellQuantity2,
-				raw.AfterHoursSinglePriceSellQuantity1
+				raw.AfterMarketSinglePriceSellQuantity5, raw.AfterMarketSinglePriceSellQuantity4,
+				raw.AfterMarketSinglePriceSellQuantity3, raw.AfterMarketSinglePriceSellQuantity2,
+				raw.AfterMarketSinglePriceSellQuantity1
 			];
-			AfterHoursSinglePriceSellPrices =
+			AfterMarketSinglePriceSellPrices =
 			[
-				raw.AfterHoursSinglePriceSellPrice5, raw.AfterHoursSinglePriceSellPrice4,
-				raw.AfterHoursSinglePriceSellPrice3, raw.AfterHoursSinglePriceSellPrice2,
-				raw.AfterHoursSinglePriceSellPrice1
+				raw.AfterMarketSinglePriceSellPrice5, raw.AfterMarketSinglePriceSellPrice4,
+				raw.AfterMarketSinglePriceSellPrice3, raw.AfterMarketSinglePriceSellPrice2,
+				raw.AfterMarketSinglePriceSellPrice1
 			];
-			AfterHoursSinglePriceBuyPrices =
+			AfterMarketSinglePriceBuyPrices =
 			[
-				raw.AfterHoursSinglePriceBuyPrice1, raw.AfterHoursSinglePriceBuyPrice2,
-				raw.AfterHoursSinglePriceBuyPrice3, raw.AfterHoursSinglePriceBuyPrice4,
-				raw.AfterHoursSinglePriceBuyPrice5
+				raw.AfterMarketSinglePriceBuyPrice1, raw.AfterMarketSinglePriceBuyPrice2,
+				raw.AfterMarketSinglePriceBuyPrice3, raw.AfterMarketSinglePriceBuyPrice4,
+				raw.AfterMarketSinglePriceBuyPrice5
 			];
-			AfterHoursSinglePriceBuyQuantities =
+			AfterMarketSinglePriceBuyQuantities =
 			[
-				raw.AfterHoursSinglePriceBuyQuantity1, raw.AfterHoursSinglePriceBuyQuantity2,
-				raw.AfterHoursSinglePriceBuyQuantity3, raw.AfterHoursSinglePriceBuyQuantity4,
-				raw.AfterHoursSinglePriceBuyQuantity5
+				raw.AfterMarketSinglePriceBuyQuantity1, raw.AfterMarketSinglePriceBuyQuantity2,
+				raw.AfterMarketSinglePriceBuyQuantity3, raw.AfterMarketSinglePriceBuyQuantity4,
+				raw.AfterMarketSinglePriceBuyQuantity5
 			];
-			AfterHoursSinglePriceBuyPrevDiffs =
+			AfterMarketSinglePriceBuyChanges =
 			[
-				raw.AfterHoursSinglePriceBuyPrevDiff1, raw.AfterHoursSinglePriceBuyPrevDiff2,
-				raw.AfterHoursSinglePriceBuyPrevDiff3, raw.AfterHoursSinglePriceBuyPrevDiff4,
-				raw.AfterHoursSinglePriceBuyPrevDiff5
+				raw.AfterMarketSinglePriceBuyChange1, raw.AfterMarketSinglePriceBuyChange2,
+				raw.AfterMarketSinglePriceBuyChange3, raw.AfterMarketSinglePriceBuyChange4,
+				raw.AfterMarketSinglePriceBuyChange5
 			];
-			AfterHoursSinglePriceSellTotalQuantity = raw.AfterHoursSinglePriceSellTotalQuantity;
-			AfterHoursSinglePriceBuyTotalQuantity = raw.AfterHoursSinglePriceBuyTotalQuantity;
-			SellTotalQuantityPrevDiff = raw.SellTotalQuantityPrevDiff;
-			SellTotalQuantity = raw.SellTotalQuantity;
-			BuyTotalQuantity = raw.BuyTotalQuantity;
-			BuyTotalQuantityPrevDiff = raw.BuyTotalQuantityPrevDiff;
-			AfterHoursSellTotalQuantityPrevDiff = raw.AfterHoursSellTotalQuantityPrevDiff;
-			AfterHoursSellTotalQuantity = raw.AfterHoursSellTotalQuantity;
-			AfterHoursBuyTotalQuantity = raw.AfterHoursBuyTotalQuantity;
-			AfterHoursBuyTotalQuantityPrevDiff = raw.AfterHoursBuyTotalQuantityPrevDiff;
-			AfterHoursSinglePriceCurrentPrice = raw.AfterHoursSinglePriceCurrentPrice;
-			AfterHoursSinglePricePrevDiffSign = raw.AfterHoursSinglePricePrevDiffSign;
-			AfterHoursSinglePricePrevDiff = raw.AfterHoursSinglePricePrevDiff;
-			AfterHoursSinglePriceFluctuationRate = raw.AfterHoursSinglePriceFluctuationRate;
-			AfterHoursSinglePriceAccumulatedTradeQuantity = raw.AfterHoursSinglePriceAccumulatedTradeQuantity;
+			TotalAfterMarketSinglePriceSellQuantity = raw.TotalAfterMarketSinglePriceSellQuantity;
+			TotalAfterMarketSinglePriceBuyQuantity = raw.TotalAfterMarketSinglePriceBuyQuantity;
+			TotalSellQuantityChange = raw.TotalSellQuantityChange;
+			TotalSellQuantity = raw.TotalSellQuantity;
+			TotalBuyQuantity = raw.TotalBuyQuantity;
+			TotalBuyQuantityChange = raw.TotalBuyQuantityChange;
+			TotalAfterMarketSellQuantityChange = raw.TotalAfterMarketSellQuantityChange;
+			TotalAfterMarketSellQuantity = raw.TotalAfterMarketSellQuantity;
+			TotalAfterMarketBuyQuantity = raw.TotalAfterMarketBuyQuantity;
+			TotalAfterMarketBuyQuantityChange = raw.TotalAfterMarketBuyQuantityChange;
+			AfterMarketSinglePriceCurrentPrice = raw.AfterMarketSinglePriceCurrentPrice;
+			AfterMarketSinglePriceChangeSign = raw.AfterMarketSinglePriceChangeSign;
+			AfterMarketSinglePriceChange = raw.AfterMarketSinglePriceChange;
+			AfterMarketSinglePriceChangeRate = raw.AfterMarketSinglePriceChangeRate;
+			AfterMarketSinglePriceAccumulatedVolume = raw.AfterMarketSinglePriceAccumulatedVolume;
 		}
 	}
 
@@ -2614,67 +2613,67 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// </summary>
 		[JsonProperty("cntr_tm")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan? ContractTime;
+		public TimeSpan? TradeTime;
 		/// <summary>
 		/// 차익거래매도
 		/// </summary>
 		[JsonProperty("dfrt_trde_sel")]
-		public decimal? ArbitrageTradeSell;
+		public decimal? ArbitrageTransactionSell;
 		/// <summary>
 		/// 차익거래매수
 		/// </summary>
 		[JsonProperty("dfrt_trde_buy")]
-		public decimal? ArbitrageTradeBuy;
+		public decimal? ArbitrageTransactionBuy;
 		/// <summary>
 		/// 차익거래순매수
 		/// </summary>
 		[JsonProperty("dfrt_trde_netprps")]
-		public KiwoomDecimal? ArbitrageTradeNetPurchase;
+		public KiwoomDecimal? ArbitrageTransactionNetBuy;
 		/// <summary>
 		/// 비차익거래매도
 		/// </summary>
 		[JsonProperty("ndiffpro_trde_sel")]
-		public decimal? NonArbitrageTradeSell;
+		public decimal? NonArbitrageTransactionSell;
 		/// <summary>
 		/// 비차익거래매수
 		/// </summary>
 		[JsonProperty("ndiffpro_trde_buy")]
-		public decimal? NonArbitrageTradeBuy;
+		public decimal? NonArbitrageTransactionBuy;
 		/// <summary>
 		/// 비차익거래순매수
 		/// </summary>
 		[JsonProperty("ndiffpro_trde_netprps")]
-		public KiwoomDecimal? NonArbitrageTradeNetPurchase;
+		public KiwoomDecimal? NonArbitrageTransactionNetBuy;
 		/// <summary>
 		/// 차익거래매도수량
 		/// </summary>
 		[JsonProperty("dfrt_trde_sell_qty")]
-		public decimal? ArbitrageTradeSellQuantity;
+		public decimal? ArbitrageSellVolume;
 		/// <summary>
 		/// 차익거래매수수량
 		/// </summary>
 		[JsonProperty("dfrt_trde_buy_qty")]
-		public decimal? ArbitrageTradeBuyQuantity;
+		public decimal? ArbitrageBuyVolume;
 		/// <summary>
 		/// 차익거래순매수수량
 		/// </summary>
 		[JsonProperty("dfrt_trde_netprps_qty")]
-		public KiwoomDecimal? ArbitrageTradeNetPurchaseQuantity;
+		public KiwoomDecimal? ArbitrageNetBuyVolume;
 		/// <summary>
 		/// 비차익거래매도수량
 		/// </summary>
 		[JsonProperty("ndiffpro_trde_sell_qty")]
-		public decimal? NonArbitrageTradeSellQuantity;
+		public decimal? NonArbitrageSellVolume;
 		/// <summary>
 		/// 비차익거래매수수량
 		/// </summary>
 		[JsonProperty("ndiffpro_trde_buy_qty")]
-		public decimal? NonArbitrageTradeBuyQuantity;
+		public decimal? NonArbitrageBuyVolume;
 		/// <summary>
 		/// 비차익거래순매수수량
 		/// </summary>
 		[JsonProperty("ndiffpro_trde_netprps_qty")]
-		public KiwoomDecimal? NonArbitrageTradeNetPurchaseQuantity;
+		public KiwoomDecimal? NonArbitrageNetBuyVolume;
 		/// <summary>
 		/// 전체매도
 		/// </summary>
@@ -2689,7 +2688,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전체순매수
 		/// </summary>
 		[JsonProperty("all_netprps")]
-		public KiwoomDecimal? TotalNetPurchase;
+		public KiwoomDecimal? TotalNetBuy;
 		/// <summary>
 		/// KOSPI200
 		/// </summary>
@@ -2722,32 +2721,32 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매수차익거래수량
 		/// </summary>
 		[JsonProperty("buy_dfrt_trde_qty")]
-		public decimal? BuyArbitrageTradeQuantity;
+		public decimal? BuyArbitrageVolume;
 		/// <summary>
 		/// 매수차익거래금액
 		/// </summary>
 		[JsonProperty("buy_dfrt_trde_amt")]
-		public decimal? BuyArbitrageTradeAmount;
+		public decimal? BuyArbitrageTransactionAmount;
 		/// <summary>
 		/// 매수차익거래증감액
 		/// </summary>
 		[JsonProperty("buy_dfrt_trde_irds_amt")]
-		public decimal? BuyArbitrageTradeIncreaseDecreaseAmount;
+		public decimal? BuyArbitrageChangeAmount;
 		/// <summary>
 		/// 매도차익거래수량
 		/// </summary>
 		[JsonProperty("sel_dfrt_trde_qty")]
-		public decimal? SellArbitrageTradeQuantity;
+		public decimal? SellArbitrageVolume;
 		/// <summary>
 		/// 매도차익거래금액
 		/// </summary>
 		[JsonProperty("sel_dfrt_trde_amt")]
-		public decimal? SellArbitrageTradeAmount;
+		public decimal? SellArbitrageTransactionAmount;
 		/// <summary>
 		/// 매도차익거래증감액
 		/// </summary>
 		[JsonProperty("sel_dfrt_trde_irds_amt")]
-		public decimal? SellArbitrageTradeIncreaseDecreaseAmount;
+		public decimal? SellArbitrageChangeAmount;
 	}
 
 	public record KiwoomMarketConditionGetProgramTradeAccumulatedTrends
@@ -2780,22 +2779,22 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 차익거래당일
 		/// </summary>
 		[JsonProperty("dfrt_trde_tdy")]
-		public KiwoomDecimal? ArbitrageTradeToday;
+		public KiwoomDecimal? ArbitrageTransactionToday;
 		/// <summary>
 		/// 차익거래누적
 		/// </summary>
 		[JsonProperty("dfrt_trde_acc")]
-		public KiwoomDecimal? ArbitrageTradeAccumulated;
+		public KiwoomDecimal? ArbitrageTransactionAccumulated;
 		/// <summary>
 		/// 비차익거래당일
 		/// </summary>
 		[JsonProperty("ndiffpro_trde_tdy")]
-		public KiwoomDecimal? NonArbitrageTradeToday;
+		public KiwoomDecimal? NonArbitrageTransactionToday;
 		/// <summary>
 		/// 비차익거래누적
 		/// </summary>
 		[JsonProperty("ndiffpro_trde_acc")]
-		public KiwoomDecimal? NonArbitrageTradeAccumulated;
+		public KiwoomDecimal? NonArbitrageTransactionAccumulated;
 		/// <summary>
 		/// 전체당일
 		/// </summary>
@@ -2833,22 +2832,22 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 대비기호
 		/// </summary>
 		[JsonProperty("pre_sig")]
-		public string? PrevDiffSign;
+		public string? ChangeSign;
 		/// <summary>
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? PrevDiff;
+		public decimal? Change;
 		/// <summary>
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? FluctuationRate;
+		public decimal? ChangeRate;
 		/// <summary>
 		/// 거래량
 		/// </summary>
 		[JsonProperty("trde_qty")]
-		public decimal? TradeQuantity;
+		public decimal? Volume;
 		/// <summary>
 		/// 프로그램매도금액
 		/// </summary>
@@ -2863,12 +2862,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 프로그램순매수금액
 		/// </summary>
 		[JsonProperty("prm_netprps_amt")]
-		public KiwoomDecimal? ProgramNetPurchaseAmount;
+		public KiwoomDecimal? ProgramNetBuyAmount;
 		/// <summary>
 		/// 프로그램순매수금액증감
 		/// </summary>
 		[JsonProperty("prm_netprps_amt_irds")]
-		public KiwoomDecimal? ProgramNetPurchaseAmountChange;
+		public KiwoomDecimal? ProgramNetBuyAmountChange;
 		/// <summary>
 		/// 프로그램매도수량
 		/// </summary>
@@ -2883,12 +2882,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 프로그램순매수수량
 		/// </summary>
 		[JsonProperty("prm_netprps_qty")]
-		public KiwoomDecimal? ProgramNetPurchaseQuantity;
+		public KiwoomDecimal? ProgramNetBuyQuantity;
 		/// <summary>
 		/// 프로그램순매수수량증감
 		/// </summary>
 		[JsonProperty("prm_netprps_qty_irds")]
-		public KiwoomDecimal? ProgramNetPurchaseQuantityChange;
+		public KiwoomDecimal? ProgramNetBuyQuantityChange;
 		/// <summary>
 		/// 기준가시간
 		/// </summary>
@@ -2899,12 +2898,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 대차거래상환주수합
 		/// </summary>
 		[JsonProperty("dbrt_trde_rpy_sum")]
-		public decimal? StockLoanRepaymentSum;
+		public decimal? TotalSecuritiesLendingRepaymentQuantity;
 		/// <summary>
 		/// 잔고수주합
 		/// </summary>
 		[JsonProperty("remn_rcvord_sum")]
-		public decimal? RemainingOrderSum;
+		public decimal? TotalBalanceQuantity;
 		/// <summary>
 		/// 거래소구분 - KRX, NXT, 통합
 		/// </summary>
@@ -2927,67 +2926,67 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// </summary>
 		[JsonProperty("cntr_tm")]
 		[JsonConverter(typeof(KiwoomDateTimeConverter))]
-		public DateTime? ContractTime;
+		public DateTime? TradeTime;
 		/// <summary>
 		/// 차익거래매도
 		/// </summary>
 		[JsonProperty("dfrt_trde_sel")]
-		public decimal? ArbitrageTradeSell;
+		public decimal? ArbitrageTransactionSell;
 		/// <summary>
 		/// 차익거래매수
 		/// </summary>
 		[JsonProperty("dfrt_trde_buy")]
-		public decimal? ArbitrageTradeBuy;
+		public decimal? ArbitrageTransactionBuy;
 		/// <summary>
 		/// 차익거래순매수
 		/// </summary>
 		[JsonProperty("dfrt_trde_netprps")]
-		public decimal? ArbitrageTradeNetPurchase;
+		public decimal? ArbitrageTransactionNetBuy;
 		/// <summary>
 		/// 비차익거래매도
 		/// </summary>
 		[JsonProperty("ndiffpro_trde_sel")]
-		public decimal? NonArbitrageTradeSell;
+		public decimal? NonArbitrageTransactionSell;
 		/// <summary>
 		/// 비차익거래매수
 		/// </summary>
 		[JsonProperty("ndiffpro_trde_buy")]
-		public decimal? NonArbitrageTradeBuy;
+		public decimal? NonArbitrageTransactionBuy;
 		/// <summary>
 		/// 비차익거래순매수
 		/// </summary>
 		[JsonProperty("ndiffpro_trde_netprps")]
-		public decimal? NonArbitrageTradeNetPurchase;
+		public decimal? NonArbitrageTransactionNetBuy;
 		/// <summary>
 		/// 차익거래매도수량
 		/// </summary>
 		[JsonProperty("dfrt_trde_sell_qty")]
-		public decimal? ArbitrageTradeSellQuantity;
+		public decimal? ArbitrageSellVolume;
 		/// <summary>
 		/// 차익거래매수수량
 		/// </summary>
 		[JsonProperty("dfrt_trde_buy_qty")]
-		public decimal? ArbitrageTradeBuyQuantity;
+		public decimal? ArbitrageBuyVolume;
 		/// <summary>
 		/// 차익거래순매수수량
 		/// </summary>
 		[JsonProperty("dfrt_trde_netprps_qty")]
-		public decimal? ArbitrageTradeNetPurchaseQuantity;
+		public decimal? ArbitrageNetBuyVolume;
 		/// <summary>
 		/// 비차익거래매도수량
 		/// </summary>
 		[JsonProperty("ndiffpro_trde_sell_qty")]
-		public decimal? NonArbitrageTradeSellQuantity;
+		public decimal? NonArbitrageSellVolume;
 		/// <summary>
 		/// 비차익거래매수수량
 		/// </summary>
 		[JsonProperty("ndiffpro_trde_buy_qty")]
-		public decimal? NonArbitrageTradeBuyQuantity;
+		public decimal? NonArbitrageBuyVolume;
 		/// <summary>
 		/// 비차익거래순매수수량
 		/// </summary>
 		[JsonProperty("ndiffpro_trde_netprps_qty")]
-		public decimal? NonArbitrageTradeNetPurchaseQuantity;
+		public decimal? NonArbitrageNetBuyVolume;
 		/// <summary>
 		/// 전체매도
 		/// </summary>
@@ -3002,7 +3001,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전체순매수
 		/// </summary>
 		[JsonProperty("all_netprps")]
-		public decimal? TotalNetPurchase;
+		public decimal? TotalNetBuy;
 		/// <summary>
 		/// KOSPI200
 		/// </summary>
@@ -3040,22 +3039,22 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 대비기호
 		/// </summary>
 		[JsonProperty("pre_sig")]
-		public string? PrevDiffSign;
+		public string? ChangeSign;
 		/// <summary>
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? PrevDiff;
+		public decimal? Change;
 		/// <summary>
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? FluctuationRate;
+		public decimal? ChangeRate;
 		/// <summary>
 		/// 거래량
 		/// </summary>
 		[JsonProperty("trde_qty")]
-		public decimal? TradeQuantity;
+		public decimal? Volume;
 		/// <summary>
 		/// 프로그램매도금액
 		/// </summary>
@@ -3070,12 +3069,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 프로그램순매수금액
 		/// </summary>
 		[JsonProperty("prm_netprps_amt")]
-		public KiwoomDecimal? ProgramNetPurchaseAmount;
+		public KiwoomDecimal? ProgramNetBuyAmount;
 		/// <summary>
 		/// 프로그램순매수금액증감
 		/// </summary>
 		[JsonProperty("prm_netprps_amt_irds")]
-		public KiwoomDecimal? ProgramNetPurchaseAmountChange;
+		public KiwoomDecimal? ProgramNetBuyAmountChange;
 		/// <summary>
 		/// 프로그램매도수량
 		/// </summary>
@@ -3090,12 +3089,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 프로그램순매수수량
 		/// </summary>
 		[JsonProperty("prm_netprps_qty")]
-		public KiwoomDecimal? ProgramNetPurchaseQuantity;
+		public KiwoomDecimal? ProgramNetBuyQuantity;
 		/// <summary>
 		/// 프로그램순매수수량증감
 		/// </summary>
 		[JsonProperty("prm_netprps_qty_irds")]
-		public KiwoomDecimal? ProgramNetPurchaseQuantityChange;
+		public KiwoomDecimal? ProgramNetBuyQuantityChange;
 		/// <summary>
 		/// 기준가시간
 		/// </summary>
@@ -3106,12 +3105,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 대차거래상환주수합
 		/// </summary>
 		[JsonProperty("dbrt_trde_rpy_sum")]
-		public decimal? StockLoanRepaymentSum;
+		public decimal? TotalSecuritiesLendingRepaymentQuantity;
 		/// <summary>
 		/// 잔고수주합
 		/// </summary>
 		[JsonProperty("remn_rcvord_sum")]
-		public decimal? RemainingOrderSum;
+		public decimal? TotalBalanceQuantity;
 		/// <summary>
 		/// 거래소구분 - KRX, NXT, 통합
 		/// </summary>

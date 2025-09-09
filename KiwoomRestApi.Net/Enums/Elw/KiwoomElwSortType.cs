@@ -16,7 +16,7 @@
 		/// <summary>
 		/// 상승폭순
 		/// </summary>
-		AscendingDelta = 2,
+		Ascending = 2,
 		/// <summary>
 		/// 하락율순
 		/// </summary>
@@ -24,7 +24,7 @@
 		/// <summary>
 		/// 하락폭순
 		/// </summary>
-		DescendingDelta = 4,
+		Descending = 4,
 		/// <summary>
 		/// 거래량순
 		/// </summary>
@@ -32,7 +32,7 @@
 		/// <summary>
 		/// 거래대금순
 		/// </summary>
-		TradeAmount = 6,
+		TransactionAmount = 6,
 		/// <summary>
 		/// 잔존일순
 		/// </summary>

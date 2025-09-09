@@ -3,9 +3,28 @@
 namespace KiwoomRestApi.Net.Enums.Account
 {
 	/// <summary>
-	/// 구분
+	/// 매매구분
 	/// </summary>
 	public enum KiwoomAccountTransactionType
+	{
+		/// <summary>
+		/// 전체
+		/// </summary>
+		All = 0,
+		/// <summary>
+		/// 매도
+		/// </summary>
+		Sell = 1,
+		/// <summary>
+		/// 매수
+		/// </summary>
+		Buy = 2
+	}
+
+	/// <summary>
+	/// 구분
+	/// </summary>
+	public enum KiwoomAccountTransactionType2
 	{
 		/// <summary>
 		/// 전체
@@ -16,17 +35,17 @@ namespace KiwoomRestApi.Net.Enums.Account
 		/// 입출금
 		/// </summary>
 		[EnumMember(Value = "1")]
-		InOut,
+		DepositWithdrawal,
 		/// <summary>
 		/// 입출고
 		/// </summary>
 		[EnumMember(Value = "2")]
-		DepositWithdraw,
+		IncomingOutgoing,
 		/// <summary>
 		/// 매매
 		/// </summary>
 		[EnumMember(Value = "3")]
-		Trade,
+		Transaction,
 		/// <summary>
 		/// 매수
 		/// </summary>

@@ -7,15 +7,15 @@ using System.Collections.Generic;
 
 namespace KiwoomRestApi.Net.Objects.Models
 {
-	public record KiwoomSecuritiesLendingAndBorrowingGetBorrowedTrades
+	public record KiwoomSecuritiesLendingGetBorrowedTrades
 	{
 		/// <summary>
 		/// 대차거래추이
 		/// </summary>
 		[JsonProperty("dbrt_trde_trnsn")]
-		public IEnumerable<KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradeItem>? Items;
+		public IEnumerable<KiwoomSecuritiesLendingGetBorrowedTradeItem>? Items;
 	}
-	public record KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradeItem
+	public record KiwoomSecuritiesLendingGetBorrowedTradeItem
 	{
 		/// <summary>
 		/// 일자
@@ -27,78 +27,78 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 대차거래체결주수
 		/// </summary>
 		[JsonProperty("dbrt_trde_cntrcnt")]
-		public decimal BorrowedTradeContracts;
+		public decimal SecuritiesLendingTradeQuantity;
 		/// <summary>
 		/// 대차거래상환주수
 		/// </summary>
 		[JsonProperty("dbrt_trde_rpy")]
-		public decimal BorrowedTradeRepayments;
+		public decimal SecuritiesLendingRepaymentQuantity;
 		/// <summary>
 		/// 대차거래증감
 		/// </summary>
 		[JsonProperty("dbrt_trde_irds")]
-		public decimal BorrowedTradeIncreaseDecrease;
+		public decimal SecuritiesLendingChange;
 		/// <summary>
 		/// 잔고주수
 		/// </summary>
 		[JsonProperty("rmnd")]
-		public decimal RemainderQuantity;
+		public decimal BalanceQuantity;
 		/// <summary>
 		/// 잔고금액
 		/// </summary>
 		[JsonProperty("remn_amt")]
-		public decimal RemainderAmount;
+		public decimal BalanceAmount;
 	}
 
-	public record KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradeTop10
+	public record KiwoomSecuritiesLendingGetBorrowedTradeTop10
 	{
 		/// <summary>
 		/// 대차거래체결주수합
 		/// </summary>
 		[JsonProperty("dbrt_trde_cntrcnt_sum")]
-		public decimal BorrowedTradeContractsSum;
+		public decimal TotalSecuritiesLendingTradeQuantity;
 		/// <summary>
 		/// 대차거래상환주수합
 		/// </summary>
 		[JsonProperty("dbrt_trde_rpy_sum")]
-		public decimal BorrowedTradeRepaymentsSum;
+		public decimal TotalSecuritiesLendingRepaymentQuantity;
 		/// <summary>
 		/// 잔고주수합
 		/// </summary>
 		[JsonProperty("rmnd_sum")]
-		public decimal RemainderQuantitySum;
+		public decimal TotalBalanceQuantity;
 		/// <summary>
 		/// 잔고금액합
 		/// </summary>
 		[JsonProperty("remn_amt_sum")]
-		public decimal RemainderAmountSum;
+		public decimal TotalBalanceAmount;
 		/// <summary>
 		/// 대차거래체결주수비율
 		/// </summary>
 		[JsonProperty("dbrt_trde_cntrcnt_rt")]
-		public decimal BorrowedTradeContractsRate;
+		public decimal SecuritiesLendingTradeQuantityRate;
 		/// <summary>
 		/// 대차거래상환주수비율
 		/// </summary>
 		[JsonProperty("dbrt_trde_rpy_rt")]
-		public decimal BorrowedTradeRepaymentsRate;
+		public decimal SecuritiesLendingRepaymentQuantityRate;
 		/// <summary>
 		/// 잔고주수비율
 		/// </summary>
 		[JsonProperty("rmnd_rt")]
-		public decimal RemainderQuantityRate;
+		public decimal BalanceQuantityRate;
 		/// <summary>
 		/// 잔고금액비율
 		/// </summary>
 		[JsonProperty("remn_amt_rt")]
-		public decimal RemainderAmountRate;
+		public decimal BalanceAmountRate;
 		/// <summary>
 		/// 대차거래상위10종목
 		/// </summary>
 		[JsonProperty("dbrt_trde_upper_10stk")]
-		public IEnumerable<KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradeTop10Item>? Items;
+		public IEnumerable<KiwoomSecuritiesLendingGetBorrowedTradeTop10Item>? Items;
 	}
-	public record KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradeTop10Item
+	public record KiwoomSecuritiesLendingGetBorrowedTradeTop10Item
 	{
 		/// <summary>
 		/// 종목명
@@ -114,33 +114,33 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 대차거래체결주수
 		/// </summary>
 		[JsonProperty("dbrt_trde_cntrcnt")]
-		public decimal BorrowedTradeContracts;
+		public decimal SecuritiesLendingTradeQuantity;
 		/// <summary>
 		/// 대차거래상환주수
 		/// </summary>
 		[JsonProperty("dbrt_trde_rpy")]
-		public decimal BorrowedTradeRepayments;
+		public decimal SecuritiesLendingRepaymentQuantity;
 		/// <summary>
 		/// 잔고주수
 		/// </summary>
 		[JsonProperty("rmnd")]
-		public decimal RemainderQuantity;
+		public decimal BalanceQuantity;
 		/// <summary>
 		/// 잔고금액
 		/// </summary>
 		[JsonProperty("remn_amt")]
-		public decimal RemainderAmount;
+		public decimal BalanceAmount;
 	}
 
-	public record KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradesByStock
+	public record KiwoomSecuritiesLendingGetStockBorrowedTrades
 	{
 		/// <summary>
 		/// 대차거래추이
 		/// </summary>
 		[JsonProperty("dbrt_trde_trnsn")]
-		public IEnumerable<KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradeItemByStock>? Items;
+		public IEnumerable<KiwoomSecuritiesLendingGetStockBorrowedTradeItem>? Items;
 	}
-	public record KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradeItemByStock
+	public record KiwoomSecuritiesLendingGetStockBorrowedTradeItem
 	{
 		/// <summary>
 		/// 일자
@@ -152,38 +152,38 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 대차거래체결주수
 		/// </summary>
 		[JsonProperty("dbrt_trde_cntrcnt")]
-		public decimal BorrowedTradeContracts;
+		public decimal SecuritiesLendingTradeQuantity;
 		/// <summary>
 		/// 대차거래상환주수
 		/// </summary>
 		[JsonProperty("dbrt_trde_rpy")]
-		public decimal BorrowedTradeRepayments;
+		public decimal SecuritiesLendingRepaymentQuantity;
 		/// <summary>
 		/// 대차거래증감
 		/// </summary>
 		[JsonProperty("dbrt_trde_irds")]
-		public decimal BorrowedTradeIncreaseDecrease;
+		public decimal SecuritiesLendingChange;
 		/// <summary>
 		/// 잔고주수
 		/// </summary>
 		[JsonProperty("rmnd")]
-		public decimal RemainderQuantity;
+		public decimal BalanceQuantity;
 		/// <summary>
 		/// 잔고금액
 		/// </summary>
 		[JsonProperty("remn_amt")]
-		public decimal RemainderAmount;
+		public decimal BalanceAmount;
 	}
 
-	public record KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradeHistories
+	public record KiwoomSecuritiesLendingGetBorrowedTradeHistories
 	{
 		/// <summary>
 		/// 대차거래내역
 		/// </summary>
 		[JsonProperty("dbrt_trde_prps")]
-		public IEnumerable<KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradeHistoryItem>? Items;
+		public IEnumerable<KiwoomSecuritiesLendingGetBorrowedTradeHistoryItem>? Items;
 	}
-	public record KiwoomSecuritiesLendingAndBorrowingGetBorrowedTradeHistoryItem
+	public record KiwoomSecuritiesLendingGetBorrowedTradeHistoryItem
 	{
 		/// <summary>
 		/// 종목명
@@ -199,22 +199,22 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 대차거래체결주수
 		/// </summary>
 		[JsonProperty("dbrt_trde_cntrcnt")]
-		public decimal BorrowedTradeContracts;
+		public decimal SecuritiesLendingTradeQuantity;
 		/// <summary>
 		/// 대차거래상환주수
 		/// </summary>
 		[JsonProperty("dbrt_trde_rpy")]
-		public decimal BorrowedTradeRepayments;
+		public decimal SecuritiesLendingRepaymentQuantity;
 		/// <summary>
 		/// 잔고주수
 		/// </summary>
 		[JsonProperty("rmnd")]
-		public decimal RemainderQuantity;
+		public decimal BalanceQuantity;
 		/// <summary>
 		/// 잔고금액
 		/// </summary>
 		[JsonProperty("remn_amt")]
-		public decimal RemainderAmount;
+		public decimal BalanceAmount;
 	}
 
 }

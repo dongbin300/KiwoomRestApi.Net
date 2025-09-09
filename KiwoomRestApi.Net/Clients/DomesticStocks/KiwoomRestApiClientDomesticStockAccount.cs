@@ -25,13 +25,13 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="date"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetDailyBalanceReturns>> GetDailyBalanceReturnsAsync(DateTime date, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetDailyBalanceProfitRates>> GetDailyBalanceProfitRatesAsync(DateTime date, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka01690";
 			var body = new HttpParameterMap()
 				.AddField("qry_dt", date);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetDailyBalanceReturns>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetDailyBalanceProfitRates>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -41,14 +41,14 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="startDate"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetDateStockRealizedProfitLoss>> GetDateStockRealizedProfitLossAsync(string stockCode, DateTime startDate, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetDailyStockRealizedProfitLosses>> GetDailyStockRealizedProfitLossesAsync(string stockCode, DateTime startDate, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10072";
 			var body = new HttpParameterMap()
 				.AddField("stk_cd", stockCode)
 				.AddField("strt_dt", startDate);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetDateStockRealizedProfitLoss>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetDailyStockRealizedProfitLosses>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -59,7 +59,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="endDate"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetPeriodStockRealizedProfitLoss>> GetPeriodStockRealizedProfitLossAsync(string stockCode, DateTime startDate, DateTime endDate, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetDailyStockRealizedProfitLossPeriods>> GetDailyStockRealizedProfitLossPeriodsAsync(string stockCode, DateTime startDate, DateTime endDate, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10073";
 			var body = new HttpParameterMap()
@@ -67,7 +67,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("strt_dt", startDate)
 				.AddField("end_dt", endDate);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetPeriodStockRealizedProfitLoss>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetDailyStockRealizedProfitLossPeriods>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -77,58 +77,58 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="endDate"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetRealizedProfitLoss>> GetRealizedProfitLossAsync(DateTime startDate, DateTime endDate, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetDailyRealizedProfitLosses>> GetDailyRealizedProfitLossesAsync(DateTime startDate, DateTime endDate, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10074";
 			var body = new HttpParameterMap()
 				.AddField("strt_dt", startDate)
 				.AddField("end_dt", endDate);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetRealizedProfitLoss>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetDailyRealizedProfitLosses>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
 		/// | ka10075 | 미체결요청
 		/// </summary>
 		/// <param name="queryType"></param>
-		/// <param name="tradeType"></param>
+		/// <param name="transactionType"></param>
 		/// <param name="stockExchangeType"></param>
 		/// <param name="stockCode"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetOutstandingOrders>> GetOutstandingOrdersAsync(KiwoomAccountQueryType queryType, KiwoomAccountTradeType tradeType, KiwoomAccountStockExchangeType stockExchangeType, string stockCode = "", CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetUnfilledOrders>> GetUnfilledOrdersAsync(KiwoomAccountQueryType queryType, KiwoomAccountTransactionType transactionType, KiwoomAccountStockExchangeType stockExchangeType, string stockCode = "", CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10075";
 			var body = new HttpParameterMap()
 				.AddField("all_stk_tp", queryType)
-				.AddField("trde_tp", tradeType)
+				.AddField("trde_tp", transactionType)
 				.AddField("stex_tp", stockExchangeType)
 				.AddField("stk_cd", stockCode);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetOutstandingOrders>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetUnfilledOrders>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
 		/// | ka10076 | 체결요청
 		/// </summary>
 		/// <param name="queryType"></param>
-		/// <param name="tradeType"></param>
+		/// <param name="transactionType"></param>
 		/// <param name="stockExchangeType"></param>
 		/// <param name="stockCode"></param>
 		/// <param name="orderId"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetContracts>> GetContractsAsync(KiwoomAccountQueryType queryType, KiwoomAccountTradeType tradeType, KiwoomAccountStockExchangeType stockExchangeType, string stockCode = "", string orderId = "", CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetFilledOrders>> GetFilledOrdersAsync(KiwoomAccountQueryType queryType, KiwoomAccountTransactionType transactionType, KiwoomAccountStockExchangeType stockExchangeType, string stockCode = "", string orderId = "", CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10076";
 			var body = new HttpParameterMap()
 				.AddField("qry_tp", queryType)
-				.AddField("sell_tp", tradeType)
+				.AddField("sell_tp", transactionType)
 				.AddField("stex_tp", stockExchangeType)
 				.AddField("stk_cd", stockCode)
 				.AddField("ord_no", orderId);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetContracts>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetFilledOrders>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -152,13 +152,13 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="stockExchangeType"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetProfitRate>> GetProfitRateAsync(KiwoomAccountStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetProfitRates>> GetProfitRatesAsync(KiwoomAccountStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10085";
 			var body = new HttpParameterMap()
 				.AddField("stex_tp", stockExchangeType);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetProfitRate>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetProfitRates>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -167,13 +167,13 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="orderId"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetOutstandingPartialOrders>> GetOutstandingPartialOrdersAsync(string orderId, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetUnfilledSplitOrders>> GetUnfilledSplitOrdersAsync(string orderId, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10088";
 			var body = new HttpParameterMap()
 				.AddField("ord_no", orderId);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetOutstandingPartialOrders>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetUnfilledSplitOrders>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -184,7 +184,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="date"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetTodayTradeDiaries>> GetTodayTradeDiariesAsync(KiwoomAccountOddLotType oddLotType, KiwoomAccountCashCreditType cashCreditType, DateTime? date = null, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetTodayTransactionJournal>> GetTodayTransactionJournalAsync(KiwoomAccountOddLotType oddLotType, KiwoomAccountCashCreditType cashCreditType, DateTime? date = null, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10170";
 			var body = new HttpParameterMap()
@@ -192,7 +192,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("ch_crd_tp", cashCreditType)
 				.AddField("base_dt", date);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetTodayTradeDiaries>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetTodayTransactionJournal>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -265,13 +265,13 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="stockExchangeType"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetContractBalances>> GetContractBalancesAsync(KiwoomAccountStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetTradeBalances>> GetTradeBalancesAsync(KiwoomAccountStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "kt00005";
 			var body = new HttpParameterMap()
 				.AddField("dmst_stex_tp", stockExchangeType);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetContractBalances>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetTradeBalances>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -279,26 +279,26 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// </summary>
 		/// <param name="queryType"></param>
 		/// <param name="stockBondType"></param>
-		/// <param name="tradeType"></param>
+		/// <param name="transactionType"></param>
 		/// <param name="domesticStockExchangeType"></param>
 		/// <param name="date"></param>
 		/// <param name="stockCode"></param>
 		/// <param name="fromOrderId"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetOrderContractDetails>> GetOrderContractDetailsAsync(KiwoomAccountOrderQueryType queryType, KiwoomAccountStockBondType stockBondType, KiwoomAccountTradeType tradeType, KiwoomAccountDomesticStockExchangeType domesticStockExchangeType, DateTime? date = null, string stockCode = "", string fromOrderId = "", CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetOrderTradeDetails>> GetOrderTradeDetailsAsync(KiwoomAccountOrderQueryType queryType, KiwoomAccountStockBondType stockBondType, KiwoomAccountTransactionType transactionType, KiwoomAccountDomesticStockExchangeType domesticStockExchangeType, DateTime? date = null, string stockCode = "", string fromOrderId = "", CancellationToken cancellationToken = default)
 		{
 			const string apiId = "kt00007";
 			var body = new HttpParameterMap()
 				.AddField("qry_tp", queryType)
 				.AddField("stk_bond_tp", stockBondType)
-				.AddField("sell_tp", tradeType)
+				.AddField("sell_tp", transactionType)
 				.AddField("dmst_stex_tp", domesticStockExchangeType)
 				.AddField("ord_dt", date)
 				.AddField("stk_cd", stockCode)
 				.AddField("fr_ord_no", fromOrderId);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetOrderContractDetails>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetOrderTradeDetails>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -321,7 +321,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// </summary>
 		/// <param name="queryType"></param>
 		/// <param name="stockBondType"></param>
-		/// <param name="tradeType"></param>
+		/// <param name="transactionType"></param>
 		/// <param name="domesticStockExchangeType"></param>
 		/// <param name="marketType"></param>
 		/// <param name="date"></param>
@@ -329,45 +329,45 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="fromOrderId"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetOrderContracts>> GetOrderContractsAsync(KiwoomAccountOrderContractQueryType queryType, KiwoomAccountStockBondType stockBondType, KiwoomAccountTradeType tradeType, KiwoomAccountDomesticStockExchangeType domesticStockExchangeType, KiwoomAccountMarketType marketType, DateTime? date = null, string stockCode = "", string fromOrderId = "", CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetOrderTrades>> GetOrderTradesAsync(KiwoomAccountOrderTradeQueryType queryType, KiwoomAccountStockBondType stockBondType, KiwoomAccountTransactionType transactionType, KiwoomAccountDomesticStockExchangeType domesticStockExchangeType, KiwoomAccountMarketType marketType, DateTime? date = null, string stockCode = "", string fromOrderId = "", CancellationToken cancellationToken = default)
 		{
 			const string apiId = "kt00009";
 			var body = new HttpParameterMap()
 				.AddField("qry_tp", queryType)
 				.AddField("stk_bond_tp", stockBondType)
-				.AddField("sell_tp", tradeType)
+				.AddField("sell_tp", transactionType)
 				.AddField("dmst_stex_tp", domesticStockExchangeType)
 				.AddField("mrkt_tp", marketType)
 				.AddField("ord_dt", date)
 				.AddField("stk_cd", stockCode)
 				.AddField("fr_ord_no", fromOrderId);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetOrderContracts>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetOrderTrades>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
 		/// | kt00010 | 주문인출가능금액요청
 		/// </summary>
 		/// <param name="stockCode"></param>
-		/// <param name="tradeType"></param>
+		/// <param name="transactionType"></param>
 		/// <param name="buyPrice"></param>
 		/// <param name="buyQuantity"></param>
-		/// <param name="inOutAmount"></param>
+		/// <param name="depositWithdrawalAmount"></param>
 		/// <param name="expectedBuyPrice"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetMarginOrderAmounts>> GetMarginOrderAmountsAsync(string stockCode, KiwoomAccountTradeType tradeType, decimal buyPrice, decimal? buyQuantity = null, decimal? inOutAmount = null, decimal? expectedBuyPrice = null, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetAvailableWithdrawalAmounts>> GetAvailableWithdrawalAmountsAsync(string stockCode, KiwoomAccountTransactionType transactionType, decimal buyPrice, decimal? buyQuantity = null, decimal? depositWithdrawalAmount = null, decimal? expectedBuyPrice = null, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "kt00010";
 			var body = new HttpParameterMap()
 				.AddField("stk_cd", stockCode)
-				.AddField("trde_tp", tradeType)
+				.AddField("trde_tp", transactionType)
 				.AddField("uv", buyPrice)
 				.AddField("trde_qty", buyQuantity)
-				.AddField("io_amt", inOutAmount)
+				.AddField("io_amt", depositWithdrawalAmount)
 				.AddField("exp_buy_unp", expectedBuyPrice);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetMarginOrderAmounts>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetAvailableWithdrawalAmounts>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -394,14 +394,14 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="buyPrice"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetAssuranceMarginOrders>> GetAssuranceMarginOrdersAsync(string stockCode, decimal? buyPrice = null, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetCreditDepositOrders>> GetCreditDepositOrdersAsync(string stockCode, decimal? buyPrice = null, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "kt00012";
 			var body = new HttpParameterMap()
 				.AddField("stk_cd", stockCode)
 				.AddField("uv", buyPrice);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetAssuranceMarginOrders>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetCreditDepositOrders>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -430,7 +430,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="foreignStockExchangeCode"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetConsignmentTrades>> GetConsignmentTradesAsync(KiwoomAccountTransactionType transactionType, KiwoomAccountGoodsType goodsType, KiwoomAccountDomesticStockExchangeType domesticStockExchangeType, DateTime startDate, DateTime endDate, string stockCode = "", string currencyCode = "", string foreignStockExchangeCode = "", CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetConsignedTransactions>> GetConsignedTransactionsAsync(KiwoomAccountTransactionType2 transactionType, KiwoomAccountGoodsType goodsType, KiwoomAccountDomesticStockExchangeType domesticStockExchangeType, DateTime startDate, DateTime endDate, string stockCode = "", string currencyCode = "", string foreignStockExchangeCode = "", CancellationToken cancellationToken = default)
 		{
 			const string apiId = "kt00015";
 			var body = new HttpParameterMap()
@@ -443,7 +443,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("crnc_cd", currencyCode)
 				.AddField("frgn_stex_code", foreignStockExchangeCode);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetConsignmentTrades>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetConsignedTransactions>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>

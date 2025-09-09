@@ -11,7 +11,7 @@ namespace KiwoomRestApi.Net.Enums.WebSocket
 		/// 주문체결
 		/// </summary>
 		[EnumMember(Value = "00")]
-		OrderExecution,
+		OrderTrade,
 		/// <summary>
 		/// 잔고
 		/// </summary>
@@ -26,27 +26,27 @@ namespace KiwoomRestApi.Net.Enums.WebSocket
 		/// 주식체결
 		/// </summary>
 		[EnumMember(Value = "0B")]
-		StockExecution,
+		StockTrade,
 		/// <summary>
 		/// 주식우선호가
 		/// </summary>
 		[EnumMember(Value = "0C")]
-		StockPriorAsk,
+		BestQuote,
 		/// <summary>
 		/// 주식호가잔량
 		/// </summary>
 		[EnumMember(Value = "0D")]
-		StockAskBid,
+		OrderBook,
 		/// <summary>
 		/// 주식시간외호가
 		/// </summary>
 		[EnumMember(Value = "0E")]
-		StockAfterHoursAsk,
+		AfterMarketQuote,
 		/// <summary>
 		/// 주식당일거래원
 		/// </summary>
 		[EnumMember(Value = "0F")]
-		StockDailyTrader,
+		DailyBroker,
 		/// <summary>
 		/// ETF NAV
 		/// </summary>
@@ -56,17 +56,17 @@ namespace KiwoomRestApi.Net.Enums.WebSocket
 		/// 주식예상체결
 		/// </summary>
 		[EnumMember(Value = "0H")]
-		StockExpectedExecution,
+		ExpectedTrade,
 		/// <summary>
 		/// 업종지수
 		/// </summary>
 		[EnumMember(Value = "0J")]
-		SectorIndex,
+		IndustryIndex,
 		/// <summary>
 		/// 업종등락
 		/// </summary>
 		[EnumMember(Value = "0U")]
-		SectorFluctuation,
+		IndustryChange,
 		/// <summary>
 		/// 주식종목정보
 		/// </summary>
@@ -91,11 +91,11 @@ namespace KiwoomRestApi.Net.Enums.WebSocket
 		/// 종목프로그램매매
 		/// </summary>
 		[EnumMember(Value = "0w")]
-		ProgramTrading,
+		ProgramTransaction,
 		/// <summary>
 		/// VI발동/해제
 		/// </summary>
 		[EnumMember(Value = "1h")]
-		ViTriggeredReleased
+		ViEvent
 	}
 }

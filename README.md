@@ -1,6 +1,6 @@
 # 🚀 KiwoomRestApi.Net
 
-현재 일관성 유지, api 테스트 작업, doc 작업 중입니다.</br>
+현재 api 테스트 작업, doc 작업 중입니다.</br>
 
 [![NuGet Version](https://img.shields.io/nuget/v/KiwoomRestApi.Net.svg)](https://www.nuget.org/packages/KiwoomRestApi.Net)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/KiwoomRestApi.Net.svg)](https://www.nuget.org/packages/KiwoomRestApi.Net)
@@ -128,7 +128,7 @@ var sellOrderResult = await client.Order.PlaceOrderAsync(
 	KiwoomOrderTradeType.Market);                          // 시장가
 
 // 미체결 주문 조회
-var outstandingOrders = await client.Account.GetOutstandingOrdersAsync(
+var UnfilledOrders = await client.Account.GetUnfilledOrdersAsync(
 	KiwoomAccountQueryType.All,
 	KiwoomAccountTradeType.All,
 	KiwoomAccountStockExchangeType.Unified);
@@ -227,16 +227,98 @@ var results = await Task.WhenAll(tasks);
 
 ## 📋 릴리즈 노트
 
+### v0.3.0 (2025-09-09)
+# 금융 시스템 네이밍 체계화
+## 1. 기본 수치 개념
+- 합, 합계, 전체: `Total`
+- 수량, 금액: `Quantity`, `Amount`
+- 누적: `Accumulated`
+- 율, 비율, 대비율: `Rate`
+
+## 2. 위치/방향 개념
+- 상위, 하위: `Top`, `Bottom`
+- 상한, 하한: `Upper`, `Lower`
+- 상승, 보합, 하락: `Up`, `Flat`, `Down`
+- 입금, 출금: `Deposit`, `Withdrawal`
+- 입고, 출고: `Incoming`, `Outgoing`
+
+## 3. 거래 행위
+- 매수, 매도: `Buy`, `Sell`
+- 순매수, 순매도: `NetBuy`, `NetSell`
+- 거래, 매매: `Transaction`
+- 체결, 미체결: `Trade`, `Unfilled`
+- 위탁: `Consignment`
+- 접수: `Submission`
+
+## 4. 호가 및 잔량
+- 호가: `Quote`
+- 잔량, 호가잔량: `RemainQuantity`, `OrderBook`
+
+## 5. 가격 데이터
+- 시가, 고가, 저가, 종가: `Open`, `High`, `Low`, `Close`
+
+## 6. 거래량 관련
+- 거래량, 거래수량, 매매수량: `Volume`
+- 거래금액, 거래대금: `TransactionAmount`
+- 거래량대비: `VolumeChange`
+- 전일거래량: `PreviousDayVolume`
+
+## 7. 시간 개념
+- 금일, 전일: `Today`, `PreviousDay`
+- D+1, D+2: `-D1`, `-D2`
+- 일별: `Daily`
+
+## 8. 변화 개념
+- 전일대비: `Change`, `PreviousDayChange`(한 레코드 안에 대비 개념이 중복될 경우)
+- 급증, 급감: `Spike`, `Drop`
+- 급등, 급락: `Surge`, `Plunge`
+- 강도: `Momentum`
+- 기호: `Sign`
+
+## 9. 투자자 분류
+- 개인, 기관, 외국인: `Retail`, `Institution`, `Foreign`
+- 거래원: `Broker`
+
+## 10. 자금 및 신용 관련
+- 현금, 신용, 대출, 융자, 담보, 대주, 대용: `Cash`, `Credit`, `Loan`, `CreditLoan`, `Collateral`, `ShortSell`, `Substitute`
+- 변제, 상환: `Repayment`
+- 미납, 미상환: `Unpaid`
+- 납부: `Payment`
+
+## 11. 보증금 및 증거금
+- 증거금, 미수금: `Margin`, `Unsettled`
+- 예수금, 보증금: `Deposit`
+
+## 12. 비용 관련
+- 수수료, 세금: `Fee`, `Tax`
+
+## 13. 투자 상품 분류
+- 주식, 투자, 원금: `Stock`, `Investment`, `Principal`
+- 유가증권, 수익증권, 채권: `Securities`, `Fund`, `Bond`
+- 업종: `Industry`
+
+## 14. 기타 거래 개념
+- 차익: `Arbitrage`
+- 정산: `Settlement`
+- 보유: `Holding`
+- 행사, 상장: `Exercise`, `List`
+- 시가총액: `MarketCapitalization`
+- 대차거래: `SecuritiesLending`
+
+---
+
 ### v0.2.1 (2025-09-03)
 - 소스코드 주석 추가
 - | ka01690 | 일별잔고수익률 API 추가
 - KiwoomRealtimeQuoteRequests 삭제
-- KiwoomRealtimeQuoteRegistrations 삭제
 - KiwoomRealtimeQuoteRequestItem 삭제
+- KiwoomRealtimeQuoteRegistrations 삭제
 - KiwoomRealtimeQuoteRegistrationItem 삭제
 - KiwoomRealtimeQuoteValue 삭제
-- KiwoomRankingInfoGetForeignTradePerPeriodUpperItem.NetPurchaseQuantity을 KiwoomDecimal로 수정
+- KiwoomRankingInfoGetForeignPeriodTransactionTopItem.NetBuyQuantity을 KiwoomDecimal로 수정
 - 종속성 라이브러리 버전별 분기
+
+---
 
 ### v0.2.0 (2025-08-29)
 - 소스코드 주석 추가
@@ -263,7 +345,7 @@ var results = await Task.WhenAll(tasks);
 - KiwoomWebSocketRealtimeOrderExecution.ExchangeType 타입을 KiwoomWebSocketStockExchangeType로 수정
 - KiwoomWebSocketRealtimeStockExecution.ExchangeType 타입을 KiwoomWebSocketStockExchangeType로 수정
 - KiwoomForeignInstitutionNetSellAmountType 삭제 ('2' 고정값)
-- KiwoomSecuritiesLendingAndBorrowingQueryType 삭제
+- KiwoomSecuritiesLendingQueryType 삭제
 
 ---
 

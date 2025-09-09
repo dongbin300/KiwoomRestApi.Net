@@ -12,18 +12,18 @@
 		/// <summary>
 		/// 코스피
 		/// </summary>
-		KOSPI = 1,
+		Kospi = 1,
 		/// <summary>
 		/// 코스닥
 		/// </summary>
-		KOSDAQ = 2,
+		Kosdaq = 2,
 		/// <summary>
 		/// OTCBB
 		/// </summary>
-		OTCBB = 3,
+		Otcbb = 3,
 		/// <summary>
 		/// ECN
 		/// </summary>
-		ECN = 4
+		Ecn = 4
 	}
 }

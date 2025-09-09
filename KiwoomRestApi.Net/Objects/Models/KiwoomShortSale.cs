@@ -28,27 +28,27 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 종가
 		/// </summary>
 		[JsonProperty("close_pric")]
-		public decimal? ClosePrice;
+		public decimal? Close;
 		/// <summary>
 		/// 전일대비기호
 		/// </summary>
 		[JsonProperty("pred_pre_sig")]
-		public string? PreviousDayChangeSign;
+		public string? ChangeSign;
 		/// <summary>
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? PreviousDayChange;
+		public decimal? Change;
 		/// <summary>
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? FluctuationRate;
+		public decimal? ChangeRate;
 		/// <summary>
 		/// 거래량
 		/// </summary>
 		[JsonProperty("trde_qty")]
-		public decimal? TradeQuantity;
+		public decimal? Volume;
 		/// <summary>
 		/// 공매도량
 		/// </summary>
@@ -63,12 +63,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매매비중
 		/// </summary>
 		[JsonProperty("trde_wght")]
-		public decimal? TradeWeight;
+		public decimal? TransactionWeight;
 		/// <summary>
 		/// 공매도거래대금
 		/// </summary>
 		[JsonProperty("shrts_trde_prica")]
-		public decimal? ShortsTradeAmount;
+		public decimal? ShortsTransactionAmount;
 		/// <summary>
 		/// 공매도평균가
 		/// </summary>

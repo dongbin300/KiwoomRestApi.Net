@@ -15,27 +15,27 @@ namespace KiwoomRestApi.Net.Enums.Etf
 		/// <summary>
 		/// KODEX (삼성)
 		/// </summary>
-		KODEX_Samsung = 3020,
+		KodexSamsung = 3020,
 		/// <summary>
 		/// KOSEF (키움)
 		/// </summary>
-		KOSEF_Kiwoom = 3027,
+		KosefKiwoom = 3027,
 		/// <summary>
 		/// TIGER (미래에셋)
 		/// </summary>
-		TIGER_MiraeAsset = 3191,
+		TigerMiraeAsset = 3191,
 		/// <summary>
 		/// KINDEX (한국투자)
 		/// </summary>
-		KINDEX_KoreaInvestment = 3228,
+		KindexKoreaInvestment = 3228,
 		/// <summary>
 		/// KStar (KB)
 		/// </summary>
-		KStar_KB = 3023,
+		KstarKb = 3023,
 		/// <summary>
 		/// 아리랑 (한화)
 		/// </summary>
-		Arirang_Hanwha = 3022,
+		ArirangHanwha = 3022,
 		/// <summary>
 		/// 기타운용사
 		/// </summary>

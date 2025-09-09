@@ -26,19 +26,19 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="domesticStockExchangeType"></param>
 		/// <param name="stockCode"></param>
 		/// <param name="orderQuantity"></param>
-		/// <param name="tradeType"></param>
+		/// <param name="transactionType"></param>
 		/// <param name="orderPrice"></param>
 		/// <param name="conditionPrice"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomOrderPlaceOrder>> PlaceOrderAsync(KiwoomOrderType orderType, KiwoomOrderDomesticStockExchangeType domesticStockExchangeType, string stockCode, decimal orderQuantity, KiwoomOrderTradeType tradeType, decimal? orderPrice = null, decimal? conditionPrice = null, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomOrderPlaceOrder>> PlaceOrderAsync(KiwoomOrderType orderType, KiwoomOrderDomesticStockExchangeType domesticStockExchangeType, string stockCode, decimal orderQuantity, KiwoomOrderTransactionType transactionType, decimal? orderPrice = null, decimal? conditionPrice = null, CancellationToken cancellationToken = default)
 		{
 			string apiId = orderType == KiwoomOrderType.Buy ? "kt10000" : "kt10001";
 			var body = new HttpParameterMap()
 				.AddField("dmst_stex_tp", domesticStockExchangeType)
 				.AddField("stk_cd", stockCode)
 				.AddField("ord_qty", orderQuantity)
-				.AddField("trde_tp", tradeType)
+				.AddField("trde_tp", transactionType)
 				.AddField("ord_uv", orderPrice)
 				.AddField("cond_uv", conditionPrice);
 

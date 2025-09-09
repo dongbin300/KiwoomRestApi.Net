@@ -132,18 +132,18 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("values")]
 		public T? Values;
 	}
-	public record KiwoomWebSocketRealtimeOrderExecution
+	public record KiwoomWebSocketRealtimeOrderTrade
 	{
 		/// <summary>
 		/// 계좌번호 (9201)
 		/// </summary>
 		[JsonProperty("9201")]
-		public decimal? AccountNumber;
+		public decimal? AccountId;
 		/// <summary>
 		/// 주문번호 (9203)
 		/// </summary>
 		[JsonProperty("9203")]
-		public decimal? OrderNumber;
+		public decimal? OrderId;
 		/// <summary>
 		/// 관리자사번 (9205)
 		/// </summary>
@@ -153,7 +153,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 종목코드 또는 업종코드 (9001)
 		/// </summary>
 		[JsonProperty("9001")]
-		public decimal? SymbolCode;
+		public decimal? StockCode;
 		/// <summary>
 		/// 주문업무분류 (912)
 		/// </summary>
@@ -168,7 +168,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 종목명 (302)
 		/// </summary>
 		[JsonProperty("302")]
-		public string? SymbolName;
+		public string? StockName;
 		/// <summary>
 		/// 주문수량 (900)
 		/// </summary>
@@ -188,48 +188,48 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 체결누계금액 (903)
 		/// </summary>
 		[JsonProperty("903")]
-		public decimal? TotalExecutionAmount;
+		public decimal? TotalTradeAmount;
 		/// <summary>
 		/// 원주문번호 (904)
 		/// </summary>
 		[JsonProperty("904")]
-		public decimal? OriginalOrderNumber;
+		public decimal? OriginalOrderId;
 		/// <summary>
 		/// 주문구분 (905)
 		/// </summary>
 		[JsonProperty("905")]
-		public string? OrderClassification;
+		public string? OrderType;
 		/// <summary>
 		/// 매매구분 (906)
 		/// </summary>
 		[JsonProperty("906")]
-		public string? TradeClassification;
+		public string? TradeType;
 		/// <summary>
 		/// 매도수구분 (907)
 		/// </summary>
 		[JsonProperty("907")]
-		public string? SellBuyClassification;
+		public string? OrderSide;
 		/// <summary>
 		/// 주문/체결시간 (908)
 		/// </summary>
 		[JsonProperty("908")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan? OrderExecutionTime;
+		public TimeSpan? OrderTradeTime;
 		/// <summary>
 		/// 체결번호 (909)
 		/// </summary>
 		[JsonProperty("909")]
-		public decimal? ExecutionNumber;
+		public decimal? TradeId;
 		/// <summary>
 		/// 체결가 (910)
 		/// </summary>
 		[JsonProperty("910")]
-		public decimal? ExecutionPrice;
+		public decimal? TradePrice;
 		/// <summary>
 		/// 체결량 (911)
 		/// </summary>
 		[JsonProperty("911")]
-		public decimal? ExecutionQuantity;
+		public decimal? TradeQuantity;
 		/// <summary>
 		/// 현재가 (10)
 		/// </summary>
@@ -239,22 +239,22 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// (최우선)매도호가 (27)
 		/// </summary>
 		[JsonProperty("27")]
-		public decimal? BestAskPrice;
+		public decimal? BestSellQuote;
 		/// <summary>
 		/// (최우선)매수호가 (28)
 		/// </summary>
 		[JsonProperty("28")]
-		public decimal? BestBidPrice;
+		public decimal? BestBuyQuote;
 		/// <summary>
 		/// 단위체결가 (914)
 		/// </summary>
 		[JsonProperty("914")]
-		public decimal? UnitExecutionPrice;
+		public decimal? UnitTradePrice;
 		/// <summary>
 		/// 단위체결량 (915)
 		/// </summary>
 		[JsonProperty("915")]
-		public decimal? UnitExecutionQuantity;
+		public decimal? UnitTradeQuantity;
 		/// <summary>
 		/// 당일매매수수료 (938)
 		/// </summary>
@@ -274,12 +274,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 화면번호 (920)
 		/// </summary>
 		[JsonProperty("920")]
-		public decimal? ScreenNumber;
+		public decimal? ScreenId;
 		/// <summary>
 		/// 터미널번호 (921)
 		/// </summary>
 		[JsonProperty("921")]
-		public decimal? TerminalNumber;
+		public decimal? TerminalId;
 		/// <summary>
 		/// 신용구분 (922) - 실시간 체결용
 		/// </summary>
@@ -310,7 +310,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// SOR 여부 (2136) - Y/N
 		/// </summary>
 		[JsonProperty("2136")]
-		public string? SORFlag;
+		public string? Sor;
 	}
 
 	public record KiwoomWebSocketRealtimeBalance
@@ -319,17 +319,17 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 계좌번호 (9201)
 		/// </summary>
 		[JsonProperty("9201")]
-		public decimal? AccountNumber;
+		public decimal? AccountId;
 		/// <summary>
 		/// 종목코드 (9001)
 		/// </summary>
 		[JsonProperty("9001")]
-		public decimal? SymbolCode;
+		public decimal? StockCode;
 		/// <summary>
 		/// 신용구분 (917)
 		/// </summary>
 		[JsonProperty("917")]
-		public string? CreditClassification;
+		public string? CreditType;
 		/// <summary>
 		/// 대출일 (916)
 		/// </summary>
@@ -340,7 +340,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 종목명 (302)
 		/// </summary>
 		[JsonProperty("302")]
-		public string? SymbolName;
+		public string? StockName;
 		/// <summary>
 		/// 현재가 (10)
 		/// </summary>
@@ -355,12 +355,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매입단가 (931)
 		/// </summary>
 		[JsonProperty("931")]
-		public decimal? PurchaseUnitPrice;
+		public decimal? BuyPrice;
 		/// <summary>
 		/// 총매입금액 (932)
 		/// </summary>
 		[JsonProperty("932")]
-		public decimal? TotalPurchaseAmount;
+		public decimal? TotalBuyAmount;
 		/// <summary>
 		/// 주문가능수량 (933)
 		/// </summary>
@@ -375,12 +375,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매도매수구분 (946)
 		/// </summary>
 		[JsonProperty("946")]
-		public string? SellBuyClassification;
+		public string? OrderSide;
 		/// <summary>
 		/// 당일총매도손익 (950)
 		/// </summary>
 		[JsonProperty("950")]
-		public decimal? TodayTotalSellProfitLoss;
+		public decimal? TotalTodaySellProfitLoss;
 		/// <summary>
 		/// 추가항목1 (951)
 		/// </summary>
@@ -390,17 +390,17 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 최우선매도호가 (27)
 		/// </summary>
 		[JsonProperty("27")]
-		public decimal? BestAskPrice;
+		public decimal? BestSellQuote;
 		/// <summary>
 		/// 최우선매수호가 (28)
 		/// </summary>
 		[JsonProperty("28")]
-		public decimal? BestBidPrice;
+		public decimal? BestBuyQuote;
 		/// <summary>
 		/// 기준가 (307)
 		/// </summary>
 		[JsonProperty("307")]
-		public decimal? ReferencePrice;
+		public decimal? BasePrice;
 		/// <summary>
 		/// 손익률 (8019)
 		/// </summary>
@@ -446,7 +446,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 대주대출수량 (959)
 		/// </summary>
 		[JsonProperty("959")]
-		public decimal? CollateralLoanQuantity;
+		public decimal? ShortSellLoanQuantity;
 		/// <summary>
 		/// 추가항목2 (924)
 		/// </summary>
@@ -465,22 +465,22 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비 (11)
 		/// </summary>
 		[JsonProperty("11")]
-		public string? ChangeFromPrevDay;
+		public string? Change;
 		/// <summary>
 		/// 등락률 (12)
 		/// </summary>
 		[JsonProperty("12")]
-		public decimal? RateOfChange;
+		public decimal? ChangeRate;
 		/// <summary>
 		/// 최우선매도호가 (27)
 		/// </summary>
 		[JsonProperty("27")]
-		public decimal? BestAskPrice;
+		public decimal? BestSellQuote;
 		/// <summary>
 		/// 최우선매수호가 (28)
 		/// </summary>
 		[JsonProperty("28")]
-		public decimal? BestBidPrice;
+		public decimal? BestBuyQuote;
 		/// <summary>
 		/// 누적거래량 (13)
 		/// </summary>
@@ -490,32 +490,32 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 누적거래대금 (14)
 		/// </summary>
 		[JsonProperty("14")]
-		public decimal? AccumulatedAmount;
+		public decimal? AccumulatedTransactionAmount;
 		/// <summary>
 		/// 시가 (16)
 		/// </summary>
 		[JsonProperty("16")]
-		public decimal? OpeningPrice;
+		public decimal? Open;
 		/// <summary>
 		/// 고가 (17)
 		/// </summary>
 		[JsonProperty("17")]
-		public decimal? HighPrice;
+		public decimal? High;
 		/// <summary>
 		/// 저가 (18)
 		/// </summary>
 		[JsonProperty("18")]
-		public decimal? LowPrice;
+		public decimal? Low;
 		/// <summary>
 		/// 전일대비부호 (25)
 		/// </summary>
 		[JsonProperty("25")]
-		public string? ChangeSymbol;
+		public string? ChangeSign;
 		/// <summary>
 		/// 전일대비거래량 (26)
 		/// </summary>
 		[JsonProperty("26")]
-		public string? VolumeComparedPrevDay;
+		public string? PreviousDayVolumeChange;
 		/// <summary>
 		/// 거래대금전일대비 (29)
 		/// </summary>
@@ -525,7 +525,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 거래량비율(전일대비) (30)
 		/// </summary>
 		[JsonProperty("30")]
-		public string? VolumeRatioPrevDay;
+		public string? PreviousDayVolumeChangeRate;
 		/// <summary>
 		/// 회전율 (31)
 		/// </summary>
@@ -535,27 +535,27 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 거래대금 (32)
 		/// </summary>
 		[JsonProperty("32")]
-		public decimal? TransactionCost;
+		public decimal? TransactionAmount;
 		/// <summary>
 		/// 시가총액 (311)
 		/// </summary>
 		[JsonProperty("311")]
-		public decimal? MarketCap;
+		public decimal? MarketCapitalization;
 		/// <summary>
 		/// 상한가도달시간 (567)
 		/// </summary>
 		[JsonProperty("567")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan? UpperLimitTime;
+		public TimeSpan? UpperPriceTime;
 		/// <summary>
 		/// 하한가도달시간 (568)
 		/// </summary>
 		[JsonProperty("568")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan? LowerLimitTime;
+		public TimeSpan? LowerPriceTime;
 	}
 
-	public record KiwoomWebSocketRealtimeStockExecution
+	public record KiwoomWebSocketRealtimeStockTrade
 	{
 		/// <summary>
 		/// 체결시간 (20)
@@ -572,27 +572,27 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비 (11)
 		/// </summary>
 		[JsonProperty("11")]
-		public decimal? ChangeFromPrevDay;
+		public decimal? Change;
 		/// <summary>
 		/// 등락율 (12)
 		/// </summary>
 		[JsonProperty("12")]
-		public decimal? RateOfChange;
+		public decimal? ChangeRate;
 		/// <summary>
 		/// (최우선)매도호가 (27)
 		/// </summary>
 		[JsonProperty("27")]
-		public decimal? BestAskPrice;
+		public decimal? BestSellQuote;
 		/// <summary>
 		/// (최우선)매수호가 (28)
 		/// </summary>
 		[JsonProperty("28")]
-		public decimal? BestBidPrice;
+		public decimal? BestBuyQuote;
 		/// <summary>
 		/// 거래량 (+매수,-매도체결) (15)
 		/// </summary>
 		[JsonProperty("15")]
-		public decimal? TradeVolume;
+		public decimal? Volume;
 		/// <summary>
 		/// 누적거래량 (13)
 		/// </summary>
@@ -602,42 +602,42 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 누적거래대금 (14)
 		/// </summary>
 		[JsonProperty("14")]
-		public decimal? AccumulatedAmount;
+		public decimal? AccumulatedTransactionAmount;
 		/// <summary>
 		/// 시가 (16)
 		/// </summary>
 		[JsonProperty("16")]
-		public decimal? OpeningPrice;
+		public decimal? Open;
 		/// <summary>
 		/// 고가 (17)
 		/// </summary>
 		[JsonProperty("17")]
-		public decimal? HighPrice;
+		public decimal? High;
 		/// <summary>
 		/// 저가 (18)
 		/// </summary>
 		[JsonProperty("18")]
-		public decimal? LowPrice;
+		public decimal? Low;
 		/// <summary>
 		/// 전일대비기호 (25)
 		/// </summary>
 		[JsonProperty("25")]
-		public decimal? ChangeSymbol;
+		public decimal? ChangeSign;
 		/// <summary>
 		/// 전일거래량대비(계약,주) (26)
 		/// </summary>
 		[JsonProperty("26")]
-		public decimal? VolumeComparedPrevDay;
+		public decimal? VolumeChange;
 		/// <summary>
 		/// 거래대금증감 (29)
 		/// </summary>
 		[JsonProperty("29")]
-		public decimal? AmountChange;
+		public decimal? TransactionAmountChange;
 		/// <summary>
 		/// 전일거래량대비(비율) (30)
 		/// </summary>
 		[JsonProperty("30")]
-		public decimal? VolumeRatioPrevDay;
+		public decimal? VolumeChangeRate;
 		/// <summary>
 		/// 거래회전율 (31)
 		/// </summary>
@@ -647,50 +647,50 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 거래비용 (32)
 		/// </summary>
 		[JsonProperty("32")]
-		public decimal? TransactionCost;
+		public decimal? TransactionAmount;
 		/// <summary>
 		/// 체결강도 (228)
 		/// </summary>
 		[JsonProperty("228")]
-		public decimal? Strength;
+		public decimal? TradeMomentum;
 		/// <summary>
 		/// 시가총액(억) (311)
 		/// </summary>
 		[JsonProperty("311")]
-		public decimal? MarketCap;
+		public decimal? MarketCapitalization;
 		/// <summary>
 		/// 장구분 (290)
 		/// </summary>
 		[JsonProperty("290")]
-		public decimal? SessionDivision;
+		public decimal? MarketType;
 		/// <summary>
 		/// K.O 접근도 (691)
 		/// </summary>
 		[JsonProperty("691")]
-		public decimal? KOAccessibility;
+		public decimal? KnockOutProximity;
 		/// <summary>
 		/// 상한가발생시간 (567)
 		/// </summary>
 		[JsonProperty("567")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan? UpperLimitTime;
+		public TimeSpan? UpperPriceTime;
 		/// <summary>
 		/// 하한가발생시간 (568)
 		/// </summary>
 		[JsonProperty("568")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan? LowerLimitTime;
+		public TimeSpan? LowerPriceTime;
 		/// <summary>
 		/// 전일 동시간 거래량 비율 (851)
 		/// </summary>
 		[JsonProperty("851")]
-		public decimal? RatioComparedPrevSameTime;
+		public decimal? SameTimeVolumeRate;
 		/// <summary>
 		/// 시가시간 (1890)
 		/// </summary>
 		[JsonProperty("1890")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan? OpeningTime;
+		public TimeSpan? OpenTime;
 		/// <summary>
 		/// 고가시간 (1891)
 		/// </summary>
@@ -707,72 +707,72 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매도체결량 (1030)
 		/// </summary>
 		[JsonProperty("1030")]
-		public decimal? SellExecutionVolume;
+		public decimal? SellTradeVolume;
 		/// <summary>
 		/// 매수체결량 (1031)
 		/// </summary>
 		[JsonProperty("1031")]
-		public decimal? BuyExecutionVolume;
+		public decimal? BuyTradeVolume;
 		/// <summary>
 		/// 매수비율 (1032)
 		/// </summary>
 		[JsonProperty("1032")]
-		public decimal? BuyRatio;
+		public decimal? BuyRate;
 		/// <summary>
 		/// 매도체결건수 (1071)
 		/// </summary>
 		[JsonProperty("1071")]
-		public decimal? SellExecutionCount;
+		public decimal? SellTradeCount;
 		/// <summary>
 		/// 매수체결건수 (1072)
 		/// </summary>
 		[JsonProperty("1072")]
-		public decimal? BuyExecutionCount;
+		public decimal? BuyTradenCount;
 		/// <summary>
 		/// 순간거래대금 (1313)
 		/// </summary>
 		[JsonProperty("1313")]
-		public decimal? InstantAmount;
+		public decimal? InstantTransactionAmount;
 		/// <summary>
 		/// 매도체결량_단건 (1315)
 		/// </summary>
 		[JsonProperty("1315")]
-		public decimal? SingleSellExecutionVolume;
+		public decimal? SingleSellTradeQuantity;
 		/// <summary>
 		/// 매수체결량_단건 (1316)
 		/// </summary>
 		[JsonProperty("1316")]
-		public decimal? SingleBuyExecutionVolume;
+		public decimal? SingleBuyTradeQuantity;
 		/// <summary>
 		/// 순매수체결량 (1314)
 		/// </summary>
 		[JsonProperty("1314")]
-		public decimal? NetBuyExecutionVolume;
+		public decimal? NetBuyTradeQuantity;
 		/// <summary>
 		/// CFD증거금 (1497)
 		/// </summary>
 		[JsonProperty("1497")]
-		public decimal? CFDInitialMargin;
+		public decimal? CfdMargin;
 		/// <summary>
 		/// 유지증거금 (1498)
 		/// </summary>
 		[JsonProperty("1498")]
-		public decimal? CFDMaintenanceMargin;
+		public decimal? CfdMaintenanceMargin;
 		/// <summary>
 		/// 당일거래평균가 (620)
 		/// </summary>
 		[JsonProperty("620")]
-		public decimal? AveragePriceToday;
+		public decimal? TodayAveragePrice;
 		/// <summary>
 		/// CFD거래비용 (732)
 		/// </summary>
 		[JsonProperty("732")]
-		public decimal? CFDTransactionCost;
+		public decimal? CfdTransactionAmount;
 		/// <summary>
 		/// 대주거래비용 (852)
 		/// </summary>
 		[JsonProperty("852")]
-		public decimal? ShortSellingCost;
+		public decimal? ShortSellingAmount;
 		/// <summary>
 		/// 거래소구분 (9081)
 		/// </summary>
@@ -780,21 +780,21 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public KiwoomWebSocketStockExchangeType? ExchangeType;
 	}
 
-	public record KiwoomWebSocketRealtimeStockPriorAsk
+	public record KiwoomWebSocketRealtimeBestQuote
 	{
 		/// <summary>
 		/// (최우선)매도호가 (27)
 		/// </summary>
 		[JsonProperty("27")]
-		public decimal? BestAskPrice;
+		public decimal? BestSellQuote;
 		/// <summary>
 		/// (최우선)매수호가 (28)
 		/// </summary>
 		[JsonProperty("28")]
-		public decimal? BestBidPrice;
+		public decimal? BestBuyQuote;
 	}
 
-	public record KiwoomWebSocketRealtimeStockAskBid
+	public record KiwoomWebSocketRealtimeOrderBook
 	{
 		/// <summary>
 		/// 호가시간 (21)
@@ -1106,192 +1106,192 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매도호가총잔량 (121)
 		/// </summary>
 		[JsonProperty("121")]
-		public decimal? TotalSellVolume;
+		public decimal? TotalSellQuantity;
 		/// <summary>
 		/// 매도호가총잔량직전대비 (122)
 		/// </summary>
 		[JsonProperty("122")]
-		public decimal? TotalSellVolumeChange;
+		public decimal? TotalSellQuantityChange;
 		/// <summary>
 		/// 매수호가총잔량 (125)
 		/// </summary>
 		[JsonProperty("125")]
-		public decimal? TotalBuyVolume;
+		public decimal? TotalBuyQuantity;
 		/// <summary>
 		/// 매수호가총잔량직전대비 (126)
 		/// </summary>
 		[JsonProperty("126")]
-		public decimal? TotalBuyVolumeChange;
+		public decimal? TotalBuyQuantityChange;
 		/// <summary>
 		/// 예상체결가 (23)
 		/// </summary>
 		[JsonProperty("23")]
-		public decimal? ExpectedExecutionPrice;
+		public decimal? ExpectedTradePrice;
 		/// <summary>
 		/// 예상체결수량 (24)
 		/// </summary>
 		[JsonProperty("24")]
-		public decimal? ExpectedExecutionQuantity;
+		public decimal? ExpectedTradeQuantity;
 		/// <summary>
 		/// 순매수잔량 (128)
 		/// </summary>
 		[JsonProperty("128")]
-		public decimal? NetBuyVolume;
+		public decimal? NetBuyQuantity;
 		/// <summary>
 		/// 매수비율 (129)
 		/// </summary>
 		[JsonProperty("129")]
-		public decimal? BuyRatio;
+		public decimal? BuyRate;
 		/// <summary>
 		/// 순매도잔량 (138)
 		/// </summary>
 		[JsonProperty("138")]
-		public decimal? NetSellVolume;
+		public decimal? NetSellQuantity;
 		/// <summary>
 		/// 매도비율 (139)
 		/// </summary>
 		[JsonProperty("139")]
-		public decimal? SellRatio;
+		public decimal? SellRate;
 		/// <summary>
 		/// 예상체결가전일종가대비 (200)
 		/// </summary>
 		[JsonProperty("200")]
-		public decimal? ExpectedExecutionPriceComparedToPrevClose;
+		public decimal? ExpectedTradePriceCloseChange;
 		/// <summary>
 		/// 예상체결가전일종가대비등락율 (201)
 		/// </summary>
 		[JsonProperty("201")]
-		public decimal? ExpectedExecutionPriceChangeRate;
+		public decimal? ExpectedTradePriceCloseChangeRate;
 		/// <summary>
 		/// 예상체결가전일종가대비기호 (238)
 		/// </summary>
 		[JsonProperty("238")]
-		public string? ExpectedExecutionPriceChangeSymbol;
+		public string? ExpectedTradePriceCloseChangeSign;
 		/// <summary>
 		/// 예상체결가 (291)
 		/// </summary>
 		[JsonProperty("291")]
-		public decimal? ExpectedExecutionPriceDuringSession;
+		public decimal? ExpectedTradePriceDuringSession;
 		/// <summary>
 		/// 예상체결량 (292)
 		/// </summary>
 		[JsonProperty("292")]
-		public decimal? ExpectedExecutionAmount;
+		public decimal? ExpectedTradeAmount;
 		/// <summary>
 		/// 예상체결가전일대비기호 (293)
 		/// </summary>
 		[JsonProperty("293")]
-		public string? ExpectedExecutionPriceComparedSymbol;
+		public string? ExpectedTradePriceChangeSign;
 		/// <summary>
 		/// 예상체결가전일대비 (294)
 		/// </summary>
 		[JsonProperty("294")]
-		public decimal? ExpectedExecutionPriceCompared;
+		public decimal? ExpectedTradePriceChange;
 		/// <summary>
 		/// 예상체결가전일대비등락율 (295)
 		/// </summary>
 		[JsonProperty("295")]
-		public decimal? ExpectedExecutionPriceComparedChangeRate;
+		public decimal? ExpectedTradePriceChangeRate;
 		/// <summary>
 		/// LP매도호가수량1 (621)
 		/// </summary>
 		[JsonProperty("621")]
-		public decimal? LP_SellQuantity1;
+		public decimal? LpSellQuantity1;
 		/// <summary>
 		/// LP매수호가수량1 (631)
 		/// </summary>
 		[JsonProperty("631")]
-		public decimal? LP_BuyQuantity1;
+		public decimal? LpBuyQuantity1;
 		/// <summary>
 		/// LP매도호가수량2 (622)
 		/// </summary>
 		[JsonProperty("622")]
-		public decimal? LP_SellQuantity2;
+		public decimal? LpSellQuantity2;
 		/// <summary>
 		/// LP매수호가수량2 (632)
 		/// </summary>
 		[JsonProperty("632")]
-		public decimal? LP_BuyQuantity2;
+		public decimal? LpBuyQuantity2;
 		/// <summary>
 		/// LP매도호가수량3 (623)
 		/// </summary>
 		[JsonProperty("623")]
-		public decimal? LP_SellQuantity3;
+		public decimal? LpSellQuantity3;
 		/// <summary>
 		/// LP매수호가수량3 (633)
 		/// </summary>
 		[JsonProperty("633")]
-		public decimal? LP_BuyQuantity3;
+		public decimal? LpBuyQuantity3;
 		/// <summary>
 		/// LP매도호가수량4 (624)
 		/// </summary>
 		[JsonProperty("624")]
-		public decimal? LP_SellQuantity4;
+		public decimal? LpSellQuantity4;
 		/// <summary>
 		/// LP매수호가수량4 (634)
 		/// </summary>
 		[JsonProperty("634")]
-		public decimal? LP_BuyQuantity4;
+		public decimal? LpBuyQuantity4;
 		/// <summary>
 		/// LP매도호가수량5 (625)
 		/// </summary>
 		[JsonProperty("625")]
-		public decimal? LP_SellQuantity5;
+		public decimal? LpSellQuantity5;
 		/// <summary>
 		/// LP매수호가수량5 (635)
 		/// </summary>
 		[JsonProperty("635")]
-		public decimal? LP_BuyQuantity5;
+		public decimal? LpBuyQuantity5;
 		/// <summary>
 		/// LP매도호가수량6 (626)
 		/// </summary>
 		[JsonProperty("626")]
-		public decimal? LP_SellQuantity6;
+		public decimal? LpSellQuantity6;
 		/// <summary>
 		/// LP매수호가수량6 (636)
 		/// </summary>
 		[JsonProperty("636")]
-		public decimal? LP_BuyQuantity6;
+		public decimal? LpBuyQuantity6;
 		/// <summary>
 		/// LP매도호가수량7 (627)
 		/// </summary>
 		[JsonProperty("627")]
-		public decimal? LP_SellQuantity7;
+		public decimal? LpSellQuantity7;
 		/// <summary>
 		/// LP매수호가수량7 (637)
 		/// </summary>
 		[JsonProperty("637")]
-		public decimal? LP_BuyQuantity7;
+		public decimal? LpBuyQuantity7;
 		/// <summary>
 		/// LP매도호가수량8 (628)
 		/// </summary>
 		[JsonProperty("628")]
-		public decimal? LP_SellQuantity8;
+		public decimal? LpSellQuantity8;
 		/// <summary>
 		/// LP매수호가수량8 (638)
 		/// </summary>
 		[JsonProperty("638")]
-		public decimal? LP_BuyQuantity8;
+		public decimal? LpBuyQuantity8;
 		/// <summary>
 		/// LP매도호가수량9 (629)
 		/// </summary>
 		[JsonProperty("629")]
-		public decimal? LP_SellQuantity9;
+		public decimal? LpSellQuantity9;
 		/// <summary>
 		/// LP매수호가수량9 (639)
 		/// </summary>
 		[JsonProperty("639")]
-		public decimal? LP_BuyQuantity9;
+		public decimal? LpBuyQuantity9;
 		/// <summary>
 		/// LP매도호가수량10 (630)
 		/// </summary>
 		[JsonProperty("630")]
-		public decimal? LP_SellQuantity10;
+		public decimal? LpSellQuantity10;
 		/// <summary>
 		/// LP매수호가수량10 (640)
 		/// </summary>
 		[JsonProperty("640")]
-		public decimal? LP_BuyQuantity10;
+		public decimal? LpBuyQuantity10;
 		/// <summary>
 		/// 누적거래량 (13)
 		/// </summary>
@@ -1301,12 +1301,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일거래량대비예상체결율 (299)
 		/// </summary>
 		[JsonProperty("299")]
-		public decimal? ExpectedExecutionVolumeRate;
+		public decimal? ExpectedTradeRateVolumeChange;
 		/// <summary>
 		/// 장운영구분 (215)
 		/// </summary>
 		[JsonProperty("215")]
-		public string? MarketOperationDivision;
+		public string? MarketOperationType;
 		/// <summary>
 		/// 투자자별ticker (216)
 		/// </summary>
@@ -1316,305 +1316,305 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// KRX 매도호가잔량1 (6044)
 		/// </summary>
 		[JsonProperty("6044")]
-		public decimal? KRX_SellVolume1;
+		public decimal? KrxSellQuantity1;
 		/// <summary>
 		/// KRX 매도호가잔량2 (6045)
 		/// </summary>
 		[JsonProperty("6045")]
-		public decimal? KRX_SellVolume2;
+		public decimal? KrxSellQuantity2;
 		/// <summary>
 		/// KRX 매도호가잔량3 (6046)
 		/// </summary>
 		[JsonProperty("6046")]
-		public decimal? KRX_SellVolume3;
+		public decimal? KrxSellQuantity3;
 		/// <summary>
 		/// KRX 매도호가잔량4 (6047)
 		/// </summary>
 		[JsonProperty("6047")]
-		public decimal? KRX_SellVolume4;
+		public decimal? KrxSellQuantity4;
 		/// <summary>
 		/// KRX 매도호가잔량5 (6048)
 		/// </summary>
 		[JsonProperty("6048")]
-		public decimal? KRX_SellVolume5;
+		public decimal? KrxSellQuantity5;
 		/// <summary>
 		/// KRX 매도호가잔량6 (6049)
 		/// </summary>
 		[JsonProperty("6049")]
-		public decimal? KRX_SellVolume6;
+		public decimal? KrxSellQuantity6;
 		/// <summary>
 		/// KRX 매도호가잔량7 (6050)
 		/// </summary>
 		[JsonProperty("6050")]
-		public decimal? KRX_SellVolume7;
+		public decimal? KrxSellQuantity7;
 		/// <summary>
 		/// KRX 매도호가잔량8 (6051)
 		/// </summary>
 		[JsonProperty("6051")]
-		public decimal? KRX_SellVolume8;
+		public decimal? KrxSellQuantity8;
 		/// <summary>
 		/// KRX 매도호가잔량9 (6052)
 		/// </summary>
 		[JsonProperty("6052")]
-		public decimal? KRX_SellVolume9;
+		public decimal? KrxSellQuantity9;
 		/// <summary>
 		/// KRX 매도호가잔량10 (6053)
 		/// </summary>
 		[JsonProperty("6053")]
-		public decimal? KRX_SellVolume10;
+		public decimal? KrxSellQuantity10;
 		/// <summary>
 		/// KRX 매수호가잔량1 (6054)
 		/// </summary>
 		[JsonProperty("6054")]
-		public decimal? KRX_BuyVolume1;
+		public decimal? KrxBuyQuantity1;
 		/// <summary>
 		/// KRX 매수호가잔량2 (6055)
 		/// </summary>
 		[JsonProperty("6055")]
-		public decimal? KRX_BuyVolume2;
+		public decimal? KrxBuyQuantity2;
 		/// <summary>
 		/// KRX 매수호가잔량3 (6056)
 		/// </summary>
 		[JsonProperty("6056")]
-		public decimal? KRX_BuyVolume3;
+		public decimal? KrxBuyQuantity3;
 		/// <summary>
 		/// KRX 매수호가잔량4 (6057)
 		/// </summary>
 		[JsonProperty("6057")]
-		public decimal? KRX_BuyVolume4;
+		public decimal? KrxBuyQuantity4;
 		/// <summary>
 		/// KRX 매수호가잔량5 (6058)
 		/// </summary>
 		[JsonProperty("6058")]
-		public decimal? KRX_BuyVolume5;
+		public decimal? KrxBuyQuantity5;
 		/// <summary>
 		/// KRX 매수호가잔량6 (6059)
 		/// </summary>
 		[JsonProperty("6059")]
-		public decimal? KRX_BuyVolume6;
+		public decimal? KrxBuyQuantity6;
 		/// <summary>
 		/// KRX 매수호가잔량7 (6060)
 		/// </summary>
 		[JsonProperty("6060")]
-		public decimal? KRX_BuyVolume7;
+		public decimal? KrxBuyQuantity7;
 		/// <summary>
 		/// KRX 매수호가잔량8 (6061)
 		/// </summary>
 		[JsonProperty("6061")]
-		public decimal? KRX_BuyVolume8;
+		public decimal? KrxBuyQuantity8;
 		/// <summary>
 		/// KRX 매수호가잔량9 (6062)
 		/// </summary>
 		[JsonProperty("6062")]
-		public decimal? KRX_BuyVolume9;
+		public decimal? KrxBuyQuantity9;
 		/// <summary>
 		/// KRX 매수호가잔량10 (6063)
 		/// </summary>
 		[JsonProperty("6063")]
-		public decimal? KRX_BuyVolume10;
+		public decimal? KrxBuyQuantity10;
 		/// <summary>
 		/// KRX 매도호가총잔량 (6064)
 		/// </summary>
 		[JsonProperty("6064")]
-		public decimal? KRX_TotalSellVolume;
+		public decimal? KrxTotalSellQuantity;
 		/// <summary>
 		/// KRX 매수호가총잔량 (6065)
 		/// </summary>
 		[JsonProperty("6065")]
-		public decimal? KRX_TotalBuyVolume;
+		public decimal? KrxTotalBuyQuantity;
 		/// <summary>
 		/// NXT 매도호가잔량1 (6066)
 		/// </summary>
 		[JsonProperty("6066")]
-		public decimal? NXT_SellVolume1;
+		public decimal? NxtSellQuantity1;
 		/// <summary>
 		/// NXT 매도호가잔량2 (6067)
 		/// </summary>
 		[JsonProperty("6067")]
-		public decimal? NXT_SellVolume2;
+		public decimal? NxtSellQuantity2;
 		/// <summary>
 		/// NXT 매도호가잔량3 (6068)
 		/// </summary>
 		[JsonProperty("6068")]
-		public decimal? NXT_SellVolume3;
+		public decimal? NxtSellQuantity3;
 		/// <summary>
 		/// NXT 매도호가잔량4 (6069)
 		/// </summary>
 		[JsonProperty("6069")]
-		public decimal? NXT_SellVolume4;
+		public decimal? NxtSellQuantity4;
 		/// <summary>
 		/// NXT 매도호가잔량5 (6070)
 		/// </summary>
 		[JsonProperty("6070")]
-		public decimal? NXT_SellVolume5;
+		public decimal? NxtSellQuantity5;
 		/// <summary>
 		/// NXT 매도호가잔량6 (6071)
 		/// </summary>
 		[JsonProperty("6071")]
-		public decimal? NXT_SellVolume6;
+		public decimal? NxtSellQuantity6;
 		/// <summary>
 		/// NXT 매도호가잔량7 (6072)
 		/// </summary>
 		[JsonProperty("6072")]
-		public decimal? NXT_SellVolume7;
+		public decimal? NxtSellQuantity7;
 		/// <summary>
 		/// NXT 매도호가잔량8 (6073)
 		/// </summary>
 		[JsonProperty("6073")]
-		public decimal? NXT_SellVolume8;
+		public decimal? NxtSellQuantity8;
 		/// <summary>
 		/// NXT 매도호가잔량9 (6074)
 		/// </summary>
 		[JsonProperty("6074")]
-		public decimal? NXT_SellVolume9;
+		public decimal? NxtSellQuantity9;
 		/// <summary>
 		/// NXT 매도호가잔량10 (6075)
 		/// </summary>
 		[JsonProperty("6075")]
-		public decimal? NXT_SellVolume10;
+		public decimal? NxtSellQuantity10;
 		/// <summary>
 		/// NXT 매수호가잔량1 (6076)
 		/// </summary>
 		[JsonProperty("6076")]
-		public decimal? NXT_BuyVolume1;
+		public decimal? NxtBuyQuantity1;
 		/// <summary>
 		/// NXT 매수호가잔량2 (6077)
 		/// </summary>
 		[JsonProperty("6077")]
-		public decimal? NXT_BuyVolume2;
+		public decimal? NxtBuyQuantity2;
 		/// <summary>
 		/// NXT 매수호가잔량3 (6078)
 		/// </summary>
 		[JsonProperty("6078")]
-		public decimal? NXT_BuyVolume3;
+		public decimal? NxtBuyQuantity3;
 		/// <summary>
 		/// NXT 매수호가잔량4 (6079)
 		/// </summary>
 		[JsonProperty("6079")]
-		public decimal? NXT_BuyVolume4;
+		public decimal? NxtBuyQuantity4;
 		/// <summary>
 		/// NXT 매수호가잔량5 (6080)
 		/// </summary>
 		[JsonProperty("6080")]
-		public decimal? NXT_BuyVolume5;
+		public decimal? NxtBuyQuantity5;
 		/// <summary>
 		/// NXT 매수호가잔량6 (6081)
 		/// </summary>
 		[JsonProperty("6081")]
-		public decimal? NXT_BuyVolume6;
+		public decimal? NxtBuyQuantity6;
 		/// <summary>
 		/// NXT 매수호가잔량7 (6082)
 		/// </summary>
 		[JsonProperty("6082")]
-		public decimal? NXT_BuyVolume7;
+		public decimal? NxtBuyQuantity7;
 		/// <summary>
 		/// NXT 매수호가잔량8 (6083)
 		/// </summary>
 		[JsonProperty("6083")]
-		public decimal? NXT_BuyVolume8;
+		public decimal? NxtBuyQuantity8;
 		/// <summary>
 		/// NXT 매수호가잔량9 (6084)
 		/// </summary>
 		[JsonProperty("6084")]
-		public decimal? NXT_BuyVolume9;
+		public decimal? NxtBuyQuantity9;
 		/// <summary>
 		/// NXT 매수호가잔량10 (6085)
 		/// </summary>
 		[JsonProperty("6085")]
-		public decimal? NXT_BuyVolume10;
+		public decimal? NxtBuyQuantity10;
 		/// <summary>
 		/// NXT 매도호가총잔량 (6086)
 		/// </summary>
 		[JsonProperty("6086")]
-		public decimal? NXT_TotalSellVolume;
+		public decimal? TotalNxtSellQuantity;
 		/// <summary>
 		/// NXT 매수호가총잔량 (6087)
 		/// </summary>
 		[JsonProperty("6087")]
-		public decimal? NXT_TotalBuyVolume;
+		public decimal? TotalNxtBuyQuantity;
 		/// <summary>
 		/// KRX 중간가 매도 총잔량 증감 (6100)
 		/// </summary>
 		[JsonProperty("6100")]
-		public decimal? KRX_MidSellTotalVolumeChange;
+		public decimal? TotalKrxMedianSellQuantityChange;
 		/// <summary>
 		/// KRX 중간가 매도 총잔량 (6101)
 		/// </summary>
 		[JsonProperty("6101")]
-		public decimal? KRX_MidSellTotalVolume;
+		public decimal? TotalKrxMedianSellQuantity;
 		/// <summary>
 		/// KRX 중간가 (6102)
 		/// </summary>
 		[JsonProperty("6102")]
-		public decimal? KRX_MidPrice;
+		public decimal? KrxMedian;
 		/// <summary>
 		/// KRX 중간가 매수 총잔량 (6103)
 		/// </summary>
 		[JsonProperty("6103")]
-		public decimal? KRX_MidBuyTotalVolume;
+		public decimal? TotalKrxMedianBuyQuantity;
 		/// <summary>
 		/// KRX 중간가 매수 총잔량 증감 (6104)
 		/// </summary>
 		[JsonProperty("6104")]
-		public decimal? KRX_MidBuyTotalVolumeChange;
+		public decimal? TotalKrxMedianBuyQuantityChange;
 		/// <summary>
 		/// NXT중간가 매도 총잔량 증감 (6105)
 		/// </summary>
 		[JsonProperty("6105")]
-		public decimal? NXT_MidSellTotalVolumeChange;
+		public decimal? TotalNxtMedianSellQuantityChange;
 		/// <summary>
 		/// NXT중간가 매도 총잔량 (6106)
 		/// </summary>
 		[JsonProperty("6106")]
-		public decimal? NXT_MidSellTotalVolume;
+		public decimal? TotalNxtMedianSellQuantity;
 		/// <summary>
 		/// NXT중간가 (6107)
 		/// </summary>
 		[JsonProperty("6107")]
-		public decimal? NXT_MidPrice;
+		public decimal? NxtMedian;
 		/// <summary>
 		/// NXT중간가 매수 총잔량 (6108)
 		/// </summary>
 		[JsonProperty("6108")]
-		public decimal? NXT_MidBuyTotalVolume;
+		public decimal? TotalNxtMedianBuyQuantity;
 		/// <summary>
 		/// NXT중간가 매수 총잔량 증감 (6109)
 		/// </summary>
 		[JsonProperty("6109")]
-		public decimal? NXT_MidBuyTotalVolumeChange;
+		public decimal? TotalNxtMedianBuyQuantityChange;
 		/// <summary>
 		/// KRX중간가대비 (6110)
 		/// </summary>
 		[JsonProperty("6110")]
-		public decimal? KRX_MidPriceChange;
+		public decimal? KrxMedianChange;
 		/// <summary>
 		/// KRX중간가대비 기호 (6111)
 		/// </summary>
 		[JsonProperty("6111")]
-		public string? KRX_MidPriceChangeSymbol;
+		public string? KrxMedianChangeSign;
 		/// <summary>
 		/// KRX중간가대비등락율 (6112)
 		/// </summary>
 		[JsonProperty("6112")]
-		public decimal? KRX_MidPriceChangeRate;
+		public decimal? KrxMedianChangeRate;
 		/// <summary>
 		/// NXT중간가대비 (6113)
 		/// </summary>
 		[JsonProperty("6113")]
-		public decimal? NXT_MidPriceChange;
+		public decimal? NxtMedianChange;
 		/// <summary>
 		/// NXT중간가대비 기호 (6114)
 		/// </summary>
 		[JsonProperty("6114")]
-		public string? NXT_MidPriceChangeSymbol;
+		public string? NxtMedianChangeSign;
 		/// <summary>
 		/// NXT중간가대비등락율 (6115)
 		/// </summary>
 		[JsonProperty("6115")]
-		public decimal? NXT_MidPriceChangeRate;
+		public decimal? NxtMedianChangeRate;
 	}
 
-	public record KiwoomWebSocketRealtimeStockAfterHoursAsk
+	public record KiwoomWebSocketRealtimeAfterMarketQuote
 	{
 		/// <summary>
 		/// 호가시간 (21)
@@ -1626,25 +1626,25 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 시간외매도호가총잔량 (131)
 		/// </summary>
 		[JsonProperty("131")]
-		public decimal? AfterHoursTotalSellVolume;
+		public decimal? TotalAfterMarketSellQuantity;
 		/// <summary>
 		/// 시간외매도호가총잔량직전대비 (132)
 		/// </summary>
 		[JsonProperty("132")]
-		public decimal? AfterHoursTotalSellVolumeChange;
+		public decimal? TotalAfterMarketSellQuantityChange;
 		/// <summary>
 		/// 시간외매수호가총잔량 (135)
 		/// </summary>
 		[JsonProperty("135")]
-		public decimal? AfterHoursTotalBuyVolume;
+		public decimal? TotalAfterMarketBuyQuantity;
 		/// <summary>
 		/// 시간외매수호가총잔량직전대비 (136)
 		/// </summary>
 		[JsonProperty("136")]
-		public decimal? AfterHoursTotalBuyVolumeChange;
+		public decimal? TotalAfterMarketBuyQuantityChange;
 	}
 
-	public record KiwoomWebSocketRealtimeStockDailyTrader
+	public record KiwoomWebSocketRealtimeDailyBroker
 	{
 		/// <summary>
 		/// 매도거래원1 (141)
@@ -1900,37 +1900,37 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 외국계매도추정합 (261)
 		/// </summary>
 		[JsonProperty("261")]
-		public decimal? ForeignSellEstimateSum;
+		public decimal? TotalEstimatedForeignSell;
 		/// <summary>
 		/// 외국계매도추정합변동 (262)
 		/// </summary>
 		[JsonProperty("262")]
-		public decimal? ForeignSellEstimateChange;
+		public decimal? TotalEstimatedForeignSellChange;
 		/// <summary>
 		/// 외국계매수추정합 (263)
 		/// </summary>
 		[JsonProperty("263")]
-		public decimal? ForeignBuyEstimateSum;
+		public decimal? TotalEstimatedForeignBuy;
 		/// <summary>
 		/// 외국계매수추정합변동 (264)
 		/// </summary>
 		[JsonProperty("264")]
-		public decimal? ForeignBuyEstimateChange;
+		public decimal? TotalEstimatedForeignBuyChange;
 		/// <summary>
 		/// 외국계순매수추정합 (267)
 		/// </summary>
 		[JsonProperty("267")]
-		public decimal? ForeignNetBuyEstimateSum;
+		public decimal? TotalEstimatedForeignNetBuy;
 		/// <summary>
 		/// 외국계순매수변동 (268)
 		/// </summary>
 		[JsonProperty("268")]
-		public decimal? ForeignNetBuyEstimateChange;
+		public decimal? TotalEstimatedForeignNetBuyChange;
 		/// <summary>
 		/// 거래소구분 (337)
 		/// </summary>
 		[JsonProperty("337")]
-		public string? ExchangeDivision;
+		public string? ExchangeType;
 	}
 
 	public record KiwoomWebSocketRealtimeEtfNav
@@ -1939,17 +1939,17 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// NAV (36)
 		/// </summary>
 		[JsonProperty("36")]
-		public decimal? NAV;
+		public decimal? Nav;
 		/// <summary>
 		/// NAV전일대비 (37)
 		/// </summary>
 		[JsonProperty("37")]
-		public decimal? NAVChangeFromPrevDay;
+		public decimal? NavChange;
 		/// <summary>
 		/// NAV등락율 (38)
 		/// </summary>
 		[JsonProperty("38")]
-		public decimal? NAVRateOfChange;
+		public decimal? NavChangeRate;
 		/// <summary>
 		/// 추적오차율 (39)
 		/// </summary>
@@ -1960,7 +1960,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// </summary>
 		[JsonProperty("20")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan? ExecutionTime;
+		public TimeSpan? TradeTime;
 		/// <summary>
 		/// 현재가 (10)
 		/// </summary>
@@ -1970,12 +1970,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비 (11)
 		/// </summary>
 		[JsonProperty("11")]
-		public decimal? ChangeFromPrevDay;
+		public decimal? Change;
 		/// <summary>
 		/// 등락율 (12)
 		/// </summary>
 		[JsonProperty("12")]
-		public decimal? RateOfChange;
+		public decimal? ChangeRate;
 		/// <summary>
 		/// 누적거래량 (13)
 		/// </summary>
@@ -1985,42 +1985,42 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비기호 (25)
 		/// </summary>
 		[JsonProperty("25")]
-		public string? ChangeSymbol;
+		public string? ChangeSign;
 		/// <summary>
 		/// ELW기어링비율 (667)
 		/// </summary>
 		[JsonProperty("667")]
-		public decimal? ELWGearingRatio;
+		public decimal? ElwGearingRate;
 		/// <summary>
 		/// ELW손익분기율 (668)
 		/// </summary>
 		[JsonProperty("668")]
-		public decimal? ELWBreakEvenRatio;
+		public decimal? ElwBreakEvenRate;
 		/// <summary>
 		/// ELW자본지지점 (669)
 		/// </summary>
 		[JsonProperty("669")]
-		public decimal? ELWCapitalSupportPoint;
+		public decimal? ElwCapitalSupportPoint;
 		/// <summary>
 		/// NAV/지수괴리율 (265)
 		/// </summary>
 		[JsonProperty("265")]
-		public decimal? NAVIndexDisparityRate;
+		public decimal? NavIndexDisparityRate;
 		/// <summary>
 		/// NAV/ETF괴리율 (266)
 		/// </summary>
 		[JsonProperty("266")]
-		public decimal? NAVETFDisparityRate;
+		public decimal? NavEtfDisparityRate;
 	}
 
-	public record KiwoomWebSocketRealtimeStockExpectedExecution
+	public record KiwoomWebSocketRealtimeExpectedTrade
 	{
 		/// <summary>
 		/// 체결시간 (20)
 		/// </summary>
 		[JsonProperty("20")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan? ExecutionTime;
+		public TimeSpan? TradeTime;
 		/// <summary>
 		/// 현재가 (10)
 		/// </summary>
@@ -2030,17 +2030,17 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비 (11)
 		/// </summary>
 		[JsonProperty("11")]
-		public decimal? ChangeFromPrevDay;
+		public decimal? Change;
 		/// <summary>
 		/// 등락율 (12)
 		/// </summary>
 		[JsonProperty("12")]
-		public decimal? RateOfChange;
+		public decimal? ChangeRate;
 		/// <summary>
 		/// 거래량 (15) - +는 매수체결,-는 매도체결
 		/// </summary>
 		[JsonProperty("15")]
-		public decimal? TradeVolume;
+		public decimal? Volume;
 		/// <summary>
 		/// 누적거래량 (13)
 		/// </summary>
@@ -2050,17 +2050,17 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비기호 (25)
 		/// </summary>
 		[JsonProperty("25")]
-		public string? ChangeSymbol;
+		public string? ChangeSign;
 	}
 
-	public record KiwoomWebSocketRealtimeSectorIndex
+	public record KiwoomWebSocketRealtimeIndustryIndex
 	{
 		/// <summary>
 		/// 체결시간 (20)
 		/// </summary>
 		[JsonProperty("20")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan? ExecutionTime;
+		public TimeSpan? TradeTime;
 		/// <summary>
 		/// 현재가 (10)
 		/// </summary>
@@ -2070,17 +2070,17 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비 (11)
 		/// </summary>
 		[JsonProperty("11")]
-		public decimal? ChangeFromPrevDay;
+		public decimal? Change;
 		/// <summary>
 		/// 등락율 (12)
 		/// </summary>
 		[JsonProperty("12")]
-		public decimal? RateOfChange;
+		public decimal? ChangeRate;
 		/// <summary>
 		/// 거래량 (15) - +는 매수체결,-는 매도체결
 		/// </summary>
 		[JsonProperty("15")]
-		public decimal? TradeVolume;
+		public decimal? Volume;
 		/// <summary>
 		/// 누적거래량 (13)
 		/// </summary>
@@ -2090,67 +2090,67 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 누적거래대금 (14)
 		/// </summary>
 		[JsonProperty("14")]
-		public decimal? AccumulatedAmount;
+		public decimal? AccumulatedTransactionAmount;
 		/// <summary>
 		/// 시가 (16)
 		/// </summary>
 		[JsonProperty("16")]
-		public decimal? OpeningPrice;
+		public decimal? Open;
 		/// <summary>
 		/// 고가 (17)
 		/// </summary>
 		[JsonProperty("17")]
-		public decimal? HighPrice;
+		public decimal? High;
 		/// <summary>
 		/// 저가 (18)
 		/// </summary>
 		[JsonProperty("18")]
-		public decimal? LowPrice;
+		public decimal? Low;
 		/// <summary>
 		/// 전일대비기호 (25)
 		/// </summary>
 		[JsonProperty("25")]
-		public string? ChangeSymbol;
+		public string? ChangeSign;
 		/// <summary>
 		/// 전일거래량대비 (26) - 계약,주
 		/// </summary>
 		[JsonProperty("26")]
-		public string? VolumeComparedToPrevDay;
+		public string? VolumeChange;
 	}
 
-	public record KiwoomWebSocketRealtimeSectorFluctuation
+	public record KiwoomWebSocketRealtimeIndustryChange
 	{
 		/// <summary>
 		/// 체결시간 (20)
 		/// </summary>
 		[JsonProperty("20")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan? ExecutionTime;
+		public TimeSpan? TradeTime;
 		/// <summary>
 		/// 상승종목수 (252)
 		/// </summary>
 		[JsonProperty("252")]
-		public int? RisingStockCount;
+		public int? UpStockCount;
 		/// <summary>
 		/// 상한종목수 (251)
 		/// </summary>
 		[JsonProperty("251")]
-		public int? UpperLimitStockCount;
+		public int? UpperStockCount;
 		/// <summary>
 		/// 보합종목수 (253)
 		/// </summary>
 		[JsonProperty("253")]
-		public int? NoChangeStockCount;
+		public int? FlatStockCount;
 		/// <summary>
 		/// 하락종목수 (255)
 		/// </summary>
 		[JsonProperty("255")]
-		public int? FallingStockCount;
+		public int? DownStockCount;
 		/// <summary>
 		/// 하한종목수 (254)
 		/// </summary>
 		[JsonProperty("254")]
-		public int? LowerLimitStockCount;
+		public int? LowerStockCount;
 		/// <summary>
 		/// 누적거래량 (13)
 		/// </summary>
@@ -2160,7 +2160,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 누적거래대금 (14)
 		/// </summary>
 		[JsonProperty("14")]
-		public decimal? AccumulatedAmount;
+		public decimal? AccumulatedTransactionAmount;
 		/// <summary>
 		/// 현재가 (10)
 		/// </summary>
@@ -2170,27 +2170,27 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비 (11)
 		/// </summary>
 		[JsonProperty("11")]
-		public decimal? ChangeFromPrevDay;
+		public decimal? Change;
 		/// <summary>
 		/// 등락율 (12)
 		/// </summary>
 		[JsonProperty("12")]
-		public decimal? RateOfChange;
+		public decimal? ChangeRate;
 		/// <summary>
 		/// 거래형성종목수 (256) - 계약,주
 		/// </summary>
 		[JsonProperty("256")]
-		public int? TradingStocksCount;
+		public int? ActiveTradingStockCount;
 		/// <summary>
 		/// 거래형성비율 (257)
 		/// </summary>
 		[JsonProperty("257")]
-		public decimal? TradingRatio;
+		public decimal? ActiveTradingRate;
 		/// <summary>
 		/// 전일대비기호 (25)
 		/// </summary>
 		[JsonProperty("25")]
-		public string? ChangeSymbol;
+		public string? ChangeSign;
 	}
 
 	public record KiwoomWebSocketRealtimeStockInfo
@@ -2204,32 +2204,32 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 장전임의연장 (592)
 		/// </summary>
 		[JsonProperty("592")]
-		public string? PreMarketArbitraryExtension;
+		public string? BeforeMarketArbitraryExtension;
 		/// <summary>
 		/// 장후임의연장 (593)
 		/// </summary>
 		[JsonProperty("593")]
-		public string? PostMarketArbitraryExtension;
+		public string? AfterMarketArbitraryExtension;
 		/// <summary>
 		/// 상한가 (305)
 		/// </summary>
 		[JsonProperty("305")]
-		public decimal? UpperLimitPrice;
+		public decimal? UpperPrice;
 		/// <summary>
 		/// 하한가 (306)
 		/// </summary>
 		[JsonProperty("306")]
-		public decimal? LowerLimitPrice;
+		public decimal? LowerPrice;
 		/// <summary>
 		/// 기준가 (307)
 		/// </summary>
 		[JsonProperty("307")]
-		public decimal? ReferencePrice;
+		public decimal? BasePrice;
 		/// <summary>
 		/// 조기종료ELW발생 (689)
 		/// </summary>
 		[JsonProperty("689")]
-		public string? EarlyTerminationELWOccurrence;
+		public string? EarlyTerminationElw;
 		/// <summary>
 		/// 통화단위 (594)
 		/// </summary>
@@ -2244,7 +2244,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 종목정보 (370)
 		/// </summary>
 		[JsonProperty("370")]
-		public string? StockInformation;
+		public string? StockInfo;
 	}
 
 	public record KiwoomWebSocketRealtimeElwTheoreticalPrice
@@ -2254,7 +2254,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// </summary>
 		[JsonProperty("20")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan? ExecutionTime;
+		public TimeSpan? TradeTime;
 		/// <summary>
 		/// 현재가 (10)
 		/// </summary>
@@ -2264,42 +2264,42 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// ELW이론가 (670)
 		/// </summary>
 		[JsonProperty("670")]
-		public decimal? ELWTheoreticalPrice;
+		public decimal? ElwTheoreticalPrice;
 		/// <summary>
 		/// ELW내재변동성 (671)
 		/// </summary>
 		[JsonProperty("671")]
-		public decimal? ELWImpliedVolatility;
+		public decimal? ElwImpliedVolatility;
 		/// <summary>
 		/// ELW델타 (672)
 		/// </summary>
 		[JsonProperty("672")]
-		public decimal? ELWDelta;
+		public decimal? ElwDelta;
 		/// <summary>
 		/// ELW감마 (673)
 		/// </summary>
 		[JsonProperty("673")]
-		public decimal? ELWGamma;
+		public decimal? ElwGamma;
 		/// <summary>
 		/// ELW쎄타 (674)
 		/// </summary>
 		[JsonProperty("674")]
-		public decimal? ELWTheta;
+		public decimal? ElwTheta;
 		/// <summary>
 		/// ELW베가 (675)
 		/// </summary>
 		[JsonProperty("675")]
-		public decimal? ELWVega;
+		public decimal? ElwVega;
 		/// <summary>
 		/// ELW로 (676)
 		/// </summary>
 		[JsonProperty("676")]
-		public decimal? ELWRho;
+		public decimal? ElwLaw;
 		/// <summary>
 		/// LP호가내재변동성 (706)
 		/// </summary>
 		[JsonProperty("706")]
-		public decimal? LPQuoteImpliedVolatility;
+		public decimal? LpQuoteImpliedVolatility;
 	}
 
 	public record KiwoomWebSocketRealtimeMarketOpenTime
@@ -2318,19 +2318,19 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// W:NXT애프터마켓종료<br/>
 		/// </summary>
 		[JsonProperty("215")]
-		public string? MarketOperationDivision;
+		public string? MarketOperationType;
 		/// <summary>
 		/// 체결시간 (20)
 		/// </summary>
 		[JsonProperty("20")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan? ExecutionTime;
+		public TimeSpan? TradeTime;
 		/// <summary>
 		/// 장시작예상잔여시간 (214)
 		/// </summary>
 		[JsonProperty("214")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan? ExpectedRemainingMarketStartTime;
+		public TimeSpan? MarketOpenRemainingTime;
 	}
 
 	public record KiwoomWebSocketRealtimeElwIndicator
@@ -2340,42 +2340,42 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// </summary>
 		[JsonProperty("20")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan? ExecutionTime;
+		public TimeSpan? TradeTime;
 		/// <summary>
 		/// ELW패리티 (666)
 		/// </summary>
 		[JsonProperty("666")]
-		public decimal? ELWParity;
+		public decimal? ElwParity;
 		/// <summary>
 		/// ELW프리미엄 (1211)
 		/// </summary>
 		[JsonProperty("1211")]
-		public decimal? ELWPremium;
+		public decimal? ElwPremium;
 		/// <summary>
 		/// ELW기어링비율 (667)
 		/// </summary>
 		[JsonProperty("667")]
-		public decimal? ELWGearingRatio;
+		public decimal? ElwGearingRate;
 		/// <summary>
 		/// ELW손익분기율 (668)
 		/// </summary>
 		[JsonProperty("668")]
-		public decimal? ELWBreakEvenRatio;
+		public decimal? ElwBreakEvenRate;
 		/// <summary>
 		/// ELW자본지지점 (669)
 		/// </summary>
 		[JsonProperty("669")]
-		public decimal? ELWCapitalSupportPoint;
+		public decimal? ElwCapitalSupportPoint;
 	}
 
-	public record KiwoomWebSocketRealtimeProgramTrading
+	public record KiwoomWebSocketRealtimeProgramTransaction
 	{
 		/// <summary>
 		/// 체결시간 (20)
 		/// </summary>
 		[JsonProperty("20")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan? ExecutionTime;
+		public TimeSpan? TradeTime;
 		/// <summary>
 		/// 현재가 (10)
 		/// </summary>
@@ -2385,17 +2385,17 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비기호 (25)
 		/// </summary>
 		[JsonProperty("25")]
-		public string? ChangeSymbol;
+		public string? ChangeSign;
 		/// <summary>
 		/// 전일대비 (11)
 		/// </summary>
 		[JsonProperty("11")]
-		public decimal? ChangeFromPrevDay;
+		public decimal? Change;
 		/// <summary>
 		/// 등락율 (12)
 		/// </summary>
 		[JsonProperty("12")]
-		public decimal? RateOfChange;
+		public decimal? ChangeRate;
 		/// <summary>
 		/// 누적거래량 (13)
 		/// </summary>
@@ -2446,20 +2446,20 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// </summary>
 		[JsonProperty("214")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan? ExpectedRemainingMarketStartTime;
+		public TimeSpan? MarketOpenRemainingTime;
 		/// <summary>
 		/// 장운영구분 (215)
 		/// </summary>
 		[JsonProperty("215")]
-		public string? MarketOperationDivision;
+		public string? MarketOperationType;
 		/// <summary>
 		/// 투자자별ticker (216)
 		/// </summary>
 		[JsonProperty("216")]
-		public string? InvestorByTicker;
+		public string? InvestorTicker;
 	}
 
-	public record KiwoomWebSocketRealtimeViTriggeredReleased
+	public record KiwoomWebSocketRealtimeViEvent
 	{
 		/// <summary>
 		/// 종목코드 (9001)
@@ -2480,54 +2480,54 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 누적거래대금 (14)
 		/// </summary>
 		[JsonProperty("14")]
-		public decimal? AccumulatedAmount;
+		public decimal? AccumulatedTransactionAmount;
 		/// <summary>
 		/// VI발동구분 (9068)
 		/// </summary>
 		[JsonProperty("9068")]
-		public string? VIDispatchDivision;
+		public string? ViStrikeType;
 		/// <summary>
 		/// KOSPI,KOSDAQ,전체구분 (9008)
 		/// </summary>
 		[JsonProperty("9008")]
-		public string? MarketClassification;
+		public string? MarketType;
 		/// <summary>
 		/// 장전구분 (9075)
 		/// </summary>
 		[JsonProperty("9075")]
-		public string? PreMarketDivision;
+		public string? BeforeMarketType;
 		/// <summary>
 		/// VI발동가격 (1221)
 		/// </summary>
 		[JsonProperty("1221")]
-		public decimal? VIDispatchPrice;
+		public decimal? ViStrikePrice;
 		/// <summary>
 		/// 매매체결처리시각 (1223)
 		/// </summary>
 		[JsonProperty("1223")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan? TradeExecutionProcessingTime;
+		public TimeSpan? TradeProcessTime;
 		/// <summary>
 		/// VI해제시각 (1224)
 		/// </summary>
 		[JsonProperty("1224")]
 		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
-		public TimeSpan? VIReleaseTime;
+		public TimeSpan? ViReleaseTime;
 		/// <summary>
 		/// VI적용구분 (1225) - 정적/동적/동적+정적
 		/// </summary>
 		[JsonProperty("1225")]
-		public string? VIApplicationType;
+		public string? ViApplyType;
 		/// <summary>
 		/// 기준가격 정적 (1236) - 계약,주
 		/// </summary>
 		[JsonProperty("1236")]
-		public decimal? ReferencePriceStatic;
+		public decimal? BasePriceStatic;
 		/// <summary>
 		/// 기준가격 동적 (1237)
 		/// </summary>
 		[JsonProperty("1237")]
-		public decimal? ReferencePriceDynamic;
+		public decimal? BasePriceDynamic;
 		/// <summary>
 		/// 괴리율 정적 (1238)
 		/// </summary>
@@ -2542,17 +2542,17 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// VI발동가 등락율 (1489)
 		/// </summary>
 		[JsonProperty("1489")]
-		public decimal? VIDispatchPriceChangeRate;
+		public decimal? ViStrikePriceChangeRate;
 		/// <summary>
 		/// VI발동횟수 (1490)
 		/// </summary>
 		[JsonProperty("1490")]
-		public int? VIDispatchCount;
+		public int? ViStrikeCount;
 		/// <summary>
 		/// 발동방향구분 (9069)
 		/// </summary>
 		[JsonProperty("9069")]
-		public string? DispatchDirectionDivision;
+		public string? StrikeDirectionType;
 		/// <summary>
 		/// Extra Item (1279)
 		/// </summary>
@@ -2595,17 +2595,17 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비기호 (25)
 		/// </summary>
 		[JsonProperty("25")]
-		public string? DiffSymbol;
+		public string? ChangeSign;
 		/// <summary>
 		/// 전일대비 (11)
 		/// </summary>
 		[JsonProperty("11")]
-		public string? DiffAmount;
+		public string? Change;
 		/// <summary>
 		/// 등락율 (12)
 		/// </summary>
 		[JsonProperty("12")]
-		public string? FluctuationRate;
+		public string? ChangeRate;
 		/// <summary>
 		/// 누적거래량 (13)
 		/// </summary>
@@ -2615,17 +2615,17 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 시가 (16)
 		/// </summary>
 		[JsonProperty("16")]
-		public string? OpenPrice;
+		public string? Open;
 		/// <summary>
 		/// 고가 (17)
 		/// </summary>
 		[JsonProperty("17")]
-		public string? HighPrice;
+		public string? High;
 		/// <summary>
 		/// 저가 (18)
 		/// </summary>
 		[JsonProperty("18")]
-		public string? LowPrice;
+		public string? Low;
 	}
 
 	public record KiwoomWebSocketConditionSearchRequestRealtime
@@ -2667,7 +2667,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 일련번호 (841)
 		/// </summary>
 		[JsonProperty("841")]
-		public string? SerialNumber;
+		public string? SerialId;
 		/// <summary>
 		/// 종목코드 (9001)
 		/// </summary>
@@ -2688,7 +2688,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매도/수 구분 (907)
 		/// </summary>
 		[JsonProperty("907")]
-		public string? SellBuyType;
+		public string? OrderSide;
 	}
 
 	public record KiwoomWebSocketConditionSearchClear

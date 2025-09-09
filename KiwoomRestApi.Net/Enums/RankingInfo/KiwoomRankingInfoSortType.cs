@@ -16,10 +16,10 @@
 		/// <summary>
 		/// 매수비율순
 		/// </summary>
-		BuyRatio = 3,
+		BuyRate = 3,
 		/// <summary>
 		/// 매도비율순
 		/// </summary>
-		SellRatio = 4
+		SellRate = 4
 	}
 }

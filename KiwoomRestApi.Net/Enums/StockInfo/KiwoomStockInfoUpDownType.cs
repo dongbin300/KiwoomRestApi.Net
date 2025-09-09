@@ -8,30 +8,30 @@
 		/// <summary>
 		/// 상한
 		/// </summary>
-		UpperLimit = 1,
+		Upper = 1,
 		/// <summary>
 		/// 상승
 		/// </summary>
-		Rise = 2,
+		Up = 2,
 		/// <summary>
 		/// 보합
 		/// </summary>
-		Steady = 3,
+		Flat = 3,
 		/// <summary>
 		/// 하한
 		/// </summary>
-		LowerLimit = 4,
+		Lower = 4,
 		/// <summary>
 		/// 하락
 		/// </summary>
-		Fall = 5,
+		Down = 5,
 		/// <summary>
 		/// 전일상한
 		/// </summary>
-		PreviousDayUpperLimit = 6,
+		PreviousDayUpper = 6,
 		/// <summary>
 		/// 전일하한
 		/// </summary>
-		PreviousDayLowerLimit = 7
+		PreviousDayLower = 7
 	}
 }

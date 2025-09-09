@@ -12,10 +12,10 @@
 		/// <summary>
 		/// 코스피
 		/// </summary>
-		KOSPI = 1,
+		Kospi = 1,
 		/// <summary>
 		/// 코스닥
 		/// </summary>
-		KOSDAQ = 101
+		Kosdaq = 101
 	}
 }

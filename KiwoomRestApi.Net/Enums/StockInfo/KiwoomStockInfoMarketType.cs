@@ -14,15 +14,15 @@ namespace KiwoomRestApi.Net.Enums.StockInfo
 		/// <summary>
 		/// 코스피
 		/// </summary>
-		KOSPI = 1,
+		Kospi = 1,
 		/// <summary>
 		/// 코스닥
 		/// </summary>
-		KOSDAQ = 101,
+		Kosdaq = 101,
 		/// <summary>
 		/// 코스피200
 		/// </summary>
-		KOSPI200 = 201
+		Kospi200 = 201
 	}
 
 	/// <summary>
@@ -37,11 +37,11 @@ namespace KiwoomRestApi.Net.Enums.StockInfo
 		/// <summary>
 		/// 코스피
 		/// </summary>
-		KOSPI = 1,
+		Kospi = 1,
 		/// <summary>
 		/// 코스닥
 		/// </summary>
-		KOSDAQ = 2,
+		Kosdaq = 2,
 		/// <summary>
 		/// 종목
 		/// </summary>
@@ -56,11 +56,11 @@ namespace KiwoomRestApi.Net.Enums.StockInfo
 		/// <summary>
 		/// 코스피
 		/// </summary>
-		KOSPI = 0,
+		Kospi = 0,
 		/// <summary>
 		/// ELW
 		/// </summary>
-		ELW = 3,
+		Elw = 3,
 		/// <summary>
 		/// 뮤추얼펀드
 		/// </summary>
@@ -72,11 +72,11 @@ namespace KiwoomRestApi.Net.Enums.StockInfo
 		/// <summary>
 		/// 리츠
 		/// </summary>
-		REITs = 6,
+		Reit = 6,
 		/// <summary>
 		/// ETF
 		/// </summary>
-		ETF = 8,
+		Etf = 8,
 		/// <summary>
 		/// 하이일드
 		/// </summary>
@@ -84,15 +84,15 @@ namespace KiwoomRestApi.Net.Enums.StockInfo
 		/// <summary>
 		/// 코스닥
 		/// </summary>
-		KOSDAQ = 10,
+		Kosdaq = 10,
 		/// <summary>
 		/// K-OTC
 		/// </summary>
-		KOTC = 30,
+		Kotc = 30,
 		/// <summary>
 		/// 코넥스
 		/// </summary>
-		KONEX = 50
+		Konex = 50
 	}
 
 	/// <summary>
@@ -103,23 +103,23 @@ namespace KiwoomRestApi.Net.Enums.StockInfo
 		/// <summary>
 		/// 코스피(거래소)
 		/// </summary>
-		KOSPI = 0,
+		Kospi = 0,
 		/// <summary>
 		/// 코스닥
 		/// </summary>
-		KOSDAQ = 1,
+		Kosdaq = 1,
 		/// <summary>
 		/// KOSPI200
 		/// </summary>
-		KOSPI200 = 2,
+		Kospi200 = 2,
 		/// <summary>
 		/// KOSPI100
 		/// </summary>
-		KOSPI100 = 4,
+		Kospi100 = 4,
 		/// <summary>
 		/// KRX100(통합지수)
 		/// </summary>
-		KRX100 = 7
+		Krx100 = 7
 	}
 
 	/// <summary>
@@ -131,11 +131,11 @@ namespace KiwoomRestApi.Net.Enums.StockInfo
 		/// 코스피
 		/// </summary>
 		[EnumMember(Value = "P00101")]
-		KOSPI,
+		Kospi,
 		/// <summary>
 		/// 코스닥
 		/// </summary>
 		[EnumMember(Value = "P10102")]
-		KOSDAQ
+		Kosdaq
 	}
 }

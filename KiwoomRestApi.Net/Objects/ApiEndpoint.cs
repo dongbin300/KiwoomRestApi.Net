@@ -17,8 +17,8 @@ namespace KiwoomRestApi.Net.Objects
 			public const string MarketCondition = "/api/dostk/mrkcond";
 			public const string Order = "/api/dostk/ordr";
 			public const string RankingInfo = "/api/dostk/rkinfo";
-			public const string Sector = "/api/dostk/sect";
-			public const string SecuritiesLendingAndBorrowing = "/api/dostk/slb";
+			public const string Industry = "/api/dostk/sect";
+			public const string SecuritiesLending = "/api/dostk/slb";
 			public const string ShortSale = "/api/dostk/shsa";
 			public const string Theme = "/api/dostk/thme";
 		}

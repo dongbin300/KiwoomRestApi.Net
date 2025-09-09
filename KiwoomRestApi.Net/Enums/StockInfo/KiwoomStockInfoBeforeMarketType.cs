@@ -16,6 +16,6 @@
 		/// <summary>
 		/// 시간외단일가
 		/// </summary>
-		AfterHours = 2
+		AfterMarketSinglePrice = 2
 	}
 }

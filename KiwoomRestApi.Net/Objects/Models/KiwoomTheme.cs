@@ -33,22 +33,22 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 등락기호
 		/// </summary>
 		[JsonProperty("flu_sig")]
-		public string? FluSign;
+		public string? ChangeSign;
 		/// <summary>
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? FluRate;
+		public decimal? ChangeRate;
 		/// <summary>
 		/// 상승종목수
 		/// </summary>
 		[JsonProperty("rising_stk_num")]
-		public int? RisingStockCount;
+		public int? UpStockCount;
 		/// <summary>
 		/// 하락종목수
 		/// </summary>
 		[JsonProperty("fall_stk_num")]
-		public int? FallingStockCount;
+		public int? DownStockCount;
 		/// <summary>
 		/// 기간수익률
 		/// </summary>
@@ -90,46 +90,46 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 등락기호
 		/// </summary>
 		[JsonProperty("flu_sig")]
-		public string? FluSign;
+		public string? ChangeSign;
 		/// <summary>
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? PreviousDifference;
+		public decimal? Change;
 		/// <summary>
 		/// 등락율
 		/// </summary>
 		[JsonProperty("flu_rt")]
-		public decimal? FluRate;
+		public decimal? ChangeRate;
 		/// <summary>
 		/// 누적거래량
 		/// </summary>
 		[JsonProperty("acc_trde_qty")]
-		public decimal? AccumulatedTradeVolume;
+		public decimal? AccumulatedVolume;
 		/// <summary>
 		/// 매도호가
 		/// </summary>
 		[JsonProperty("sel_bid")]
-		public decimal? SellingBidPrice;
+		public decimal? SellQuote;
 		/// <summary>
 		/// 매도잔량
 		/// </summary>
 		[JsonProperty("sel_req")]
-		public decimal? SellingRequestVolume;
+		public decimal? SellRemainQuantity;
 		/// <summary>
 		/// 매수호가
 		/// </summary>
 		[JsonProperty("buy_bid")]
-		public decimal? BuyingBidPrice;
+		public decimal? BuyQuote;
 		/// <summary>
 		/// 매수잔량
 		/// </summary>
 		[JsonProperty("buy_req")]
-		public decimal? BuyingRequestVolume;
+		public decimal? BuyRemainQuantity;
 		/// <summary>
 		/// 기간수익률n
 		/// </summary>
 		[JsonProperty("dt_prft_rt_n")]
-		public decimal? PeriodProfitRateN;
+		public decimal? PeriodProfitRate;
 	}
 }

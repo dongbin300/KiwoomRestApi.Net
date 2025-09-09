@@ -137,7 +137,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="endDate"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetDailyInstitutionTradingStocks>> GetDailyInstitutionTradingStocksAsync(KiwoomMarketConditionMarketType marketType, KiwoomMarketConditionNetTradeType tradeType, KiwoomMarketConditionStockExchangeType stockExchangeType, DateTime startDate, DateTime endDate, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetDailyInstitutionTradingStocks>> GetDailyInstitutionTradingStocksAsync(KiwoomMarketConditionMarketType marketType, KiwoomMarketConditionNetTransactionType tradeType, KiwoomMarketConditionStockExchangeType stockExchangeType, DateTime startDate, DateTime endDate, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10044";
 			var body = new HttpParameterMap()
@@ -179,13 +179,13 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="stockCode"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetHourlyContractStrengths>> GetHourlyContractStrengthsAsync(string stockCode, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetHourlyTradeMomentums>> GetHourlyTradeMomentumsAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10046";
 			var body = new HttpParameterMap()
 				.AddField("stk_cd", stockCode);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetHourlyContractStrengths>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetHourlyTradeMomentums>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -194,13 +194,13 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="stockCode"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetDailyContractStrengths>> GetDailyContractStrengthsAsync(string stockCode, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetDailyTradeMomentums>> GetDailyTradeMomentumsAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10047";
 			var body = new HttpParameterMap()
 				.AddField("stk_cd", stockCode);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetDailyContractStrengths>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetDailyTradeMomentums>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -210,11 +210,11 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="amountQuantityType"></param>
 		/// <param name="investorType"></param>
 		/// <param name="isForeignAll"></param>
-		/// <param name="isSimultaneousNetPurchaseType"></param>
+		/// <param name="isSimultaneousNetBuyType"></param>
 		/// <param name="stockExchangeType"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetIntradayInvestorTradings>> GetIntradayInvestorTradingsAsync(KiwoomMarketConditionMarketType marketType, KiwoomMarketConditionAmountQuantityType amountQuantityType, KiwoomMarketConditionInvestorType investorType, bool isForeignAll, bool isSimultaneousNetPurchaseType, KiwoomMarketConditionStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetIntradayInvestorTradings>> GetIntradayInvestorTradingsAsync(KiwoomMarketConditionMarketType marketType, KiwoomMarketConditionAmountQuantityType amountQuantityType, KiwoomMarketConditionInvestorType investorType, bool isForeignAll, bool isSimultaneousNetBuyType, KiwoomMarketConditionStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10063";
 			var body = new HttpParameterMap()
@@ -222,7 +222,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("amt_qty_tp", amountQuantityType)
 				.AddField("invsr", investorType)
 				.AddField("frgn_all", isForeignAll)
-				.AddField("smtm_netprps_tp", isSimultaneousNetPurchaseType)
+				.AddField("smtm_netprps_tp", isSimultaneousNetBuyType)
 				.AddField("stex_tp", stockExchangeType);
 
 			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetIntradayInvestorTradings>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
@@ -237,7 +237,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="stockExchangeType"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetIntradayInvestorTradeCharts>> GetIntradayInvestorTradeChartsAsync(KiwoomMarketConditionMarketType marketType, KiwoomMarketConditionAmountQuantityType amountQuantityType, KiwoomMarketConditionTradeType tradeType, KiwoomMarketConditionStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetIntradayInvestorTradeCharts>> GetIntradayInvestorTradeChartsAsync(KiwoomMarketConditionMarketType marketType, KiwoomMarketConditionAmountQuantityType amountQuantityType, KiwoomMarketConditionTransactionType tradeType, KiwoomMarketConditionStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10066";
 			var body = new HttpParameterMap()
@@ -295,13 +295,13 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="stockCode"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetAfterHoursSinglePriceOrderBook>> GetAfterHoursSinglePriceOrderBookAsync(string stockCode, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetAfterMarketSinglePriceOrderBook>> GetAfterMarketSinglePriceOrderBookAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10087";
 			var body = new HttpParameterMap()
 				.AddField("stk_cd", stockCode);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetAfterHoursSinglePriceOrderBook>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetAfterMarketSinglePriceOrderBook>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -310,14 +310,14 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="stockCode"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetAfterHoursSinglePriceOrderBookList>> GetAfterHoursSinglePriceOrderBookListAsync(string stockCode, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetAfterMarketSinglePriceOrderBookList>> GetAfterMarketSinglePriceOrderBookListAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10087";
 			var body = new HttpParameterMap()
 				.AddField("stk_cd", stockCode);
 
-			var response = await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetAfterHoursSinglePriceOrderBook>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
-			return response.MapResponse(r => new KiwoomMarketConditionGetAfterHoursSinglePriceOrderBookList(r));
+			var response = await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetAfterMarketSinglePriceOrderBook>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return response.MapResponse(r => new KiwoomMarketConditionGetAfterMarketSinglePriceOrderBookList(r));
 		}
 
 		/// <summary>
@@ -335,13 +335,13 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			const string apiId = "ka90005";
 			string _marketType = (marketType, stockExchangeType) switch
 			{
-				(KiwoomMarketConditionMarketType.KOSPI, KiwoomMarketConditionStockExchangeType.KRX) => "P00101",
-				(KiwoomMarketConditionMarketType.KOSPI, KiwoomMarketConditionStockExchangeType.NXT) => "P001_NX01",
-				(KiwoomMarketConditionMarketType.KOSPI, _) => "P001_AL01",
+				(KiwoomMarketConditionMarketType.Kospi, KiwoomMarketConditionStockExchangeType.Krx) => "P00101",
+				(KiwoomMarketConditionMarketType.Kospi, KiwoomMarketConditionStockExchangeType.Nxt) => "P001_NX01",
+				(KiwoomMarketConditionMarketType.Kospi, _) => "P001_AL01",
 
-				(KiwoomMarketConditionMarketType.KOSDAQ, KiwoomMarketConditionStockExchangeType.KRX) => "P10102",
-				(KiwoomMarketConditionMarketType.KOSDAQ, KiwoomMarketConditionStockExchangeType.NXT) => "P101_NX02",
-				(KiwoomMarketConditionMarketType.KOSDAQ, _) => "P101_AL02",
+				(KiwoomMarketConditionMarketType.Kosdaq, KiwoomMarketConditionStockExchangeType.Krx) => "P10102",
+				(KiwoomMarketConditionMarketType.Kosdaq, KiwoomMarketConditionStockExchangeType.Nxt) => "P101_NX02",
+				(KiwoomMarketConditionMarketType.Kosdaq, _) => "P101_AL02",
 
 				_ => string.Empty
 			};
@@ -427,13 +427,13 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			const string apiId = "ka90010";
 			string _marketType = (marketType, stockExchangeType) switch
 			{
-				(KiwoomMarketConditionMarketType.KOSPI, KiwoomMarketConditionStockExchangeType.KRX) => "P00101",
-				(KiwoomMarketConditionMarketType.KOSPI, KiwoomMarketConditionStockExchangeType.NXT) => "P001_NX01",
-				(KiwoomMarketConditionMarketType.KOSPI, _) => "P001_AL01",
+				(KiwoomMarketConditionMarketType.Kospi, KiwoomMarketConditionStockExchangeType.Krx) => "P00101",
+				(KiwoomMarketConditionMarketType.Kospi, KiwoomMarketConditionStockExchangeType.Nxt) => "P001_NX01",
+				(KiwoomMarketConditionMarketType.Kospi, _) => "P001_AL01",
 
-				(KiwoomMarketConditionMarketType.KOSDAQ, KiwoomMarketConditionStockExchangeType.KRX) => "P10102",
-				(KiwoomMarketConditionMarketType.KOSDAQ, KiwoomMarketConditionStockExchangeType.NXT) => "P101_NX02",
-				(KiwoomMarketConditionMarketType.KOSDAQ, _) => "P101_AL02",
+				(KiwoomMarketConditionMarketType.Kosdaq, KiwoomMarketConditionStockExchangeType.Krx) => "P10102",
+				(KiwoomMarketConditionMarketType.Kosdaq, KiwoomMarketConditionStockExchangeType.Nxt) => "P101_NX02",
+				(KiwoomMarketConditionMarketType.Kosdaq, _) => "P101_AL02",
 
 				_ => string.Empty
 			};

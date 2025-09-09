@@ -16,6 +16,6 @@
 		/// <summary>
 		/// 등락률순
 		/// </summary>
-		FluctuationRate = 3
+		ChangeRate = 3
 	}
 }

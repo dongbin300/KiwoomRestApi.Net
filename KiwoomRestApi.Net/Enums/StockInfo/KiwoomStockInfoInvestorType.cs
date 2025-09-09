@@ -24,7 +24,7 @@
 		/// <summary>
 		/// 기타금융
 		/// </summary>
-		OtherFinancial = 5000,
+		OtherFinancials = 5000,
 		/// <summary>
 		/// 연기금
 		/// </summary>
@@ -36,11 +36,11 @@
 		/// <summary>
 		/// 기타법인
 		/// </summary>
-		OtherCorporation = 7100,
+		OtherCorporations = 7100,
 		/// <summary>
 		/// 개인
 		/// </summary>
-		Individual = 8000,
+		Retail = 8000,
 		/// <summary>
 		/// 외국인
 		/// </summary>

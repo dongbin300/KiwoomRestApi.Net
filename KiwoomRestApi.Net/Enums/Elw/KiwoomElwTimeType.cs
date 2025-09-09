@@ -12,6 +12,6 @@
 		/// <summary>
 		/// 일전
 		/// </summary>
-		PreviousDay = 2
+		Day = 2
 	}
 }

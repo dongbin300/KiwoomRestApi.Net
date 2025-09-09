@@ -11,42 +11,42 @@ namespace KiwoomRestApi.Net.Enums.Chart
 		/// 종합(KOSPI)
 		/// </summary>
 		[EnumMember(Value = "001")]
-		CompositeKOSPI,
+		KospiComposite,
 		/// <summary>
 		/// 대형주
 		/// </summary>
 		[EnumMember(Value = "002")]
-		LargeCap,
+		KospiLargeCap,
 		/// <summary>
 		/// 중형주
 		/// </summary>
 		[EnumMember(Value = "003")]
-		MidCap,
+		KospiMidCap,
 		/// <summary>
-		/// 소형주 
+		/// 소형주
 		/// </summary>
 		[EnumMember(Value = "004")]
-		SmallCap,
+		KospiSmallCap,
 		/// <summary>
 		/// 종합(KOSDAQ)
 		/// </summary>
 		[EnumMember(Value = "101")]
-		CompositeKOSDAQ,
+		KosdaqComposite,
 		/// <summary>
 		/// KOSPI200
 		/// </summary>
 		[EnumMember(Value = "201")]
-		KOSPI200,
+		Kospi200,
 		/// <summary>
 		/// KOSTAR
 		/// </summary>
 		[EnumMember(Value = "302")]
-		KOSTAR,
+		Kostar,
 		/// <summary>
 		/// KRX100
 		/// </summary>
 		[EnumMember(Value = "701")]
-		KRX100,
+		Krx100,
 		// TODO 업종코드
 	}
 }

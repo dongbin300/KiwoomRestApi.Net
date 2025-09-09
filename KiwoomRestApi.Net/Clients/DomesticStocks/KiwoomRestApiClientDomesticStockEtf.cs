@@ -43,13 +43,13 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="stockCode"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomEtfGetInfo>> GetInfoAsync(string stockCode, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomEtfGetStockInfo>> GetStockInfoAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka40002";
 			var body = new HttpParameterMap()
 				.AddField("stk_cd", stockCode);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomEtfGetInfo>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomEtfGetStockInfo>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -71,18 +71,18 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// | ka40004 | ETF전체시세요청
 		/// </summary>
 		/// <param name="taxType"></param>
-		/// <param name="navComparison"></param>
+		/// <param name="navChange"></param>
 		/// <param name="managementCompany"></param>
 		/// <param name="taxationType"></param>
 		/// <param name="stockExchangeType"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomEtfGetAllMarketPrices>> GetAllMarketPricesAsync(KiwoomEtfTaxType taxType, KiwoomEtfNavComparison navComparison, KiwoomEtfManagementCompany managementCompany, KiwoomEtfTaxationType taxationType, KiwoomEtfStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomEtfGetAllMarketPrices>> GetAllMarketPricesAsync(KiwoomEtfTaxType taxType, KiwoomEtfNavChange navChange, KiwoomEtfManagementCompany managementCompany, KiwoomEtfTaxationType taxationType, KiwoomEtfStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka40004";
 			var body = new HttpParameterMap()
 				.AddField("txon_type", taxType)
-				.AddField("navpre", navComparison)
+				.AddField("navpre", navChange)
 				.AddField("mngmcomp", managementCompany)
 				.AddField("txon_yn", taxationType)
 				.AddField("trace_idex", "0")
@@ -97,13 +97,13 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="stockCode"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomEtfGetTimeIntervalTransitions>> GetTimeIntervalTransitionsAsync(string stockCode, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomEtfGetHourlyTransactions>> GetHourlyTransactionsAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka40006";
 			var body = new HttpParameterMap()
 				.AddField("stk_cd", stockCode);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomEtfGetTimeIntervalTransitions>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomEtfGetHourlyTransactions>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -112,13 +112,13 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="stockCode"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomEtfGetTimeIntervalContracts>> GetTimeIntervalContractsAsync(string stockCode, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomEtfGetHourlyTrades>> GetHourlyTradesAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka40007";
 			var body = new HttpParameterMap()
 				.AddField("stk_cd", stockCode);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomEtfGetTimeIntervalContracts>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomEtfGetHourlyTrades>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -127,13 +127,13 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="stockCode"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomEtfGetNetPurchaseQuantities>> GetNetPurchaseQuantitiesAsync(string stockCode, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomEtfGetDailyTrades>> GetDailyTradesAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka40008";
 			var body = new HttpParameterMap()
 				.AddField("stk_cd", stockCode);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomEtfGetNetPurchaseQuantities>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomEtfGetDailyTrades>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -142,13 +142,13 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="stockCode"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomEtfGetNavs>> GetNavsAsync(string stockCode, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomEtfGetHourlyTrades2>> GetHourlyTrades2Async(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka40009";
 			var body = new HttpParameterMap()
 				.AddField("stk_cd", stockCode);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomEtfGetNavs>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomEtfGetHourlyTrades2>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -157,13 +157,13 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="stockCode"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomEtfGetTimeIntervalTransitions2>> GetTimeIntervalTransitions2Async(string stockCode, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomEtfGetHourlyTransactions2>> GetHourlyTransactions2Async(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka40010";
 			var body = new HttpParameterMap()
 				.AddField("stk_cd", stockCode);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomEtfGetTimeIntervalTransitions2>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomEtfGetHourlyTransactions2>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 	}
 }

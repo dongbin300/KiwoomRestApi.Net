@@ -23,19 +23,19 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// </summary>
 		/// <param name="queryType"></param>
 		/// <param name="daysBefore"></param>
-		/// <param name="fluctuationProfitType"></param>
+		/// <param name="ChangeProfitType"></param>
 		/// <param name="stockExchangeType"></param>
 		/// <param name="stockCode"></param>
 		/// <param name="themeName"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomThemeGetGroups>> GetGroupsAsync(KiwoomThemeQueryType queryType, int daysBefore, KiwoomThemeFluctuationProfitType fluctuationProfitType, KiwoomThemeStockExchangeType stockExchangeType, string stockCode = "", string themeName = "", CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomThemeGetGroups>> GetGroupsAsync(KiwoomThemeQueryType queryType, int daysBefore, KiwoomThemeChangeProfitType ChangeProfitType, KiwoomThemeStockExchangeType stockExchangeType, string stockCode = "", string themeName = "", CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka90001";
 			var body = new HttpParameterMap()
 				.AddField("qry_tp", queryType)
 				.AddField("date_tp", daysBefore)
-				.AddField("flu_pl_amt_tp", fluctuationProfitType)
+				.AddField("flu_pl_amt_tp", ChangeProfitType)
 				.AddField("stex_tp", stockExchangeType)
 				.AddField("stk_cd", stockCode)
 				.AddField("thema_nm", themeName);

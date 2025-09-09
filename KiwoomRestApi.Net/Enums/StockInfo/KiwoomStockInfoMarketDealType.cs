@@ -16,11 +16,11 @@ namespace KiwoomRestApi.Net.Enums.StockInfo
 		/// 코스피
 		/// </summary>
 		[EnumMember(Value = "1")]
-		KOSPI,
+		Kospi,
 		/// <summary>
 		/// 코스닥
 		/// </summary>
 		[EnumMember(Value = "0")]
-		KOSDAQ
+		Kosdaq
 	}
 }

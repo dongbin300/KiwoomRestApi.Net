@@ -13,7 +13,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// </summary>
 		[JsonProperty("expires_dt")]
 		[JsonConverter(typeof(KiwoomDateTimeConverter))]
-		public DateTime? ExpiresDate;
+		public DateTime? ExpireDate;
 		/// <summary>
 		/// 토큰타입
 		/// </summary>

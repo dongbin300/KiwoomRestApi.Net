@@ -30,7 +30,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="stockExchangeType"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetBidRequestUppers>> GetBidRequestUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoSortType sortType, decimal minVolume, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoCreditCondition creditCondition, KiwoomRankingInfoStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetOrderBookTops>> GetOrderBookTopsAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoSortType sortType, decimal minVolume, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoCreditCondition creditCondition, KiwoomRankingInfoStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10020";
 			var body = new HttpParameterMap()
@@ -41,14 +41,14 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("crd_cnd", creditCondition)
 				.AddField("stex_tp", stockExchangeType);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetBidRequestUppers>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetOrderBookTops>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
 		/// | ka10021 | 호가잔량급증요청
 		/// </summary>
 		/// <param name="marketType"></param>
-		/// <param name="tradeType"></param>
+		/// <param name="transactionType"></param>
 		/// <param name="sortType"></param>
 		/// <param name="minVolume"></param>
 		/// <param name="stockCondition"></param>
@@ -56,44 +56,44 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="timeMinute"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetBidRequestSuddenIncreases>> GetBidRequestSuddenIncreasesAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoTradeType tradeType, KiwoomRankingInfoSuddenIncreaseSortType sortType, decimal minVolume, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoStockExchangeType stockExchangeType, int timeMinute, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetOrderBookSpikes>> GetOrderBookSpikesAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoTransactionType transactionType, KiwoomRankingInfoSpikeSortType sortType, decimal minVolume, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoStockExchangeType stockExchangeType, int timeMinute, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10021";
 			var body = new HttpParameterMap()
 				.AddField("mrkt_tp", marketType)
-				.AddField("trde_tp", tradeType)
+				.AddField("trde_tp", transactionType)
 				.AddField("sort_tp", sortType)
 				.AddField("trde_qty_tp", minVolume / 1000)
 				.AddField("stk_cnd", stockCondition)
 				.AddField("stex_tp", stockExchangeType)
 				.AddField("tm_tp", timeMinute);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetBidRequestSuddenIncreases>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetOrderBookSpikes>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
 		/// | ka10022 | 잔량율급증요청
 		/// </summary>
 		/// <param name="marketType"></param>
-		/// <param name="ratioType"></param>
+		/// <param name="rateType"></param>
 		/// <param name="minVolume"></param>
 		/// <param name="stockCondition"></param>
 		/// <param name="stockExchangeType"></param>
 		/// <param name="timeMinute"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetRequestRateSuddenIncreases>> GetRequestRateSuddenIncreasesAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoRatioType ratioType, decimal minVolume, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoStockExchangeType stockExchangeType, int timeMinute, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetRemainQuantityRateSpikes>> GetRemainQuantityRateSpikesAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoRateType rateType, decimal minVolume, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoStockExchangeType stockExchangeType, int timeMinute, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10022";
 			var body = new HttpParameterMap()
 				.AddField("mrkt_tp", marketType)
-				.AddField("rt_tp", ratioType)
+				.AddField("rt_tp", rateType)
 				.AddField("trde_qty_tp", minVolume / 1000)
 				.AddField("stk_cnd", stockCondition)
 				.AddField("stex_tp", stockExchangeType)
 				.AddField("tm_tp", timeMinute);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetRequestRateSuddenIncreases>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetRemainQuantityRateSpikes>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -109,7 +109,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="timeMinute"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetTradedQuantitySuddenIncreases>> GetTradedQuantitySuddenIncreasesAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoSuddenIncreaseSortType sortType, KiwoomRankingInfoTimeType timeType, decimal minVolume, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoPriceType priceType, KiwoomRankingInfoStockExchangeType stockExchangeType, int timeMinute, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetVolumeSpikes>> GetVolumeSpikesAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoSpikeSortType sortType, KiwoomRankingInfoTimeType timeType, decimal minVolume, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoPriceType priceType, KiwoomRankingInfoStockExchangeType stockExchangeType, int timeMinute, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10023";
 			var body = new HttpParameterMap()
@@ -122,7 +122,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("stex_tp", stockExchangeType)
 				.AddField("tm", timeMinute);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetTradedQuantitySuddenIncreases>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetVolumeSpikes>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -139,7 +139,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="stockExchangeType"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetPreviousDayFluctuationRateUppers>> GetPreviousDayFluctuationRateUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoFluctuationSortType sortType, decimal minVolume, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoCreditCondition creditCondition,
+		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetChangeRateTops>> GetChangeRateTopsAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoChangeSortType sortType, decimal minVolume, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoCreditCondition creditCondition,
 bool isIncludeUpDown, KiwoomRankingInfoPriceCondition priceCondition, decimal minTransactionAmount, KiwoomRankingInfoStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10027";
@@ -154,7 +154,7 @@ bool isIncludeUpDown, KiwoomRankingInfoPriceCondition priceCondition, decimal mi
 				.AddField("trde_prica_cnd", minTransactionAmount / 10_000_000)
 				.AddField("stex_tp", stockExchangeType);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetPreviousDayFluctuationRateUppers>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetChangeRateTops>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -169,7 +169,7 @@ bool isIncludeUpDown, KiwoomRankingInfoPriceCondition priceCondition, decimal mi
 		/// <param name="stockExchangeType"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetExpectedContractFluctuationRateUppers>> GetExpectedContractFluctuationRateUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoContractFluctuationSortType sortType, decimal minVolume, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoCreditCondition creditCondition,
+		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetExpectedTradeChangeRateTops>> GetExpectedTradeChangeRateTopsAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoTradeChangeSortType sortType, decimal minVolume, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoCreditCondition creditCondition,
 KiwoomRankingInfoPriceCondition priceCondition, KiwoomRankingInfoStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10029";
@@ -182,7 +182,7 @@ KiwoomRankingInfoPriceCondition priceCondition, KiwoomRankingInfoStockExchangeTy
 				.AddField("pric_cnd", priceCondition)
 				.AddField("stex_tp", stockExchangeType);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetExpectedContractFluctuationRateUppers>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetExpectedTradeChangeRateTops>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -199,7 +199,7 @@ KiwoomRankingInfoPriceCondition priceCondition, KiwoomRankingInfoStockExchangeTy
 		/// <param name="stockExchangeType"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetTodayTradeQuantityUppers>> GetTodayTradeQuantityUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoTradeQuantitySortType sortType, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoCreditCondition creditCondition, decimal minVolume,
+		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetTodayVolumeTops>> GetTodayVolumeTopsAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoVolumeSortType sortType, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoCreditCondition creditCondition, decimal minVolume,
 KiwoomRankingInfoPriceCondition2 priceCondition, decimal minTransactionAmount, KiwoomRankingInfoMarketOpenType marketOpenType, KiwoomRankingInfoStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10030";
@@ -214,7 +214,7 @@ KiwoomRankingInfoPriceCondition2 priceCondition, decimal minTransactionAmount, K
 				.AddField("mrkt_open_tp", marketOpenType)
 				.AddField("stex_tp", stockExchangeType);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetTodayTradeQuantityUppers>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetTodayVolumeTops>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -227,7 +227,7 @@ KiwoomRankingInfoPriceCondition2 priceCondition, decimal minTransactionAmount, K
 		/// <param name="endRank"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetPreviousTradeQuantityUppers>> GetPreviousTradeQuantityUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoPreviousTradeQuantityQueryType queryType, KiwoomRankingInfoStockExchangeType stockExchangeType, int startRank, int endRank, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetPreviousDayVolumeTops>> GetPreviousDayVolumeTopsAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoPreviousDayVolumeQueryType queryType, KiwoomRankingInfoStockExchangeType stockExchangeType, int startRank, int endRank, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10031";
 			var body = new HttpParameterMap()
@@ -237,7 +237,7 @@ KiwoomRankingInfoPriceCondition2 priceCondition, decimal minTransactionAmount, K
 				.AddField("rank_strt", startRank)
 				.AddField("rank_end", endRank);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetPreviousTradeQuantityUppers>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetPreviousDayVolumeTops>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -248,7 +248,7 @@ KiwoomRankingInfoPriceCondition2 priceCondition, decimal minTransactionAmount, K
 		/// <param name="stockExchangeType"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetTradePriceUppers>> GetTradePriceUppersAsync(KiwoomRankingInfoMarketType marketType, bool isIncludeManagedStock, KiwoomRankingInfoStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetTransactionAmountTops>> GetTransactionAmountTopsAsync(KiwoomRankingInfoMarketType marketType, bool isIncludeManagedStock, KiwoomRankingInfoStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10032";
 			var body = new HttpParameterMap()
@@ -256,7 +256,7 @@ KiwoomRankingInfoPriceCondition2 priceCondition, decimal minTransactionAmount, K
 				.AddField("mang_stk_incls", isIncludeManagedStock)
 				.AddField("stex_tp", stockExchangeType);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetTradePriceUppers>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetTransactionAmountTops>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -270,7 +270,7 @@ KiwoomRankingInfoPriceCondition2 priceCondition, decimal minTransactionAmount, K
 		/// <param name="stockExchangeType"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetCreditRateUppers>> GetCreditRateUppersAsync(KiwoomRankingInfoMarketType marketType, decimal minVolume, KiwoomRankingInfoStockCondition stockCondition, bool isIncludeUpDown, KiwoomRankingInfoCreditCondition creditCondition, KiwoomRankingInfoStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetCreditRateTops>> GetCreditRateTopsAsync(KiwoomRankingInfoMarketType marketType, decimal minVolume, KiwoomRankingInfoStockCondition stockCondition, bool isIncludeUpDown, KiwoomRankingInfoCreditCondition creditCondition, KiwoomRankingInfoStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10033";
 			var body = new HttpParameterMap()
@@ -281,28 +281,28 @@ KiwoomRankingInfoPriceCondition2 priceCondition, decimal minTransactionAmount, K
 				.AddField("crd_cnd", creditCondition)
 				.AddField("stex_tp", stockExchangeType);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetCreditRateUppers>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetCreditRateTops>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
 		/// | ka10034 | 외인기간별매매상위요청
 		/// </summary>
 		/// <param name="marketType"></param>
-		/// <param name="tradeType"></param>
+		/// <param name="transactionType"></param>
 		/// <param name="stockExchangeType"></param>
 		/// <param name="period"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetForeignTradePerPeriodUppers>> GetForeignTradePerPeriodUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoNetTradeType tradeType, KiwoomRankingInfoStockExchangeType stockExchangeType, int period, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetForeignPeriodTransactionTops>> GetForeignPeriodTransactionTopsAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoNetTransactionType transactionType, KiwoomRankingInfoStockExchangeType stockExchangeType, int period, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10034";
 			var body = new HttpParameterMap()
 				.AddField("mrkt_tp", marketType)
-				.AddField("trde_tp", tradeType)
+				.AddField("trde_tp", transactionType)
 				.AddField("stex_tp", stockExchangeType)
 				.AddField("dt", period);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetForeignTradePerPeriodUppers>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetForeignPeriodTransactionTops>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -314,7 +314,7 @@ KiwoomRankingInfoPriceCondition2 priceCondition, decimal minTransactionAmount, K
 		/// <param name="period"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetForeignContinuousNetTradeUppers>> GetForeignContinuousNetTradeUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoContinuousNetTradeType tradeType, KiwoomRankingInfoStockExchangeType stockExchangeType, int period, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetForeignContinuousNetTransactionTops>> GetForeignContinuousNetTransactionTopsAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoContinuousNetTransactionType tradeType, KiwoomRankingInfoStockExchangeType stockExchangeType, int period, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10035";
 			var body = new HttpParameterMap()
@@ -323,7 +323,7 @@ KiwoomRankingInfoPriceCondition2 priceCondition, decimal minTransactionAmount, K
 				.AddField("stex_tp", stockExchangeType)
 				.AddField("base_dt_tp", period);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetForeignContinuousNetTradeUppers>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetForeignContinuousNetTransactionTops>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -334,7 +334,7 @@ KiwoomRankingInfoPriceCondition2 priceCondition, decimal minTransactionAmount, K
 		/// <param name="period"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetForeignLimitExhaustionRateIncreases>> GetForeignLimitExhaustionRateIncreasesAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoStockExchangeType stockExchangeType, int period, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetForeignLimitUsageRateIncreaseTops>> GetForeignLimitUsageRateIncreaseTopsAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoStockExchangeType stockExchangeType, int period, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10036";
 			var body = new HttpParameterMap()
@@ -342,30 +342,30 @@ KiwoomRankingInfoPriceCondition2 priceCondition, decimal minTransactionAmount, K
 				.AddField("stex_tp", stockExchangeType)
 				.AddField("dt", period);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetForeignLimitExhaustionRateIncreases>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetForeignLimitUsageRateIncreaseTops>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
 		/// | ka10037 | 외국계창구매매상위요청
 		/// </summary>
 		/// <param name="marketType"></param>
-		/// <param name="tradeType"></param>
+		/// <param name="transactionType"></param>
 		/// <param name="sortType"></param>
 		/// <param name="stockExchangeType"></param>
 		/// <param name="period"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetForeignWicketTradeUppers>> GetForeignWicketTradeUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoForeignWicketTradeType tradeType, KiwoomRankingInfoAmountQuantityType sortType, KiwoomRankingInfoStockExchangeType stockExchangeType, int period, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetForeignWicketTransactionTops>> GetForeignWicketTransactionTopsAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoForeignWicketTransactionType transactionType, KiwoomRankingInfoAmountQuantityType sortType, KiwoomRankingInfoStockExchangeType stockExchangeType, int period, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10037";
 			var body = new HttpParameterMap()
 				.AddField("mrkt_tp", marketType)
-				.AddField("trde_tp", tradeType)
+				.AddField("trde_tp", transactionType)
 				.AddField("sort_tp", sortType)
 				.AddField("stex_tp", stockExchangeType)
 				.AddField("dt", period);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetForeignWicketTradeUppers>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetForeignWicketTransactionTops>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -395,23 +395,23 @@ KiwoomRankingInfoPriceCondition2 priceCondition, decimal minTransactionAmount, K
 		/// | ka10039 | 증권사별매매상위요청
 		/// </summary>
 		/// <param name="minVolume"></param>
-		/// <param name="tradeType"></param>
+		/// <param name="transactionType"></param>
 		/// <param name="stockExchangeType"></param>
 		/// <param name="memberCompanyCode"></param>
 		/// <param name="period"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetSecuritiesTradeUppers>> GetSecuritiesTradeUppersAsync(decimal minVolume, KiwoomRankingInfoNetTradeType2 tradeType, KiwoomRankingInfoStockExchangeType stockExchangeType, string memberCompanyCode, int period, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetSecuritiesTransactionTops>> GetSecuritiesTransactionTopsAsync(decimal minVolume, KiwoomRankingInfoNetTransactionType2 transactionType, KiwoomRankingInfoStockExchangeType stockExchangeType, string memberCompanyCode, int period, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10039";
 			var body = new HttpParameterMap()
 				.AddField("trde_qty_tp", minVolume / 1000)
-				.AddField("trde_tp", tradeType)
+				.AddField("trde_tp", transactionType)
 				.AddField("stex_tp", stockExchangeType)
 				.AddField("mmcm_cd", memberCompanyCode)
 				.AddField("dt", period);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetSecuritiesTradeUppers>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetSecuritiesTransactionTops>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -420,13 +420,13 @@ KiwoomRankingInfoPriceCondition2 priceCondition, decimal minTransactionAmount, K
 		/// <param name="stockCode"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetTodayMainTradeOrigins>> GetTodayMainTradeOriginsAsync(string stockCode, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetTodayMainBrokers>> GetTodayMainBrokersAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10040";
 			var body = new HttpParameterMap()
 				.AddField("stk_cd", stockCode);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetTodayMainTradeOrigins>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetTodayMainBrokers>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -441,7 +441,7 @@ KiwoomRankingInfoPriceCondition2 priceCondition, decimal minTransactionAmount, K
 		/// <param name="period"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetNetPurchaseTradeOriginRanks>> GetNetPurchaseTradeOriginRanksAsync(KiwoomRankingInfoTradeOriginRankQueryDateType queryDateType, KiwoomRankingInfoDayType pointType, KiwoomRankingInfoTradeOriginRankSortType sortBase, string stockCode, DateTime? startDate = null, DateTime? endDate = null, int? period = null, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetNetBuyBrokerRanks>> GetNetBuyBrokerRanksAsync(KiwoomRankingInfoBrokerRankQueryDateType queryDateType, KiwoomRankingInfoDayType pointType, KiwoomRankingInfoBrokerRankSortType sortBase, string stockCode, DateTime? startDate = null, DateTime? endDate = null, int? period = null, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10042";
 			var body = new HttpParameterMap()
@@ -453,7 +453,7 @@ KiwoomRankingInfoPriceCondition2 priceCondition, decimal minTransactionAmount, K
 				.AddField("end_dt", endDate)
 				.AddField("dt", period);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetNetPurchaseTradeOriginRanks>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetNetBuyBrokerRanks>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -462,20 +462,20 @@ KiwoomRankingInfoPriceCondition2 priceCondition, decimal minTransactionAmount, K
 		/// <param name="stockCode"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetTodayUpperSecessionOrigins>> GetTodayUpperSecessionOriginsAsync(string stockCode, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetTodayTopExitBrokers>> GetTodayTopExitBrokersAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10053";
 			var body = new HttpParameterMap()
 				.AddField("stk_cd", stockCode);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetTodayUpperSecessionOrigins>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetTodayTopExitBrokers>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
 		/// | ka10062 | 동일순매매순위요청
 		/// </summary>
 		/// <param name="marketType"></param>
-		/// <param name="tradeType"></param>
+		/// <param name="transactionType"></param>
 		/// <param name="sortType"></param>
 		/// <param name="unitType"></param>
 		/// <param name="stockExchangeType"></param>
@@ -483,38 +483,38 @@ KiwoomRankingInfoPriceCondition2 priceCondition, decimal minTransactionAmount, K
 		/// <param name="endDate"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetEqualNetTradeRanks>> GetEqualNetTradeRanksAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoNetTradeType2 tradeType, KiwoomRankingInfoEqualNetTradeRankSortType sortType, KiwoomRankingInfoUnitType unitType, KiwoomRankingInfoStockExchangeType stockExchangeType, DateTime startDate, DateTime? endDate = null, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetEqualNetTransactionRanks>> GetEqualNetTransactionRanksAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoNetTransactionType2 transactionType, KiwoomRankingInfoEqualNetTransactionRankSortType sortType, KiwoomRankingInfoUnitType unitType, KiwoomRankingInfoStockExchangeType stockExchangeType, DateTime startDate, DateTime? endDate = null, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10062";
 			var body = new HttpParameterMap()
 				.AddField("mrkt_tp", marketType)
-				.AddField("trde_tp", tradeType)
+				.AddField("trde_tp", transactionType)
 				.AddField("sort_cnd", sortType)
 				.AddField("unit_tp", unitType)
 				.AddField("stex_tp", stockExchangeType)
 				.AddField("strt_dt", startDate)
 				.AddField("end_dt", endDate);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetEqualNetTradeRanks>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetEqualNetTransactionRanks>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
 		/// | ka10065 | 장중투자자별매매상위요청
 		/// </summary>
 		/// <param name="marketType"></param>
-		/// <param name="tradeType"></param>
+		/// <param name="transactionType"></param>
 		/// <param name="institutionType"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetOpenMarketInvestorTradeUppers>> GetOpenMarketInvestorTradeUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoNetTradeType2 tradeType, KiwoomRankingInfoInstitutionType institutionType, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetOpenMarketInvestorTransactionTops>> GetOpenMarketInvestorTransactionTopsAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoNetTransactionType2 transactionType, KiwoomRankingInfoInstitutionType institutionType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10065";
 			var body = new HttpParameterMap()
 				.AddField("mrkt_tp", marketType)
-				.AddField("trde_tp", tradeType)
+				.AddField("trde_tp", transactionType)
 				.AddField("orgn_tp", institutionType);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetOpenMarketInvestorTradeUppers>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetOpenMarketInvestorTransactionTops>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -528,7 +528,7 @@ KiwoomRankingInfoPriceCondition2 priceCondition, decimal minTransactionAmount, K
 		/// <param name="minTransactionAmount"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetOvertimeSinglePriceFluctuationRateRanks>> GetOvertimeSinglePriceFluctuationRateRanksAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoFluctuationSortType sortType, KiwoomRankingInfoStockCondition stockCondition, decimal minVolume, KiwoomRankingInfoCreditCondition creditCondition, decimal minTransactionAmount, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetAfterMarketSinglePriceChangeRateRanks>> GetAfterMarketSinglePriceChangeRateRanksAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoChangeSortType sortType, KiwoomRankingInfoStockCondition stockCondition, decimal minVolume, KiwoomRankingInfoCreditCondition creditCondition, decimal minTransactionAmount, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10098";
 			var body = new HttpParameterMap()
@@ -539,7 +539,7 @@ KiwoomRankingInfoPriceCondition2 priceCondition, decimal minTransactionAmount, K
 				.AddField("crd_cnd", creditCondition)
 				.AddField("trde_prica", minTransactionAmount);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetOvertimeSinglePriceFluctuationRateRanks>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetAfterMarketSinglePriceChangeRateRanks>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -552,7 +552,7 @@ KiwoomRankingInfoPriceCondition2 priceCondition, decimal minTransactionAmount, K
 		/// <param name="date"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetForeignInstitutionTradeUppers>> GetForeignInstitutionTradeUppersAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoAmountQuantityType amountQuantityType, bool isIncludeQueryDate, KiwoomRankingInfoStockExchangeType stockExchangeType, DateTime? date = null, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetForeignInstitutionTransactionTops>> GetForeignInstitutionTransactionTopsAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoAmountQuantityType amountQuantityType, bool isIncludeQueryDate, KiwoomRankingInfoStockExchangeType stockExchangeType, DateTime? date = null, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka90009";
 			var body = new HttpParameterMap()
@@ -562,7 +562,7 @@ KiwoomRankingInfoPriceCondition2 priceCondition, decimal minTransactionAmount, K
 				.AddField("stex_tp", stockExchangeType)
 				.AddField("date", date);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetForeignInstitutionTradeUppers>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomRankingInfoGetForeignInstitutionTransactionTops>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 	}
 }

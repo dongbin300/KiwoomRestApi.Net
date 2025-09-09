@@ -12,11 +12,11 @@
 		/// <summary>
 		/// 정적VI
 		/// </summary>
-		StaticVI = 1,
+		StaticVi = 1,
 		/// <summary>
 		/// 동적VI
 		/// </summary>
-		DynamicVI = 2,
+		DynamicVi = 2,
 		/// <summary>
 		/// 동적VI + 정적VI
 		/// </summary>

@@ -35,14 +35,14 @@ namespace KiwoomRestApi.Net.Enums.StockInfo
 		/// <summary>
 		/// 증거금100%
 		/// </summary>
-		Margin100 = 1 << 6,
+		Margin100Percent = 1 << 6,
 		/// <summary>
 		/// ETF
 		/// </summary>
-		ETF = 1 << 7,
+		Etf = 1 << 7,
 		/// <summary>
 		/// ETN
 		/// </summary>
-		ETN = 1 << 8
+		Etn = 1 << 8
 	}
 }

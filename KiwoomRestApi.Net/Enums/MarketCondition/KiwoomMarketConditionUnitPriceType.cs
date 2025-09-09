@@ -8,10 +8,10 @@
 		/// <summary>
 		/// 매수단가
 		/// </summary>
-		BuyUnitPrice = 1,
+		BuyPrice = 1,
 		/// <summary>
 		/// 매도단가
 		/// </summary>
-		SellUnitPrice = 2
+		SellPrice = 2
 	}
 }

@@ -39,10 +39,10 @@ namespace KiwoomRestApi.Net.Enums.Elw
 		/// <summary>
 		/// NK투자증권
 		/// </summary>
-		NKInvestment = 12,
+		NkInvestment = 12,
 		/// <summary>
 		/// KB증권
 		/// </summary>
-		KBInvestment = 17
+		KbInvestment = 17
 	}
 }

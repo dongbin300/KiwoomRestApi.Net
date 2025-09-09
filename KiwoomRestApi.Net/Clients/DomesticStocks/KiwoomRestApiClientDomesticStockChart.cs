@@ -25,18 +25,18 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="date"></param>
 		/// <param name="stockCode"></param>
 		/// <param name="amountQuantityType"></param>
-		/// <param name="tradeType"></param>
+		/// <param name="transactionType"></param>
 		/// <param name="unitType"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomChartGetInvestorInstitutionCharts>> GetStockInvestorInstitutionChartsAsync(DateTime date, string stockCode, KiwoomChartAmountQuantityType amountQuantityType, KiwoomChartTradeType tradeType, KiwoomChartUnitType unitType, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomChartGetInvestorInstitutionCharts>> GetStockInvestorInstitutionChartsAsync(DateTime date, string stockCode, KiwoomChartAmountQuantityType amountQuantityType, KiwoomChartTransactionType transactionType, KiwoomChartUnitType unitType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10060";
 			var body = new HttpParameterMap()
 				.AddField("dt", date)
 				.AddField("stk_cd", stockCode)
 				.AddField("amt_qty_tp", amountQuantityType)
-				.AddField("trde_tp", tradeType)
+				.AddField("trde_tp", transactionType)
 				.AddField("unit_tp", unitType);
 
 			return await _client.PostKiwoomRestApiAsync<KiwoomChartGetInvestorInstitutionCharts>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
@@ -47,17 +47,17 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// </summary>
 		/// <param name="marketType"></param>
 		/// <param name="amountQuantityType"></param>
-		/// <param name="tradeType"></param>
+		/// <param name="transactionType"></param>
 		/// <param name="stockCode"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomChartGetIntradayInvestorTradeCharts>> GetIntradayInvestorTradeChartsAsync(KiwoomChartMarketType marketType, KiwoomChartAmountQuantityType amountQuantityType, KiwoomChartTradeType tradeType, string stockCode, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomChartGetIntradayInvestorTradeCharts>> GetIntradayInvestorTradeChartsAsync(KiwoomChartMarketType marketType, KiwoomChartAmountQuantityType amountQuantityType, KiwoomChartTransactionType transactionType, string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10064";
 			var body = new HttpParameterMap()
 				.AddField("mrkt_tp", marketType)
 				.AddField("amt_qty_tp", amountQuantityType)
-				.AddField("trde_tp", tradeType)
+				.AddField("trde_tp", transactionType)
 				.AddField("stk_cd", stockCode);
 
 			return await _client.PostKiwoomRestApiAsync<KiwoomChartGetIntradayInvestorTradeCharts>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);

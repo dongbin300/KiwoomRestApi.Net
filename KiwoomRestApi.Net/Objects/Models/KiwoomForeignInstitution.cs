@@ -28,17 +28,17 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 종가
 		/// </summary>
 		[JsonProperty("close_pric")]
-		public decimal? ClosePrice;
+		public decimal? Close;
 		/// <summary>
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? PreviousDayChange;
+		public decimal? Change;
 		/// <summary>
 		/// 거래량
 		/// </summary>
 		[JsonProperty("trde_qty")]
-		public decimal? TradeQuantity;
+		public decimal? Volume;
 		/// <summary>
 		/// 변동수량
 		/// </summary>
@@ -48,7 +48,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 보유주식수
 		/// </summary>
 		[JsonProperty("poss_stkcnt")]
-		public decimal? HoldingStockCount;
+		public decimal? HoldingCount;
 		/// <summary>
 		/// 비중
 		/// </summary>
@@ -58,7 +58,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 취득가능주식수
 		/// </summary>
 		[JsonProperty("gain_pos_stkcnt")]
-		public decimal? GainPossibleStockCount;
+		public decimal? AcquirableCount;
 		/// <summary>
 		/// 외국인한도
 		/// </summary>
@@ -73,10 +73,10 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 한도소진률
 		/// </summary>
 		[JsonProperty("limit_exh_rt")]
-		public decimal? LimitExhaustionRate;
+		public decimal? LimitUsageRate;
 	}
 
-	public record KiwoomForeignInstitutionGetDaily
+	public record KiwoomForeignInstitutionGetStockInstitutions
 	{
 		/// <summary>
 		/// 날짜
@@ -88,7 +88,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 종가
 		/// </summary>
 		[JsonProperty("close_pric")]
-		public decimal? ClosePrice;
+		public decimal? Close;
 		/// <summary>
 		/// 대비
 		/// </summary>
@@ -103,28 +103,28 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 기관일별순매매
 		/// </summary>
 		[JsonProperty("orgn_daly_nettrde")]
-		public decimal? InstitutionDailyNetTrade;
+		public decimal? InstitutionDailyNetTransaction;
 		/// <summary>
 		/// 외국인일별순매매
 		/// </summary>
 		[JsonProperty("frgnr_daly_nettrde")]
-		public decimal? ForeignerDailyNetTrade;
+		public decimal? ForeignerDailyNetTransaction;
 		/// <summary>
-		/// 외국인지분율ㄴ
+		/// 외국인지분율
 		/// </summary>
 		[JsonProperty("frgnr_qota_rt")]
-		public decimal? ForeignerQuotaRate;
+		public decimal? ForeignerHoldingRate;
 	}
 
-	public record KiwoomForeignInstitutionGetContinuousTrades
+	public record KiwoomForeignInstitutionGetContinuousTransactions
 	{
 		/// <summary>
 		/// 기관외국인연속매매현황
 		/// </summary>
 		[JsonProperty("orgn_frgnr_cont_trde_prst")]
-		public IEnumerable<KiwoomForeignInstitutionGetContinuousTradeItem>? Items;
+		public IEnumerable<KiwoomForeignInstitutionGetContinuousTransactionItem>? Items;
 	}
-	public record KiwoomForeignInstitutionGetContinuousTradeItem
+	public record KiwoomForeignInstitutionGetContinuousTransactionItem
 	{
 		/// <summary>
 		/// 순위
@@ -145,82 +145,82 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 기간중주가등락률
 		/// </summary>
 		[JsonProperty("prid_stkpc_flu_rt")]
-		public decimal? StockPriceFluctuationRateDuringPeriod;
+		public decimal? PriceChangeRateDuringPeriod;
 		/// <summary>
 		/// 기관순매매금액
 		/// </summary>
 		[JsonProperty("orgn_nettrde_amt")]
-		public KiwoomDecimal? InstitutionNetTradeAmount;
+		public KiwoomDecimal? InstitutionNetTransactionAmount;
 		/// <summary>
 		/// 기관순매매량
 		/// </summary>
 		[JsonProperty("orgn_nettrde_qty")]
-		public KiwoomDecimal? InstitutionNetTradeQuantity;
+		public KiwoomDecimal? InstitutionNetVolume;
 		/// <summary>
 		/// 기관계연속순매수일수
 		/// </summary>
 		[JsonProperty("orgn_cont_netprps_dys")]
-		public decimal? InstitutionContinuousNetPurchaseDays;
+		public decimal? InstitutionContinuousNetBuyDays;
 		/// <summary>
 		/// 기관계연속순매수량
 		/// </summary>
 		[JsonProperty("orgn_cont_netprps_qty")]
-		public KiwoomDecimal? InstitutionContinuousNetPurchaseQuantity;
+		public KiwoomDecimal? InstitutionContinuousNetBuyQuantity;
 		/// <summary>
 		/// 기관계연속순매수금액
 		/// </summary>
 		[JsonProperty("orgn_cont_netprps_amt")]
-		public KiwoomDecimal? InstitutionContinuousNetPurchaseAmount;
+		public KiwoomDecimal? InstitutionContinuousNetBuyAmount;
 		/// <summary>
 		/// 외국인순매매량
 		/// </summary>
 		[JsonProperty("frgnr_nettrde_qty")]
-		public KiwoomDecimal? ForeignerNetTradeQuantity;
+		public KiwoomDecimal? ForeignerNetVolume;
 		/// <summary>
 		/// 외국인순매매액
 		/// </summary>
 		[JsonProperty("frgnr_nettrde_amt")]
-		public KiwoomDecimal? ForeignerNetTradeAmount;
+		public KiwoomDecimal? ForeignerNetTransactionAmount;
 		/// <summary>
 		/// 외국인연속순매수일수
 		/// </summary>
 		[JsonProperty("frgnr_cont_netprps_dys")]
-		public decimal? ForeignerContinuousNetPurchaseDays;
+		public decimal? ForeignerContinuousNetBuyDays;
 		/// <summary>
 		/// 외국인연속순매수량
 		/// </summary>
 		[JsonProperty("frgnr_cont_netprps_qty")]
-		public KiwoomDecimal? ForeignerContinuousNetPurchaseQuantity;
+		public KiwoomDecimal? ForeignerContinuousNetBuyQuantity;
 		/// <summary>
 		/// 외국인연속순매수금액
 		/// </summary>
 		[JsonProperty("frgnr_cont_netprps_amt")]
-		public KiwoomDecimal? ForeignerContinuousNetPurchaseAmount;
+		public KiwoomDecimal? ForeignerContinuousNetBuyAmount;
 		/// <summary>
 		/// 순매매량
 		/// </summary>
 		[JsonProperty("nettrde_qty")]
-		public KiwoomDecimal? NetTradeQuantity;
+		public KiwoomDecimal? NetVolume;
 		/// <summary>
 		/// 순매매액
 		/// </summary>
 		[JsonProperty("nettrde_amt")]
-		public KiwoomDecimal? NetTradeAmount;
+		public KiwoomDecimal? NetTransactionAmount;
 		/// <summary>
 		/// 합계연속순매수일수
 		/// </summary>
 		[JsonProperty("tot_cont_netprps_dys")]
-		public decimal? TotalContinuousNetPurchaseDays;
+		public decimal? TotalContinuousNetBuyDays;
 		/// <summary>
 		/// 합계연속순매매수량
 		/// </summary>
 		[JsonProperty("tot_cont_nettrde_qty")]
-		public KiwoomDecimal? TotalContinuousNetTradeQuantity;
+		public KiwoomDecimal? TotalContinuousNetVolume;
 		/// <summary>
 		/// 합계연속순매수금액
 		/// </summary>
 		[JsonProperty("tot_cont_netprps_amt")]
-		public KiwoomDecimal? TotalContinuousNetPurchaseAmount;
+		public KiwoomDecimal? TotalContinuousNetBuyAmount;
 	}
 
 }

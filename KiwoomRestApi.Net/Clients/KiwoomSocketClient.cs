@@ -59,24 +59,24 @@ namespace KiwoomRestApi.Net.Clients
 		public KiwoomRestApiClientDomesticStockWebSocket WebSocket { get; set; }
 
 		public event Action<KiwoomSocketMessage>? OnMessageReceived;
-		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeOrderExecution>>>? OnRealtimeOrderExecutionReceived;
+		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeOrderTrade>>>? OnRealtimeOrderTradeReceived;
 		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeBalance>>>? OnRealtimeBalanceReceived;
 		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeStockTrend>>>? OnRealtimeStockTrendReceived;
-		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeStockExecution>>>? OnRealtimeStockExecutionReceived;
-		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeStockPriorAsk>>>? OnRealtimeStockPriorAskReceived;
-		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeStockAskBid>>>? OnRealtimeStockAskBidReceived;
-		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeStockAfterHoursAsk>>>? OnRealtimeStockAfterHoursAskReceived;
-		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeStockDailyTrader>>>? OnRealtimeStockDailyTraderReceived;
+		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeStockTrade>>>? OnRealtimeStockTradeReceived;
+		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeBestQuote>>>? OnRealtimeStockBestQuoteReceived;
+		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeOrderBook>>>? OnRealtimeOrderBookReceived;
+		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeAfterMarketQuote>>>? OnRealtimeAfterMarketQuoteReceived;
+		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeDailyBroker>>>? OnRealtimeDailyBrokerReceived;
 		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeEtfNav>>>? OnRealtimeEtfNavReceived;
-		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeStockExpectedExecution>>>? OnRealtimeStockExpectedExecutionReceived;
-		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeSectorIndex>>>? OnRealtimeSectorIndexReceived;
-		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeSectorFluctuation>>>? OnRealtimeSectorFluctuationReceived;
+		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeExpectedTrade>>>? OnRealtimeExpectedTradeReceived;
+		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeIndustryIndex>>>? OnRealtimeIndustryIndexReceived;
+		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeIndustryChange>>>? OnRealtimeIndustryChangeReceived;
 		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeStockInfo>>>? OnRealtimeStockInfoReceived;
 		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeElwTheoreticalPrice>>>? OnRealtimeElwTheoreticalPriceReceived;
 		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeMarketOpenTime>>>? OnRealtimeMarketOpenTimeReceived;
 		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeElwIndicator>>>? OnRealtimeElwIndicatorReceived;
-		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeProgramTrading>>>? OnRealtimeProgramTradingReceived;
-		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeViTriggeredReleased>>>? OnRealtimeViTriggeredReleasedReceived;
+		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeProgramTransaction>>>? OnRealtimeProgramTransactionReceived;
+		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeViEvent>>>? OnRealtimeViEventReceived;
 
 		public event Action<IEnumerable<KiwoomWebSocketConditionSearchList>>? OnConditionSearchListReceived;
 		public event Action<IEnumerable<KiwoomWebSocketConditionSearchRequest>>? OnConditionSearchRequestReceived;
@@ -291,9 +291,9 @@ namespace KiwoomRestApi.Net.Clients
 				{
 					case "00":
 						{
-							var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage<KiwoomWebSocketRealtimeOrderExecution>>(message)?.Data;
+							var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage<KiwoomWebSocketRealtimeOrderTrade>>(message)?.Data;
 							if (data != null)
-								OnRealtimeOrderExecutionReceived?.Invoke(data);
+								OnRealtimeOrderTradeReceived?.Invoke(data);
 						}
 						break;
 
@@ -315,41 +315,41 @@ namespace KiwoomRestApi.Net.Clients
 
 					case "0B":
 						{
-							var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage<KiwoomWebSocketRealtimeStockExecution>>(message)?.Data;
+							var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage<KiwoomWebSocketRealtimeStockTrade>>(message)?.Data;
 							if (data != null)
-								OnRealtimeStockExecutionReceived?.Invoke(data);
+								OnRealtimeStockTradeReceived?.Invoke(data);
 						}
 						break;
 
 					case "0C":
 						{
-							var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage<KiwoomWebSocketRealtimeStockPriorAsk>>(message)?.Data;
+							var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage<KiwoomWebSocketRealtimeBestQuote>>(message)?.Data;
 							if (data != null)
-								OnRealtimeStockPriorAskReceived?.Invoke(data);
+								OnRealtimeStockBestQuoteReceived?.Invoke(data);
 						}
 						break;
 
 					case "0D":
 						{
-							var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage<KiwoomWebSocketRealtimeStockAskBid>>(message)?.Data;
+							var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage<KiwoomWebSocketRealtimeOrderBook>>(message)?.Data;
 							if (data != null)
-								OnRealtimeStockAskBidReceived?.Invoke(data);
+								OnRealtimeOrderBookReceived?.Invoke(data);
 						}
 						break;
 
 					case "0E":
 						{
-							var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage<KiwoomWebSocketRealtimeStockAfterHoursAsk>>(message)?.Data;
+							var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage<KiwoomWebSocketRealtimeAfterMarketQuote>>(message)?.Data;
 							if (data != null)
-								OnRealtimeStockAfterHoursAskReceived?.Invoke(data);
+								OnRealtimeAfterMarketQuoteReceived?.Invoke(data);
 						}
 						break;
 
 					case "0F":
 						{
-							var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage<KiwoomWebSocketRealtimeStockDailyTrader>>(message)?.Data;
+							var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage<KiwoomWebSocketRealtimeDailyBroker>>(message)?.Data;
 							if (data != null)
-								OnRealtimeStockDailyTraderReceived?.Invoke(data);
+								OnRealtimeDailyBrokerReceived?.Invoke(data);
 						}
 						break;
 
@@ -363,25 +363,25 @@ namespace KiwoomRestApi.Net.Clients
 
 					case "0H":
 						{
-							var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage<KiwoomWebSocketRealtimeStockExpectedExecution>>(message)?.Data;
+							var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage<KiwoomWebSocketRealtimeExpectedTrade>>(message)?.Data;
 							if (data != null)
-								OnRealtimeStockExpectedExecutionReceived?.Invoke(data);
+								OnRealtimeExpectedTradeReceived?.Invoke(data);
 						}
 						break;
 
 					case "0J":
 						{
-							var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage<KiwoomWebSocketRealtimeSectorIndex>>(message)?.Data;
+							var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage<KiwoomWebSocketRealtimeIndustryIndex>>(message)?.Data;
 							if (data != null)
-								OnRealtimeSectorIndexReceived?.Invoke(data);
+								OnRealtimeIndustryIndexReceived?.Invoke(data);
 						}
 						break;
 
 					case "0U":
 						{
-							var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage<KiwoomWebSocketRealtimeSectorFluctuation>>(message)?.Data;
+							var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage<KiwoomWebSocketRealtimeIndustryChange>>(message)?.Data;
 							if (data != null)
-								OnRealtimeSectorFluctuationReceived?.Invoke(data);
+								OnRealtimeIndustryChangeReceived?.Invoke(data);
 						}
 						break;
 
@@ -419,17 +419,17 @@ namespace KiwoomRestApi.Net.Clients
 
 					case "0w":
 						{
-							var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage<KiwoomWebSocketRealtimeProgramTrading>>(message)?.Data;
+							var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage<KiwoomWebSocketRealtimeProgramTransaction>>(message)?.Data;
 							if (data != null)
-								OnRealtimeProgramTradingReceived?.Invoke(data);
+								OnRealtimeProgramTransactionReceived?.Invoke(data);
 						}
 						break;
 
 					case "1h":
 						{
-							var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage<KiwoomWebSocketRealtimeViTriggeredReleased>>(message)?.Data;
+							var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage<KiwoomWebSocketRealtimeViEvent>>(message)?.Data;
 							if (data != null)
-								OnRealtimeViTriggeredReleasedReceived?.Invoke(data);
+								OnRealtimeViEventReceived?.Invoke(data);
 						}
 						break;
 

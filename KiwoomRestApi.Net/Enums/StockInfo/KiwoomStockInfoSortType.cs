@@ -8,10 +8,10 @@
 		/// <summary>
 		/// 종가순
 		/// </summary>
-		ClosePriceOrder = 1,
+		Close = 1,
 		/// <summary>
 		/// 날짜순
 		/// </summary>
-		DateOrder = 2
+		Date = 2
 	}
 }

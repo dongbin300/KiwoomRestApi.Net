@@ -40,13 +40,13 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="stockCode"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomForeignInstitutionGetDaily>> GetDailyAsync(string stockCode, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomForeignInstitutionGetStockInstitutions>> GetStockInstitutionsAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10009";
 			var body = new HttpParameterMap()
 				.AddField("stk_cd", stockCode);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomForeignInstitutionGetDaily>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomForeignInstitutionGetStockInstitutions>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -61,7 +61,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="endDate"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomForeignInstitutionGetContinuousTrades>> GetContinuousTradesAsync(KiwoomForeignInstitutionStockExchangeType stockExchangeType, KiwoomForeignInstitutionMarketType marketType,  KiwoomForeignInstitutionStockIndustryType stockIndustryType, KiwoomForeignInstitutionAmountQuantityType amountQuantityType, int period = 0, DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomForeignInstitutionGetContinuousTransactions>> GetContinuousTransactionsAsync(KiwoomForeignInstitutionStockExchangeType stockExchangeType, KiwoomForeignInstitutionMarketType marketType,  KiwoomForeignInstitutionStockIndustryType stockIndustryType, KiwoomForeignInstitutionAmountQuantityType amountQuantityType, int period = 0, DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10131";
 			var body = new HttpParameterMap()
@@ -74,7 +74,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("strt_dt", startDate)
 				.AddField("end_dt", endDate);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomForeignInstitutionGetContinuousTrades>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomForeignInstitutionGetContinuousTransactions>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 	}
 }

@@ -2,7 +2,7 @@
 
 namespace KiwoomRestApi.Net.Objects.Models
 {
-	public record KiwoomCreditOrderGetCreditOrder
+	public record KiwoomCreditOrderPlaceOrder
 	{
 		/// <summary>
 		/// 주문번호
@@ -16,7 +16,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public string? DomesticExchangeType;
 	}
 
-	public record KiwoomCreditOrderGetCreditOrderModification
+	public record KiwoomCreditOrderModifyOrder
 	{
 		/// <summary>
 		/// 주문번호
@@ -26,7 +26,8 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// <summary>
 		/// 모주문번호
 		/// </summary>
-		public string? BaseOriginalOrderId;
+		[JsonProperty("base_orig_ord_no")]
+		public string? OriginalOrderId;
 		/// <summary>
 		/// 정정수량
 		/// </summary>
@@ -39,7 +40,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public string? DomesticExchangeType;
 	}
 
-	public record KiwoomCreditOrderGetCreditOrderCancellation
+	public record KiwoomCreditOrderCancelOrder
 	{
 		/// <summary>
 		/// 주문번호
@@ -50,7 +51,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 모주문번호
 		/// </summary>
 		[JsonProperty("base_orig_ord_no")]
-		public string? BaseOriginalOrderId;
+		public string? OriginalOrderId;
 		/// <summary>
 		/// 취소수량
 		/// </summary>

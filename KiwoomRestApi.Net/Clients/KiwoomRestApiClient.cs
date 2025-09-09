@@ -83,12 +83,12 @@ namespace KiwoomRestApi.Net.Clients
 		/// <summary>
 		/// 대차거래 관련 기능을 제공합니다.
 		/// </summary>
-		public KiwoomRestApiClientDomesticStockSecuritiesLendingAndBorrowing SLB { get; set; }
+		public KiwoomRestApiClientDomesticStockSecuritiesLending SecuritiesLending { get; set; }
 
 		/// <summary>
 		/// 순위 정보 관련 기능을 제공합니다.
 		/// </summary>
-		public KiwoomRestApiClientDomesticStockRankingInfo Ranking { get; set; }
+		public KiwoomRestApiClientDomesticStockRankingInfo RankingInfo { get; set; }
 
 		/// <summary>
 		/// 시장 상황 관련 기능을 제공합니다.
@@ -103,7 +103,7 @@ namespace KiwoomRestApi.Net.Clients
 		/// <summary>
 		/// 업종 관련 기능을 제공합니다.
 		/// </summary>
-		public KiwoomRestApiClientDomesticStockSector Sector { get; set; }
+		public KiwoomRestApiClientDomesticStockIndustry Industry { get; set; }
 
 		/// <summary>
 		/// 주식 정보 관련 기능을 제공합니다.
@@ -190,11 +190,11 @@ namespace KiwoomRestApi.Net.Clients
 			Account = new KiwoomRestApiClientDomesticStockAccount(this);
 			ShortSale = new KiwoomRestApiClientDomesticStockShortSale(this);
 			ForeignInstitution = new KiwoomRestApiClientDomesticStockForeignInstitution(this);
-			SLB = new KiwoomRestApiClientDomesticStockSecuritiesLendingAndBorrowing(this);
-			Ranking = new KiwoomRestApiClientDomesticStockRankingInfo(this);
+			SecuritiesLending = new KiwoomRestApiClientDomesticStockSecuritiesLending(this);
+			RankingInfo = new KiwoomRestApiClientDomesticStockRankingInfo(this);
 			MarketCondition = new KiwoomRestApiClientDomesticStockMarketCondition(this);
 			CreditOrder = new KiwoomRestApiClientDomesticStockCreditOrder(this);
-			Sector = new KiwoomRestApiClientDomesticStockSector(this);
+			Industry = new KiwoomRestApiClientDomesticStockIndustry(this);
 			StockInfo = new KiwoomRestApiClientDomesticStockInfo(this);
 			Order = new KiwoomRestApiClientDomesticStockOrder(this);
 			Chart = new KiwoomRestApiClientDomesticStockChart(this);

@@ -12,10 +12,10 @@
 		/// <summary>
 		/// KRX
 		/// </summary>
-		KRX = 1,
+		Krx = 1,
 		/// <summary>
 		/// NXT
 		/// </summary>
-		NXT = 2
+		Nxt = 2
 	}
 }

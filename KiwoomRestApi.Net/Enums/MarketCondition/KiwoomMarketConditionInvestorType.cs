@@ -28,7 +28,7 @@
 		/// <summary>
 		/// 기타법인
 		/// </summary>
-		OtherCorporation = 5,
+		OtherCorporations = 5,
 		/// <summary>
 		/// 외국인
 		/// </summary>

@@ -11,16 +11,16 @@ namespace KiwoomRestApi.Net.Enums.CreditOrder
 		/// KRX
 		/// </summary>
 		[EnumMember(Value = "KRX")]
-		KRX,
+		Krx,
 		/// <summary>
 		/// NXT
 		/// </summary>
 		[EnumMember(Value = "NXT")]
-		NXT,
+		Nxt,
 		/// <summary>
 		/// SOR
 		/// </summary>
 		[EnumMember(Value = "SOR")]
-		SOR
+		Sor
 	}
 }

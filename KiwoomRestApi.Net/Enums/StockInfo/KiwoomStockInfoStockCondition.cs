@@ -20,30 +20,30 @@
 		/// <summary>
 		/// 관리종목,우선주제외
 		/// </summary>
-		ExcludeManagedAndPreferred = 4,
+		ExcludeManagedPreferred = 4,
 		/// <summary>
 		/// 증100제외
 		/// </summary>
-		ExcludeKOSPI100 = 5,
+		ExcludeKospi100 = 5,
 		/// <summary>
 		/// 증100만보기
 		/// </summary>
-		OnlyKOSPI100 = 6,
+		OnlyKospi100 = 6,
 		/// <summary>
 		/// 증40만보기
 		/// </summary>
-		OnlyKOSPI40 = 7,
+		OnlyKospi40 = 7,
 		/// <summary>
 		/// 증30만보기
 		/// </summary>
-		OnlyKOSPI30 = 8,
+		OnlyKospi30 = 8,
 		/// <summary>
 		/// 증20만보기
 		/// </summary>
-		OnlyKOSPI20 = 9,
+		OnlyKospi20 = 9,
 		/// <summary>
 		/// 우선주,관리종목,환기종목 제외
 		/// </summary>
-		ExcludeManagedAndPreferredAndCaution = 10
+		ExcludeManagedPreferredCaution = 10
 	}
 }
