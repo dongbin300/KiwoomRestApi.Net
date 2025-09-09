@@ -1,5 +1,6 @@
 ﻿using KiwoomRestApi.Net.Converters;
 using KiwoomRestApi.Net.Enums.Account;
+using KiwoomRestApi.Net.Objects.Commons;
 
 using Newtonsoft.Json;
 
@@ -14,42 +15,43 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 일자
 		/// </summary>
 		[JsonProperty("dt")]
-		public string? Date;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? Date;
 		/// <summary>
 		/// 총 매입가
 		/// </summary>
 		[JsonProperty("tot_buy_amt")]
-		public string? TotalBuyAmount;
+		public decimal? TotalBuyAmount;
 		/// <summary>
 		/// 총 평가금액
 		/// </summary>
 		[JsonProperty("tot_evlt_amt")]
-		public string? TotalEvaluationAmount;
+		public decimal? TotalEvaluationAmount;
 		/// <summary>
 		/// 총 평가손익
 		/// </summary>
 		[JsonProperty("tot_evltv_prft")]
-		public string? TotalEvaluationProfitLoss;
+		public decimal? TotalEvaluationProfitLoss;
 		/// <summary>
 		/// 수익률
 		/// </summary>
 		[JsonProperty("tot_prft_rt")]
-		public string? ProfitRate;
+		public KiwoomDecimal? ProfitRate;
 		/// <summary>
 		/// 예수금
 		/// </summary>
 		[JsonProperty("dbst_bal")]
-		public string? Deposit;
+		public decimal? Deposit;
 		/// <summary>
 		/// 추정자산
 		/// </summary>
 		[JsonProperty("day_stk_asst")]
-		public string? EstimatedAsset;
+		public decimal? EstimatedAsset;
 		/// <summary>
 		/// 현금비중
 		/// </summary>
 		[JsonProperty("buy_wght")]
-		public string? CashWeight;
+		public decimal? CashWeight;
 		/// <summary>
 		/// 일별잔고수익률
 		/// </summary>
@@ -62,7 +64,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public string? CurrentPrice;
+		public decimal? CurrentPrice;
 		/// <summary>
 		/// 종목코드
 		/// </summary>
@@ -77,37 +79,37 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 보유 수량
 		/// </summary>
 		[JsonProperty("rmnd_qty")]
-		public string? HoldingQuantity;
+		public decimal? HoldingQuantity;
 		/// <summary>
 		/// 매입 단가
 		/// </summary>
 		[JsonProperty("buy_uv")]
-		public string? BuyPrice;
+		public decimal? BuyPrice;
 		/// <summary>
 		/// 매수비중
 		/// </summary>
 		[JsonProperty("buy_wght")]
-		public string? BuyWeight;
+		public decimal? BuyWeight;
 		/// <summary>
 		/// 평가손익
 		/// </summary>
 		[JsonProperty("evltv_prft")]
-		public string? EvaluationProfitLoss;
+		public decimal? EvaluationProfitLoss;
 		/// <summary>
 		/// 수익률
 		/// </summary>
 		[JsonProperty("prft_rt")]
-		public string? ProfitRate;
+		public KiwoomDecimal? ProfitRate;
 		/// <summary>
 		/// 평가금액
 		/// </summary>
 		[JsonProperty("evlt_amt")]
-		public string? EvaluationAmount;
+		public decimal? EvaluationAmount;
 		/// <summary>
 		/// 평가비중
 		/// </summary>
 		[JsonProperty("evlt_wght")]
-		public string? EvaluationWeight;
+		public decimal? EvaluationWeight;
 	}
 
 	public record KiwoomAccountGetDailyStockRealizedProfitLosses
@@ -154,7 +156,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 손익율
 		/// </summary>
 		[JsonProperty("pl_rt")]
-		public decimal? ProfitLossRate;
+		public KiwoomDecimal? ProfitLossRate;
 		/// <summary>
 		/// 당일매매수수료
 		/// </summary>
@@ -248,7 +250,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 손익율
 		/// </summary>
 		[JsonProperty("pl_rt")]
-		public decimal? ProfitLossRate;
+		public KiwoomDecimal? ProfitLossRate;
 		/// <summary>
 		/// 당일매매수수료
 		/// </summary>
@@ -419,7 +421,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 주문구분
 		/// </summary>
 		[JsonProperty("io_tp_nm")]
-		public string? OrderTypeName;
+		public KiwoomString? OrderTypeName;
 		/// <summary>
 		/// 매매구분
 		/// </summary>
@@ -450,17 +452,17 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 매도호가
 		/// </summary>
 		[JsonProperty("sel_bid")]
-		public decimal? SellQuote;
+		public KiwoomDecimal? SellQuote;
 		/// <summary>
 		/// 매수호가
 		/// </summary>
 		[JsonProperty("buy_bid")]
-		public decimal? BuyQuote;
+		public KiwoomDecimal? BuyQuote;
 		/// <summary>
 		/// 단위체결가
 		/// </summary>
@@ -533,7 +535,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 주문구분
 		/// </summary>
 		[JsonProperty("io_tp_nm")]
-		public string? OrderTypeName;
+		public KiwoomString? OrderTypeName;
 		/// <summary>
 		/// 주문가격
 		/// </summary>
@@ -662,7 +664,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 손익율
 		/// </summary>
 		[JsonProperty("pl_rt")]
-		public decimal? ProfitLossRate;
+		public KiwoomDecimal? ProfitLossRate;
 		/// <summary>
 		/// 당일매매수수료
 		/// </summary>
@@ -710,7 +712,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재가
 		/// </summary>
 		[JsonProperty("cur_prc")]
-		public decimal? CurrentPrice;
+		public KiwoomDecimal? CurrentPrice;
 		/// <summary>
 		/// 매입가
 		/// </summary>
@@ -824,7 +826,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 주문구분
 		/// </summary>
 		[JsonProperty("io_tp_nm")]
-		public string? OrderTypeName;
+		public KiwoomString? OrderTypeName;
 		/// <summary>
 		/// 매매구분
 		/// </summary>
@@ -862,7 +864,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public string? StockExchangeTypeText;
 	}
 
-	public record KiwoomAccountGetTodayTransactionJournal
+	public record KiwoomAccountGetTodayTransactionJournals
 	{
 		/// <summary>
 		/// 총매도금액
@@ -883,24 +885,24 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 총정산금액
 		/// </summary>
 		[JsonProperty("tot_exct_amt")]
-		public decimal? TotalSettlementAmount;
+		public KiwoomDecimal? TotalSettlementAmount;
 		/// <summary>
 		/// 총손익금액
 		/// </summary>
 		[JsonProperty("tot_pl_amt")]
-		public decimal? TotalProfitLossAmount;
+		public KiwoomDecimal? TotalProfitLossAmount;
 		/// <summary>
 		/// 총수익률
 		/// </summary>
 		[JsonProperty("tot_prft_rt")]
-		public decimal? TotalProfitRate;
+		public KiwoomDecimal? TotalProfitRate;
 		/// <summary>
 		/// 당일매매일지
 		/// </summary>
 		[JsonProperty("tdy_trde_diary")]
-		public IEnumerable<KiwoomAccountGetTodayTradeDiaryItem>? Items;
+		public IEnumerable<KiwoomAccountGetTodayTransactionJournalItem>? Items;
 	}
-	public record KiwoomAccountGetTodayTradeDiaryItem
+	public record KiwoomAccountGetTodayTransactionJournalItem
 	{
 		/// <summary>
 		/// 종목명
@@ -936,7 +938,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 손익금액
 		/// </summary>
 		[JsonProperty("pl_amt")]
-		public decimal? ProfitLossAmount;
+		public KiwoomDecimal? ProfitLossAmount;
 		/// <summary>
 		/// 매도금액
 		/// </summary>
@@ -951,7 +953,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 수익률
 		/// </summary>
 		[JsonProperty("prft_rt")]
-		public decimal? ProfitRate;
+		public KiwoomDecimal? ProfitRate;
 		/// <summary>
 		/// 종목코드
 		/// </summary>
@@ -1245,7 +1247,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// d+1매도매수정산금
 		/// </summary>
 		[JsonProperty("d1_slby_exct_amt")]
-		public decimal? SettlementAmountD1;
+		public KiwoomDecimal? SettlementAmountD1;
 		/// <summary>
 		/// d+1매수정산금
 		/// </summary>
@@ -1275,7 +1277,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// d+2매도매수정산금
 		/// </summary>
 		[JsonProperty("d2_slby_exct_amt")]
-		public decimal? SettlementAmountD2;
+		public KiwoomDecimal? SettlementAmountD2;
 		/// <summary>
 		/// d+2매수정산금
 		/// </summary>
@@ -1847,7 +1849,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 평가손익
 		/// </summary>
 		[JsonProperty("evltv_prft")]
-		public decimal? EvaluationProfitLoss;
+		public KiwoomDecimal? EvaluationProfitLoss;
 		/// <summary>
 		/// 손익률
 		/// </summary>
@@ -3615,12 +3617,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 평가손익
 		/// </summary>
 		[JsonProperty("evltv_prft")]
-		public decimal? EvaluationProfitLoss;
+		public KiwoomDecimal? EvaluationProfitLoss;
 		/// <summary>
 		/// 수익률(%)
 		/// </summary>
 		[JsonProperty("prft_rt")]
-		public decimal? ProfitRate;
+		public KiwoomDecimal? ProfitRate;
 		/// <summary>
 		/// 매입가
 		/// </summary>

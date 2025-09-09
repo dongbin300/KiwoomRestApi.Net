@@ -184,7 +184,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="date"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetTodayTransactionJournal>> GetTodayTransactionJournalAsync(KiwoomAccountOddLotType oddLotType, KiwoomAccountCashCreditType cashCreditType, DateTime? date = null, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetTodayTransactionJournals>> GetTodayTransactionJournalsAsync(KiwoomAccountOddLotType oddLotType, KiwoomAccountCashCreditType cashCreditType, DateTime? date = null, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10170";
 			var body = new HttpParameterMap()
@@ -192,7 +192,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("ch_crd_tp", cashCreditType)
 				.AddField("base_dt", date);
 
-			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetTodayTransactionJournal>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetTodayTransactionJournals>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>

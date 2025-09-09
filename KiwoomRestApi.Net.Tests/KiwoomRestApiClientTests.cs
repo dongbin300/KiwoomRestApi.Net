@@ -315,7 +315,7 @@ namespace KiwoomRestApi.Net.Tests
 		public async Task GetTodayTransactionJournalAsync(KiwoomAccountOddLotType oddLotType, KiwoomAccountCashCreditType cashCreditType, string _date = "2025-01-01")
 		{
 			DateTime date = DateTime.Parse(_date);
-			var result = await client.Account.GetTodayTransactionJournalAsync(oddLotType, cashCreditType, date);
+			var result = await client.Account.GetTodayTransactionJournalsAsync(oddLotType, cashCreditType, date);
 
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
