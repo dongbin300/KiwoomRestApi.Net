@@ -53,11 +53,7 @@ namespace KiwoomRestApi.Net.Extensions
 			return Convert.ToInt32(value).ToString();
 		}
 
-		public static KiwoomRestApiResponse<TTarget> MapResponse<TSource, TTarget>(
-		this KiwoomRestApiResponse<TSource> source,
-		Func<TSource, TTarget> mapper)
-		where TSource : class
-		where TTarget : class
+		public static KiwoomRestApiResponse<TTarget> MapResponse<TSource, TTarget>(this KiwoomRestApiResponse<TSource> source, Func<TSource, TTarget> mapper) where TSource : class where TTarget : class
 		{
 			if (source == null)
 			{
