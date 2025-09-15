@@ -252,7 +252,7 @@ var results = await Task.WhenAll(tasks);
 - HoldingCount를 HoldingQuantity로 수정
 - AcquirableCount를 AcquirableQuantity로 수정
 - GetHourlyProgramTradeTrendsAsync, GetDailyProgramTradeTrendsAsync 파라미터 KiwoomMarketConditionMarketType3로 수정
-- KiwoomMarketConditionGetStockInstitutionTransactionTrends을 KiwoomMarketConditionGetStockInstitutionTransactionTrends로 수정
+- KiwoomMarketConditionGetStockOriginTradeTrends을 KiwoomMarketConditionGetStockInstitutionTransactionTrends로 수정
 
 ---
 
