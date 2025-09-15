@@ -371,7 +371,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 당일순매수량 (945)
 		/// </summary>
 		[JsonProperty("945")]
-		public decimal? TodayNetBuyVolume;
+		public KiwoomDecimal? TodayNetBuyVolume;
 		/// <summary>
 		/// 매도매수구분 (946)
 		/// </summary>
@@ -381,7 +381,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 당일총매도손익 (950)
 		/// </summary>
 		[JsonProperty("950")]
-		public decimal? TotalTodaySellProfitLoss;
+		public KiwoomDecimal? TotalTodaySellProfitLoss;
 		/// <summary>
 		/// 추가항목1 (951)
 		/// </summary>
@@ -406,7 +406,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 손익률 (8019)
 		/// </summary>
 		[JsonProperty("8019")]
-		public decimal? ProfitLossRate;
+		public KiwoomDecimal? ProfitLossRate;
 		/// <summary>
 		/// 신용금액 (957)
 		/// </summary>
@@ -427,22 +427,22 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 당일실현손익(주식) (990)
 		/// </summary>
 		[JsonProperty("990")]
-		public decimal? TodayRealizedProfitLossStock;
+		public KiwoomDecimal? TodayRealizedProfitLossStock;
 		/// <summary>
 		/// 당일실현손익률(주식) (991)
 		/// </summary>
 		[JsonProperty("991")]
-		public decimal? TodayRealizedProfitLossRateStock;
+		public KiwoomDecimal? TodayRealizedProfitLossRateStock;
 		/// <summary>
 		/// 당일실현손익(신용) (992)
 		/// </summary>
 		[JsonProperty("992")]
-		public decimal? TodayRealizedProfitLossCredit;
+		public KiwoomDecimal? TodayRealizedProfitLossCredit;
 		/// <summary>
 		/// 당일실현손익률(신용) (993)
 		/// </summary>
 		[JsonProperty("993")]
-		public decimal? TodayRealizedProfitLossRateCredit;
+		public KiwoomDecimal? TodayRealizedProfitLossRateCredit;
 		/// <summary>
 		/// 대주대출수량 (959)
 		/// </summary>
@@ -723,12 +723,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매도체결건수 (1071)
 		/// </summary>
 		[JsonProperty("1071")]
-		public decimal? SellTradeCount;
+		public int? SellTradeCount;
 		/// <summary>
 		/// 매수체결건수 (1072)
 		/// </summary>
 		[JsonProperty("1072")]
-		public decimal? BuyTradenCount;
+		public int? BuyTradenCount;
 		/// <summary>
 		/// 순간거래대금 (1313)
 		/// </summary>
@@ -1931,7 +1931,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 거래소구분 (337)
 		/// </summary>
 		[JsonProperty("337")]
-		public string? ExchangeType;
+		public KiwoomWebSocketStockExchangeType? ExchangeType;
 	}
 
 	public record KiwoomWebSocketRealtimeEtfNav

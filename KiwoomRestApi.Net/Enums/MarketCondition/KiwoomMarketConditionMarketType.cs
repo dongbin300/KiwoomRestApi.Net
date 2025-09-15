@@ -33,4 +33,19 @@
 		/// </summary>
 		Kosdaq = 1
 	}
+
+	/// <summary>
+	/// 시장구분
+	/// </summary>
+    public enum KiwoomMarketConditionMarketType3
+    {
+        /// <summary>
+        /// 코스피
+        /// </summary>
+        Kospi = 1,
+        /// <summary>
+        /// 코스닥
+        /// </summary>
+        Kosdaq = 101
+    }
 }

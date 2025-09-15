@@ -1,4 +1,5 @@
 ﻿using KiwoomRestApi.Net.Converters;
+using KiwoomRestApi.Net.Enums.StockInfo;
 using KiwoomRestApi.Net.Objects.Commons;
 
 using Newtonsoft.Json;
@@ -67,12 +68,14 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 일자
 		/// </summary>
 		[JsonProperty("dt")]
-		public string? Date;
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+        public DateTime? Date;
 		/// <summary>
 		/// 시간
 		/// </summary>
 		[JsonProperty("tm")]
-		public string? Time;
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
+        public TimeSpan? Time;
 		/// <summary>
 		/// 종목코드
 		/// </summary>
@@ -252,7 +255,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 250최고가대비율
 		/// </summary>
 		[JsonProperty("250hgst_pric_pre_rt")]
-		public decimal? High250ChangeRate;
+		public KiwoomDecimal? High250ChangeRate;
 		/// <summary>
 		/// 250최저가일
 		/// </summary>
@@ -263,7 +266,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 250최저가대비율
 		/// </summary>
 		[JsonProperty("250lwst_pric_pre_rt")]
-		public decimal? Low250ChangeRate;
+		public KiwoomDecimal? Low250ChangeRate;
 		/// <summary>
 		/// 현재가
 		/// </summary>
@@ -293,7 +296,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 거래대비
 		/// </summary>
 		[JsonProperty("trde_pre")]
-		public decimal? TransactionChange;
+		public KiwoomDecimal? TransactionChange;
 		/// <summary>
 		/// 액면가단위
 		/// </summary>
@@ -362,7 +365,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매도거래량1
 		/// </summary>
 		[JsonProperty("sel_trde_qty_1")]
-		public decimal? SellBrokerVolume1;
+		public KiwoomDecimal? SellBrokerVolume1;
 		/// <summary>
 		/// 매수거래원명1
 		/// </summary>
@@ -377,7 +380,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매수거래량1
 		/// </summary>
 		[JsonProperty("buy_trde_qty_1")]
-		public decimal? BuyBrokerVolume1;
+		public KiwoomDecimal? BuyBrokerVolume1;
 		/// <summary>
 		/// 매도거래원명2
 		/// </summary>
@@ -392,7 +395,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매도거래량2
 		/// </summary>
 		[JsonProperty("sel_trde_qty_2")]
-		public decimal? SellBrokerVolume2;
+		public KiwoomDecimal? SellBrokerVolume2;
 		/// <summary>
 		/// 매수거래원명2
 		/// </summary>
@@ -407,7 +410,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매수거래량2
 		/// </summary>
 		[JsonProperty("buy_trde_qty_2")]
-		public decimal? BuyBrokerVolume2;
+		public KiwoomDecimal? BuyBrokerVolume2;
 		/// <summary>
 		/// 매도거래원명3
 		/// </summary>
@@ -422,7 +425,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매도거래량3
 		/// </summary>
 		[JsonProperty("sel_trde_qty_3")]
-		public decimal? SellBrokerVolume3;
+		public KiwoomDecimal? SellBrokerVolume3;
 		/// <summary>
 		/// 매수거래원명3
 		/// </summary>
@@ -437,7 +440,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매수거래량3
 		/// </summary>
 		[JsonProperty("buy_trde_qty_3")]
-		public decimal? BuyBrokerVolume3;
+		public KiwoomDecimal? BuyBrokerVolume3;
 		/// <summary>
 		/// 매도거래원명4
 		/// </summary>
@@ -452,7 +455,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매도거래량4
 		/// </summary>
 		[JsonProperty("sel_trde_qty_4")]
-		public decimal? SellBrokerVolume4;
+		public KiwoomDecimal? SellBrokerVolume4;
 		/// <summary>
 		/// 매수거래원명4
 		/// </summary>
@@ -467,7 +470,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매수거래량4
 		/// </summary>
 		[JsonProperty("buy_trde_qty_4")]
-		public decimal? BuyBrokerVolume4;
+		public KiwoomDecimal? BuyBrokerVolume4;
 		/// <summary>
 		/// 매도거래원명5
 		/// </summary>
@@ -482,7 +485,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매도거래량5
 		/// </summary>
 		[JsonProperty("sel_trde_qty_5")]
-		public decimal? SellBrokerVolume5;
+		public KiwoomDecimal? SellBrokerVolume5;
 		/// <summary>
 		/// 매수거래원명5
 		/// </summary>
@@ -497,7 +500,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매수거래량5
 		/// </summary>
 		[JsonProperty("buy_trde_qty_5")]
-		public decimal? BuyBrokerVolume5;
+		public KiwoomDecimal? BuyBrokerVolume5;
 	}
 
 	public record KiwoomStockInfoGetTrades
@@ -545,7 +548,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 체결거래량
 		/// </summary>
 		[JsonProperty("cntr_trde_qty")]
-		public decimal? TradeVolume;
+		public KiwoomDecimal? TradeVolume;
 		/// <summary>
 		/// sign
 		/// </summary>
@@ -570,7 +573,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 거래소구분 - KRX, NXT, 통합
 		/// </summary>
 		[JsonProperty("stex_tp")]
-		public string? ExchangeType;
+		public KiwoomStockInfoStockExchangeType? ExchangeType;
 	}
 
 	public record KiwoomStockInfoGetCreditTransactionTrends
@@ -603,7 +606,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비
 		/// </summary>
 		[JsonProperty("pred_pre")]
-		public decimal? PreviousDayChange;
+		public KiwoomDecimal? PreviousDayChange;
 		/// <summary>
 		/// 거래량
 		/// </summary>
@@ -962,7 +965,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 횟수
 		/// </summary>
 		[JsonProperty("cnt")]
-		public decimal? Count;
+		public int? Count;
 	}
 
 	public record KiwoomStockInfoGetHighLowProximities
@@ -1559,12 +1562,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// VI발동횟수
 		/// </summary>
 		[JsonProperty("vimotn_cnt")]
-		public decimal? ViStrikeCount;
+		public int? ViStrikeCount;
 		/// <summary>
 		/// 거래소구분
 		/// </summary>
 		[JsonProperty("stex_tp")]
-		public string? ExchangeType;
+		public KiwoomStockInfoStockExchangeType? ExchangeType;
 	}
 
 	public record KiwoomStockInfoGetTodayPreviousDayTradeQuantities
@@ -1947,7 +1950,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 거래소구분 - KRX, NXT, 통합
 		/// </summary>
 		[JsonProperty("stex_tp")]
-		public string? ExchangeType;
+		public KiwoomStockInfoStockExchangeType? ExchangeType;
 	}
 
 	public record KiwoomStockInfoGetFavoriteStocks
@@ -2145,7 +2148,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 주식수
 		/// </summary>
 		[JsonProperty("stkcnt")]
-		public decimal? StockCount;
+		public int? StockCount;
 		/// <summary>
 		/// 호가시간
 		/// </summary>
@@ -2172,12 +2175,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 우선매도건수
 		/// </summary>
 		[JsonProperty("pri_sel_cnt")]
-		public KiwoomDecimal? BestSellCount;
+		public KiwoomInt? BestSellCount;
 		/// <summary>
 		/// 우선매수건수
 		/// </summary>
 		[JsonProperty("pri_buy_cnt")]
-		public KiwoomDecimal? BestBuyCount;
+		public KiwoomInt? BestBuyCount;
 		/// <summary>
 		/// 총매도잔량
 		/// </summary>
@@ -2192,12 +2195,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 총매도건수
 		/// </summary>
 		[JsonProperty("tot_sel_cnt")]
-		public KiwoomDecimal? TotalSellCount;
+		public KiwoomInt? TotalSellCount;
 		/// <summary>
 		/// 총매수건수
 		/// </summary>
 		[JsonProperty("tot_buy_cnt")]
-		public KiwoomDecimal? TotalBuyCount;
+		public KiwoomInt? TotalBuyCount;
 		/// <summary>
 		/// 패리티
 		/// </summary>
@@ -2361,7 +2364,8 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// NXT가능여부 (Y: 가능)
 		/// </summary>
 		[JsonProperty("nxtEnable")]
-		public string? NxtEnable;
+		[JsonConverter(typeof(KiwoomBoolConverter))]
+		public bool? NxtEnable;
 	}
 
 	public record KiwoomStockInfoGetIndustryCodes
@@ -2574,7 +2578,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 순매수대금
 		/// </summary>
 		[JsonProperty("netprps_prica")]
-		public decimal? NetBuyAmount;
+		public KiwoomDecimal? NetBuyAmount;
 		/// <summary>
 		/// 전체거래비율
 		/// </summary>
@@ -2611,6 +2615,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 신용보증금율
 		/// </summary>
 		[JsonProperty("crd_assr_rt")]
+		[JsonConverter(typeof(KiwoomPercentConverter))]
 		public decimal? CreditDepositRate;
 		/// <summary>
 		/// 대용가

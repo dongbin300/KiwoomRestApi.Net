@@ -37,7 +37,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 전일대비기호
 		/// </summary>
 		[JsonProperty("pred_pre_sig")]
-		public decimal? ChangeSign;
+		public string? ChangeSign;
 		/// <summary>
 		/// 전일대비
 		/// </summary>
@@ -326,7 +326,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 건수
 		/// </summary>
 		[JsonProperty("cnt")]
-		public decimal? Count;
+		public int? Count;
 	}
 
 	public record KiwoomRankingInfoGetExpectedTradeChangeRateTops
@@ -585,12 +585,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 현재순위
 		/// </summary>
 		[JsonProperty("now_rank")]
-		public string? CurrentRank;
+		public int? CurrentRank;
 		/// <summary>
 		/// 전일순위
 		/// </summary>
 		[JsonProperty("pred_rank")]
-		public string? PreviousRank;
+		public int? PreviousRank;
 		/// <summary>
 		/// 종목명
 		/// </summary>
@@ -724,7 +724,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 순위
 		/// </summary>
 		[JsonProperty("rank")]
-		public decimal? Rank;
+		public int? Rank;
 		/// <summary>
 		/// 종목코드
 		/// </summary>
@@ -774,7 +774,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 취득가능주식수
 		/// </summary>
 		[JsonProperty("gain_pos_stkcnt")]
-		public decimal? AcquirableCount;
+		public decimal? AcquirableQuantity;
 	}
 
 	public record KiwoomRankingInfoGetForeignContinuousNetTransactionTops
@@ -869,7 +869,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 순위
 		/// </summary>
 		[JsonProperty("rank")]
-		public decimal? Rank;
+		public int? Rank;
 		/// <summary>
 		/// 종목코드
 		/// </summary>
@@ -904,12 +904,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 보유주식수
 		/// </summary>
 		[JsonProperty("poss_stkcnt")]
-		public decimal? HoldingCount;
+		public decimal? HoldingQuantity;
 		/// <summary>
 		/// 취득가능주식수
 		/// </summary>
 		[JsonProperty("gain_pos_stkcnt")]
-		public decimal? AcquirableCount;
+		public decimal? AcquirableQuantity;
 		/// <summary>
 		/// 기준한도소진율
 		/// </summary>
@@ -942,7 +942,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 순위
 		/// </summary>
 		[JsonProperty("rank")]
-		public decimal? Rank;
+		public int? Rank;
 		/// <summary>
 		/// 종목코드
 		/// </summary>
@@ -987,12 +987,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 순매수거래량
 		/// </summary>
 		[JsonProperty("netprps_trde_qty")]
-		public decimal? NetBuyVolume;
+		public KiwoomDecimal? NetBuyVolume;
 		/// <summary>
 		/// 순매수대금
 		/// </summary>
 		[JsonProperty("netprps_prica")]
-		public decimal? NetBuyAmount;
+		public KiwoomDecimal? NetBuyAmount;
 		/// <summary>
 		/// 거래량
 		/// </summary>
@@ -1026,7 +1026,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 기간중거래량
 		/// </summary>
 		[JsonProperty("prid_trde_qty")]
-		public string? PeriodVolume;
+		public decimal? PeriodVolume;
 		/// <summary>
 		/// 종목별증권사순위
 		/// </summary>
@@ -1040,7 +1040,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 순위
 		/// </summary>
 		[JsonProperty("rank")]
-		public decimal? Rank;
+		public int? Rank;
 		/// <summary>
 		/// 회원사명
 		/// </summary>
@@ -1078,7 +1078,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 순위
 		/// </summary>
 		[JsonProperty("rank")]
-		public decimal? Rank;
+		public int? Rank;
 		/// <summary>
 		/// 종목코드
 		/// </summary>
@@ -1382,7 +1382,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매수상위이탈원
 		/// </summary>
 		[JsonProperty("buy_upper_scesn_ori")]
-		public string? TopBuyExitBroker;
+		public KiwoomString? TopBuyExitBroker;
 		/// <summary>
 		/// 조회일자
 		/// </summary>
@@ -1409,7 +1409,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 순위
 		/// </summary>
 		[JsonProperty("rank")]
-		public decimal? Rank;
+		public int? Rank;
 		/// <summary>
 		/// 회원사코드
 		/// </summary>
@@ -1463,7 +1463,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 매수상위이탈원
 		/// </summary>
 		[JsonProperty("buy_upper_scesn_ori")]
-		public string? TopBuyExitBroker;
+		public KiwoomString? TopBuyExitBroker;
 		/// <summary>
 		/// 조회일자
 		/// </summary>
@@ -1495,7 +1495,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 순위
 		/// </summary>
 		[JsonProperty("rank")]
-		public decimal? Rank;
+		public int? Rank;
 		/// <summary>
 		/// 종목명
 		/// </summary>
@@ -1619,7 +1619,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 순위
 		/// </summary>
 		[JsonProperty("rank")]
-		public decimal? Rank;
+		public int? Rank;
 		/// <summary>
 		/// 종목코드
 		/// </summary>

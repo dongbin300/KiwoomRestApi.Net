@@ -375,7 +375,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="stockCode"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomStockInfoGetBrokerInstantVolumes>> GetBrokerInstantVolumesAsync(string memberCode, KiwoomStockInfoMarketType2 marketType, int quantity, KiwoomStockInfoPriceCondition priceCondition, KiwoomStockInfoStockExchangeType stockExchangeType, string stockCode = "", CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomStockInfoGetBrokerInstantVolumes>> GetBrokerInstantVolumesAsync(string memberCode, KiwoomStockInfoMarketType2 marketType, decimal quantity, KiwoomStockInfoPriceCondition priceCondition, KiwoomStockInfoStockExchangeType stockExchangeType, string stockCode = "", CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10052";
 			var body = new HttpParameterMap()
@@ -664,7 +664,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 			const string apiId = "kt20016";
 			var body = new HttpParameterMap()
 				.AddField("mrkt_deal_tp", marketDealType)
-				.AddField("crd_stk_grae_tp", creditStockGradeType)
+				.AddField("crd_stk_grde_tp", creditStockGradeType)
 				.AddField("stk_cd", stockCode);
 
 			return await _client.PostKiwoomRestApiAsync<KiwoomStockInfoGetCreditLoanAvailableStocks>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);

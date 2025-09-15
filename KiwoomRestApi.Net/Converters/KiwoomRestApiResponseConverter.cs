@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 using System;
+using System.Diagnostics;
 
 namespace KiwoomRestApi.Net.Converters
 {
@@ -36,6 +37,8 @@ namespace KiwoomRestApi.Net.Converters
 			// 공통 필드 제거
 			jsonObject.Remove("return_msg");
 			jsonObject.Remove("return_code");
+
+			Debug.WriteLine(jsonObject);
 
 			// 나머지 데이터를 지정된 타입으로 변환
 			response.Data = jsonObject.ToObject<T>(serializer)!;

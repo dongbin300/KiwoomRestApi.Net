@@ -176,7 +176,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 마지막틱갯수
 		/// </summary>
 		[JsonProperty("last_tic_cnt")]
-		public decimal? LastTickCount;
+		public int? LastTickCount;
 		/// <summary>
 		/// 주식틱차트조회 리스트
 		/// </summary>
@@ -401,7 +401,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 업종코드
 		/// </summary>
 		[JsonProperty("inds_cd")]
-		public string? IndustryCode;
+		public KiwoomChartIndustryCode? IndustryCode;
 		/// <summary>
 		/// 업종틱차트조회 리스트
 		/// </summary>
@@ -414,7 +414,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 업종코드
 		/// </summary>
 		[JsonProperty("inds_cd")]
-		public string? IndustryCode;
+		public KiwoomChartIndustryCode? IndustryCode;
 		/// <summary>
 		/// 업종분봉조회 리스트
 		/// </summary>
@@ -482,7 +482,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 업종코드
 		/// </summary>
 		[JsonProperty("inds_cd")]
-		public string? IndustryCode;
+		public KiwoomChartIndustryCode? IndustryCode;
 		/// <summary>
 		/// 업종일봉조회 리스트
 		/// </summary>
@@ -495,7 +495,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 업종코드
 		/// </summary>
 		[JsonProperty("inds_cd")]
-		public string? IndustryCode;
+		public KiwoomChartIndustryCode? IndustryCode;
 		/// <summary>
 		/// 업종주봉조회 리스트
 		/// </summary>
@@ -508,7 +508,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 업종코드
 		/// </summary>
 		[JsonProperty("inds_cd")]
-		public string? IndustryCode;
+		public KiwoomChartIndustryCode? IndustryCode;
 		/// <summary>
 		/// 업종월봉조회 리스트
 		/// </summary>
@@ -521,7 +521,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 업종코드
 		/// </summary>
 		[JsonProperty("inds_cd")]
-		public string? IndustryCode;
+		public KiwoomChartIndustryCode? IndustryCode;
 		/// <summary>
 		/// 업종년봉조회 리스트
 		/// </summary>

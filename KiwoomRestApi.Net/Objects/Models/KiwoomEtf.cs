@@ -1,4 +1,5 @@
 ﻿using KiwoomRestApi.Net.Converters;
+using KiwoomRestApi.Net.Enums.Etf;
 using KiwoomRestApi.Net.Objects.Commons;
 
 using Newtonsoft.Json;
@@ -407,7 +408,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 거래소구분 - KRX, NXT, 통합
 		/// </summary>
 		[JsonProperty("stex_tp")]
-		public string? StockExchangeType;
+		public KiwoomEtfStockExchangeType? StockExchangeType;
 	}
 
 	public record KiwoomEtfGetDailyTrades

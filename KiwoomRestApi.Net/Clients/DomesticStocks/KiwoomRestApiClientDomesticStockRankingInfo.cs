@@ -309,17 +309,17 @@ KiwoomRankingInfoPriceCondition2 priceCondition, decimal minTransactionAmount, K
 		/// | ka10035 | 외인연속순매매상위요청
 		/// </summary>
 		/// <param name="marketType"></param>
-		/// <param name="tradeType"></param>
+		/// <param name="transactionType"></param>
 		/// <param name="stockExchangeType"></param>
 		/// <param name="period"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetForeignContinuousNetTransactionTops>> GetForeignContinuousNetTransactionTopsAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoContinuousNetTransactionType tradeType, KiwoomRankingInfoStockExchangeType stockExchangeType, int period, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomRankingInfoGetForeignContinuousNetTransactionTops>> GetForeignContinuousNetTransactionTopsAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoContinuousNetTransactionType transactionType, KiwoomRankingInfoStockExchangeType stockExchangeType, int period, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10035";
 			var body = new HttpParameterMap()
 				.AddField("mrkt_tp", marketType)
-				.AddField("trde_tp", tradeType)
+				.AddField("trde_tp", transactionType)
 				.AddField("stex_tp", stockExchangeType)
 				.AddField("base_dt_tp", period);
 

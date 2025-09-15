@@ -1015,11 +1015,11 @@ namespace KiwoomRestApi.Net.Tests
 		}
 
 		[TestCase("005930", "2025-08-01", "2025-08-25", KiwoomMarketConditionUnitPriceType.BuyPrice, KiwoomMarketConditionUnitPriceType.SellPrice)]
-		public async Task GetStockOriginTradeTrendsAsync(string stockCode, string startDateStr, string endDateStr, KiwoomMarketConditionUnitPriceType institutionEstimatedUnitPriceType, KiwoomMarketConditionUnitPriceType foreignEstimatedUnitPriceType)
+		public async Task GetStockInstitutionTransactionTrendsAsync(string stockCode, string startDateStr, string endDateStr, KiwoomMarketConditionUnitPriceType institutionEstimatedUnitPriceType, KiwoomMarketConditionUnitPriceType foreignEstimatedUnitPriceType)
 		{
 			var startDate = DateTime.Parse(startDateStr);
 			var endDate = DateTime.Parse(endDateStr);
-			var result = await client.MarketCondition.GetStockOriginTradeTrendsAsync(stockCode, startDate, endDate, institutionEstimatedUnitPriceType, foreignEstimatedUnitPriceType);
+			var result = await client.MarketCondition.GetStockInstitutionTransactionTrendsAsync(stockCode, startDate, endDate, institutionEstimatedUnitPriceType, foreignEstimatedUnitPriceType);
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
@@ -1082,8 +1082,8 @@ namespace KiwoomRestApi.Net.Tests
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase("2025-08-25", KiwoomMarketConditionAmountQuantityType3.Amount1M, KiwoomMarketConditionMarketType.Kospi, KiwoomMarketConditionTickMinuteType.Tick, KiwoomMarketConditionStockExchangeType.Krx)]
-		public async Task GetHourlyProgramTradeTrendsAsync(string dateStr, KiwoomMarketConditionAmountQuantityType3 amountQuantityType, KiwoomMarketConditionMarketType marketType, KiwoomMarketConditionTickMinuteType tickMinuteType, KiwoomMarketConditionStockExchangeType stockExchangeType)
+		[TestCase("2025-08-25", KiwoomMarketConditionAmountQuantityType3.Amount1M, KiwoomMarketConditionMarketType3.Kospi, KiwoomMarketConditionTickMinuteType.Tick, KiwoomMarketConditionStockExchangeType.Krx)]
+		public async Task GetHourlyProgramTradeTrendsAsync(string dateStr, KiwoomMarketConditionAmountQuantityType3 amountQuantityType, KiwoomMarketConditionMarketType3 marketType, KiwoomMarketConditionTickMinuteType tickMinuteType, KiwoomMarketConditionStockExchangeType stockExchangeType)
 		{
 			var date = DateTime.Parse(dateStr);
 			var result = await client.MarketCondition.GetHourlyProgramTradeTrendsAsync(date, amountQuantityType, marketType, tickMinuteType, stockExchangeType);
@@ -1114,8 +1114,8 @@ namespace KiwoomRestApi.Net.Tests
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
 		}
 
-		[TestCase("2025-08-25", KiwoomMarketConditionAmountQuantityType3.Amount1M, KiwoomMarketConditionMarketType.Kospi, KiwoomMarketConditionTickMinuteType.Minute, KiwoomMarketConditionStockExchangeType.Krx)]
-		public async Task GetDailyProgramTradeTrendsAsync(string dateStr, KiwoomMarketConditionAmountQuantityType3 amountQuantityType, KiwoomMarketConditionMarketType marketType, KiwoomMarketConditionTickMinuteType tickMinuteType, KiwoomMarketConditionStockExchangeType stockExchangeType)
+		[TestCase("2025-08-25", KiwoomMarketConditionAmountQuantityType3.Amount1M, KiwoomMarketConditionMarketType3.Kospi, KiwoomMarketConditionTickMinuteType.Minute, KiwoomMarketConditionStockExchangeType.Krx)]
+		public async Task GetDailyProgramTradeTrendsAsync(string dateStr, KiwoomMarketConditionAmountQuantityType3 amountQuantityType, KiwoomMarketConditionMarketType3 marketType, KiwoomMarketConditionTickMinuteType tickMinuteType, KiwoomMarketConditionStockExchangeType stockExchangeType)
 		{
 			var date = DateTime.Parse(dateStr);
 			var result = await client.MarketCondition.GetDailyProgramTradeTrendsAsync(date, amountQuantityType, marketType, tickMinuteType, stockExchangeType);
@@ -1257,7 +1257,7 @@ namespace KiwoomRestApi.Net.Tests
 
 		[TestCase(KiwoomRankingInfoBrokerRankQueryDateType.Period, KiwoomRankingInfoDayType.Today, KiwoomRankingInfoBrokerRankSortType.Close, "005930", "2025-08-01", "2025-08-25", 5)]
 		[TestCase(KiwoomRankingInfoBrokerRankQueryDateType.StartEndDate, KiwoomRankingInfoDayType.PreviousDay, KiwoomRankingInfoBrokerRankSortType.Date, "005930", "2025-08-01", "2025-08-25", null)]
-		public async Task GetNetBuyTradeOriginRanksAsync(KiwoomRankingInfoBrokerRankQueryDateType queryDateType, KiwoomRankingInfoDayType pointType, KiwoomRankingInfoBrokerRankSortType sortBase, string stockCode, string startDateStr, string endDateStr, int? period)
+		public async Task GetNetBuyBrokerRanksAsync(KiwoomRankingInfoBrokerRankQueryDateType queryDateType, KiwoomRankingInfoDayType pointType, KiwoomRankingInfoBrokerRankSortType sortBase, string stockCode, string startDateStr, string endDateStr, int? period)
 		{
 			DateTime? startDate = string.IsNullOrEmpty(startDateStr) ? null : DateTime.Parse(startDateStr);
 			DateTime? endDate = string.IsNullOrEmpty(endDateStr) ? null : DateTime.Parse(endDateStr);

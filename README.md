@@ -227,6 +227,34 @@ var results = await Task.WhenAll(tasks);
 
 ## 📋 릴리즈 노트
 
+### v0.4.0 (2025-09-15)
+- .NET 10.0 타겟 프레임워크 추가(Preview)
+- GetCreditLoanAvailableStocksAsync 요청필드명 crd_stk_grae_tp에서 crd_stk_grde_tp로 오류 수정
+- KiwoomAccountGetDeposits.MinimumOrderable decimal로 수정
+- KiwoomAccountGetCreditDepositOrders.StockDepositRate string로 수정
+- KiwoomAccountGetMarginOrders.AccountMarginRate string로 수정
+- ExchangeType관련 필드 모두 ~StockExchangeType로 수정
+- StockExchangeType관련 필드 모두 ~StockExchangeType로 수정
+- IndustryCode 필드 KiwoomChartIndustryCode로 수정
+- ContYn bool로 수정
+- NxtEnable 필드 bool로 수정
+- Rank 필드를 decimal에서 int로 수정
+- Count관련 필드 모두 int, KiwoomInt로 수정
+- ProfitLoss관련 필드 모두 KiwoomDeicmal로 수정
+- AfterMarketSinglePriceChange KiwoomDecimal로 수정
+- NetBuyVolume, NetBuyAmount 필드를 KiwoomDecimal로 수정
+- AfterMarketSinglePriceChangeRate KiwoomDecimal로 수정
+- KiwoomStockInfoGetTradeItem.TradeVolume KiwoomDecimal로 수정
+- BuyBrokerVolume, SellBrokerVolume 필드를 KiwoomDecimal로 수정
+- KiwoomMarketConditionGetStockInstitutionTransactionTrendItem.InstitutionPeriodAccumulation, InstitutionDailyNetVolume, ForeignPeriodAccumulation, ForeignDailyNetVolume KiwoomDecimal로 수정
+- TopBuyExitBroker 필드를 KiwoomString로 수정
+- HoldingCount를 HoldingQuantity로 수정
+- AcquirableCount를 AcquirableQuantity로 수정
+- GetHourlyProgramTradeTrendsAsync, GetDailyProgramTradeTrendsAsync 파라미터 KiwoomMarketConditionMarketType3로 수정
+- KiwoomMarketConditionGetStockInstitutionTransactionTrends을 KiwoomMarketConditionGetStockInstitutionTransactionTrends로 수정
+
+---
+
 ### v0.3.1 (2025-09-09)
 - KiwoomString 타입 추가
 - KiwoomDecimal로 변환 작업

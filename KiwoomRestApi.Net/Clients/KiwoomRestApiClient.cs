@@ -327,10 +327,10 @@ namespace KiwoomRestApi.Net.Clients
 			if (headers.TryGetValue("api-id", out var apiIdValues))
 				response.ApiId = apiIdValues.FirstOrDefault() ?? string.Empty;
 
-			if (headers.TryGetValue("cont-yn", out var contYnValues))
-				response.ContYn = contYnValues.FirstOrDefault() ?? string.Empty;
+            if (headers.TryGetValue("cont-yn", out var contYnValues))
+                response.ContYn = contYnValues.FirstOrDefault()?.Equals("Y", StringComparison.OrdinalIgnoreCase) ?? false;
 
-			if (headers.TryGetValue("next-key", out var nextKeyValues))
+            if (headers.TryGetValue("next-key", out var nextKeyValues))
 				response.NextKey = nextKeyValues.FirstOrDefault() ?? string.Empty;
 		}
 	}

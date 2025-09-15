@@ -99,7 +99,7 @@ namespace KiwoomRestApi.Net.Objects.Commons
 		/// 일부 API는 대용량 데이터를 페이징으로 제공합니다.
 		/// "Y"인 경우 NextKey를 사용하여 다음 페이지를 조회할 수 있습니다.
 		/// </remarks>
-		public string ContYn { get; internal set; } = string.Empty;
+		public bool ContYn { get; internal set; }
 
 		/// <summary>
 		/// 다음 페이지 조회를 위한 키 값을 가져오거나 설정합니다.

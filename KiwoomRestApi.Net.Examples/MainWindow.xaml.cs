@@ -1,4 +1,5 @@
 using KiwoomRestApi.Net.Clients;
+using KiwoomRestApi.Net.Clients.DomesticStocks;
 using KiwoomRestApi.Net.Enums.Chart;
 using KiwoomRestApi.Net.Enums.StockInfo;
 using KiwoomRestApi.Net.Enums.WebSocket;
@@ -20,16 +21,19 @@ namespace KiwoomRestApi.Net.Examples
 		{
 			InitializeComponent();
 
-			var appKey = File.ReadAllText("D:\\Assets\\kiwoom_appkey_mock.txt");
-			var secretKey = File.ReadAllText("D:\\Assets\\kiwoom_secretkey_mock.txt");
-			//var token = File.ReadAllText("D:\\Assets\\kiwoom_token.txt");
+			var apis = new KiwoomApis();
+			apis.Run();
 
-			var client = KiwoomRestApiClient.Create(appKey, secretKey, true);
-			var startDate = new DateTime(2025, 8, 1);
-			var endDate = new DateTime(2025, 8, 25);
-			var stockCode = "005930";
+			//var appKey = File.ReadAllText("D:\\Assets\\kiwoom_appkey_mock.txt");
+			//var secretKey = File.ReadAllText("D:\\Assets\\kiwoom_secretkey_mock.txt");
+			////var token = File.ReadAllText("D:\\Assets\\kiwoom_token.txt");
 
-			var __result__ = client.Etf.GetHourlyTransactionsAsync("152100").Result;
+			//var client = KiwoomRestApiClient.Create(appKey, secretKey, true);
+			//var startDate = new DateTime(2025, 8, 1);
+			//var endDate = new DateTime(2025, 8, 25);
+			//var stockCode = "005930";
+
+			//var __result__ = client.Etf.GetHourlyTransactionsAsync("152100").Result;
 
 			//socketClient = KiwoomSocketClient.Create(client.Token, true);
 
@@ -42,7 +46,6 @@ namespace KiwoomRestApi.Net.Examples
 			//{
 
 			//};
-
 		}
 
 		private async void Test_Click(object sender, RoutedEventArgs e)

@@ -1,4 +1,5 @@
 ﻿using KiwoomRestApi.Net.Converters;
+using KiwoomRestApi.Net.Enums.Chart;
 using KiwoomRestApi.Net.Objects.Commons;
 
 using Newtonsoft.Json;
@@ -250,7 +251,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 거래형성종목수
 		/// </summary>
 		[JsonProperty("trde_frmatn_stk_num")]
-		public decimal? ActiveTradingStockCount;
+		public int? ActiveTradingStockCount;
 		/// <summary>
 		/// 거래형성비율
 		/// </summary>
@@ -529,7 +530,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 상장종목수
 		/// </summary>
 		[JsonProperty("flo_stk_num")]
-		public decimal? ListedStockCount;
+		public int? ListedStockCount;
 	}
 
 	public record KiwoomIndustryGetDailyPrices
@@ -568,7 +569,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 거래형성종목수
 		/// </summary>
 		[JsonProperty("trde_frmatn_stk_num")]
-		public decimal? ActiveTradingStockCount;
+		public int? ActiveTradingStockCount;
 		/// <summary>
 		/// 거래형성비율
 		/// </summary>

@@ -48,7 +48,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 보유주식수
 		/// </summary>
 		[JsonProperty("poss_stkcnt")]
-		public decimal? HoldingCount;
+		public decimal? HoldingQuantity;
 		/// <summary>
 		/// 비중
 		/// </summary>
@@ -58,7 +58,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 취득가능주식수
 		/// </summary>
 		[JsonProperty("gain_pos_stkcnt")]
-		public decimal? AcquirableCount;
+		public decimal? AcquirableQuantity;
 		/// <summary>
 		/// 외국인한도
 		/// </summary>
@@ -130,7 +130,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 순위
 		/// </summary>
 		[JsonProperty("rank")]
-		public decimal? Rank;
+		public int? Rank;
 		/// <summary>
 		/// 종목코드
 		/// </summary>
