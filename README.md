@@ -230,38 +230,38 @@ var results = await Task.WhenAll(tasks);
 
 ### v0.4.0 (2025-09-15)
 - .NET 10.0 타겟 프레임워크 추가(Preview)
-- GetCreditLoanAvailableStocksAsync 요청필드명 crd_stk_grae_tp에서 crd_stk_grde_tp로 오류 수정
-- KiwoomAccountGetDeposits.MinimumOrderable decimal로 수정
-- KiwoomAccountGetCreditDepositOrders.StockDepositRate string로 수정
-- KiwoomAccountGetMarginOrders.AccountMarginRate string로 수정
-- ExchangeType관련 필드 모두 ~StockExchangeType로 수정
-- StockExchangeType관련 필드 모두 ~StockExchangeType로 수정
-- IndustryCode 필드 KiwoomChartIndustryCode로 수정
-- ContYn bool로 수정
-- NxtEnable 필드 bool로 수정
-- Rank 필드를 decimal에서 int로 수정
-- Count관련 필드 모두 int, KiwoomInt로 수정
-- ProfitLoss관련 필드 모두 KiwoomDeicmal로 수정
-- AfterMarketSinglePriceChange KiwoomDecimal로 수정
-- NetBuyVolume, NetBuyAmount 필드를 KiwoomDecimal로 수정
-- AfterMarketSinglePriceChangeRate KiwoomDecimal로 수정
-- KiwoomStockInfoGetTradeItem.TradeVolume KiwoomDecimal로 수정
-- BuyBrokerVolume, SellBrokerVolume 필드를 KiwoomDecimal로 수정
-- KiwoomMarketConditionGetStockInstitutionTransactionTrendItem.InstitutionPeriodAccumulation, InstitutionDailyNetVolume, ForeignPeriodAccumulation, ForeignDailyNetVolume KiwoomDecimal로 수정
-- TopBuyExitBroker 필드를 KiwoomString로 수정
-- HoldingCount를 HoldingQuantity로 수정
-- AcquirableCount를 AcquirableQuantity로 수정
-- GetHourlyProgramTradeTrendsAsync, GetDailyProgramTradeTrendsAsync 파라미터 KiwoomMarketConditionMarketType3로 수정
-- KiwoomMarketConditionGetStockOriginTradeTrends을 KiwoomMarketConditionGetStockInstitutionTransactionTrends로 수정
+- `GetCreditLoanAvailableStocksAsync` 요청필드명 `crd_stk_grae_tp`에서 `crd_stk_grde_tp`로 오류 수정
+- `KiwoomAccountGetDeposits.MinimumOrderable` `decimal`로 수정
+- `KiwoomAccountGetCreditDepositOrders.StockDepositRate` `string`로 수정
+- `KiwoomAccountGetMarginOrders.AccountMarginRate` `string`로 수정
+- `ExchangeType`관련 필드 모두 `~StockExchangeType`로 수정
+- `StockExchangeType`관련 필드 모두 `~StockExchangeType`로 수정
+- `IndustryCode` 필드 `KiwoomChartIndustryCode`로 수정
+- `ContYn` `bool`로 수정
+- `NxtEnable` 필드 `bool`로 수정
+- `Rank` 필드를 `decimal`에서 `int`로 수정
+- `Count`관련 필드 모두 `int`, `KiwoomInt`로 수정
+- `ProfitLoss`관련 필드 모두 `KiwoomDeicmal`로 수정
+- `AfterMarketSinglePriceChange` `KiwoomDecimal`로 수정
+- `NetBuyVolume`, `NetBuyAmount` 필드를 `KiwoomDecimal`로 수정
+- `AfterMarketSinglePriceChangeRate` `KiwoomDecimal`로 수정
+- `KiwoomStockInfoGetTradeItem.TradeVolume` `KiwoomDecimal`로 수정
+- `BuyBrokerVolume`, `SellBrokerVolume` 필드를 `KiwoomDecimal`로 수정
+- `KiwoomMarketConditionGetStockInstitutionTransactionTrendItem.InstitutionPeriodAccumulation`, `InstitutionDailyNetVolume`, `ForeignPeriodAccumulation`, `ForeignDailyNetVolume` `KiwoomDecimal`로 수정
+- `TopBuyExitBroker` 필드를 `KiwoomString`로 수정
+- `HoldingCount`를 `HoldingQuantity`로 수정
+- `AcquirableCount`를 `AcquirableQuantity`로 수정
+- `GetHourlyProgramTradeTrendsAsync`, G`etDailyProgramTradeTrendsAsync` 파라미터 `KiwoomMarketConditionMarketType3`로 수정
+- `KiwoomMarketConditionGetStockOriginTradeTrends`를 `KiwoomMarketConditionGetStockInstitutionTransactionTrends`로 수정
 
 ---
 
 ### v0.3.1 (2025-09-09)
-- KiwoomString 타입 추가
-- KiwoomDecimal로 변환 작업
-- Rank 필드를 string에서 decimal로 수정
-- KiwoomMarketConditionGetDailyInstitutionTradingStockItem에 누락된 필드 추가
-- KiwoomTimeSpanConverter에서 파싱 실패하는 경우는 null로 반환하도록 수정
+- `KiwoomString` 타입 추가
+- `KiwoomDecimal`로 변환 작업
+- `Rank` 필드를 `string`에서 `decimal`로 수정
+- `KiwoomMarketConditionGetDailyInstitutionTradingStockItem`에 누락된 필드 추가
+- `KiwoomTimeSpanConverter`에서 파싱 실패하는 경우는 `null`로 반환하도록 수정
 
 ---
 
@@ -335,12 +335,12 @@ var results = await Task.WhenAll(tasks);
 ### v0.2.1 (2025-09-03)
 - 소스코드 주석 추가
 - | ka01690 | 일별잔고수익률 API 추가
-- KiwoomRealtimeQuoteRequests 삭제
-- KiwoomRealtimeQuoteRequestItem 삭제
-- KiwoomRealtimeQuoteRegistrations 삭제
-- KiwoomRealtimeQuoteRegistrationItem 삭제
-- KiwoomRealtimeQuoteValue 삭제
-- KiwoomRankingInfoGetForeignPeriodTransactionTopItem.NetBuyQuantity을 KiwoomDecimal로 수정
+- `KiwoomRealtimeQuoteRequests` 삭제
+- `KiwoomRealtimeQuoteRequestItem` 삭제
+- `KiwoomRealtimeQuoteRegistrations` 삭제
+- `KiwoomRealtimeQuoteRegistrationItem `삭제
+- `KiwoomRealtimeQuoteValue` 삭제
+- `KiwoomRankingInfoGetForeignPeriodTransactionTopItem.NetBuyQuantity`을 `KiwoomDecimal`로 수정
 - 종속성 라이브러리 버전별 분기
 
 ---
@@ -348,29 +348,29 @@ var results = await Task.WhenAll(tasks);
 ### v0.2.0 (2025-08-29)
 - 소스코드 주석 추가
 - | ka00198 | 실시간종목조회순위 API 추가
-- KiwoomStockInfoStockCondition.ExcludeManagedAndPreferredAndCaution 추가
-- KiwoomWebSocketStockExchangeType.Unified, NXT 추가
-- | ka10061 | 종목별투자자기관별합계요청의 trde_tp 값 "0"으로 고정
-- | kt10003 | 주식 취소주문의 API ID를 kt10002로 잘못 호출하고 있던 문제 수정
-- KiwoomAccountDelistingQueryType을 bool로 수정 (isExcludeDelisted)
-- KiwoomChartUseOption을 bool로 수정 (isUpdateStockPrice)
-- KiwoomRankingInfoInclusionOption을 bool로 수정
-- KiwoomStockInfonInclusionOption을 bool로 수정
-- KiwoomStockInfoUseOption을 bool로 수정
-- KiwoomElwTradeQuantityType을 decimal로 수정 (minVolume)
-- KiwoomRankingInfoTradeQuantityType을 decimal로 수정 (minVolume)
-- KiwoomRankingInfoTradePriceCondition을 decimal로 수정 (minTransactionAmount)
-- KiwoomStockInfoTradeQuantityType을 decimal로 수정 (minVolume)
-- KiwoomForeignInstitutionPeriodQueryType을 int로 수정 (period)
-- KiwoomAccountDepositQueryType.General을 KiwoomAccountDepositQueryType.Normal로 수정
-- KiwoomMarketConditionEstimatedUnitPriceType을 KiwoomMarketConditionUnitPriceType로 수정
-- KiwoomRankingInfoTradeQuantitySortType.TradingVolume을 Volume로 수정
-- KiwoomRankingInfoTradeQuantitySortType.TradingAmount을 TransactionAmount로 수정
-- KiwoomRankingInfoPreviousTradeQuantityQueryType.Top100ByYesterdayTradingAmount을 Top100ByYesterdayTransactionAmount로 수정
-- KiwoomWebSocketRealtimeOrderExecution.ExchangeType 타입을 KiwoomWebSocketStockExchangeType로 수정
-- KiwoomWebSocketRealtimeStockExecution.ExchangeType 타입을 KiwoomWebSocketStockExchangeType로 수정
-- KiwoomForeignInstitutionNetSellAmountType 삭제 ('2' 고정값)
-- KiwoomSecuritiesLendingQueryType 삭제
+- `KiwoomStockInfoStockCondition.ExcludeManagedAndPreferredAndCaution` 추가
+- `KiwoomWebSocketStockExchangeType.Unified`, `NXT` 추가
+- | ka10061 | 종목별투자자기관별합계요청의 `trde_tp` 값 `0`으로 고정
+- | kt10003 | 주식 취소주문의 API ID를 `kt10002`로 잘못 호출하고 있던 문제 수정
+- `KiwoomAccountDelistingQueryType`을 `bool`로 수정 (`isExcludeDelisted`)
+- `KiwoomChartUseOption`을 `bool`로 수정 (`isUpdateStockPrice`)
+- `KiwoomRankingInfoInclusionOption`을 `bool`로 수정
+- `KiwoomStockInfonInclusionOption`을 `bool`로 수정
+- `KiwoomStockInfoUseOption`을 `bool`로 수정
+- `KiwoomElwTradeQuantityType`을 `decimal`로 수정 (`minVolume`)
+- `KiwoomRankingInfoTradeQuantityType`을 `decimal`로 수정 (`minVolume`)
+- `KiwoomRankingInfoTradePriceCondition`을 `decimal`로 수정 (`minTransactionAmount`)
+- `KiwoomStockInfoTradeQuantityType`을 `decimal`로 수정 (`minVolume`)
+- `KiwoomForeignInstitutionPeriodQueryType`을 `int`로 수정 (`period`)
+- `KiwoomAccountDepositQueryType.General`을 `KiwoomAccountDepositQueryType.Normal`로 수정
+- `KiwoomMarketConditionEstimatedUnitPriceType`을 `KiwoomMarketConditionUnitPriceType`로 수정
+- `KiwoomRankingInfoTradeQuantitySortType.TradingVolume`을 `Volume`로 수정
+- `KiwoomRankingInfoTradeQuantitySortType.TradingAmount`을 `TransactionAmount`로 수정
+- `KiwoomRankingInfoPreviousTradeQuantityQueryType.Top100ByYesterdayTradingAmount`을 `Top100ByYesterdayTransactionAmount`로 수정
+- `KiwoomWebSocketRealtimeOrderExecution.ExchangeType` 타입을 `KiwoomWebSocketStockExchangeType`로 수정
+- `KiwoomWebSocketRealtimeStockExecution.ExchangeType` 타입을 `KiwoomWebSocketStockExchangeType`로 수정
+- `KiwoomForeignInstitutionNetSellAmountType` 삭제 (`2` 고정값)
+- `KiwoomSecuritiesLendingQueryType` 삭제
 
 ---
 
