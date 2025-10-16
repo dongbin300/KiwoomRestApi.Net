@@ -230,42 +230,22 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("low_pric")]
 		public KiwoomDecimal? Low;
 		/// <summary>
-		/// 수정주가구분 - 1:유상증자, 2:무상증자, 4:배당락, 8:액면분할, 16:액면병합, 32:기업합병, 64:감자, 256:권리락
+		/// 전일대비
 		/// </summary>
-		[JsonProperty("upd_stkpc_tp")]
-		[JsonConverter(typeof(KiwoomFlagsEnumConverter<KiwoomChartAdjustedPriceType>))]
-		public KiwoomChartAdjustedPriceType AdjustedPriceType;
+        [JsonProperty("pred_pre")]
+        public KiwoomDecimal? Change;
 		/// <summary>
-		/// 수정비율
+		/// 전일대비 기호
 		/// </summary>
-		[JsonProperty("upd_rt")]
-		public KiwoomDecimal? AdjustmentRate;
-		/// <summary>
-		/// 대업종구분
-		/// </summary>
-		[JsonProperty("bic_inds_tp")]
-		public string? MajorIndustryType;
-		/// <summary>
-		/// 소업종구분
-		/// </summary>
-		[JsonProperty("sm_inds_tp")]
-		public string? MinorIndustryType;
-		/// <summary>
-		/// 종목정보
-		/// </summary>
-		[JsonProperty("stk_infr")]
-		public string? StockInfo;
-		/// <summary>
-		/// 수정주가이벤트
-		/// </summary>
-		[JsonProperty("upd_stkpc_event")]
-		public string? AdjustedPriceEvent;
-		/// <summary>
-		/// 전일종가
-		/// </summary>
-		[JsonProperty("pred_close_pric")]
-		public decimal? PreviousDayClose;
-	}
+        [JsonProperty("pred_pre_sig")]
+        public string? ChangeSign;
+        /// <summary>
+        /// 체결일
+        /// </summary>
+        [JsonProperty("cntr_dt")]
+        [JsonConverter(typeof(KiwoomDateTimeConverter))]
+        public DateTime? TradeDate;
+    }
 
 	public record KiwoomChartGetDailyCharts
 	{
@@ -306,19 +286,6 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("stk_mth_pole_chart_qry")]
 		public IEnumerable<KiwoomChartGetChartItem>? Items;
 	}
-	public record KiwoomChartGetYearlyCharts
-	{
-		/// <summary>
-		/// 종목코드
-		/// </summary>
-		[JsonProperty("stk_cd")]
-		public string? StockCode;
-		/// <summary>
-		/// 주식년봉차트조회 리스트
-		/// </summary>
-		[JsonProperty("stk_yr_pole_chart_qry")]
-		public IEnumerable<KiwoomChartGetChartItem>? Items;
-	}
 	public record KiwoomChartGetChartItem
 	{
 		/// <summary>
@@ -357,45 +324,77 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// </summary>
 		[JsonProperty("low_pric")]
 		public KiwoomDecimal? Low;
-		/// <summary>
-		/// 수정주가구분 - 1:유상증자, 2:무상증자, 4:배당락, 8:액면분할, 16:액면병합, 32:기업합병, 64:감자, 256:권리락
-		/// </summary>
-		[JsonProperty("upd_stkpc_tp")]
-		[JsonConverter(typeof(KiwoomFlagsEnumConverter<KiwoomChartAdjustedPriceType>))]
-		public KiwoomChartAdjustedPriceType AdjustedPriceType;
-		/// <summary>
-		/// 수정비율
-		/// </summary>
-		[JsonProperty("upd_rt")]
-		public KiwoomDecimal? AdjustmentRate;
-		/// <summary>
-		/// 대업종구분
-		/// </summary>
-		[JsonProperty("bic_inds_tp")]
-		public string? MajorIndustryType;
-		/// <summary>
-		/// 소업종구분
-		/// </summary>
-		[JsonProperty("sm_inds_tp")]
-		public string? MinorIndustryType;
-		/// <summary>
-		/// 종목정보
-		/// </summary>
-		[JsonProperty("stk_infr")]
-		public string? StockInfo;
-		/// <summary>
-		/// 수정주가이벤트
-		/// </summary>
-		[JsonProperty("upd_stkpc_event")]
-		public string? AdjustedPriceEvent;
-		/// <summary>
-		/// 전일종가
-		/// </summary>
-		[JsonProperty("pred_close_pric")]
-		public decimal? PreviousDayClose;
-	}
+        /// <summary>
+        /// 전일대비
+        /// </summary>
+        [JsonProperty("pred_pre")]
+        public KiwoomDecimal? Change;
+        /// <summary>
+        /// 전일대비 기호
+        /// </summary>
+        [JsonProperty("pred_pre_sig")]
+        public string? ChangeSign;
+        /// <summary>
+        /// 거래회전율
+        /// </summary>
+        [JsonProperty("trde_tern_rt")]
+        public KiwoomDecimal? TradeTurnoverRate;
+    }
 
-	public record KiwoomChartGetIndustryTickCharts
+    public record KiwoomChartGetYearlyCharts
+    {
+        /// <summary>
+        /// 종목코드
+        /// </summary>
+        [JsonProperty("stk_cd")]
+        public string? StockCode;
+        /// <summary>
+        /// 주식년봉차트조회 리스트
+        /// </summary>
+        [JsonProperty("stk_yr_pole_chart_qry")]
+        public IEnumerable<KiwoomChartGetYearChartItem>? Items;
+    }
+    public record KiwoomChartGetYearChartItem
+    {
+        /// <summary>
+        /// 현재가
+        /// </summary>
+        [JsonProperty("cur_prc")]
+        public KiwoomDecimal? CurrentPrice;
+        /// <summary>
+        /// 거래량
+        /// </summary>
+        [JsonProperty("trde_qty")]
+        public decimal? Volume;
+        /// <summary>
+        /// 거래대금
+        /// </summary>
+        [JsonProperty("trde_prica")]
+        public decimal? TransactionAmount;
+        /// <summary>
+        /// 일자
+        /// </summary>
+        [JsonProperty("dt")]
+        [JsonConverter(typeof(KiwoomDateTimeConverter))]
+        public DateTime? Date;
+        /// <summary>
+        /// 시가
+        /// </summary>
+        [JsonProperty("open_pric")]
+        public KiwoomDecimal? Open;
+        /// <summary>
+        /// 고가
+        /// </summary>
+        [JsonProperty("high_pric")]
+        public KiwoomDecimal? High;
+        /// <summary>
+        /// 저가
+        /// </summary>
+        [JsonProperty("low_pric")]
+        public KiwoomDecimal? Low;
+    }
+
+    public record KiwoomChartGetIndustryTickCharts
 	{
 		/// <summary>
 		/// 업종코드
@@ -406,19 +405,6 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 업종틱차트조회 리스트
 		/// </summary>
 		[JsonProperty("inds_tic_chart_qry")]
-		public IEnumerable<KiwoomChartGetIndustryTickChartItem>? Items;
-	}
-	public record KiwoomChartGetIndustryMinuteCharts
-	{
-		/// <summary>
-		/// 업종코드
-		/// </summary>
-		[JsonProperty("inds_cd")]
-		public KiwoomChartIndustryCode? IndustryCode;
-		/// <summary>
-		/// 업종분봉조회 리스트
-		/// </summary>
-		[JsonProperty("inds_min_pole_qry")]
 		public IEnumerable<KiwoomChartGetIndustryTickChartItem>? Items;
 	}
 	public record KiwoomChartGetIndustryTickChartItem
@@ -454,29 +440,88 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// </summary>
 		[JsonProperty("low_pric")]
 		public KiwoomDecimal? Low;
-		/// <summary>
-		/// 대업종구분
-		/// </summary>
-		[JsonProperty("bic_inds_tp")]
-		public string? MajorIndustryType;
-		/// <summary>
-		/// 소업종구분
-		/// </summary>
-		[JsonProperty("sm_inds_tp")]
-		public string? MinorIndustryType;
-		/// <summary>
-		/// 종목정보
-		/// </summary>
-		[JsonProperty("stk_infr")]
-		public string? StockInfo;
-		/// <summary>
-		/// 전일종가
-		/// </summary>
-		[JsonProperty("pred_close_pric")]
-		public decimal? PreviousDayClose;
-	}
+        /// <summary>
+        /// 전일대비
+        /// </summary>
+        [JsonProperty("pred_pre")]
+        public KiwoomDecimal? Change;
+        /// <summary>
+        /// 전일대비 기호
+        /// </summary>
+        [JsonProperty("pred_pre_sig")]
+        public string? ChangeSign;
+        /// <summary>
+        /// 체결일
+        /// </summary>
+        [JsonProperty("cntr_dt")]
+        [JsonConverter(typeof(KiwoomDateTimeConverter))]
+        public DateTime? TradeDate;
+    }
 
-	public record KiwoomChartGetIndustryDailyCharts
+    public record KiwoomChartGetIndustryMinuteCharts
+    {
+        /// <summary>
+        /// 업종코드
+        /// </summary>
+        [JsonProperty("inds_cd")]
+        public KiwoomChartIndustryCode? IndustryCode;
+        /// <summary>
+        /// 업종분봉조회 리스트
+        /// </summary>
+        [JsonProperty("inds_min_pole_qry")]
+        public IEnumerable<KiwoomChartGetIndustryMinuteChartItem>? Items;
+    }
+    public record KiwoomChartGetIndustryMinuteChartItem
+    {
+        /// <summary>
+        /// 현재가
+        /// </summary>
+        [JsonProperty("cur_prc")]
+        public KiwoomDecimal? CurrentPrice;
+        /// <summary>
+        /// 거래량
+        /// </summary>
+        [JsonProperty("trde_qty")]
+        public decimal? Volume;
+        /// <summary>
+        /// 체결시간
+        /// </summary>
+        [JsonProperty("cntr_tm")]
+        [JsonConverter(typeof(KiwoomDateTimeConverter))]
+        public DateTime? TradeTime;
+        /// <summary>
+        /// 시가
+        /// </summary>
+        [JsonProperty("open_pric")]
+        public KiwoomDecimal? Open;
+        /// <summary>
+        /// 고가
+        /// </summary>
+        [JsonProperty("high_pric")]
+        public KiwoomDecimal? High;
+        /// <summary>
+        /// 저가
+        /// </summary>
+        [JsonProperty("low_pric")]
+        public KiwoomDecimal? Low;
+        /// <summary>
+        /// 누적거래량
+        /// </summary>
+        [JsonProperty("acc_trde_qty")]
+        public decimal? AccumulatedVolume;
+        /// <summary>
+        /// 전일대비
+        /// </summary>
+        [JsonProperty("pred_pre")]
+        public KiwoomDecimal? Change;
+        /// <summary>
+        /// 전일대비 기호
+        /// </summary>
+        [JsonProperty("pred_pre_sig")]
+        public string? ChangeSign;
+    }
+
+    public record KiwoomChartGetIndustryDailyCharts
 	{
 		/// <summary>
 		/// 업종코드
@@ -566,25 +611,366 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// </summary>
 		[JsonProperty("trde_prica")]
 		public decimal? TransactionAmount;
-		/// <summary>
-		/// 대업종구분
-		/// </summary>
-		[JsonProperty("bic_inds_tp")]
-		public string? MajorIndustryType;
-		/// <summary>
-		/// 소업종구분
-		/// </summary>
-		[JsonProperty("sm_inds_tp")]
-		public string? MinorIndustryType;
-		/// <summary>
-		/// 종목정보
-		/// </summary>
-		[JsonProperty("stk_infr")]
-		public string? StockInfo;
-		/// <summary>
-		/// 전일종가
-		/// </summary>
-		[JsonProperty("pred_close_pric")]
-		public decimal? PreviousDayClose;
 	}
+
+    public record KiwoomChartGetGoldSpotTickCharts
+    {
+        /// <summary>
+        /// 금현물틱차트조회
+        /// </summary>
+        [JsonProperty("gds_tic_chart_qry")]
+        public IEnumerable<KiwoomChartGetGoldSpotTickChartItem>? Items;
+    }
+    public record KiwoomChartGetGoldSpotTickChartItem
+    {
+        /// <summary>
+        /// 현재가
+        /// </summary>
+        [JsonProperty("cur_prc")]
+        public KiwoomDecimal? CurrentPrice;
+        /// <summary>
+        /// 거래량
+        /// </summary>
+        [JsonProperty("trde_qty")]
+        public decimal? Volume;
+        /// <summary>
+        /// 체결시간
+        /// </summary>
+        [JsonProperty("cntr_tm")]
+        [JsonConverter(typeof(KiwoomDateTimeConverter))]
+        public DateTime? TradeTime;
+        /// <summary>
+        /// 시가
+        /// </summary>
+        [JsonProperty("open_pric")]
+        public KiwoomDecimal? Open;
+        /// <summary>
+        /// 고가
+        /// </summary>
+        [JsonProperty("high_pric")]
+        public KiwoomDecimal? High;
+        /// <summary>
+        /// 저가
+        /// </summary>
+        [JsonProperty("low_pric")]
+        public KiwoomDecimal? Low;
+        /// <summary>
+        /// 전일대비
+        /// </summary>
+        [JsonProperty("pred_pre")]
+        public KiwoomDecimal? Change;
+        /// <summary>
+        /// 전일대비기호
+        /// </summary>
+        [JsonProperty("pred_pre_sig")]
+        public string? ChangeSign;
+        /// <summary>
+        /// 일자
+        /// </summary>
+        [JsonProperty("dt")]
+        [JsonConverter(typeof(KiwoomDateTimeConverter))]
+        public DateTime? TradeDate;
+    }
+
+    public record KiwoomChartGetGoldSpotMinuteCharts
+    {
+        /// <summary>
+        /// 금현물분봉차트조회
+        /// </summary>
+        [JsonProperty("gds_min_chart_qry")]
+        public IEnumerable<KiwoomChartGetGoldSpotMinuteChartItem>? Items;
+    }
+    public record KiwoomChartGetGoldSpotMinuteChartItem
+    {
+        /// <summary>
+        /// 현재가
+        /// </summary>
+        [JsonProperty("cur_prc")]
+        public KiwoomDecimal? CurrentPrice;
+        /// <summary>
+        /// 누적거래량
+        /// </summary>
+        [JsonProperty("acc_trde_qty")]
+        public decimal? AccumulatedVolume;
+        /// <summary>
+        /// 거래량
+        /// </summary>
+        [JsonProperty("trde_qty")]
+        public decimal? Volume;
+        /// <summary>
+        /// 체결시간
+        /// </summary>
+        [JsonProperty("cntr_tm")]
+        [JsonConverter(typeof(KiwoomDateTimeConverter))]
+        public DateTime? TradeTime;
+        /// <summary>
+        /// 시가
+        /// </summary>
+        [JsonProperty("open_pric")]
+        public KiwoomDecimal? Open;
+        /// <summary>
+        /// 고가
+        /// </summary>
+        [JsonProperty("high_pric")]
+        public KiwoomDecimal? High;
+        /// <summary>
+        /// 저가
+        /// </summary>
+        [JsonProperty("low_pric")]
+        public KiwoomDecimal? Low;
+        /// <summary>
+        /// 전일대비
+        /// </summary>
+        [JsonProperty("pred_pre")]
+        public KiwoomDecimal? Change;
+        /// <summary>
+        /// 전일대비기호
+        /// </summary>
+        [JsonProperty("pred_pre_sig")]
+        public string? ChangeSign;
+        /// <summary>
+        /// 일자
+        /// </summary>
+        [JsonProperty("dt")]
+        [JsonConverter(typeof(KiwoomDateTimeConverter))]
+        public DateTime? TradeDate;
+    }
+
+    public record KiwoomChartGetGoldSpotDailyCharts
+    {
+        /// <summary>
+        /// 금현물일봉차트조회
+        /// </summary>
+        [JsonProperty("gds_day_chart_qry")]
+        public IEnumerable<KiwoomChartGetGoldSpotDailyChartItem>? Items;
+    }
+    public record KiwoomChartGetGoldSpotDailyChartItem
+    {
+        /// <summary>
+        /// 현재가
+        /// </summary>
+        [JsonProperty("cur_prc")]
+        public KiwoomDecimal? CurrentPrice;
+        /// <summary>
+        /// 누적 거래량
+        /// </summary>
+        [JsonProperty("acc_trde_qty")]
+        public decimal? AccumulatedVolume;
+        /// <summary>
+        /// 누적 거래대금
+        /// </summary>
+        [JsonProperty("acc_trde_prica")]
+        public decimal? AccumulatedTransactionAmount;
+        /// <summary>
+        /// 일자
+        /// </summary>
+        [JsonProperty("dt")]
+        [JsonConverter(typeof(KiwoomDateTimeConverter))]
+        public DateTime? Date;
+        /// <summary>
+        /// 시가
+        /// </summary>
+        [JsonProperty("open_pric")]
+        public KiwoomDecimal? Open;
+        /// <summary>
+        /// 고가
+        /// </summary>
+        [JsonProperty("high_pric")]
+        public KiwoomDecimal? High;
+        /// <summary>
+        /// 저가
+        /// </summary>
+        [JsonProperty("low_pric")]
+        public KiwoomDecimal? Low;
+        /// <summary>
+        /// 전일대비 기호
+        /// </summary>
+        [JsonProperty("pred_pre_sig")]
+        public string? ChangeSign;
+    }
+
+    public record KiwoomChartGetGoldSpotWeeklyCharts
+    {
+        /// <summary>
+        /// 금현물주봉차트조회
+        /// </summary>
+        [JsonProperty("gds_week_chart_qry")]
+        public IEnumerable<KiwoomChartGetGoldSpotChartItem>? Items;
+    }
+    public record KiwoomChartGetGoldSpotMonthlyCharts
+    {
+        /// <summary>
+        /// 금현물월봉차트조회
+        /// </summary>
+        [JsonProperty("gds_month_chart_qry")]
+        public IEnumerable<KiwoomChartGetGoldSpotChartItem>? Items;
+    }
+    public record KiwoomChartGetGoldSpotChartItem
+    {
+        /// <summary>
+        /// 현재가
+        /// </summary>
+        [JsonProperty("cur_prc")]
+        public KiwoomDecimal? CurrentPrice;
+        /// <summary>
+        /// 누적 거래량
+        /// </summary>
+        [JsonProperty("acc_trde_qty")]
+        public decimal? AccumulatedVolume;
+        /// <summary>
+        /// 누적 거래대금
+        /// </summary>
+        [JsonProperty("acc_trde_prica")]
+        public decimal? AccumulatedTransactionAmount;
+        /// <summary>
+        /// 일자
+        /// </summary>
+        [JsonProperty("dt")]
+        [JsonConverter(typeof(KiwoomDateTimeConverter))]
+        public DateTime? Date;
+        /// <summary>
+        /// 시가
+        /// </summary>
+        [JsonProperty("open_pric")]
+        public KiwoomDecimal? Open;
+        /// <summary>
+        /// 고가
+        /// </summary>
+        [JsonProperty("high_pric")]
+        public KiwoomDecimal? High;
+        /// <summary>
+        /// 저가
+        /// </summary>
+        [JsonProperty("low_pric")]
+        public KiwoomDecimal? Low;
+    }
+
+    public record KiwoomChartGetGoldSpotTodayTickCharts
+    {
+        /// <summary>
+        /// 금현물당일틱차트조회
+        /// </summary>
+        [JsonProperty("gds_tic_chart_qry")]
+        public IEnumerable<KiwoomChartGetGoldSpotTodayTickChartItem>? Items;
+    }
+    public record KiwoomChartGetGoldSpotTodayTickChartItem
+    {
+        /// <summary>
+        /// 체결가
+        /// </summary>
+        [JsonProperty("cntr_pric")]
+        public KiwoomDecimal? TradePrice;
+        /// <summary>
+        /// 전일 대비(원)
+        /// </summary>
+        [JsonProperty("pred_pre")]
+        public KiwoomDecimal? Change;
+        /// <summary>
+        /// 거래량(체결량)
+        /// </summary>
+        [JsonProperty("trde_qty")]
+        public decimal? Volume;
+        /// <summary>
+        /// 시가
+        /// </summary>
+        [JsonProperty("open_pric")]
+        public KiwoomDecimal? Open;
+        /// <summary>
+        /// 고가
+        /// </summary>
+        [JsonProperty("high_pric")]
+        public KiwoomDecimal? High;
+        /// <summary>
+        /// 저가
+        /// </summary>
+        [JsonProperty("low_pric")]
+        public KiwoomDecimal? Low;
+        /// <summary>
+        /// 체결시간
+        /// </summary>
+        [JsonProperty("cntr_tm")]
+        [JsonConverter(typeof(KiwoomDateTimeConverter))]
+        public DateTime? TradeTime;
+        /// <summary>
+        /// 일자
+        /// </summary>
+        [JsonProperty("dt")]
+        [JsonConverter(typeof(KiwoomDateTimeConverter))]
+        public DateTime? Date;
+        /// <summary>
+        /// 전일대비기호
+        /// </summary>
+        [JsonProperty("pred_pre_sig")]
+        public string? ChangeSign;
+    }
+
+    public record KiwoomChartGetGoldSpotTodayMinuteCharts
+    {
+        /// <summary>
+        /// 금현물당일분봉차트조회
+        /// </summary>
+        [JsonProperty("gds_min_chart_qry")]
+        public IEnumerable<KiwoomChartGetGoldSpotTodayMinuteChartItem>? Items;
+    }
+    public record KiwoomChartGetGoldSpotTodayMinuteChartItem
+    {
+        /// <summary>
+        /// 체결가
+        /// </summary>
+        [JsonProperty("cntr_pric")]
+        public KiwoomDecimal? TradePrice;
+        /// <summary>
+        /// 전일 대비(원)
+        /// </summary>
+        [JsonProperty("pred_pre")]
+        public KiwoomDecimal? Change;
+        /// <summary>
+        /// 누적 거래량
+        /// </summary>
+        [JsonProperty("acc_trde_qty")]
+        public decimal? AccumulatedVolume;
+        /// <summary>
+        /// 누적 거래대금
+        /// </summary>
+        [JsonProperty("acc_trde_prica")]
+        public decimal? AccumulatedTransactionAmount;
+        /// <summary>
+        /// 거래량(체결량)
+        /// </summary>
+        [JsonProperty("trde_qty")]
+        public decimal? Volume;
+        /// <summary>
+        /// 시가
+        /// </summary>
+        [JsonProperty("open_pric")]
+        public KiwoomDecimal? Open;
+        /// <summary>
+        /// 고가
+        /// </summary>
+        [JsonProperty("high_pric")]
+        public KiwoomDecimal? High;
+        /// <summary>
+        /// 저가
+        /// </summary>
+        [JsonProperty("low_pric")]
+        public KiwoomDecimal? Low;
+        /// <summary>
+        /// 체결시간
+        /// </summary>
+        [JsonProperty("cntr_tm")]
+        [JsonConverter(typeof(KiwoomDateTimeConverter))]
+        public DateTime? TradeTime;
+        /// <summary>
+        /// 일자
+        /// </summary>
+        [JsonProperty("dt")]
+        [JsonConverter(typeof(KiwoomDateTimeConverter))]
+        public DateTime? Date;
+        /// <summary>
+        /// 전일대비기호
+        /// </summary>
+        [JsonProperty("pred_pre_sig")]
+        public string? ChangeSign;
+    }
+
 }

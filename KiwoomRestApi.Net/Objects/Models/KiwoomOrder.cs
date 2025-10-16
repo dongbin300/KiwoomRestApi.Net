@@ -58,4 +58,51 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("cncl_qty")]
 		public decimal? CancelQuantity;
 	}
+
+	public record KiwoomOrderGoldSpotPlaceOrder
+	{
+        /// <summary>
+        /// 주문번호
+        /// </summary>
+        [JsonProperty("ord_no")]
+        public string? OrderId;
+    }
+
+    public record KiwoomOrderGoldSpotModifyOrder
+    {
+        /// <summary>
+        /// 주문번호
+        /// </summary>
+        [JsonProperty("ord_no")]
+        public string? OrderId;
+        /// <summary>
+        /// 모주문번호
+        /// </summary>
+        [JsonProperty("base_orig_ord_no")]
+        public string? OriginalOrderId;
+        /// <summary>
+        /// 정정수량
+        /// </summary>
+        [JsonProperty("mdfy_qty")]
+        public decimal? ModifyQuantity;
+    }
+
+    public record KiwoomOrderGoldSpotCancelOrder
+    {
+        /// <summary>
+        /// 주문번호
+        /// </summary>
+        [JsonProperty("ord_no")]
+        public string? OrderId;
+        /// <summary>
+        /// 모주문번호
+        /// </summary>
+        [JsonProperty("base_orig_ord_no")]
+        public string? OriginalOrderId;
+        /// <summary>
+        /// 취소수량
+        /// </summary>
+        [JsonProperty("cncl_qty")]
+        public decimal? CancelQuantity;
+    }
 }

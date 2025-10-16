@@ -223,4 +223,105 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public KiwoomDecimal? TotalContinuousNetBuyAmount;
 	}
 
+    public record KiwoomForeignInstitutionGetGoldSpotInvestorStatus
+    {
+        /// <summary>
+        /// 금현물투자자현황
+        /// </summary>
+        [JsonProperty("inve_trad_stat")]
+        public IEnumerable<KiwoomForeignInstitutionGetGoldSpotInvestorStatusItem>? Items;
+    }
+    public record KiwoomForeignInstitutionGetGoldSpotInvestorStatusItem
+    {
+		/// <summary>
+		/// 투자자별 매도 수량(천)
+		/// </summary>
+		[JsonProperty("all_dfrt_trst_sell_qty")]
+		public decimal? InvestorSellQuantity;
+		/// <summary>
+		/// 투자자별 매도 수량 증감(천)
+		/// </summary>
+		[JsonProperty("sell_qty_irds")]
+		public KiwoomDecimal? InvestorSellQuantityChange;
+        /// <summary>
+        /// 투자자별 매도 금액(억)
+        /// </summary>
+        [JsonProperty("all_dfrt_trst_sell_amt")]
+        public decimal? InvestorSellAmount;
+		/// <summary>
+		/// 투자자별 매도 금액 증감(억)
+		/// </summary>
+		[JsonProperty("sell_amt_irds")]
+		public KiwoomDecimal? InvestorSellAmountChange;
+		/// <summary>
+		/// 투자자별 매수 수량(천)
+		/// </summary>
+		[JsonProperty("all_dfrt_trst_buy_qty")]
+		public decimal? InvestorBuyQuantity;
+		/// <summary>
+		/// 투자자별 매수 수량 증감(천)
+		/// </summary>
+		[JsonProperty("buy_qty_irds")]
+		public KiwoomDecimal? InvestorBuyQuantityChange;
+		/// <summary>
+		/// 투자자별 매수 금액(억)
+		/// </summary>
+		[JsonProperty("all_dfrt_trst_buy_amt")]
+		public decimal? InvestorBuyAmount;
+		/// <summary>
+		/// 투자자별 매수 금액 증감(억)
+		/// </summary>
+		[JsonProperty("buy_amt_irds")]
+		public KiwoomDecimal? InvestorBuyAmountChange;
+		/// <summary>
+		/// 투자자별 순매수 수량(천)
+		/// </summary>
+		[JsonProperty("all_dfrt_trst_netprps_qty")]
+		public KiwoomDecimal? InvestorNetBuyQuantity;
+		/// <summary>
+		/// 투자자별 순매수 수량 증감(천)
+		/// </summary>
+		[JsonProperty("netprps_qty_irds")]
+		public KiwoomDecimal? InvestorNetBuyQuantityChange;
+		/// <summary>
+		/// 투자자별 순매수 금액(억)
+		/// </summary>
+		[JsonProperty("all_dfrt_trst_netprps_amt")]
+		public KiwoomDecimal? InvestorNetBuyAmount;
+		/// <summary>
+		/// 투자자별 순매수 금액 증감(억)
+		/// </summary>
+		[JsonProperty("netprps_amt_irds")]
+		public KiwoomDecimal? InvestorNetBuyAmountChange;
+        /// <summary>
+        /// 투자자별 매도 단가
+        /// </summary>
+        [JsonProperty("sell_uv")]
+        public decimal? InvestorSellPrice;
+        /// <summary>
+        /// 투자자별 매수 단가
+        /// </summary>
+        [JsonProperty("buy_uv")]
+        public decimal? InvestorBuyPrice;
+        /// <summary>
+        /// 투자자 구분명
+        /// </summary>
+        [JsonProperty("stk_nm")]
+        public string? InvestorCodeName;
+        /// <summary>
+        /// 누적 순매수 금액(억)
+        /// </summary>
+        [JsonProperty("acc_netprps_amt")]
+        public KiwoomDecimal? AccumulatedNetBuyAmount;
+		/// <summary>
+		/// 누적 순매수 수량(천)
+		/// </summary>
+		[JsonProperty("acc_netprps_qty")]
+		public KiwoomDecimal? AccumulatedNetBuyQuantity;
+        /// <summary>
+        /// 투자자 코드
+        /// </summary>
+        [JsonProperty("stk_cd")]
+        public string? InvestorCode;
+    }
 }

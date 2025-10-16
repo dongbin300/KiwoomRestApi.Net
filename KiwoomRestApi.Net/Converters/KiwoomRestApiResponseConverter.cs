@@ -36,24 +36,22 @@ namespace KiwoomRestApi.Net.Converters
 
 			// 공통 필드 제거
 			jsonObject.Remove("return_msg");
-			jsonObject.Remove("return_code");
+            jsonObject.Remove("return_code");
 
-			Debug.WriteLine(jsonObject);
+            // 나머지 데이터를 지정된 타입으로 변환
+            response.Data = jsonObject.ToObject<T>(serializer)!;
 
-			// 나머지 데이터를 지정된 타입으로 변환
-			response.Data = jsonObject.ToObject<T>(serializer)!;
+            return response;
+        }
 
-			return response;
-		}
-
-		/// <summary>
-		/// KiwoomRestApiResponse 객체를 JSON으로 직렬화합니다. (미구현)
-		/// </summary>
-		/// <param name="writer">JSON 라이터</param>
-		/// <param name="value">직렬화할 값</param>
-		/// <param name="serializer">JSON 시리얼라이저</param>
-		/// <exception cref="NotImplementedException">쓰기 기능은 구현되지 않음</exception>
-		public override void WriteJson(JsonWriter writer, KiwoomRestApiResponse<T>? value, JsonSerializer serializer)
+        /// <summary>
+        /// KiwoomRestApiResponse 객체를 JSON으로 직렬화합니다. (미구현)
+        /// </summary>
+        /// <param name="writer">JSON 라이터</param>
+        /// <param name="value">직렬화할 값</param>
+        /// <param name="serializer">JSON 시리얼라이저</param>
+        /// <exception cref="NotImplementedException">쓰기 기능은 구현되지 않음</exception>
+        public override void WriteJson(JsonWriter writer, KiwoomRestApiResponse<T>? value, JsonSerializer serializer)
 		{
 			throw new NotImplementedException();
 		}

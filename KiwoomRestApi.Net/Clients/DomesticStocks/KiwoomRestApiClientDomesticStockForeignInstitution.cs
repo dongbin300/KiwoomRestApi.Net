@@ -11,7 +11,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 {
 	/// <summary>
 	/// 기관/외국인 API 클라이언트
-	/// 현재 3개
+	/// 현재 4개
 	/// </summary>
 	/// <param name="client"></param>
 	public class KiwoomRestApiClientDomesticStockForeignInstitution(KiwoomRestApiClient client) : BaseClient
@@ -76,5 +76,18 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 
 			return await _client.PostKiwoomRestApiAsync<KiwoomForeignInstitutionGetContinuousTransactions>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
-	}
+
+        /// <summary>
+        /// | ka52301 | 금현물투자자현황
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public async Task<KiwoomRestApiResponse<KiwoomForeignInstitutionGetGoldSpotInvestorStatus>> GetGoldSpotInvestorStatusAsync(CancellationToken cancellationToken = default)
+        {
+            const string apiId = "ka52301";
+			var body = new HttpParameterMap();
+
+            return await _client.PostKiwoomRestApiAsync<KiwoomForeignInstitutionGetGoldSpotInvestorStatus>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+        }
+    }
 }

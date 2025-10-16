@@ -1,5 +1,6 @@
 ﻿using KiwoomRestApi.Net.Clients;
 
+using KiwoomRestApi.Net.Enums;
 using KiwoomRestApi.Net.Enums.Account;
 using KiwoomRestApi.Net.Enums.Chart;
 using KiwoomRestApi.Net.Enums.CreditOrder;
@@ -16,6 +17,8 @@ using KiwoomRestApi.Net.Enums.StockInfo;
 using KiwoomRestApi.Net.Enums.Theme;
 using KiwoomRestApi.Net.Enums.WebSocket;
 
+using Newtonsoft.Json;
+
 using System.IO;
 
 namespace KiwoomRestApi.Net.Examples
@@ -24,7 +27,7 @@ namespace KiwoomRestApi.Net.Examples
     {
         private readonly KiwoomRestApiClient _client;
         private readonly KiwoomSocketClient _client2;
-        private readonly int mock = 0;
+        private readonly int mock = 2;
 
         public KiwoomApis()
         {
@@ -47,9 +50,9 @@ namespace KiwoomRestApi.Net.Examples
         public void Run()
         {
             var stockCode = "005930";
-            var startDate = new DateTime(2025, 9, 1);
-            var endDate = new DateTime(2025, 9, 12);
-            var date = new DateTime(2025, 9, 12);
+            var startDate = new DateTime(2025, 10, 1);
+            var endDate = new DateTime(2025, 10, 14);
+            var date = new DateTime(2025, 10, 14);
 
             //var a1 = _client.Account.GetAvailableWithdrawalAmountsAsync(stockCode, KiwoomAccountTransactionType.All, 100).Result; // no mock
             //var a2 = _client.Account.GetConsignedTransactionsAsync(KiwoomAccountTransactionType2.All, KiwoomAccountGoodsType.All, KiwoomAccountDomesticStockExchangeType.All, startDate, endDate).Result; // no mock
@@ -92,6 +95,13 @@ namespace KiwoomRestApi.Net.Examples
             //var b12 = _client.Chart.GetTickChartsAsync(stockCode, 15, false).Result;
             //var b13 = _client.Chart.GetWeeklyChartsAsync(stockCode, date, false).Result;
             //var b14 = _client.Chart.GetYearlyChartsAsync(stockCode, date, false).Result;
+            //var b15 = _client.Chart.GetGoldSpotTickChartsAsync(KiwoomGoldSpotStockCode.Gold_1kg, 10, true).Result;
+            //var b16 = _client.Chart.GetGoldSpotMinuteChartsAsync(KiwoomGoldSpotStockCode.Gold_1kg, 10, true).Result;
+            //var b17 = _client.Chart.GetGoldSpotDailyChartsAsync(KiwoomGoldSpotStockCode.Gold_1kg, date, true).Result;
+            //var b18 = _client.Chart.GetGoldSpotWeeklyChartsAsync(KiwoomGoldSpotStockCode.Gold_1kg, date, true).Result;
+            //var b19 = _client.Chart.GetGoldSpotMonthlyChartsAsync(KiwoomGoldSpotStockCode.Gold_1kg, date, true).Result;
+            //var b20 = _client.Chart.GetGoldSpotTodayTickChartsAsync(KiwoomGoldSpotStockCode.Gold_1kg, 10).Result;
+            //var b21 = _client.Chart.GetGoldSpotTodayMinuteChartsAsync(KiwoomGoldSpotStockCode.Gold_1kg, 10).Result;
 
             //var c1 = _client.CreditOrder.PlaceBuyOrderAsync(KiwoomCreditOrderDomesticStockExchangeType.Krx, stockCode, 1, KiwoomCreditOrderTransactionType.BestLimit).Result; // no mock
             //var c2 = _client.CreditOrder.PlaceSellOrderAsync(KiwoomCreditOrderDomesticStockExchangeType.Krx, stockCode, 1, KiwoomCreditOrderTransactionType.BestLimit, KiwoomCreditOrderCreditTransactionType.Loan).Result; // no mock
@@ -123,6 +133,7 @@ namespace KiwoomRestApi.Net.Examples
             //var f1 = _client.ForeignInstitution.GetContinuousTransactionsAsync(KiwoomForeignInstitutionStockExchangeType.Unified, KiwoomForeignInstitutionMarketType.Kospi, KiwoomForeignInstitutionStockIndustryType.Industry, KiwoomForeignInstitutionAmountQuantityType.Amount).Result;
             //var f2 = _client.ForeignInstitution.GetStockForeignersAsync(stockCode).Result;
             //var f3 = _client.ForeignInstitution.GetStockInstitutionsAsync(stockCode).Result;
+            //var f4 = _client.ForeignInstitution.GetGoldSpotInvestorStatusAsync().Result;
 
             //var g1 = _client.Industry.GetAllIndustryIndicesAsync(KiwoomIndustryMarketType2.Kospi).Result;
             //var g2 = _client.Industry.GetCurrentPricesAsync(KiwoomIndustryMarketType.Kospi, KiwoomIndustryCode.Kospi200).Result;
@@ -155,11 +166,20 @@ namespace KiwoomRestApi.Net.Examples
             //var h21 = _client.MarketCondition.GetStockDailyProgramTradeTrendsAsync(date, stockCode, KiwoomMarketConditionAmountQuantityType.Quantity).Result;
             //var h22 = _client.MarketCondition.GetStockInstitutionTransactionTrendsAsync(stockCode, startDate, endDate, KiwoomMarketConditionUnitPriceType.BuyPrice, KiwoomMarketConditionUnitPriceType.BuyPrice).Result;
             //var h23 = _client.MarketCondition.GetStockTimeProgramTradeTrendsAsync(date, stockCode, KiwoomMarketConditionAmountQuantityType.Quantity).Result;
+            //var h24 = _client.MarketCondition.GetGoldTradeTrendsAsync(KiwoomGoldSpotStockCode.Gold_1kg).Result;
+            //var h25 = _client.MarketCondition.GetGoldDailyTrendsAsync(KiwoomGoldSpotStockCode.Gold_1kg, date).Result;
+            //var h26 = _client.MarketCondition.GetGoldExpectedTradesAsync(KiwoomGoldSpotStockCode.Gold_1kg).Result;
+            //var h27 = _client.MarketCondition.GetGoldInfoAsync(KiwoomGoldSpotStockCode.Gold_1kg).Result;
+            //var h28 = _client.MarketCondition.GetGoldQuotesAsync(KiwoomGoldSpotStockCode.Gold_1kg, 10).Result;
 
             //var i1 = _client.Order.PlaceOrderAsync(KiwoomOrderType.Buy, KiwoomOrderDomesticStockExchangeType.Krx, stockCode, 1, KiwoomOrderTransactionType.Market).Result;
             //var i2 = _client.Order.PlaceOrderAsync(KiwoomOrderType.Sell, KiwoomOrderDomesticStockExchangeType.Krx, stockCode, 1, KiwoomOrderTransactionType.Market).Result;
             //var i3 = _client.Order.ModifyOrderAsync(KiwoomOrderDomesticStockExchangeType.Krx, "1", stockCode, 1, 100).Result;
             //var i4 = _client.Order.CancelOrderAsync(KiwoomOrderDomesticStockExchangeType.Krx, "1", stockCode, 1).Result;
+            //var i5 = _client.Order.GoldSpotPlaceOrderAsync(KiwoomOrderType.Buy, KiwoomGoldSpotStockCode.MiniGold_100g, 1, KiwoomOrderGoldSpotTransactionType.Normal).Result; // no mock
+            //var i6 = _client.Order.GoldSpotPlaceOrderAsync(KiwoomOrderType.Sell, KiwoomGoldSpotStockCode.MiniGold_100g, 1, KiwoomOrderGoldSpotTransactionType.Normal).Result; // no mock
+            //var i7 = _client.Order.GoldSpotModifyOrderAsync("1", KiwoomGoldSpotStockCode.MiniGold_100g, 1, 100).Result; // no mock
+            //var i8 = _client.Order.GoldSpotCancelOrderAsync("1", KiwoomGoldSpotStockCode.MiniGold_100g).Result; // no mock
 
             //var j1 = _client.RankingInfo.GetAfterMarketSinglePriceChangeRateRanksAsync(KiwoomRankingInfoMarketType.All, KiwoomRankingInfoChangeSortType.Up, KiwoomRankingInfoStockCondition.All, 100, KiwoomRankingInfoCreditCondition.All, 1000).Result;
             //var j2 = _client.RankingInfo.GetChangeRateTopsAsync(KiwoomRankingInfoMarketType.All, KiwoomRankingInfoChangeSortType.Up, 100, KiwoomRankingInfoStockCondition.All, KiwoomRankingInfoCreditCondition.All, true, KiwoomRankingInfoPriceCondition.All, 1000, KiwoomRankingInfoStockExchangeType.Unified).Result;

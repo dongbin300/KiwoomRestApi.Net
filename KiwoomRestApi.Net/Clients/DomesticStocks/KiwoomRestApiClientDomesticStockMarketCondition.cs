@@ -1,4 +1,5 @@
-﻿using KiwoomRestApi.Net.Enums.MarketCondition;
+﻿using KiwoomRestApi.Net.Enums;
+using KiwoomRestApi.Net.Enums.MarketCondition;
 using KiwoomRestApi.Net.Extensions;
 using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
@@ -12,7 +13,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 {
 	/// <summary>
 	/// 시세 API 클라이언트
-	/// 현재 20개
+	/// 현재 25개
 	/// </summary>
 	/// <param name="client"></param>
 	public class KiwoomRestApiClientDomesticStockMarketCondition(KiwoomRestApiClient client) : BaseClient
@@ -318,6 +319,85 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 
 			var response = await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetAfterMarketSinglePriceOrderBook>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 			return response.MapResponse(r => new KiwoomMarketConditionGetAfterMarketSinglePriceOrderBookList(r));
+		}
+
+		/// <summary>
+		/// | ka50010 | 금현물체결추이
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetGoldTradeTrends>> GetGoldTradeTrendsAsync(KiwoomGoldSpotStockCode stockCode, CancellationToken cancellationToken = default)
+		{
+			const string apiId = "ka50010";
+			var body = new HttpParameterMap()
+				.AddField("stk_cd", stockCode);
+
+			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetGoldTradeTrends>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+		}
+
+		/// <summary>
+		/// | ka50012 | 금현물일별추이
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="date"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetGoldDailyTrends>> GetGoldDailyTrendsAsync(KiwoomGoldSpotStockCode stockCode, DateTime date, CancellationToken cancellationToken = default)
+		{
+			const string apiId = "ka50012";
+			var body = new HttpParameterMap()
+				.AddField("stk_cd", stockCode)
+				.AddField("base_dt", date);
+
+			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetGoldDailyTrends>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+		}
+
+		/// <summary>
+		/// | ka50087 | 금현물예상체결
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetGoldExpectedTrades>> GetGoldExpectedTradesAsync(KiwoomGoldSpotStockCode stockCode, CancellationToken cancellationToken = default)
+		{
+			const string apiId = "ka50087";
+			var body = new HttpParameterMap()
+				.AddField("stk_cd", stockCode);
+
+			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetGoldExpectedTrades>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+		}
+
+		/// <summary>
+		/// | ka50100 | 금현물시세정보
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetGoldInfo>> GetGoldInfoAsync(KiwoomGoldSpotStockCode stockCode, CancellationToken cancellationToken = default)
+		{
+			const string apiId = "ka50100";
+			var body = new HttpParameterMap()
+				.AddField("stk_cd", stockCode);
+
+			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetGoldInfo>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+		}
+
+		/// <summary>
+		/// | ka50101 | 금현물 호가
+		/// </summary>
+		/// <param name="stockCode"></param>
+		/// <param name="tickCount"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		public async Task<KiwoomRestApiResponse<KiwoomMarketConditionGetGoldQuotes>> GetGoldQuotesAsync(KiwoomGoldSpotStockCode stockCode, int tickCount, CancellationToken cancellationToken = default)
+		{
+			const string apiId = "ka50101";
+			var body = new HttpParameterMap()
+				.AddField("stk_cd", stockCode)
+				.AddField("tic_scope", tickCount);
+
+			return await _client.PostKiwoomRestApiAsync<KiwoomMarketConditionGetGoldQuotes>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 
 		/// <summary>

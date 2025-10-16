@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="ko" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - KiwoomRestApi.Net</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <style>
+        body {
+            padding-top: 56px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            color: #e9ecef;
+        }
+
+        /* 상단 내비게이션 */
+        .navbar {
+            background: linear-gradient(135deg, #212529 0%, #31363f 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-brand {
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .hero {
+            background: linear-gradient(to right, #232526, #414345);
+            padding: 3rem 0;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .section {
+            padding: 3rem 0;
+        }
+
+        .faq-section {
+            margin-bottom: 3rem;
+        }
+
+        .faq-section h2 {
+            color: #3b82f6;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .faq-item {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            background: rgba(30, 41, 59, 0.8);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .faq-question h3 {
+            margin: 0;
+            color: #f1f5f9;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .faq-question .faq-toggle {
+            color: #3b82f6;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 2000px;
+        }
+
+        .faq-answer-content {
+            padding: 0 1.5rem 1.5rem;
+            color: #cbd5e1;
+            line-height: 1.8;
+        }
+
+        .faq-answer-content p {
+            margin-bottom: 1rem;
+        }
+
+        .faq-answer-content ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .faq-answer-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .code-block {
+            background-color: #1e293b;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            margin: 0;
+            color: #e2e8f0;
+            font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 0.9rem;
+        }
+
+        .table {
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e2e8f0;
+        }
+
+        .table th {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: rgba(255, 255, 255, 0.1);
+            color: #f1f5f9;
+            font-weight: 600;
+        }
+
+        .table td {
+            border-color: rgba(255, 255, 255, 0.05);
+            vertical-align: middle;
+        }
+
+        .alert-tip {
+            background-color: rgba(13, 202, 240, 0.1);
+            border: 1px solid rgba(13, 202, 240, 0.3);
+            color: #0dcaf0;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .alert-warning {
+            background-color: rgba(255, 193, 7, 0.1);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            color: #ffc107;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .toc-nav {
+            position: sticky;
+            top: 100px;
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+        }
+
+        .toc-nav h5 {
+            color: #3b82f6;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .toc-nav .nav-link {
+            color: #adb5bd;
+            padding: 0.5rem 1rem;
+            margin-bottom: 0.25rem;
+            border-radius: 0.375rem;
+            transition: all 0.2s ease;
+        }
+
+        .toc-nav .nav-link:hover,
+        .toc-nav .nav-link.active {
+            background: rgba(59, 130, 246, 0.2);
+            color: #ffffff;
+        }
+
+        .checklist {
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .checklist h3 {
+            color: #3b82f6;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            color: #cbd5e1;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            margin-right: 0.75rem;
+            margin-top: 0.25rem;
+            width: 1.2rem;
+            height: 1.2rem;
+        }
+
+        .checklist-item label {
+            cursor: pointer;
+            flex: 1;
+            line-height: 1.6;
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(30, 41, 59, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .language-toggle:hover {
+            background: rgba(59, 130, 246, 0.3);
+            transform: scale(1.05);
+        }
+
+        .language-toggle i {
+            margin-right: 6px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .toc-nav {
+                position: relative;
+                top: 0;
+                margin-bottom: 2rem;
+            }
+
+            .language-toggle {
+                top: auto;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-bar-chart-line-fill"></i> KiwoomRestApi.Net
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="api-reference.html">API Reference</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tutorial.html">Tutorial</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="FAQ.html">FAQ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Language Toggle Button -->
+    <button class="language-toggle" onclick="toggleLanguage()">
+        <i class="bi bi-translate"></i>
+        <span id="current-lang">한국어</span>
+    </button>
+
+    <header class="hero">
+        <div class="container">
+            <h1 data-ko="자주 묻는 질문" data-en="Frequently Asked Questions">자주 묻는 질문</h1>
+            <p class="lead" data-ko="KiwoomRestApi.Net에 대한 일반적인 질문과 답변" data-en="Common questions and answers about KiwoomRestApi.Net">KiwoomRestApi.Net에 대한 일반적인 질문과 답변</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="toc-nav">
+                    <h5><i class="bi bi-list"></i> <span data-ko="빠른 탐색" data-en="Quick Navigation">빠른 탐색</span></h5>
+                    <nav class="nav nav-pills flex-column">
+                        <a class="nav-link" href="#getting-started" data-ko="시작하기" data-en="Getting Started">시작하기</a>
+                        <a class="nav-link" href="#api-usage" data-ko="API 사용법" data-en="API Usage">API 사용법</a>
+                        <a class="nav-link" href="#authentication" data-ko="인증" data-en="Authentication">인증</a>
+                        <a class="nav-link" href="#realtime-data" data-ko="실시간 데이터" data-en="Real-time Data">실시간 데이터</a>
+                        <a class="nav-link" href="#trading" data-ko="거래" data-en="Trading">거래</a>
+                        <a class="nav-link" href="#error-handling" data-ko="오류 처리" data-en="Error Handling">오류 처리</a>
+                        <a class="nav-link" href="#performance" data-ko="성능" data-en="Performance">성능</a>
+                        <a class="nav-link" href="#mock-vs-real" data-ko="모의투자 vs 실거래" data-en="Mock vs Real Trading">모의투자 vs 실거래</a>
+                        <a class="nav-link" href="#troubleshooting" data-ko="문제 해결" data-en="Troubleshooting">문제 해결</a>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="col-lg-9">
+                <!-- Getting Started -->
+                <section id="getting-started" class="faq-section">
+                    <h2><i class="bi bi-rocket-takeoff"></i> <span data-ko="시작하기" data-en="Getting Started">시작하기</span></h2>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3 data-ko="Q1: KiwoomRestApi.Net 사용을 위한 필수 조건은 무엇인가요?" data-en="Q1: What are the prerequisites for using KiwoomRestApi.Net?">Q1: KiwoomRestApi.Net 사용을 위한 필수 조건은 무엇인가요?</h3>
+                            <i class="bi bi-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p data-ko="다음 사항들이 필요합니다:" data-en="You need:">다음 사항들이 필요합니다:</p>
+                                <ul>
+                                    <li data-ko=".NET 6.0 이상" data-en=".NET 6.0 or higher">.NET 6.0 이상</li>
+                                    <li data-ko="키움증권 계정 및 API 접근 권한" data-en="Kiwoom Securities account with API access">키움증권 계정 및 API 접근 권한</li>
+                                    <li data-ko="키움 OpenAPI 포털에서 발급받은 앱 키와 시크릿 키" data-en="App Key and Secret Key from Kiwoom OpenAPI portal">키움 OpenAPI 포털에서 발급받은 앱 키와 시크릿 키</li>
+                                    <li data-ko="Visual Studio 2022 또는 VS Code" data-en="Visual Studio 2022 or VS Code">Visual Studio 2022 또는 VS Code</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3 data-ko="Q2: 라이브러리를 어떻게 설치하나요?" data-en="Q2: How do I install the library?">Q2: 라이브러리를 어떻게 설치하나요?</h3>
+                            <i class="bi bi-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p data-ko="NuGet을 통해 설치하세요:" data-en="Install via NuGet:">NuGet을 통해 설치하세요:</p>
+                                <div class="code-block">
+                                    <pre><code class="language-bash">dotnet add package KiwoomRestApi.Net</code></pre>
+                                </div>
+                                <p data-ko="또는 패키지 관리자 콘솔에서:" data-en="Or via Package Manager Console:">또는 패키지 관리자 콘솔에서:</p>
+                                <div class="code-block">
+                                    <pre><code>Install-Package KiwoomRestApi.Net</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3 data-ko="Q3: 모의투자 모드와 실거래 모드의 차이점은 무엇인가요?" data-en="Q3: What's the difference between mock mode and real trading?">Q3: 모의투자 모드와 실거래 모드의 차이점은 무엇인가요?</h3>
+                            <i class="bi bi-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <ul>
+                                    <li><strong data-ko="모의투자 모드" data-en="Mock Mode">모의투자 모드</strong>: <span data-ko="시뮬레이션된 데이터 사용, 실제 거래 없음, 테스트용 무료" data-en="Uses simulated data, no real transactions, free for testing">시뮬레이션된 데이터 사용, 실제 거래 없음, 테스트용 무료</span></li>
+                                    <li><strong data-ko="실거래 모드" data-en="Real Mode">실거래 모드</strong>: <span data-ko="실시간 시장 데이터, 실제 거래 발생, 실제 계정 필요" data-en="Live market data, actual trades occur, requires real account">실시간 시장 데이터, 실제 거래 발생, 실제 계정 필요</span></li>
+                                </ul>
+                                <div class="alert-tip">
+                                    <i class="bi bi-lightbulb"></i> <strong data-ko="팁:" data-en="Tip:">팁:</strong> <span data-ko="개발 및 테스트 시에는 반드시 모의투자 모드부터 시작하세요." data-en="Always start with mock mode for development and testing.">개발 및 테스트 시에는 반드시 모의투자 모드부터 시작하세요.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- API Usage -->
+                <section id="api-usage" class="faq-section">
+                    <h2><i class="bi bi-code-slash"></i> <span data-ko="API 사용법" data-en="API Usage">API 사용법</span></h2>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3 data-ko="Q4: 주식 정보를 어떻게 조회하나요?" data-en="Q4: How do I get stock information?">Q4: 주식 정보를 어떻게 조회하나요?</h3>
+                            <i class="bi bi-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p data-ko="StockInfo 클라이언트를 사용하세요:" data-en="Use the StockInfo client:">StockInfo 클라이언트를 사용하세요:</p>
+                                <div class="code-block">
+                                    <pre><code class="language-csharp">var stockInfo = await client.StockInfo.GetStockInfoAsync(
+    stockCode: "005930",
+    date: DateTime.Today,
+    marginLoanType: KiwoomStockInfoMarginLoanType.Loan
+);</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3 data-ko="Q5: 대용량 데이터셋의 페이징은 어떻게 처리하나요?" data-en="Q5: How do I handle pagination for large data sets?">Q5: 대용량 데이터셋의 페이징은 어떻게 처리하나요?</h3>
+                            <i class="bi bi-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p data-ko="ContYn과 NextKey 속성을 확인하세요:" data-en="Check the ContYn and NextKey properties:">ContYn과 NextKey 속성을 확인하세요:</p>
+                                <div class="code-block">
+                                    <pre><code class="language-csharp">do {
+    var result = await client.SomeApiCallAsync();
+    // Process result.Data
+    client.NextKey = result.NextKey;
+    client.ContYn = result.ContYn ? "Y" : "";
+} while (result.ContYn && !string.IsNullOrEmpty(result.NextKey));</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3 data-ko="Q6: 동시에 여러 API 호출을 할 수 있나요?" data-en="Q6: Can I make multiple API calls simultaneously?">Q6: 동시에 여러 API 호출을 할 수 있나요?</h3>
+                            <i class="bi bi-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p data-ko="네, 라이브러리는 완전히 비동기입니다. 단, 키움의 제한 속도를 고려하세요:" data-en="Yes, the library is fully async. However, be aware of Kiwoom's rate limits:">네, 라이브러리는 완전히 비동기입니다. 단, 키움의 제한 속도를 고려하세요:</p>
+                                <div class="code-block">
+                                    <pre><code class="language-csharp">var tasks = new[]
+{
+    client.StockInfo.GetStockInfoAsync("005930", DateTime.Today),
+    client.StockInfo.GetStockInfoAsync("000660", DateTime.Today),
+    client.StockInfo.GetStockInfoAsync("035420", DateTime.Today)
+};
+
+var results = await Task.WhenAll(tasks);</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Authentication -->
+                <section id="authentication" class="faq-section">
+                    <h2><i class="bi bi-shield-lock"></i> <span data-ko="인증" data-en="Authentication">인증</span></h2>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3 data-ko="Q7: API 키는 어떻게 받나요?" data-en="Q7: How do I get API keys?">Q7: API 키는 어떻게 받나요?</h3>
+                            <i class="bi bi-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <ol>
+                                    <li data-ko="키움 OpenAPI 포털에 로그인" data-en="Log in to Kiwoom's OpenAPI portal">키움 OpenAPI 포털에 로그인</li>
+                                    <li data-ko="애플리케이션 등록" data-en="Register your application">애플리케이션 등록</li>
+                                    <li data-ko="앱 키와 시크릿 키 생성" data-en="Generate App Key and Secret Key">앱 키와 시크릿 키 생성</li>
+                                    <li data-ko="모의투자 또는 실거래 환경 선택" data-en="Choose between Mock or Real environment">모의투자 또는 실거래 환경 선택</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3 data-ko="Q8: 토큰을 직접 관리해야 하나요?" data-en="Q8: Do I need to manually handle tokens?">Q8: 토큰을 직접 관리해야 하나요?</h3>
+                            <i class="bi bi-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p data-ko="아니요, 라이브러리가 토큰 관리를 자동으로 처리합니다:" data-en="No, the library handles token management automatically:">아니요, 라이브러리가 토큰 관리를 자동으로 처리합니다:</p>
+                                <div class="code-block">
+                                    <pre><code class="language-csharp">var client = await KiwoomRestApiClient.CreateAsync(appKey, secretKey, isMock);
+// 토큰이 자동으로 획득되어 저장됩니다</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3 data-ko="Q9: 토큰이 만료되면 어떻게 하나요?" data-en="Q9: What should I do if my token expires?">Q9: 토큰이 만료되면 어떻게 하나요?</h3>
+                            <i class="bi bi-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p data-ko="라이브러리가 토큰 갱신을 자동으로 처리합니다. 토큰 문제가 발생하면:" data-en="The library automatically handles token refresh. If you encounter token issues:">라이브러리가 토큰 갱신을 자동으로 처리합니다. 토큰 문제가 발생하면:</p>
+                                <div class="code-block">
+                                    <pre><code class="language-csharp">// 클라이언트 재초기화
+await client.InitializeAsync();</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Trading -->
+                <section id="trading" class="faq-section">
+                    <h2><i class="bi bi-currency-exchange"></i> <span data-ko="거래" data-en="Trading">거래</span></h2>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3 data-ko="Q13: 매수 주문을 어떻게 체결하나요?" data-en="Q13: How do I place a buy order?">Q13: 매수 주문을 어떻게 체결하나요?</h3>
+                            <i class="bi bi-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p data-ko="Order 클라이언트를 사용하세요:" data-en="Use the Order client:">Order 클라이언트를 사용하세요:</p>
+                                <div class="code-block">
+                                    <pre><code class="language-csharp">var order = await client.Order.PlaceOrderAsync(
+    orderType: KiwoomOrderType.Buy,
+    exchangeType: KiwoomOrderDomesticStockExchangeType.Krx,
+    stockCode: "005930",
+    quantity: 10,
+    transactionType: KiwoomOrderTransactionType.Market
+);</code></pre>
+                                </div>
+                                <div class="alert-warning">
+                                    <i class="bi bi-exclamation-triangle"></i> <strong data-ko="중요:" data-en="Important:">중요:</strong> <span data-ko="거래 작업은 실제 API 키가 필요하며 신중하게 사용해야 합니다." data-en="Trading operations require real API keys and should be used with caution.">거래 작업은 실제 API 키가 필요하며 신중하게 사용해야 합니다.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3 data-ko="Q16: 모의 거래가 가능한가요?" data-en="Q16: Is paper trading available?">Q16: 모의 거래가 가능한가요?</h3>
+                            <i class="bi bi-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p data-ko="네, 모의투자 모드에서 모의 거래가 가능합니다:" data-en="Yes, use mock mode for paper trading:">네, 모의투자 모드에서 모의 거래가 가능합니다:</p>
+                                <div class="code-block">
+                                    <pre><code class="language-csharp">var client = await KiwoomRestApiClient.CreateAsync(appKey, secretKey, isMock: true);
+// 모든 주문이 시뮬레이션됩니다</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Error Handling -->
+                <section id="error-handling" class="faq-section">
+                    <h2><i class="bi bi-exclamation-triangle"></i> <span data-ko="오류 처리" data-en="Error Handling">오류 처리</span></h2>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3 data-ko="Q17: 일반적인 오류 코드는 무엇인가요?" data-en="Q17: What are common error codes?">Q17: 일반적인 오류 코드는 무엇인가요?</h3>
+                            <i class="bi bi-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <ul>
+                                    <li><code>OVERFLOW</code>: <span data-ko="요청 과다" data-en="Too many requests">요청 과다</span></li>
+                                    <li><code>NOT_EXIST</code>: <span data-ko="종목코드가 존재하지 않음" data-en="Stock code doesn't exist">종목코드가 존재하지 않음</span></li>
+                                    <li><code>INVALID_PARAMETER</code>: <span data-ko="유효하지 않은 API 파라미터" data-en="Invalid API parameters">유효하지 않은 API 파라미터</span></li>
+                                    <li><code>AUTH_EXPIRED</code>: <span data-ko="인증 만료" data-en="Authentication expired">인증 만료</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3 data-ko="Q19: 제한 속도에 도달하면 어떻게 하나요?" data-en="Q19: What should I do when I get rate limited?">Q19: 제한 속도에 도달하면 어떻게 하나요?</h3>
+                            <i class="bi bi-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p data-ko="지수 백오프를 구현하세요:" data-en="Implement exponential backoff:">지수 백오프를 구현하세요:</p>
+                                <div class="code-block">
+                                    <pre><code class="language-csharp">int retryCount = 0;
+int maxRetries = 3;
+
+while (retryCount < maxRetries) {
+    var result = await client.SomeApiCallAsync();
+    if (result.IsSuccess) break;
+
+    if (result.ErrorMessage?.Contains("OVERFLOW") == true) {
+        await Task.Delay(1000 * (int)Math.Pow(2, retryCount));
+        retryCount++;
+    }
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Troubleshooting -->
+                <section id="troubleshooting" class="faq-section">
+                    <h2><i class="bi bi-tools"></i> <span data-ko="문제 해결" data-en="Troubleshooting">문제 해결</span></h2>
+
+                    <div class="checklist">
+                        <h3 data-ko="도움을 요청하기 전 체크리스트:" data-en="Before seeking help, run through this checklist:">도움을 요청하기 전 체크리스트:</h3>
+
+                        <div class="checklist-item">
+                            <input type="checkbox" id="check1">
+                            <label for="check1" data-ko="API 키가 올바른지 확인" data-en="Verify your API keys are correct">API 키가 올바른지 확인</label>
+                        </div>
+
+                        <div class="checklist-item">
+                            <input type="checkbox" id="check2">
+                            <label for="check2" data-ko="올바른 환경(모의 vs 실거래)을 사용 중인지 확인" data-en="Check if you're using the correct environment (mock vs real)">올바른 환경(모의 vs 실거래)을 사용 중인지 확인</label>
+                        </div>
+
+                        <div class="checklist-item">
+                            <input type="checkbox" id="check3">
+                            <label for="check3" data-ko="인터넷 연결이 안정적인지 확인" data-en="Ensure your internet connection is stable">인터넷 연결이 안정적인지 확인</label>
+                        </div>
+
+                        <div class="checklist-item">
+                            <input type="checkbox" id="check4">
+                            <label for="check4" data-ko="종목코드가 유효한지 확인 (6자리 숫자)" data-en="Verify stock codes are valid (6 digits)">종목코드가 유효한지 확인 (6자리 숫자)</label>
+                        </div>
+
+                        <div class="checklist-item">
+                            <input type="checkbox" id="check5">
+                            <label for="check5" data-ko="제한 속도인지 확인 (요청 속도 늦추기)" data-en="Check for rate limiting (slow down requests)">제한 속도인지 확인 (요청 속도 늦추기)</label>
+                        </div>
+
+                        <div class="checklist-item">
+                            <input type="checkbox" id="check6">
+                            <label for="check6" data-ko="오류 메시지를 주의 깊게 검토" data-en="Review error messages carefully">오류 메시지를 주의 깊게 검토</label>
+                        </div>
+
+                        <div class="checklist-item">
+                            <input type="checkbox" id="check7">
+                            <label for="check7" data-ko="적절한 async/await 사용법을 확인" data-en="Ensure proper async/await usage">적절한 async/await 사용법을 확인</label>
+                        </div>
+
+                        <div class="checklist-item">
+                            <input type="checkbox" id="check8">
+                            <label for="check8" data-ko="클라이언트를 올바르게 해제했는지 확인" data-en="Dispose clients properly">클라이언트를 올바르게 해제했는지 확인</label>
+                        </div>
+                    </div>
+
+                    <div class="alert-tip">
+                        <i class="bi bi-lightbulb"></i> <strong data-ko="팁:" data-en="Pro Tip:">팁:</strong> <span data-ko="문제가 지속되면 최소한의 재현 가능한 예제를 만들어 지원 요청에 포함시켜 주세요." data-en="If you're still experiencing issues, try creating a minimal reproducible example and include it in your support request.">문제가 지속되면 최소한의 재현 가능한 예제를 만들어 지원 요청에 포함시켜 주세요.</span>
+                    </div>
+                </section>
+
+                <div class="text-center mt-5 mb-3">
+                    <p class="text-muted">
+                        <small data-ko="최종 업데이트: 2025년 10월" data-en="Last updated: October 2025">최종 업데이트: 2025년 10월</small><br>
+                        <small data-ko="찾으시는 정보가 없으신가요? GitHub에서 이슈를 열어주세요." data-en="Can't find what you're looking for? Open an issue on GitHub.">찾으시는 정보가 없으신가요? GitHub에서 이슈를 열어주세요.</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 KiwoomRestApi.Net Project. MIT Licensed.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <script>
+        // FAQ 토글 함수
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const wasActive = faqItem.classList.contains('active');
+
+            // 모든 FAQ 아이템 닫기
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // 현재 아이템이 활성화되지 않았다면 활성화
+            if (!wasActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        // 다국어 전환 함수
+        let currentLanguage = 'ko';
+
+        function toggleLanguage() {
+            currentLanguage = currentLanguage === 'ko' ? 'en' : 'ko';
+            updateLanguage(currentLanguage);
+        }
+
+        function updateLanguage(lang) {
+            // 모든 data-ko, data-en 속성을 가진 요소를 찾아 텍스트 업데이트
+            document.querySelectorAll('[data-ko]').forEach(element => {
+                const text = element.getAttribute(`data-${lang}`);
+                if (text) {
+                    element.textContent = text;
+                }
+            });
+
+            // 언어 토글 버튼 텍스트 업데이트
+            document.getElementById('current-lang').textContent = lang === 'ko' ? '한국어' : 'English';
+
+            // HTML lang 속성 업데이트
+            document.documentElement.lang = lang === 'ko' ? 'ko' : 'en';
+        }
+
+        // 부드러운 스크롤링
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.toc-nav .nav-link').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+
+                    if (targetSection) {
+                        const offsetTop = targetSection.offsetTop - 80;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+
+                        // 활성 링크 업데이트
+                        document.querySelectorAll('.toc-nav .nav-link').forEach(link => {
+                            link.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                    }
+                });
+            });
+
+            // 스크롤 위치에 따른 활성 링크 업데이트
+            window.addEventListener('scroll', () => {
+                const sections = document.querySelectorAll('.faq-section');
+                const navLinks = document.querySelectorAll('.toc-nav .nav-link');
+
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.clientHeight;
+
+                    if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // 첫 번째 FAQ 아이템 자동 열기
+            const firstFAQ = document.querySelector('.faq-item');
+            if (firstFAQ) {
+                firstFAQ.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>

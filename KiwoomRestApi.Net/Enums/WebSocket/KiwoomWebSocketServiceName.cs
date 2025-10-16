@@ -58,9 +58,14 @@ namespace KiwoomRestApi.Net.Enums.WebSocket
 		[EnumMember(Value = "0H")]
 		ExpectedTrade,
 		/// <summary>
-		/// 업종지수
+		/// 국제금환산가격
 		/// </summary>
-		[EnumMember(Value = "0J")]
+		[EnumMember(Value = "0I")]
+		InternationalGoldPrice,
+        /// <summary>
+        /// 업종지수
+        /// </summary>
+        [EnumMember(Value = "0J")]
 		IndustryIndex,
 		/// <summary>
 		/// 업종등락

@@ -1,4 +1,5 @@
-﻿using KiwoomRestApi.Net.Enums.Order;
+﻿using KiwoomRestApi.Net.Enums;
+using KiwoomRestApi.Net.Enums.Order;
 using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
@@ -94,5 +95,72 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 
 			return await _client.PostKiwoomRestApiAsync<KiwoomOrderCancelOrder>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
-	}
+
+        /// <summary>
+        /// KiwoomOrderType.Buy | kt50000 | 금현물 매수주문<br/>
+		/// KiwoomOrderType.Sell | kt50001 | 금현물 매도주문
+        /// </summary>
+        /// <param name="orderType"></param>
+        /// <param name="stockCode"></param>
+        /// <param name="orderQuantity"></param>
+        /// <param name="transactionType"></param>
+        /// <param name="orderPrice"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public async Task<KiwoomRestApiResponse<KiwoomOrderGoldSpotPlaceOrder>> GoldSpotPlaceOrderAsync(KiwoomOrderType orderType, KiwoomGoldSpotStockCode stockCode, decimal orderQuantity, KiwoomOrderGoldSpotTransactionType transactionType, decimal? orderPrice = null, CancellationToken cancellationToken = default)
+        {
+            string apiId = orderType == KiwoomOrderType.Buy ? "kt50000" : "kt50001";
+			var body = new HttpParameterMap()
+				.AddField("stk_cd", stockCode)
+				.AddField("ord_qty", orderQuantity)
+				.AddField("trde_tp", transactionType)
+				.AddField("ord_uv", orderPrice);
+
+            return await _client.PostKiwoomRestApiAsync<KiwoomOrderGoldSpotPlaceOrder>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// | kt50002 | 금현물 정정주문
+        /// </summary>
+        /// <param name="originalOrderId"></param>
+        /// <param name="stockCode"></param>
+        /// <param name="modifyQuantity"></param>
+        /// <param name="modifyPrice"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public async Task<KiwoomRestApiResponse<KiwoomOrderGoldSpotModifyOrder>> GoldSpotModifyOrderAsync(string originalOrderId, KiwoomGoldSpotStockCode stockCode, decimal modifyQuantity, decimal modifyPrice, CancellationToken cancellationToken = default)
+        {
+            const string apiId = "kt50002";
+			var body = new HttpParameterMap()
+				.AddField("orig_ord_no", originalOrderId)
+				.AddField("stk_cd", stockCode)
+				.AddField("mdfy_qty", modifyQuantity)
+				.AddField("mdfy_uv", modifyPrice);
+
+            return await _client.PostKiwoomRestApiAsync<KiwoomOrderGoldSpotModifyOrder>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// | kt50003 | 금현물 취소주문
+        /// </summary>
+        /// <param name="originalOrderId"></param>
+        /// <param name="stockCode"></param>
+        /// <param name="cancelQuantity"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public async Task<KiwoomRestApiResponse<KiwoomOrderGoldSpotCancelOrder>> GoldSpotCancelOrderAsync(string originalOrderId, KiwoomGoldSpotStockCode stockCode, decimal? cancelQuantity = null, CancellationToken cancellationToken = default)
+        {
+            const string apiId = "kt50003";
+
+            // 취소수량 입력하지 않으면 잔량 전부 취소
+            var _cancelQuantity = cancelQuantity ?? 0;
+
+            var body = new HttpParameterMap()
+                .AddField("orig_ord_no", originalOrderId)
+                .AddField("stk_cd", stockCode)
+                .AddField("cncl_qty", _cancelQuantity);
+
+            return await _client.PostKiwoomRestApiAsync<KiwoomOrderGoldSpotCancelOrder>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+        }
+    }
 }

@@ -14,6 +14,8 @@ namespace KiwoomRestApi.Net.Converters
 		private const string FormatDate = "yyyyMMdd";
 		/// <summary>날짜시간 형식 (yyyyMMddHHmmss)</summary>
 		private const string FormatDateTime = "yyyyMMddHHmmss";
+		/// <summary>시간 형식 (HHmmss)</summary>
+		private const string FormatTime = "HHmmss";
 
 		/// <summary>
 		/// JSON에서 읽은 날짜/시간 문자열을 DateTime으로 변환합니다.
@@ -38,22 +40,23 @@ namespace KiwoomRestApi.Net.Converters
 			{
 				return DateTime.MinValue;
 			}
-
 			// 날짜 형식 (yyyyMMdd) 파싱 시도
 			if (DateTime.TryParseExact(s, FormatDate, CultureInfo.InvariantCulture, DateTimeStyles.None, out var dtDate))
 			{
 				return dtDate;
 			}
-
 			// 날짜시간 형식 (yyyyMMddHHmmss) 파싱 시도
 			if (DateTime.TryParseExact(s, FormatDateTime, CultureInfo.InvariantCulture, DateTimeStyles.None, out var dtDateTime))
 			{
 				return dtDateTime;
 			}
-
+			// 시간 형식 (HHmmss) 파싱 시도 - 오늘 날짜와 결합
+			if (DateTime.TryParseExact(s, FormatTime, CultureInfo.InvariantCulture, DateTimeStyles.None, out var dtTime))
+			{
+				return DateTime.Today.Add(dtTime.TimeOfDay);
+			}
 			throw new JsonSerializationException($"Invalid date format: {s}");
 		}
-
 		/// <summary>
 		/// DateTime 값을 JSON으로 쓸 때 날짜 문자열로 변환합니다.
 		/// </summary>

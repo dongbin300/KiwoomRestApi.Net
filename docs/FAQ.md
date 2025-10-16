@@ -1,240 +1,362 @@
-# ❓ 자주 묻는 질문 (FAQ)
+# KiwoomRestApi.Net FAQ
 
-## 🔧 설치 및 설정
+## Table of Contents
+- [Getting Started](#getting-started)
+- [API Usage](#api-usage)
+- [Authentication](#authentication)
+- [Real-time Data](#real-time-data)
+- [Trading](#trading)
+- [Error Handling](#error-handling)
+- [Performance](#performance)
+- [Mock vs Real Trading](#mock-vs-real-trading)
 
-### Q: NuGet 패키지가 설치되지 않습니다.
-**A:** 다음 사항들을 확인해주세요:
-- .NET 6.0 이상 또는 .NET Standard 2.0 이상을 지원하는 프로젝트인지 확인
-- 프로젝트 파일의 `<TargetFramework>` 설정 확인
-- NuGet 소스가 올바르게 구성되어 있는지 확인
+---
 
-### Q: "App Key"와 "Secret Key"는 어디서 받나요?
-**A:** 키움증권 홈페이지에서 OpenAPI를 신청한 후 발급받을 수 있습니다:
-1. 키움증권 홈페이지 → 고객센터 → OpenAPI
-2. 신청서 작성 및 제출
-3. 승인 후 App Key, Secret Key 발급
+## Getting Started
 
-### Q: 모의투자용과 실거래용 키가 다른가요?
-**A:** 네, 모의투자용과 실거래용 키가 별도로 발급됩니다. 개발 시에는 반드시 모의투자용 키를 사용하세요.
+### Q1: What are the prerequisites for using KiwoomRestApi.Net?
+**A:** You need:
+- .NET 6.0 or higher
+- Kiwoom Securities account with API access
+- App Key and Secret Key from Kiwoom OpenAPI portal
+- Visual Studio 2022 or VS Code
 
-## 🔐 인증 관련
-
-### Q: "Token is null" 오류가 발생합니다.
-**A:** 다음을 확인해주세요:
-- App Key와 Secret Key가 정확한지 확인
-- 키움증권 OpenAPI 서비스가 정상 운영 중인지 확인
-- 네트워크 연결 상태 확인
-- 모의투자/실거래 설정이 키와 일치하는지 확인
-
-```csharp
-// 올바른 초기화 방법
-var client = await KiwoomRestApiClient.CreateAsync("your-app-key", "your-secret-key", isMock: true);
+### Q2: How do I install the library?
+**A:** Install via NuGet:
+```bash
+dotnet add package KiwoomRestApi.Net
+```
+Or via Package Manager Console:
+```
+Install-Package KiwoomRestApi.Net
 ```
 
-### Q: 토큰 유효기간이 얼마나 되나요?
-**A:** 액세스 토큰의 유효기간은 24시간입니다. 자동으로 갱신되지 않으므로 필요시 재발급받아야 합니다.
+### Q3: What's the difference between mock mode and real trading?
+**A:**
+- **Mock Mode**: Uses simulated data, no real transactions, free for testing
+- **Real Mode**: Live market data, actual trades occur, requires real account
 
-## 📈 데이터 조회
+---
 
-### Q: 종목코드는 어떻게 찾나요?
-**A:** 한국거래소나 키움증권 사이트에서 확인할 수 있습니다:
-- 삼성전자: 005930
-- SK하이닉스: 000660  
-- NAVER: 035420
-- 카카오: 035720
+## API Usage
 
-### Q: 조회할 수 있는 데이터 종류는?
-**A:** 다음과 같은 데이터를 조회할 수 있습니다:
-- 현재가, 호가, 체결가
-- 차트 데이터 (일봉, 분봉)
-- 계좌 잔고 및 보유종목
-- 주문 내역
-- 업종 정보, 테마 정보
-- 외국인/기관 매매 동향
-
-### Q: 실시간 데이터도 지원하나요?
-**A:** 네, WebSocket을 통한 실시간 데이터를 지원합니다:
-
+### Q4: How do I get stock information?
+**A:** Use the StockInfo client:
 ```csharp
-using KiwoomRestApi.Net.Clients;
+var stockInfo = await client.StockInfo.GetStockInfoAsync(
+    stockCode: "005930",
+    date: DateTime.Today,
+    marginLoanType: KiwoomStockInfoMarginLoanType.Loan
+);
+```
 
-var socketClient = await KiwoomSocketClient.CreateAsync(client.Token, isMock: true);
+### Q5: How do I handle pagination for large data sets?
+**A:** Check the `ContYn` and `NextKey` properties:
+```csharp
+do {
+    var result = await client.SomeApiCallAsync();
+    // Process result.Data
+    client.NextKey = result.NextKey;
+    client.ContYn = result.ContYn ? "Y" : "";
+} while (result.ContYn && !string.IsNullOrEmpty(result.NextKey));
+```
 
-// 실시간 주식체결 수신
-socketClient.OnRealtimeStockExecutionReceived += (message) => 
+### Q6: Can I make multiple API calls simultaneously?
+**A:** Yes, the library is fully async. However, be aware of Kiwoom's rate limits:
+```csharp
+var tasks = new[]
 {
-    Console.WriteLine($"체결가: {message.ElementAt(0).Values.CurrentPrice}원");
+    client.StockInfo.GetStockInfoAsync("005930", DateTime.Today),
+    client.StockInfo.GetStockInfoAsync("000660", DateTime.Today),
+    client.StockInfo.GetStockInfoAsync("035420", DateTime.Today)
 };
 
-// 실시간 주식체결 구독
-await socketClient.WebSocket.SubscribeAsync([KiwoomWebSocketServiceName.StockExecution], ["005930", "000660"]);
+var results = await Task.WhenAll(tasks);
 ```
 
-## 💰 계좌 및 주문
+---
 
-### Q: 모의계좌도 조회되나요?
-**A:** 네, 모의투자 모드에서는 모의계좌 정보를 조회할 수 있습니다.
+## Authentication
 
-### Q: 실제 주문도 가능한가요?
-**A:** 네, 실거래 모드에서는 실제 주문이 가능합니다. 단, 충분한 테스트 후 사용하시기 바랍니다.
+### Q7: How do I get API keys?
+**A:**
+1. Log in to Kiwoom's OpenAPI portal
+2. Register your application
+3. Generate App Key and Secret Key
+4. Choose between Mock or Real environment
 
+### Q8: Do I need to manually handle tokens?
+**A:** No, the library handles token management automatically:
 ```csharp
-// 매수 주문
-var buyOrderResult = await client.Order.PlaceOrderAsync(
-	KiwoomOrderType.Buy,                                    // 매수
-	KiwoomOrderDomesticStockExchangeType.KRX,               // 거래소
-	"005930",                                               // 삼성전자
-	10,                                                     // 주문수량
-	KiwoomOrderTradeType.Normal,                            // 지정가
-	80000);                                                 // 주문가격
-
-// 매도 주문
-var sellOrderResult = await client.Order.PlaceOrderAsync(
-	KiwoomOrderType.Sell,                                   // 매도
-	KiwoomOrderDomesticStockExchangeType.KRX,               // 거래소
-	"005930",                                               // 삼성전자
-	5,                                                      // 주문수량
-	KiwoomOrderTradeType.Market);                          // 시장가
-
-// 미체결 주문 조회
-var outstandingOrders = await client.Account.GetOutstandingOrdersAsync(
-	KiwoomAccountQueryType.All,
-	KiwoomAccountTradeType.All,
-	KiwoomAccountStockExchangeType.Unified);
-
-// 주문 수정
-var modifyResult = await client.Order.ModifyOrderAsync(
-	KiwoomOrderDomesticStockExchangeType.KRX,               // 거래소
-	"원주문번호",                                            // 원주문번호
-	"005930",                                               // 종목코드
-	8,                                                      // 수정수량
-	82000);                                                 // 수정가격
-
-// 주문 취소
-var cancelResult = await client.Order.CancelOrderAsync(
-	KiwoomOrderDomesticStockExchangeType.KRX,               // 거래소
-	"원주문번호",                                            // 원주문번호
-	"005930");                                              // 종목코드
+var client = await KiwoomRestApiClient.CreateAsync(appKey, secretKey, isMock);
+// Token is obtained and stored automatically
 ```
 
-## 🚫 제한사항 및 오류
-
-### Q: API 호출 제한이 있나요?
-**A:** 네, 키움증권 API에는 다음과 같은 제한이 있습니다:
-- 초당 호출 제한: 약 20회
-- 분당 호출 제한: 약 1,000회
-- 일일 호출 제한: 약 100,000회
-
-### Q: "Rate limit exceeded" 오류가 발생합니다.
-**A:** API 호출 제한을 초과했습니다. 다음 방법으로 해결하세요:
-- 호출 간격을 늘리기
-- 배치 처리로 한 번에 여러 데이터 조회
-- 캐싱을 통해 중복 호출 방지
-
+### Q9: What should I do if my token expires?
+**A:** The library automatically handles token refresh. If you encounter token issues:
 ```csharp
-// 호출 간격 조절 예제
-await Task.Delay(100); // 100ms 대기
-var orderBook = await client.MarketCondition.GetOrderBookAsync("005930");
+// Reinitialize the client
+await client.InitializeAsync();
 ```
 
-### Q: 특정 시간에만 API가 동작하나요?
-**A:** 네, 주식시장 운영시간과 연관이 있습니다:
-- 평일 09:00 ~ 15:30: 정상 서비스
-- 야간, 주말: 일부 데이터만 제공
-- 공휴일: 서비스 중단
+---
 
-## 🔧 기술적 문제
+## Real-time Data
 
-### Q: .NET Framework에서 사용할 수 있나요?
-**A:** .NET Standard 2.0을 지원하므로 .NET Framework 4.6.1 이상에서 사용 가능합니다.
-
-### Q: Xamarin이나 Unity에서 사용할 수 있나요?
-**A:** 네, .NET Standard 2.0 호환성으로 인해 대부분의 플랫폼에서 사용 가능합니다.
-
-### Q: 비동기 메서드만 있나요?
-**A:** 권장사항은 비동기 메서드이지만, 필요시 `.Result`를 사용할 수 있습니다:
-
+### Q10: How do I set up real-time data streaming?
+**A:** Use the WebSocket client:
 ```csharp
-// 비동기 (권장)
-var orderBook = await client.MarketCondition.GetOrderBookAsync("005930");
+var socketClient = await KiwoomSocketClient.CreateAsync(client.Token, isMock);
 
-// 동기 (권장하지 않음)  
-var orderBook = client.MarketCondition.GetOrderBookAsync("005930").Result;
+// Subscribe to real-time data
+await socketClient.WebSocket.SubscribeAsync(
+    serviceNames: [KiwoomWebSocketServiceName.StockExecution],
+    stockCodes: ["005930", "000660"]
+);
 ```
 
-### Q: 메모리 누수가 발생합니다.
-**A:** 반드시 리소스를 정리해주세요:
-
+### Q11: How do I handle real-time events?
+**A:** Subscribe to event handlers:
 ```csharp
-// using 문 사용 (권장)
-using var client = await KiwoomRestApiClient.CreateAsync("your-app-key", "your-secret-key");
-
-// 또는 명시적 해제
-var client = await KiwoomRestApiClient.CreateAsync("your-app-key", "your-secret-key");
-try { /* 작업 */ }
-finally { client.Dispose(); }
+socketClient.OnRealtimeStockTradeReceived += (data) => {
+    foreach (var item in data) {
+        Console.WriteLine($"{item.Values.CurrentPrice}");
+    }
+};
 ```
 
-## 🏗️ 개발 관련
-
-### Q: 의존성 주입(DI)을 사용할 수 있나요?
-**A:** 네, ASP.NET Core에서 쉽게 사용할 수 있습니다:
-
+### Q12: Can I subscribe to multiple stock codes at once?
+**A:** Yes, you can subscribe to up to 100 stock codes:
 ```csharp
-// Program.cs (DI 등록 방법은 실제 구현에 따라 다를 수 있음)
-services.AddSingleton<KiwoomRestApiClient>(provider => 
-{
-    return KiwoomRestApiClient.CreateAsync("your-app-key", "your-secret-key").GetAwaiter().GetResult();
-});
+var stockCodes = new[] { "005930", "000660", "035420", /* ... more stocks */ };
+await socketClient.WebSocket.SubscribeAsync(
+    serviceNames: [KiwoomWebSocketServiceName.StockExecution],
+    stockCodes: stockCodes
+);
 ```
 
-### Q: 설정을 외부 파일로 관리할 수 있나요?
-**A:** 네, appsettings.json을 활용할 수 있습니다:
+---
 
-```json
-{
-  "KiwoomApi": {
-    "AppKey": "your-app-key",
-    "SecretKey": "your-secret-key",
-    "IsMock": true
-  }
+## Trading
+
+### Q13: How do I place a buy order?
+**A:** Use the Order client:
+```csharp
+var order = await client.Order.PlaceOrderAsync(
+    orderType: KiwoomOrderType.Buy,
+    exchangeType: KiwoomOrderDomesticStockExchangeType.Krx,
+    stockCode: "005930",
+    quantity: 10,
+    transactionType: KiwoomOrderTransactionType.Market
+);
+```
+
+### Q14: How do I cancel or modify an order?
+**A:** Use the appropriate methods:
+```csharp
+// Cancel
+await client.Order.CancelOrderAsync(exchangeType, orderNumber, stockCode, quantity);
+
+// Modify
+await client.Order.ModifyOrderAsync(exchangeType, orderNumber, stockCode, newQuantity, newPrice);
+```
+
+### Q15: How do I check my order status?
+**A:** Use the account client:
+```csharp
+var unfilledOrders = await client.Account.GetUnfilledOrdersAsync(
+    queryType: KiwoomAccountQueryType.All,
+    transactionType: KiwoomAccountTransactionType.All,
+    stockExchangeType: KiwoomAccountStockExchangeType.Unified
+);
+```
+
+### Q16: Is paper trading available?
+**A:** Yes, use mock mode for paper trading:
+```csharp
+var client = await KiwoomRestApiClient.CreateAsync(appKey, secretKey, isMock: true);
+// All orders will be simulated
+```
+
+---
+
+## Error Handling
+
+### Q17: What are common error codes?
+**A:**
+- `OVERFLOW`: Too many requests
+- `NOT_EXIST`: Stock code doesn't exist
+- `INVALID_PARAMETER`: Invalid API parameters
+- `AUTH_EXPIRED`: Authentication expired
+
+### Q18: How do I handle API errors?
+**A:** Always check the response:
+```csharp
+var result = await client.SomeApiCallAsync();
+if (!result.IsSuccess) {
+    Console.WriteLine($"Error: {result.ErrorMessage}");
+    // Handle error appropriately
 }
 ```
 
+### Q19: What should I do when I get rate limited?
+**A:** Implement exponential backoff:
 ```csharp
-// Microsoft.Extensions.Configuration.Json 패키지 설치 후
-services.Configure<KiwoomConfiguration>(configuration.GetSection("KiwoomApi"));
+int retryCount = 0;
+int maxRetries = 3;
+
+while (retryCount < maxRetries) {
+    var result = await client.SomeApiCallAsync();
+    if (result.IsSuccess) break;
+
+    if (result.ErrorMessage?.Contains("OVERFLOW") == true) {
+        await Task.Delay(1000 * (int)Math.Pow(2, retryCount));
+        retryCount++;
+    }
+}
 ```
 
-### Q: 로깅은 어떻게 설정하나요?
-**A:** .NET의 표준 로깅 인터페이스를 지원합니다:
+---
 
+## Performance
+
+### Q20: How can I improve performance?
+**A:**
+- Use async/await properly
+- Implement caching for frequently accessed data
+- Use rate limiting to avoid API limits
+- Batch requests where possible
+- Dispose clients properly
+
+### Q21: Is there a built-in caching mechanism?
+**A:** No, but you can implement one easily:
 ```csharp
-services.AddLogging();
-services.AddSingleton<KiwoomRestApiClient>(provider => 
+public class SimpleCache
 {
-    return KiwoomRestApiClient.CreateAsync("your-app-key", "your-secret-key").GetAwaiter().GetResult();
-});
+    private readonly Dictionary<string, (DateTime timestamp, object data)> _cache = new();
+
+    public async Task<T> GetOrCreateAsync<T>(string key, Func<Task<T>> factory, TimeSpan expiry)
+    {
+        if (_cache.TryGetValue(key, out var cached) &&
+            DateTime.Now - cached.timestamp < expiry) {
+            return (T)cached.data;
+        }
+
+        var data = await factory();
+        _cache[key] = (DateTime.Now, data);
+        return data;
+    }
+}
 ```
 
-## 🆘 문제 해결
+### Q22: How do I properly dispose of clients?
+**A:** Use using statements or call Dispose:
+```csharp
+// Using statement (recommended)
+using var client = await KiwoomRestApiClient.CreateAsync(appKey, secretKey, isMock);
 
-### Q: 여전히 문제가 해결되지 않습니다.
-**A:** 다음 순서로 도움을 요청하세요:
+// Manual disposal
+var client = await KiwoomRestApiClient.CreateAsync(appKey, secretKey, isMock);
+try {
+    // Use client
+} finally {
+    client.Dispose();
+}
+```
 
-1. **GitHub Issues**: [버그 리포트](https://github.com/dongbin300/KiwoomRestApi.Net/issues)
-2. **E-MAIL**: dongbin300@gmail.com
+---
 
-### 이슈 보고시 포함할 정보:
-- .NET 버전
-- KiwoomRestApi.Net 버전
-- 오류 메시지 전체
-- 재현 가능한 최소 코드
-- 운영체제 정보
+## Mock vs Real Trading
 
-## 📚 더 많은 정보
+### Q23: Which features work in mock mode?
+**A:** Most features work in mock mode:
+- Stock information lookup
+- Market data retrieval
+- Chart data
+- Ranking information
+- Real-time data streaming
+- Paper trading (simulated orders)
 
-- [빠른 시작 가이드](QuickStart.md)
-- [키움증권 공식 API 문서](https://openapi.kiwoom.com/guide/apiguide)
-- [API 문서](https://dongbin300.github.io/KiwoomRestApi.Net/)
-- [GitHub 리포지토리](https://github.com/dongbin300/KiwoomRestApi.Net)
+### Q24: What doesn't work in mock mode?
+**A:** Some account-specific features:
+- Real account balances
+- Actual order execution
+- Real profit/loss data
+- Some regulatory reporting features
+
+### Q25: How do I switch from mock to real trading?
+**A:** Just change the `isMock` parameter:
+```csharp
+// Mock mode
+var mockClient = await KiwoomRestApiClient.CreateAsync(appKey, secretKey, isMock: true);
+
+// Real mode
+var realClient = await KiwoomRestApiClient.CreateAsync(appKey, secretKey, isMock: false);
+```
+
+---
+
+## Additional Questions
+
+### Q26: Can I use this in a background service?
+**A:** Yes, the library is designed for background services:
+```csharp
+public class KiwoomBackgroundService : BackgroundService
+{
+    private readonly KiwoomRestApiClient _client;
+
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    {
+        while (!stoppingToken.IsCancellationRequested)
+        {
+            // Your logic here
+            await Task.Delay(TimeSpan.FromMinutes(1), stoppingToken);
+        }
+    }
+}
+```
+
+### Q27: How do I handle WebSocket disconnections?
+**A:** Implement reconnection logic:
+```csharp
+socketClient.OnMessageReceived += async (message) => {
+    if (message.ServiceName == "SYSTEM" && message.ReturnCode != 0) {
+        // Handle disconnection
+        await ReconnectAsync();
+    }
+};
+
+async Task ReconnectAsync() {
+    try {
+        await socketClient.DisconnectAsync();
+        socketClient = await KiwoomSocketClient.CreateAsync(client.Token, isMock);
+        // Resubscribe to previous subscriptions
+    } catch (Exception ex) {
+        Console.WriteLine($"Reconnection failed: {ex.Message}");
+    }
+}
+```
+
+### Q28: Where can I get more help?
+**A:**
+- Check the [API Reference](api-reference.html)
+- Review the [Tutorial](tutorial.html)
+- Open an issue on the GitHub repository
+- Join our community discussions
+
+---
+
+## Troubleshooting Checklist
+
+- [ ] Verify your API keys are correct
+- [ ] Check if you're using the correct environment (mock vs real)
+- [ ] Ensure your internet connection is stable
+- [ ] Verify stock codes are valid (6 digits)
+- [ ] Check for rate limiting (slow down requests)
+- [ ] Review error messages carefully
+- [ ] Ensure proper async/await usage
+- [ ] Dispose clients properly
+
+---
+
+*Last updated: October 2025*

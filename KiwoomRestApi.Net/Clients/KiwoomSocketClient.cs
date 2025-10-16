@@ -69,7 +69,8 @@ namespace KiwoomRestApi.Net.Clients
 		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeDailyBroker>>>? OnRealtimeDailyBrokerReceived;
 		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeEtfNav>>>? OnRealtimeEtfNavReceived;
 		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeExpectedTrade>>>? OnRealtimeExpectedTradeReceived;
-		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeIndustryIndex>>>? OnRealtimeIndustryIndexReceived;
+		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeInternationalGoldPrice>>>? OnRealtimeInternationalGoldPriceReceived;
+        public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeIndustryIndex>>>? OnRealtimeIndustryIndexReceived;
 		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeIndustryChange>>>? OnRealtimeIndustryChangeReceived;
 		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeStockInfo>>>? OnRealtimeStockInfoReceived;
 		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeElwTheoreticalPrice>>>? OnRealtimeElwTheoreticalPriceReceived;
@@ -369,7 +370,15 @@ namespace KiwoomRestApi.Net.Clients
 						}
 						break;
 
-					case "0J":
+                    case "0I":
+                        {
+                            var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage<KiwoomWebSocketRealtimeInternationalGoldPrice>>(message)?.Data;
+                            if (data != null)
+                                OnRealtimeInternationalGoldPriceReceived?.Invoke(data);
+                        }
+                        break;
+
+                    case "0J":
 						{
 							var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage<KiwoomWebSocketRealtimeIndustryIndex>>(message)?.Data;
 							if (data != null)

@@ -4,8 +4,10 @@ using Newtonsoft.Json;
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -60,8 +62,14 @@ namespace KiwoomRestApi.Net.Clients
 		public async Task<HttpResponseWrapper<T>> PostAsync<T>(string endpoint, IDictionary<string, string>? headers = null, IDictionary<string, string>? body = null, CancellationToken cancellationToken = default)
 		{
 			using var request = CreateRequest(HttpMethod.Post, endpoint, headers, body);
+
+#if DEBUG
+			Debug.WriteLine(">>> Request");
+			Debug.WriteLine(request);
+#endif
+
 			using var response = await Client.SendAsync(request, cancellationToken).ConfigureAwait(false);
-			return await CreateResponseWrapper<T>(response).ConfigureAwait(false);
+            return await CreateResponseWrapper<T>(response).ConfigureAwait(false);
 		}
 
 		private static HttpRequestMessage CreateRequest(HttpMethod method, string endpoint, IDictionary<string, string>? headers, IDictionary<string, string>? body = null)
@@ -69,7 +77,7 @@ namespace KiwoomRestApi.Net.Clients
 			var request = new HttpRequestMessage(method, endpoint);
 			AddHeaders(request, headers);
 
-			if (method == HttpMethod.Post && body != null && body.Count > 0)
+			if (method == HttpMethod.Post && body != null)
 			{
 				string jsonBody = JsonConvert.SerializeObject(body);
 				request.Content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
@@ -96,19 +104,25 @@ namespace KiwoomRestApi.Net.Clients
 			foreach (var header in response.Content.Headers)
 				wrapper.Headers[header.Key] = header.Value;
 
-			string respString = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-			if (!string.IsNullOrWhiteSpace(respString))
+			string responseString = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            if (!string.IsNullOrWhiteSpace(responseString))
 			{
 				try
 				{
-					wrapper.Body = JsonConvert.DeserializeObject<T>(respString);
+					wrapper.Body = JsonConvert.DeserializeObject<T>(responseString);
 				}
 				catch
 				{
 					wrapper.Body = default;
 				}
 			}
-			return wrapper;
+
+#if DEBUG
+            Debug.WriteLine(">>> Response");
+            Debug.WriteLine(wrapper.Body);
+#endif
+
+            return wrapper;
 		}
 	}
 }

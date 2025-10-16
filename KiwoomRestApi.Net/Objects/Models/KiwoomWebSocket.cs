@@ -2054,7 +2054,31 @@ namespace KiwoomRestApi.Net.Objects.Models
 		public string? ChangeSign;
 	}
 
-	public record KiwoomWebSocketRealtimeIndustryIndex
+    public record KiwoomWebSocketRealtimeInternationalGoldPrice
+    {
+        /// <summary>
+        /// 현재가 (10)
+        /// </summary>
+        [JsonProperty("10")]
+        public KiwoomDecimal? CurrentPrice;
+        /// <summary>
+        /// 전일대비 (11)
+        /// </summary>
+        [JsonProperty("11")]
+        public KiwoomDecimal? Change;
+        /// <summary>
+        /// 등락율 (12)
+        /// </summary>
+        [JsonProperty("12")]
+        public KiwoomDecimal? ChangeRate;
+        /// <summary>
+        /// 전일대비기호 (25)
+        /// </summary>
+        [JsonProperty("25")]
+        public string? ChangeSign;
+    }
+
+    public record KiwoomWebSocketRealtimeIndustryIndex
 	{
 		/// <summary>
 		/// 체결시간 (20)
