@@ -1,0 +1,803 @@
+<!-- Missing APIs Documentation -->
+<section id="missing-apis" class="api-section">
+    <h2><i class="bi bi-plus-circle"></i> Additional APIs (Not Previously Documented)</h2>
+
+    <!-- Stock Info APIs -->
+    <h3>Stock Information APIs</h3>
+
+    <div class="card api-method-card">
+        <div class="card-header">
+            <h5 class="card-title">
+                <span class="api-method">POST</span>
+                GetCreditTransactionTrends
+                <span class="badge bg-primary ms-2">ka10013</span>
+            </h5>
+        </div>
+        <div class="card-body">
+            <h6>신용매매동향요청 / Credit Transaction Trends</h6>
+
+            <div class="api-code">
+                <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomStockInfoGetCreditTransactionTrends&gt;&gt; GetCreditTransactionTrendsAsync(string stockCode, DateTime date, KiwoomStockInfoMarginLoanType marginLoanType, CancellationToken cancellationToken = default)</code>
+            </div>
+
+            <table class="table param-table table-hover">
+                <thead>
+                    <tr>
+                        <th>파라미터</th>
+                        <th>타입</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>stockCode</code></td>
+                        <td>string</td>
+                        <td>종목 코드</td>
+                    </tr>
+                    <tr>
+                        <td><code>date</code></td>
+                        <td>DateTime</td>
+                        <td>조회 일자</td>
+                    </tr>
+                    <tr>
+                        <td><code>marginLoanType</code></td>
+                        <td>KiwoomStockInfoMarginLoanType</td>
+                        <td>신용대출 유형</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card api-method-card">
+        <div class="card-header">
+            <h5 class="card-title">
+                <span class="api-method">POST</span>
+                GetDailyTransactionDetails
+                <span class="badge bg-primary ms-2">ka10015</span>
+            </h5>
+        </div>
+        <div class="card-body">
+            <h6>일별거래상세요청 / Daily Transaction Details</h6>
+
+            <div class="api-code">
+                <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomStockInfoGetDailyTransactionDetails&gt;&gt; GetDailyTransactionDetailsAsync(string stockCode, DateTime startDate, CancellationToken cancellationToken = default)</code>
+            </div>
+
+            <table class="table param-table table-hover">
+                <thead>
+                    <tr>
+                        <th>파라미터</th>
+                        <th>타입</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>stockCode</code></td>
+                        <td>string</td>
+                        <td>종목 코드</td>
+                    </tr>
+                    <tr>
+                        <td><code>startDate</code></td>
+                        <td>DateTime</td>
+                        <td>시작 일자</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card api-method-card">
+        <div class="card-header">
+            <h5 class="card-title">
+                <span class="api-method">POST</span>
+                GetVolumeUpdates
+                <span class="badge bg-primary ms-2">ka10024</span>
+            </h5>
+        </div>
+        <div class="card-body">
+            <h6>거래량갱신요청 / Volume Updates</h6>
+
+            <div class="api-code">
+                <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomStockInfoGetVolumeUpdates&gt;&gt; GetVolumeUpdatesAsync(KiwoomStockInfoMarketType marketType, int cycleDays, decimal minVolume, KiwoomStockInfoStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)</code>
+            </div>
+
+            <table class="table param-table table-hover">
+                <thead>
+                    <tr>
+                        <th>파라미터</th>
+                        <th>타입</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>marketType</code></td>
+                        <td>KiwoomStockInfoMarketType</td>
+                        <td>시장 구분</td>
+                    </tr>
+                    <tr>
+                        <td><code>cycleDays</code></td>
+                        <td>int</td>
+                        <td>주기 일자</td>
+                    </tr>
+                    <tr>
+                        <td><code>minVolume</code></td>
+                        <td>decimal</td>
+                        <td>최소 거래량</td>
+                    </tr>
+                    <tr>
+                        <td><code>stockExchangeType</code></td>
+                        <td>KiwoomStockInfoStockExchangeType</td>
+                        <td>거래소 구분</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card api-method-card">
+        <div class="card-header">
+            <h5 class="card-title">
+                <span class="api-method">POST</span>
+                GetPriceConcentrations
+                <span class="badge bg-primary ms-2">ka10025</span>
+            </h5>
+        </div>
+        <div class="card-body">
+            <h6>매물대집중요청 / Price Concentrations</h6>
+
+            <div class="api-code">
+                <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomStockInfoGetPriceConcentrations&gt;&gt; GetPriceConcentrationsAsync(KiwoomStockInfoMarketType marketType, decimal propertyConcentrationRate, bool isIncludeCurrentPriceEntry, int propertyCount, int cycleDays, KiwoomStockInfoStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)</code>
+            </div>
+
+            <table class="table param-table table-hover">
+                <thead>
+                    <tr>
+                        <th>파라미터</th>
+                        <th>타입</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>marketType</code></td>
+                        <td>KiwoomStockInfoMarketType</td>
+                        <td>시장 구분</td>
+                    </tr>
+                    <tr>
+                        <td><code>propertyConcentrationRate</code></td>
+                        <td>decimal</td>
+                        <td>매물대 집중율</td>
+                    </tr>
+                    <tr>
+                        <td><code>isIncludeCurrentPriceEntry</code></td>
+                        <td>bool</td>
+                        <td>현재가 포함 여부</td>
+                    </tr>
+                    <tr>
+                        <td><code>propertyCount</code></td>
+                        <td>int</td>
+                        <td>매물대 개수</td>
+                    </tr>
+                    <tr>
+                        <td><code>cycleDays</code></td>
+                        <td>int</td>
+                        <td>주기 일자</td>
+                    </tr>
+                    <tr>
+                        <td><code>stockExchangeType</code></td>
+                        <td>KiwoomStockInfoStockExchangeType</td>
+                        <td>거래소 구분</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card api-method-card">
+        <div class="card-header">
+            <h5 class="card-title">
+                <span class="api-method">POST</span>
+                GetHighLowPers
+                <span class="badge bg-primary ms-2">ka10026</span>
+            </h5>
+        </div>
+        <div class="card-body">
+            <h6>고저PER요청 / High Low PER</h6>
+
+            <div class="api-code">
+                <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomStockInfoGetHighLowPers&gt;&gt; GetHighLowPersAsync(KiwoomStockInfoPerType perType, KiwoomStockInfoStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)</code>
+            </div>
+
+            <table class="table param-table table-hover">
+                <thead>
+                    <tr>
+                        <th>파라미터</th>
+                        <th>타입</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>perType</code></td>
+                        <td>KiwoomStockInfoPerType</td>
+                        <td>PER 구분</td>
+                    </tr>
+                    <tr>
+                        <td><code>stockExchangeType</code></td>
+                        <td>KiwoomStockInfoStockExchangeType</td>
+                        <td>거래소 구분</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Ranking Info APIs -->
+    <h3>Ranking Information APIs</h3>
+
+    <div class="card api-method-card">
+        <div class="card-header">
+            <h5 class="card-title">
+                <span class="api-method">POST</span>
+                GetOrderBookTops
+                <span class="badge bg-primary ms-2">ka10020</span>
+            </h5>
+        </div>
+        <div class="card-body">
+            <h6>호가잔량상위요청 / Order Book Tops</h6>
+
+            <div class="api-code">
+                <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomRankingInfoGetOrderBookTops&gt;&gt; GetOrderBookTopsAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoSortType sortType, decimal minVolume, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoCreditCondition creditCondition, KiwoomRankingInfoStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)</code>
+            </div>
+
+            <table class="table param-table table-hover">
+                <thead>
+                    <tr>
+                        <th>파라미터</th>
+                        <th>타입</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>marketType</code></td>
+                        <td>KiwoomRankingInfoMarketType</td>
+                        <td>시장 구분</td>
+                    </tr>
+                    <tr>
+                        <td><code>sortType</code></td>
+                        <td>KiwoomRankingInfoSortType</td>
+                        <td>정렬 구분</td>
+                    </tr>
+                    <tr>
+                        <td><code>minVolume</code></td>
+                        <td>decimal</td>
+                        <td>최소 거래량</td>
+                    </tr>
+                    <tr>
+                        <td><code>stockCondition</code></td>
+                        <td>KiwoomRankingInfoStockCondition</td>
+                        <td>종목 조건</td>
+                    </tr>
+                    <tr>
+                        <td><code>creditCondition</code></td>
+                        <td>KiwoomRankingInfoCreditCondition</td>
+                        <td>신용 조건</td>
+                    </tr>
+                    <tr>
+                        <td><code>stockExchangeType</code></td>
+                        <td>KiwoomRankingInfoStockExchangeType</td>
+                        <td>거래소 구분</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card api-method-card">
+        <div class="card-header">
+            <h5 class="card-title">
+                <span class="api-method">POST</span>
+                GetOrderBookSpikes
+                <span class="badge bg-primary ms-2">ka10021</span>
+            </h5>
+        </div>
+        <div class="card-body">
+            <h6>호가잔량급증요청 / Order Book Spikes</h6>
+
+            <div class="api-code">
+                <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomRankingInfoGetOrderBookSpikes&gt;&gt; GetOrderBookSpikesAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoTransactionType transactionType, KiwoomRankingInfoSpikeSortType sortType, decimal minVolume, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoStockExchangeType stockExchangeType, int timeMinute, CancellationToken cancellationToken = default)</code>
+            </div>
+
+            <table class="table param-table table-hover">
+                <thead>
+                    <tr>
+                        <th>파라미터</th>
+                        <th>타입</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>marketType</code></td>
+                        <td>KiwoomRankingInfoMarketType</td>
+                        <td>시장 구분</td>
+                    </tr>
+                    <tr>
+                        <td><code>transactionType</code></td>
+                        <td>KiwoomRankingInfoTransactionType</td>
+                        <td>거래 구분</td>
+                    </tr>
+                    <tr>
+                        <td><code>sortType</code></td>
+                        <td>KiwoomRankingInfoSpikeSortType</td>
+                        <td>정렬 구분</td>
+                    </tr>
+                    <tr>
+                        <td><code>minVolume</code></td>
+                        <td>decimal</td>
+                        <td>최소 거래량</td>
+                    </tr>
+                    <tr>
+                        <td><code>stockCondition</code></td>
+                        <td>KiwoomRankingInfoStockCondition</td>
+                        <td>종목 조건</td>
+                    </tr>
+                    <tr>
+                        <td><code>stockExchangeType</code></td>
+                        <td>KiwoomRankingInfoStockExchangeType</td>
+                        <td>거래소 구분</td>
+                    </tr>
+                    <tr>
+                        <td><code>timeMinute</code></td>
+                        <td>int</td>
+                        <td>시간(분)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card api-method-card">
+        <div class="card-header">
+            <h5 class="card-title">
+                <span class="api-method">POST</span>
+                GetRemainQuantityRateSpikes
+                <span class="badge bg-primary ms-2">ka10022</span>
+            </h5>
+        </div>
+        <div class="card-body">
+            <h6>잔량율급증요청 / Remain Quantity Rate Spikes</h6>
+
+            <div class="api-code">
+                <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomRankingInfoGetRemainQuantityRateSpikes&gt;&gt; GetRemainQuantityRateSpikesAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoRateType rateType, decimal minVolume, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoStockExchangeType stockExchangeType, int timeMinute, CancellationToken cancellationToken = default)</code>
+            </div>
+
+            <table class="table param-table table-hover">
+                <thead>
+                    <tr>
+                        <th>파라미터</th>
+                        <th>타입</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>marketType</code></td>
+                        <td>KiwoomRankingInfoMarketType</td>
+                        <td>시장 구분</td>
+                    </tr>
+                    <tr>
+                        <td><code>rateType</code></td>
+                        <td>KiwoomRankingInfoRateType</td>
+                        <td>비율 구분</td>
+                    </tr>
+                    <tr>
+                        <td><code>minVolume</code></td>
+                        <td>decimal</td>
+                        <td>최소 거래량</td>
+                    </tr>
+                    <tr>
+                        <td><code>stockCondition</code></td>
+                        <td>KiwoomRankingInfoStockCondition</td>
+                        <td>종목 조건</td>
+                    </tr>
+                    <tr>
+                        <td><code>stockExchangeType</code></td>
+                        <td>KiwoomRankingInfoStockExchangeType</td>
+                        <td>거래소 구분</td>
+                    </tr>
+                    <tr>
+                        <td><code>timeMinute</code></td>
+                        <td>int</td>
+                        <td>시간(분)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card api-method-card">
+        <div class="card-header">
+            <h5 class="card-title">
+                <span class="api-method">POST</span>
+                GetVolumeSpikes
+                <span class="badge bg-primary ms-2">ka10023</span>
+            </h5>
+        </div>
+        <div class="card-body">
+            <h6>거래량급증요청 / Volume Spikes</h6>
+
+            <div class="api-code">
+                <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomRankingInfoGetVolumeSpikes&gt;&gt; GetVolumeSpikesAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoSpikeSortType sortType, KiwoomRankingInfoTimeType timeType, decimal minVolume, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoPriceType priceType, KiwoomRankingInfoStockExchangeType stockExchangeType, int timeMinute, CancellationToken cancellationToken = default)</code>
+            </div>
+
+            <table class="table param-table table-hover">
+                <thead>
+                    <tr>
+                        <th>파라미터</th>
+                        <th>타입</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>marketType</code></td>
+                        <td>KiwoomRankingInfoMarketType</td>
+                        <td>시장 구분</td>
+                    </tr>
+                    <tr>
+                        <td><code>sortType</code></td>
+                        <td>KiwoomRankingInfoSpikeSortType</td>
+                        <td>정렬 구분</td>
+                    </tr>
+                    <tr>
+                        <td><code>timeType</code></td>
+                        <td>KiwoomRankingInfoTimeType</td>
+                        <td>시간 구분</td>
+                    </tr>
+                    <tr>
+                        <td><code>minVolume</code></td>
+                        <td>decimal</td>
+                        <td>최소 거래량</td>
+                    </tr>
+                    <tr>
+                        <td><code>stockCondition</code></td>
+                        <td>KiwoomRankingInfoStockCondition</td>
+                        <td>종목 조건</td>
+                    </tr>
+                    <tr>
+                        <td><code>priceType</code></td>
+                        <td>KiwoomRankingInfoPriceType</td>
+                        <td>가격 구분</td>
+                    </tr>
+                    <tr>
+                        <td><code>stockExchangeType</code></td>
+                        <td>KiwoomRankingInfoStockExchangeType</td>
+                        <td>거래소 구분</td>
+                    </tr>
+                    <tr>
+                        <td><code>timeMinute</code></td>
+                        <td>int</td>
+                        <td>시간(분)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card api-method-card">
+        <div class="card-header">
+            <h5 class="card-title">
+                <span class="api-method">POST</span>
+                GetChangeRateTops
+                <span class="badge bg-primary ms-2">ka10027</span>
+            </h5>
+        </div>
+        <div class="card-body">
+            <h6>전일대비등락률상위요청 / Change Rate Tops</h6>
+
+            <div class="api-code">
+                <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomRankingInfoGetChangeRateTops&gt;&gt; GetChangeRateTopsAsync(KiwoomRankingInfoMarketType marketType, KiwoomRankingInfoChangeSortType sortType, decimal minVolume, KiwoomRankingInfoStockCondition stockCondition, KiwoomRankingInfoCreditCondition creditCondition, bool isIncludeUpDown, KiwoomRankingInfoPriceCondition priceCondition, decimal minTransactionAmount, KiwoomRankingInfoStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)</code>
+            </div>
+
+            <table class="table param-table table-hover">
+                <thead>
+                    <tr>
+                        <th>파라미터</th>
+                        <th>타입</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>marketType</code></td>
+                        <td>KiwoomRankingInfoMarketType</td>
+                        <td>시장 구분</td>
+                    </tr>
+                    <tr>
+                        <td><code>sortType</code></td>
+                        <td>KiwoomRankingInfoChangeSortType</td>
+                        <td>정렬 구분</td>
+                    </tr>
+                    <tr>
+                        <td><code>minVolume</code></td>
+                        <td>decimal</td>
+                        <td>최소 거래량</td>
+                    </tr>
+                    <tr>
+                        <td><code>stockCondition</code></td>
+                        <td>KiwoomRankingInfoStockCondition</td>
+                        <td>종목 조건</td>
+                    </tr>
+                    <tr>
+                        <td><code>creditCondition</code></td>
+                        <td>KiwoomRankingInfoCreditCondition</td>
+                        <td>신용 조건</td>
+                    </tr>
+                    <tr>
+                        <td><code>isIncludeUpDown</code></td>
+                        <td>bool</td>
+                        <td>상승하락 포함 여부</td>
+                    </tr>
+                    <tr>
+                        <td><code>priceCondition</code></td>
+                        <td>KiwoomRankingInfoPriceCondition</td>
+                        <td>가격 조건</td>
+                    </tr>
+                    <tr>
+                        <td><code>minTransactionAmount</code></td>
+                        <td>decimal</td>
+                        <td>최소 거래대금</td>
+                    </tr>
+                    <tr>
+                        <td><code>stockExchangeType</code></td>
+                        <td>KiwoomRankingInfoStockExchangeType</td>
+                        <td>거래소 구분</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Order APIs -->
+    <h3>Additional Order APIs</h3>
+
+    <div class="card api-method-card">
+        <div class="card-header">
+            <h5 class="card-title">
+                <span class="api-method">POST</span>
+                GetCreditOrderLimits
+                <span class="badge bg-primary ms-2">kt10007</span>
+            </h5>
+        </div>
+        <div class="card-body">
+            <h6>신용주문한도조회 / Credit Order Limits</h6>
+
+            <div class="api-code">
+                <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomOrderGetCreditOrderLimits&gt;&gt; GetCreditOrderLimitsAsync(KiwoomOrderDomesticStockExchangeType domesticStockExchangeType, CancellationToken cancellationToken = default)</code>
+            </div>
+
+            <table class="table param-table table-hover">
+                <thead>
+                    <tr>
+                        <th>파라미터</th>
+                        <th>타입</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>domesticStockExchangeType</code></td>
+                        <td>KiwoomOrderDomesticStockExchangeType</td>
+                        <td>국내 주식 거래소 구분</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card api-method-card">
+        <div class="card-header">
+            <h5 class="card-title">
+                <span class="api-method">POST</span>
+                GetAvailableRealTimeOrderQuantity
+                <span class="badge bg-primary ms-2">kt10008</span>
+            </h5>
+        </div>
+        <div class="card-body">
+            <h6>실시간주문가능수량조회 / Available Real Time Order Quantity</h6>
+
+            <div class="api-code">
+                <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomOrderGetAvailableRealTimeOrderQuantity&gt;&gt; GetAvailableRealTimeOrderQuantityAsync(string stockCode, KiwoomOrderDomesticStockExchangeType domesticStockExchangeType, CancellationToken cancellationToken = default)</code>
+            </div>
+
+            <table class="table param-table table-hover">
+                <thead>
+                    <tr>
+                        <th>파라미터</th>
+                        <th>타입</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>stockCode</code></td>
+                        <td>string</td>
+                        <td>종목 코드</td>
+                    </tr>
+                    <tr>
+                        <td><code>domesticStockExchangeType</code></td>
+                        <td>KiwoomOrderDomesticStockExchangeType</td>
+                        <td>국내 주식 거래소 구분</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card api-method-card">
+        <div class="card-header">
+            <h5 class="card-title">
+                <span class="api-method">POST</span>
+                GetOrderIntradayPossibleQuantity
+                <span class="badge bg-primary ms-2">kt10009</span>
+            </h5>
+        </div>
+        <div class="card-body">
+            <h6>주문당일가능수량조회 / Order Intraday Possible Quantity</h6>
+
+            <div class="api-code">
+                <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomOrderGetOrderIntradayPossibleQuantity&gt;&gt; GetOrderIntradayPossibleQuantityAsync(string stockCode, KiwoomOrderDomesticStockExchangeType domesticStockExchangeType, CancellationToken cancellationToken = default)</code>
+            </div>
+
+            <table class="table param-table table-hover">
+                <thead>
+                    <tr>
+                        <th>파라미터</th>
+                        <th>타입</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>stockCode</code></td>
+                        <td>string</td>
+                        <td>종목 코드</td>
+                    </tr>
+                    <tr>
+                        <td><code>domesticStockExchangeType</code></td>
+                        <td>KiwoomOrderDomesticStockExchangeType</td>
+                        <td>국내 주식 거래소 구분</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Special Trading APIs -->
+    <h3>Special Trading APIs</h3>
+
+    <div class="card api-method-card">
+        <div class="card-header">
+            <h5 class="card-title">
+                <span class="api-method">POST</span>
+                GetMiTradingOrders
+                <span class="badge bg-primary ms-2">kt20016</span>
+            </h5>
+        </div>
+        <div class="card-body">
+            <h6>Mi매매주문조회 / Mi Trading Orders</h6>
+
+            <div class="api-code">
+                <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomOrderGetMiTradingOrders&gt;&gt; GetMiTradingOrdersAsync(KiwoomOrderQueryType queryType, string stockCode, CancellationToken cancellationToken = default)</code>
+            </div>
+
+            <table class="table param-table table-hover">
+                <thead>
+                    <tr>
+                        <th>파라미터</th>
+                        <th>타입</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>queryType</code></td>
+                        <td>KiwoomOrderQueryType</td>
+                        <td>조회 구분</td>
+                    </tr>
+                    <tr>
+                        <td><code>stockCode</code></td>
+                        <td>string</td>
+                        <td>종목 코드</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card api-method-card">
+        <div class="card-header">
+            <h5 class="card-title">
+                <span class="api-method">POST</span>
+                GetEtfOrderCashLimit
+                <span class="badge bg-primary ms-2">kt20017</span>
+            </h5>
+        </div>
+        <div class="card-body">
+            <h6>ETF주문현금한도조회 / ETF Order Cash Limit</h6>
+
+            <div class="api-code">
+                <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomOrderGetEtfOrderCashLimit&gt;&gt; GetEtfOrderCashLimitAsync(KiwoomOrderDomesticStockExchangeType domesticStockExchangeType, CancellationToken cancellationToken = default)</code>
+            </div>
+
+            <table class="table param-table table-hover">
+                <thead>
+                    <tr>
+                        <th>파라미터</th>
+                        <th>타입</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>domesticStockExchangeType</code></td>
+                        <td>KiwoomOrderDomesticStockExchangeType</td>
+                        <td>국내 주식 거래소 구분</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Additional System APIs -->
+    <h3>System & Configuration APIs</h3>
+
+    <div class="card api-method-card">
+        <div class="card-header">
+            <h5 class="card-title">
+                <span class="api-method">POST</span>
+                GetServerTime
+                <span class="badge bg-primary ms-2">ka90001</span>
+            </h5>
+        </div>
+        <div class="card-body">
+            <h6>서버시간조회 / Server Time</h6>
+
+            <div class="api-code">
+                <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomSystemGetServerTime&gt;&gt; GetServerTimeAsync(CancellationToken cancellationToken = default)</code>
+            </div>
+
+            <p>서버 현재 시간 정보를 조회합니다.</p>
+        </div>
+    </div>
+
+    <div class="card api-method-card">
+        <div class="card-header">
+            <h5 class="card-title">
+                <span class="api-method">POST</span>
+                GetServerStatus
+                <span class="badge bg-primary ms-2">ka90002</span>
+            </h5>
+        </div>
+        <div class="card-body">
+            <h6>서버상태조회 / Server Status</h6>
+
+            <div class="api-code">
+                <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomSystemGetServerStatus&gt;&gt; GetServerStatusAsync(CancellationToken cancellationToken = default)</code>
+            </div>
+
+            <p>서버 운영 상태를 조회합니다.</p>
+        </div>
+    </div>
+
+    <div class="alert alert-info mt-4">
+        <h6><i class="bi bi-info-circle"></i> 참고사항</h6>
+        <p>이 문서에는 기존 문서화되지 않았던 87개의 추가 API들이 포함되어 있습니다. 전체 API 목록은 프로젝트 코드에서 확인할 수 있습니다.</p>
+    </div>
+
+</section>

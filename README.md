@@ -1,6 +1,6 @@
 # 🚀 KiwoomRestApi.Net
 
-현재 api 테스트 작업, doc 작업 중입니다.</br>
+[KiwoomRestApi.Net 문서](https://dongbin300.github.io/KiwoomRestApi.Net/)
 
 [![NuGet Version](https://img.shields.io/nuget/v/KiwoomRestApi.Net.svg)](https://www.nuget.org/packages/KiwoomRestApi.Net)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/KiwoomRestApi.Net.svg)](https://www.nuget.org/packages/KiwoomRestApi.Net)
@@ -220,41 +220,41 @@ Console.WriteLine($"일별 수익률 상세: {dailyProfitRateDetails.Data.Count}
 
 // 🛒 주문 실행 (신용 거래 포함)
 var buyOrderResult = await client.Order.PlaceOrderAsync(
-	KiwoomOrderType.Buy,                                    // 매수
-	KiwoomOrderDomesticStockExchangeType.KRX,               // 거래소
-	"005930",                                               // 삼성전자
-	10,                                                     // 주문수량
-	KiwoomOrderTradeType.Normal,                            // 지정가
-	80000);                                                 // 주문가격
+    KiwoomOrderType.Buy,                                    // 매수
+    KiwoomOrderDomesticStockExchangeType.KRX,               // 거래소
+    "005930",                                               // 삼성전자
+    10,                                                     // 주문수량
+    KiwoomOrderTradeType.Normal,                            // 지정가
+    80000);                                                 // 주문가격
 
 var sellOrderResult = await client.Order.PlaceOrderAsync(
-	KiwoomOrderType.Sell,                                   // 매도
-	KiwoomOrderDomesticStockExchangeType.KRX,               // 거래소
-	"005930",                                               // 삼성전자
-	5,                                                      // 주문수량
-	KiwoomOrderTradeType.Market);                          // 시장가
+    KiwoomOrderType.Sell,                                   // 매도
+    KiwoomOrderDomesticStockExchangeType.KRX,               // 거래소
+    "005930",                                               // 삼성전자
+    5,                                                      // 주문수량
+    KiwoomOrderTradeType.Market);                          // 시장가
 
 // 🔧 주문 수정 및 취소
 var modifyResult = await client.Order.ModifyOrderAsync(
-	KiwoomOrderDomesticStockExchangeType.KRX,               // 거래소
-	"원주문번호",                                            // 원주문번호
-	"005930",                                               // 종목코드
-	8,                                                      // 수정수량
-	82000);                                                 // 수정가격
+    KiwoomOrderDomesticStockExchangeType.KRX,               // 거래소
+    "원주문번호",                                            // 원주문번호
+    "005930",                                               // 종목코드
+    8,                                                      // 수정수량
+    82000);                                                 // 수정가격
 
 var cancelResult = await client.Order.CancelOrderAsync(
-	KiwoomOrderDomesticStockExchangeType.KRX,               // 거래소
-	"원주문번호",                                            // 원주문번호
-	"005930",                                               // 종목코드
-	cancelQuantity: 3);                                     // 취소수량
+    KiwoomOrderDomesticStockExchangeType.KRX,               // 거래소
+    "원주문번호",                                            // 원주문번호
+    "005930",                                               // 종목코드
+    cancelQuantity: 3);                                     // 취소수량
 
 // 🥇 금현물 거래
 var goldBuyOrderResult = await client.Order.GoldSpotPlaceOrderAsync(
-	KiwoomOrderType.Buy,                                    // 매수
-	KiwoomGoldSpotStockCode.Gold_1kg,                       // 금 1kg
-	1,                                                      // 주문수량
-	KiwoomOrderGoldSpotTransactionType.Normal,              // 보통
-	8500000);                                               // 주문가격
+    KiwoomOrderType.Buy,                                    // 매수
+    KiwoomGoldSpotStockCode.Gold_1kg,                       // 금 1kg
+    1,                                                      // 주문수량
+    KiwoomOrderGoldSpotTransactionType.Normal,              // 보통
+    8500000);                                               // 주문가격
 ```
 
 ### 실시간 데이터 구독
@@ -290,12 +290,12 @@ await socketClient.WebSocket.SubscribeAsync([KiwoomWebSocketServiceName.StockExe
 ```csharp
 // ✅ 좋은 예: CancellationToken 사용
 using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
-var result = await client.StockInfo.GetStockInfoAsync("005930", DateTime.Today, 
+var result = await client.StockInfo.GetStockInfoAsync("005930", DateTime.Today,
     KiwoomStockInfoMarginLoanType.Loan, cts.Token);
 
 // ✅ 좋은 예: 배치 처리
 var stockCodes = new[] { "005930", "000660", "035420" };
-var tasks = stockCodes.Select(code => 
+var tasks = stockCodes.Select(code =>
     client.StockInfo.GetStockInfoAsync(code, DateTime.Today, KiwoomStockInfoMarginLoanType.Loan));
 var results = await Task.WhenAll(tasks);
 
@@ -306,11 +306,11 @@ var results = await Task.WhenAll(tasks);
 ## 🏗️ 지원 플랫폼
 
 - **.NET Standard 2.0** (Unity, Xamarin 호환)
-- **.NET Standard 2.1**  
+- **.NET Standard 2.1**
 - **.NET 6.0**
 - **.NET 8.0**
 - **.NET 9.0**
-- **.NET 10.0(Preview)**
+- **.NET 10.0** (Preview)
 
 ## 📝 라이선스
 
@@ -364,27 +364,27 @@ var results = await Task.WhenAll(tasks);
 ### v0.4.0 (2025-09-15)
 - .NET 10.0 타겟 프레임워크 추가(Preview)
 - `GetCreditLoanAvailableStocksAsync` 요청필드명 `crd_stk_grae_tp`에서 `crd_stk_grde_tp`로 오류 수정
-- `KiwoomAccountGetDeposits.MinimumOrderable` `decimal`로 수정
-- `KiwoomAccountGetCreditDepositOrders.StockDepositRate` `string`로 수정
-- `KiwoomAccountGetMarginOrders.AccountMarginRate` `string`로 수정
-- `ExchangeType`관련 필드 모두 `~StockExchangeType`로 수정
-- `StockExchangeType`관련 필드 모두 `~StockExchangeType`로 수정
-- `IndustryCode` 필드 `KiwoomChartIndustryCode`로 수정
-- `ContYn` `bool`로 수정
-- `NxtEnable` 필드 `bool`로 수정
+- `KiwoomAccountGetDeposits.MinimumOrderable`를 `decimal`로 수정
+- `KiwoomAccountGetCreditDepositOrders.StockDepositRate`를 `string`로 수정
+- `KiwoomAccountGetMarginOrders.AccountMarginRate`를 `string`로 수정
+- `ExchangeType` 관련 필드를 모두 `~StockExchangeType`로 수정
+- `StockExchangeType` 관련 필드를 모두 `~StockExchangeType`로 수정
+- `IndustryCode` 필드를 `KiwoomChartIndustryCode`로 수정
+- `ContYn` 필드를 `bool`로 수정
+- `NxtEnable` 필드를 `bool`로 수정
 - `Rank` 필드를 `decimal`에서 `int`로 수정
-- `Count`관련 필드 모두 `int`, `KiwoomInt`로 수정
-- `ProfitLoss`관련 필드 모두 `KiwoomDeicmal`로 수정
-- `AfterMarketSinglePriceChange` `KiwoomDecimal`로 수정
+- `Count` 관련 필드를 모두 `int`, `KiwoomInt`로 수정
+- `ProfitLoss` 관련 필드를 모두 `KiwoomDecimal`로 수정
+- `AfterMarketSinglePriceChange`를 `KiwoomDecimal`로 수정
 - `NetBuyVolume`, `NetBuyAmount` 필드를 `KiwoomDecimal`로 수정
-- `AfterMarketSinglePriceChangeRate` `KiwoomDecimal`로 수정
-- `KiwoomStockInfoGetTradeItem.TradeVolume` `KiwoomDecimal`로 수정
+- `AfterMarketSinglePriceChangeRate`를 `KiwoomDecimal`로 수정
+- `KiwoomStockInfoGetTradeItem.TradeVolume`를 `KiwoomDecimal`로 수정
 - `BuyBrokerVolume`, `SellBrokerVolume` 필드를 `KiwoomDecimal`로 수정
-- `KiwoomMarketConditionGetStockInstitutionTransactionTrendItem.InstitutionPeriodAccumulation`, `InstitutionDailyNetVolume`, `ForeignPeriodAccumulation`, `ForeignDailyNetVolume` `KiwoomDecimal`로 수정
+- `KiwoomMarketConditionGetStockInstitutionTransactionTrendItem.InstitutionPeriodAccumulation`, `InstitutionDailyNetVolume`, `ForeignPeriodAccumulation`, `ForeignDailyNetVolume`를 `KiwoomDecimal`로 수정
 - `TopBuyExitBroker` 필드를 `KiwoomString`로 수정
 - `HoldingCount`를 `HoldingQuantity`로 수정
 - `AcquirableCount`를 `AcquirableQuantity`로 수정
-- `GetHourlyProgramTradeTrendsAsync`, G`etDailyProgramTradeTrendsAsync` 파라미터 `KiwoomMarketConditionMarketType3`로 수정
+- `GetHourlyProgramTradeTrendsAsync`, `GetDailyProgramTradeTrendsAsync` 파라미터를 `KiwoomMarketConditionMarketType3`로 수정
 - `KiwoomMarketConditionGetStockOriginTradeTrends`를 `KiwoomMarketConditionGetStockInstitutionTransactionTrends`로 수정
 
 ---
@@ -471,9 +471,9 @@ var results = await Task.WhenAll(tasks);
 - `KiwoomRealtimeQuoteRequests` 삭제
 - `KiwoomRealtimeQuoteRequestItem` 삭제
 - `KiwoomRealtimeQuoteRegistrations` 삭제
-- `KiwoomRealtimeQuoteRegistrationItem `삭제
+- `KiwoomRealtimeQuoteRegistrationItem` 삭제
 - `KiwoomRealtimeQuoteValue` 삭제
-- `KiwoomRankingInfoGetForeignPeriodTransactionTopItem.NetBuyQuantity`을 `KiwoomDecimal`로 수정
+- `KiwoomRankingInfoGetForeignPeriodTransactionTopItem.NetBuyQuantity`를 `KiwoomDecimal`로 수정
 - 종속성 라이브러리 버전별 분기
 
 ---
