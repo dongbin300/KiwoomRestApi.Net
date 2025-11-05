@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html lang="ko" data-bs-theme="dark">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KiwoomRestApi.Net - Documentation</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
     <style>
         body {
             padding-top: 56px;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             line-height: 1.6;
-            color: #e9ecef;
+            color: #4b5563;
         }
 
         /* Language Toggle */
@@ -20,20 +21,21 @@
             top: 80px;
             right: 20px;
             z-index: 1000;
-            background: rgba(30, 41, 59, 0.9);
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 50px;
             padding: 8px 16px;
             font-size: 0.9rem;
-            color: #cbd5e1;
+            color: #f8fafc;
             cursor: pointer;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
         }
 
         .language-toggle:hover {
-            background: rgba(59, 130, 246, 0.3);
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
             transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
         }
 
         .language-toggle i {
@@ -42,30 +44,51 @@
 
         /* 상단 내비게이션 */
         .navbar {
-            background: linear-gradient(135deg, #212529 0%, #31363f 100%);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
+            color: #f8fafc;
         }
 
         .navbar-brand {
             font-weight: 600;
             font-size: 1.2rem;
+            color: #f8fafc;
+        }
+
+        .navbar-nav .nav-link {
+            color: #f8fafc !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #fbbf24 !important;
+            transform: translateY(-1px);
+        }
+
+        .navbar-nav .nav-link.active {
+            color: #fbbf24 !important;
+            font-weight: 600;
         }
 
         .hero {
-            background: linear-gradient(to right, #232526, #414345);
-            padding: 4rem 0;
+            background: linear-gradient(to right, #6366f1, #8b5cf6);
+            padding: 3rem 0;
             text-align: center;
-            color: white;
+            color: #ffffff;
         }
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ffffff;
         }
         .hero p {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             max-width: 600px;
-            margin: 1rem auto;
+            margin: 0 auto 2rem;
+            color: #f1f5f9;
         }
         .section {
             padding: 4rem 0;
@@ -75,19 +98,15 @@
             color: var(--bs-primary);
         }
         .code-block {
-            background-color: #1e293b;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: #f8fafc;
+            border: 1px solid rgba(99, 102, 241, 0.2);
             border-radius: 0.5rem;
             padding: 1.5rem;
             margin: 1rem 0;
             overflow-x: auto;
-        }
-        .code-block pre {
-            margin: 0;
-            color: #e2e8f0;
             font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-            font-size: 0.9rem;
         }
+
         .alert-tip {
             background-color: rgba(13, 202, 240, 0.1);
             border: 1px solid rgba(13, 202, 240, 0.3);
@@ -104,16 +123,62 @@
             padding: 1rem;
             margin: 1rem 0;
         }
+
+        /* 섹션 제목 색상 */
+        h2 {
+            color: #3b82f6;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        h3 {
+            color: #60a5fa;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: #222;
+            line-height: 1.6;
+        }
+
+              .btn-primary {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            font-weight: 500;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-outline-light {
+            color: white;
+            border-color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-light:hover {
+            color: #10b981;
+            background-color: white;
+            border-color: white;
+            transform: translateY(-2px);
+        }
     </style>
 </head>
-<body>
+<body style="background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%); min-height: 100vh;">
     <!-- Language Toggle Button -->
     <button class="language-toggle" onclick="toggleLanguage()">
         <i class="bi bi-translate"></i>
         <span id="current-lang">English</span>
     </button>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
                 <i class="bi bi-bar-chart-line-fill"></i> KiwoomRestApi.Net
@@ -151,7 +216,7 @@
         </div>
     </header>
 
-    <section class="section bg-body-tertiary">
+    <section class="section" style="background: rgba(248, 250, 252, 0.8);">
         <div class="container">
             <h2 class="text-center mb-5" data-en="Why KiwoomRestApi.Net?" data-ko="왜 KiwoomRestApi.Net인가요?">Why KiwoomRestApi.Net?</h2>
             <div class="row g-4">
@@ -188,13 +253,13 @@
                     <h5 data-en="1. Installation" data-ko="1. 설치">1. Installation</h5>
                     <p data-en="Install the library via NuGet Package Manager." data-ko="NuGet 패키지 관리자를 통해 라이브러리를 설치하세요.">Install the library via NuGet Package Manager.</p>
                     <div class="code-block mb-4">
-                        <pre><code>PM> Install-Package KiwoomRestApi.Net</code></pre>
+                        <pre><code class="language-powershell" style="color:#222;">PM> Install-Package KiwoomRestApi.Net</code></pre>
                     </div>
 
                     <h5 data-en="2. Basic Usage" data-ko="2. 기본 사용법">2. Basic Usage</h5>
                     <p data-en="Initialize the client and start making API calls." data-ko="클라이언트를 초기화하고 API 호출을 시작하세요.">Initialize the client and start making API calls.</p>
                     <div class="code-block">
-                        <pre><code>
+                        <pre><code class="language-csharp" style="color:#222;">
 using KiwoomRestApi.Net.Clients;
 using KiwoomRestApi.Net.Enums.StockInfo;
 
@@ -224,7 +289,7 @@ else
         </div>
     </section>
 
-    <footer class="bg-dark text-white text-center py-3">
+    <footer class="bg-light text-dark text-center py-3" style="background: linear-gradient(135deg, #f8fafc, #e2e8f0);">
         <div class="container">
             <p class="mb-0">&copy; 2025 KiwoomRestApi.Net Project. MIT Licensed.</p>
         </div>
@@ -263,6 +328,20 @@ else
             const savedLang = localStorage.getItem('preferredLanguage') || 'en';
             currentLanguage = savedLang;
             updateLanguage(currentLanguage);
+
+            // 부드러운 스크롤 애니메이션
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
         });
     </script>
 </body>

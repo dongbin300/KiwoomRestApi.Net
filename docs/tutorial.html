@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" data-bs-theme="dark">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,38 +12,58 @@
             padding-top: 56px;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             line-height: 1.6;
-            color: #e9ecef;
+            color: #4b5563;
         }
 
         /* 상단 내비게이션 */
         .navbar {
-            background: linear-gradient(135deg, #212529 0%, #31363f 100%);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
         }
 
         .navbar-brand {
+            color: #f8fafc;
             font-weight: 600;
             font-size: 1.2rem;
         }
 
+        /* 네비게이션 링크 색상 */
+        .navbar-nav .nav-link {
+            color: #f8fafc !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #fbbf24 !important;
+            transform: translateY(-1px);
+        }
+
+        .navbar-nav .nav-link.active {
+            color: #fbbf24 !important;
+            font-weight: 600;
+        }
+
         .hero {
-            background: linear-gradient(to right, #232526, #414345);
+            background: linear-gradient(to right, #6366f1, #8b5cf6);
             padding: 3rem 0;
             text-align: center;
-            color: white;
+            color: #ffffff;
         }
 
         .hero h1 {
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
+            color: #ffffff;
         }
 
         .hero p {
             font-size: 1.1rem;
             max-width: 600px;
             margin: 0 auto 2rem;
+            color: #f1f5f9;
         }
 
         .section {
@@ -63,7 +83,7 @@
         }
 
         .tutorial-item {
-            background: rgba(30, 41, 59, 0.5);
+            background: transparent;
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 0.75rem;
             margin-bottom: 1.5rem;
@@ -72,14 +92,14 @@
         }
 
         .tutorial-item:hover {
-            background: rgba(30, 41, 59, 0.8);
+            background: transparent;
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .code-block {
-            background-color: #1e293b;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: #f8fafc;
+            border: 1px solid rgba(99, 102, 241, 0.2);
             border-radius: 0.5rem;
             padding: 1rem;
             margin: 1rem 0;
@@ -88,7 +108,7 @@
 
         .code-block pre {
             margin: 0;
-            color: #e2e8f0;
+            color: #374151;
             font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
             font-size: 0.9rem;
         }
@@ -96,7 +116,7 @@
         .toc-nav {
             position: sticky;
             top: 100px;
-            background: rgba(30, 41, 59, 0.5);
+            background: transparent;
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 0.75rem;
             padding: 1.5rem;
@@ -109,7 +129,7 @@
         }
 
         .toc-nav .nav-link {
-            color: #adb5bd;
+            color: #222;
             padding: 0.5rem 1rem;
             margin-bottom: 0.25rem;
             border-radius: 0.375rem;
@@ -118,8 +138,9 @@
 
         .toc-nav .nav-link:hover,
         .toc-nav .nav-link.active {
-            background: rgba(59, 130, 246, 0.2);
-            color: #ffffff;
+            background: transparent;
+            font-weight: bold;
+            color: #7c3aed;
         }
 
         .alert-tip {
@@ -146,20 +167,21 @@
             top: 80px;
             right: 20px;
             z-index: 1000;
-            background: rgba(30, 41, 59, 0.9);
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 50px;
             padding: 8px 16px;
             font-size: 0.9rem;
-            color: #cbd5e1;
+            color: #f8fafc;
             cursor: pointer;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
         }
 
         .language-toggle:hover {
-            background: rgba(59, 130, 246, 0.3);
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
             transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
         }
 
         .language-toggle i {
@@ -183,10 +205,126 @@
                 right: 20px;
             }
         }
+
+        /* Prism.js 라이트테마 코드 하이라이팅 */
+        pre[class*="language-"],
+        code[class*="language-"] {
+            color: #374151;
+            background: #f8fafc;
+            text-shadow: none;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+            text-align: left;
+            white-space: pre;
+            word-spacing: normal;
+            word-break: normal;
+            line-height: 1.5;
+            tab-size: 4;
+            hyphens: none;
+        }
+
+        pre[class*="language-"] {
+            background: #f8fafc;
+            padding: 1em;
+            margin: .5em 0;
+            overflow: auto;
+            border-radius: 0.375rem;
+        }
+
+        :not(pre) > code[class*="language-"],
+        pre[class*="language-"] {
+            background: #f8fafc;
+        }
+
+        .token.comment {
+            color: #6b7280;
+            font-style: italic;
+        }
+
+        .token.punctuation {
+            color: #374151;
+        }
+
+        .token.tag,
+        .token.boolean,
+        .token.number,
+        .token.constant,
+        .token.symbol,
+        .token.deleted {
+            color: #dc2626;
+            font-weight: 500;
+        }
+
+        .token.selector,
+        .token.attr-name,
+        .token.string,
+        .token.char,
+        .token.builtin,
+        .token.inserted {
+            color: #059669;
+            font-weight: 500;
+        }
+
+        .token.operator,
+        .token.entity,
+        .token.url,
+        .language-css .token.string,
+        .style .token.string,
+        .token.variable {
+            color: #ea580c;
+            font-weight: 500;
+        }
+
+        .token.atrule,
+        .token.attr-value,
+        .token.function,
+        .token.class-name {
+            color: #7c3aed;
+            font-weight: 600;
+        }
+
+        .token.keyword {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        .token.regex,
+        .token.important {
+            color: #ca8a04;
+            font-weight: 600;
+        }
+
+        /* 섹션 제목 색상 */
+        h2 {
+            color: #6366f1;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            color: #4f46e5;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: #374151;
+            line-height: 1.6;
+        }
+
+        /* 일반 code 태그 스타일 */
+        code {
+            font-size: .875em;
+            color: #6366f1;
+            word-wrap: break-word;
+            background-color: #f1f5f9;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+        }
     </style>
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<body style="background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%); min-height: 100vh;">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
                 <i class="bi bi-bar-chart-line-fill"></i> KiwoomRestApi.Net
@@ -232,16 +370,16 @@
                 <div class="toc-nav">
                     <h5><i class="bi bi-list"></i> <span data-ko="목차" data-en="Contents">목차</span></h5>
                     <nav class="nav nav-pills flex-column">
-                        <a class="nav-link" href="#getting-started" data-ko="1. 시작하기" data-en="1. Getting Started">1. 시작하기</a>
-                        <a class="nav-link" href="#basic-usage" data-ko="2. 기본 사용법" data-en="2. Basic Usage">2. 기본 사용법</a>
-                        <a class="nav-link" href="#account-management" data-ko="3. 계좌 관리" data-en="3. Account Management">3. 계좌 관리</a>
-                        <a class="nav-link" href="#stock-information" data-ko="4. 주식 정보" data-en="4. Stock Information">4. 주식 정보</a>
-                        <a class="nav-link" href="#trading-operations" data-ko="5. 거래 작업" data-en="5. Trading Operations">5. 거래 작업</a>
-                        <a class="nav-link" href="#chart-data" data-ko="6. 차트 데이터" data-en="6. Chart Data">6. 차트 데이터</a>
-                        <a class="nav-link" href="#realtime-data" data-ko="7. 실시간 데이터" data-en="7. Real-time Data">7. 실시간 데이터</a>
-                        <a class="nav-link" href="#advanced-features" data-ko="8. 고급 기능" data-en="8. Advanced Features">8. 고급 기능</a>
-                        <a class="nav-link" href="#error-handling" data-ko="9. 오류 처리" data-en="9. Error Handling">9. 오류 처리</a>
-                        <a class="nav-link" href="#best-practices" data-ko="10. 모범 사례" data-en="10. Best Practices">10. 모범 사례</a>
+                        <a class="nav-link" href="#getting-started" data-ko="시작하기" data-en="Getting Started">시작하기</a>
+                        <a class="nav-link" href="#basic-usage" data-ko="기본 사용법" data-en="Basic Usage">기본 사용법</a>
+                        <a class="nav-link" href="#account-management" data-ko="계좌 관리" data-en="Account Management">계좌 관리</a>
+                        <a class="nav-link" href="#stock-information" data-ko="주식 정보" data-en="Stock Information">주식 정보</a>
+                        <a class="nav-link" href="#trading-operations" data-ko="거래 작업" data-en="Trading Operations">거래 작업</a>
+                        <a class="nav-link" href="#chart-data" data-ko="차트 데이터" data-en="Chart Data">차트 데이터</a>
+                        <a class="nav-link" href="#realtime-data" data-ko="실시간 데이터" data-en="Real-time Data">실시간 데이터</a>
+                        <a class="nav-link" href="#advanced-features" data-ko="고급 기능" data-en="Advanced Features">고급 기능</a>
+                        <a class="nav-link" href="#error-handling" data-ko="오류 처리" data-en="Error Handling">오류 처리</a>
+                        <a class="nav-link" href="#best-practices" data-ko="모범 사례" data-en="Best Practices">모범 사례</a>
                     </nav>
                 </div>
             </div>
@@ -249,7 +387,7 @@
             <div class="col-lg-9">
                 <!-- Getting Started -->
                 <section id="getting-started" class="tutorial-section">
-                    <h2><i class="bi bi-rocket-takeoff"></i> <span data-ko="1. 시작하기" data-en="1. Getting Started">1. 시작하기</span></h2>
+                    <h2><i class="bi bi-rocket-takeoff"></i> <span data-ko="시작하기" data-en="Getting Started">시작하기</span></h2>
 
                     <div class="tutorial-item">
                         <div class="card-body">
@@ -289,7 +427,7 @@ var client = await KiwoomRestApiClient.CreateAsync(appKey, secretKey, isMock);</
 
                 <!-- Basic Usage -->
                 <section id="basic-usage" class="tutorial-section">
-                    <h2><i class="bi bi-play-circle"></i> <span data-ko="2. 기본 사용법" data-en="2. Basic Usage">2. 기본 사용법</span></h2>
+                    <h2><i class="bi bi-play-circle"></i> <span data-ko="기본 사용법" data-en="Basic Usage">기본 사용법</span></h2>
 
                     <div class="tutorial-item">
                         <div class="card-body">
@@ -338,7 +476,7 @@ else
 
                 <!-- Account Management -->
                 <section id="account-management" class="tutorial-section">
-                    <h2><i class="bi bi-wallet2"></i> <span data-ko="3. 계좌 관리" data-en="3. Account Management">3. 계좌 관리</span></h2>
+                    <h2><i class="bi bi-wallet2"></i> <span data-ko="계좌 관리" data-en="Account Management">계좌 관리</span></h2>
 
                     <div class="tutorial-item">
                         <div class="card-body">
@@ -385,7 +523,7 @@ if (dailyStatus.IsSuccess)
 
                 <!-- Stock Information -->
                 <section id="stock-information" class="tutorial-section">
-                    <h2><i class="bi bi-info-circle"></i> <span data-ko="4. 주식 정보" data-en="4. Stock Information">4. 주식 정보</span></h2>
+                    <h2><i class="bi bi-info-circle"></i> <span data-ko="주식 정보" data-en="Stock Information">주식 정보</span></h2>
 
                     <div class="tutorial-item">
                         <div class="card-body">
@@ -461,7 +599,7 @@ if (activeStocks.IsSuccess)
 
                 <!-- Trading Operations -->
                 <section id="trading-operations" class="tutorial-section">
-                    <h2><i class="bi bi-currency-exchange"></i> <span data-ko="5. 거래 작업" data-en="5. Trading Operations">5. 거래 작업</span></h2>
+                    <h2><i class="bi bi-currency-exchange"></i> <span data-ko="거래 작업" data-en="Trading Operations">거래 작업</span></h2>
 
                     <div class="tutorial-item">
                         <div class="card-body">
@@ -543,7 +681,7 @@ var modifyResult = await client.Order.ModifyOrderAsync(
 
                 <!-- Real-time Data -->
                 <section id="realtime-data" class="tutorial-section">
-                    <h2><i class="bi bi-broadcast"></i> <span data-ko="7. 실시간 데이터" data-en="7. Real-time Data">7. 실시간 데이터</span></h2>
+                    <h2><i class="bi bi-broadcast"></i> <span data-ko="실시간 데이터" data-en="Real-time Data">실시간 데이터</span></h2>
 
                     <div class="tutorial-item">
                         <div class="card-body">
@@ -598,7 +736,7 @@ socketClient.OnRealtimeBalanceReceived += (balanceData) =>
 
                 <!-- Best Practices -->
                 <section id="best-practices" class="tutorial-section">
-                    <h2><i class="bi bi-star"></i> <span data-ko="10. 모범 사례" data-en="10. Best Practices">10. 모범 사례</span></h2>
+                    <h2><i class="bi bi-star"></i> <span data-ko="모범 사례" data-en="Best Practices">모범 사례</span></h2>
 
                     <div class="tutorial-item">
                         <div class="card-body">
@@ -669,7 +807,7 @@ public class RateLimitedKiwoomClient
         </div>
     </div>
 
-    <footer class="bg-dark text-white text-center py-3 mt-5">
+    <footer class="bg-light text-dark text-center py-3 mt-5" style="background: linear-gradient(135deg, #f8fafc, #e2e8f0);">
         <div class="container">
             <p class="mb-0">&copy; 2025 KiwoomRestApi.Net Project. MIT Licensed.</p>
         </div>

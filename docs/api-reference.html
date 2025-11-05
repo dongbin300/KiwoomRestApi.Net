@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +12,7 @@
             padding-top: 56px;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             line-height: 1.6;
-            color: #e9ecef;
+            color: #374151;
         }
 
         /* Language Toggle */
@@ -21,30 +21,48 @@
             top: 80px;
             right: 20px;
             z-index: 1000;
-            background: rgba(30, 41, 59, 0.9);
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 50px;
             padding: 8px 16px;
             font-size: 0.9rem;
-            color: #cbd5e1;
+            color: #f8fafc;
             cursor: pointer;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
         }
 
         .language-toggle:hover {
-            background: rgba(59, 130, 246, 0.3);
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
             transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
         }
 
         .language-toggle i {
             margin-right: 6px;
         }
 
+        /* 네비게이션 링크 색상 */
+        .navbar-nav .nav-link {
+            color: #f8fafc !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #fbbf24 !important;
+            transform: translateY(-1px);
+        }
+
+        .navbar-nav .nav-link.active {
+            color: #fbbf24 !important;
+            font-weight: 600;
+        }
+
         /* 상단 내비게이션 */
         .navbar {
-            background: linear-gradient(135deg, #212529 0%, #31363f 100%);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
         }
 
@@ -54,19 +72,21 @@
         }
 
         .hero {
-            background: linear-gradient(to right, #232526, #414345);
+            background: linear-gradient(to right, #6366f1, #8b5cf6);
             padding: 3rem 0;
             text-align: center;
-            color: white;
+            color: #ffffff;
         }
 
         .hero h1 {
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
+            color: #ffffff;
         }
 
         .hero p {
+            color: #f1f5f9;
             font-size: 1.1rem;
             max-width: 600px;
             margin: 0 auto 2rem;
@@ -81,35 +101,48 @@
         }
 
         .api-section h2 {
-            color: #3b82f6;
-            border-bottom: 2px solid #3b82f6;
+            color: #6366f1;
+            border-bottom: 2px solid #6366f1;
             padding-bottom: 0.5rem;
             margin-bottom: 2rem;
             font-weight: 600;
         }
 
         .api-method-card {
-            background: rgba(30, 41, 59, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(99, 102, 241, 0.2);
             border-radius: 0.75rem;
             margin-bottom: 1.5rem;
             transition: all 0.3s ease;
         }
 
         .api-method-card:hover {
-            background: rgba(30, 41, 59, 0.8);
+            background: rgba(255, 255, 255, 1);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+            border-color: rgba(99, 102, 241, 0.4);
         }
 
         .card-title {
-            color: #f1f5f9;
+            color: #1e293b;
             font-weight: 600;
         }
 
+        .card-body h6 {
+            color: #6366f1;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .card-body p {
+            color: #374151;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
         .method-signature {
-            background-color: #1e293b;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: #f1f5f9;
+            border: 1px solid rgba(99, 102, 241, 0.2);
             border-radius: 0.5rem;
             padding: 1rem;
             margin: 1rem 0;
@@ -117,35 +150,40 @@
         }
 
         .method-signature code {
-            color: #e2e8f0;
+            color: #1e293b;
             font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
             font-size: 0.9rem;
         }
 
         .table {
-            background: rgba(30, 41, 59, 0.3);
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 0.5rem;
             overflow: hidden;
+            box-shadow: 0 4px 6px rgba(99, 102, 241, 0.1);
         }
 
         .table th {
-            background: rgba(15, 23, 42, 0.8);
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
             border: none;
-            color: #f1f5f9;
+            color: #ffffff;
             font-weight: 600;
         }
 
         .table td {
-            border-color: rgba(255, 255, 255, 0.05);
+            background: transparent;
+            border-color: rgba(99, 102, 241, 0.1);
+            color: #374151;
             vertical-align: top;
         }
 
         .table-hover tbody tr:hover {
-            background: rgba(59, 130, 246, 0.1);
+            background: rgba(99, 102, 241, 0.1);
+            transform: scale(1.01);
+            transition: all 0.2s ease;
         }
 
         .api-method {
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            background: linear-gradient(135deg, #10b981, #059669);
             color: white;
             padding: 0.25rem 0.75rem;
             border-radius: 0.375rem;
@@ -159,8 +197,8 @@
         }
 
         .api-code {
-            background: #1e293b;
-            border-left: 4px solid #3b82f6;
+            background: #f8fafc;
+            border-left: 4px solid #10b981;
             padding: 1rem;
             margin: 1rem 0;
             border-radius: 0.375rem;
@@ -169,7 +207,7 @@
 
         .api-code code,
         .method-signature code {
-            color: #e2e8f0;
+            color: #1e293b;
             font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
             font-size: 0.9rem;
             background: transparent !important;
@@ -178,9 +216,9 @@
         /* Prism.js 테마 조정 */
         pre[class*="language-"],
         code[class*="language-"] {
-            color: #ccc;
-            background: none;
-            text-shadow: 0 1px rgba(0,0,0,0.3);
+            color: #374151;
+            background: #f8fafc;
+            text-shadow: none;
             font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
             font-size: 0.9rem;
             text-align: left;
@@ -195,7 +233,7 @@
         /* API 코드 컨테이너용 스타일 */
         .api-code pre[class*="language-"],
         .method-signature pre[class*="language-"] {
-            background: #1e293b !important;
+            background: #f8fafc !important;
             margin: 0;
             padding: 1rem;
             border-radius: 0.375rem;
@@ -210,7 +248,7 @@
         }
 
         pre[class*="language-"] {
-            background: #2d2d2d;
+            background: #f1f5f9;
             padding: 1em;
             margin: .5em 0;
             overflow: auto;
@@ -219,7 +257,7 @@
 
         :not(pre) > code[class*="language-"],
         pre[class*="language-"] {
-            background: #2d2d2d;
+            background: #f1f5f9;
         }
 
         /* Inline code */
@@ -230,11 +268,12 @@
         }
 
         .token.comment {
-            color: #999;
+            color: #6b7280;
+            font-style: italic;
         }
 
         .token.punctuation {
-            color: #ccc;
+            color: #374151;
         }
 
         .token.tag,
@@ -243,7 +282,8 @@
         .token.constant,
         .token.symbol,
         .token.deleted {
-            color: #f92672;
+            color: #dc2626;
+            font-weight: 500;
         }
 
         .token.selector,
@@ -252,7 +292,8 @@
         .token.char,
         .token.builtin,
         .token.inserted {
-            color: #a6e22e;
+            color: #059669;
+            font-weight: 500;
         }
 
         .token.operator,
@@ -261,23 +302,27 @@
         .language-css .token.string,
         .style .token.string,
         .token.variable {
-            color: #f92672;
+            color: #ea580c;
+            font-weight: 500;
         }
 
         .token.atrule,
         .token.attr-value,
         .token.function,
         .token.class-name {
-            color: #e6db74;
+            color: #7c3aed;
+            font-weight: 600;
         }
 
         .token.keyword {
-            color: #66d9ef;
+            color: #2563eb;
+            font-weight: 600;
         }
 
         .token.regex,
         .token.important {
-            color: #fd971f;
+            color: #ca8a04;
+            font-weight: 600;
         }
 
         .token.important,
@@ -303,7 +348,7 @@
 
         .code-example pre {
             margin: 0;
-            background: #2d2d2d;
+            background: #f1f5f9;
             border-radius: 0.375rem;
             padding: 1rem;
         }
@@ -311,6 +356,16 @@
         .code-example code {
             font-size: 0.85rem;
             line-height: 1.4;
+        }
+
+        /* 일반 code 태그 스타일 */
+        code {
+            font-size: .875em;
+            color: #6366f1;
+            word-wrap: break-word;
+            background-color: #f1f5f9;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
         }
 
         .enum-desc {
@@ -326,8 +381,9 @@
         }
 
         .sidebar .card {
-            background: rgba(30, 41, 59, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            backdrop-filter: blur(10px);
         }
 
         .menu-category {
@@ -335,8 +391,8 @@
         }
 
         .menu-header {
-            background: rgba(15, 23, 42, 0.8);
-            color: #cbd5e1;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: #f8fafc;
             padding: 0.5rem 1rem;
             border: none;
             cursor: pointer;
@@ -349,22 +405,26 @@
         }
 
         .menu-header:hover {
-            background: rgba(59, 130, 246, 0.2);
+            background: linear-gradient(135deg, #818cf8, #a78bfa);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
         }
 
         .menu-header.active {
-            background: rgba(59, 130, 246, 0.3);
-            color: #3b82f6;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: #7c2d12;
+            box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);
         }
 
         .menu-items {
-            background: rgba(30, 41, 59, 0.5);
+            background: rgba(241, 245, 249, 0.95);
+            backdrop-filter: blur(10px);
         }
 
         .menu-item {
             display: block;
             padding: 0.4rem 1rem 0.4rem 2rem;
-            color: #94a3b8;
+            color: #475569;
             text-decoration: none;
             border-left: 3px solid transparent;
             transition: all 0.2s ease;
@@ -372,20 +432,22 @@
         }
 
         .menu-item:hover {
-            background: rgba(59, 130, 246, 0.1);
-            color: #60a5fa;
-            border-left-color: rgba(59, 130, 246, 0.5);
+            background: linear-gradient(135deg, #ddd6fe, #e9d5ff);
+            color: #6d28d9;
+            border-left-color: #7c3aed;
+            transform: translateX(2px);
         }
 
         .menu-item.active {
-            background: rgba(59, 130, 246, 0.15);
-            color: #3b82f6;
-            border-left-color: #3b82f6;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: #7c2d12;
+            border-left-color: #d97706;
             font-weight: 600;
+            box-shadow: 0 2px 8px rgba(251, 191, 36, 0.2);
         }
 
         .api-method {
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            background: linear-gradient(135deg, #10b981, #059669);
             color: white;
             padding: 0.25rem 0.75rem;
             border-radius: 0.375rem;
@@ -418,12 +480,12 @@
         }
 
         .category-header {
-            background: #2d3748;
-            border: 1px solid #4a5568;
+            background: #f8fafc;
+            border: 1px solid rgba(99, 102, 241, 0.3);
             border-radius: 6px;
             margin: 1px 4px;
             padding: 8px 10px;
-            color: #e2e8f0;
+            color: #1e293b;
             font-weight: 500;
             font-size: 0.88rem;
             transition: all 0.2s ease;
@@ -434,13 +496,13 @@
         }
 
         .category-header:hover {
-            background: #4a5568;
+            background: #f1f5f9;
             color: #ffffff;
             border-color: #718096;
         }
 
         .category-header.active {
-            background: #4a5568;
+            background: #f1f5f9;
             color: #63b3ed;
             border-color: #63b3ed;
         }
@@ -554,7 +616,7 @@
         }
     </style>
 </head>
-<body>
+<body style="background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%); min-height: 100vh;">
     <!-- Language Toggle Button -->
     <button class="language-toggle" onclick="toggleLanguage()">
         <i class="bi bi-translate"></i>
@@ -604,9 +666,6 @@
             <div class="col-lg-3">
                 <div class="sidebar" id="sidebar-nav">
                     <div class="card">
-                        <div class="card-header">
-                            <h5 class="mb-0"><i class="bi bi-list-ul"></i> API 카테고리</h5>
-                        </div>
                         <div class="card-body p-0">
                             <div id="menu-container">
                                 <!-- OAuth APIs -->
@@ -616,8 +675,8 @@
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
                                     <div id="oauth-menu" class="menu-items">
-                                        <a href="#generateaccesstoken" class="menu-item">GenerateAccessToken</a>
-                                        <a href="#refreshaccesstoken" class="menu-item">RefreshAccessToken</a>
+                                        <a href="#getaccesstoken" class="menu-item">GetAccessToken</a>
+                                        <a href="#revokeaccesstoken" class="menu-item">RevokeAccessToken</a>
                                     </div>
                                 </div>
 
@@ -629,31 +688,31 @@
                                     </button>
                                     <div id="account-menu" class="menu-items" style="display:none;">
                                         <a href="#getdailybalanceprofitrates" class="menu-item">GetDailyBalanceProfitRates</a>
-                                        <a href="#getdailystockrealizedprofitlosses" class="menu-item">GetDailyStockRealizedProfitLosses</a>
-                                        <a href="#getdailystockrealizedprofitlossperiods" class="menu-item">GetDailyStockRealizedProfitLossPeriods</a>
-                                        <a href="#getdailyrealizedprofitlosses" class="menu-item">GetDailyRealizedProfitLosses</a>
-                                        <a href="#getunfilledorders" class="menu-item">GetUnfilledOrders</a>
+                                        <a href="#accountgetdailystockrealizedprofitlosses" class="menu-item">GetDailyStockRealizedProfitLosses</a>
+                                        <a href="#accountgetdailystockrealizedprofitlossperiods" class="menu-item">GetDailyStockRealizedProfitLossPeriods</a>
+                                        <a href="#accountgetdailyrealizedprofitlosses" class="menu-item">GetDailyRealizedProfitLosses</a>
+                                        <a href="#accountgetunfilledorders" class="menu-item">GetUnfilledOrders</a>
                                         <a href="#getfilledorders" class="menu-item">GetFilledOrders</a>
-                                        <a href="#gettodayrealizedprofitloss" class="menu-item">GetTodayRealizedProfitLoss</a>
-                                        <a href="#getprofitrates" class="menu-item">GetProfitRates</a>
-                                        <a href="#getunfilledsplitorders" class="menu-item">GetUnfilledSplitOrders</a>
-                                        <a href="#gettodaytransactionjournals" class="menu-item">GetTodayTransactionJournals</a>
-                                        <a href="#getdeposits" class="menu-item">GetDeposits</a>
-                                        <a href="#getdailyestimateddepositassets" class="menu-item">GetDailyEstimatedDepositAssets</a>
-                                        <a href="#getestimateddepositasset" class="menu-item">GetEstimatedDepositAsset</a>
-                                        <a href="#getevaluations" class="menu-item">GetEvaluations</a>
-                                        <a href="#gettradebalances" class="menu-item">GetTradeBalances</a>
-                                        <a href="#getordertradedetails" class="menu-item">GetOrderTradeDetails</a>
-                                        <a href="#getnextdaysettlements" class="menu-item">GetNextDaySettlements</a>
+                                        <a href="#accountgettodayrealizedprofitloss" class="menu-item">GetTodayRealizedProfitLoss</a>
+                                        <a href="#accountgetprofitrates" class="menu-item">GetProfitRates</a>
+                                        <a href="#accountgetunfilledsplitorders" class="menu-item">GetUnfilledSplitOrders</a>
+                                        <a href="#accountgettodaytransactionjournals" class="menu-item">GetTodayTransactionJournals</a>
+                                        <a href="#accountgetdeposits" class="menu-item">GetDeposits</a>
+                                        <a href="#accountgetdailyestimateddepositassets" class="menu-item">GetDailyEstimatedDepositAssets</a>
+                                        <a href="#accountgetestimateddepositasset" class="menu-item">GetEstimatedDepositAsset</a>
+                                        <a href="#accountgetevaluations" class="menu-item">GetEvaluations</a>
+                                        <a href="#accountgettradebalances" class="menu-item">GetTradeBalances</a>
+                                        <a href="#accountgetordertradedetails" class="menu-item">GetOrderTradeDetails</a>
+                                        <a href="#accountgetnextdaysettlements" class="menu-item">GetNextDaySettlements</a>
                                         <a href="#getordertades" class="menu-item">GetOrderTrades</a>
-                                        <a href="#getavailablewithdrawalamounts" class="menu-item">GetAvailableWithdrawalAmounts</a>
-                                        <a href="#getmarginorders" class="menu-item">GetMarginOrders</a>
-                                        <a href="#getcreditdepositorders" class="menu-item">GetCreditDepositOrders</a>
-                                        <a href="#getmargindetails" class="menu-item">GetMarginDetails</a>
-                                        <a href="#getconsignedtransactions" class="menu-item">GetConsignedTransactions</a>
+                                        <a href="#accountgetavailablewithdrawalamounts" class="menu-item">GetAvailableWithdrawalAmounts</a>
+                                        <a href="#accountgetmarginorders" class="menu-item">GetMarginOrders</a>
+                                        <a href="#accountgetcreditdepositorders" class="menu-item">GetCreditDepositOrders</a>
+                                        <a href="#accountgetmargindetails" class="menu-item">GetMarginDetails</a>
+                                        <a href="#accountgetconsignedtransactions" class="menu-item">GetConsignedTransactions</a>
                                         <a href="#getdailyprofileratedetails" class="menu-item">GetDailyProfitRateDetails</a>
-                                        <a href="#getdailystatus" class="menu-item">GetDailyStatus</a>
-                                        <a href="#getevaluationbalances" class="menu-item">GetEvaluationBalances</a>
+                                        <a href="#accountgetdailystatus" class="menu-item">GetDailyStatus</a>
+                                        <a href="#accountgetevaluationbalances" class="menu-item">GetEvaluationBalances</a>
                                     </div>
                                 </div>
 
@@ -664,24 +723,24 @@
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
                                     <div id="chart-menu" class="menu-items" style="display:none;">
-                                        <a href="#getstockinvestorinstitutioncharts" class="menu-item">GetStockInvestorInstitutionCharts</a>
-                                        <a href="#getintradayinvestortradecharts" class="menu-item">GetIntradayInvestorTradeCharts</a>
-                                        <a href="#gettickcharts" class="menu-item">GetTickCharts</a>
-                                        <a href="#getminutecharts" class="menu-item">GetMinuteCharts</a>
-                                        <a href="#getdailycharts" class="menu-item">GetDailyCharts</a>
-                                        <a href="#getweeklycharts" class="menu-item">GetWeeklyCharts</a>
-                                        <a href="#getmonthlycharts" class="menu-item">GetMonthlyCharts</a>
-                                        <a href="#getyearlycharts" class="menu-item">GetYearlyCharts</a>
-                                        <a href="#getindustrytickcharts" class="menu-item">GetIndustryTickCharts</a>
+                                        <a href="#chartgetstockinvestorinstitutioncharts" class="menu-item">GetStockInvestorInstitutionCharts</a>
+                                        <a href="#chartgetintradayinvestortradecharts" class="menu-item">GetIntradayInvestorTradeCharts</a>
+                                        <a href="#chartgettickcharts" class="menu-item">GetTickCharts</a>
+                                        <a href="#chartgetminutecharts" class="menu-item">GetMinuteCharts</a>
+                                        <a href="#chartgetdailycharts" class="menu-item">GetDailyCharts</a>
+                                        <a href="#chartgetweeklycharts" class="menu-item">GetWeeklyCharts</a>
+                                        <a href="#chartgetmonthlycharts" class="menu-item">GetMonthlyCharts</a>
+                                        <a href="#chartgetyearlycharts" class="menu-item">GetYearlyCharts</a>
+                                        <a href="#chartgetindustrytickcharts" class="menu-item">GetIndustryTickCharts</a>
                                         <a href="#getindustrymminutecharts" class="menu-item">GetIndustryMinuteCharts</a>
-                                        <a href="#getindustrydailycharts" class="menu-item">GetIndustryDailyCharts</a>
-                                        <a href="#getgoldspottickcharts" class="menu-item">GetGoldSpotTickCharts</a>
-                                        <a href="#getgoldspotminutecharts" class="menu-item">GetGoldSpotMinuteCharts</a>
-                                        <a href="#getgoldspotdailycharts" class="menu-item">GetGoldSpotDailyCharts</a>
-                                        <a href="#getgoldspotweeklycharts" class="menu-item">GetGoldSpotWeeklyCharts</a>
-                                        <a href="#getgoldspotmonthlycharts" class="menu-item">GetGoldSpotMonthlyCharts</a>
-                                        <a href="#getgoldspottodaytickcharts" class="menu-item">GetGoldSpotTodayTickCharts</a>
-                                        <a href="#getgoldspottodayminutecharts" class="menu-item">GetGoldSpotTodayMinuteCharts</a>
+                                        <a href="#chartgetindustrydailycharts" class="menu-item">GetIndustryDailyCharts</a>
+                                        <a href="#chartgetgoldspottickcharts" class="menu-item">GetGoldSpotTickCharts</a>
+                                        <a href="#chartgetgoldspotminutecharts" class="menu-item">GetGoldSpotMinuteCharts</a>
+                                        <a href="#chartgetgoldspotdailycharts" class="menu-item">GetGoldSpotDailyCharts</a>
+                                        <a href="#chartgetgoldspotweeklycharts" class="menu-item">GetGoldSpotWeeklyCharts</a>
+                                        <a href="#chartgetgoldspotmonthlycharts" class="menu-item">GetGoldSpotMonthlyCharts</a>
+                                        <a href="#chartgetgoldspottodaytickcharts" class="menu-item">GetGoldSpotTodayTickCharts</a>
+                                        <a href="#chartgetgoldspottodayminutecharts" class="menu-item">GetGoldSpotTodayMinuteCharts</a>
                                     </div>
                                 </div>
 
@@ -692,10 +751,10 @@
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
                                     <div id="credit-order-menu" class="menu-items" style="display:none;">
-                                        <a href="#placebuyorder" class="menu-item">PlaceBuyOrder</a>
-                                        <a href="#placesellorder" class="menu-item">PlaceSellOrder</a>
-                                        <a href="#modifyorder" class="menu-item">ModifyOrder</a>
-                                        <a href="#cancelorder" class="menu-item">CancelOrder</a>
+                                        <a href="#creditorderplacebuyorder" class="menu-item">PlaceBuyOrder</a>
+                                        <a href="#creditorderplacesellorder" class="menu-item">PlaceSellOrder</a>
+                                        <a href="#creditordermodifyorder" class="menu-item">ModifyOrder</a>
+                                        <a href="#creditordercancelorder" class="menu-item">CancelOrder</a>
                                     </div>
                                 </div>
 
@@ -706,17 +765,17 @@
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
                                     <div id="elw-menu" class="menu-items" style="display:none;">
-                                        <a href="#getdailysensitivityindices" class="menu-item">GetDailySensitivityIndices</a>
-                                        <a href="#getsensitivityindices" class="menu-item">GetSensitivityIndices</a>
-                                        <a href="#getpricevolatilities" class="menu-item">GetPriceVolatilities</a>
-                                        <a href="#getbrokernettransactiontops" class="menu-item">GetBrokerNetTransactionTops</a>
-                                        <a href="#getlpholdingdailytrends" class="menu-item">GetLpHoldingDailyTrends</a>
-                                        <a href="#getdisparityrates" class="menu-item">GetDisparityRates</a>
-                                        <a href="#getconditionsearches" class="menu-item">GetConditionSearches</a>
-                                        <a href="#getchangerateranks" class="menu-item">GetChangeRateRanks</a>
-                                        <a href="#getrequestranks" class="menu-item">GetRequestRanks</a>
-                                        <a href="#getproximityrates" class="menu-item">GetProximityRates</a>
-                                        <a href="#getstockinfo" class="menu-item">GetStockInfo</a>
+                                        <a href="#elwgetdailysensitivityindices" class="menu-item">GetDailySensitivityIndices</a>
+                                        <a href="#elwgetsensitivityindices" class="menu-item">GetSensitivityIndices</a>
+                                        <a href="#elwgetpricevolatilities" class="menu-item">GetPriceVolatilities</a>
+                                        <a href="#elwgetbrokernettransactiontops" class="menu-item">GetBrokerNetTransactionTops</a>
+                                        <a href="#elwgetlpholdingdailytrends" class="menu-item">GetLpHoldingDailyTrends</a>
+                                        <a href="#elwgetdisparityrates" class="menu-item">GetDisparityRates</a>
+                                        <a href="#elwgetconditionsearches" class="menu-item">GetConditionSearches</a>
+                                        <a href="#elwgetchangerateranks" class="menu-item">GetChangeRateRanks</a>
+                                        <a href="#elwgetrequestranks" class="menu-item">GetRequestRanks</a>
+                                        <a href="#elwgetproximityrates" class="menu-item">GetProximityRates</a>
+                                        <a href="#elwgetstockinfo" class="menu-item">GetStockInfo</a>
                                     </div>
                                 </div>
 
@@ -727,15 +786,15 @@
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
                                     <div id="etf-menu" class="menu-items" style="display:none;">
-                                        <a href="#getprofitrates" class="menu-item">GetProfitRates</a>
-                                        <a href="#getstockinfo" class="menu-item">GetStockInfo</a>
-                                        <a href="#getdailytransactions" class="menu-item">GetDailyTransactions</a>
-                                        <a href="#getallmarketprices" class="menu-item">GetAllMarketPrices</a>
-                                        <a href="#gethourlytransactions" class="menu-item">GetHourlyTransactions</a>
-                                        <a href="#gethourlytrades" class="menu-item">GetHourlyTrades</a>
-                                        <a href="#getdailytrades" class="menu-item">GetDailyTrades</a>
-                                        <a href="#gethourlytrades2" class="menu-item">GetHourlyTrades2</a>
-                                        <a href="#gethourlytransactions2" class="menu-item">GetHourlyTransactions2</a>
+                                        <a href="#etfgetprofitrates" class="menu-item">GetProfitRates</a>
+                                        <a href="#etfgetstockinfo" class="menu-item">GetStockInfo</a>
+                                        <a href="#etfgetdailytransactions" class="menu-item">GetDailyTransactions</a>
+                                        <a href="#etfgetallmarketprices" class="menu-item">GetAllMarketPrices</a>
+                                        <a href="#etfgethourlytransactions" class="menu-item">GetHourlyTransactions</a>
+                                        <a href="#etfgethourlytrades" class="menu-item">GetHourlyTrades</a>
+                                        <a href="#etfgetdailytrades" class="menu-item">GetDailyTrades</a>
+                                        <a href="#etfgethourlytrades2" class="menu-item">GetHourlyTrades2</a>
+                                        <a href="#etfgethourlytransactions2" class="menu-item">GetHourlyTransactions2</a>
                                     </div>
                                 </div>
 
@@ -746,10 +805,10 @@
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
                                     <div id="foreign-institution-menu" class="menu-items" style="display:none;">
-                                        <a href="#getstockforeigners" class="menu-item">GetStockForeigners</a>
-                                        <a href="#getstockinstitutions" class="menu-item">GetStockInstitutions</a>
-                                        <a href="#getcontinuoustransactions" class="menu-item">GetContinuousTransactions</a>
-                                        <a href="#getgoldspotinvestorstatus" class="menu-item">GetGoldSpotInvestorStatus</a>
+                                        <a href="#foreigninstitutiongetstockforeigners" class="menu-item">GetStockForeigners</a>
+                                        <a href="#foreigninstitutiongetstockinstitutions" class="menu-item">GetStockInstitutions</a>
+                                        <a href="#foreigninstitutiongetcontinuoustransactions" class="menu-item">GetContinuousTransactions</a>
+                                        <a href="#foreigninstitutiongetgoldspotinvestorstatus" class="menu-item">GetGoldSpotInvestorStatus</a>
                                     </div>
                                 </div>
 
@@ -776,13 +835,13 @@
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
                                     <div id="stock-info-menu" class="menu-items" style="display:none;">
-                                        <a href="#getstockinfo" class="menu-item">GetStockInfo</a>
-                                        <a href="#getbrokerinfo" class="menu-item">GetBrokerInfo</a>
-                                        <a href="#gettrades" class="menu-item">GetTrades</a>
-                                        <a href="#getnewhighlows" class="menu-item">GetNewHighLows</a>
-                                        <a href="#getupperlowers" class="menu-item">GetUpperLowers</a>
-                                        <a href="#gethighlowproximities" class="menu-item">GetHighLowProximities</a>
-                                        <a href="#getpricevolatilities" class="menu-item">GetPriceVolatilities</a>
+                                        <a href="#stockinfogetstockinfo" class="menu-item">GetStockInfo</a>
+                                        <a href="#stockinfogetbrokerinfo" class="menu-item">GetBrokerInfo</a>
+                                        <a href="#stockinfogettrades" class="menu-item">GetTrades</a>
+                                        <a href="#stockinfogetnewhighlows" class="menu-item">GetNewHighLows</a>
+                                        <a href="#stockinfogetupperlowers" class="menu-item">GetUpperLowers</a>
+                                        <a href="#stockinfogethighlowproximities" class="menu-item">GetHighLowProximities</a>
+                                        <a href="#stockinfogetpricevolatilities" class="menu-item">GetPriceVolatilities</a>
                                         <a href="#gettradingvalues" class="menu-item">GetTradingValues</a>
                                         <a href="#gettradingvolumesbyprice" class="menu-item">GetTradingVolumesByPrice</a>
                                         <a href="#getcapitalizations" class="menu-item">GetCapitalizations</a>
@@ -794,13 +853,13 @@
                                         <a href="#getprogramtradinginformations" class="menu-item">GetProgramTradingInformations</a>
                                         <a href="#getprogramtradingdailyinformations" class="menu-item">GetProgramTradingDailyInformations</a>
                                         <a href="#getstockinformation" class="menu-item">GetStockInformation</a>
-                                        <a href="#getrealtimestockranks" class="menu-item">GetRealtimeStockRanks</a>
-                                        <a href="#getlists" class="menu-item">GetLists</a>
-                                        <a href="#getindustrycodes" class="menu-item">GetIndustryCodes</a>
-                                        <a href="#getprogramnetbuytop50" class="menu-item">GetProgramNetBuyTop50</a>
-                                        <a href="#getstockprogramtransactionstatus" class="menu-item">GetStockProgramTransactionStatus</a>
-                                        <a href="#getcreditloanavailablestocks" class="menu-item">GetCreditLoanAvailableStocks</a>
-                                        <a href="#getcreditloanavailable" class="menu-item">GetCreditLoanAvailable</a>
+                                        <a href="#stockinfogetrealtimestockranks" class="menu-item">GetRealtimeStockRanks</a>
+                                        <a href="#stockinfogetlists" class="menu-item">GetLists</a>
+                                        <a href="#stockinfogetindustrycodes" class="menu-item">GetIndustryCodes</a>
+                                        <a href="#stockinfogetprogramnetbuytop50" class="menu-item">GetProgramNetBuyTop50</a>
+                                        <a href="#stockinfogetstockprogramtransactionstatus" class="menu-item">GetStockProgramTransactionStatus</a>
+                                        <a href="#stockinfogetcreditloanavailablestocks" class="menu-item">GetCreditLoanAvailableStocks</a>
+                                        <a href="#stockinfogetcreditloanavailable" class="menu-item">GetCreditLoanAvailable</a>
                                     </div>
                                 </div>
 
@@ -811,34 +870,34 @@
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
                                     <div id="market-condition-menu" class="menu-items" style="display:none;">
-                                        <a href="#getorderbook" class="menu-item">GetOrderBook</a>
-                                        <a href="#getorderbooklist" class="menu-item">GetOrderBookList</a>
-                                        <a href="#getdailyweeklymonthly" class="menu-item">GetDailyWeeklyMonthly</a>
-                                        <a href="#gethourminute" class="menu-item">GetHourMinute</a>
-                                        <a href="#getquote" class="menu-item">GetQuote</a>
-                                        <a href="#getquotelist" class="menu-item">GetQuoteList</a>
-                                        <a href="#getallmarketquoteforrightsofferings" class="menu-item">GetAllMarketQuoteForRightsOfferings</a>
-                                        <a href="#getdailyinstitutiontradingstocks" class="menu-item">GetDailyInstitutionTradingStocks</a>
-                                        <a href="#getstockinstitutiontransactiontrends" class="menu-item">GetStockInstitutionTransactionTrends</a>
-                                        <a href="#gethourlytrademomentums" class="menu-item">GetHourlyTradeMomentums</a>
-                                        <a href="#getdailytrademomentums" class="menu-item">GetDailyTradeMomentums</a>
-                                        <a href="#getintradayinvestortradings" class="menu-item">GetIntradayInvestorTradings</a>
-                                        <a href="#getintradayinvestortradecharts" class="menu-item">GetIntradayInvestorTradeCharts</a>
-                                        <a href="#getsecurityfirmstocktradetrends" class="menu-item">GetSecurityFirmStockTradeTrends</a>
-                                        <a href="#getdailystockprices" class="menu-item">GetDailyStockPrices</a>
-                                        <a href="#getaftermarketsinglepriceorderbook" class="menu-item">GetAfterMarketSinglePriceOrderBook</a>
-                                        <a href="#getaftermarketsinglepriceorderbooklist" class="menu-item">GetAfterMarketSinglePriceOrderBookList</a>
-                                        <a href="#getgoldtradetrends" class="menu-item">GetGoldTradeTrends</a>
-                                        <a href="#getgolddailytrends" class="menu-item">GetGoldDailyTrends</a>
-                                        <a href="#getgoldexpectedtrades" class="menu-item">GetGoldExpectedTrades</a>
-                                        <a href="#getgoldinfo" class="menu-item">GetGoldInfo</a>
-                                        <a href="#getgoldquotes" class="menu-item">GetGoldQuotes</a>
-                                        <a href="#gethourlyprogramtradetrends" class="menu-item">GetHourlyProgramTradeTrends</a>
-                                        <a href="#getprogramarbitragebalancetrends" class="menu-item">GetProgramArbitrageBalanceTrends</a>
-                                        <a href="#getprogramtradeaccumulatedtrends" class="menu-item">GetProgramTradeAccumulatedTrends</a>
-                                        <a href="#getstocktimeprogramtradetrends" class="menu-item">GetStockTimeProgramTradeTrends</a>
-                                        <a href="#getdailyprogramtradetrends" class="menu-item">GetDailyProgramTradeTrends</a>
-                                        <a href="#getstockdailyprogramtradetrends" class="menu-item">GetStockDailyProgramTradeTrends</a>
+                                        <a href="#marketconditiongetorderbook" class="menu-item">GetOrderBook</a>
+                                        <a href="#marketconditiongetorderbooklist" class="menu-item">GetOrderBookList</a>
+                                        <a href="#marketconditiongetdailyweeklymonthly" class="menu-item">GetDailyWeeklyMonthly</a>
+                                        <a href="#marketconditiongethourminute" class="menu-item">GetHourMinute</a>
+                                        <a href="#marketconditiongetquote" class="menu-item">GetQuote</a>
+                                        <a href="#marketconditiongetquotelist" class="menu-item">GetQuoteList</a>
+                                        <a href="#marketconditiongetallmarketquoteforrightsofferings" class="menu-item">GetAllMarketQuoteForRightsOfferings</a>
+                                        <a href="#marketconditiongetdailyinstitutiontradingstocks" class="menu-item">GetDailyInstitutionTradingStocks</a>
+                                        <a href="#marketconditiongetstockinstitutiontransactiontrends" class="menu-item">GetStockInstitutionTransactionTrends</a>
+                                        <a href="#marketconditiongethourlytrademomentums" class="menu-item">GetHourlyTradeMomentums</a>
+                                        <a href="#marketconditiongetdailytrademomentums" class="menu-item">GetDailyTradeMomentums</a>
+                                        <a href="#marketconditiongetintradayinvestortradings" class="menu-item">GetIntradayInvestorTradings</a>
+                                        <a href="#marketconditiongetintradayinvestortradecharts" class="menu-item">GetIntradayInvestorTradeCharts</a>
+                                        <a href="#marketconditiongetsecurityfirmstocktradetrends" class="menu-item">GetSecurityFirmStockTradeTrends</a>
+                                        <a href="#marketconditiongetdailystockprices" class="menu-item">GetDailyStockPrices</a>
+                                        <a href="#marketconditiongetaftermarketsinglepriceorderbook" class="menu-item">GetAfterMarketSinglePriceOrderBook</a>
+                                        <a href="#marketconditiongetaftermarketsinglepriceorderbooklist" class="menu-item">GetAfterMarketSinglePriceOrderBookList</a>
+                                        <a href="#marketconditiongetgoldtradetrends" class="menu-item">GetGoldTradeTrends</a>
+                                        <a href="#marketconditiongetgolddailytrends" class="menu-item">GetGoldDailyTrends</a>
+                                        <a href="#marketconditiongetgoldexpectedtrades" class="menu-item">GetGoldExpectedTrades</a>
+                                        <a href="#marketconditiongetgoldinfo" class="menu-item">GetGoldInfo</a>
+                                        <a href="#marketconditiongetgoldquotes" class="menu-item">GetGoldQuotes</a>
+                                        <a href="#marketconditiongethourlyprogramtradetrends" class="menu-item">GetHourlyProgramTradeTrends</a>
+                                        <a href="#marketconditiongetprogramarbitragebalancetrends" class="menu-item">GetProgramArbitrageBalanceTrends</a>
+                                        <a href="#marketconditiongetprogramtradeaccumulatedtrends" class="menu-item">GetProgramTradeAccumulatedTrends</a>
+                                        <a href="#marketconditiongetstocktimeprogramtradetrends" class="menu-item">GetStockTimeProgramTradeTrends</a>
+                                        <a href="#marketconditiongetdailyprogramtradetrends" class="menu-item">GetDailyProgramTradeTrends</a>
+                                        <a href="#marketconditiongetstockdailyprogramtradetrends" class="menu-item">GetStockDailyProgramTradeTrends</a>
                                     </div>
                                 </div>
                                 
@@ -849,9 +908,9 @@
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
                                     <div id="order-menu" class="menu-items" style="display:none;">
-                                        <a href="#placeorder" class="menu-item">PlaceOrder</a>
-                                        <a href="#modifyorder" class="menu-item">ModifyOrder</a>
-                                        <a href="#cancelorder" class="menu-item">CancelOrder</a>
+                                        <a href="#orderplaceorder" class="menu-item">PlaceOrder</a>
+                                        <a href="#ordermodifyorder" class="menu-item">ModifyOrder</a>
+                                        <a href="#ordercancelorder" class="menu-item">CancelOrder</a>
                                         <a href="#goldsptplaceorder" class="menu-item">GoldSpotPlaceOrder</a>
                                         <a href="#goldsptmodifyorder" class="menu-item">GoldSpotModifyOrder</a>
                                         <a href="#goldsptcancelorder" class="menu-item">GoldSpotCancelOrder</a>
@@ -899,10 +958,10 @@
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
                                     <div id="securities-lending-menu" class="menu-items" style="display:none;">
-                                        <a href="#getborrowedtrades" class="menu-item">GetBorrowedTrades</a>
-                                        <a href="#getborrowedtradetop10" class="menu-item">GetBorrowedTradeTop10</a>
-                                        <a href="#getstockborrowedtrades" class="menu-item">GetStockBorrowedTrades</a>
-                                        <a href="#getborrowedtradehistories" class="menu-item">GetBorrowedTradeHistories</a>
+                                        <a href="#securitieslendinggetborrowedtrades" class="menu-item">GetBorrowedTrades</a>
+                                        <a href="#securitieslendinggetborrowedtradetop10" class="menu-item">GetBorrowedTradeTop10</a>
+                                        <a href="#securitieslendinggetstockborrowedtrades" class="menu-item">GetStockBorrowedTrades</a>
+                                        <a href="#securitieslendinggetborrowedtradehistories" class="menu-item">GetBorrowedTradeHistories</a>
                                     </div>
                                 </div>
 
@@ -913,7 +972,7 @@
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
                                     <div id="short-sale-menu" class="menu-items" style="display:none;">
-                                        <a href="#getshortstransactions" class="menu-item">GetShortsTransactions</a>
+                                        <a href="#shortsalegetshortstransactions" class="menu-item">GetShortsTransactions</a>
                                     </div>
                                 </div>
 
@@ -924,8 +983,8 @@
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
                                     <div id="theme-menu" class="menu-items" style="display:none;">
-                                        <a href="#getgroups" class="menu-item">GetGroups</a>
-                                        <a href="#getcomponentstocks" class="menu-item">GetComponentStocks</a>
+                                        <a href="#themegetgroups" class="menu-item">GetGroups</a>
+                                        <a href="#themegetcomponentstocks" class="menu-item">GetComponentStocks</a>
                                     </div>
                                 </div>
 
@@ -936,14 +995,14 @@
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
                                     <div id="websocket-menu" class="menu-items" style="display:none;">
-                                        <a href="#subscribe" class="menu-item">Subscribe</a>
-                                        <a href="#unsubscribe" class="menu-item">Unsubscribe</a>
-                                        <a href="#unsubscribeall" class="menu-item">UnsubscribeAll</a>
-                                        <a href="#disconnect" class="menu-item">Disconnect</a>
+                                        <a href="#websocketsubscribe" class="menu-item">Subscribe</a>
+                                        <a href="#websocketunsubscribe" class="menu-item">Unsubscribe</a>
+                                        <a href="#websocketunsubscribeall" class="menu-item">UnsubscribeAll</a>
+                                        <a href="#websocketdisconnect" class="menu-item">Disconnect</a>
                                         <a href="#getconditionsearchlist" class="menu-item">GetConditionSearchList</a>
-                                        <a href="#getconditionsearchrequest" class="menu-item">GetConditionSearchRequest</a>
-                                        <a href="#getconditionsearchrequestrealtime" class="menu-item">GetConditionSearchRequestRealtime</a>
-                                        <a href="#getconditionsearchclear" class="menu-item">GetConditionSearchClear</a>
+                                        <a href="#websocketgetconditionsearchrequest" class="menu-item">GetConditionSearchRequest</a>
+                                        <a href="#websocketgetconditionsearchrequestrealtime" class="menu-item">GetConditionSearchRequestRealtime</a>
+                                        <a href="#websocketgetconditionsearchclear" class="menu-item">GetConditionSearchClear</a>
                                     </div>
                                 </div>
                             </div>
@@ -959,59 +1018,41 @@
                 <section id="oauth-apis" class="api-section">
                     <h2><i class="bi bi-shield-lock"></i> OAuth APIs</h2>
 
-                    <div class="card api-method-card" id="generateaccesstoken">
+                    <div class="card api-method-card" id="getaccesstoken">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
-                                GenerateAccessToken
-                                <span class="badge bg-primary ms-2">ko00001</span>
+                                GetAccessToken
+                                <span class="badge bg-primary ms-2">au10001</span>
                             </h5>
                         </div>
                         <div class="card-body">
-                            <h6>접근토큰발급 / Generate Access Token</h6>
+                            <h6>접근토큰 발급 / Generate Access Token</h6>
 
                             <div class="api-code">
-                                <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomOAuthAccessToken&gt;&gt; GenerateAccessTokenAsync(string grantType, string code, CancellationToken cancellationToken = default)</code>
+                                <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomOAuthGetAccessToken&gt;&gt; GetAccessTokenAsync(CancellationToken cancellationToken = default)</code>
                             </div>
 
-                            <table class="table param-table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>파라미터</th>
-                                        <th>타입</th>
-                                        <th>설명</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><code>grantType</code></td>
-                                        <td>string</td>
-                                        <td>OAuth 흐름을 위한 grant type</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>code</code></td>
-                                        <td>string</td>
-                                        <td>OAuth 제공자로부터 받은 인증 코드</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <p>Client Credentials Grant 방식으로 접근 토큰을 발급받습니다. 파라미터는 클라이언트에서 자동으로 설정됩니다.</p>
                         </div>
                     </div>
 
-                    <div class="card api-method-card" id="refreshaccesstoken">
+                    <div class="card api-method-card" id="revokeaccesstoken">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
-                                RefreshAccessToken
-                                <span class="badge bg-primary ms-2">ko00002</span>
+                                RevokeAccessToken
+                                <span class="badge bg-primary ms-2">au10002</span>
                             </h5>
                         </div>
                         <div class="card-body">
-                            <h6>접근토큰갱신 / Refresh Access Token</h6>
+                            <h6>접근토큰 폐기 / Revoke Access Token</h6>
 
                             <div class="api-code">
-                                <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomOAuthAccessToken&gt;&gt; RefreshAccessTokenAsync(string grantType, string refreshToken, CancellationToken cancellationToken = default)</code>
+                                <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomOAuthRevokeAccessToken&gt;&gt; RevokeAccessTokenAsync(string token, CancellationToken cancellationToken = default)</code>
                             </div>
+
+                            <p>발급받은 접근 토큰을 폐기합니다.</p>
 
                             <table class="table param-table table-hover">
                                 <thead>
@@ -1023,14 +1064,9 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><code>grantType</code></td>
+                                        <td><code>token</code></td>
                                         <td>string</td>
-                                        <td>토큰 갱신을 위한 grant type</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>refreshToken</code></td>
-                                        <td>string</td>
-                                        <td>새로운 접근 토큰을 얻기 위한 리프레시 토큰</td>
+                                        <td>폐기할 접근 토큰</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -1078,7 +1114,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="accountgetdailystockrealizedprofitlosses">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -1117,7 +1153,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="accountgetdailystockrealizedprofitlossperiods">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -1161,7 +1197,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="accountgetdailyrealizedprofitlosses">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -1202,7 +1238,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="accountgetunfilledorders">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -1343,7 +1379,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="accountgettodayrealizedprofitloss">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -1377,7 +1413,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="accountgetprofitrates">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -1418,7 +1454,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="accountgetunfilledsplitorders">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -1452,7 +1488,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="accountgettodaytransactionjournals">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -1510,7 +1546,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="accountgetdeposits">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -1553,7 +1589,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="accountgetdailyestimateddepositassets">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -1594,7 +1630,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="accountgetestimateddepositasset">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -1628,7 +1664,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="accountgetevaluations">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -1676,7 +1712,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="accountgettradebalances">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -1717,7 +1753,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="accountgetordertradedetails">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -1809,7 +1845,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="accountgetnextdaysettlements">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -1843,7 +1879,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="accountgetordertrades">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -1947,7 +1983,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="accountgetavailablewithdrawalamounts">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -2013,7 +2049,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="accountgetmarginorders">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -2052,7 +2088,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="accountgetcreditdepositorders">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -2091,7 +2127,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="accountgetmargindetails">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -2110,7 +2146,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="accountgetconsignedtransactions">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -2206,7 +2242,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="accountgetdailyprofitratedetails">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -2247,7 +2283,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="accountgetdailystatus">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -2268,7 +2304,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="accountgetevaluationbalances">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -2328,7 +2364,7 @@
                 <section id="chart-apis" class="api-section">
                     <h2><i class="bi bi-graph-up"></i> Chart APIs</h2>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="chartgetstockinvestorinstitutioncharts">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -2401,7 +2437,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="chartgetintradayinvestortradecharts">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -2469,7 +2505,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="chartgettickcharts">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -2513,7 +2549,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="chartgetminutecharts">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -2557,7 +2593,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="chartgetdailycharts">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -2601,7 +2637,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="chartgetweeklycharts">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -2645,7 +2681,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="chartgetmonthlycharts">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -2689,7 +2725,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="chartgetyearlycharts">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -2733,7 +2769,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="chartgetindustrytickcharts">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -2772,7 +2808,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="chartgetindustryminutecharts">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -2811,7 +2847,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="chartgetindustrydailycharts">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -2850,7 +2886,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="chartgetindustryweeklycharts">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -2889,7 +2925,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="chartgetindustrymonthlycharts">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -2928,7 +2964,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="chartgetindustryyearlycharts">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -2967,7 +3003,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="chartgetgoldspottickcharts">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -3011,7 +3047,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="chartgetgoldspotminutecharts">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -3055,7 +3091,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="chartgetgoldspotdailycharts">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -3099,7 +3135,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="chartgetgoldspotweeklycharts">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -3143,7 +3179,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="chartgetgoldspotmonthlycharts">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -3187,7 +3223,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="chartgetgoldspottodaytickcharts">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -3226,7 +3262,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="chartgetgoldspottodayminutecharts">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -3270,7 +3306,7 @@
                 <section id="credit-order-apis" class="api-section">
                     <h2><i class="bi bi-credit-card"></i> CreditOrder APIs</h2>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="creditorderplacebuyorder">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -3331,7 +3367,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="creditorderplacesellorder">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -3392,7 +3428,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="creditordermodifyorder">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -3458,7 +3494,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="creditordercancelorder">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -3524,7 +3560,7 @@
                 <section id="elw-apis" class="api-section">
                     <h2><i class="bi bi-graph-up-arrow"></i> ELW APIs</h2>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="elwgetdailysensitivityindices">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -3560,7 +3596,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="elwgetsensitivityindices">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -3596,7 +3632,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="elwgetpricevolatilities">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -3672,7 +3708,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="elwgetbrokernettransactiontops">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -3728,7 +3764,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="elwgetlpholdingdailytrends">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -3769,7 +3805,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="elwgetdisparityrates">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -3825,7 +3861,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="elwgetconditionsearches">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -3881,7 +3917,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="elwgetchangerateranks">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -3927,7 +3963,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="elwgetrequestranks">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -3973,7 +4009,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="elwgetproximityrates">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -4009,7 +4045,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="elwgetstockinfo">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -4050,7 +4086,7 @@
                 <section id="etf-apis" class="api-section">
                     <h2><i class="bi bi-funnel"></i> ETF APIs</h2>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="etfgetprofitrates">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -4096,7 +4132,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="etfgetstockinfo">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -4132,7 +4168,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="etfgetdailytransactions">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -4168,7 +4204,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="etfgetallmarketprices">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -4224,7 +4260,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="etfgethourlytransactions">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -4260,7 +4296,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="etfgethourlytrades">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -4296,7 +4332,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="etfgetdailytrades">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -4332,7 +4368,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="etfgethourlytrades2">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -4368,7 +4404,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="etfgethourlytransactions2">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -4409,7 +4445,7 @@
                 <section id="foreign-institution-apis" class="api-section">
                     <h2><i class="bi bi-globe"></i> Foreign Institution APIs</h2>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="foreigninstitutiongetstockforeigners">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -4445,7 +4481,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="foreigninstitutiongetstockinstitutions">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -4481,7 +4517,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="foreigninstitutiongetcontinuoustransactions">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -4547,7 +4583,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="foreigninstitutiongetgoldspotinvestorstatus">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -4588,7 +4624,7 @@
                 <section id="industry-apis" class="api-section">
                     <h2><i class="bi bi-building"></i> Industry APIs</h2>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="industrygetprogramtransactioninfo">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -4624,7 +4660,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="industrygetinvestornetbuys">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -4675,7 +4711,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="industrygetcurrentprices">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -4716,7 +4752,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="industrygetprices">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -4762,7 +4798,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="industrygetallindustryindices">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -4798,7 +4834,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="industrygetdailyprices">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -4844,7 +4880,7 @@
                 <section id="stock-info-apis" class="api-section">
                     <h2><i class="bi bi-info-circle"></i> Stock Info APIs</h2>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogetrealtimestockranks">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -4880,7 +4916,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogetstockinfo">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -4926,7 +4962,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogetbrokerinfo">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -4962,7 +4998,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogettrades">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -4998,7 +5034,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogetcredittransactiontrends">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -5044,7 +5080,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogetdailytransactiondetails">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -5085,7 +5121,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogetnewhighlows">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -5161,7 +5197,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogetupperlowers">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -5232,7 +5268,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogethighlowproximities">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -5293,7 +5329,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogetpricevolatilities">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -5349,7 +5385,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogetvolumeupdates">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -5385,7 +5421,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogetpriceconcentrations">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -5446,7 +5482,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogethighlowpers">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -5512,7 +5548,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogetopenchangerates">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -5563,7 +5599,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogetbrokerpriceanalyses">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -5604,7 +5640,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogetbrokerinstantvolumes">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -5640,7 +5676,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogetvistrikestocks">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -5696,7 +5732,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogettodaypreviousdaytradequantities">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -5752,7 +5788,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogetinvestordailytransactionstocks">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -5813,7 +5849,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogetstockinvestorinstitutions">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -5869,7 +5905,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogetstockinvestorinstitutiontotals">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -5925,7 +5961,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogettodaypreviousdaytrades">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -5981,7 +6017,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogetfavoritestocks">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -6000,7 +6036,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogetlists">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -6066,7 +6102,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogetlistitem">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -6102,7 +6138,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogetindustrycodes">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -6138,7 +6174,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogetmembercompanys">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -6179,7 +6215,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogetprogramnetbuytop50">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -6220,7 +6256,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogetstockprogramtransactionstatus">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -6256,7 +6292,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogetcreditloanavailablestocks">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -6275,7 +6311,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="stockinfogetcreditloanavailable">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -6327,7 +6363,7 @@
                     <h2><i class="bi bi-bar-chart-line"></i> MarketCondition APIs</h2>
 
                     <!-- Order Book APIs -->
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="marketconditiongetorderbook">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -6363,7 +6399,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="marketconditiongetorderbooklist">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -6400,7 +6436,7 @@
                     </div>
 
                     <!-- Chart APIs -->
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="marketconditiongetdailyweeklymonthly">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -6436,7 +6472,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="marketconditiongethourminute">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -6473,7 +6509,7 @@
                     </div>
 
                     <!-- Quote APIs -->
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="marketconditiongetquote">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -6509,7 +6545,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="marketconditiongetquotelist">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -6546,7 +6582,7 @@
                     </div>
 
                     <!-- Rights Offering APIs -->
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="marketconditiongetallmarketquoteforrightsofferings">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -6583,7 +6619,7 @@
                     </div>
 
                     <!-- Institution Trading APIs -->
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="marketconditiongetdailyinstitutiontradingstocks">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -6639,7 +6675,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="marketconditiongetstockinstitutiontransactiontrends">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -6696,7 +6732,7 @@
                     </div>
 
                     <!-- Trade Momentum APIs -->
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="marketconditiongethourlytrademomentums">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -6732,7 +6768,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="marketconditiongetdailytrademomentums">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -6769,7 +6805,7 @@
                     </div>
 
                     <!-- Investor Trading APIs -->
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="marketconditiongetintradayinvestortradings">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -6830,7 +6866,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="marketconditiongetintradayinvestortradecharts">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -6882,7 +6918,7 @@
                     </div>
 
                     <!-- Security Firm Trading APIs -->
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="marketconditiongetsecurityfirmstocktradetrends">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -6934,7 +6970,7 @@
                     </div>
 
                     <!-- Stock Price APIs -->
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="marketconditiongetdailystockprices">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -6981,7 +7017,7 @@
                     </div>
 
                     <!-- After Market APIs -->
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="marketconditiongetaftermarketsinglepriceorderbook">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -7017,7 +7053,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="marketconditiongetaftermarketsinglepriceorderbooklist">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -7054,7 +7090,7 @@
                     </div>
 
                     <!-- Gold APIs -->
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="marketconditiongetgoldtradetrends">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -7090,7 +7126,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="marketconditiongetgolddailytrends">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -7131,7 +7167,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="marketconditiongetgoldexpectedtrades">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -7167,7 +7203,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="marketconditiongetgoldinfo">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -7203,7 +7239,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="marketconditiongetgoldquotes">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -7245,7 +7281,7 @@
                     </div>
 
                     <!-- Program Trading APIs -->
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="marketconditiongethourlyprogramtradetrends">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -7301,7 +7337,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="marketconditiongetprogramarbitragebalancetrends">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -7342,7 +7378,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="marketconditiongetprogramtradeaccumulatedtrends">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -7393,7 +7429,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="marketconditiongetstocktimeprogramtradetrends">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -7439,7 +7475,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="marketconditiongetdailyprogramtradetrends">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -7495,7 +7531,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="marketconditiongetstockdailyprogramtradetrends">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -7546,7 +7582,7 @@
                 <section id="order-apis" class="api-section">
                     <h2><i class="bi bi-cart-check"></i> Order APIs</h2>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="orderplaceorder">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -7655,7 +7691,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="ordermodifyorder">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -7721,7 +7757,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="ordercancelorder">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -7777,7 +7813,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="ordergoldspotplaceorder">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -7841,7 +7877,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="ordergoldspotmodifyorder">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -7890,7 +7926,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="ordergoldspotcancelorder">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -7940,7 +7976,7 @@
                     <h2><i class="bi bi-trophy"></i> RankingInfo APIs</h2>
 
                     <!-- Order Book Top APIs -->
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="rankinginfogetorderbooktops">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -8001,7 +8037,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="rankinginfogetorderbookspikes">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -8072,7 +8108,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="rankinginfogetremainquantityratespikes">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -8139,7 +8175,7 @@
                     </div>
 
                     <!-- Volume Spike APIs -->
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="rankinginfogetvolumespikes">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -8211,7 +8247,7 @@
                     </div>
 
                     <!-- Change Rate Top APIs -->
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="rankinginfogetchangeratetops">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -8287,7 +8323,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="rankinginfogetexpectedtradechangeratetops">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -8353,7 +8389,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="rankinginfogettodayvolumetops">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -8430,7 +8466,7 @@
                     </div>
 
                     <!-- Previous Day Volume Top APIs -->
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="rankinginfogetpreviousdayvolumetops">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -8486,7 +8522,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="rankinginfogettransactionamounttops">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -8533,7 +8569,7 @@
                     </div>
 
                     <!-- Credit Rate Top APIs -->
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="rankinginfogetcreditratetops">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -8595,7 +8631,7 @@
                     </div>
 
                     <!-- Foreign Transaction Top APIs -->
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="rankinginfogetforeignperiodtransactiontops">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -8646,7 +8682,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="rankinginfogetforeigncontinuousnettransactiontops">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -8697,7 +8733,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="rankinginfogetforeignlimitusagerateincreasetops">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -8744,7 +8780,7 @@
                     </div>
 
                     <!-- Foreign Wicket Transaction APIs -->
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="rankinginfogetforeignwickettransactiontops">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -8801,7 +8837,7 @@
                     </div>
 
                     <!-- Securities Rank APIs -->
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="rankinginfogetstocksecuritiesranks">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -8857,7 +8893,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="rankinginfogetsecuritiestransactiontops">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -8914,7 +8950,7 @@
                     </div>
 
                     <!-- Foreign Institution Transaction APIs -->
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="rankinginfogetforeigninstitutiontransactiontops">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -8971,7 +9007,7 @@
                     </div>
 
                     <!-- Broker Transaction APIs -->
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="rankinginfogettodaymainbrokers">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -9007,7 +9043,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="rankinginfogetnetbuybrokerranks">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -9073,7 +9109,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="rankinginfogettodaytopexitbrokers">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -9110,7 +9146,7 @@
                     </div>
 
                     <!-- Open Market Investor Transaction APIs -->
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="rankinginfogetopenmarketinvestortransactiontops">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -9162,7 +9198,7 @@
                     </div>
 
                     <!-- Equal Net Transaction Rank APIs -->
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="rankinginfogetequalnettransactionranks">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -9229,7 +9265,7 @@
                     </div>
 
                     <!-- After Market APIs -->
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="rankinginfogetaftermarketsinglepricechangerateranks">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -9295,7 +9331,7 @@
                 <section id="securities-lending-apis" class="api-section">
                     <h2><i class="bi bi-bank"></i> SecuritiesLending APIs</h2>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="securitieslendinggetborrowedtrades">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -9336,7 +9372,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="securitieslendinggetborrowedtradetop10">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -9382,7 +9418,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="securitieslendinggetstockborrowedtrades">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -9428,7 +9464,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="securitieslendinggetborrowedtradehistories">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -9474,7 +9510,7 @@
                 <section id="short-sale-apis" class="api-section">
                     <h2><i class="bi bi-graph-down-arrow"></i> ShortSale APIs</h2>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="shortsalegetshortstransactions">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -9530,7 +9566,7 @@
                 <section id="theme-apis" class="api-section">
                     <h2><i class="bi bi-palette"></i> Theme APIs</h2>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="themegetgroups">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -9591,7 +9627,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="themegetcomponentstocks">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -9648,7 +9684,7 @@
                     </div>
 
                     <!-- Connection Management -->
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="websocketsubscribe">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">WS</span>
@@ -9694,7 +9730,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="websocketunsubscribe">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">WS</span>
@@ -9740,7 +9776,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="websocketunsubscribeall">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">WS</span>
@@ -9776,7 +9812,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="websocketunsubscribe1">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">WS</span>
@@ -9815,7 +9851,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="websocketdisconnect">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">WS</span>
@@ -9924,7 +9960,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="websocketgetconditionsearchrequest">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -9943,7 +9979,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="websocketgetconditionsearchrequestrealtime">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -9962,7 +9998,7 @@
                         </div>
                     </div>
 
-                    <div class="card api-method-card">
+                    <div class="card api-method-card" id="websocketgetconditionsearchclear">
                         <div class="card-header">
                             <h5 class="card-title">
                                 <span class="api-method">POST</span>
@@ -10076,16 +10112,19 @@
             }
         });
 
-        // 통합된 스크롤spy - 중복 제거
+        // 통합된 스크롤spy - 개선된 성능 최적화
         let scrollTimeout;
+        let isScrolling = false;
+
         window.addEventListener('scroll', function() {
-            if (scrollTimeout) {
-                clearTimeout(scrollTimeout);
+            if (!isScrolling) {
+                window.requestAnimationFrame(function() {
+                    updateActiveNavigation();
+                    updateActiveMenuOnScroll();
+                    isScrolling = false;
+                });
+                isScrolling = true;
             }
-            scrollTimeout = setTimeout(function() {
-                updateActiveNavigation();
-                updateActiveMenuOnScroll();
-            }, 50); // 디바운싱으로 성능 최적화
         });
 
         function updateActiveNavigation() {
@@ -10343,6 +10382,9 @@
 
         // 메뉴 아이템 클릭 시 부드러운 스크롤
         document.addEventListener('DOMContentLoaded', function() {
+            // 페이지 로드 시 초기 메뉴 상태 설정
+            updateActiveMenuOnScroll();
+
             const menuItems = document.querySelectorAll('.menu-item');
 
             menuItems.forEach(item => {
@@ -10512,11 +10554,20 @@
             // 디버그 로그
             console.log('Current active element:', currentElement, 'Sections found:', sections.length, 'Menu items found:', menuItems.length);
 
+            // 먼저 모든 메뉴 닫기 (부드러운 전환 효과)
+            const allMenus = document.querySelectorAll('.menu-items');
+            allMenus.forEach(menu => {
+                menu.style.display = 'none';
+            });
+
+            // 모든 메뉴 헤더 비활성화
+            menuHeaders.forEach(header => {
+                header.classList.remove('active');
+            });
+
             // 대메뉴 활성화 (개선된 로직)
             let activeCategory = null;
             menuHeaders.forEach(header => {
-                header.classList.remove('active');
-
                 // 해당 카테고리에 속하는 메뉴 아이템들 찾기
                 const menuId = header.getAttribute('onclick')?.match(/toggleMenu\('([^']+)'\)/)?.[1];
                 if (menuId) {
@@ -10536,10 +10587,8 @@
                             header.classList.add('active');
                             activeCategory = header;
 
-                            // 카테고리가 닫혀있다면 열기
-                            if (!collapseElement.classList.contains('show')) {
-                                collapseElement.style.display = 'block';
-                            }
+                            // 활성 카테고리 메뉴 열기
+                            collapseElement.style.display = 'block';
                         }
                     }
                 }
@@ -10574,3 +10623,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
 </body>
 </html>
+
+
+

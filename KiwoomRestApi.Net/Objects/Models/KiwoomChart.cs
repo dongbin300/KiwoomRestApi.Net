@@ -239,12 +239,6 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// </summary>
         [JsonProperty("pred_pre_sig")]
         public string? ChangeSign;
-        /// <summary>
-        /// 체결일
-        /// </summary>
-        [JsonProperty("cntr_dt")]
-        [JsonConverter(typeof(KiwoomDateTimeConverter))]
-        public DateTime? TradeDate;
     }
 
 	public record KiwoomChartGetDailyCharts
@@ -450,12 +444,6 @@ namespace KiwoomRestApi.Net.Objects.Models
         /// </summary>
         [JsonProperty("pred_pre_sig")]
         public string? ChangeSign;
-        /// <summary>
-        /// 체결일
-        /// </summary>
-        [JsonProperty("cntr_dt")]
-        [JsonConverter(typeof(KiwoomDateTimeConverter))]
-        public DateTime? TradeDate;
     }
 
     public record KiwoomChartGetIndustryMinuteCharts

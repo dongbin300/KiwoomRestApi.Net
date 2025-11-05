@@ -92,7 +92,7 @@ namespace KiwoomRestApi.Net.Examples
             //var b9 = _client.Chart.GetMinuteChartsAsync(stockCode, 15, false).Result;
             //var b10 = _client.Chart.GetMonthlyChartsAsync(stockCode, date, false).Result;
             //var b11 = _client.Chart.GetStockInvestorInstitutionChartsAsync(date, stockCode, KiwoomChartAmountQuantityType.Amount, KiwoomChartTransactionType.Buy, KiwoomChartUnitType.One).Result;
-            //var b12 = _client.Chart.GetTickChartsAsync(stockCode, 15, false).Result;
+            var b12 = _client.Chart.GetTickChartsAsync(stockCode, 15, false).Result;
             //var b13 = _client.Chart.GetWeeklyChartsAsync(stockCode, date, false).Result;
             //var b14 = _client.Chart.GetYearlyChartsAsync(stockCode, date, false).Result;
             //var b15 = _client.Chart.GetGoldSpotTickChartsAsync(KiwoomGoldSpotStockCode.Gold_1kg, 10, true).Result;
