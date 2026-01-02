@@ -310,7 +310,7 @@ var results = await Task.WhenAll(tasks);
 - **.NET 6.0**
 - **.NET 8.0**
 - **.NET 9.0**
-- **.NET 10.0** (Preview)
+- **.NET 10.0**
 
 ## 📝 라이선스
 
@@ -329,6 +329,18 @@ var results = await Task.WhenAll(tasks);
 - [버그 리포트](https://github.com/dongbin300/KiwoomRestApi.Net/issues)
 
 ## 📋 릴리즈 노트
+
+### v0.6.0 (2026-01-02)
+- 대용량 메시지 수신 시 JSON 파싱 에러 해결 (#1)
+- Microsoft.Extensions, System.Text.Json 최신 버전으로 업데이트 (10.0.1)
+- | kt00005 | 체결잔고요청 `KiwoomAccountStockExchangeType`을 `KiwoomAccountStockExchangeType2`로 수정
+- | ka10073 | 일자별종목별실현손익요청_기간 `TodayHtsSellFee` `string`로 수정
+- | ka30002 | 거래원별ELW순매매상위요청 `issuerCompanyCode` 파라미터를 `string`로 수정
+- | ka10005 | 주식일주월시분요청 `KiwoomMarketConditionGetDailyWeeklyMonthly` 멤버 수정
+- | ka10101 | 업종코드 리스트 `marketCode`를 `list`로 수정
+- KiwoomWebSocketRealtime 멤버변수 일부 `string`을 `KiwoomString`으로 수정
+
+---
 
 ### v0.5.1 (2025-11-05)
 - | ka10079 | 주식틱차트조회요청 체결일 삭제

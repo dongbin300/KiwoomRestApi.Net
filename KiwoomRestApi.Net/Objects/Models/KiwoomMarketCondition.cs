@@ -474,6 +474,15 @@ namespace KiwoomRestApi.Net.Objects.Models
 	public record KiwoomMarketConditionGetDailyWeeklyMonthly
 	{
 		/// <summary>
+		/// 주식일주월시분
+		/// </summary>
+		[JsonProperty("stk_ddwkmm")]
+		public IEnumerable<KiwoomMarketConditionGetDailyWeeklyMonthlyItem>? Items;
+	}
+
+	public record KiwoomMarketConditionGetDailyWeeklyMonthlyItem
+	{
+		/// <summary>
 		/// 날짜
 		/// </summary>
 		[JsonProperty("date")]

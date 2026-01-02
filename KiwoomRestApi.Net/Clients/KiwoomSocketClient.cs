@@ -4,10 +4,12 @@ using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
 
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net.WebSockets;
 using System.Text;
@@ -45,7 +47,7 @@ namespace KiwoomRestApi.Net.Clients
 		/// <summary>
 		/// WebSocket 연결 엔드포인트 경로
 		/// </summary>
-		private readonly static string _endpoint = "/api/dostk/websocket";
+		private static readonly string _endpoint = ApiEndpoint.DomesticStock.Socket;
 
 		/// <summary>
 		/// WebSocket 수신 버퍼 크기 (바이트)
@@ -110,7 +112,9 @@ namespace KiwoomRestApi.Net.Clients
 			var socketClient = new KiwoomSocketClient();
 			socketClient.ClientWebSocket.ConnectAsync(uri, CancellationToken.None).GetAwaiter().GetResult();
 			socketClient._isConnect = true;
+#if DEBUG
 			Debug.WriteLine("Socket Connected.");
+#endif
 
 			var loginPacket = new
 			{
@@ -141,7 +145,9 @@ namespace KiwoomRestApi.Net.Clients
 			var socketClient = new KiwoomSocketClient();
 			await socketClient.ClientWebSocket.ConnectAsync(uri, CancellationToken.None).ConfigureAwait(false);
 			socketClient._isConnect = true;
+#if DEBUG
 			Debug.WriteLine("Socket Connected.");
+#endif
 
 			var loginPacket = new
 			{
@@ -169,40 +175,47 @@ namespace KiwoomRestApi.Net.Clients
 			{
 				while (ClientWebSocket.State == WebSocketState.Open && !cancellationToken.IsCancellationRequested)
 				{
-					var result = await ClientWebSocket.ReceiveAsync(new ArraySegment<byte>(buffer), cancellationToken);
-
-					// 서버에서 연결 종료 요청
-					if (result.MessageType == WebSocketMessageType.Close)
+					using var ms = new MemoryStream();
+					WebSocketReceiveResult result;
+					do
 					{
-						Debug.WriteLine("서버에서 연결 종료 요청");
-						await DisconnectAsync();
-						break;
-					}
+						result = await ClientWebSocket.ReceiveAsync(new ArraySegment<byte>(buffer), cancellationToken);
 
-					var message = Encoding.UTF8.GetString(buffer, 0, result.Count);
+						if (result.MessageType == WebSocketMessageType.Close)
+						{
+#if DEBUG
+							Debug.WriteLine("서버에서 연결 종료 요청");
+#endif
+							await DisconnectAsync();
+							return;
+						}
 
+						ms.Write(buffer, 0, result.Count);
+					} while (!result.EndOfMessage);
+
+					ms.Seek(0, SeekOrigin.Begin);
+
+					using var reader = new StreamReader(ms, Encoding.UTF8);
+					var message = await reader.ReadToEndAsync();
 					Debug.WriteLine($"{message}");
 
 					var json = JsonConvert.DeserializeObject<KiwoomSocketMessage>(message);
-
-					if (json == null)
-					{
-						continue;
-					}
+					if (json == null) continue;
 
 					switch (json.ServiceName)
 					{
-						// PING/PONG
 						case "PING":
 							OnMessageReceived?.Invoke(json);
-							await SendAsync(json);
+							await SendAsync(json, cancellationToken);
 							break;
 
 						case "LOGIN":
 							OnMessageReceived?.Invoke(json);
 							if (json.ReturnCode != 0)
 							{
+#if DEBUG
 								Debug.WriteLine($"Login Failed: {json.ReturnMessage}");
+#endif
 								await DisconnectAsync();
 							}
 							else
@@ -213,7 +226,6 @@ namespace KiwoomRestApi.Net.Clients
 
 						case "SYSTEM":
 							OnMessageReceived?.Invoke(json);
-							//await DisconnectAsync();
 							break;
 
 						case "REAL":
@@ -233,14 +245,31 @@ namespace KiwoomRestApi.Net.Clients
 							}
 							break;
 
-						// TODO
-						// 조건검색 요청 응답이 오지않고 있음
 						case "CNSRREQ":
 							{
-								var data = JsonConvert.DeserializeObject<KiwoomWebSocketReceiveMessage2<KiwoomWebSocketConditionSearchRequest>>(message)?.Data;
+								var rawData = JsonConvert.DeserializeObject<JObject>(message);
+								var dataNode = rawData?["data"];
 
-								if (data != null)
-									OnConditionSearchRequestReceived?.Invoke(data);
+								if (dataNode != null)
+								{
+									if (dataNode is JArray dataArray && dataArray.Count > 0)
+									{
+										var firstItem = dataArray[0] as JObject;
+
+										if (firstItem?["trnm"] != null)
+										{
+											var data = dataNode.ToObject<IEnumerable<KiwoomWebSocketConditionSearchRequestRealtime2>>();
+											if (data != null)
+												OnConditionSearchRequestRealtime2Received?.Invoke(data);
+										}
+										else
+										{
+											var data = dataNode.ToObject<IEnumerable<KiwoomWebSocketConditionSearchRequestRealtime>>();
+											if (data != null)
+												OnConditionSearchRequestRealtimeReceived?.Invoke(data);
+										}
+									}
+								}
 							}
 							break;
 
@@ -254,7 +283,6 @@ namespace KiwoomRestApi.Net.Clients
 							break;
 
 						default:
-							//Debug.WriteLine($"{message}");
 							OnMessageReceived?.Invoke(json);
 							break;
 					}
@@ -262,11 +290,15 @@ namespace KiwoomRestApi.Net.Clients
 			}
 			catch (OperationCanceledException)
 			{
+#if DEBUG
 				Debug.WriteLine("수신 작업 취소됨.");
+#endif
 			}
 			catch (Exception ex)
 			{
+#if DEBUG
 				Debug.WriteLine($"수신 중 예외 발생: {ex.Message}");
+#endif
 			}
 		}
 

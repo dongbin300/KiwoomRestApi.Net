@@ -2373,7 +2373,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// <summary>
 		/// 업종코드리스트
 		/// </summary>
-		[JsonProperty("marketCode")]
+		[JsonProperty("list")]
 		public IEnumerable<KiwoomStockInfoGetIndustryCodeItem>? Items;
 	}
 	public record KiwoomStockInfoGetIndustryCodeItem

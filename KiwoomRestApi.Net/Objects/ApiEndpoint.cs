@@ -21,6 +21,8 @@ namespace KiwoomRestApi.Net.Objects
 			public const string SecuritiesLending = "/api/dostk/slb";
 			public const string ShortSale = "/api/dostk/shsa";
 			public const string Theme = "/api/dostk/thme";
+
+			public const string Socket = "/api/dostk/websocket";
 		}
 	}
 }

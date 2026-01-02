@@ -97,7 +97,7 @@ namespace KiwoomRestApi.Net.Examples
             try
             {
                 // 간단한 계좌 정보만 테스트 (실제 enum 값 사용)
-                var balancesResponse = await _client.Account.GetTradeBalancesAsync(KiwoomAccountStockExchangeType.Unified);
+                var balancesResponse = await _client.Account.GetTradeBalancesAsync(KiwoomAccountStockExchangeType2.Krx);
                 LogResult("SUCCESS", "GetTradeBalancesAsync", "거래잔고 조회 완료");
 
                 var evaluationsResponse = await _client.Account.GetEvaluationsAsync(false, KiwoomAccountStockExchangeType.Unified);

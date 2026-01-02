@@ -90,7 +90,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="isExcludeEndedElw"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomElwGetBrokerNetTransactionTops>> GetBrokerNetTransactionTopsAsync(KiwoomElwCompanyCode issuerCompanyCode, decimal minVolume, KiwoomElwNetTransactionType transactionType, int period, bool isExcludeEndedElw, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomElwGetBrokerNetTransactionTops>> GetBrokerNetTransactionTopsAsync(string issuerCompanyCode, decimal minVolume, KiwoomElwNetTransactionType transactionType, int period, bool isExcludeEndedElw, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka30002";
 			var body = new HttpParameterMap()
@@ -210,7 +210,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="stockCode"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomElwGetProximityRates>> GetProximityRatesAsync(string stockCode, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomElwGetProximityRates>>GetProximityRatesAsync(string stockCode, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka30011";
 			var body = new HttpParameterMap()

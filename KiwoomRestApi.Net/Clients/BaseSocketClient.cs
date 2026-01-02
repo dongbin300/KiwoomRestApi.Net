@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
@@ -67,7 +68,9 @@ namespace KiwoomRestApi.Net.Clients
 			var _cancellationToken = cancellationToken == default ? CancellationTokenSource.Token : cancellationToken;
 			await ClientWebSocket.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, _cancellationToken);
 
+#if DEBUG
 			Debug.WriteLine($"메시지 전송: {messageJson}");
+#endif
 		}
 
 		public async Task ReceiveAsync(CancellationToken cancellationToken)
@@ -77,27 +80,41 @@ namespace KiwoomRestApi.Net.Clients
 			{
 				while (ClientWebSocket.State == WebSocketState.Open && !cancellationToken.IsCancellationRequested)
 				{
-					var result = await ClientWebSocket.ReceiveAsync(new ArraySegment<byte>(buffer), cancellationToken);
-
-					// 서버에서 연결 종료 요청
-					if (result.MessageType == WebSocketMessageType.Close)
+					using var ms = new MemoryStream();
+					WebSocketReceiveResult result;
+					do
 					{
-						Debug.WriteLine("서버에서 연결 종료 요청");
-						await DisconnectAsync();
-						break;
-					}
+						result = await ClientWebSocket.ReceiveAsync(new ArraySegment<byte>(buffer), cancellationToken);
 
-					var message = Encoding.UTF8.GetString(buffer, 0, result.Count);
+						if (result.MessageType == WebSocketMessageType.Close)
+						{
+							await DisconnectAsync();
+							return;
+						}
+
+						ms.Write(buffer, 0, result.Count);
+					} while (!result.EndOfMessage);
+
+					ms.Seek(0, SeekOrigin.Begin);
+
+					using var reader = new StreamReader(ms, Encoding.UTF8);
+					var message = await reader.ReadToEndAsync();
+#if DEBUG
 					Debug.WriteLine($"받은 메시지: {message}");
+#endif
 				}
 			}
 			catch (OperationCanceledException)
 			{
+#if DEBUG
 				Debug.WriteLine("수신 작업 취소됨.");
+#endif
 			}
 			catch (Exception ex)
 			{
+#if DEBUG
 				Debug.WriteLine($"수신 중 예외 발생: {ex.Message}");
+#endif
 			}
 		}
 
@@ -109,7 +126,9 @@ namespace KiwoomRestApi.Net.Clients
 				await ClientWebSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "클라이언트 종료", CancellationToken.None);
 				_isConnect = false;
 
+#if DEBUG
 				Debug.WriteLine("서버와 연결 종료");
+#endif
 			}
 		}
 	}

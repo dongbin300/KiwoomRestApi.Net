@@ -215,7 +215,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 당일hts매도수수료
 		/// </summary>
 		[JsonProperty("tdy_htssel_cmsn")]
-		public decimal? TodayHtsSellFee;
+		public string? TodayHtsSellFee;
 		/// <summary>
 		/// 종목코드
 		/// </summary>

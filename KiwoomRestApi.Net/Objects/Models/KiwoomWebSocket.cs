@@ -1127,7 +1127,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 예상체결가 (23)
 		/// </summary>
 		[JsonProperty("23")]
-		public decimal? ExpectedTradePrice;
+		public KiwoomDecimal? ExpectedTradePrice;
 		/// <summary>
 		/// 예상체결수량 (24)
 		/// </summary>
@@ -1157,12 +1157,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 예상체결가전일종가대비 (200)
 		/// </summary>
 		[JsonProperty("200")]
-		public decimal? ExpectedTradePriceCloseChange;
+		public KiwoomDecimal? ExpectedTradePriceCloseChange;
 		/// <summary>
 		/// 예상체결가전일종가대비등락율 (201)
 		/// </summary>
 		[JsonProperty("201")]
-		public decimal? ExpectedTradePriceCloseChangeRate;
+		public KiwoomDecimal? ExpectedTradePriceCloseChangeRate;
 		/// <summary>
 		/// 예상체결가전일종가대비기호 (238)
 		/// </summary>
@@ -1547,7 +1547,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// KRX 중간가 (6102)
 		/// </summary>
 		[JsonProperty("6102")]
-		public decimal? KrxMedian;
+		public KiwoomDecimal? KrxMedian;
 		/// <summary>
 		/// KRX 중간가 매수 총잔량 (6103)
 		/// </summary>
@@ -1587,7 +1587,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// KRX중간가대비 (6110)
 		/// </summary>
 		[JsonProperty("6110")]
-		public decimal? KrxMedianChange;
+		public KiwoomDecimal? KrxMedianChange;
 		/// <summary>
 		/// KRX중간가대비 기호 (6111)
 		/// </summary>
@@ -1597,7 +1597,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// KRX중간가대비등락율 (6112)
 		/// </summary>
 		[JsonProperty("6112")]
-		public decimal? KrxMedianChangeRate;
+		public KiwoomDecimal? KrxMedianChangeRate;
 		/// <summary>
 		/// NXT중간가대비 (6113)
 		/// </summary>
@@ -2455,7 +2455,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 순매수수량증감 (211) - 계약,주
 		/// </summary>
 		[JsonProperty("211")]
-		public decimal? NetBuyQuantityChange;
+		public KiwoomDecimal? NetBuyQuantityChange;
 		/// <summary>
 		/// 순매수금액 (212)
 		/// </summary>
@@ -2562,7 +2562,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 괴리율 동적 (1239)
 		/// </summary>
 		[JsonProperty("1239")]
-		public decimal? DisparityRateDynamic;
+		public KiwoomDecimal? DisparityRateDynamic;
 		/// <summary>
 		/// VI발동가 등락율 (1489)
 		/// </summary>

@@ -38,15 +38,15 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// | ka10072 | 일자별종목별실현손익요청_일자
 		/// </summary>
 		/// <param name="stockCode"></param>
-		/// <param name="startDate"></param>
+		/// <param name="date"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetDailyStockRealizedProfitLosses>> GetDailyStockRealizedProfitLossesAsync(string stockCode, DateTime startDate, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetDailyStockRealizedProfitLosses>> GetDailyStockRealizedProfitLossesAsync(string stockCode, DateTime date, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "ka10072";
 			var body = new HttpParameterMap()
 				.AddField("stk_cd", stockCode)
-				.AddField("strt_dt", startDate);
+				.AddField("strt_dt", date);
 
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetDailyStockRealizedProfitLosses>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
@@ -265,7 +265,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="stockExchangeType"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetTradeBalances>> GetTradeBalancesAsync(KiwoomAccountStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetTradeBalances>> GetTradeBalancesAsync(KiwoomAccountStockExchangeType2 stockExchangeType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "kt00005";
 			var body = new HttpParameterMap()
