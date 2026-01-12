@@ -97,30 +97,47 @@
         }
 
         .api-section {
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
+            scroll-margin-top: 100px;
         }
 
         .api-section h2 {
             color: #6366f1;
-            border-bottom: 2px solid #6366f1;
-            padding-bottom: 0.5rem;
-            margin-bottom: 2rem;
-            font-weight: 600;
+            border-bottom: 3px solid #6366f1;
+            padding-bottom: 0.75rem;
+            margin-bottom: 2.5rem;
+            font-weight: 700;
+            font-size: 2rem;
+            letter-spacing: -0.02em;
         }
 
         .api-method-card {
-            background: rgba(255, 255, 255, 0.95);
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            border-radius: 0.75rem;
-            margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.98);
+            border: 1px solid rgba(99, 102, 241, 0.15);
+            border-radius: 0.875rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.08);
+            scroll-margin-top: 120px; /* anchor 이동 시 여유 공간 */
         }
 
         .api-method-card:hover {
             background: rgba(255, 255, 255, 1);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
-            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(99, 102, 241, 0.15);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .api-method-card[id]:target {
+            border-color: rgba(251, 191, 36, 0.5);
+            box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.2);
+            animation: highlightPulse 0.6s ease-out;
+        }
+
+        @keyframes highlightPulse {
+            0% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(251, 191, 36, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
         }
 
         .card-title {
@@ -368,11 +385,6 @@
             border-radius: 0.25rem;
         }
 
-        .enum-desc {
-            font-size: 0.85rem;
-            color: #94a3b8;
-            margin-top: 0.25rem;
-        }
 
         /* 사이드바 기본 스타일 */
         .sidebar {
@@ -381,19 +393,22 @@
         }
 
         .sidebar .card {
-            background: rgba(99, 102, 241, 0.15);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.15);
+            border-radius: 1rem;
+            padding: 1rem;
         }
 
         .menu-category {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
         }
 
         .menu-header {
             background: linear-gradient(135deg, #6366f1, #8b5cf6);
             color: #f8fafc;
-            padding: 0.5rem 1rem;
+            padding: 0.75rem 1rem;
             border: none;
             cursor: pointer;
             font-weight: 600;
@@ -402,18 +417,46 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 0.625rem;
+            margin-bottom: 0.5rem;
+            box-shadow: 0 2px 6px rgba(99, 102, 241, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .menu-header:hover::before {
+            left: 100%;
         }
 
         .menu-header:hover {
             background: linear-gradient(135deg, #818cf8, #a78bfa);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(99, 102, 241, 0.35);
         }
 
         .menu-header.active {
             background: linear-gradient(135deg, #fbbf24, #f59e0b);
             color: #7c2d12;
-            box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);
+            box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
+            font-weight: 700;
+        }
+
+        .menu-header.expanded {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            margin-bottom: 0;
         }
 
         .menu-items {
@@ -423,27 +466,55 @@
 
         .menu-item {
             display: block;
-            padding: 0.4rem 1rem 0.4rem 2rem;
+            padding: 0.5rem 1rem 0.5rem 2.25rem;
             color: #475569;
             text-decoration: none;
-            border-left: 3px solid transparent;
-            transition: all 0.2s ease;
+            border-left: 4px solid transparent;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             font-size: 0.9rem;
+            position: relative;
+            margin: 0.15rem 0.5rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
         }
 
         .menu-item:hover {
-            background: linear-gradient(135deg, #ddd6fe, #e9d5ff);
+            background: linear-gradient(135deg, rgba(221, 214, 254, 0.6), rgba(233, 213, 255, 0.6));
             color: #6d28d9;
             border-left-color: #7c3aed;
-            transform: translateX(2px);
+            transform: translateX(4px);
+            box-shadow: 0 2px 6px rgba(124, 58, 237, 0.15);
         }
 
         .menu-item.active {
             background: linear-gradient(135deg, #fbbf24, #f59e0b);
             color: #7c2d12;
             border-left-color: #d97706;
-            font-weight: 600;
-            box-shadow: 0 2px 8px rgba(251, 191, 36, 0.2);
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(251, 191, 36, 0.35);
+            transform: translateX(4px);
+        }
+
+        .menu-item.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(135deg, #d97706, #f59e0b);
+            box-shadow: 0 0 12px rgba(251, 191, 36, 0.6);
+            border-radius: 0 2px 2px 0;
+        }
+
+        .menu-item.active::after {
+            content: '●';
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #7c2d12;
+            font-size: 0.5rem;
         }
 
         .api-method {
@@ -550,11 +621,51 @@
 
         /* 축소/확장 애니메이션 */
         .collapse {
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
         }
 
         .collapse.show {
             margin-bottom: 2px;
+        }
+
+        /* 메뉴 아이템 부드러운 전환 */
+        .menu-items {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                        opacity 0.4s ease,
+                        padding 0.4s ease,
+                        margin 0.4s ease;
+            opacity: 0;
+            padding: 0;
+            margin: 0;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 0 0 0.625rem 0.625rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-items.open {
+            max-height: 3000px;
+            opacity: 1;
+            padding: 0.75rem 0;
+            background: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.1);
+        }
+
+        .menu-header {
+            transition: all 0.2s ease;
+        }
+
+        .menu-header i.bi-chevron-down {
+            transition: transform 0.3s ease;
+        }
+
+        .menu-header.expanded i.bi-chevron-down {
+            transform: rotate(0deg);
+        }
+
+        .menu-header:not(.expanded) i.bi-chevron-down {
+            transform: rotate(-90deg);
         }
 
        /* 사이드바 스크롤 */
@@ -566,21 +677,26 @@
         }
 
         .sidebar::-webkit-scrollbar {
-            width: 6px;
+            width: 8px;
         }
 
         .sidebar::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
+            background: rgba(99, 102, 241, 0.05);
+            border-radius: 4px;
+            margin: 4px 0;
         }
 
         .sidebar::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 3px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.4), rgba(139, 92, 246, 0.4));
+            border-radius: 4px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            transition: background 0.3s ease;
         }
 
         .sidebar::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.5);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.6), rgba(139, 92, 246, 0.6));
+            background-clip: padding-box;
         }
 
         /* 모든 파란색 배경 강제 제거 */
@@ -670,11 +786,11 @@
                             <div id="menu-container">
                                 <!-- OAuth APIs -->
                                 <div class="menu-category">
-                                    <button class="menu-header" onclick="toggleMenu('oauth-menu')">
+                                    <button class="menu-header expanded" onclick="toggleMenu('oauth-menu')">
                                         <i class="bi bi-shield-lock"></i> OAuth APIs (2)
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
-                                    <div id="oauth-menu" class="menu-items">
+                                    <div id="oauth-menu" class="menu-items open">
                                         <a href="#getaccesstoken" class="menu-item">GetAccessToken</a>
                                         <a href="#revokeaccesstoken" class="menu-item">RevokeAccessToken</a>
                                     </div>
@@ -686,7 +802,7 @@
                                         <i class="bi bi-person"></i> Account APIs (26)
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
-                                    <div id="account-menu" class="menu-items" style="display:none;">
+                                    <div id="account-menu" class="menu-items">
                                         <a href="#getdailybalanceprofitrates" class="menu-item">GetDailyBalanceProfitRates</a>
                                         <a href="#accountgetdailystockrealizedprofitlosses" class="menu-item">GetDailyStockRealizedProfitLosses</a>
                                         <a href="#accountgetdailystockrealizedprofitlossperiods" class="menu-item">GetDailyStockRealizedProfitLossPeriods</a>
@@ -722,7 +838,7 @@
                                         <i class="bi bi-graph-up"></i> Chart APIs (21)
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
-                                    <div id="chart-menu" class="menu-items" style="display:none;">
+                                    <div id="chart-menu" class="menu-items">
                                         <a href="#chartgetstockinvestorinstitutioncharts" class="menu-item">GetStockInvestorInstitutionCharts</a>
                                         <a href="#chartgetintradayinvestortradecharts" class="menu-item">GetIntradayInvestorTradeCharts</a>
                                         <a href="#chartgettickcharts" class="menu-item">GetTickCharts</a>
@@ -750,7 +866,7 @@
                                         <i class="bi bi-credit-card"></i> CreditOrder APIs (4)
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
-                                    <div id="credit-order-menu" class="menu-items" style="display:none;">
+                                    <div id="credit-order-menu" class="menu-items">
                                         <a href="#creditorderplacebuyorder" class="menu-item">PlaceBuyOrder</a>
                                         <a href="#creditorderplacesellorder" class="menu-item">PlaceSellOrder</a>
                                         <a href="#creditordermodifyorder" class="menu-item">ModifyOrder</a>
@@ -764,7 +880,7 @@
                                         <i class="bi bi-graph-up-arrow"></i> ELW APIs (11)
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
-                                    <div id="elw-menu" class="menu-items" style="display:none;">
+                                    <div id="elw-menu" class="menu-items">
                                         <a href="#elwgetdailysensitivityindices" class="menu-item">GetDailySensitivityIndices</a>
                                         <a href="#elwgetsensitivityindices" class="menu-item">GetSensitivityIndices</a>
                                         <a href="#elwgetpricevolatilities" class="menu-item">GetPriceVolatilities</a>
@@ -785,7 +901,7 @@
                                         <i class="bi bi-funnel"></i> ETF APIs (9)
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
-                                    <div id="etf-menu" class="menu-items" style="display:none;">
+                                    <div id="etf-menu" class="menu-items">
                                         <a href="#etfgetprofitrates" class="menu-item">GetProfitRates</a>
                                         <a href="#etfgetstockinfo" class="menu-item">GetStockInfo</a>
                                         <a href="#etfgetdailytransactions" class="menu-item">GetDailyTransactions</a>
@@ -804,7 +920,7 @@
                                         <i class="bi bi-globe"></i> Foreign Institution APIs (4)
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
-                                    <div id="foreign-institution-menu" class="menu-items" style="display:none;">
+                                    <div id="foreign-institution-menu" class="menu-items">
                                         <a href="#foreigninstitutiongetstockforeigners" class="menu-item">GetStockForeigners</a>
                                         <a href="#foreigninstitutiongetstockinstitutions" class="menu-item">GetStockInstitutions</a>
                                         <a href="#foreigninstitutiongetcontinuoustransactions" class="menu-item">GetContinuousTransactions</a>
@@ -818,7 +934,7 @@
                                         <i class="bi bi-building"></i> Industry APIs (6)
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
-                                    <div id="industry-menu" class="menu-items" style="display:none;">
+                                    <div id="industry-menu" class="menu-items">
                                         <a href="#getindustryindex" class="menu-item">GetIndustryIndex</a>
                                         <a href="#getindustryindexrealtime" class="menu-item">GetIndustryIndexRealtime</a>
                                         <a href="#getindustryindextop10" class="menu-item">GetIndustryIndexTop10</a>
@@ -834,7 +950,7 @@
                                         <i class="bi bi-info-circle"></i> Stock Info APIs (31)
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
-                                    <div id="stock-info-menu" class="menu-items" style="display:none;">
+                                    <div id="stock-info-menu" class="menu-items">
                                         <a href="#stockinfogetstockinfo" class="menu-item">GetStockInfo</a>
                                         <a href="#stockinfogetbrokerinfo" class="menu-item">GetBrokerInfo</a>
                                         <a href="#stockinfogettrades" class="menu-item">GetTrades</a>
@@ -869,7 +985,7 @@
                                         <i class="bi bi-bar-chart-line"></i> MarketCondition APIs (28)
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
-                                    <div id="market-condition-menu" class="menu-items" style="display:none;">
+                                    <div id="market-condition-menu" class="menu-items">
                                         <a href="#marketconditiongetorderbook" class="menu-item">GetOrderBook</a>
                                         <a href="#marketconditiongetorderbooklist" class="menu-item">GetOrderBookList</a>
                                         <a href="#marketconditiongetdailyweeklymonthly" class="menu-item">GetDailyWeeklyMonthly</a>
@@ -907,7 +1023,7 @@
                                         <i class="bi bi-cart"></i> Order APIs (6)
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
-                                    <div id="order-menu" class="menu-items" style="display:none;">
+                                    <div id="order-menu" class="menu-items">
                                         <a href="#orderplaceorder" class="menu-item">PlaceOrder</a>
                                         <a href="#ordermodifyorder" class="menu-item">ModifyOrder</a>
                                         <a href="#ordercancelorder" class="menu-item">CancelOrder</a>
@@ -923,7 +1039,7 @@
                                         <i class="bi bi-trophy"></i> RankingInfo APIs (23)
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
-                                    <div id="ranking-info-menu" class="menu-items" style="display:none;">
+                                    <div id="ranking-info-menu" class="menu-items">
                                         <a href="#getrankingerlist" class="menu-item">GetRankingERList</a>
                                         <a href="#getrankingupperlower" class="menu-item">GetRankingUpperLower</a>
                                         <a href="#getrankingpricechange" class="menu-item">GetRankingPriceChange</a>
@@ -957,7 +1073,7 @@
                                         <i class="bi bi-bank"></i> SecuritiesLending APIs (4)
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
-                                    <div id="securities-lending-menu" class="menu-items" style="display:none;">
+                                    <div id="securities-lending-menu" class="menu-items">
                                         <a href="#securitieslendinggetborrowedtrades" class="menu-item">GetBorrowedTrades</a>
                                         <a href="#securitieslendinggetborrowedtradetop10" class="menu-item">GetBorrowedTradeTop10</a>
                                         <a href="#securitieslendinggetstockborrowedtrades" class="menu-item">GetStockBorrowedTrades</a>
@@ -971,7 +1087,7 @@
                                         <i class="bi bi-graph-down-arrow"></i> ShortSale APIs (1)
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
-                                    <div id="short-sale-menu" class="menu-items" style="display:none;">
+                                    <div id="short-sale-menu" class="menu-items">
                                         <a href="#shortsalegetshortstransactions" class="menu-item">GetShortsTransactions</a>
                                     </div>
                                 </div>
@@ -982,7 +1098,7 @@
                                         <i class="bi bi-palette"></i> Theme APIs (2)
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
-                                    <div id="theme-menu" class="menu-items" style="display:none;">
+                                    <div id="theme-menu" class="menu-items">
                                         <a href="#themegetgroups" class="menu-item">GetGroups</a>
                                         <a href="#themegetcomponentstocks" class="menu-item">GetComponentStocks</a>
                                     </div>
@@ -994,7 +1110,7 @@
                                         <i class="bi bi-broadcast"></i> WebSocket APIs (8)
                                         <i class="bi bi-chevron-down"></i>
                                     </button>
-                                    <div id="websocket-menu" class="menu-items" style="display:none;">
+                                    <div id="websocket-menu" class="menu-items">
                                         <a href="#websocketsubscribe" class="menu-item">Subscribe</a>
                                         <a href="#websocketunsubscribe" class="menu-item">Unsubscribe</a>
                                         <a href="#websocketunsubscribeall" class="menu-item">UnsubscribeAll</a>
@@ -1093,8 +1209,6 @@
                                 <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomAccountGetDailyBalanceProfitRates&gt;&gt; GetDailyBalanceProfitRatesAsync(DateTime date, CancellationToken cancellationToken = default)</code>
                             </div>
 
-                            <!-- Usage example removed -->
-
                             <table class="table param-table table-hover">
                                 <thead>
                                     <tr>
@@ -1126,7 +1240,7 @@
                             <h6>일자별종목별실현손익요청_일자 / Daily Stock Realized Profit Loss by Date</h6>
 
                             <div class="api-code">
-                                <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomAccountGetDailyStockRealizedProfitLosses&gt;&gt; GetDailyStockRealizedProfitLossesAsync(string stockCode, DateTime startDate, CancellationToken cancellationToken = default)</code>
+                                <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomAccountGetDailyStockRealizedProfitLosses&gt;&gt; GetDailyStockRealizedProfitLossesAsync(string stockCode, DateTime date, CancellationToken cancellationToken = default)</code>
                             </div>
 
                             <table class="table param-table table-hover">
@@ -1144,9 +1258,9 @@
                                         <td>종목코드 (6자리)</td>
                                     </tr>
                                     <tr>
-                                        <td><code>startDate</code></td>
+                                        <td><code>date</code></td>
                                         <td>DateTime</td>
-                                        <td>시작일자 (YYYYMMDD 형식)</td>
+                                        <td>조회일자 (YYYYMMDD 형식)</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -1212,8 +1326,6 @@
                                 <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomAccountGetDailyRealizedProfitLosses&gt;&gt; GetDailyRealizedProfitLossesAsync(DateTime startDate, DateTime endDate, CancellationToken cancellationToken = default)</code>
                             </div>
 
-                            <!-- Usage example removed -->
-
                             <table class="table param-table table-hover">
                                 <thead>
                                     <tr>
@@ -1253,8 +1365,6 @@
                                 <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomAccountGetUnfilledOrders&gt;&gt; GetUnfilledOrdersAsync(KiwoomAccountQueryType queryType, KiwoomAccountTransactionType transactionType, KiwoomAccountStockExchangeType stockExchangeType, string stockCode = "", CancellationToken cancellationToken = default)</code>
                             </div>
 
-                            <!-- Usage example removed -->
-
                             <table class="table param-table table-hover">
                                 <thead>
                                     <tr>
@@ -1269,31 +1379,25 @@
                                         <td>KiwoomAccountQueryType</td>
                                         <td>
                                             All (0) - 전체<br>
-                                            <span class="enum-desc">모든 종목</span><br>
                                             Stock (1) - 종목<br>
-                                            <span class="enum-desc">특정 종목</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><code>transactionType</code></td>
                                         <td>KiwoomAccountTransactionType</td>
                                         <td>
-                                            Buy (1) - 매수<br>
-                                            <span class="enum-desc">매수 거래</span><br>
-                                            Sell (2) - 매도<br>
-                                            <span class="enum-desc">매도 거래</span>
+                                            All (0) - 전체<br>
+                                            Sell (1) - 매도<br>
+                                            Buy (2) - 매수<br>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><code>stockExchangeType</code></td>
                                         <td>KiwoomAccountStockExchangeType</td>
                                         <td>
-                                            All (0) - 전체<br>
-                                            <span class="enum-desc">모든 거래소</span><br>
-                                            KOSPI (1) - 코스피<br>
-                                            <span class="enum-desc">KOSPI 시장</span><br>
-                                            KOSDAQ (2) - 코스닥<br>
-                                            <span class="enum-desc">KOSDAQ 시장</span>
+                                            Unified (0) - 통합<br>
+                                            Krx (1) - KRX<br>
+                                            Nxt (2) - NXT<br>
                                         </td>
                                     </tr>
                                     <tr>
@@ -1321,8 +1425,6 @@
                                 <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomAccountGetFilledOrders&gt;&gt; GetFilledOrdersAsync(KiwoomAccountQueryType queryType, KiwoomAccountTransactionType transactionType, KiwoomAccountStockExchangeType stockExchangeType, string stockCode = "", string orderId = "", CancellationToken cancellationToken = default)</code>
                             </div>
 
-                            <!-- Usage example removed -->
-
                             <table class="table param-table table-hover">
                                 <thead>
                                     <tr>
@@ -1337,31 +1439,25 @@
                                         <td>KiwoomAccountQueryType</td>
                                         <td>
                                             All (0) - 전체<br>
-                                            <span class="enum-desc">모든 종목</span><br>
                                             Stock (1) - 종목<br>
-                                            <span class="enum-desc">특정 종목</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><code>transactionType</code></td>
                                         <td>KiwoomAccountTransactionType</td>
                                         <td>
-                                            Buy (1) - 매수<br>
-                                            <span class="enum-desc">매수 거래</span><br>
-                                            Sell (2) - 매도<br>
-                                            <span class="enum-desc">매도 거래</span>
+                                            All (0) - 전체<br>
+                                            Sell (1) - 매도<br>
+                                            Buy (2) - 매수<br>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><code>stockExchangeType</code></td>
                                         <td>KiwoomAccountStockExchangeType</td>
                                         <td>
-                                            All (0) - 전체<br>
-                                            <span class="enum-desc">모든 거래소</span><br>
-                                            KOSPI (1) - 코스피<br>
-                                            <span class="enum-desc">KOSPI 시장</span><br>
-                                            KOSDAQ (2) - 코스닥<br>
-                                            <span class="enum-desc">KOSDAQ 시장</span>
+                                            Unified (0) - 통합<br>
+                                            Krx (1) - KRX<br>
+                                            Nxt (2) - NXT<br>
                                         </td>
                                     </tr>
                                     <tr>
@@ -1441,12 +1537,9 @@
                                         <td><code>stockExchangeType</code></td>
                                         <td>KiwoomAccountStockExchangeType</td>
                                         <td>
-                                            All (0) - 전체<br>
-                                            <span class="enum-desc">모든 거래소</span><br>
-                                            KOSPI (1) - 코스피<br>
-                                            <span class="enum-desc">KOSPI 시장</span><br>
-                                            KOSDAQ (2) - 코스닥<br>
-                                            <span class="enum-desc">KOSDAQ 시장</span>
+                                            Unified (0) - 통합<br>
+                                            Krx (1) - KRX<br>
+                                            Nxt (2) - NXT<br>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -1516,24 +1609,17 @@
                                         <td><code>oddLotType</code></td>
                                         <td>KiwoomAccountOddLotType</td>
                                         <td>
-                                            Include (1) - 포함<br>
-                                            <span class="enum-desc">단주 포함</span><br>
-                                            Exclude (2) - 제외<br>
-                                            <span class="enum-desc">단주 제외</span><br>
-                                            Only (3) - 단주만<br>
-                                            <span class="enum-desc">단주만 표시</span>
+                                            TodayBuyTodaySell (1) - 당일매수에 대한 당일매도<br>
+                                            TodaySellAll (2) - 당일매도 전체<br>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><code>cashCreditType</code></td>
                                         <td>KiwoomAccountCashCreditType</td>
                                         <td>
-                                            Cash (1) - 현금<br>
-                                            <span class="enum-desc">현금 거래</span><br>
-                                            Credit (2) - 신용<br>
-                                            <span class="enum-desc">신용 거래</span><br>
-                                            All (3) - 전체<br>
-                                            <span class="enum-desc">모든 거래 유형</span>
+                                            All (0) - 전체<br>
+                                            CashOnly (1) - 현금매매만<br>
+                                            CreditOnly (2) - 신용매매만<br>
                                         </td>
                                     </tr>
                                     <tr>
@@ -1561,8 +1647,6 @@
                                 <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomAccountGetDeposits&gt;&gt; GetDepositsAsync(KiwoomAccountDepositQueryType queryType, CancellationToken cancellationToken = default)</code>
                             </div>
 
-                            <!-- Usage example removed -->
-
                             <table class="table param-table table-hover">
                                 <thead>
                                     <tr>
@@ -1576,12 +1660,8 @@
                                         <td><code>queryType</code></td>
                                         <td>KiwoomAccountDepositQueryType</td>
                                         <td>
-                                            All (0) - 전체<br>
-                                            <span class="enum-desc">모든 예수금 유형</span><br>
-                                            D2 (1) - D2<br>
-                                            <span class="enum-desc">D2 예수금 유형</span><br>
-                                            D1 (2) - D1<br>
-                                            <span class="enum-desc">D1 예수금 유형</span>
+                                            Normal (2) - 일반조회<br>
+                                            Estimated (3) - 추정조회<br>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -1603,8 +1683,6 @@
                             <div class="api-code">
                                 <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomAccountGetDailyEstimatedDepositAssets&gt;&gt; GetDailyEstimatedDepositAssetsAsync(DateTime startDate, DateTime endDate, CancellationToken cancellationToken = default)</code>
                             </div>
-
-                            <!-- Usage example removed -->
 
                             <table class="table param-table table-hover">
                                 <thead>
@@ -1679,8 +1757,6 @@
                                 <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomAccountGetEvaluations&gt;&gt; GetEvaluationsAsync(bool isExcludeDelisted, KiwoomAccountStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)</code>
                             </div>
 
-                            <!-- Usage example removed -->
-
                             <table class="table param-table table-hover">
                                 <thead>
                                     <tr>
@@ -1699,12 +1775,9 @@
                                         <td><code>stockExchangeType</code></td>
                                         <td>KiwoomAccountStockExchangeType</td>
                                         <td>
-                                            All (0) - 전체<br>
-                                            <span class="enum-desc">모든 거래소</span><br>
-                                            KOSPI (1) - 코스피<br>
-                                            <span class="enum-desc">KOSPI 시장</span><br>
-                                            KOSDAQ (2) - 코스닥<br>
-                                            <span class="enum-desc">KOSDAQ 시장</span>
+                                            Unified (0) - 통합<br>
+                                            Krx (1) - KRX<br>
+                                            Nxt (2) - NXT<br>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -1724,7 +1797,7 @@
                             <h6>체결잔고요청 / Get Trade Balances</h6>
 
                             <div class="api-code">
-                                <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomAccountGetTradeBalances&gt;&gt; GetTradeBalancesAsync(KiwoomAccountStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)</code>
+                                <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomAccountGetTradeBalances&gt;&gt; GetTradeBalancesAsync(KiwoomAccountStockExchangeType2 stockExchangeType, CancellationToken cancellationToken = default)</code>
                             </div>
 
                             <table class="table param-table table-hover">
@@ -1738,14 +1811,10 @@
                                 <tbody>
                                     <tr>
                                         <td><code>stockExchangeType</code></td>
-                                        <td>KiwoomAccountStockExchangeType</td>
+                                        <td>KiwoomAccountStockExchangeType2</td>
                                         <td>
-                                            All (0) - 전체<br>
-                                            <span class="enum-desc">모든 거래소</span><br>
-                                            KOSPI (1) - 코스피<br>
-                                            <span class="enum-desc">KOSPI 시장</span><br>
-                                            KOSDAQ (2) - 코스닥<br>
-                                            <span class="enum-desc">KOSDAQ 시장</span>
+                                            Krx (KRX) - KRX<br>
+                                            Nxt (NXT) - NXT<br>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -1781,48 +1850,39 @@
                                         <td><code>queryType</code></td>
                                         <td>KiwoomAccountOrderQueryType</td>
                                         <td>
-                                            All (0) - 전체<br>
-                                            <span class="enum-desc">모든 주문</span><br>
-                                            Stock (1) - 주식<br>
-                                            <span class="enum-desc">주식 주문</span><br>
-                                            Bond (2) - 채권<br>
-                                            <span class="enum-desc">채권 주문</span>
+                                            OrderSequence (1) - 주문순<br>
+                                            ReverseOrder (2) - 역순<br>
+                                            Unconfirmed (3) - 미체결<br>
+                                            ConfirmedOnly (4) - 체결내역만
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><code>stockBondType</code></td>
                                         <td>KiwoomAccountStockBondType</td>
                                         <td>
+                                            All (0) - 전체<br>
                                             Stock (1) - 주식<br>
-                                            <span class="enum-desc">주식</span><br>
-                                            Bond (2) - 채권<br>
-                                            <span class="enum-desc">채권</span><br>
-                                            All (3) - 전체<br>
-                                            <span class="enum-desc">모든 유형</span>
+                                            Bond (2) - 채권
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><code>transactionType</code></td>
                                         <td>KiwoomAccountTransactionType</td>
                                         <td>
-                                            Buy (1) - 매수<br>
-                                            <span class="enum-desc">매수 거래</span><br>
-                                            Sell (2) - 매도<br>
-                                            <span class="enum-desc">매도 거래</span>
+                                            All (0) - 전체<br>
+                                            Sell (1) - 매도<br>
+                                            Buy (2) - 매수<br>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><code>domesticStockExchangeType</code></td>
                                         <td>KiwoomAccountDomesticStockExchangeType</td>
                                         <td>
-                                            All (0) - 전체<br>
-                                            <span class="enum-desc">모든 거래소</span><br>
-                                            KOSPI (1) - 코스피<br>
-                                            <span class="enum-desc">KOSPI 시장</span><br>
-                                            KOSDAQ (2) - 코스닥<br>
-                                            <span class="enum-desc">KOSDAQ 시장</span><br>
-                                            KOSPI200 (3) - 코스피200<br>
-                                            <span class="enum-desc">KOSPI200 시장</span>
+                                            All (%) - 전체<br>
+                                            Krx (KRX) - KRX<br>
+                                            Nxt (NXT) - NXT<br>
+<br>
+                                            Sor (SOR) - SOR<br>
                                         </td>
                                     </tr>
                                     <tr>
@@ -1908,47 +1968,36 @@
                                         <td>KiwoomAccountOrderTradeQueryType</td>
                                         <td>
                                             All (0) - 전체<br>
-                                            <span class="enum-desc">모든 거래</span><br>
-                                            Stock (1) - 주식<br>
-                                            <span class="enum-desc">주식 거래</span><br>
-                                            Bond (2) - 채권<br>
-                                            <span class="enum-desc">채권 거래</span>
+                                            Trade (1) - 체결<br>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><code>stockBondType</code></td>
                                         <td>KiwoomAccountStockBondType</td>
                                         <td>
+                                            All (0) - 전체<br>
                                             Stock (1) - 주식<br>
-                                            <span class="enum-desc">주식</span><br>
-                                            Bond (2) - 채권<br>
-                                            <span class="enum-desc">채권</span><br>
-                                            All (3) - 전체<br>
-                                            <span class="enum-desc">모든 유형</span>
+                                            Bond (2) - 채권
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><code>transactionType</code></td>
                                         <td>KiwoomAccountTransactionType</td>
                                         <td>
-                                            Buy (1) - 매수<br>
-                                            <span class="enum-desc">매수 거래</span><br>
-                                            Sell (2) - 매도<br>
-                                            <span class="enum-desc">매도 거래</span>
+                                            All (0) - 전체<br>
+                                            Sell (1) - 매도<br>
+                                            Buy (2) - 매수<br>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><code>domesticStockExchangeType</code></td>
                                         <td>KiwoomAccountDomesticStockExchangeType</td>
                                         <td>
-                                            All (0) - 전체<br>
-                                            <span class="enum-desc">모든 거래소</span><br>
-                                            KOSPI (1) - 코스피<br>
-                                            <span class="enum-desc">KOSPI 시장</span><br>
-                                            KOSDAQ (2) - 코스닥<br>
-                                            <span class="enum-desc">KOSDAQ 시장</span><br>
-                                            KOSPI200 (3) - 코스피200<br>
-                                            <span class="enum-desc">KOSPI200 시장</span>
+                                            All (%) - 전체<br>
+                                            Krx (KRX) - KRX<br>
+                                            Nxt (NXT) - NXT<br>
+<br>
+                                            Sor (SOR) - SOR<br>
                                         </td>
                                     </tr>
                                     <tr>
@@ -1956,11 +2005,10 @@
                                         <td>KiwoomAccountMarketType</td>
                                         <td>
                                             All (0) - 전체<br>
-                                            <span class="enum-desc">모든 시장</span><br>
-                                            Regular (1) - 정규<br>
-                                            <span class="enum-desc">정규 시장</span><br>
-                                            AfterHours (2) - 시간외<br>
-                                            <span class="enum-desc">시간외 시장</span>
+                                            Kospi (1) - 코스피<br>
+                                            Kosdaq (2) - 코스닥<br>
+                                            Otcbb (3) - OTCBB<br>
+                                            Ecn (4) - ECN
                                         </td>
                                     </tr>
                                     <tr>
@@ -1998,8 +2046,6 @@
                                 <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomAccountGetAvailableWithdrawalAmounts&gt;&gt; GetAvailableWithdrawalAmountsAsync(string stockCode, KiwoomAccountTransactionType transactionType, decimal buyPrice, decimal? buyQuantity = null, decimal? depositWithdrawalAmount = null, decimal? expectedBuyPrice = null, CancellationToken cancellationToken = default)</code>
                             </div>
 
-                            <!-- Usage example removed -->
-
                             <table class="table param-table table-hover">
                                 <thead>
                                     <tr>
@@ -2018,10 +2064,9 @@
                                         <td><code>transactionType</code></td>
                                         <td>KiwoomAccountTransactionType</td>
                                         <td>
-                                            Buy (1) - 매수<br>
-                                            <span class="enum-desc">매수 거래</span><br>
-                                            Sell (2) - 매도<br>
-                                            <span class="enum-desc">매도 거래</span>
+                                            All (0) - 전체<br>
+                                            Sell (1) - 매도<br>
+                                            Buy (2) - 매수<br>
                                         </td>
                                     </tr>
                                     <tr>
@@ -2161,8 +2206,6 @@
                                 <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomAccountGetConsignedTransactions&gt;&gt; GetConsignedTransactionsAsync(KiwoomAccountTransactionType2 transactionType, KiwoomAccountGoodsType goodsType, KiwoomAccountDomesticStockExchangeType domesticStockExchangeType, DateTime startDate, DateTime endDate, string stockCode = "", string currencyCode = "", string foreignStockExchangeCode = "", CancellationToken cancellationToken = default)</code>
                             </div>
 
-                            <!-- Usage example removed -->
-
                             <table class="table param-table table-hover">
                                 <thead>
                                     <tr>
@@ -2176,40 +2219,45 @@
                                         <td><code>transactionType</code></td>
                                         <td>KiwoomAccountTransactionType2</td>
                                         <td>
-                                            Buy (1) - 매수<br>
-                                            <span class="enum-desc">매수 거래</span><br>
-                                            Sell (2) - 매도<br>
-                                            <span class="enum-desc">매도 거래</span><br>
-                                            All (3) - 전체<br>
-                                            <span class="enum-desc">모든 거래 유형</span>
+                                            All (0) - 전체<br>
+                                            DepositWithdrawal (1) - 입출금<br>
+                                            IncomingOutgoing (2) - 입출고<br>
+                                            Transaction (3) - 매매<br>
+                                            Buy (4) - 매수<br>
+                                            Sell (5) - 매도<br>
+                                            Deposit (6) - 입금<br>
+                                            Withdrawal (7) - 출금<br>
+                                            CollateralLoanDeposit (A) - 예탁담보대출입금<br>
+                                            SellCollateralLoanDeposit (B) - 매도담보대출입금<br>
+                                            CashRepayment (C) - 현금상환(융자,담보상환)<br>
+                                            ForexExchange (F) - 환전<br>
+                                            InOutAndForex (M) - 입출금+환전<br>
+                                            ForexBuy (G) - 외화매수<br>
+                                            ForexSell (H) - 외화매도<br>
+                                            ForexSettlementIn (I) - 환전정산입금<br>
+                                            ForexSettlementOut (J) - 환전정산출금
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><code>goodsType</code></td>
                                         <td>KiwoomAccountGoodsType</td>
                                         <td>
-                                            Stock (1) - 주식<br>
-                                            <span class="enum-desc">주식</span><br>
-                                            Bond (2) - 채권<br>
-                                            <span class="enum-desc">채권</span><br>
-                                            Derivatives (3) - 파생<br>
-                                            <span class="enum-desc">파생상품</span><br>
-                                            All (4) - 전체<br>
-                                            <span class="enum-desc">모든 유형</span>
+                                            All (0) - 전체<br>
+                                            DomesticStock (1) - 국내주식<br>
+                                            Fund (2) - 수익증권<br>
+                                            ForeignStock (3) - 해외주식<br>
+                                            FinancialProduct (4) - 금융상품
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><code>domesticStockExchangeType</code></td>
                                         <td>KiwoomAccountDomesticStockExchangeType</td>
                                         <td>
-                                            All (0) - 전체<br>
-                                            <span class="enum-desc">모든 거래소</span><br>
-                                            KOSPI (1) - 코스피<br>
-                                            <span class="enum-desc">KOSPI 시장</span><br>
-                                            KOSDAQ (2) - 코스닥<br>
-                                            <span class="enum-desc">KOSDAQ 시장</span><br>
-                                            KOSPI200 (3) - 코스피200<br>
-                                            <span class="enum-desc">KOSPI200 시장</span>
+                                            All (%) - 전체<br>
+                                            Krx (KRX) - KRX<br>
+                                            Nxt (NXT) - NXT<br>
+<br>
+                                            Sor (SOR) - SOR<br>
                                         </td>
                                     </tr>
                                     <tr>
@@ -2257,8 +2305,6 @@
                                 <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomAccountGetDailyProfitRateDetails&gt;&gt; GetDailyProfitRateDetailsAsync(DateTime startDate, DateTime endDate, CancellationToken cancellationToken = default)</code>
                             </div>
 
-                            <!-- Usage example removed -->
-
                             <table class="table param-table table-hover">
                                 <thead>
                                     <tr>
@@ -2298,8 +2344,6 @@
                                 <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomAccountGetDailyStatus&gt;&gt; GetDailyStatusAsync(CancellationToken cancellationToken = default)</code>
                             </div>
 
-                            <!-- Usage example removed -->
-
                             <p><em>이 API는 파라미터가 필요하지 않습니다.</em></p>
                         </div>
                     </div>
@@ -2332,26 +2376,19 @@
                                         <td><code>queryType</code></td>
                                         <td>KiwoomAccountEvaluationBalanceQueryType</td>
                                         <td>
-                                            All (0) - 전체<br>
-                                            <span class="enum-desc">모든 잔고</span><br>
-                                            Profit (1) - 평가이익<br>
-                                            <span class="enum-desc">평가이익 잔고</span><br>
-                                            Loss (2) - 평가손실<br>
-                                            <span class="enum-desc">평가손실 잔고</span>
+                                            Aggregate (1) - 합산<br>
+                                            Individual (2) - 개별
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><code>domesticStockExchangeType</code></td>
                                         <td>KiwoomAccountDomesticStockExchangeType</td>
                                         <td>
-                                            All (0) - 전체<br>
-                                            <span class="enum-desc">모든 거래소</span><br>
-                                            KOSPI (1) - 코스피<br>
-                                            <span class="enum-desc">KOSPI 시장</span><br>
-                                            KOSDAQ (2) - 코스닥<br>
-                                            <span class="enum-desc">KOSDAQ 시장</span><br>
-                                            KOSPI200 (3) - 코스피200<br>
-                                            <span class="enum-desc">KOSPI200 시장</span>
+                                            All (%) - 전체<br>
+                                            Krx (KRX) - KRX<br>
+                                            Nxt (NXT) - NXT<br>
+<br>
+                                            Sor (SOR) - SOR<br>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -2403,9 +2440,7 @@
                                         <td>KiwoomChartAmountQuantityType</td>
                                         <td>
                                             Amount (1) - 금액<br>
-                                            <span class="enum-desc">금액 기준</span><br>
-                                            Quantity (2) - 수량<br>
-                                            <span class="enum-desc">수량 기준</span>
+                                            Quantity (2) - 수량
                                         </td>
                                     </tr>
                                     <tr>
@@ -2413,11 +2448,8 @@
                                         <td>KiwoomChartTransactionType</td>
                                         <td>
                                             Buy (1) - 매수<br>
-                                            <span class="enum-desc">매수 거래</span><br>
                                             Sell (2) - 매도<br>
-                                            <span class="enum-desc">매도 거래</span><br>
-                                            Net (3) - 순매수<br>
-                                            <span class="enum-desc">순매수 거래</span>
+                                            Net (3) - 순매수
                                         </td>
                                     </tr>
                                     <tr>
@@ -2425,11 +2457,8 @@
                                         <td>KiwoomChartUnitType</td>
                                         <td>
                                             Daily (1) - 일<br>
-                                            <span class="enum-desc">일 단위</span><br>
                                             Weekly (2) - 주<br>
-                                            <span class="enum-desc">주 단위</span><br>
-                                            Monthly (3) - 월<br>
-                                            <span class="enum-desc">월 단위</span>
+                                            Monthly (3) - 월
                                         </td>
                                     </tr>
                                 </tbody>
@@ -2466,11 +2495,8 @@
                                         <td>KiwoomChartMarketType</td>
                                         <td>
                                             All (0) - 전체<br>
-                                            <span class="enum-desc">모든 시장</span><br>
                                             KOSPI (1) - 코스피<br>
-                                            <span class="enum-desc">KOSPI 시장</span><br>
-                                            KOSDAQ (2) - 코스닥<br>
-                                            <span class="enum-desc">KOSDAQ 시장</span>
+                                            KOSDAQ (2) - 코스닥
                                         </td>
                                     </tr>
                                     <tr>
@@ -2478,9 +2504,7 @@
                                         <td>KiwoomChartAmountQuantityType</td>
                                         <td>
                                             Amount (1) - 금액<br>
-                                            <span class="enum-desc">금액 기준</span><br>
-                                            Quantity (2) - 수량<br>
-                                            <span class="enum-desc">수량 기준</span>
+                                            Quantity (2) - 수량
                                         </td>
                                     </tr>
                                     <tr>
@@ -2488,11 +2512,8 @@
                                         <td>KiwoomChartTransactionType</td>
                                         <td>
                                             Buy (1) - 매수<br>
-                                            <span class="enum-desc">매수 거래</span><br>
                                             Sell (2) - 매도<br>
-                                            <span class="enum-desc">매도 거래</span><br>
-                                            Net (3) - 순매수<br>
-                                            <span class="enum-desc">순매수 거래</span>
+                                            Net (3) - 순매수
                                         </td>
                                     </tr>
                                     <tr>
@@ -4005,7 +4026,7 @@
                                           </tbody>
                             </table>
 
-                            <p><em>ELW의 잔량 순위를 조회합니다.</em></p>
+                            <p>ELW의 잔량 순위를 조회합니다.</p>
                         </div>
                     </div>
 
@@ -4041,7 +4062,7 @@
                                 </tbody>
                             </table>
 
-                            <p><em>ELW의 근접율 정보를 조회합니다.</em></p>
+                            <p>ELW의 근접율 정보를 조회합니다.</p>
                         </div>
                     </div>
 
@@ -4077,7 +4098,7 @@
                                 </tbody>
                             </table>
 
-                            <p><em>ELW 종목의 상세 정보를 조회합니다.</em></p>
+                            <p>ELW 종목의 상세 정보를 조회합니다.</p>
                         </div>
                     </div>
                 </section>
@@ -4113,7 +4134,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>ETF 종목 코드</td>
+                                        <td>ETF 종목코드 (6자리)</td>
                                     </tr>
                                     <tr>
                                         <td><code>etfObjectIndexCode</code></td>
@@ -4128,7 +4149,7 @@
                                 </tbody>
                             </table>
 
-                            <p><em>ETF의 수익률 정보를 조회합니다.</em></p>
+                            <p>ETF의 수익률 정보를 조회합니다.</p>
                         </div>
                     </div>
 
@@ -4159,12 +4180,12 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>ETF 종목 코드</td>
+                                        <td>ETF 종목코드 (6자리)</td>
                                     </tr>
                                 </tbody>
                             </table>
 
-                            <p><em>ETF 종목의 상세 정보를 조회합니다.</em></p>
+                            <p>ETF 종목의 상세 정보를 조회합니다.</p>
                         </div>
                     </div>
 
@@ -4195,12 +4216,12 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>ETF 종목 코드</td>
+                                        <td>ETF 종목코드 (6자리)</td>
                                     </tr>
                                 </tbody>
                             </table>
 
-                            <p><em>ETF의 일별 추이 정보를 조회합니다.</em></p>
+                            <p>ETF의 일별 추이 정보를 조회합니다.</p>
                         </div>
                     </div>
 
@@ -4256,7 +4277,7 @@
                                 </tbody>
                             </table>
 
-                            <p><em>전체 ETF의 시세 정보를 조회합니다.</em></p>
+                            <p>전체 ETF의 시세 정보를 조회합니다.</p>
                         </div>
                     </div>
 
@@ -4287,12 +4308,12 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>ETF 종목 코드</td>
+                                        <td>ETF 종목코드 (6자리)</td>
                                     </tr>
                                 </tbody>
                             </table>
 
-                            <p><em>ETF의 시간대별 추이 정보를 조회합니다.</em></p>
+                            <p>ETF의 시간대별 추이 정보를 조회합니다.</p>
                         </div>
                     </div>
 
@@ -4323,12 +4344,12 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>ETF 종목 코드</td>
+                                        <td>ETF 종목코드 (6자리)</td>
                                     </tr>
                                 </tbody>
                             </table>
 
-                            <p><em>ETF의 시간대별 체결 정보를 조회합니다.</em></p>
+                            <p>ETF의 시간대별 체결 정보를 조회합니다.</p>
                         </div>
                     </div>
 
@@ -4359,12 +4380,12 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>ETF 종목 코드</td>
+                                        <td>ETF 종목코드 (6자리)</td>
                                     </tr>
                                 </tbody>
                             </table>
 
-                            <p><em>ETF의 일자별 체결 정보를 조회합니다.</em></p>
+                            <p>ETF의 일자별 체결 정보를 조회합니다.</p>
                         </div>
                     </div>
 
@@ -4395,12 +4416,12 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>ETF 종목 코드</td>
+                                        <td>ETF 종목코드 (6자리)</td>
                                     </tr>
                                 </tbody>
                             </table>
 
-                            <p><em>ETF의 시간대별 체결 정보를 조회합니다 (추가).</em></p>
+                            <p>ETF의 시간대별 체결 정보를 조회합니다 (추가).</p>
                         </div>
                     </div>
 
@@ -4431,12 +4452,12 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>ETF 종목 코드</td>
+                                        <td>ETF 종목코드 (6자리)</td>
                                     </tr>
                                 </tbody>
                             </table>
 
-                            <p><em>ETF의 시간대별 추이 정보를 조회합니다 (추가).</em></p>
+                            <p>ETF의 시간대별 추이 정보를 조회합니다 (추가).</p>
                         </div>
                     </div>
                 </section>
@@ -4472,12 +4493,12 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>주식코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                 </tbody>
                             </table>
 
-                            <p><em>주식 외국인 종목별 매매 동향을 조회합니다.</em></p>
+                            <p>주식 외국인 종목별 매매 동향을 조회합니다.</p>
                         </div>
                     </div>
 
@@ -4508,7 +4529,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>주식코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -4598,24 +4619,8 @@
                                 <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomForeignInstitutionGetGoldSpotInvestorStatus&gt;&gt; GetGoldSpotInvestorStatusAsync(CancellationToken cancellationToken = default)</code>
                             </div>
 
-                            <table class="table param-table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>파라미터</th>
-                                        <th>타입</th>
-                                        <th>설명</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><code>파라미터 없음</code></td>
-                                        <td>-</td>
-                                        <td>파라미터가 필요하지 않음</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                            <p><em>금현물 투자자 현황을 조회합니다.</em></p>
+                            <p><em>이 API는 파라미터가 필요하지 않습니다.</em></p>
+                            <p>금현물 투자자 현황을 조회합니다.</p>
                         </div>
                     </div>
                 </section>
@@ -4651,7 +4656,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>주식 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -4943,7 +4948,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>주식 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                     <tr>
                                         <td><code>date</code></td>
@@ -4989,7 +4994,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>주식 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -5025,7 +5030,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>주식 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -5061,7 +5066,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>주식 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                     <tr>
                                         <td><code>dayType</code></td>
@@ -5107,7 +5112,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>주식 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                     <tr>
                                         <td><code>startDate</code></td>
@@ -5412,7 +5417,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>주식 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -5626,7 +5631,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>주식 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                     <tr>
                                         <td><code>brokerPriceAnalysisType</code></td>
@@ -5667,7 +5672,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>주식 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -5881,7 +5886,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>주식 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                     <tr>
                                         <td><code>amountQuantityType</code></td>
@@ -5937,7 +5942,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>주식 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                     <tr>
                                         <td><code>amountQuantityType</code></td>
@@ -6013,7 +6018,7 @@
                                 </tbody>
                             </table>
 
-                            <p><em>당일/전일 체결 정보를 조회합니다.</em></p>
+                            <p>당일/전일 체결 정보를 조회합니다.</p>
                         </div>
                     </div>
 
@@ -6032,7 +6037,8 @@
                                 <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomStockInfoGetFavoriteStocks&gt;&gt; GetFavoriteStocksAsync(CancellationToken cancellationToken = default)</code>
                             </div>
 
-                            <p><em>관심 종목 정보를 조회합니다.</em></p>
+                            <p><em>이 API는 파라미터가 필요하지 않습니다.</em></p>
+                            <p>관심 종목 정보를 조회합니다.</p>
                         </div>
                     </div>
 
@@ -6129,7 +6135,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>주식 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -6283,7 +6289,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>주식 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -6307,7 +6313,8 @@
                                 <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomStockInfoGetCreditLoanAvailableStocks&gt;&gt; GetCreditLoanAvailableStocksAsync(CancellationToken cancellationToken = default)</code>
                             </div>
 
-                            <p><em>신용 융자 가능 종목을 조회합니다.</em></p>
+                            <p><em>이 API는 파라미터가 필요하지 않습니다.</em></p>
+                            <p>신용 융자 가능 종목을 조회합니다.</p>
                         </div>
                     </div>
 
@@ -6338,7 +6345,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>주식 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                     <tr>
                                         <td><code>quantity</code></td>
@@ -6390,7 +6397,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>종목 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -6426,7 +6433,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>종목 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -6463,7 +6470,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>종목 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -6499,7 +6506,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>종목 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -6536,7 +6543,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>종목 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -6572,7 +6579,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>종목 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -6702,7 +6709,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>종목 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                     <tr>
                                         <td><code>startDate</code></td>
@@ -6759,7 +6766,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>종목 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -6795,7 +6802,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>종목 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -6950,7 +6957,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>종목 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                     <tr>
                                         <td><code>startDate</code></td>
@@ -6997,7 +7004,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>종목 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                     <tr>
                                         <td><code>date</code></td>
@@ -7044,7 +7051,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>종목 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -7080,7 +7087,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>종목 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -7461,7 +7468,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>종목 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                     <tr>
                                         <td><code>amountQuantityType</code></td>
@@ -7563,7 +7570,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>종목 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                     <tr>
                                         <td><code>amountQuantityType</code></td>
@@ -7611,9 +7618,7 @@
                                         <td>KiwoomOrderType</td>
                                         <td>
                                             Buy (1) - 매수<br>
-                                            <span class="enum-desc">매수 주문 (API: kt10000)</span><br>
-                                            Sell (2) - 매도<br>
-                                            <span class="enum-desc">매도 주문 (API: kt10001)</span>
+                                            Sell (2) - 매도
                                         </td>
                                     </tr>
                                     <tr>
@@ -7621,11 +7626,8 @@
                                         <td>KiwoomOrderDomesticStockExchangeType</td>
                                         <td>
                                             KOSPI (1) - 코스피<br>
-                                            <span class="enum-desc">KOSPI 시장</span><br>
                                             KOSDAQ (2) - 코스닥<br>
-                                            <span class="enum-desc">KOSDAQ 시장</span><br>
-                                            KONEX (3) - 코넥스<br>
-                                            <span class="enum-desc">KONEX 시장</span>
+                                            KONEX (3) - 코넥스
                                         </td>
                                     </tr>
                                     <tr>
@@ -7643,37 +7645,21 @@
                                         <td>KiwoomOrderTransactionType</td>
                                         <td>
                                             Limit (00) - 지정가<br>
-                                            <span class="enum-desc">지정가 주문</span><br>
                                             Market (01) - 시장가<br>
-                                            <span class="enum-desc">시장가 주문</span><br>
                                             BestLimit (02) - 최유리지정가<br>
-                                            <span class="enum-desc">최유리 지정가 주문</span><br>
                                             MarketOnOpen (03) - 시가지정가<br>
-                                            <span class="enum-desc">시가 지정가 주문</span><br>
                                             MarketOnClose (04) - 종가지정가<br>
-                                            <span class="enum-desc">종가 지정가 주문</span><br>
                                             Conditional (05) - 조건부지정가<br>
-                                            <span class="enum-desc">조건부 지정가 주문</span><br>
                                             BestOnClose (06) - 최유리종가<br>
-                                            <span class="enum-desc">최유리 종가 주문</span><br>
                                             WorstOnClose (07) - 최불리종가<br>
-                                            <span class="enum-desc">최불리 종가 주문</span><br>
                                             MarketOnOpenLimit (08) - 시가시장가<br>
-                                            <span class="enum-desc">시가 시장가 주문</span><br>
                                             MarketOnCloseLimit (09) - 종가시장가<br>
-                                            <span class="enum-desc">종가 시장가 주문</span><br>
                                             IOC (10) - IOC지정가<br>
-                                            <span class="enum-desc">IOC 지정가 주문</span><br>
                                             FOK (11) - FOK지정가<br>
-                                            <span class="enum-desc">FOK 지정가 주문</span><br>
                                             PreMarketAfterHours (12) - 장전시간외<br>
-                                            <span class="enum-desc">장전 시간외 주문</span><br>
                                             PostMarketAfterHours (13) - 장후시간외<br>
-                                            <span class="enum-desc">장후 시간외 주문</span><br>
                                             PreMarketAfterHoursLimit (14) - 장전시간외단일가<br>
-                                            <span class="enum-desc">장전 시간외 단일가 주문</span><br>
-                                            PostMarketAfterHoursLimit (15) - 장후시간외단일가<br>
-                                            <span class="enum-desc">장후 시간외 단일가 주문</span>
+                                            PostMarketAfterHoursLimit (15) - 장후시간외단일가
                                         </td>
                                     </tr>
                                     <tr>
@@ -7720,11 +7706,8 @@
                                         <td>KiwoomOrderDomesticStockExchangeType</td>
                                         <td>
                                             KOSPI (1) - 코스피<br>
-                                            <span class="enum-desc">KOSPI 시장</span><br>
                                             KOSDAQ (2) - 코스닥<br>
-                                            <span class="enum-desc">KOSDAQ 시장</span><br>
-                                            KONEX (3) - 코넥스<br>
-                                            <span class="enum-desc">KONEX 시장</span>
+                                            KONEX (3) - 코넥스
                                         </td>
                                     </tr>
                                     <tr>
@@ -7786,11 +7769,8 @@
                                         <td>KiwoomOrderDomesticStockExchangeType</td>
                                         <td>
                                             KOSPI (1) - 코스피<br>
-                                            <span class="enum-desc">KOSPI 시장</span><br>
                                             KOSDAQ (2) - 코스닥<br>
-                                            <span class="enum-desc">KOSDAQ 시장</span><br>
-                                            KONEX (3) - 코넥스<br>
-                                            <span class="enum-desc">KONEX 시장</span>
+                                            KONEX (3) - 코넥스
                                         </td>
                                     </tr>
                                     <tr>
@@ -8869,7 +8849,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>종목 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                     <tr>
                                         <td><code>startDate</code></td>
@@ -9034,7 +9014,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>종목 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -9085,7 +9065,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>종목 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                     <tr>
                                         <td><code>startDate</code></td>
@@ -9136,7 +9116,7 @@
                                     <tr>
                                         <td><code>stockCode</code></td>
                                         <td>string</td>
-                                        <td>종목 코드</td>
+                                        <td>종목코드 (6자리)</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -9866,7 +9846,8 @@
                                 <code>Task DisconnectAsync(CancellationToken cancellationToken = default)</code>
                             </div>
 
-                            <p><em>웹소켓 연결을 종료하고 리소스를 정리합니다.</em></p>
+                            <p><em>이 API는 파라미터가 필요하지 않습니다.</em></p>
+                            <p>웹소켓 연결을 종료하고 리소스를 정리합니다.</p>
                         </div>
                     </div>
 
@@ -9956,7 +9937,8 @@
                                 <code>Task&lt;KiwoomRestApiResponse&lt;KiwoomWebSocketGetConditionSearchList&gt;&gt; GetConditionSearchListAsync(CancellationToken cancellationToken = default)</code>
                             </div>
 
-                            <p><em>조건검색 리스트를 조회합니다.</em></p>
+                            <p><em>이 API는 파라미터가 필요하지 않습니다.</em></p>
+                            <p>조건검색 리스트를 조회합니다.</p>
                         </div>
                     </div>
 
@@ -10076,7 +10058,6 @@
 
             // 초기 스크롤 위치에 따른 메뉴 상태 업데이트
             setTimeout(() => {
-                updateActiveMenuOnScroll();
             }, 500);
         });
 
@@ -10113,18 +10094,8 @@
         });
 
         // 통합된 스크롤spy - 개선된 성능 최적화
-        let scrollTimeout;
-        let isScrolling = false;
-
         window.addEventListener('scroll', function() {
-            if (!isScrolling) {
-                window.requestAnimationFrame(function() {
-                    updateActiveNavigation();
-                    updateActiveMenuOnScroll();
-                    isScrolling = false;
-                });
-                isScrolling = true;
-            }
+            updateActiveNavigation();
         });
 
         function updateActiveNavigation() {
@@ -10315,76 +10286,40 @@
             console.log('Account API code highlighting initialized');
         }
 
-        // 간단한 메뉴 토글 함수
+        // 개선된 메뉴 토글 함수 (한 번에 하나만 열리도록)
         function toggleMenu(menuId) {
             const menu = document.getElementById(menuId);
-            const allMenus = document.querySelectorAll('.menu-items');
-            const allHeaders = document.querySelectorAll('.menu-header');
             const clickedHeader = event.target.closest('.menu-header');
+            
+            if (!menu || !clickedHeader) return;
 
             // 현재 메뉴가 이미 열려있는지 확인
-            const isCurrentlyOpen = menu.style.display === 'block';
+            const isCurrentlyOpen = menu.classList.contains('open');
 
-            // 모든 메뉴 닫기
-            allMenus.forEach(m => {
-                m.style.display = 'none';
-            });
-
-            // 모든 헤더 비활성화
-            allHeaders.forEach(h => {
-                h.classList.remove('active');
-            });
-
-            // 현재 메뉴가 닫혀있었으면 열기, 열려있었으면 그대로 두기 (닫기 상태로 유지)
-            if (!isCurrentlyOpen) {
-                menu.style.display = 'block';
-                clickedHeader.classList.add('active');
-            }
-
-            // API 섹션으로 스크롤 (메뉴 ID에 해당하는 API 섹션 찾기)
-            const apiSectionId = menuId.replace('-menu', '-apis');
-            const targetSection = document.getElementById(apiSectionId);
-
-            if (targetSection) {
-                setTimeout(() => {
-                    const offsetTop = targetSection.offsetTop - 80;
-
-                    // 빠른 커스텀 스크롤 애니메이션
-                    const startPosition = window.pageYOffset;
-                    const distance = offsetTop - startPosition;
-                    const duration = 250; // 250ms 동안 스크롤
-
-                    let start = null;
-                    function animation(currentTime) {
-                        if (start === null) start = currentTime;
-                        const timeElapsed = currentTime - start;
-                        const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
-                        window.scrollTo(0, run);
-                        if (timeElapsed < duration) requestAnimationFrame(animation);
-                    }
-
-                    function easeInOutQuad(t, b, c, d) {
-                        t /= d/2;
-                        if (t < 1) return c/2*t*t + b;
-                        t--;
-                        return -c/2 * (t*(t-2) - 1) + b;
-                    }
-
-                    requestAnimationFrame(animation);
-
-                    // 좌측 메뉴 자동 스크롤
-                    setTimeout(() => {
-                        scrollMenuIntoView(clickedHeader);
-                    }, 100);
-                }, !isCurrentlyOpen ? 50 : 0);
+            if (isCurrentlyOpen) {
+                // 닫기
+                menu.classList.remove('open');
+                clickedHeader.classList.remove('expanded', 'active');
+            } else {
+                // 열기 전에 다른 모든 메뉴 닫기
+                const allMenus = document.querySelectorAll('.menu-items.open');
+                const allHeaders = document.querySelectorAll('.menu-header.expanded');
+                
+                allMenus.forEach(m => {
+                    m.classList.remove('open');
+                });
+                allHeaders.forEach(h => {
+                    h.classList.remove('expanded', 'active');
+                });
+                
+                // 현재 메뉴 열기
+                menu.classList.add('open');
+                clickedHeader.classList.add('expanded');
             }
         }
 
         // 메뉴 아이템 클릭 시 부드러운 스크롤
         document.addEventListener('DOMContentLoaded', function() {
-            // 페이지 로드 시 초기 메뉴 상태 설정
-            updateActiveMenuOnScroll();
-
             const menuItems = document.querySelectorAll('.menu-item');
 
             menuItems.forEach(item => {
@@ -10403,62 +10338,54 @@
                     console.log('Menu item clicked:', targetId, 'Target element:', targetElement);
 
                     if (targetElement) {
-                        // 다른 모든 대메뉴 닫기
-                        const allMenus = document.querySelectorAll('.menu-items');
-                        const allHeaders = document.querySelectorAll('.menu-header');
-
-                        allMenus.forEach(m => {
-                            m.style.display = 'none';
-                        });
-
-                        allHeaders.forEach(h => {
-                            h.classList.remove('active');
-                        });
-
                         // 해당 메뉴의 부모 메뉴 열기
                         const parentMenu = this.closest('.menu-items');
                         if (parentMenu) {
-                            parentMenu.style.display = 'block';
+                            parentMenu.classList.add('open');
                             const parentHeader = parentMenu.previousElementSibling;
                             if (parentHeader) {
-                                parentHeader.classList.add('active');
+                                parentHeader.classList.add('expanded');
                             }
                         }
 
-                        // 타겟 요소로 스크롤
+                        // 스크롤 시작 플래그 설정
+                        isUserScrolling = true;
+
+                        // 타겟 요소로 부드러운 스크롤 (개선된 버전)
+                        const offsetTop = targetElement.offsetTop - 120; // 네비게이션 높이 + 여유 공간
+                        const startPosition = window.pageYOffset;
+                        const distance = offsetTop - startPosition;
+                        const duration = Math.min(600, Math.abs(distance) * 0.5); // 거리에 따라 동적 duration
+
+                        let start = null;
+                        function animation(currentTime) {
+                            if (start === null) start = currentTime;
+                            const timeElapsed = currentTime - start;
+                            const progress = Math.min(timeElapsed / duration, 1);
+                            const ease = easeInOutCubic(progress);
+                            window.scrollTo(0, startPosition + distance * ease);
+                            
+                            if (progress < 1) {
+                                requestAnimationFrame(animation);
+                            } else {
+                                // 스크롤 완료 후 약간의 지연을 두고 플래그 해제
+                                setTimeout(() => {
+                                    isUserScrolling = false;
+                                    updateActiveMenu(targetId);
+                                }, 150);
+                            }
+                        }
+
+                        function easeInOutCubic(t) {
+                            return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+                        }
+
+                        requestAnimationFrame(animation);
+
+                        // 좌측 메뉴 자동 스크롤 (스크롤 완료 후)
                         setTimeout(() => {
-                            const offsetTop = targetElement.offsetTop - 80;
-                            console.log('Scrolling to:', offsetTop, 'Target element position:', targetElement.offsetTop);
-
-                            // 더 빠른 커스텀 스크롤 애니메이션
-                            const startPosition = window.pageYOffset;
-                            const distance = offsetTop - startPosition;
-                            const duration = 300; // 300ms 동안 스크롤
-
-                            let start = null;
-                            function animation(currentTime) {
-                                if (start === null) start = currentTime;
-                                const timeElapsed = currentTime - start;
-                                const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
-                                window.scrollTo(0, run);
-                                if (timeElapsed < duration) requestAnimationFrame(animation);
-                            }
-
-                            function easeInOutQuad(t, b, c, d) {
-                                t /= d/2;
-                                if (t < 1) return c/2*t*t + b;
-                                t--;
-                                return -c/2 * (t*(t-2) - 1) + b;
-                            }
-
-                            requestAnimationFrame(animation);
-
-                            // 좌측 메뉴 자동 스크롤
-                            const menuItem = this;
-                            setTimeout(() => {
-                                scrollMenuIntoView(menuItem);
-                            }, 150);
-                        }, 50);
+                            scrollMenuIntoView(this);
+                        }, duration + 100);
                     } else {
                         console.error('Target element not found:', targetId);
                     }
@@ -10471,9 +10398,19 @@
             // API 메소드 카드에 ID가 없는 경우 동적으로 추가
             addMissingIdsToApiCards();
 
-            // 현재 스크롤 위치에 따라 활성 메뉴 표시
-            updateActiveMenuOnScroll();
-            window.addEventListener('scroll', updateActiveMenuOnScroll);
+            // Intersection Observer 설정
+            setupIntersectionObserver();
+
+            // 초기 활성 메뉴 설정 (약간의 지연 후)
+            setTimeout(() => {
+                const firstSection = document.querySelector('.api-method-card[id]');
+                if (firstSection) {
+                    const rect = firstSection.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        updateActiveMenu(firstSection.id);
+                    }
+                }
+            }, 300);
         });
 
         // API 메소드 카드에 ID가 없는 경우 동적으로 추가하는 함수
@@ -10502,119 +10439,175 @@
             });
         }
 
-        // 좌측 메뉴 자동 스크롤 함수
+        // 좌측 메뉴 자동 스크롤 함수 (부드러운 애니메이션)
         function scrollMenuIntoView(menuElement) {
             const sidebar = document.querySelector('.sidebar');
             if (!sidebar || !menuElement) return;
 
             const sidebarRect = sidebar.getBoundingClientRect();
             const elementRect = menuElement.getBoundingClientRect();
+            const sidebarScrollTop = sidebar.scrollTop;
 
             // 요소가 사이드바 영역 밖에 있는 경우 스크롤
             if (elementRect.bottom > sidebarRect.bottom || elementRect.top < sidebarRect.top) {
-                menuElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'center',
-                    inline: 'nearest'
-                });
+                const targetScrollTop = sidebarScrollTop + elementRect.top - sidebarRect.top - (sidebarRect.height / 2) + (elementRect.height / 2);
+                
+                // 부드러운 스크롤 애니메이션
+                const startScroll = sidebarScrollTop;
+                const distance = targetScrollTop - startScroll;
+                const duration = 300;
+                let start = null;
+
+                function animateScroll(currentTime) {
+                    if (start === null) start = currentTime;
+                    const timeElapsed = currentTime - start;
+                    const progress = Math.min(timeElapsed / duration, 1);
+                    const ease = easeInOutCubic(progress);
+                    sidebar.scrollTop = startScroll + distance * ease;
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(animateScroll);
+                    }
+                }
+
+                function easeInOutCubic(t) {
+                    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+                }
+
+                requestAnimationFrame(animateScroll);
             }
         }
 
-        // 개선된 스크롤 위치에 따른 활성 메뉴 업데이트 함수
-        function updateActiveMenuOnScroll() {
-            const sections = document.querySelectorAll('.api-method-card[id], .card[id]');
+        // Intersection Observer를 사용한 개선된 활성 메뉴 업데이트
+        let activeSectionId = '';
+        let isUserScrolling = false;
+        let scrollMenuTimeout = null;
+
+        function updateActiveMenu(sectionId) {
+            if (activeSectionId === sectionId || isUserScrolling) return;
+            activeSectionId = sectionId;
+
             const menuItems = document.querySelectorAll('.menu-item[href^="#"]');
             const menuHeaders = document.querySelectorAll('.menu-header');
-
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const viewportHeight = window.innerHeight;
-            const offset = 150; // 네비게이션 높이 고려
-
-            let currentElement = '';
-            let maxVisibility = 0;
-
-            // 가장 잘 보이는 섹션 찾기 (정확도 개선)
-            sections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-                const elementTop = rect.top + scrollTop;
-                const elementBottom = rect.bottom + scrollTop;
-
-                // 섹션이 화면에 얼마나 보이는지 계산
-                const visibleTop = Math.max(scrollTop + offset, elementTop);
-                const visibleBottom = Math.min(scrollTop + viewportHeight, elementBottom);
-                const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-
-                // 화면에 가장 많이 보이는 섹션 선택
-                if (visibleHeight > maxVisibility) {
-                    maxVisibility = visibleHeight;
-                    currentElement = section.id;
-                }
-            });
-
-            // 디버그 로그
-            console.log('Current active element:', currentElement, 'Sections found:', sections.length, 'Menu items found:', menuItems.length);
-
-            // 먼저 모든 메뉴 닫기 (부드러운 전환 효과)
             const allMenus = document.querySelectorAll('.menu-items');
-            allMenus.forEach(menu => {
-                menu.style.display = 'none';
+
+            // 모든 메뉴 아이템 비활성화
+            menuItems.forEach(item => {
+                item.classList.remove('active');
             });
 
-            // 모든 메뉴 헤더 비활성화
-            menuHeaders.forEach(header => {
-                header.classList.remove('active');
-            });
-
-            // 대메뉴 활성화 (개선된 로직)
-            let activeCategory = null;
-            menuHeaders.forEach(header => {
-                // 해당 카테고리에 속하는 메뉴 아이템들 찾기
-                const menuId = header.getAttribute('onclick')?.match(/toggleMenu\('([^']+)'\)/)?.[1];
-                if (menuId) {
-                    const collapseElement = document.getElementById(menuId);
-                    if (collapseElement) {
-                        const categoryItems = collapseElement.querySelectorAll('.menu-item');
-                        let hasActiveItem = false;
-
-                        categoryItems.forEach(item => {
-                            const itemId = item.getAttribute('href')?.substring(1);
-                            if (itemId && currentElement === itemId) {
-                                hasActiveItem = true;
-                            }
-                        });
-
-                        if (hasActiveItem) {
-                            header.classList.add('active');
-                            activeCategory = header;
-
-                            // 활성 카테고리 메뉴 열기
-                            collapseElement.style.display = 'block';
-                        }
-                    }
-                }
-            });
-
-            // 소메뉴 활성화
+            // 활성 메뉴 아이템 찾기 및 활성화
             let activeMenuItem = null;
+            let activeParentMenu = null;
+            
             menuItems.forEach(item => {
                 const targetId = item.getAttribute('href')?.substring(1);
-
-                if (targetId && currentElement === targetId) {
+                if (targetId === sectionId) {
                     item.classList.add('active');
                     activeMenuItem = item;
-                } else {
-                    item.classList.remove('active');
+                    activeParentMenu = item.closest('.menu-items');
                 }
             });
 
-            // 활성화된 메뉴가 사이드바에서 보이도록 자동 스크롤 (지연 실행으로 안정화)
-            setTimeout(() => {
-                if (activeMenuItem) {
-                    scrollMenuIntoView(activeMenuItem);
-                } else if (activeCategory) {
-                    scrollMenuIntoView(activeCategory);
+            // 다른 메뉴들 모두 닫기 (활성 메뉴만 열리도록)
+            if (activeParentMenu) {
+                // 활성 메뉴를 제외한 모든 메뉴 닫기
+                allMenus.forEach(menu => {
+                    if (menu !== activeParentMenu && menu.classList.contains('open')) {
+                        menu.classList.remove('open');
+                        const header = menu.previousElementSibling;
+                        if (header) {
+                            header.classList.remove('expanded', 'active');
+                        }
+                    }
+                });
+                
+                // 활성 메뉴의 부모 열기
+                activeParentMenu.classList.add('open');
+                const parentHeader = activeParentMenu.previousElementSibling;
+                if (parentHeader) {
+                    parentHeader.classList.add('expanded', 'active');
                 }
-            }, 100);
+            }
+
+            // 활성화된 메뉴가 사이드바에서 보이도록 자동 스크롤 (throttle 적용)
+            if (activeMenuItem) {
+                clearTimeout(scrollMenuTimeout);
+                scrollMenuTimeout = setTimeout(() => {
+                    scrollMenuIntoView(activeMenuItem);
+                }, 200);
+            }
+        }
+
+        // Intersection Observer 설정 (개선된 버전 - 가장 위에 있는 섹션 우선)
+        function setupIntersectionObserver() {
+            const sections = document.querySelectorAll('.api-method-card[id]');
+            if (sections.length === 0) return;
+
+            // 화면에 보이는 섹션들을 추적 (위치 정보 포함)
+            let visibleSections = new Map();
+
+            const options = {
+                root: null,
+                rootMargin: '-120px 0px -70% 0px', // 상단 120px 영역을 활성 영역으로 설정
+                threshold: [0, 0.1, 0.2, 0.3, 0.5, 0.7, 1]
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && entry.intersectionRatio > 0.05) {
+                        const rect = entry.boundingClientRect;
+                        // 화면 상단으로부터의 거리와 intersection ratio를 함께 저장
+                        visibleSections.set(entry.target.id, {
+                            ratio: entry.intersectionRatio,
+                            top: rect.top,
+                            bottom: rect.bottom,
+                            height: rect.height
+                        });
+                    } else {
+                        visibleSections.delete(entry.target.id);
+                    }
+                });
+
+                // 가장 위에 있고 많이 보이는 섹션 찾기
+                if (visibleSections.size > 0 && !isUserScrolling) {
+                    let bestSection = null;
+                    let bestScore = -1;
+                    
+                    visibleSections.forEach((data, id) => {
+                        // 상단에 가까울수록, 많이 보일수록 높은 점수
+                        const topScore = Math.max(0, 200 - data.top) / 200; // 상단 200px 내에 있으면 높은 점수
+                        const ratioScore = data.ratio;
+                        const score = topScore * 0.7 + ratioScore * 0.3; // 상단 위치를 더 중요하게
+                        
+                        if (score > bestScore) {
+                            bestScore = score;
+                            bestSection = id;
+                        }
+                    });
+                    
+                    if (bestSection) {
+                        updateActiveMenu(bestSection);
+                    }
+                }
+            }, options);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        }
+
+        // Throttle 함수
+        function throttle(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
         }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
