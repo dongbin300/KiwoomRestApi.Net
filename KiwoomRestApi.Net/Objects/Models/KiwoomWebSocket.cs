@@ -139,17 +139,17 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 계좌번호 (9201)
 		/// </summary>
 		[JsonProperty("9201")]
-		public decimal? AccountId;
+		public string? AccountId;
 		/// <summary>
 		/// 주문번호 (9203)
 		/// </summary>
 		[JsonProperty("9203")]
-		public decimal? OrderId;
+		public string? OrderId;
 		/// <summary>
 		/// 관리자사번 (9205)
 		/// </summary>
 		[JsonProperty("9205")]
-		public decimal? ManagerId;
+		public string? ManagerId;
 		/// <summary>
 		/// 종목코드 또는 업종코드 (9001)
 		/// </summary>
@@ -320,7 +320,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 계좌번호 (9201)
 		/// </summary>
 		[JsonProperty("9201")]
-		public decimal? AccountId;
+		public string? AccountId;
 		/// <summary>
 		/// 종목코드 (9001)
 		/// </summary>

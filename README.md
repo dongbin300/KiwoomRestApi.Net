@@ -330,6 +330,12 @@ var results = await Task.WhenAll(tasks);
 
 ## 📋 릴리즈 노트
 
+### v0.6.2 (2026-02-05)
+- `KiwoomWebSocketRealtimeOrderTrade`.`AccountId`, `OrderId`, `ManagerId`를 `decimal?`에서 `string?`으로 수정 (#2)
+- `KiwoomWebSocketRealtimeBalance`.`AccountId`를 `decimal?`에서 `string?`으로 수정 (#2)
+
+---
+
 ### v0.6.1 (2026-02-05)
 - `KiwoomWebSocketRealtimeBalance`.`StockCode`를 `decimal?`에서 `string?`으로 수정 (#2)
 - `KiwoomWebSocketRealtimeOrderTrade`.`StockCode`를 `decimal?`에서 `string?`으로 수정 (#2)
