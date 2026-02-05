@@ -330,6 +330,12 @@ var results = await Task.WhenAll(tasks);
 
 ## 📋 릴리즈 노트
 
+### v0.6.1 (2026-02-05)
+- `KiwoomWebSocketRealtimeBalance`.`StockCode`를 `decimal?`에서 `string?`으로 수정 (#2)
+- `KiwoomWebSocketRealtimeOrderTrade`.`StockCode`를 `decimal?`에서 `string?`으로 수정 (#2)
+
+---
+
 ### v0.6.0 (2026-01-02)
 - 대용량 메시지 수신 시 JSON 파싱 에러 해결 (#1)
 - Microsoft.Extensions, System.Text.Json 최신 버전으로 업데이트 (10.0.1)

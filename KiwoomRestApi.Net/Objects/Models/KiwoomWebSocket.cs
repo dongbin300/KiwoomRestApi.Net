@@ -154,7 +154,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 종목코드 또는 업종코드 (9001)
 		/// </summary>
 		[JsonProperty("9001")]
-		public decimal? StockCode;
+		public string? StockCode;
 		/// <summary>
 		/// 주문업무분류 (912)
 		/// </summary>
@@ -325,7 +325,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 종목코드 (9001)
 		/// </summary>
 		[JsonProperty("9001")]
-		public decimal? StockCode;
+		public string? StockCode;
 		/// <summary>
 		/// 신용구분 (917)
 		/// </summary>
