@@ -1,49 +1,72 @@
 # 🚀 KiwoomRestApi.Net
 
-[KiwoomRestApi.Net 문서](https://dongbin300.github.io/KiwoomRestApi.Net/)
-
 [![NuGet Version](https://img.shields.io/nuget/v/KiwoomRestApi.Net.svg)](https://www.nuget.org/packages/KiwoomRestApi.Net)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/KiwoomRestApi.Net.svg)](https://www.nuget.org/packages/KiwoomRestApi.Net)
 [![License](https://img.shields.io/github/license/dongbin300/KiwoomRestApi.Net.svg)](https://github.com/dongbin300/KiwoomRestApi.Net/blob/main/LICENSE)
 
-**키움증권 OpenAPI REST API를 위한 현대적이고 직관적인 .NET Wrapper 라이브러리**
+**키움증권 OpenAPI REST API 를 위한 현대적이고 직관적인 .NET Wrapper 라이브러리**
 
-주식 거래, 계좌 조회, 실시간 데이터, 차트 분석 등 키움증권의 모든 REST API 기능을 간편하게 사용할 수 있습니다.
+[📚 공식 문서](https://dongbin300.github.io/KiwoomRestApi.Net/) · [💬 GitHub Issues](https://github.com/dongbin300/KiwoomRestApi.Net/issues) · [📖 FAQ](docs/FAQ.html)
 
-## ⚡ 30초 만에 시작하기
+---
+
+## ⚡ Quick Start
+
+### 설치
 
 ```bash
-# NuGet 패키지 설치
 dotnet add package KiwoomRestApi.Net
 ```
+
+### 30 초 만에 시작하기
 
 ```csharp
 using KiwoomRestApi.Net.Clients;
 
-// 1. 클라이언트 생성 및 초기화
+// 1. 클라이언트 생성
 var client = await KiwoomRestApiClient.CreateAsync("YOUR_APP_KEY", "YOUR_SECRET_KEY", isMock: true);
 
 // 2. 삼성전자 주식 정보 조회
 var stockInfo = await client.StockInfo.GetStockInfoAsync("005930", DateTime.Today, KiwoomStockInfoMarginLoanType.Loan);
 Console.WriteLine($"삼성전자 현재가: {stockInfo.Data.CurrentPrice}원");
 
-// 3. 당일 삼성전자 실현손익 조회  
+// 3. 당일 실현손익 조회
 var todayRealizedProfitLoss = await client.Account.GetTodayRealizedProfitLossAsync("005930");
 Console.WriteLine($"평가금액: {todayRealizedProfitLoss.ProfitLossRate}%");
 ```
 
-## ✨ 주요 특징
+---
 
-### ⚡ **완전한 비동기 지원**
+## ✨ Features
+
+| Feature | Description | Status |
+|:-------:|-------------|:------:|
+| 🔐 | **OAuth 인증** - 토큰 발급/갱신 관리 | ✅ |
+| 💰 | **계좌 관리** - 잔고, 주문내역, 예수금, 평가잔고, 실현손익 | ✅ |
+| 📈 | **주식 정보** - 현재가, 호가, 체결정보 | ✅ |
+| 📊 | **차트 데이터** - 일/주/월/분봉 차트 | ✅ |
+| 🛒 | **주문 관리** - 매수/매도, 정정, 취소 | ✅ |
+| 📊 | **시장 정보** - 업종, 테마, 순위, 외국인/기관 | ✅ |
+| 📡 | **실시간 데이터** - WebSocket 실시간 구독 | ✅ |
+| 🔍 | **종목 검색** - ETF, ELW, 종목 정보 조회 | ✅ |
+| 🥇 | **금현물 거래** - 금현물 시세, 주문, 잔고 | ✅ |
+
+---
+
+## 🎯 Key Features
+
+### ⚡ Complete Async Support
+
 ```csharp
-// CancellationToken 지원
+// CancellationToken 완벽 지원
 using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
 var result = await client.Account.GetDailyStatusAsync(cts.Token);
 ```
 
-### 🔧 **의존성 주입 (DI) 지원**
+### 🔧 Dependency Injection Support
+
 ```csharp
-// Startup.cs 또는 Program.cs
+// Program.cs 또는 Startup.cs
 services.AddKiwoomRestApi(config => {
     config.AppKey = "your-app-key";
     config.SecretKey = "your-secret-key"; 
@@ -57,89 +80,52 @@ public class TradingController : ControllerBase
 {
     private readonly KiwoomRestApiClient _client;
     
-    public TradingController(KiwoomRestApiClient client)
-    {
-        _client = client;
-    }
+    public TradingController(KiwoomRestApiClient client) => _client = client;
 }
 ```
 
-## 📋 지원 기능
+---
 
-| 기능 | 설명 | 상세 기능 | 상태 |
-|------|------|----------|------|
-| 🔐 **OAuth 인증** | 토큰 발급/갱신 | 액세스 토큰, 리프레시 토큰 관리 | ✅ |
-| 💰 **계좌 관리** | 잔고조회, 주문내역 | 예수금, 평가잔고, 실현손익, 미체결주문 | ✅ |
-| 📈 **주식 정보** | 현재가, 호가, 체결 | 주식기본정보, 호가정보, 체결정보 | ✅ |
-| 📊 **차트 데이터** | 일/분봉 데이터 | 일봉, 분봉, 기간별 차트 | ✅ |
-| 🛒 **주문 관리** | 매수/매도 주문 | 신규주문, 정정주문, 취소주문 | ✅ |
-| 📊 **시장 정보** | 업종, 테마, 순위 | 업종지수, 테마정보, 순위정보 | ✅ |
-| 📡 **실시간 데이터** | WebSocket 연결 | 실시간 주식체결, 호가, 체결강도 | ✅ |
-| 🔍 **종목 검색** | 종목 정보 조회 | ETF, ELW, 외국인/기관 정보 | ✅ |
+## 📖 Usage Examples
 
-## 🚀 사용 예제
-
-### 기본 사용법
-
-```csharp
-using KiwoomRestApi.Net.Clients;
-
-var client = KiwoomRestApiClient.Create(appKey, secretKey, true);
-```
-
-### 주식 정보 조회
+### 📈 주식 정보 조회
 
 ```csharp
 // 현재가 조회
 var stockInfo = await client.StockInfo.GetStockInfoAsync("005930", DateTime.Today, KiwoomStockInfoMarginLoanType.Loan);
 Console.WriteLine($"삼성전자 현재가: {stockInfo.Data.CurrentPrice}원");
 
-// 호가 조회  
+// 호가 조회
 var orderBook = await client.MarketCondition.GetOrderBookAsync("005930");
-Console.WriteLine($"매수1호가: {orderBook.Data.BidLevel1Price}원");
+Console.WriteLine($"매수 1호가: {orderBook.Data.BidLevel1Price}원");
 
 // 차트 데이터 조회
 var chartData = await client.Chart.GetDailyChartsAsync("005930", DateTime.Today, KiwoomChartUseOption.Use);
 Console.WriteLine($"삼성전자 전일종가: {chartData.Data.Items.ElementAt(1).CurrentPrice}원");
 ```
 
-### 계좌 및 주문 관리
+### 💰 계좌 및 주문 관리
 
 ```csharp
-// 💰 예수금 및 자금 관리
+// 💵 예수금 및 자금 관리
 var deposits = await client.Account.GetDepositsAsync(KiwoomAccountDepositQueryType.Normal);
 Console.WriteLine($"예수금: {deposits.Data.DepositAmount:N0}원");
-
-var dailyEstimatedAssets = await client.Account.GetDailyEstimatedDepositAssetsAsync(
-    DateTime.Today.AddDays(-7), DateTime.Today);
-Console.WriteLine($"추정예탁자산: {dailyEstimatedAssets.Data.TotalEstimatedDepositAsset:N0}원");
 
 var estimatedAsset = await client.Account.GetEstimatedDepositAssetAsync(isExcludeDelisted: false);
 Console.WriteLine($"평가자산 총액: {estimatedAsset.Data.TotalAssetAmount:N0}원");
 
 // 📊 잔고 및 평가
-var evaluations = await client.Account.GetEvaluationsAsync(
-    isExcludeDelisted: false, KiwoomAccountStockExchangeType.KRX);
+var evaluations = await client.Account.GetEvaluationsAsync(isExcludeDelisted: false, KiwoomAccountStockExchangeType.KRX);
 Console.WriteLine($"총평가금액: {evaluations.Data.TotalAssetAmount:N0}원");
-
-var tradeBalances = await client.Account.GetTradeBalancesAsync(KiwoomAccountStockExchangeType.KRX);
-Console.WriteLine($"매입금액: {tradeBalances.Data.TotalBuyAmount:N0}원");
 
 var evaluationBalances = await client.Account.GetEvaluationBalancesAsync(
     KiwoomAccountEvaluationBalanceQueryType.TotalProfitLoss,
     KiwoomAccountDomesticStockExchangeType.All);
 Console.WriteLine($"총평가손익: {evaluationBalances.Data.TotalProfitLossAmount:N0}원");
 
-// 📈 수익률 및 손익 분석
+// 📈 수익률 분석
 var dailyBalanceProfitRates = await client.Account.GetDailyBalanceProfitRatesAsync(DateTime.Today);
 Console.WriteLine($"일별잔고수익률: {dailyBalanceProfitRates.Data.TotalProfitLossRate:F2}%");
-
-var todayRealizedProfitLoss = await client.Account.GetTodayRealizedProfitLossAsync("005930");
-Console.WriteLine($"금일 실현손익률: {todayRealizedProfitLoss.ProfitLossRate:F2}%");
-
-var dailyRealizedProfitLosses = await client.Account.GetDailyRealizedProfitLossesAsync(
-    DateTime.Today.AddDays(-30), DateTime.Today);
-Console.WriteLine($"30일간 실현손익: {dailyRealizedProfitLosses.Data.TotalProfitLossAmount:N0}원");
 
 var profitRates = await client.Account.GetProfitRatesAsync(KiwoomAccountStockExchangeType.KRX);
 Console.WriteLine($"계좌 수익률: {profitRates.Data.TotalProfitLossRate:F2}%");
@@ -151,147 +137,140 @@ var unfilledOrders = await client.Account.GetUnfilledOrdersAsync(
     KiwoomAccountStockExchangeType.Unified);
 Console.WriteLine($"미체결 주문 수: {unfilledOrders.Data.Count}");
 
-var filledOrders = await client.Account.GetFilledOrdersAsync(
-    KiwoomAccountQueryType.Today,
-    KiwoomAccountTransactionType.All,
-    KiwoomAccountStockExchangeType.Unified);
-Console.WriteLine($"체결 주문 수: {filledOrders.Data.Count}");
-
-// 📋 거래 내역 조회
-var todayTransactionJournals = await client.Account.GetTodayTransactionJournalsAsync(
-    KiwoomAccountOddLotType.IncludeOddLot,
-    KiwoomAccountCashCreditType.All);
-Console.WriteLine($"금일 거래 내역 수: {todayTransactionJournals.Data.Count}");
-
-var orderTradeDetails = await client.Account.GetOrderTradeDetailsAsync(
-    KiwoomAccountOrderQueryType.Today,
-    KiwoomAccountStockBondType.Stock,
-    KiwoomAccountTransactionType.All,
-    KiwoomAccountDomesticStockExchangeType.KRX);
-Console.WriteLine($"주문 거래 상세 수: {orderTradeDetails.Data.Count}");
-
-// 💳 신용 거래
-var marginOrders = await client.Account.GetMarginOrdersAsync("005930");
-Console.WriteLine($"융자 주문 가능 수량: {marginOrders.Data.MarginBuyableQuantity:N0}주");
-
-var creditDepositOrders = await client.Account.GetCreditDepositOrdersAsync("005930");
-Console.WriteLine($"신용보증금율: {creditDepositOrders.Data.StockDepositRate:F2}%");
-
-var marginDetails = await client.Account.GetMarginDetailsAsync();
-Console.WriteLine($"융자비율: {marginDetails.Data.MarginRate:F2}%");
-
-// 🎯 주문 가능량 조회
-var availableWithdrawalAmounts = await client.Account.GetAvailableWithdrawalAmountsAsync(
-    "005930", KiwoomAccountTransactionType.Buy, 85000);
-Console.WriteLine($"출금가능금액: {availableWithdrawalAmounts.Data.AvailableWithdrawalAmount:N0}원");
-
-// 📅 정산 및 상태
-var nextDaySettlements = await client.Account.GetNextDaySettlementsAsync();
-Console.WriteLine($"D+1 정산 금액: {nextDaySettlements.Data.TotalBuyAmount:N0}원");
-
-var dailyStatus = await client.Account.GetDailyStatusAsync();
-Console.WriteLine($"계좌 상태: {dailyStatus.Data.AccountStatus}");
-
-// 📊 종목별 실현손익
-var dailyStockRealizedProfitLosses = await client.Account.GetDailyStockRealizedProfitLossesAsync(
-    "005930", DateTime.Today.AddDays(-30));
-Console.WriteLine($"종목별 실현손익: {dailyStockRealizedProfitLosses.Data.TotalProfitLossAmount:N0}원");
-
-var dailyStockRealizedProfitLossPeriods = await client.Account.GetDailyStockRealizedProfitLossPeriodsAsync(
-    "005930", DateTime.Today.AddDays(-30), DateTime.Today);
-Console.WriteLine($"기간별 실현손익: {dailyStockRealizedProfitLossPeriods.Data.TotalProfitLossAmount:N0}원");
-
-// 🏦 위탁 및 예수
-var consignedTransactions = await client.Account.GetConsignedTransactionsAsync(
-    KiwoomAccountTransactionType2.All,
-    KiwoomAccountGoodsType.Stock,
-    KiwoomAccountDomesticStockExchangeType.KRX,
-    DateTime.Today.AddDays(-7), DateTime.Today);
-Console.WriteLine($"위탁 매매 수량: {consignedTransactions.Data.TotalOrderQuantity:N0}주");
-
-// 📈 주문 분할 정보
-var unfilledSplitOrders = await client.Account.GetUnfilledSplitOrdersAsync("주문번호");
-Console.WriteLine($"분할 미체결 수량: {unfilledSplitOrders.Data.RemainQuantity:N0}주");
-
-// 📊 일별 수익률 상세
-var dailyProfitRateDetails = await client.Account.GetDailyProfitRateDetailsAsync(
-    DateTime.Today.AddDays(-30), DateTime.Today);
-Console.WriteLine($"일별 수익률 상세: {dailyProfitRateDetails.Data.Count}일 데이터");
-
-// 🛒 주문 실행 (신용 거래 포함)
+// 🛒 주문 실행
 var buyOrderResult = await client.Order.PlaceOrderAsync(
-    KiwoomOrderType.Buy,                                    // 매수
-    KiwoomOrderDomesticStockExchangeType.KRX,               // 거래소
-    "005930",                                               // 삼성전자
-    10,                                                     // 주문수량
-    KiwoomOrderTradeType.Normal,                            // 지정가
-    80000);                                                 // 주문가격
+    KiwoomOrderType.Buy,
+    KiwoomOrderDomesticStockExchangeType.KRX,
+    "005930",
+    10,
+    KiwoomOrderTradeType.Normal,
+    80000);
 
-var sellOrderResult = await client.Order.PlaceOrderAsync(
-    KiwoomOrderType.Sell,                                   // 매도
-    KiwoomOrderDomesticStockExchangeType.KRX,               // 거래소
-    "005930",                                               // 삼성전자
-    5,                                                      // 주문수량
-    KiwoomOrderTradeType.Market);                          // 시장가
-
-// 🔧 주문 수정 및 취소
+// 주문 수정/취소
 var modifyResult = await client.Order.ModifyOrderAsync(
-    KiwoomOrderDomesticStockExchangeType.KRX,               // 거래소
-    "원주문번호",                                            // 원주문번호
-    "005930",                                               // 종목코드
-    8,                                                      // 수정수량
-    82000);                                                 // 수정가격
+    KiwoomOrderDomesticStockExchangeType.KRX,
+    "원주문번호",
+    "005930",
+    8,
+    82000);
 
 var cancelResult = await client.Order.CancelOrderAsync(
-    KiwoomOrderDomesticStockExchangeType.KRX,               // 거래소
-    "원주문번호",                                            // 원주문번호
-    "005930",                                               // 종목코드
-    cancelQuantity: 3);                                     // 취소수량
-
-// 🥇 금현물 거래
-var goldBuyOrderResult = await client.Order.GoldSpotPlaceOrderAsync(
-    KiwoomOrderType.Buy,                                    // 매수
-    KiwoomGoldSpotStockCode.Gold_1kg,                       // 금 1kg
-    1,                                                      // 주문수량
-    KiwoomOrderGoldSpotTransactionType.Normal,              // 보통
-    8500000);                                               // 주문가격
+    KiwoomOrderDomesticStockExchangeType.KRX,
+    "원주문번호",
+    "005930",
+    cancelQuantity: 3);
 ```
 
-### 실시간 데이터 구독
+### 📡 실시간 데이터 구독
 
 ```csharp
-using KiwoomRestApi.Net.Clients;
-
 var socketClient = await KiwoomSocketClient.CreateAsync(client.Token, isMock: true);
 
-// 실시간 주식체결 수신
+// 실시간 주식체결 수신 이벤트
 socketClient.OnRealtimeStockExecutionReceived += (message) => 
 {
     Console.WriteLine($"체결가: {message.ElementAt(0).Values.CurrentPrice}원");
 };
 
 // 실시간 주식체결 구독
-await socketClient.WebSocket.SubscribeAsync([KiwoomWebSocketServiceName.StockExecution], ["005930", "000660"]);
+await socketClient.WebSocket.SubscribeAsync(
+    [KiwoomWebSocketServiceName.StockExecution], 
+    ["005930", "000660"]);
 ```
 
-## ⚡ 성능 최적화 팁
+### 📊 차트 데이터 유틸리티
 
-### 📊 API 제한사항
+**기간별 차트 데이터를 간편하게 조회할 수 있는 유틸리티 메서드입니다.**
 
-| 구분 | 제한사항 | 권장사항 |
-|------|----------|----------|
-| **API 호출** | 초당 20회 | Rate limiting 구현 권장 |
-| **실시간 구독** | 동시 40종목 | 필요한 종목만 구독 |
-| **WebSocket** | 연결당 1개 | 연결 상태 모니터링 필요 |
-| **토큰 유효기간** | 24시간 | 자동 갱신 로직 구현 |
+```csharp
+// 주식 틱차트 조회 (기간)
+var tickCharts = await client.Chart.GetTickChartsByRangeAsync(
+    "005930", 
+    DateTime.Today.AddDays(-30), 
+    DateTime.Today);
 
-### 🚀 최적화 가이드
+// 주식 분봉차트 조회 (기간)
+var minuteCharts = await client.Chart.GetMinuteChartsByRangeAsync(
+    "005930", 
+    DateTime.Today.AddDays(-30), 
+    DateTime.Today);
+
+// 주식 일봉차트 조회 (기간)
+var dailyCharts = await client.Chart.GetDailyChartsByRangeAsync(
+    "005930", 
+    DateTime.Today.AddDays(-100), 
+    DateTime.Today);
+
+// 주식 주봉차트 조회 (기간)
+var weeklyCharts = await client.Chart.GetWeeklyChartsByRangeAsync(
+    "005930", 
+    DateTime.Today.AddDays(-100), 
+    DateTime.Today);
+
+// 주식 월봉차트 조회 (기간)
+var monthlyCharts = await client.Chart.GetMonthlyChartsByRangeAsync(
+    "005930", 
+    DateTime.Today.AddDays(-365), 
+    DateTime.Today);
+
+// 주식 년봉차트 조회 (기간)
+var yearlyCharts = await client.Chart.GetYearlyChartsByRangeAsync(
+    "005930", 
+    DateTime.Today.AddYears(-5), 
+    DateTime.Today);
+
+// 업종 차트도 동일하게 지원
+var industryTickCharts = await client.Chart.GetIndustryTickChartsByRangeAsync(
+    "001", // 업종코드
+    DateTime.Today.AddDays(-30), 
+    DateTime.Today);
+
+// 금현물 차트도 지원
+var goldSpotTickCharts = await client.Chart.GetGoldSpotTickChartsByRangeAsync(
+    KiwoomGoldSpotStockCode.Gold_1kg,
+    DateTime.Today.AddDays(-30), 
+    DateTime.Today);
+```
+
+### 🥇 금현물 거래
+
+```csharp
+// 금현물 주문
+var goldBuyOrderResult = await client.Order.GoldSpotPlaceOrderAsync(
+    KiwoomOrderType.Buy,
+    KiwoomGoldSpotStockCode.Gold_1kg,
+    1,
+    KiwoomOrderGoldSpotTransactionType.Normal,
+    8500000);
+
+// 금현물 잔고확인
+var goldEvaluationBalances = await client.Account.GetGoldEvaluationBalancesAsync();
+Console.WriteLine($"금현물 평가금액: {goldEvaluationBalances.Data.TotalAssetAmount:N0}원");
+```
+
+---
+
+## ⚡ Performance Tips
+
+### API 제한사항
+
+| 구분 | 제한 | 권장사항 |
+|:----:|:----:|----------|
+| **API 호출** | 초당 20 회 | Rate limiting 구현 |
+| **실시간 구독** | 동시 40 종목 | 필요한 종목만 구독 |
+| **WebSocket** | 연결당 1 개 | 연결 상태 모니터링 |
+| **토큰 유효기간** | 24 시간 | 자동 갱신 로직 구현 |
+
+### 최적화 가이드
 
 ```csharp
 // ✅ 좋은 예: CancellationToken 사용
 using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
-var result = await client.StockInfo.GetStockInfoAsync("005930", DateTime.Today,
-    KiwoomStockInfoMarginLoanType.Loan, cts.Token);
+var result = await client.StockInfo.GetStockInfoAsync(
+    "005930", 
+    DateTime.Today,
+    KiwoomStockInfoMarginLoanType.Loan, 
+    cts.Token);
 
 // ✅ 좋은 예: 배치 처리
 var stockCodes = new[] { "005930", "000660", "035420" };
@@ -299,11 +278,13 @@ var tasks = stockCodes.Select(code =>
     client.StockInfo.GetStockInfoAsync(code, DateTime.Today, KiwoomStockInfoMarginLoanType.Loan));
 var results = await Task.WhenAll(tasks);
 
-// ❌ 나쁜 예: 동기 블로킹 호출
+// ❌ 나쁜 예: 동기 블로킹
 // var result = client.StockInfo.GetStockInfoAsync("005930", DateTime.Today, KiwoomStockInfoMarginLoanType.Loan).Result;
 ```
 
-## 🏗️ 지원 플랫폼
+---
+
+## 🏗️ Supported Platforms
 
 - **.NET Standard 2.0** (Unity, Xamarin 호환)
 - **.NET Standard 2.1**
@@ -312,23 +293,9 @@ var results = await Task.WhenAll(tasks);
 - **.NET 9.0**
 - **.NET 10.0**
 
-## 📝 라이선스
+---
 
-이 프로젝트는 [MIT 라이선스](LICENSE) 하에 배포됩니다.
-
-## ⚠️ 면책 조항
-
-이 라이브러리는 키움증권과 공식적인 관계가 없는 개인 프로젝트입니다.  
-실제 거래 시에는 충분한 테스트를 거쳐 사용하시기 바랍니다.
-
-## 🔗 관련 링크
-
-- [키움증권 공식 API 문서](https://openapi.kiwoom.com/guide/apiguide)
-- [API 문서](https://dongbin300.github.io/KiwoomRestApi.Net/)
-- [GitHub 리포지토리](https://github.com/dongbin300/KiwoomRestApi.Net)
-- [버그 리포트](https://github.com/dongbin300/KiwoomRestApi.Net/issues)
-
-## 📋 릴리즈 노트
+## 📋 Release Notes
 
 ### v0.7.0 (2026-03-18)
 - 추가: | ka00001 | 계좌번호조회 (`GetAccountIdAsync`)
@@ -338,28 +305,28 @@ var results = await Task.WhenAll(tasks);
 - 추가: | kt50031 | 금현물 주문체결조회 (`GetGoldTradesAsync`)
 - 추가: | kt50032 | 금현물 거래내역조회 (`GetGoldTradeHistoriesAsync`)
 - 추가: | kt50075 | 금현물 미체결조회 (`GetGoldUnfilledOrdersAsync`)
-- 추가: 주식틱차트조회요청(기간) (`GetTickChartsByRangeAsync`)
-- 추가: 주식분봉차트조회요청(기간) (`GetMinuteChartsByRangeAsync`)
-- 추가: 주식일봉차트조회요청(기간) (`GetDailyChartsByRangeAsync`)
-- 추가: 주식주봉차트조회요청(기간) (`GetWeeklyChartsByRangeAsync`)
-- 추가: 주식월봉차트조회요청(기간) (`GetMonthlyChartsByRangeAsync`)
-- 추가: 주식년봉차트조회요청(기간) (`GetYearlyChartsByRangeAsync`)
-- 추가: 업종틱차트조회요청(기간) (`GetIndustryTickChartsByRangeAsync`)
-- 추가: 업종분봉조회요청(기간) (`GetIndustryMinuteChartsByRangeAsync`)
-- 추가: 업종일봉조회요청(기간) (`GetIndustryDailyChartsByRangeAsync`)
-- 추가: 업종주봉조회요청(기간) (`GetIndustryWeeklyChartsByRangeAsync`)
-- 추가: 업종월봉조회요청(기간) (`GetIndustryMonthlyChartsByRangeAsync`)
-- 추가: 업종년봉조회요청(기간) (`GetIndustryYearlyChartsByRangeAsync`)
-- 추가: 금현물틱차트조회요청(기간) (`GetGoldSpotTickChartsByRangeAsync`)
-- 추가: 금현물분봉차트조회요청(기간) (`GetGoldSpotMinuteChartsByRangeAsync`)
-- 추가: 금현물일봉차트조회요청(기간) (`GetGoldSpotDailyChartsByRangeAsync`)
-- 추가: 금현물주봉차트조회요청(기간) (`GetGoldSpotWeeklyChartsByRangeAsync`)
-- 추가: 금현물월봉차트조회요청(기간) (`GetGoldSpotMonthlyChartsByRangeAsync`)
+- 추가: 주식틱차트조회요청 (기간) (`GetTickChartsByRangeAsync`)
+- 추가: 주식분봉차트조회요청 (기간) (`GetMinuteChartsByRangeAsync`)
+- 추가: 주식일봉차트조회요청 (기간) (`GetDailyChartsByRangeAsync`)
+- 추가: 주식주봉차트조회요청 (기간) (`GetWeeklyChartsByRangeAsync`)
+- 추가: 주식월봉차트조회요청 (기간) (`GetMonthlyChartsByRangeAsync`)
+- 추가: 주식년봉차트조회요청 (기간) (`GetYearlyChartsByRangeAsync`)
+- 추가: 업종틱차트조회요청 (기간) (`GetIndustryTickChartsByRangeAsync`)
+- 추가: 업종분봉조회요청 (기간) (`GetIndustryMinuteChartsByRangeAsync`)
+- 추가: 업종일봉조회요청 (기간) (`GetIndustryDailyChartsByRangeAsync`)
+- 추가: 업종주봉조회요청 (기간) (`GetIndustryWeeklyChartsByRangeAsync`)
+- 추가: 업종월봉조회요청 (기간) (`GetIndustryMonthlyChartsByRangeAsync`)
+- 추가: 업종년봉조회요청 (기간) (`GetIndustryYearlyChartsByRangeAsync`)
+- 추가: 금현물틱차트조회요청 (기간) (`GetGoldSpotTickChartsByRangeAsync`)
+- 추가: 금현물분봉차트조회요청 (기간) (`GetGoldSpotMinuteChartsByRangeAsync`)
+- 추가: 금현물일봉차트조회요청 (기간) (`GetGoldSpotDailyChartsByRangeAsync`)
+- 추가: 금현물주봉차트조회요청 (기간) (`GetGoldSpotWeeklyChartsByRangeAsync`)
+- 추가: 금현물월봉차트조회요청 (기간) (`GetGoldSpotMonthlyChartsByRangeAsync`)
 - 변경: `KiwoomAccountTransactionTypeType` -> `KiwoomAccountTransactionType4`
 - 변경: `GetEvaluationBalancesAsync`파라미터 `KiwoomAccountDomesticStockExchangeType` -> `KiwoomAccountDomesticStockExchangeType2`
 - 변경: `GetEvaluationsAsync`파라미터 `KiwoomAccountStockExchangeType` -> `KiwoomAccountStockExchangeType2`
-- 변경: | ka10080 | 주식분봉차트조회요청 기준일자(`date`) 파라미터 추가
-- 변경: | ka20005 | 업종분봉조회요청 기준일자(`date`) 파라미터 추가
+- 변경: | ka10080 | 주식분봉차트조회요청 기준일자 (`date`) 파라미터 추가
+- 변경: | ka20005 | 업종분봉조회요청 기준일자 (`date`) 파라미터 추가
 
 ---
 
@@ -379,10 +346,10 @@ var results = await Task.WhenAll(tasks);
 - 변경: 대용량 메시지 수신 시 JSON 파싱 에러 해결 (#1)
 - 변경: Microsoft.Extensions, System.Text.Json 최신 버전으로 업데이트 (10.0.1)
 - 변경: | kt00005 | 체결잔고요청 `KiwoomAccountStockExchangeType` -> `KiwoomAccountStockExchangeType2`
-- 변경: | ka10073 | 일자별종목별실현손익요청_기간 `TodayHtsSellFee`를 `string`로 변경
-- 변경: | ka30002 | 거래원별ELW순매매상위요청 `issuerCompanyCode` 파라미터를 `string`로 변경
+- 변경: | ka10073 | 일자별종목별실현손익요청_기간 `TodayHtsSellFee` 를 `string` 로 변경
+- 변경: | ka30002 | 거래원별 ELW 순매매상위요청 `issuerCompanyCode` 파라미터를 `string` 로 변경
 - 변경: | ka10005 | 주식일주월시분요청 `KiwoomMarketConditionGetDailyWeeklyMonthly` 멤버 변경
-- 변경: | ka10101 | 업종코드 리스트 `marketCode`를 `list`로 변경
+- 변경: | ka10101 | 업종코드 리스트 `marketCode` 를 `list` 로 변경
 - 변경: KiwoomWebSocketRealtime 멤버변수 일부 `string` -> `KiwoomString`
 
 ---
@@ -425,29 +392,29 @@ var results = await Task.WhenAll(tasks);
 ---
 
 ### v0.4.0 (2025-09-15)
-- 추가: .NET 10.0 타겟 프레임워크 추가(Preview)
+- 추가: .NET 10.0 타겟 프레임워크 추가 (Preview)
 - 변경: `GetCreditLoanAvailableStocksAsync` 요청필드명 `crd_stk_grae_tp` -> `crd_stk_grde_tp`
-- 변경: `KiwoomAccountGetDeposits.MinimumOrderable`를 `decimal`로 수정
-- 변경: `KiwoomAccountGetCreditDepositOrders.StockDepositRate`를 `string`로 수정
-- 변경: `KiwoomAccountGetMarginOrders.AccountMarginRate`를 `string`로 수정
-- 변경: `ExchangeType` 관련 필드를 모두 `~StockExchangeType`로 수정
-- 변경: `StockExchangeType` 관련 필드를 모두 `~StockExchangeType`로 수정
-- 변경: `IndustryCode` 필드를 `KiwoomChartIndustryCode`로 수정
+- 변경: `KiwoomAccountGetDeposits.MinimumOrderable` 를 `decimal`로 수정
+- 변경: `KiwoomAccountGetCreditDepositOrders.StockDepositRate` 를 `string`로 수정
+- 변경: `KiwoomAccountGetMarginOrders.AccountMarginRate` 를 `string`로 수정
+- 변경: `ExchangeType` 관련 필드를 모두 `~StockExchangeType` 로 수정
+- 변경: `StockExchangeType` 관련 필드를 모두 `~StockExchangeType` 로 수정
+- 변경: `IndustryCode` 필드를 `KiwoomChartIndustryCode` 로 수정
 - 변경: `ContYn` 필드를 `bool`로 수정
 - 변경: `NxtEnable` 필드를 `bool`로 수정
 - 변경: `Rank` 필드를 `decimal` -> `int`
 - 변경: `Count` 관련 필드를 모두 `int`, `KiwoomInt`로 수정
 - 변경: `ProfitLoss` 관련 필드를 모두 `KiwoomDecimal`로 수정
-- 변경: `AfterMarketSinglePriceChange`를 `KiwoomDecimal`로 수정
+- 변경: `AfterMarketSinglePriceChange` 를 `KiwoomDecimal`로 수정
 - 변경: `NetBuyVolume`, `NetBuyAmount` 필드를 `KiwoomDecimal`로 수정
-- 변경: `AfterMarketSinglePriceChangeRate`를 `KiwoomDecimal`로 수정
-- 변경: `KiwoomStockInfoGetTradeItem.TradeVolume`를 `KiwoomDecimal`로 수정
+- 변경: `AfterMarketSinglePriceChangeRate` 를 `KiwoomDecimal`로 수정
+- 변경: `KiwoomStockInfoGetTradeItem.TradeVolume` 를 `KiwoomDecimal`로 수정
 - 변경: `BuyBrokerVolume`, `SellBrokerVolume` 필드를 `KiwoomDecimal`로 수정
 - 변경: `KiwoomMarketConditionGetStockInstitutionTransactionTrendItem.InstitutionPeriodAccumulation`, `InstitutionDailyNetVolume`, `ForeignPeriodAccumulation`, `ForeignDailyNetVolume`를 `KiwoomDecimal`로 수정
 - 변경: `TopBuyExitBroker` 필드를 `KiwoomString`로 수정
-- 변경: `HoldingCount`를 `HoldingQuantity`로 수정
-- 변경: `AcquirableCount`를 `AcquirableQuantity`로 수정
-- 변경: `GetHourlyProgramTradeTrendsAsync`, `GetDailyProgramTradeTrendsAsync` 파라미터를 `KiwoomMarketConditionMarketType3`로 수정
+- 변경: `HoldingCount` 를 `HoldingQuantity` 로 수정
+- 변경: `AcquirableCount` 를 `AcquirableQuantity` 로 수정
+- 변경: `GetHourlyProgramTradeTrendsAsync`, `GetDailyProgramTradeTrendsAsync` 파라미터를 `KiwoomMarketConditionMarketType3` 로 수정
 - 변경: `KiwoomMarketConditionGetStockOriginTradeTrends` -> `KiwoomMarketConditionGetStockInstitutionTransactionTrends`
 
 ---
@@ -457,7 +424,7 @@ var results = await Task.WhenAll(tasks);
 - 변경: `KiwoomDecimal`로 변환 작업
 - 변경: `Rank` 필드를 `string` -> `decimal`
 - 추가: `KiwoomMarketConditionGetDailyInstitutionTradingStockItem`에 누락된 필드 추가
-- 변경: `KiwoomTimeSpanConverter`에서 파싱 실패하는 경우는 `null`로 반환하도록 수정
+- 변경: `KiwoomTimeSpanConverter` 에서 파싱 실패하는 경우는 `null`로 반환하도록 수정
 
 ---
 
@@ -531,12 +498,12 @@ var results = await Task.WhenAll(tasks);
 ### v0.2.1 (2025-09-03)
 - 추가: 소스코드 주석
 - 추가: | ka01690 | 일별잔고수익률 API
-- 삭제: `KiwoomRealtimeQuoteRequests`
-- 삭제: `KiwoomRealtimeQuoteRequestItem`
-- 삭제: `KiwoomRealtimeQuoteRegistrations`
-- 삭제: `KiwoomRealtimeQuoteRegistrationItem`
-- 삭제: `KiwoomRealtimeQuoteValue`
-- 변경: `KiwoomRankingInfoGetForeignPeriodTransactionTopItem.NetBuyQuantity`를 `KiwoomDecimal`로 수정
+- 삭제: `KiwoomRealteQuoteRequests`
+- 삭제: `KiwoomRealteQuoteRequestItem`
+- 삭제: `KiwoomRealteQuoteRegistrations`
+- 삭제: `KiwoomRealteQuoteRegistrationItem`
+- 삭제: `KiwoomRealteQuoteValue`
+- 변경: `KiwoomRankingInfoGetForeignPeriodTransactionTopItem.NetBuyQuantity` 를 `KiwoomDecimal`로 수정
 - 변경: 종속성 라이브러리 버전별 분기
 
 ---
@@ -546,25 +513,25 @@ var results = await Task.WhenAll(tasks);
 - 추가: | ka00198 | 실시간종목조회순위 API
 - 추가: `KiwoomStockInfoStockCondition.ExcludeManagedAndPreferredAndCaution`
 - 추가: `KiwoomWebSocketStockExchangeType.Unified`, `NXT` 추가
-- 변경: | ka10061 | 종목별투자자기관별합계요청의 `trde_tp` 값 `0`으로 고정
-- 변경: | kt10003 | 주식 취소주문의 API ID를 `kt10002`로 잘못 호출하고 있던 문제 수정
-- 변경: `KiwoomAccountDelistingQueryType`을 `bool`로 수정 (`isExcludeDelisted`)
-- 변경: `KiwoomChartUseOption`을 `bool`로 수정 (`isUpdateStockPrice`)
-- 변경: `KiwoomRankingInfoInclusionOption`을 `bool`로 수정
-- 변경: `KiwoomStockInfonInclusionOption`을 `bool`로 수정
-- 변경: `KiwoomStockInfoUseOption`을 `bool`로 수정
-- 변경: `KiwoomElwTradeQuantityType`을 `decimal`로 수정 (`minVolume`)
-- 변경: `KiwoomRankingInfoTradeQuantityType`을 `decimal`로 수정 (`minVolume`)
-- 변경: `KiwoomRankingInfoTradePriceCondition`을 `decimal`로 수정 (`minTransactionAmount`)
-- 변경: `KiwoomStockInfoTradeQuantityType`을 `decimal`로 수정 (`minVolume`)
-- 변경: `KiwoomForeignInstitutionPeriodQueryType`을 `int`로 수정 (`period`)
+- 변경: | ka10061 | 종목별투자자기관별합계요청의 `trde_tp` 값 `0` 으로 고정
+- 변경: | kt10003 | 주식 취소주문의 API ID 를 `kt10002`로 잘못 호출하고 있던 문제 수정
+- 변경: `KiwoomAccountDelistingQueryType` 을 `bool`로 수정 (`isExcludeDelisted`)
+- 변경: `KiwoomChartUseOption` 을 `bool`로 수정 (`isUpdateStockPrice`)
+- 변경: `KiwoomRankingInfoInclusionOption` 을 `bool`로 수정
+- 변경: `KiwoomStockInfonInclusionOption` 을 `bool`로 수정
+- 변경: `KiwoomStockInfoUseOption` 을 `bool`로 수정
+- 변경: `KiwoomElwTradeQuantityType` 을 `decimal`로 수정 (`minVolume`)
+- 변경: `KiwoomRankingInfoTradeQuantityType` 을 `decimal`로 수정 (`minVolume`)
+- 변경: `KiwoomRankingInfoTradePriceCondition` 을 `decimal`로 수정 (`minTransactionAmount`)
+- 변경: `KiwoomStockInfoTradeQuantityType` 을 `decimal`로 수정 (`minVolume`)
+- 변경: `KiwoomForeignInstitutionPeriodQueryType` 을 `int`로 수정 (`period`)
 - 변경: `KiwoomAccountDepositQueryType.General` -> `KiwoomAccountDepositQueryType.Normal`
 - 변경: `KiwoomMarketConditionEstimatedUnitPriceType` -> `KiwoomMarketConditionUnitPriceType`
 - 변경: `KiwoomRankingInfoTradeQuantitySortType.TradingVolume` -> `Volume`
 - 변경: `KiwoomRankingInfoTradeQuantitySortType.TradingAmount` -> `TransactionAmount`
 - 변경: `KiwoomRankingInfoPreviousTradeQuantityQueryType.Top100ByYesterdayTradingAmount` -> `Top100ByYesterdayTransactionAmount`
-- 변경: `KiwoomWebSocketRealtimeOrderExecution.ExchangeType` 타입을 `KiwoomWebSocketStockExchangeType`로 수정
-- 변경: `KiwoomWebSocketRealtimeStockExecution.ExchangeType` 타입을 `KiwoomWebSocketStockExchangeType`로 수정
+- 변경: `KiwoomWebSocketRealtimeOrderExecution.ExchangeType` 타입을 `KiwoomWebSocketStockExchangeType` 로 수정
+- 변경: `KiwoomWebSocketRealtimeStockExecution.ExchangeType` 타입을 `KiwoomWebSocketStockExchangeType` 로 수정
 - 삭제: `KiwoomForeignInstitutionNetSellAmountType` (`2` 고정값)
 - 삭제: `KiwoomSecuritiesLendingQueryType`
 
@@ -588,4 +555,32 @@ var results = await Task.WhenAll(tasks);
 
 ---
 
-⭐ 이 프로젝트가 도움이 되었다면 스타를 눌러주세요!
+## 🔗 Links
+
+- [📚 Official Documentation](https://dongbin300.github.io/KiwoomRestApi.Net/)
+- [💬 GitHub Repository](https://github.com/dongbin300/KiwoomRestApi.Net)
+- [❓ FAQ](docs/FAQ.html)
+- [📖 Kiwoom API Guide](https://openapi.kiwoom.com/guide/apiguide)
+
+---
+
+## ⚠️ Disclaimer
+
+이 라이브러리는 키움증권과 공식적인 관계가 없는 개인 프로젝트입니다.  
+실제 거래 시에는 충분한 테스트를 거쳐 사용하시기 바랍니다.
+
+---
+
+## 📄 License
+
+[MIT License](LICENSE)
+
+---
+
+<div align="center">
+
+**⭐ 이 프로젝트가 도움이 되었다면 스타를 눌러주세요!**
+
+Made with ❤️ by [dongbin300](https://github.com/dongbin300)
+
+</div>
