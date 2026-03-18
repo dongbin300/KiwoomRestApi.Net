@@ -100,7 +100,7 @@ namespace KiwoomRestApi.Net.Examples
                 var balancesResponse = await _client.Account.GetTradeBalancesAsync(KiwoomAccountStockExchangeType2.Krx);
                 LogResult("SUCCESS", "GetTradeBalancesAsync", "거래잔고 조회 완료");
 
-                var evaluationsResponse = await _client.Account.GetEvaluationsAsync(false, KiwoomAccountStockExchangeType.Unified);
+                var evaluationsResponse = await _client.Account.GetEvaluationsAsync(false, KiwoomAccountStockExchangeType2.Krx);
                 LogResult("SUCCESS", "GetEvaluationsAsync", "평가 데이터 조회 완료");
 
                 var dailyStatusResponse = await _client.Account.GetDailyStatusAsync();

@@ -16,6 +16,7 @@ using KiwoomRestApi.Net.Enums.ShortSale;
 using KiwoomRestApi.Net.Enums.StockInfo;
 using KiwoomRestApi.Net.Enums.Theme;
 using KiwoomRestApi.Net.Enums.WebSocket;
+using KiwoomRestApi.Net.Interfaces;
 
 using Newtonsoft.Json;
 
@@ -27,34 +28,91 @@ namespace KiwoomRestApi.Net.Examples
     {
         private readonly KiwoomRestApiClient _client;
         private readonly KiwoomSocketClient _client2;
-        private readonly int mock = 3;
+		private readonly int mock = -1;
 
-        public KiwoomApis()
-        {
-            if (mock > 0)
-            {
-                var appKey = File.ReadAllText("D:\\Assets\\kiwoom_appkey_mock.txt");
-                var secretKey = File.ReadAllText("D:\\Assets\\kiwoom_secretkey_mock.txt");
-                _client = KiwoomRestApiClient.Create(appKey, secretKey, true);
-                _client2 = KiwoomSocketClient.Create(_client.Token, true);
-            }
-            else
-            {
-                var appKey = File.ReadAllText("D:\\Assets\\kiwoom_appkey.txt");
-                var secretKey = File.ReadAllText("D:\\Assets\\kiwoom_secretkey.txt");
-                _client = KiwoomRestApiClient.Create(appKey, secretKey, false);
-                _client2 = KiwoomSocketClient.Create(_client.Token, false);
-            }
-        }
+		public KiwoomApis()
+		{
+			if (mock > 0)
+			{
+				var appKey = File.ReadAllText("D:\\Assets\\kiwoom_appkey_mock.txt");
+				var secretKey = File.ReadAllText("D:\\Assets\\kiwoom_secretkey_mock.txt");
+				_client = KiwoomRestApiClient.Create(appKey, secretKey, true);
+				_client2 = KiwoomSocketClient.Create(_client.Token, true);
+			}
+			else if (mock == 0)
+			{
+				var appKey = File.ReadAllText("D:\\Assets\\kiwoom_appkey.txt");
+				var secretKey = File.ReadAllText("D:\\Assets\\kiwoom_secretkey.txt");
+				_client = KiwoomRestApiClient.Create(appKey, secretKey, false);
+				_client2 = KiwoomSocketClient.Create(_client.Token, false);
+			}
+			else
+			{
+				var appKey = File.ReadAllText("D:\\Assets\\kiwoom_appkey_gold.txt");
+				var secretKey = File.ReadAllText("D:\\Assets\\kiwoom_secretkey_gold.txt");
+				_client = KiwoomRestApiClient.Create(appKey, secretKey, false);
+				_client2 = KiwoomSocketClient.Create(_client.Token, false);
+			}
+		}
 
-        public void Run()
-        {
-            //var stockCode = "005930";
+		public void Run()
+		{
+			//var stockCode = "005930";
 			var stockCode = "431190";
 			//var stockCode = "060280";
-			var startDate = new DateTime(2025, 11, 1);
-            var endDate = new DateTime(2025, 11, 11);
-            var date = new DateTime(2025, 11, 11);
+			var startDate = new DateTime(2024, 1, 1);
+            var endDate = new DateTime(2026, 3, 6);
+            var date = new DateTime(2026, 2, 10);
+            var startDate1 = new DateTime(2026, 3, 12, 15, 0, 0);
+            var endDate1 = new DateTime(2026, 3, 12, 15, 20, 0);
+			var startDate2 = new DateTime(2026, 2, 1);
+			var endDate2 = new DateTime(2026, 3, 6);
+			var startDate3 = new DateTime(2024, 1, 1);
+			var endDate3 = new DateTime(2026, 3, 6);
+
+
+			//var tickDataResult = _client.Chart.GetTickChartsAsync("100590", 1, false).Result;
+			//var nextKey = tickDataResult.NextKey;
+			//_client.ContYn = "Y";
+			//_client.NextKey = nextKey;
+			//var tickDataResult2 = _client.Chart.GetTickChartsAsync("", 1, false).Result;
+
+			//_client.PagingDelay = 1000;
+			//var aa0 = _client.Chart.GetTickChartsByRangeAsync("100590", 1, startDate1, endDate1, false).Result;
+			//var aa1 = _client.Chart.GetMinuteChartsByRangeAsync("100590", 1, startDate, endDate, false).Result;
+			//var aa2 = _client.Chart.GetDailyChartsByRangeAsync("100590", startDate, endDate, false).Result;
+			//var aa3 = _client.Chart.GetWeeklyChartsByRangeAsync("100590", startDate, endDate, false).Result;
+			//var aa4 = _client.Chart.GetMonthlyChartsByRangeAsync("100590", startDate, endDate, false).Result;
+			//var aa5 = _client.Chart.GetYearlyChartsByRangeAsync("100590", startDate, endDate, false).Result;
+
+
+			//var a1 = _client.Chart.GetMinuteChartsAsync("100590", 1, startDate, false).Result;
+			//var a2 = _client.Chart.GetDailyChartsAsync("100590", startDate, false).Result;
+			//var a3 = _client.Chart.GetWeeklyChartsAsync("100590", startDate, false).Result;
+			//var a4 = _client.Chart.GetMonthlyChartsAsync("100590", startDate, false).Result;
+			//var a5 = _client.Chart.GetYearlyChartsAsync("100590", startDate, false).Result;
+
+			//var a1 = _client.Chart.GetIndustryTickChartsByRangeAsync(KiwoomChartIndustryCode.Kospi200, 30, startDate1, endDate1).Result;
+			//var a2 = _client.Chart.GetIndustryMinuteChartsByRangeAsync(KiwoomChartIndustryCode.Kospi200, 30, startDate2, endDate2).Result;
+			//var a3 = _client.Chart.GetIndustryDailyChartsByRangeAsync(KiwoomChartIndustryCode.Kospi200, startDate2, endDate2).Result;
+			//var a4 = _client.Chart.GetIndustryWeeklyChartsByRangeAsync(KiwoomChartIndustryCode.Kospi200, startDate2, endDate2).Result;
+			//var a5 = _client.Chart.GetIndustryMonthlyChartsByRangeAsync(KiwoomChartIndustryCode.Kospi200, startDate3, endDate3).Result;
+			//var a6 = _client.Chart.GetIndustryYearlyChartsByRangeAsync(KiwoomChartIndustryCode.Kospi200, startDate3, endDate3).Result;
+
+			//var a1 = _client.Chart.GetGoldSpotTickChartsByRangeAsync(KiwoomGoldSpotStockCode.MiniGold_100g, 30, startDate1, endDate1, false).Result;
+			//var a2 = _client.Chart.GetGoldSpotMinuteChartsByRangeAsync(KiwoomGoldSpotStockCode.MiniGold_100g, 30, startDate2, endDate2, false).Result;
+			//var a3 = _client.Chart.GetGoldSpotDailyChartsByRangeAsync(KiwoomGoldSpotStockCode.MiniGold_100g, startDate2, endDate2, false).Result;
+			//var a4 = _client.Chart.GetGoldSpotWeeklyChartsByRangeAsync(KiwoomGoldSpotStockCode.MiniGold_100g, startDate2, endDate2, false).Result;
+			//var a5 = _client.Chart.GetGoldSpotMonthlyChartsByRangeAsync(KiwoomGoldSpotStockCode.MiniGold_100g, startDate3, endDate3, false).Result;
+
+
+			//Task.Run(async () => {
+			//	await foreach (var page in _client.Chart.StreamTickChartsAsync("100590", 1, false))
+			//	{
+			//		var aa = page.Data;
+			//	}
+			//}).Wait();
+
 
 			// 26
 			//var a1 = _client.Account.GetAvailableWithdrawalAmountsAsync(stockCode, KiwoomAccountTransactionType.All, 100).Result; // no mock
@@ -69,20 +127,27 @@ namespace KiwoomRestApi.Net.Examples
 			//var a10 = _client.Account.GetDailyStockRealizedProfitLossPeriodsAsync("060280", startDate, endDate).Result;
 			//var a11 = _client.Account.GetDepositsAsync(KiwoomAccountDepositQueryType.Normal).Result;
 			//var a12 = _client.Account.GetEstimatedDepositAssetAsync(false).Result;
-			//var a13 = _client.Account.GetEvaluationBalancesAsync(KiwoomAccountEvaluationBalanceQueryType.Aggregate, KiwoomAccountDomesticStockExchangeType.All).Result;
+			//var a13 = _client.Account.GetEvaluationBalancesAsync(KiwoomAccountEvaluationBalanceQueryType.Aggregate, KiwoomAccountDomesticStockExchangeType2.Krx).Result;
 			//var a14 = _client.Account.GetEvaluationsAsync(false, KiwoomAccountStockExchangeType.Unified).Result;
 			//var a15 = _client.Account.GetFilledOrdersAsync(KiwoomAccountQueryType.All, KiwoomAccountTransactionType.All, KiwoomAccountStockExchangeType.Unified).Result;
 			//var a16 = _client.Account.GetMarginDetailsAsync().Result;
 			//var a17 = _client.Account.GetMarginOrdersAsync(stockCode).Result;
 			//var a18 = _client.Account.GetNextDaySettlementsAsync().Result;
 			//var a19 = _client.Account.GetOrderTradeDetailsAsync(KiwoomAccountOrderQueryType.OrderSequence, KiwoomAccountStockBondType.All, KiwoomAccountTransactionType.All, KiwoomAccountDomesticStockExchangeType.All, new DateTime(2025, 11, 7), "060280").Result;
-			//var a20 = _client.Account.GetOrderTradesAsync(KiwoomAccountOrderTradeQueryType.All, KiwoomAccountStockBondType.All, KiwoomAccountTransactionType.All, KiwoomAccountDomesticStockExchangeType.All, KiwoomAccountMarketType.All, new DateTime(2025, 11, 7), "060280").Result;
+			//var a20 = _client.Account.GetOrderTradesAsync(KiwoomAccountOrderTradeQueryType.All, KiwoomAccountStockBondType.All, KiwoomAccountTransactionType.All, KiwoomAccountDomesticStockExchangeType.All, KiwoomAccountMarketType.All, new DateTime(2025, 2, 9), "060280").Result;
 			//var a21 = _client.Account.GetProfitRatesAsync(KiwoomAccountStockExchangeType.Unified).Result;
 			//var a22 = _client.Account.GetTodayRealizedProfitLossAsync(stockCode).Result;
 			//var a23 = _client.Account.GetTodayTransactionJournalsAsync(KiwoomAccountOddLotType.TodaySellAll, KiwoomAccountCashCreditType.All).Result;
 			//var a24 = _client.Account.GetTradeBalancesAsync(KiwoomAccountStockExchangeType2.Krx).Result; // no mock
 			//var a25 = _client.Account.GetUnfilledOrdersAsync(KiwoomAccountQueryType.All, KiwoomAccountTransactionType.All, KiwoomAccountStockExchangeType.Unified).Result;
 			//var a26 = _client.Account.GetUnfilledSplitOrdersAsync(stockCode).Result;
+			//var a27 = _client.Account.GetAccountIdAsync().Result;
+			//var a28 = _client.Account.GetGoldEvaluationBalancesAsync().Result;
+			//var a29 = _client.Account.GetGoldDepositAsync(KiwoomAccountEvaluationBalanceQueryType.Aggregate, KiwoomAccountDomesticStockExchangeType.All).Result;
+			//var a30 = _client.Account.GetGoldAllTradesAsync(date, KiwoomAccountMarketDealType.All, KiwoomAccountStockBondType.All, KiwoomAccountTransactionType.All).Result;
+			//var a31 = _client.Account.GetGoldTradesAsync(KiwoomAccountOrderQueryType.OrderSequence, KiwoomAccountStockBondType.All, KiwoomAccountTransactionType.All, KiwoomAccountDomesticStockExchangeType.All).Result;
+			//var a32 = _client.Account.GetGoldTradeHistoriesAsync(KiwoomAccountTransactionType3.All).Result;
+			//var a33 = _client.Account.GetGoldUnfilledOrdersAsync(date, KiwoomAccountMarketDealType.All, KiwoomAccountStockBondType.All, KiwoomAccountTransactionType.All).Result;
 
 			//
 			//var b1 = _client.Chart.GetDailyChartsAsync(stockCode, date, true).Result;

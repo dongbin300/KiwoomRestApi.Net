@@ -48,7 +48,7 @@ namespace KiwoomRestApi.Net.Clients
 		/// <summary>
 		/// 연속 조회 여부를 가져오거나 설정합니다.
 		/// </summary>
-		public string ContYn { get; set; } = string.Empty;
+		public bool ContYn { get; set; } = false;
 
 		/// <summary>
 		/// 다음 조회 키를 가져오거나 설정합니다.
@@ -136,6 +136,11 @@ namespace KiwoomRestApi.Net.Clients
 		public KiwoomRestApiClientDomesticStockEtf Etf { get; set; }
 
 		/// <summary>
+		/// API 연속 호출 시 딜레이 시간(밀리초)을 가져오거나 설정합니다. 기본값은 1000ms입니다.
+		/// </summary>
+		public int PagingDelay { get; set; } = 1000;
+
+		/// <summary>
 		/// 설정 객체를 사용하여 KiwoomRestApiClient의 새 인스턴스를 초기화합니다.
 		/// </summary>
 		/// <param name="configuration">키움 API 설정</param>
@@ -181,8 +186,8 @@ namespace KiwoomRestApi.Net.Clients
 			{
 				BaseAddress = new Uri(isMock ? KiwoomUrls.MockRestApiHost : KiwoomUrls.RestApiHost)
 			};
-			AppKey = appKey;
-			SecretKey = secretKey;
+			AppKey = appKey.Trim();
+			SecretKey = secretKey.Trim();
 			Authorization = token != null ? $"Bearer {token}" : null;
 			Token = token ?? string.Empty;
 
@@ -291,7 +296,7 @@ namespace KiwoomRestApi.Net.Clients
 			var headers = new HttpParameterMap()
 				.AddField("api-id", apiId)
 				.AddField("authorization", Authorization)
-				.AddField("cont-yn", ContYn)
+				.AddField("cont-yn", ContYn ? "Y" : "N")
 				.AddField("next-key", NextKey);
 
 			var response = await PostAsync<JObject>(endpoint, headers, body, cancellationToken).ConfigureAwait(false);

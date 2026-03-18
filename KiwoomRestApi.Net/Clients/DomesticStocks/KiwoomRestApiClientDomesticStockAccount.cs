@@ -1,4 +1,5 @@
 ﻿using KiwoomRestApi.Net.Enums.Account;
+using KiwoomRestApi.Net.Enums.StockInfo;
 using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
@@ -11,7 +12,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 {
 	/// <summary>
 	/// 계좌 API 클라이언트
-	/// 현재 26개
+	/// 현재 33개
 	/// </summary>
 	/// <param name="client"></param>
 	public class KiwoomRestApiClientDomesticStockAccount(KiwoomRestApiClient client) : BaseClient
@@ -249,7 +250,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="stockExchangeType"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetEvaluations>> GetEvaluationsAsync(bool isExcludeDelisted, KiwoomAccountStockExchangeType stockExchangeType, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetEvaluations>> GetEvaluationsAsync(bool isExcludeDelisted, KiwoomAccountStockExchangeType2 stockExchangeType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "kt00004";
 			var body = new HttpParameterMap()
@@ -483,7 +484,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		/// <param name="domesticStockExchangeType"></param>
 		/// <param name="cancellationToken"></param>
 		/// <returns></returns>
-		public async Task<KiwoomRestApiResponse<KiwoomAccountGetEvaluationBalances>> GetEvaluationBalancesAsync(KiwoomAccountEvaluationBalanceQueryType queryType, KiwoomAccountDomesticStockExchangeType domesticStockExchangeType, CancellationToken cancellationToken = default)
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetEvaluationBalances>> GetEvaluationBalancesAsync(KiwoomAccountEvaluationBalanceQueryType queryType, KiwoomAccountDomesticStockExchangeType2 domesticStockExchangeType, CancellationToken cancellationToken = default)
 		{
 			const string apiId = "kt00018";
 			var body = new HttpParameterMap()
@@ -491,6 +492,156 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 				.AddField("dmst_stex_tp", domesticStockExchangeType);
 
 			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetEvaluationBalances>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+		}
+
+		/// <summary>
+		/// | ka00001 | 계좌번호조회
+		/// </summary>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetAccountId>> GetAccountIdAsync(CancellationToken cancellationToken = default)
+		{
+			const string apiId = "ka00001";
+			var body = new HttpParameterMap();
+
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetAccountId>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+		}
+
+		/// <summary>
+		/// | kt50020 | 금현물 잔고확인
+		/// </summary>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetGoldEvaluationBalances>> GetGoldEvaluationBalancesAsync(CancellationToken cancellationToken = default)
+		{
+			const string apiId = "kt50020";
+			var body = new HttpParameterMap();
+
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetGoldEvaluationBalances>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+		}
+
+		/// <summary>
+		/// | kt50021 | 금현물 예수금
+		/// </summary>
+		/// <param name="queryType"></param>
+		/// <param name="domesticStockExchangeType"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetGoldDeposit>> GetGoldDepositAsync(KiwoomAccountEvaluationBalanceQueryType queryType, KiwoomAccountDomesticStockExchangeType domesticStockExchangeType, CancellationToken cancellationToken = default)
+		{
+			const string apiId = "kt50021";
+			var body = new HttpParameterMap();
+
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetGoldDeposit>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+		}
+
+		/// <summary>
+		/// | kt50030 | 금현물 주문체결전체조회
+		/// </summary>
+		/// <param name="date"></param>
+		/// <param name="marketDealType"></param>
+		/// <param name="stockBondType"></param>
+		/// <param name="transactionType"></param>
+		/// <param name="queryType"></param>
+		/// <param name="stockCode"></param>
+		/// <param name="fromOrderId"></param>
+		/// <param name="domesticStockExchangeType"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetGoldAllTrades>> GetGoldAllTradesAsync(DateTime date, KiwoomAccountMarketDealType marketDealType, KiwoomAccountStockBondType stockBondType, KiwoomAccountTransactionType transactionType, KiwoomAccountOrderQueryType2 queryType = KiwoomAccountOrderQueryType2.OrderSequence, string? stockCode = null, string? fromOrderId = null, KiwoomAccountDomesticStockExchangeType? domesticStockExchangeType = null, CancellationToken cancellationToken = default)
+		{
+			const string apiId = "kt50030";
+			var body = new HttpParameterMap()
+				.AddField("ord_dt", date)
+				.AddField("mrkt_deal_tp", marketDealType)
+				.AddField("stk_bond_tp", stockBondType)
+				.AddField("slby_tp", transactionType)
+				.AddField("qry_tp", queryType)
+				.AddField("stk_cd", stockCode)
+				.AddField("fr_ord_no", fromOrderId)
+				.AddField("dmst_stex_tp", domesticStockExchangeType);
+
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetGoldAllTrades>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+		}
+
+		/// <summary>
+		/// | kt50031 | 금현물 주문체결조회
+		/// </summary>
+		/// <param name="queryType"></param>
+		/// <param name="stockBondType"></param>
+		/// <param name="transactionType"></param>
+		/// <param name="domesticStockExchangeType"></param>
+		/// <param name="date"></param>
+		/// <param name="stockCode"></param>
+		/// <param name="fromOrderId"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetGoldTrades>> GetGoldTradesAsync(KiwoomAccountOrderQueryType queryType, KiwoomAccountStockBondType stockBondType, KiwoomAccountTransactionType transactionType, KiwoomAccountDomesticStockExchangeType domesticStockExchangeType, DateTime? date = null, string? stockCode = null, string? fromOrderId = null, CancellationToken cancellationToken = default)
+		{
+			const string apiId = "kt50031";
+			var body = new HttpParameterMap()
+				.AddField("qry_tp", queryType)
+				.AddField("stk_bond_tp", stockBondType)
+				.AddField("sell_tp", transactionType)
+				.AddField("dmst_stex_tp", domesticStockExchangeType)
+				.AddField("ord_dt", date)
+				.AddField("stk_cd", stockCode)
+				.AddField("fr_ord_no", fromOrderId);
+
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetGoldTrades>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+		}
+
+		/// <summary>
+		/// | kt50032 | 금현물 거래내역조회
+		/// </summary>
+		/// <param name="startDate"></param>
+		/// <param name="endDate"></param>
+		/// <param name="transactionType"></param>
+		/// <param name="stockCode"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetGoldTradeHistories>> GetGoldTradeHistoriesAsync(KiwoomAccountTransactionType3 transactionType, DateTime? startDate = null, DateTime? endDate = null, string? stockCode = null, CancellationToken cancellationToken = default)
+		{
+			startDate ??= DateTime.MinValue;
+			endDate ??= DateTime.MaxValue;
+
+			const string apiId = "kt50032";
+			var body = new HttpParameterMap()
+				.AddField("strt_dt", startDate)
+				.AddField("end_dt", endDate)
+				.AddField("tp", transactionType)
+				.AddField("stk_cd", stockCode);
+
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetGoldTradeHistories>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
+		}
+
+		/// <summary>
+		/// | kt50075 | 금현물 미체결조회
+		/// </summary>
+		/// <param name="date"></param>
+		/// <param name="marketDealType"></param>
+		/// <param name="stockBondType"></param>
+		/// <param name="transactionType"></param>
+		/// <param name="queryType"></param>
+		/// <param name="stockCode"></param>
+		/// <param name="fromOrderId"></param>
+		/// <param name="domesticStockExchangeType"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		public async Task<KiwoomRestApiResponse<KiwoomAccountGetGoldUnfilledOrders>> GetGoldUnfilledOrdersAsync(DateTime date, KiwoomAccountMarketDealType marketDealType, KiwoomAccountStockBondType stockBondType, KiwoomAccountTransactionType transactionType, KiwoomAccountOrderQueryType2? queryType = null, string? stockCode = null, string? fromOrderId = null, KiwoomAccountDomesticStockExchangeType? domesticStockExchangeType = null, CancellationToken cancellationToken = default)
+		{
+			const string apiId = "kt50075";
+			var body = new HttpParameterMap()
+				.AddField("ord_dt", date)
+				.AddField("mrkt_deal_tp", marketDealType)
+				.AddField("stk_bond_tp", stockBondType)
+				.AddField("sell_tp", transactionType)
+				.AddField("qry_tp", queryType)
+				.AddField("stk_cd", stockCode)
+				.AddField("fr_ord_no", fromOrderId)
+				.AddField("dmst_stex_tp", domesticStockExchangeType);
+
+			return await _client.PostKiwoomRestApiAsync<KiwoomAccountGetGoldUnfilledOrders>(_endpoint, apiId, body, cancellationToken).ConfigureAwait(false);
 		}
 	}
 }

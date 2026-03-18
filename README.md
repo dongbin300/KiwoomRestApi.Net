@@ -330,101 +330,134 @@ var results = await Task.WhenAll(tasks);
 
 ## 📋 릴리즈 노트
 
+### v0.7.0 (2026-03-18)
+- 추가: | ka00001 | 계좌번호조회 (`GetAccountIdAsync`)
+- 추가: | kt50020 | 금현물 잔고확인 (`GetGoldEvaluationBalancesAsync`)
+- 추가: | kt50021 | 금현물 예수금 (`GetGoldDepositAsync`)
+- 추가: | kt50030 | 금현물 주문체결전체조회 (`GetGoldAllTradesAsync`)
+- 추가: | kt50031 | 금현물 주문체결조회 (`GetGoldTradesAsync`)
+- 추가: | kt50032 | 금현물 거래내역조회 (`GetGoldTradeHistoriesAsync`)
+- 추가: | kt50075 | 금현물 미체결조회 (`GetGoldUnfilledOrdersAsync`)
+- 추가: 주식틱차트조회요청(기간) (`GetTickChartsByRangeAsync`)
+- 추가: 주식분봉차트조회요청(기간) (`GetMinuteChartsByRangeAsync`)
+- 추가: 주식일봉차트조회요청(기간) (`GetDailyChartsByRangeAsync`)
+- 추가: 주식주봉차트조회요청(기간) (`GetWeeklyChartsByRangeAsync`)
+- 추가: 주식월봉차트조회요청(기간) (`GetMonthlyChartsByRangeAsync`)
+- 추가: 주식년봉차트조회요청(기간) (`GetYearlyChartsByRangeAsync`)
+- 추가: 업종틱차트조회요청(기간) (`GetIndustryTickChartsByRangeAsync`)
+- 추가: 업종분봉조회요청(기간) (`GetIndustryMinuteChartsByRangeAsync`)
+- 추가: 업종일봉조회요청(기간) (`GetIndustryDailyChartsByRangeAsync`)
+- 추가: 업종주봉조회요청(기간) (`GetIndustryWeeklyChartsByRangeAsync`)
+- 추가: 업종월봉조회요청(기간) (`GetIndustryMonthlyChartsByRangeAsync`)
+- 추가: 업종년봉조회요청(기간) (`GetIndustryYearlyChartsByRangeAsync`)
+- 추가: 금현물틱차트조회요청(기간) (`GetGoldSpotTickChartsByRangeAsync`)
+- 추가: 금현물분봉차트조회요청(기간) (`GetGoldSpotMinuteChartsByRangeAsync`)
+- 추가: 금현물일봉차트조회요청(기간) (`GetGoldSpotDailyChartsByRangeAsync`)
+- 추가: 금현물주봉차트조회요청(기간) (`GetGoldSpotWeeklyChartsByRangeAsync`)
+- 추가: 금현물월봉차트조회요청(기간) (`GetGoldSpotMonthlyChartsByRangeAsync`)
+- 변경: `KiwoomAccountTransactionTypeType` -> `KiwoomAccountTransactionType4`
+- 변경: `GetEvaluationBalancesAsync`파라미터 `KiwoomAccountDomesticStockExchangeType` -> `KiwoomAccountDomesticStockExchangeType2`
+- 변경: `GetEvaluationsAsync`파라미터 `KiwoomAccountStockExchangeType` -> `KiwoomAccountStockExchangeType2`
+- 변경: | ka10080 | 주식분봉차트조회요청 기준일자(`date`) 파라미터 추가
+- 변경: | ka20005 | 업종분봉조회요청 기준일자(`date`) 파라미터 추가
+
+---
+
 ### v0.6.2 (2026-02-05)
-- `KiwoomWebSocketRealtimeOrderTrade`.`AccountId`, `OrderId`, `ManagerId`를 `decimal?`에서 `string?`으로 수정 (#2)
-- `KiwoomWebSocketRealtimeBalance`.`AccountId`를 `decimal?`에서 `string?`으로 수정 (#2)
+- 변경: `KiwoomWebSocketRealtimeOrderTrade`.`AccountId`, `OrderId`, `ManagerId`를 `decimal?` -> `string?` (#2)
+- 변경: `KiwoomWebSocketRealtimeBalance`.`AccountId`를 `decimal?` -> `string?` (#2)
 
 ---
 
 ### v0.6.1 (2026-02-05)
-- `KiwoomWebSocketRealtimeBalance`.`StockCode`를 `decimal?`에서 `string?`으로 수정 (#2)
-- `KiwoomWebSocketRealtimeOrderTrade`.`StockCode`를 `decimal?`에서 `string?`으로 수정 (#2)
+- 변경: `KiwoomWebSocketRealtimeBalance`.`StockCode`를 `decimal?` -> `string?` (#2)
+- 변경: `KiwoomWebSocketRealtimeOrderTrade`.`StockCode`를 `decimal?` -> `string?` (#2)
 
 ---
 
 ### v0.6.0 (2026-01-02)
-- 대용량 메시지 수신 시 JSON 파싱 에러 해결 (#1)
-- Microsoft.Extensions, System.Text.Json 최신 버전으로 업데이트 (10.0.1)
-- | kt00005 | 체결잔고요청 `KiwoomAccountStockExchangeType`을 `KiwoomAccountStockExchangeType2`로 수정
-- | ka10073 | 일자별종목별실현손익요청_기간 `TodayHtsSellFee` `string`로 수정
-- | ka30002 | 거래원별ELW순매매상위요청 `issuerCompanyCode` 파라미터를 `string`로 수정
-- | ka10005 | 주식일주월시분요청 `KiwoomMarketConditionGetDailyWeeklyMonthly` 멤버 수정
-- | ka10101 | 업종코드 리스트 `marketCode`를 `list`로 수정
-- KiwoomWebSocketRealtime 멤버변수 일부 `string`을 `KiwoomString`으로 수정
+- 변경: 대용량 메시지 수신 시 JSON 파싱 에러 해결 (#1)
+- 변경: Microsoft.Extensions, System.Text.Json 최신 버전으로 업데이트 (10.0.1)
+- 변경: | kt00005 | 체결잔고요청 `KiwoomAccountStockExchangeType` -> `KiwoomAccountStockExchangeType2`
+- 변경: | ka10073 | 일자별종목별실현손익요청_기간 `TodayHtsSellFee`를 `string`로 변경
+- 변경: | ka30002 | 거래원별ELW순매매상위요청 `issuerCompanyCode` 파라미터를 `string`로 변경
+- 변경: | ka10005 | 주식일주월시분요청 `KiwoomMarketConditionGetDailyWeeklyMonthly` 멤버 변경
+- 변경: | ka10101 | 업종코드 리스트 `marketCode`를 `list`로 변경
+- 변경: KiwoomWebSocketRealtime 멤버변수 일부 `string` -> `KiwoomString`
 
 ---
 
 ### v0.5.1 (2025-11-05)
-- | ka10079 | 주식틱차트조회요청 체결일 삭제
-- | ka20004 | 업종틱차트조회요청 체결일 삭제
+- 삭제: | ka10079 | 주식틱차트조회요청 체결일
+- 삭제: | ka20004 | 업종틱차트조회요청 체결일
 
 ---
 
 ### v0.5.0 (2025-10-16)
-- | ka50010 | 금현물체결추이 API 추가 (`GetGoldTradeTrendsAsync`)
-- | ka50012 | 금현물일별추이 API 추가 (`GetGoldDailyTrendsAsync`)
-- | ka50087 | 금현물예상체결 API 추가 (`GetGoldExpectedTradesAsync`)
-- | ka50100 | 금현물시세정보 API 추가 (`GetGoldInfoAsync`)
-- | ka50101 | 금현물 호가 API 추가 (`GetGoldQuotesAsync`)
-- | kt50000 | 금현물 매수주문 API 추가 (`GoldSpotPlaceOrderAsync`)
-- | kt50001 | 금현물 매도주문 API 추가 (`GoldSpotPlaceOrderAsync`)
-- | kt50002 | 금현물 정정주문 API 추가 (`GoldSpotModifyOrderAsync`)
-- | kt50003 | 금현물 취소주문 API 추가 (`GoldSpotCancelOrderAsync`)
-- | ka50079 | 금현물틱차트조회요청 API 추가 (`GetGoldSpotTickChartsAsync`)
-- | ka50080 | 금현물분봉차트조회요청 API 추가 (`GetGoldSpotMinuteChartsAsync`)
-- | ka50081 | 금현물일봉차트조회요청 API 추가 (`GetGoldSpotDailyChartsAsync`)
-- | ka50082 | 금현물주봉차트조회요청 API 추가 (`GetGoldSpotWeeklyChartsAsync`)
-- | ka50083 | 금현물월봉차트조회요청 API 추가 (`GetGoldSpotMonthlyChartsAsync`)
-- | ka50091 | 금현물당일틱차트조회요청 API 추가 (`GetGoldSpotTodayTickChartsAsync`)
-- | ka50092 | 금현물당일분봉차트조회요청 API 추가 (`GetGoldSpotTodayMinuteChartsAsync`)
-- | ka52301 | 금현물투자자현황 API 추가 (`GetGoldSpotInvestorStatusAsync`)
-- | 0I | 국제금환산가격 API 추가 (`OnRealtimeInternationalGoldPriceReceived`)
-- `KiwoomChartGetTickChartItem` 수정
-- `KiwoomChartGetChartItem` 수정
-- `KiwoomChartGetYearlyCharts` 수정
-- `KiwoomChartGetYearChartItem` 추가
-- `KiwoomChartGetIndustryTickChartItem` 수정
-- `KiwoomChartGetIndustryMinuteCharts` 수정
-- `KiwoomChartGetIndustryMinuteChartItem` 추가
-- `KiwoomChartGetIndustryChartItem` 수정
-- API 문서화 개선
+- 추가: | ka50010 | 금현물체결추이 API (`GetGoldTradeTrendsAsync`)
+- 추가: | ka50012 | 금현물일별추이 API (`GetGoldDailyTrendsAsync`)
+- 추가: | ka50087 | 금현물예상체결 API (`GetGoldExpectedTradesAsync`)
+- 추가: | ka50100 | 금현물시세정보 API (`GetGoldInfoAsync`)
+- 추가: | ka50101 | 금현물 호가 API (`GetGoldQuotesAsync`)
+- 추가: | kt50000 | 금현물 매수주문 API (`GoldSpotPlaceOrderAsync`)
+- 추가: | kt50001 | 금현물 매도주문 API (`GoldSpotPlaceOrderAsync`)
+- 추가: | kt50002 | 금현물 정정주문 API (`GoldSpotModifyOrderAsync`)
+- 추가: | kt50003 | 금현물 취소주문 API (`GoldSpotCancelOrderAsync`)
+- 추가: | ka50079 | 금현물틱차트조회요청 API (`GetGoldSpotTickChartsAsync`)
+- 추가: | ka50080 | 금현물분봉차트조회요청 API (`GetGoldSpotMinuteChartsAsync`)
+- 추가: | ka50081 | 금현물일봉차트조회요청 API (`GetGoldSpotDailyChartsAsync`)
+- 추가: | ka50082 | 금현물주봉차트조회요청 API (`GetGoldSpotWeeklyChartsAsync`)
+- 추가: | ka50083 | 금현물월봉차트조회요청 API (`GetGoldSpotMonthlyChartsAsync`)
+- 추가: | ka50091 | 금현물당일틱차트조회요청 API (`GetGoldSpotTodayTickChartsAsync`)
+- 추가: | ka50092 | 금현물당일분봉차트조회요청 API (`GetGoldSpotTodayMinuteChartsAsync`)
+- 추가: | ka52301 | 금현물투자자현황 API (`GetGoldSpotInvestorStatusAsync`)
+- 추가: | 0I | 국제금환산가격 API (`OnRealtimeInternationalGoldPriceReceived`)
+- 변경: `KiwoomChartGetTickChartItem`
+- 변경: `KiwoomChartGetChartItem`
+- 변경: `KiwoomChartGetYearlyCharts`
+- 추가: `KiwoomChartGetYearChartItem`
+- 변경: `KiwoomChartGetIndustryTickChartItem`
+- 변경: `KiwoomChartGetIndustryMinuteCharts`
+- 추가: `KiwoomChartGetIndustryMinuteChartItem`
+- 변경: `KiwoomChartGetIndustryChartItem`
+- 변경: API 문서화 개선
 
 ---
 
 ### v0.4.0 (2025-09-15)
-- .NET 10.0 타겟 프레임워크 추가(Preview)
-- `GetCreditLoanAvailableStocksAsync` 요청필드명 `crd_stk_grae_tp`에서 `crd_stk_grde_tp`로 오류 수정
-- `KiwoomAccountGetDeposits.MinimumOrderable`를 `decimal`로 수정
-- `KiwoomAccountGetCreditDepositOrders.StockDepositRate`를 `string`로 수정
-- `KiwoomAccountGetMarginOrders.AccountMarginRate`를 `string`로 수정
-- `ExchangeType` 관련 필드를 모두 `~StockExchangeType`로 수정
-- `StockExchangeType` 관련 필드를 모두 `~StockExchangeType`로 수정
-- `IndustryCode` 필드를 `KiwoomChartIndustryCode`로 수정
-- `ContYn` 필드를 `bool`로 수정
-- `NxtEnable` 필드를 `bool`로 수정
-- `Rank` 필드를 `decimal`에서 `int`로 수정
-- `Count` 관련 필드를 모두 `int`, `KiwoomInt`로 수정
-- `ProfitLoss` 관련 필드를 모두 `KiwoomDecimal`로 수정
-- `AfterMarketSinglePriceChange`를 `KiwoomDecimal`로 수정
-- `NetBuyVolume`, `NetBuyAmount` 필드를 `KiwoomDecimal`로 수정
-- `AfterMarketSinglePriceChangeRate`를 `KiwoomDecimal`로 수정
-- `KiwoomStockInfoGetTradeItem.TradeVolume`를 `KiwoomDecimal`로 수정
-- `BuyBrokerVolume`, `SellBrokerVolume` 필드를 `KiwoomDecimal`로 수정
-- `KiwoomMarketConditionGetStockInstitutionTransactionTrendItem.InstitutionPeriodAccumulation`, `InstitutionDailyNetVolume`, `ForeignPeriodAccumulation`, `ForeignDailyNetVolume`를 `KiwoomDecimal`로 수정
-- `TopBuyExitBroker` 필드를 `KiwoomString`로 수정
-- `HoldingCount`를 `HoldingQuantity`로 수정
-- `AcquirableCount`를 `AcquirableQuantity`로 수정
-- `GetHourlyProgramTradeTrendsAsync`, `GetDailyProgramTradeTrendsAsync` 파라미터를 `KiwoomMarketConditionMarketType3`로 수정
-- `KiwoomMarketConditionGetStockOriginTradeTrends`를 `KiwoomMarketConditionGetStockInstitutionTransactionTrends`로 수정
+- 추가: .NET 10.0 타겟 프레임워크 추가(Preview)
+- 변경: `GetCreditLoanAvailableStocksAsync` 요청필드명 `crd_stk_grae_tp` -> `crd_stk_grde_tp`
+- 변경: `KiwoomAccountGetDeposits.MinimumOrderable`를 `decimal`로 수정
+- 변경: `KiwoomAccountGetCreditDepositOrders.StockDepositRate`를 `string`로 수정
+- 변경: `KiwoomAccountGetMarginOrders.AccountMarginRate`를 `string`로 수정
+- 변경: `ExchangeType` 관련 필드를 모두 `~StockExchangeType`로 수정
+- 변경: `StockExchangeType` 관련 필드를 모두 `~StockExchangeType`로 수정
+- 변경: `IndustryCode` 필드를 `KiwoomChartIndustryCode`로 수정
+- 변경: `ContYn` 필드를 `bool`로 수정
+- 변경: `NxtEnable` 필드를 `bool`로 수정
+- 변경: `Rank` 필드를 `decimal` -> `int`
+- 변경: `Count` 관련 필드를 모두 `int`, `KiwoomInt`로 수정
+- 변경: `ProfitLoss` 관련 필드를 모두 `KiwoomDecimal`로 수정
+- 변경: `AfterMarketSinglePriceChange`를 `KiwoomDecimal`로 수정
+- 변경: `NetBuyVolume`, `NetBuyAmount` 필드를 `KiwoomDecimal`로 수정
+- 변경: `AfterMarketSinglePriceChangeRate`를 `KiwoomDecimal`로 수정
+- 변경: `KiwoomStockInfoGetTradeItem.TradeVolume`를 `KiwoomDecimal`로 수정
+- 변경: `BuyBrokerVolume`, `SellBrokerVolume` 필드를 `KiwoomDecimal`로 수정
+- 변경: `KiwoomMarketConditionGetStockInstitutionTransactionTrendItem.InstitutionPeriodAccumulation`, `InstitutionDailyNetVolume`, `ForeignPeriodAccumulation`, `ForeignDailyNetVolume`를 `KiwoomDecimal`로 수정
+- 변경: `TopBuyExitBroker` 필드를 `KiwoomString`로 수정
+- 변경: `HoldingCount`를 `HoldingQuantity`로 수정
+- 변경: `AcquirableCount`를 `AcquirableQuantity`로 수정
+- 변경: `GetHourlyProgramTradeTrendsAsync`, `GetDailyProgramTradeTrendsAsync` 파라미터를 `KiwoomMarketConditionMarketType3`로 수정
+- 변경: `KiwoomMarketConditionGetStockOriginTradeTrends` -> `KiwoomMarketConditionGetStockInstitutionTransactionTrends`
 
 ---
 
 ### v0.3.1 (2025-09-09)
-- `KiwoomString` 타입 추가
-- `KiwoomDecimal`로 변환 작업
-- `Rank` 필드를 `string`에서 `decimal`로 수정
-- `KiwoomMarketConditionGetDailyInstitutionTradingStockItem`에 누락된 필드 추가
-- `KiwoomTimeSpanConverter`에서 파싱 실패하는 경우는 `null`로 반환하도록 수정
+- 추가: `KiwoomString` 타입
+- 변경: `KiwoomDecimal`로 변환 작업
+- 변경: `Rank` 필드를 `string` -> `decimal`
+- 추가: `KiwoomMarketConditionGetDailyInstitutionTradingStockItem`에 누락된 필드 추가
+- 변경: `KiwoomTimeSpanConverter`에서 파싱 실패하는 경우는 `null`로 반환하도록 수정
 
 ---
 
@@ -496,44 +529,44 @@ var results = await Task.WhenAll(tasks);
 ---
 
 ### v0.2.1 (2025-09-03)
-- 소스코드 주석 추가
-- | ka01690 | 일별잔고수익률 API 추가
-- `KiwoomRealtimeQuoteRequests` 삭제
-- `KiwoomRealtimeQuoteRequestItem` 삭제
-- `KiwoomRealtimeQuoteRegistrations` 삭제
-- `KiwoomRealtimeQuoteRegistrationItem` 삭제
-- `KiwoomRealtimeQuoteValue` 삭제
-- `KiwoomRankingInfoGetForeignPeriodTransactionTopItem.NetBuyQuantity`를 `KiwoomDecimal`로 수정
-- 종속성 라이브러리 버전별 분기
+- 추가: 소스코드 주석
+- 추가: | ka01690 | 일별잔고수익률 API
+- 삭제: `KiwoomRealtimeQuoteRequests`
+- 삭제: `KiwoomRealtimeQuoteRequestItem`
+- 삭제: `KiwoomRealtimeQuoteRegistrations`
+- 삭제: `KiwoomRealtimeQuoteRegistrationItem`
+- 삭제: `KiwoomRealtimeQuoteValue`
+- 변경: `KiwoomRankingInfoGetForeignPeriodTransactionTopItem.NetBuyQuantity`를 `KiwoomDecimal`로 수정
+- 변경: 종속성 라이브러리 버전별 분기
 
 ---
 
 ### v0.2.0 (2025-08-29)
-- 소스코드 주석 추가
-- | ka00198 | 실시간종목조회순위 API 추가
-- `KiwoomStockInfoStockCondition.ExcludeManagedAndPreferredAndCaution` 추가
-- `KiwoomWebSocketStockExchangeType.Unified`, `NXT` 추가
-- | ka10061 | 종목별투자자기관별합계요청의 `trde_tp` 값 `0`으로 고정
-- | kt10003 | 주식 취소주문의 API ID를 `kt10002`로 잘못 호출하고 있던 문제 수정
-- `KiwoomAccountDelistingQueryType`을 `bool`로 수정 (`isExcludeDelisted`)
-- `KiwoomChartUseOption`을 `bool`로 수정 (`isUpdateStockPrice`)
-- `KiwoomRankingInfoInclusionOption`을 `bool`로 수정
-- `KiwoomStockInfonInclusionOption`을 `bool`로 수정
-- `KiwoomStockInfoUseOption`을 `bool`로 수정
-- `KiwoomElwTradeQuantityType`을 `decimal`로 수정 (`minVolume`)
-- `KiwoomRankingInfoTradeQuantityType`을 `decimal`로 수정 (`minVolume`)
-- `KiwoomRankingInfoTradePriceCondition`을 `decimal`로 수정 (`minTransactionAmount`)
-- `KiwoomStockInfoTradeQuantityType`을 `decimal`로 수정 (`minVolume`)
-- `KiwoomForeignInstitutionPeriodQueryType`을 `int`로 수정 (`period`)
-- `KiwoomAccountDepositQueryType.General`을 `KiwoomAccountDepositQueryType.Normal`로 수정
-- `KiwoomMarketConditionEstimatedUnitPriceType`을 `KiwoomMarketConditionUnitPriceType`로 수정
-- `KiwoomRankingInfoTradeQuantitySortType.TradingVolume`을 `Volume`로 수정
-- `KiwoomRankingInfoTradeQuantitySortType.TradingAmount`을 `TransactionAmount`로 수정
-- `KiwoomRankingInfoPreviousTradeQuantityQueryType.Top100ByYesterdayTradingAmount`을 `Top100ByYesterdayTransactionAmount`로 수정
-- `KiwoomWebSocketRealtimeOrderExecution.ExchangeType` 타입을 `KiwoomWebSocketStockExchangeType`로 수정
-- `KiwoomWebSocketRealtimeStockExecution.ExchangeType` 타입을 `KiwoomWebSocketStockExchangeType`로 수정
-- `KiwoomForeignInstitutionNetSellAmountType` 삭제 (`2` 고정값)
-- `KiwoomSecuritiesLendingQueryType` 삭제
+- 추가: 소스코드 주석
+- 추가: | ka00198 | 실시간종목조회순위 API
+- 추가: `KiwoomStockInfoStockCondition.ExcludeManagedAndPreferredAndCaution`
+- 추가: `KiwoomWebSocketStockExchangeType.Unified`, `NXT` 추가
+- 변경: | ka10061 | 종목별투자자기관별합계요청의 `trde_tp` 값 `0`으로 고정
+- 변경: | kt10003 | 주식 취소주문의 API ID를 `kt10002`로 잘못 호출하고 있던 문제 수정
+- 변경: `KiwoomAccountDelistingQueryType`을 `bool`로 수정 (`isExcludeDelisted`)
+- 변경: `KiwoomChartUseOption`을 `bool`로 수정 (`isUpdateStockPrice`)
+- 변경: `KiwoomRankingInfoInclusionOption`을 `bool`로 수정
+- 변경: `KiwoomStockInfonInclusionOption`을 `bool`로 수정
+- 변경: `KiwoomStockInfoUseOption`을 `bool`로 수정
+- 변경: `KiwoomElwTradeQuantityType`을 `decimal`로 수정 (`minVolume`)
+- 변경: `KiwoomRankingInfoTradeQuantityType`을 `decimal`로 수정 (`minVolume`)
+- 변경: `KiwoomRankingInfoTradePriceCondition`을 `decimal`로 수정 (`minTransactionAmount`)
+- 변경: `KiwoomStockInfoTradeQuantityType`을 `decimal`로 수정 (`minVolume`)
+- 변경: `KiwoomForeignInstitutionPeriodQueryType`을 `int`로 수정 (`period`)
+- 변경: `KiwoomAccountDepositQueryType.General` -> `KiwoomAccountDepositQueryType.Normal`
+- 변경: `KiwoomMarketConditionEstimatedUnitPriceType` -> `KiwoomMarketConditionUnitPriceType`
+- 변경: `KiwoomRankingInfoTradeQuantitySortType.TradingVolume` -> `Volume`
+- 변경: `KiwoomRankingInfoTradeQuantitySortType.TradingAmount` -> `TransactionAmount`
+- 변경: `KiwoomRankingInfoPreviousTradeQuantityQueryType.Top100ByYesterdayTradingAmount` -> `Top100ByYesterdayTransactionAmount`
+- 변경: `KiwoomWebSocketRealtimeOrderExecution.ExchangeType` 타입을 `KiwoomWebSocketStockExchangeType`로 수정
+- 변경: `KiwoomWebSocketRealtimeStockExecution.ExchangeType` 타입을 `KiwoomWebSocketStockExchangeType`로 수정
+- 삭제: `KiwoomForeignInstitutionNetSellAmountType` (`2` 고정값)
+- 삭제: `KiwoomSecuritiesLendingQueryType`
 
 ---
 

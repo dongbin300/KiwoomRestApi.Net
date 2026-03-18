@@ -1476,12 +1476,12 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 유가잔고평가액
 		/// </summary>
 		[JsonProperty("tot_est_amt")]
-		public decimal? SecuritiesBalanceValuation;
+		public decimal? SecuritiesBalanceEvaluation;
 		/// <summary>
 		/// 예탁자산평가액
 		/// </summary>
 		[JsonProperty("aset_evlt_amt")]
-		public decimal? DepositedAssetsValuation;
+		public decimal? DepositedAssetsEvaluation;
 		/// <summary>
 		/// 총매입금액
 		/// </summary>
@@ -3018,7 +3018,7 @@ namespace KiwoomRestApi.Net.Objects.Models
 		/// 거래종류구분 - 1:입출금, 2:펀드, 3:ELS, 4:채권, 5:해외채권, 6:외화RP, 7:외화발행어음
 		/// </summary>
 		[JsonProperty("trde_ocr_tp")]
-		public KiwoomAccountTransactionTypeType? TransactionType;
+		public KiwoomAccountTransactionType4? TransactionType;
 		/// <summary>
 		/// 거래종류명
 		/// </summary>
@@ -3718,5 +3718,725 @@ namespace KiwoomRestApi.Net.Objects.Models
 		[JsonProperty("crd_loan_dt")]
 		[JsonConverter(typeof(KiwoomDateTimeConverter))]
 		public DateTime? LoanDate;
+	}
+
+	public record KiwoomAccountGetAccountId
+	{
+		/// <summary>
+		/// 계좌번호
+		/// </summary>
+		[JsonProperty("acctNo")]
+		public string? AccountId;
+	}
+
+	public record KiwoomAccountGetGoldEvaluationBalances
+	{
+		/// <summary>
+		/// 예수금
+		/// </summary>
+		[JsonProperty("tot_entr")]
+		public decimal? Deposit;
+		/// <summary>
+		/// 추정예수금
+		/// </summary>
+		[JsonProperty("net_entr")]
+		public decimal? EstimatedDeposit;
+		/// <summary>
+		/// 잔고평가액
+		/// </summary>
+		[JsonProperty("tot_est_amt")]
+		public decimal? BalanceEvaluation;
+		/// <summary>
+		/// 예탁자산평가액
+		/// </summary>
+		[JsonProperty("net_amt")]
+		public decimal? DepositedAssetsEvaluation;
+		/// <summary>
+		/// 총매입금액
+		/// </summary>
+		[JsonProperty("tot_book_amt2")]
+		public decimal? TotalBuyAmount;
+		/// <summary>
+		/// 추정예탁자산
+		/// </summary>
+		[JsonProperty("tot_dep_amt")]
+		public decimal? EstimatedDepositAsset;
+		/// <summary>
+		/// 출금가능금액
+		/// </summary>
+		[JsonProperty("paym_alowa")]
+		public decimal? Withdrawable;
+		/// <summary>
+		/// 실현손익
+		/// </summary>
+		[JsonProperty("pl_amt")]
+		public KiwoomDecimal? RealizedProfitLoss;
+		/// <summary>
+		/// 금현물계좌평가 리스트
+		/// </summary>
+		[JsonProperty("gold_acnt_evlt_prst")]
+		public IEnumerable<KiwoomAccountGetGoldEvaluationBalanceItem>? Items;
+	}
+	public record KiwoomAccountGetGoldEvaluationBalanceItem
+	{
+		/// <summary>
+		/// 종목코드
+		/// </summary>
+		[JsonProperty("stk_cd")]
+		public string? StockCode;
+		/// <summary>
+		/// 종목명
+		/// </summary>
+		[JsonProperty("stk_nm")]
+		public string? StockName;
+		/// <summary>
+		/// 보유수량
+		/// </summary>
+		[JsonProperty("real_qty")]
+		public decimal? HoldingQuantity;
+		/// <summary>
+		/// 평균단가
+		/// </summary>
+		[JsonProperty("avg_prc")]
+		public decimal? AveragePrice;
+		/// <summary>
+		/// 현재가
+		/// </summary>
+		[JsonProperty("cur_prc")]
+		public KiwoomDecimal? CurrentPrice;
+		/// <summary>
+		/// 평가금액
+		/// </summary>
+		[JsonProperty("est_amt")]
+		public decimal? EvaluationAmount;
+		/// <summary>
+		/// 손익금액
+		/// </summary>
+		[JsonProperty("est_lspft")]
+		public KiwoomDecimal? ProfitLossAmount;
+		/// <summary>
+		/// 손익율(%)
+		/// </summary>
+		[JsonProperty("est_ratio")]
+		public KiwoomDecimal? ProfitRate;
+		/// <summary>
+		/// 수수료
+		/// </summary>
+		[JsonProperty("cmsn")]
+		public decimal? Fee;
+		/// <summary>
+		/// 부가가치세
+		/// </summary>
+		[JsonProperty("vlad_tax")]
+		public decimal? ValueAddedTax;
+		/// <summary>
+		/// 매입금액
+		/// </summary>
+		[JsonProperty("book_amt2")]
+		public decimal? BuyAmount;
+		/// <summary>
+		/// 손익분기매입가
+		/// </summary>
+		[JsonProperty("pl_prch_prc")]
+		public decimal? BreakEvenPrice;
+		/// <summary>
+		/// 결제잔고
+		/// </summary>
+		[JsonProperty("qty")]
+		public decimal? SettlementBalance;
+		/// <summary>
+		/// 매수수량
+		/// </summary>
+		[JsonProperty("buy_qty")]
+		public decimal? BuyQuantity;
+		/// <summary>
+		/// 매도수량
+		/// </summary>
+		[JsonProperty("sell_qty")]
+		public decimal? SellQuantity;
+		/// <summary>
+		/// 가능수량
+		/// </summary>
+		[JsonProperty("able_qty")]
+		public decimal? AvailableQuantity;
+	}
+
+	public record KiwoomAccountGetGoldDeposit
+	{
+		/// <summary>
+		/// 예수금
+		/// </summary>
+		[JsonProperty("entra")]
+		public decimal? Deposit;
+		/// <summary>
+		/// 증거금현금
+		/// </summary>
+		[JsonProperty("profa_ch")]
+		public decimal? MarginCash;
+		/// <summary>
+		/// 수표입금액
+		/// </summary>
+		[JsonProperty("chck_ina_amt")]
+		public decimal? CheckDeposit;
+		/// <summary>
+		/// 기타대여금
+		/// </summary>
+		[JsonProperty("etc_loan")]
+		public decimal? OtherLoan;
+		/// <summary>
+		/// 기타대여금연체료
+		/// </summary>
+		[JsonProperty("etc_loan_dlfe")]
+		public decimal? OtherLoanLateFee;
+		/// <summary>
+		/// 기타대여금합계
+		/// </summary>
+		[JsonProperty("etc_loan_tot")]
+		public decimal? TotalOtherLoan;
+		/// <summary>
+		/// 추정예수금
+		/// </summary>
+		[JsonProperty("prsm_entra")]
+		public decimal? EstimatedDeposit;
+		/// <summary>
+		/// 매수정산금
+		/// </summary>
+		[JsonProperty("buy_exct_amt")]
+		public decimal? BuySettlement;
+		/// <summary>
+		/// 매도정산금
+		/// </summary>
+		[JsonProperty("sell_exct_amt")]
+		public decimal? SellSettlement;
+		/// <summary>
+		/// 매도매수정산금
+		/// </summary>
+		[JsonProperty("sell_buy_exct_amt")]
+		public decimal? NetSettlement;
+		/// <summary>
+		/// 미수변제소요금
+		/// </summary>
+		[JsonProperty("dly_amt")]
+		public decimal? RequiredRepayment;
+		/// <summary>
+		/// 추정출금가능금액
+		/// </summary>
+		[JsonProperty("prsm_pymn_alow_amt")]
+		public decimal? EstimatedWithdrawable;
+		/// <summary>
+		/// 출금가능금액
+		/// </summary>
+		[JsonProperty("pymn_alow_amt")]
+		public decimal? Withdrawable;
+		/// <summary>
+		/// 주문가능금액
+		/// </summary>
+		[JsonProperty("ord_alow_amt")]
+		public decimal? Orderable;
+	}
+
+	public record KiwoomAccountGetGoldAllTrades
+	{
+		/// <summary>
+		/// 계좌별주문체결현황
+		/// </summary>
+		[JsonProperty("acnt_ord_cntr_prst")]
+		public IEnumerable<KiwoomAccountGetGoldAllTradeItem>? Items;
+	}
+	public record KiwoomAccountGetGoldAllTradeItem
+	{
+		/// <summary>
+		/// 주식채권구분
+		/// </summary>
+		[JsonProperty("stk_bond_tp")]
+		public string? StockBondType;
+		/// <summary>
+		/// 주문번호
+		/// </summary>
+		[JsonProperty("ord_no")]
+		public string? OrderId;
+		/// <summary>
+		/// 상품코드
+		/// </summary>
+		[JsonProperty("stk_cd")]
+		public string? StockCode;
+		/// <summary>
+		/// 매매구분
+		/// </summary>
+		[JsonProperty("trde_tp")]
+		public string? TransactionType;
+		/// <summary>
+		/// 주문유형구분
+		/// </summary>
+		[JsonProperty("io_tp_nm")]
+		public string? OrderType;
+		/// <summary>
+		/// 주문수량
+		/// </summary>
+		[JsonProperty("ord_qty")]
+		public decimal? OrderQuantity;
+		/// <summary>
+		/// 주문단가
+		/// </summary>
+		[JsonProperty("ord_uv")]
+		public decimal? OrderPrice;
+		/// <summary>
+		/// 확인수량
+		/// </summary>
+		[JsonProperty("cnfm_qty")]
+		public decimal? ConfirmQuantity;
+		/// <summary>
+		/// 접수구분
+		/// </summary>
+		[JsonProperty("data_send_end_tp")]
+		public string? ReceiptType;
+		/// <summary>
+		/// 시장구분
+		/// </summary>
+		[JsonProperty("mrkt_deal_tp")]
+		public string? MarketType;
+		/// <summary>
+		/// 예약/반대여부
+		/// </summary>
+		[JsonProperty("rsrv_tp")]
+		public string? ReservedType;
+		/// <summary>
+		/// 원주문번호
+		/// </summary>
+		[JsonProperty("orig_ord_no")]
+		public string? OriginalOrderId;
+		/// <summary>
+		/// 종목명
+		/// </summary>
+		[JsonProperty("stk_nm")]
+		public string? StockName;
+		/// <summary>
+		/// 결제구분
+		/// </summary>
+		[JsonProperty("dcd_tp_nm")]
+		public string? SettlementType;
+		/// <summary>
+		/// 신용거래구분
+		/// </summary>
+		[JsonProperty("crd_deal_tp")]
+		public string? CreditTransactionType;
+		/// <summary>
+		/// 체결수량
+		/// </summary>
+		[JsonProperty("cntr_qty")]
+		public decimal? TradeQuantity;
+		/// <summary>
+		/// 체결단가
+		/// </summary>
+		[JsonProperty("cntr_uv")]
+		public decimal? TradePrice;
+		/// <summary>
+		/// 미체결수량
+		/// </summary>
+		[JsonProperty("ord_remnq")]
+		public decimal? UnfilledQuantity;
+		/// <summary>
+		/// 통신구분
+		/// </summary>
+		[JsonProperty("comm_ord_tp")]
+		public string? CommunicationType;
+		/// <summary>
+		/// 정정취소구분
+		/// </summary>
+		[JsonProperty("mdfy_cncl_tp")]
+		public string? ModifyCancelType;
+		/// <summary>
+		/// 국내거래소구분
+		/// </summary>
+		[JsonProperty("dmst_stex_tp")]
+		public string? DomesticStockExchangeType;
+		/// <summary>
+		/// 스톱가
+		/// </summary>
+		[JsonProperty("cond_uv")]
+		public decimal? StopPrice;
+	}
+
+	public record KiwoomAccountGetGoldTrades
+	{
+		/// <summary>
+		/// 계좌별주문체결내역상세
+		/// </summary>
+		[JsonProperty("acnt_ord_cntr_prps_dtl")]
+		public IEnumerable<KiwoomAccountGetGoldTradeItem>? Items;
+	}
+	public record KiwoomAccountGetGoldTradeItem
+	{
+		/// <summary>
+		/// 주문번호
+		/// </summary>
+		[JsonProperty("ord_no")]
+		public string? OrderId;
+		/// <summary>
+		/// 종목번호
+		/// </summary>
+		[JsonProperty("stk_cd")]
+		public string? StockCode;
+		/// <summary>
+		/// 매매구분
+		/// </summary>
+		[JsonProperty("trde_tp")]
+		public string? TransactionType;
+		/// <summary>
+		/// 신용구분
+		/// </summary>
+		[JsonProperty("crd_tp")]
+		public string? CreditType;
+		/// <summary>
+		/// 주문수량
+		/// </summary>
+		[JsonProperty("ord_qty")]
+		public decimal? OrderQuantity;
+		/// <summary>
+		/// 주문단가
+		/// </summary>
+		[JsonProperty("ord_uv")]
+		public decimal? OrderPrice;
+		/// <summary>
+		/// 확인수량
+		/// </summary>
+		[JsonProperty("cnfm_qty")]
+		public decimal? ConfirmQuantity;
+		/// <summary>
+		/// 접수구분
+		/// </summary>
+		[JsonProperty("acpt_tp")]
+		public string? ReceiptType;
+		/// <summary>
+		/// 반대여부
+		/// </summary>
+		[JsonProperty("rsrv_tp")]
+		public string? ReversedType;
+		/// <summary>
+		/// 주문시간
+		/// </summary>
+		[JsonProperty("ord_tm")]
+		public string? OrderTime;
+		/// <summary>
+		/// 원주문
+		/// </summary>
+		[JsonProperty("ori_ord")]
+		public string? OriginalId;
+		/// <summary>
+		/// 종목명
+		/// </summary>
+		[JsonProperty("stk_nm")]
+		public string? StockName;
+		/// <summary>
+		/// 주문구분
+		/// </summary>
+		[JsonProperty("io_tp_nm")]
+		public string? OrderType;
+		/// <summary>
+		/// 대출일
+		/// </summary>
+		[JsonProperty("loan_dt")]
+		public string? LoanDate;
+		/// <summary>
+		/// 체결수량
+		/// </summary>
+		[JsonProperty("cntr_qty")]
+		public decimal? TradeQuantity;
+		/// <summary>
+		/// 체결단가
+		/// </summary>
+		[JsonProperty("cntr_uv")]
+		public decimal? TradePrice;
+		/// <summary>
+		/// 주문잔량
+		/// </summary>
+		[JsonProperty("ord_remnq")]
+		public decimal? OrderRemainQuantity;
+		/// <summary>
+		/// 통신구분
+		/// </summary>
+		[JsonProperty("comm_ord_tp")]
+		public string? CommunicationType;
+		/// <summary>
+		/// 정정취소
+		/// </summary>
+		[JsonProperty("mdfy_cncl")]
+		public string? ModifyCancelType;
+		/// <summary>
+		/// 확인시간
+		/// </summary>
+		[JsonProperty("cnfm_tm")]
+		public string? ConfirmTime;
+		/// <summary>
+		/// 국내거래소구분
+		/// </summary>
+		[JsonProperty("dmst_stex_tp")]
+		public string? DomesticStockExchangeType;
+		/// <summary>
+		/// 스톱가
+		/// </summary>
+		[JsonProperty("cond_uv")]
+		public decimal? StopPrice;
+	}
+
+	public record KiwoomAccountGetGoldTradeHistories
+	{
+		/// <summary>
+		/// 계좌번호
+		/// </summary>
+		[JsonProperty("acnt_print")]
+		public string? AccountId;
+		/// <summary>
+		/// 금현물거래내역 리스트
+		/// </summary>
+		[JsonProperty("gold_trde_hist")]
+		public IEnumerable<KiwoomAccountGetGoldTradeHistoryItem>? Items;
+	}
+	public record KiwoomAccountGetGoldTradeHistoryItem
+	{
+		/// <summary>
+		/// 거래일자
+		/// </summary>
+		[JsonProperty("deal_dt")]
+		[JsonConverter(typeof(KiwoomDateTimeConverter))]
+		public DateTime? TransactionDate;
+		/// <summary>
+		/// 거래번호
+		/// </summary>
+		[JsonProperty("deal_no")]
+		public string? TradeId;
+		/// <summary>
+		/// 적요명
+		/// </summary>
+		[JsonProperty("rmrk_nm")]
+		public string? Remarks;
+		/// <summary>
+		/// 거래수량
+		/// </summary>
+		[JsonProperty("deal_qty")]
+		public decimal? TradeQuantity;
+		/// <summary>
+		/// 금현물부가가치세
+		/// </summary>
+		[JsonProperty("gold_spot_vat")]
+		public decimal? GoldSpotValueAddedTax;
+		/// <summary>
+		/// 정산금액
+		/// </summary>
+		[JsonProperty("exct_amt")]
+		public decimal? Settlement;
+		/// <summary>
+		/// 연체합
+		/// </summary>
+		[JsonProperty("dly_sum")]
+		public decimal? TotalOverdueAmount;
+		/// <summary>
+		/// 예수금잔고
+		/// </summary>
+		[JsonProperty("entra_remn")]
+		public decimal? DepositBalance;
+		/// <summary>
+		/// 메체구분명
+		/// </summary>
+		[JsonProperty("mdia_nm")]
+		public string? MediaTypeName;
+		/// <summary>
+		/// 원거래번호
+		/// </summary>
+		[JsonProperty("orig_deal_no")]
+		public string? OriginalTradeId;
+		/// <summary>
+		/// 종목명
+		/// </summary>
+		[JsonProperty("stk_nm")]
+		public string? StockName;
+		/// <summary>
+		/// 거래단가
+		/// </summary>
+		[JsonProperty("uv_exrt")]
+		public decimal? TradePrice;
+		/// <summary>
+		/// 수수료
+		/// </summary>
+		[JsonProperty("cmsn")]
+		public decimal? Fee;
+		/// <summary>
+		/// 미수(원/g)
+		/// </summary>
+		[JsonProperty("uncl_ocr")]
+		public decimal? UnsettledAmount;
+		/// <summary>
+		/// 변제합
+		/// </summary>
+		[JsonProperty("rpym_sum")]
+		public decimal? TotalRepayment;
+		/// <summary>
+		/// 현물잔고
+		/// </summary>
+		[JsonProperty("spot_remn")]
+		public decimal? SpotBalance;
+		/// <summary>
+		/// 처리시간
+		/// </summary>
+		[JsonProperty("proc_time")]
+		[JsonConverter(typeof(KiwoomTimeSpanConverter))]
+		public TimeSpan? ProcessingTime;
+		/// <summary>
+		/// 출납번호
+		/// </summary>
+		[JsonProperty("rcpy_no")]
+		public string? PaymentId;
+		/// <summary>
+		/// 종목코드
+		/// </summary>
+		[JsonProperty("stk_cd")]
+		public string? StockCode;
+		/// <summary>
+		/// 거래금액
+		/// </summary>
+		[JsonProperty("deal_amt")]
+		public decimal? TradeAmount;
+		/// <summary>
+		/// 소득/주민세
+		/// </summary>
+		[JsonProperty("tax_tot_amt")]
+		public decimal? IncomeResidentTax;
+		/// <summary>
+		/// 체결일
+		/// </summary>
+		[JsonProperty("cntr_dt")]
+		public string? TradeDate;
+		/// <summary>
+		/// 처리점
+		/// </summary>
+		[JsonProperty("proc_brch_nm")]
+		public string? ProcessingBranch;
+		/// <summary>
+		/// 처리자
+		/// </summary>
+		[JsonProperty("prcsr")]
+		public string? Processor;
+	}
+
+	public record KiwoomAccountGetGoldUnfilledOrders
+	{
+		/// <summary>
+		/// 계좌별주문미체결현황
+		/// </summary>
+		[JsonProperty("acnt_ord_oso_prst")]
+		public IEnumerable<KiwoomAccountGetGoldUnfilledOrderItem>? Items;
+	}
+	public record KiwoomAccountGetGoldUnfilledOrderItem
+	{
+		/// <summary>
+		/// 주식채권구분
+		/// </summary>
+		[JsonProperty("stk_bond_tp")]
+		public string? StockBondType;
+		/// <summary>
+		/// 주문번호
+		/// </summary>
+		[JsonProperty("ord_no")]
+		public string? OrderId;
+		/// <summary>
+		/// 상품코드
+		/// </summary>
+		[JsonProperty("stk_cd")]
+		public string? StockCode;
+		/// <summary>
+		/// 매매구분
+		/// </summary>
+		[JsonProperty("trde_tp")]
+		public string? TransactionType;
+		/// <summary>
+		/// 주문유형구분
+		/// </summary>
+		[JsonProperty("io_tp_nm")]
+		public string? OrderTypeName;
+		/// <summary>
+		/// 주문수량
+		/// </summary>
+		[JsonProperty("ord_qty")]
+		public decimal? OrderQuantity;
+		/// <summary>
+		/// 주문단가
+		/// </summary>
+		[JsonProperty("ord_uv")]
+		public decimal? OrderPrice;
+		/// <summary>
+		/// 확인수량
+		/// </summary>
+		[JsonProperty("cnfm_qty")]
+		public decimal? ConfirmQuantity;
+		/// <summary>
+		/// 접수구분
+		/// </summary>
+		[JsonProperty("data_send_end_tp")]
+		public string? ReceiptType;
+		/// <summary>
+		/// 시장구분
+		/// </summary>
+		[JsonProperty("mrkt_deal_tp")]
+		public string? MarketType;
+		/// <summary>
+		/// 예약/반대여부
+		/// </summary>
+		[JsonProperty("rsrv_tp")]
+		public string? ReservedType;
+		/// <summary>
+		/// 원주문번호
+		/// </summary>
+		[JsonProperty("orig_ord_no")]
+		public string? OriginalOrderId;
+		/// <summary>
+		/// 종목명
+		/// </summary>
+		[JsonProperty("stk_nm")]
+		public string? StockName;
+		/// <summary>
+		/// 결제구분
+		/// </summary>
+		[JsonProperty("dcd_tp_nm")]
+		public string? SettlementType;
+		/// <summary>
+		/// 신용거래구분
+		/// </summary>
+		[JsonProperty("crd_deal_tp")]
+		public string? CreditTransactionType;
+		/// <summary>
+		/// 체결수량
+		/// </summary>
+		[JsonProperty("cntr_qty")]
+		public decimal? TradeQuantity;
+		/// <summary>
+		/// 체결단가
+		/// </summary>
+		[JsonProperty("cntr_uv")]
+		public decimal? TradePrice;
+		/// <summary>
+		/// 미체결수량
+		/// </summary>
+		[JsonProperty("ord_remnq")]
+		public decimal? UnfilledQuantity;
+		/// <summary>
+		/// 통신구분
+		/// </summary>
+		[JsonProperty("comm_ord_tp")]
+		public string? CommunicationType;
+		/// <summary>
+		/// 정정취소구분
+		/// </summary>
+		[JsonProperty("mdfy_cncl_tp")]
+		public string? ModifyCancelType;
+		/// <summary>
+		/// 국내거래소구분
+		/// </summary>
+		[JsonProperty("dmst_stex_tp")]
+		public string? DomesticStockExchangeType;
+		/// <summary>
+		/// 스톱가
+		/// </summary>
+		[JsonProperty("cond_uv")]
+		public decimal? StopPrice;
 	}
 }
