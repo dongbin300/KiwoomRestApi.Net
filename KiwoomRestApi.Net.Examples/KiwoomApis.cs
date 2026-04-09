@@ -17,6 +17,7 @@ using KiwoomRestApi.Net.Enums.StockInfo;
 using KiwoomRestApi.Net.Enums.Theme;
 using KiwoomRestApi.Net.Enums.WebSocket;
 using KiwoomRestApi.Net.Interfaces;
+using KiwoomRestApi.Net.Misc;
 
 using Newtonsoft.Json;
 
@@ -28,29 +29,26 @@ namespace KiwoomRestApi.Net.Examples
     {
         private readonly KiwoomRestApiClient _client;
         private readonly KiwoomSocketClient _client2;
-		private readonly int mock = -1;
+		private readonly int mock = 1;
 
 		public KiwoomApis()
 		{
 			if (mock > 0)
 			{
-				var appKey = File.ReadAllText("D:\\Assets\\kiwoom_appkey_mock.txt");
-				var secretKey = File.ReadAllText("D:\\Assets\\kiwoom_secretkey_mock.txt");
-				_client = KiwoomRestApiClient.Create(appKey, secretKey, true);
+				var (AppKey, SecretKey) = KeyVault.GetKey("kiwoom_mock");
+				_client = KiwoomRestApiClient.Create(AppKey, SecretKey, true);
 				_client2 = KiwoomSocketClient.Create(_client.Token, true);
 			}
 			else if (mock == 0)
 			{
-				var appKey = File.ReadAllText("D:\\Assets\\kiwoom_appkey.txt");
-				var secretKey = File.ReadAllText("D:\\Assets\\kiwoom_secretkey.txt");
-				_client = KiwoomRestApiClient.Create(appKey, secretKey, false);
+				var (AppKey, SecretKey) = KeyVault.GetKey("kiwoom");
+				_client = KiwoomRestApiClient.Create(AppKey, SecretKey, false);
 				_client2 = KiwoomSocketClient.Create(_client.Token, false);
 			}
 			else
 			{
-				var appKey = File.ReadAllText("D:\\Assets\\kiwoom_appkey_gold.txt");
-				var secretKey = File.ReadAllText("D:\\Assets\\kiwoom_secretkey_gold.txt");
-				_client = KiwoomRestApiClient.Create(appKey, secretKey, false);
+				var (AppKey, SecretKey) = KeyVault.GetKey("kiwoom_gold");
+				_client = KiwoomRestApiClient.Create(AppKey, SecretKey, false);
 				_client2 = KiwoomSocketClient.Create(_client.Token, false);
 			}
 		}
