@@ -1,30 +1,31 @@
-# 🚀 KiwoomRestApi.Net
+<div align="center">
 
-[![NuGet Version](https://img.shields.io/nuget/v/KiwoomRestApi.Net.svg)](https://www.nuget.org/packages/KiwoomRestApi.Net)
-[![NuGet Downloads](https://img.shields.io/nuget/dt/KiwoomRestApi.Net.svg)](https://www.nuget.org/packages/KiwoomRestApi.Net)
-[![License](https://img.shields.io/github/license/dongbin300/KiwoomRestApi.Net.svg)](https://github.com/dongbin300/KiwoomRestApi.Net/blob/main/LICENSE)
+# KiwoomRestApi.Net
 
 **키움증권 OpenAPI REST API 를 위한 현대적이고 직관적인 .NET Wrapper 라이브러리**
 
-[📚 공식 문서](https://dongbin300.github.io/KiwoomRestApi.Net/) · [💬 GitHub Issues](https://github.com/dongbin300/KiwoomRestApi.Net/issues) · [📖 FAQ](docs/FAQ.html)
+[![NuGet Version](https://img.shields.io/nuget/v/KiwoomRestApi.Net.svg?label=NuGet&color=blue)](https://www.nuget.org/packages/KiwoomRestApi.Net)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/KiwoomRestApi.Net.svg?label=Downloads&color=blueviolet)](https://www.nuget.org/packages/KiwoomRestApi.Net)
+[![License](https://img.shields.io/github/license/dongbin300/KiwoomRestApi.Net.svg?label=License&color=green)](https://github.com/dongbin300/KiwoomRestApi.Net/blob/main/LICENSE)
+[![.NET](https://img.shields.io/badge/.NET-Standard%202.0%20%7C%206%20%7C%208%20%7C%209%20%7C%2010-512bd4)](https://dotnet.microsoft.com/)
+
+[문서](https://dongbin300.github.io/KiwoomRestApi.Net/) · [이슈](https://github.com/dongbin300/KiwoomRestApi.Net/issues) · [FAQ](docs/FAQ.html) · [키움 API 가이드](https://openapi.kiwoom.com/guide/apiguide)
+
+</div>
 
 ---
 
-## ⚡ Quick Start
-
-### 설치
+## Quick Start
 
 ```bash
 dotnet add package KiwoomRestApi.Net
 ```
 
-### 30 초 만에 시작하기
-
 ```csharp
 using KiwoomRestApi.Net.Clients;
 
 // 1. 클라이언트 생성
-var client = await KiwoomRestApiClient.CreateAsync("YOUR_APP_KEY", "YOUR_SECRET_KEY", isMock: true);
+var client = await KiwoomRestApiClient.CreateAsync("_APP키_", "_SECRET키_", isMock: true);
 
 // 2. 삼성전자 주식 정보 조회
 var stockInfo = await client.StockInfo.GetStockInfoAsync("005930", DateTime.Today, KiwoomStockInfoMarginLoanType.Loan);
@@ -32,30 +33,30 @@ Console.WriteLine($"삼성전자 현재가: {stockInfo.Data.CurrentPrice}원");
 
 // 3. 당일 실현손익 조회
 var todayRealizedProfitLoss = await client.Account.GetTodayRealizedProfitLossAsync("005930");
-Console.WriteLine($"평가금액: {todayRealizedProfitLoss.ProfitLossRate}%");
+Console.WriteLine($"평가금액: {todayRealizedProfitLoss.Data.TodayRealizedProfitLoss}%");
 ```
 
 ---
 
-## ✨ Features
+## Features
 
-| Feature | Description | Status |
-|:-------:|-------------|:------:|
-| 🔐 | **OAuth 인증** - 토큰 발급/갱신 관리 | ✅ |
-| 💰 | **계좌 관리** - 잔고, 주문내역, 예수금, 평가잔고, 실현손익 | ✅ |
-| 📈 | **주식 정보** - 현재가, 호가, 체결정보 | ✅ |
-| 📊 | **차트 데이터** - 일/주/월/분봉 차트 | ✅ |
-| 🛒 | **주문 관리** - 매수/매도, 정정, 취소 | ✅ |
-| 📊 | **시장 정보** - 업종, 테마, 순위, 외국인/기관 | ✅ |
-| 📡 | **실시간 데이터** - WebSocket 실시간 구독 | ✅ |
-| 🔍 | **종목 검색** - ETF, ELW, 종목 정보 조회 | ✅ |
-| 🥇 | **금현물 거래** - 금현물 시세, 주문, 잔고 | ✅ |
+| | Feature | Description |
+|:---:|:-------:|-------------|
+| | **OAuth 인증** | 토큰 발급/갱신 관리 |
+| | **계좌 관리** | 잔고, 주문내역, 예수금, 평가잔고, 실현손익 |
+| | **주식 정보** | 현재가, 호가, 체결정보 |
+| | **차트 데이터** | 일/주/월/분봉 차트 |
+| | **주문 관리** | 매수/매도, 정정, 취소 |
+| | **시장 정보** | 업종, 테마, 순위, 외국인/기관 |
+| | **실시간 데이터** | WebSocket 실시간 구독 |
+| | **종목 검색** | ETF, ELW, 종목 정보 조회 |
+| | **금현물 거래** | 금현물 시세, 주문, 잔고 |
 
 ---
 
-## 🎯 Key Features
+## Key Features
 
-### ⚡ Complete Async Support
+### Complete Async Support
 
 ```csharp
 // CancellationToken 완벽 지원
@@ -63,7 +64,7 @@ using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
 var result = await client.Account.GetDailyStatusAsync(cts.Token);
 ```
 
-### 🔧 Dependency Injection Support
+### Dependency Injection Support
 
 ```csharp
 // Program.cs 또는 Startup.cs
@@ -86,9 +87,9 @@ public class TradingController : ControllerBase
 
 ---
 
-## 📖 Usage Examples
+## Usage Examples
 
-### 📈 주식 정보 조회
+### 주식 정보 조회
 
 ```csharp
 // 현재가 조회
@@ -97,142 +98,155 @@ Console.WriteLine($"삼성전자 현재가: {stockInfo.Data.CurrentPrice}원");
 
 // 호가 조회
 var orderBook = await client.MarketCondition.GetOrderBookAsync("005930");
-Console.WriteLine($"매수 1호가: {orderBook.Data.BidLevel1Price}원");
+Console.WriteLine($"매수 1호가: {orderBook.Data.BuyPrice1}원");
 
 // 차트 데이터 조회
-var chartData = await client.Chart.GetDailyChartsAsync("005930", DateTime.Today, KiwoomChartUseOption.Use);
+var chartData = await client.Chart.GetDailyChartsAsync("005930", DateTime.Today, true);
 Console.WriteLine($"삼성전자 전일종가: {chartData.Data.Items.ElementAt(1).CurrentPrice}원");
 ```
 
-### 💰 계좌 및 주문 관리
+### 계좌 및 주문 관리
 
 ```csharp
-// 💵 예수금 및 자금 관리
+// 예수금 및 자금 관리
 var deposits = await client.Account.GetDepositsAsync(KiwoomAccountDepositQueryType.Normal);
-Console.WriteLine($"예수금: {deposits.Data.DepositAmount:N0}원");
+Console.WriteLine($"예수금: {deposits.Data.Deposit:N0}원");
 
 var estimatedAsset = await client.Account.GetEstimatedDepositAssetAsync(isExcludeDelisted: false);
-Console.WriteLine($"평가자산 총액: {estimatedAsset.Data.TotalAssetAmount:N0}원");
+Console.WriteLine($"평가자산 총액: {estimatedAsset.Data.EstimatedDepositAsset:N0}원");
 
-// 📊 잔고 및 평가
-var evaluations = await client.Account.GetEvaluationsAsync(isExcludeDelisted: false, KiwoomAccountStockExchangeType.KRX);
-Console.WriteLine($"총평가금액: {evaluations.Data.TotalAssetAmount:N0}원");
-
+// 잔고 평가
 var evaluationBalances = await client.Account.GetEvaluationBalancesAsync(
-    KiwoomAccountEvaluationBalanceQueryType.TotalProfitLoss,
-    KiwoomAccountDomesticStockExchangeType.All);
-Console.WriteLine($"총평가손익: {evaluationBalances.Data.TotalProfitLossAmount:N0}원");
+    	KiwoomAccountEvaluationBalanceQueryType.Aggregate,
+	KiwoomAccountDomesticStockExchangeType2.Krx);
+Console.WriteLine($"총평가금액: {evaluationBalances.Data.TotalEvaluationAmount:N0}원");
 
-// 📈 수익률 분석
+// 수익률 분석
 var dailyBalanceProfitRates = await client.Account.GetDailyBalanceProfitRatesAsync(DateTime.Today);
-Console.WriteLine($"일별잔고수익률: {dailyBalanceProfitRates.Data.TotalProfitLossRate:F2}%");
+Console.WriteLine($"일별잔고수익률: {dailyBalanceProfitRates.Data.DailyBalanceProfitRates:F2}%");
 
-var profitRates = await client.Account.GetProfitRatesAsync(KiwoomAccountStockExchangeType.KRX);
-Console.WriteLine($"계좌 수익률: {profitRates.Data.TotalProfitLossRate:F2}%");
-
-// 🔄 주문 관리
+// 주문 관리
 var unfilledOrders = await client.Account.GetUnfilledOrdersAsync(
     KiwoomAccountQueryType.All,
     KiwoomAccountTransactionType.All,
     KiwoomAccountStockExchangeType.Unified);
-Console.WriteLine($"미체결 주문 수: {unfilledOrders.Data.Count}");
+Console.WriteLine($"미체결 주문 수: {unfilledOrders.Data.Item.Count()}");
 
-// 🛒 주문 실행
-var buyOrderResult = await client.Order.PlaceOrderAsync(
-    KiwoomOrderType.Buy,
-    KiwoomOrderDomesticStockExchangeType.KRX,
-    "005930",
-    10,
-    KiwoomOrderTradeType.Normal,
-    80000);
+// 주문 실행
+var buyOrderResult = await _client.Order.PlaceOrderAsync(
+	KiwoomOrderType.Buy,
+	KiwoomOrderDomesticStockExchangeType.Krx,
+	"005930",
+	10,
+	KiwoomOrderTransactionType.Normal,
+	80000);
 
 // 주문 수정/취소
-var modifyResult = await client.Order.ModifyOrderAsync(
-    KiwoomOrderDomesticStockExchangeType.KRX,
-    "원주문번호",
-    "005930",
-    8,
-    82000);
+var modifyResult = await _client.Order.ModifyOrderAsync(
+	KiwoomOrderDomesticStockExchangeType.Krx,
+	"_원주문번호_",
+	"005930",
+	8,
+	82000);
 
-var cancelResult = await client.Order.CancelOrderAsync(
-    KiwoomOrderDomesticStockExchangeType.KRX,
-    "원주문번호",
-    "005930",
-    cancelQuantity: 3);
+var cancelResult = await _client.Order.CancelOrderAsync(
+	KiwoomOrderDomesticStockExchangeType.Krx,
+	"_원주문번호_",
+	"005930",
+	cancelQuantity: 3);
 ```
 
-### 📡 실시간 데이터 구독
+### 실시간 데이터 구독
 
 ```csharp
 var socketClient = await KiwoomSocketClient.CreateAsync(client.Token, isMock: true);
 
 // 실시간 주식체결 수신 이벤트
-socketClient.OnRealtimeStockExecutionReceived += (message) => 
+socketClient.OnRealtimeStockTradeReceived += (message) =>
 {
-    Console.WriteLine($"체결가: {message.ElementAt(0).Values.CurrentPrice}원");
+	Console.WriteLine($"체결가: {message.ElementAt(0).Values.CurrentPrice}원");
 };
 
 // 실시간 주식체결 구독
 await socketClient.WebSocket.SubscribeAsync(
-    [KiwoomWebSocketServiceName.StockExecution], 
-    ["005930", "000660"]);
+	[KiwoomWebSocketServiceName.StockTrade],
+	["005930", "000660"]);
 ```
 
-### 📊 차트 데이터 유틸리티
+### 차트 데이터 유틸리티
 
-**기간별 차트 데이터를 간편하게 조회할 수 있는 유틸리티 메서드입니다.**
+> 기간별 차트 데이터를 간편하게 조회할 수 있는 유틸리티 메서드입니다.
 
 ```csharp
 // 주식 틱차트 조회 (기간)
 var tickCharts = await client.Chart.GetTickChartsByRangeAsync(
-    "005930", 
-    DateTime.Today.AddDays(-30), 
-    DateTime.Today);
+    "005930",
+    1,
+    DateTime.Today.AddDays(-3),
+    DateTime.Today,
+    true
+);
 
 // 주식 분봉차트 조회 (기간)
 var minuteCharts = await client.Chart.GetMinuteChartsByRangeAsync(
-    "005930", 
-    DateTime.Today.AddDays(-30), 
-    DateTime.Today);
+    "005930",
+    1,
+    DateTime.Today.AddDays(-30),
+    DateTime.Today,
+    true
+);
 
 // 주식 일봉차트 조회 (기간)
 var dailyCharts = await client.Chart.GetDailyChartsByRangeAsync(
     "005930", 
     DateTime.Today.AddDays(-100), 
-    DateTime.Today);
+    DateTime.Today,
+    true
+);
 
 // 주식 주봉차트 조회 (기간)
 var weeklyCharts = await client.Chart.GetWeeklyChartsByRangeAsync(
     "005930", 
     DateTime.Today.AddDays(-100), 
-    DateTime.Today);
+    DateTime.Today,
+    true
+);
 
 // 주식 월봉차트 조회 (기간)
 var monthlyCharts = await client.Chart.GetMonthlyChartsByRangeAsync(
     "005930", 
     DateTime.Today.AddDays(-365), 
-    DateTime.Today);
+    DateTime.Today,
+    true
+);
 
 // 주식 년봉차트 조회 (기간)
 var yearlyCharts = await client.Chart.GetYearlyChartsByRangeAsync(
     "005930", 
     DateTime.Today.AddYears(-5), 
-    DateTime.Today);
+    DateTime.Today,
+    true
+);
 
 // 업종 차트도 동일하게 지원
 var industryTickCharts = await client.Chart.GetIndustryTickChartsByRangeAsync(
-    "001", // 업종코드
-    DateTime.Today.AddDays(-30), 
-    DateTime.Today);
+    KiwoomChartIndustryCode.Kospi200,
+    1,
+    DateTime.Today.AddDays(-3),
+    DateTime.Today
+);
 
 // 금현물 차트도 지원
 var goldSpotTickCharts = await client.Chart.GetGoldSpotTickChartsByRangeAsync(
     KiwoomGoldSpotStockCode.Gold_1kg,
-    DateTime.Today.AddDays(-30), 
-    DateTime.Today);
+    1,
+    DateTime.Today.AddDays(-30),
+    DateTime.Today,
+    true
+);
 ```
 
-### 🥇 금현물 거래
+### 금현물 거래
 
 ```csharp
 // 금현물 주문
@@ -245,12 +259,12 @@ var goldBuyOrderResult = await client.Order.GoldSpotPlaceOrderAsync(
 
 // 금현물 잔고확인
 var goldEvaluationBalances = await client.Account.GetGoldEvaluationBalancesAsync();
-Console.WriteLine($"금현물 평가금액: {goldEvaluationBalances.Data.TotalAssetAmount:N0}원");
+Console.WriteLine($"금현물 잔고평가금액: {goldEvaluationBalances.Data.BalanceEvaluation:N0}원");
 ```
 
 ---
 
-## ⚡ Performance Tips
+## Performance Tips
 
 ### API 제한사항
 
@@ -264,7 +278,7 @@ Console.WriteLine($"금현물 평가금액: {goldEvaluationBalances.Data.TotalAs
 ### 최적화 가이드
 
 ```csharp
-// ✅ 좋은 예: CancellationToken 사용
+// 권장: CancellationToken 사용
 using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
 var result = await client.StockInfo.GetStockInfoAsync(
     "005930", 
@@ -272,30 +286,33 @@ var result = await client.StockInfo.GetStockInfoAsync(
     KiwoomStockInfoMarginLoanType.Loan, 
     cts.Token);
 
-// ✅ 좋은 예: 배치 처리
+// 권장: 배치 처리
 var stockCodes = new[] { "005930", "000660", "035420" };
 var tasks = stockCodes.Select(code =>
     client.StockInfo.GetStockInfoAsync(code, DateTime.Today, KiwoomStockInfoMarginLoanType.Loan));
 var results = await Task.WhenAll(tasks);
 
-// ❌ 나쁜 예: 동기 블로킹
+// 주의: 동기 블로킹은 피하세요
 // var result = client.StockInfo.GetStockInfoAsync("005930", DateTime.Today, KiwoomStockInfoMarginLoanType.Loan).Result;
 ```
 
 ---
 
-## 🏗️ Supported Platforms
+## Supported Platforms
 
-- **.NET Standard 2.0** (Unity, Xamarin 호환)
-- **.NET Standard 2.1**
-- **.NET 6.0**
-- **.NET 8.0**
-- **.NET 9.0**
-- **.NET 10.0**
+| Platform | Version |
+|:---------|:--------|
+| .NET Standard | 2.0 (Unity, Xamarin 호환) |
+| .NET Standard | 2.1 |
+| .NET | 6.0 |
+| .NET | 8.0 |
+| .NET | 9.0 |
+| .NET | 10.0 |
 
 ---
 
-## 📋 Release Notes
+<details>
+<summary><strong>Release Notes</strong></summary>
 
 ### v0.7.0 (2026-03-18)
 - 추가: | ka00001 | 계좌번호조회 (`GetAccountIdAsync`)
@@ -328,19 +345,13 @@ var results = await Task.WhenAll(tasks);
 - 변경: | ka10080 | 주식분봉차트조회요청 기준일자 (`date`) 파라미터 추가
 - 변경: | ka20005 | 업종분봉조회요청 기준일자 (`date`) 파라미터 추가
 
----
-
 ### v0.6.2 (2026-02-05)
 - 변경: `KiwoomWebSocketRealtimeOrderTrade`.`AccountId`, `OrderId`, `ManagerId`를 `decimal?` -> `string?` (#2)
 - 변경: `KiwoomWebSocketRealtimeBalance`.`AccountId`를 `decimal?` -> `string?` (#2)
 
----
-
 ### v0.6.1 (2026-02-05)
 - 변경: `KiwoomWebSocketRealtimeBalance`.`StockCode`를 `decimal?` -> `string?` (#2)
 - 변경: `KiwoomWebSocketRealtimeOrderTrade`.`StockCode`를 `decimal?` -> `string?` (#2)
-
----
 
 ### v0.6.0 (2026-01-02)
 - 변경: 대용량 메시지 수신 시 JSON 파싱 에러 해결 (#1)
@@ -352,13 +363,9 @@ var results = await Task.WhenAll(tasks);
 - 변경: | ka10101 | 업종코드 리스트 `marketCode` 를 `list` 로 변경
 - 변경: KiwoomWebSocketRealtime 멤버변수 일부 `string` -> `KiwoomString`
 
----
-
 ### v0.5.1 (2025-11-05)
 - 삭제: | ka10079 | 주식틱차트조회요청 체결일
 - 삭제: | ka20004 | 업종틱차트조회요청 체결일
-
----
 
 ### v0.5.0 (2025-10-16)
 - 추가: | ka50010 | 금현물체결추이 API (`GetGoldTradeTrendsAsync`)
@@ -389,8 +396,6 @@ var results = await Task.WhenAll(tasks);
 - 변경: `KiwoomChartGetIndustryChartItem`
 - 변경: API 문서화 개선
 
----
-
 ### v0.4.0 (2025-09-15)
 - 추가: .NET 10.0 타겟 프레임워크 추가 (Preview)
 - 변경: `GetCreditLoanAvailableStocksAsync` 요청필드명 `crd_stk_grae_tp` -> `crd_stk_grde_tp`
@@ -417,8 +422,6 @@ var results = await Task.WhenAll(tasks);
 - 변경: `GetHourlyProgramTradeTrendsAsync`, `GetDailyProgramTradeTrendsAsync` 파라미터를 `KiwoomMarketConditionMarketType3` 로 수정
 - 변경: `KiwoomMarketConditionGetStockOriginTradeTrends` -> `KiwoomMarketConditionGetStockInstitutionTransactionTrends`
 
----
-
 ### v0.3.1 (2025-09-09)
 - 추가: `KiwoomString` 타입
 - 변경: `KiwoomDecimal`로 변환 작업
@@ -426,74 +429,87 @@ var results = await Task.WhenAll(tasks);
 - 추가: `KiwoomMarketConditionGetDailyInstitutionTradingStockItem`에 누락된 필드 추가
 - 변경: `KiwoomTimeSpanConverter` 에서 파싱 실패하는 경우는 `null`로 반환하도록 수정
 
----
+<details>
+<summary><strong>v0.3.0 및 이전 버전</strong></summary>
 
 ### v0.3.0 (2025-09-09)
+
 #### 금융 시스템 네이밍 체계화
-##### 1. 기본 수치 개념
+##### 기본 수치 개념
 - 합, 합계, 전체: `Total`
 - 수량, 금액: `Quantity`, `Amount`
 - 누적: `Accumulated`
 - 율, 비율, 대비율: `Rate`
-##### 2. 위치/방향 개념
+
+##### 위치/방향 개념
 - 상위, 하위: `Top`, `Bottom`
 - 상한, 하한: `Upper`, `Lower`
 - 상승, 보합, 하락: `Up`, `Flat`, `Down`
 - 입금, 출금: `Deposit`, `Withdrawal`
 - 입고, 출고: `Incoming`, `Outgoing`
-##### 3. 거래 행위
+
+##### 거래 행위
 - 매수, 매도: `Buy`, `Sell`
 - 순매수, 순매도: `NetBuy`, `NetSell`
 - 거래, 매매: `Transaction`
 - 체결, 미체결: `Trade`, `Unfilled`
 - 위탁: `Consignment`
 - 접수: `Submission`
-##### 4. 호가 및 잔량
+
+##### 호가 및 잔량
 - 호가: `Quote`
 - 잔량, 호가잔량: `RemainQuantity`, `OrderBook`
-##### 5. 가격 데이터
+
+##### 가격 데이터
 - 시가, 고가, 저가, 종가: `Open`, `High`, `Low`, `Close`
-##### 6. 거래량 관련
+
+##### 거래량 관련
 - 거래량, 거래수량, 매매수량: `Volume`
 - 거래금액, 거래대금: `TransactionAmount`
 - 거래량대비: `VolumeChange`
 - 전일거래량: `PreviousDayVolume`
-##### 7. 시간 개념
+
+##### 시간 개념
 - 금일, 전일: `Today`, `PreviousDay`
 - D+1, D+2: `-D1`, `-D2`
 - 일별: `Daily`
-##### 8. 변화 개념
+
+##### 변화 개념
 - 전일대비: `Change`, `PreviousDayChange`(한 레코드 안에 대비 개념이 중복될 경우)
 - 급증, 급감: `Spike`, `Drop`
 - 급등, 급락: `Surge`, `Plunge`
 - 강도: `Momentum`
 - 기호: `Sign`
-##### 9. 투자자 분류
+
+##### 투자자 분류
 - 개인, 기관, 외국인: `Retail`, `Institution`, `Foreign`
 - 거래원: `Broker`
-##### 10. 자금 및 신용 관련
+
+##### 자금 및 신용 관련
 - 현금, 신용, 대출, 융자, 담보, 대주, 대용: `Cash`, `Credit`, `Loan`, `CreditLoan`, `Collateral`, `ShortSell`, `Substitute`
 - 변제, 상환: `Repayment`
 - 미납, 미상환: `Unpaid`
 - 납부: `Payment`
-##### 11. 보증금 및 증거금
+
+##### 보증금 및 증거금
 - 증거금, 미수금: `Margin`, `Unsettled`
 - 예수금, 보증금: `Deposit`
-##### 12. 비용 관련
+
+##### 비용 관련
 - 수수료, 세금: `Fee`, `Tax`
-##### 13. 투자 상품 분류
+
+##### 투자 상품 분류
 - 주식, 투자, 원금: `Stock`, `Investment`, `Principal`
 - 유가증권, 수익증권, 채권: `Securities`, `Fund`, `Bond`
 - 업종: `Industry`
-##### 14. 기타 거래 개념
+
+##### 기타 거래 개념
 - 차익: `Arbitrage`
 - 정산: `Settlement`
 - 보유: `Holding`
 - 행사, 상장: `Exercise`, `List`
 - 시가총액: `MarketCapitalization`
 - 대차거래: `SecuritiesLending`
-
----
 
 ### v0.2.1 (2025-09-03)
 - 추가: 소스코드 주석
@@ -505,8 +521,6 @@ var results = await Task.WhenAll(tasks);
 - 삭제: `KiwoomRealteQuoteValue`
 - 변경: `KiwoomRankingInfoGetForeignPeriodTransactionTopItem.NetBuyQuantity` 를 `KiwoomDecimal`로 수정
 - 변경: 종속성 라이브러리 버전별 분기
-
----
 
 ### v0.2.0 (2025-08-29)
 - 추가: 소스코드 주석
@@ -535,15 +549,11 @@ var results = await Task.WhenAll(tasks);
 - 삭제: `KiwoomForeignInstitutionNetSellAmountType` (`2` 고정값)
 - 삭제: `KiwoomSecuritiesLendingQueryType`
 
----
-
 ### v0.1.2 (2025-08-27)
 - 아이콘 업데이트 및 NuGet 패키지 메타데이터 개선
 - 코드 문서화 개선
 - 프로젝트 아이콘 변경
 - README 문서 구조 개선
-
----
 
 ### v0.1.1 (2025-08-27)
 - NuGet 패키지 최초 릴리즈
@@ -553,34 +563,26 @@ var results = await Task.WhenAll(tasks);
 - FAQ 문서 추가
 - 패키지 참조 오류 수정
 
----
-
-## 🔗 Links
-
-- [📚 Official Documentation](https://dongbin300.github.io/KiwoomRestApi.Net/)
-- [💬 GitHub Repository](https://github.com/dongbin300/KiwoomRestApi.Net)
-- [❓ FAQ](docs/FAQ.html)
-- [📖 Kiwoom API Guide](https://openapi.kiwoom.com/guide/apiguide)
+</details>
+</details>
 
 ---
 
-## ⚠️ Disclaimer
+## Disclaimer
 
-이 라이브러리는 키움증권과 공식적인 관계가 없는 개인 프로젝트입니다.  
-실제 거래 시에는 충분한 테스트를 거쳐 사용하시기 바랍니다.
+> 이 라이브러리는 키움증권과 공식적인 관계가 없는 개인 프로젝트입니다.
+> 실제 거래 시에는 충분한 테스트를 거쳐 사용하시기 바랍니다.
 
----
+## License
 
-## 📄 License
-
-[MIT License](LICENSE)
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
 <div align="center">
 
-**⭐ 이 프로젝트가 도움이 되었다면 스타를 눌러주세요!**
+**If this project helped you, consider giving it a star!**
 
-Made with ❤️ by [dongbin300](https://github.com/dongbin300)
+[Report Bug](https://github.com/dongbin300/KiwoomRestApi.Net/issues) · [Request Feature](https://github.com/dongbin300/KiwoomRestApi.Net/issues) · [Documentation](https://dongbin300.github.io/KiwoomRestApi.Net/)
 
 </div>
