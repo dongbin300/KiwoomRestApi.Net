@@ -53,7 +53,7 @@ namespace KiwoomRestApi.Net.Examples
 			}
 		}
 
-		public void Run()
+		public async void Run()
 		{
 			//var stockCode = "005930";
 			var stockCode = "431190";

@@ -4,891 +4,912 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tutorial - KiwoomRestApi.Net</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
     <style>
+        :root {
+            --bg: #ffffff;
+            --surface: #f8f9fa;
+            --border: #e2e6ea;
+            --text: #1a1a2e;
+            --text-secondary: #5a6070;
+            --accent: #4361ee;
+            --accent-light: #eef1ff;
+            --green: #2d9e6a;
+            --orange: #e07c24;
+            --code-bg: #f1f3f5;
+            --sidebar-w: 240px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            padding-top: 56px;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg);
             line-height: 1.6;
-            color: #4b5563;
         }
 
-        /* 상단 내비게이션 */
-        .navbar {
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-        }
-
-        .navbar-brand {
-            color: #f8fafc;
-            font-weight: 600;
-            font-size: 1.2rem;
-        }
-
-        /* 네비게이션 링크 색상 */
-        .navbar-nav .nav-link {
-            color: #f8fafc !important;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .navbar-nav .nav-link:hover {
-            color: #fbbf24 !important;
-            transform: translateY(-1px);
-        }
-
-        .navbar-nav .nav-link.active {
-            color: #fbbf24 !important;
-            font-weight: 600;
-        }
-
-        .hero {
-            background: linear-gradient(to right, #6366f1, #8b5cf6);
-            padding: 3rem 0;
-            text-align: center;
-            color: #ffffff;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #ffffff;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            color: #f1f5f9;
-        }
-
-        .section {
-            padding: 3rem 0;
-        }
-
-        .tutorial-section {
-            margin-bottom: 3rem;
-        }
-
-        .tutorial-section h2 {
-            color: #3b82f6;
-            border-bottom: 2px solid #3b82f6;
-            padding-bottom: 0.5rem;
-            margin-bottom: 2rem;
-            font-weight: 600;
-        }
-
-        .tutorial-item {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 0.75rem;
-            margin-bottom: 1.5rem;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .tutorial-item:hover {
-            background: transparent;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .code-block {
-            background-color: #f8fafc;
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            border-radius: 0.5rem;
-            padding: 1rem;
-            margin: 1rem 0;
-            overflow-x: auto;
-        }
-
-        .code-block pre {
-            margin: 0;
-            color: #374151;
-            font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-            font-size: 0.9rem;
-        }
-
-        .toc-nav {
-            position: sticky;
-            top: 100px;
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-        }
-
-        .toc-nav h5 {
-            color: #3b82f6;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .toc-nav .nav-link {
-            color: #222;
-            padding: 0.5rem 1rem;
-            margin-bottom: 0.25rem;
-            border-radius: 0.375rem;
-            transition: all 0.2s ease;
-        }
-
-        .toc-nav .nav-link:hover,
-        .toc-nav .nav-link.active {
-            background: transparent;
-            font-weight: bold;
-            color: #7c3aed;
-        }
-
-        .alert-tip {
-            background-color: rgba(13, 202, 240, 0.1);
-            border: 1px solid rgba(13, 202, 240, 0.3);
-            color: #0dcaf0;
-            border-radius: 0.5rem;
-            padding: 1rem;
-            margin: 1rem 0;
-        }
-
-        .alert-warning {
-            background-color: rgba(255, 193, 7, 0.1);
-            border: 1px solid rgba(255, 193, 7, 0.3);
-            color: #ffc107;
-            border-radius: 0.5rem;
-            padding: 1rem;
-            margin: 1rem 0;
-        }
-
-        /* Language Toggle */
-        .language-toggle {
+        /* Top Navigation */
+        .topnav {
             position: fixed;
-            top: 80px;
-            right: 20px;
-            z-index: 1000;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50px;
-            padding: 8px 16px;
-            font-size: 0.9rem;
-            color: #f8fafc;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+            top: 0; left: 0; right: 0;
+            height: 52px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            padding: 0 32px;
+            z-index: 100;
         }
-
-        .language-toggle:hover {
-            background: linear-gradient(135deg, #fbbf24, #f59e0b);
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
+        .topnav-brand {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+            margin-right: 32px;
         }
-
-        .language-toggle i {
-            margin-right: 6px;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .toc-nav {
-                position: relative;
-                top: 0;
-                margin-bottom: 2rem;
-            }
-
-            .language-toggle {
-                top: auto;
-                bottom: 20px;
-                right: 20px;
-            }
-        }
-
-        /* Prism.js 라이트테마 코드 하이라이팅 */
-        pre[class*="language-"],
-        code[class*="language-"] {
-            color: #374151;
-            background: #f8fafc;
-            text-shadow: none;
-            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-            font-size: 0.9rem;
-            text-align: left;
-            white-space: pre;
-            word-spacing: normal;
-            word-break: normal;
-            line-height: 1.5;
-            tab-size: 4;
-            hyphens: none;
-        }
-
-        pre[class*="language-"] {
-            background: #f8fafc;
-            padding: 1em;
-            margin: .5em 0;
-            overflow: auto;
-            border-radius: 0.375rem;
-        }
-
-        :not(pre) > code[class*="language-"],
-        pre[class*="language-"] {
-            background: #f8fafc;
-        }
-
-        .token.comment {
-            color: #6b7280;
-            font-style: italic;
-        }
-
-        .token.punctuation {
-            color: #374151;
-        }
-
-        .token.tag,
-        .token.boolean,
-        .token.number,
-        .token.constant,
-        .token.symbol,
-        .token.deleted {
-            color: #dc2626;
+        .topnav a {
+            font-size: 13px;
             font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 4px;
+            transition: all 0.15s;
         }
+        .topnav a:hover { color: var(--accent); background: var(--accent-light); }
+        .topnav a.active { color: var(--accent); font-weight: 600; }
 
-        .token.selector,
-        .token.attr-name,
-        .token.string,
-        .token.char,
-        .token.builtin,
-        .token.inserted {
-            color: #059669;
-            font-weight: 500;
+        /* Sidebar TOC */
+        .toc-sidebar {
+            position: fixed;
+            top: 52px;
+            left: 0;
+            width: var(--sidebar-w);
+            height: calc(100vh - 52px);
+            background: var(--surface);
+            border-right: 1px solid var(--border);
+            padding: 24px 0;
+            overflow-y: auto;
         }
-
-        .token.operator,
-        .token.entity,
-        .token.url,
-        .language-css .token.string,
-        .style .token.string,
-        .token.variable {
-            color: #ea580c;
-            font-weight: 500;
-        }
-
-        .token.atrule,
-        .token.attr-value,
-        .token.function,
-        .token.class-name {
-            color: #7c3aed;
+        .toc-title {
+            font-size: 11px;
             font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 0 20px 12px;
+        }
+        .toc-sidebar a {
+            display: block;
+            padding: 6px 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.15s;
+        }
+        .toc-sidebar a:hover, .toc-sidebar a.active {
+            color: var(--accent);
+            background: var(--accent-light);
         }
 
-        .token.keyword {
-            color: #2563eb;
-            font-weight: 600;
+        /* Main */
+        .main {
+            margin-left: var(--sidebar-w);
+            max-width: 900px;
+            padding: 80px 48px 80px;
         }
 
-        .token.regex,
-        .token.important {
-            color: #ca8a04;
-            font-weight: 600;
+        /* Page Header */
+        .page-header {
+            margin-bottom: 40px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+        .page-header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .page-header p {
+            color: var(--text-secondary);
+            margin-top: 8px;
+            font-size: 15px;
         }
 
-        /* 섹션 제목 색상 */
-        h2 {
-            color: #6366f1;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
+        /* Section */
+        .section {
+            margin-bottom: 48px;
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .section-header h2 {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+        .section p.desc {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 16px;
         }
 
+        /* Subsection */
         h3 {
-            color: #4f46e5;
+            font-size: 15px;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin: 24px 0 12px;
+            color: var(--text);
         }
 
-        p {
-            color: #374151;
-            line-height: 1.6;
+        /* Code block */
+        .code-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin-bottom: 16px;
+            overflow-x: auto;
+            white-space: pre;
+        }
+        .code-block code {
+            font-family: 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+        .code-block .kw { color: #3651d4; font-weight: 600; }
+        .code-block .type { color: #2563eb; }
+        .code-block .str { color: #ea580c; }
+        .code-block .cm { color: #6a9955; }
+        .code-block .fn { color: #3651d4; font-weight: 600; }
+        .code-block .param { color: #ea580c; }
+
+        .install-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px 20px;
+            font-family: 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+            font-size: 13px;
+            color: var(--text);
+            margin-bottom: 16px;
         }
 
-        /* 일반 code 태그 스타일 */
-        code {
-            font-size: .875em;
-            color: #6366f1;
-            word-wrap: break-word;
-            background-color: #f1f5f9;
-            padding: 0.2rem 0.4rem;
-            border-radius: 0.25rem;
+        /* Info boxes */
+        .info-box {
+            background: var(--accent-light);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 6px 6px 0;
+            padding: 14px 16px;
+            margin-bottom: 16px;
+            font-size: 13px;
+            color: var(--text);
+        }
+        .info-box.warn {
+            background: #fff4e6;
+            border-left-color: var(--orange);
+        }
+        .info-box.tip {
+            background: #eef8f0;
+            border-left-color: var(--green);
+        }
+
+        /* Table */
+        .table-wrap {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        th {
+            background: var(--surface);
+            text-align: left;
+            padding: 10px 14px;
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            color: var(--text-secondary);
+        }
+        td {
+            padding: 10px 14px;
+            border-top: 1px solid var(--border);
+        }
+        td code {
+            font-family: 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+            font-size: 12px;
+            background: var(--code-bg);
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        /* Lists */
+        .section ul {
+            padding-left: 20px;
+            margin-bottom: 16px;
+        }
+        .section li {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        /* Tag */
+        .tag {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 4px;
+        }
+        .tag-setup { background: #eef8f0; color: var(--green); }
+        .tag-trading { background: #fef2f2; color: #dc2626; }
+        .tag-data { background: #eef1ff; color: var(--accent); }
+        .tag-realtime { background: #e0e7ff; color: #4338ca; }
+        .tag-advanced { background: #fff4e6; color: var(--orange); }
+
+        /* Footer */
+        .footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .toc-sidebar { display: none; }
+            .main { margin-left: 0; padding: 72px 20px 60px; }
         }
     </style>
 </head>
-<body style="background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%); min-height: 100vh;">
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <i class="bi bi-bar-chart-line-fill"></i> KiwoomRestApi.Net
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="api-reference.html">API Reference</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="tutorial.html">Tutorial</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="FAQ.html">FAQ</a>
-                    </li>
-                </ul>
-            </div>
+<body>
+
+<!-- Top Navigation -->
+<nav class="topnav">
+    <a class="topnav-brand" href="index.html">KiwoomRestApi.Net</a>
+    <a href="index.html">Home</a>
+    <a href="api-reference.html">API Reference</a>
+    <a href="tutorial.html" class="active">Tutorial</a>
+    <a href="FAQ.html">FAQ</a>
+</nav>
+
+<!-- Sidebar TOC -->
+<nav class="toc-sidebar">
+    <div class="toc-title">Contents</div>
+    <a href="#getting-started">Getting Started</a>
+    <a href="#basic-usage">Basic Usage</a>
+    <a href="#account-management">Account Management</a>
+    <a href="#stock-information">Stock Information</a>
+    <a href="#trading-operations">Trading Operations</a>
+    <a href="#chart-data">Chart Data</a>
+    <a href="#realtime-data">Real-time Data</a>
+    <a href="#advanced-features">Advanced Features</a>
+    <a href="#error-handling">Error Handling</a>
+    <a href="#best-practices">Best Practices</a>
+</nav>
+
+<!-- Main Content -->
+<main class="main">
+
+    <div class="page-header">
+        <h1>Tutorial</h1>
+        <p>KiwoomRestApi.Net 마스터를 위한 단계별 가이드입니다.</p>
+    </div>
+
+    <!-- ============ Getting Started ============ -->
+    <div class="section" id="getting-started">
+        <div class="section-header">
+            <h2>Getting Started</h2>
+            <span class="tag tag-setup">Setup</span>
         </div>
-    </nav>
 
-    <!-- Language Toggle Button -->
-    <button class="language-toggle" onclick="toggleLanguage()">
-        <i class="bi bi-translate"></i>
-        <span id="current-lang">한국어</span>
-    </button>
+        <h3>Prerequisites</h3>
+        <ul>
+            <li>.NET 6.0 이상</li>
+            <li>Visual Studio 2022 또는 VS Code</li>
+            <li>키움증권 계정 및 API 접근 권한</li>
+            <li>키움 OpenAPI에서 발급받은 앱 키와 시크릿 키</li>
+        </ul>
 
-    <header class="hero">
-        <div class="container">
-            <h1 data-ko="완벽 튜토리얼" data-en="Complete Tutorial">완벽 튜토리얼</h1>
-            <p class="lead" data-ko="KiwoomRestApi.Net 마스터를 위한 단계별 가이드" data-en="Step-by-step guide to mastering KiwoomRestApi.Net">KiwoomRestApi.Net 마스터를 위한 단계별 가이드</p>
+        <h3>Installation</h3>
+        <p class="desc">NuGet 패키지를 설치하세요:</p>
+        <div class="install-block">dotnet add package KiwoomRestApi.Net</div>
+        <div class="info-box tip">
+            <strong>Tip:</strong> NuGet 패키지 관리자 콘솔에서도 설치할 수 있습니다: <code style="font-family:'SF Mono','Cascadia Code','Consolas',monospace; font-size:12px; background:var(--code-bg); padding:2px 6px; border-radius:3px;">Install-Package KiwoomRestApi.Net</code>
         </div>
-    </header>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="toc-nav">
-                    <h5><i class="bi bi-list"></i> <span data-ko="목차" data-en="Contents">목차</span></h5>
-                    <nav class="nav nav-pills flex-column">
-                        <a class="nav-link" href="#getting-started" data-ko="시작하기" data-en="Getting Started">시작하기</a>
-                        <a class="nav-link" href="#basic-usage" data-ko="기본 사용법" data-en="Basic Usage">기본 사용법</a>
-                        <a class="nav-link" href="#account-management" data-ko="계좌 관리" data-en="Account Management">계좌 관리</a>
-                        <a class="nav-link" href="#stock-information" data-ko="주식 정보" data-en="Stock Information">주식 정보</a>
-                        <a class="nav-link" href="#trading-operations" data-ko="거래 작업" data-en="Trading Operations">거래 작업</a>
-                        <a class="nav-link" href="#chart-data" data-ko="차트 데이터" data-en="Chart Data">차트 데이터</a>
-                        <a class="nav-link" href="#realtime-data" data-ko="실시간 데이터" data-en="Real-time Data">실시간 데이터</a>
-                        <a class="nav-link" href="#advanced-features" data-ko="고급 기능" data-en="Advanced Features">고급 기능</a>
-                        <a class="nav-link" href="#error-handling" data-ko="오류 처리" data-en="Error Handling">오류 처리</a>
-                        <a class="nav-link" href="#best-practices" data-ko="모범 사례" data-en="Best Practices">모범 사례</a>
-                    </nav>
-                </div>
-            </div>
+        <h3>Basic Project Setup</h3>
+        <div class="code-block"><code><span class="kw">using</span> KiwoomRestApi.Net.Clients;
 
-            <div class="col-lg-9">
-                <!-- Getting Started -->
-                <section id="getting-started" class="tutorial-section">
-                    <h2><i class="bi bi-rocket-takeoff"></i> <span data-ko="시작하기" data-en="Getting Started">시작하기</span></h2>
+<span class="kw">var</span> appKey = <span class="str">"YOUR_APP_KEY"</span>;
+<span class="kw">var</span> secretKey = <span class="str">"YOUR_SECRET_KEY"</span>;
+<span class="kw">var</span> isMock = <span class="kw">true</span>; <span class="cm">// 실거래의 경우 false로 설정</span>
 
-                    <div class="tutorial-item">
-                        <div class="card-body">
-                            <h4 data-ko="필수 조건" data-en="Prerequisites">필수 조건</h4>
-                            <ul>
-                                <li data-ko=".NET 6.0 이상" data-en=".NET 6.0 or higher">.NET 6.0 이상</li>
-                                <li data-ko="Visual Studio 2022 또는 VS Code" data-en="Visual Studio 2022 or VS Code">Visual Studio 2022 또는 VS Code</li>
-                                <li data-ko="키움증권 계정 및 API 접근 권한" data-en="Kiwoom Securities account with API access">키움증권 계정 및 API 접근 권한</li>
-                                <li data-ko="키움 OpenAPI에서 발급받은 앱 키와 시크릿 키" data-en="App Key and Secret Key from Kiwoom OpenAPI">키움 OpenAPI에서 발급받은 앱 키와 시크릿 키</li>
-                            </ul>
+<span class="cm">// 클라이언트 생성</span>
+<span class="kw">var</span> client = KiwoomRestApiClient.<span class="fn">Create</span>(appKey, secretKey, isMock);</code></div>
+    </div>
 
-                            <h4 data-ko="설치" data-en="Installation">설치</h4>
-                            <p data-ko="NuGet 패키지를 설치하세요:" data-en="Install the NuGet package:">NuGet 패키지를 설치하세요:</p>
-                            <div class="code-block">
-                                <pre><code class="language-bash">dotnet add package KiwoomRestApi.Net</code></pre>
-                            </div>
+    <!-- ============ Basic Usage ============ -->
+    <div class="section" id="basic-usage">
+        <div class="section-header">
+            <h2>Basic Usage</h2>
+            <span class="tag tag-data">Data</span>
+        </div>
 
-                            <div class="alert-tip">
-                                <i class="bi bi-lightbulb"></i> <strong data-ko="팁:" data-en="Tip:">팁:</strong> <span data-ko="NuGet 패키지 관리자에서도 설치할 수 있습니다: Install-Package KiwoomRestApi.Net" data-en="You can also install via NuGet Package Manager: Install-Package KiwoomRestApi.Net">NuGet 패키지 관리자에서도 설치할 수 있습니다: Install-Package KiwoomRestApi.Net</span>
-                            </div>
+        <h3>Getting Stock Information</h3>
+        <p class="desc">삼성전자(005930)의 기본 주식 정보를 가져와 보겠습니다:</p>
+        <div class="code-block"><code><span class="kw">using</span> KiwoomRestApi.Net.Enums.StockInfo;
 
-                            <h4 data-ko="기본 프로젝트 설정" data-en="Basic Project Setup">기본 프로젝트 설정</h4>
-                            <div class="code-block">
-                                <pre><code class="language-csharp">using KiwoomRestApi.Net.Clients;
-using KiwoomRestApi.Net.Enums.StockInfo;
-
-var appKey = "YOUR_APP_KEY";
-var secretKey = "YOUR_SECRET_KEY";
-var isMock = true; // 실거래의 경우 false로 설정
-
-// 클라이언트 생성
-var client = await KiwoomRestApiClient.CreateAsync(appKey, secretKey, isMock);</code></pre>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Basic Usage -->
-                <section id="basic-usage" class="tutorial-section">
-                    <h2><i class="bi bi-play-circle"></i> <span data-ko="기본 사용법" data-en="Basic Usage">기본 사용법</span></h2>
-
-                    <div class="tutorial-item">
-                        <div class="card-body">
-                            <h4 data-ko="주식 정보 가져오기" data-en="Getting Stock Information">주식 정보 가져오기</h4>
-                            <p data-ko="삼성전자(005930)의 기본 주식 정보를 가져와 보겠습니다:" data-en="Let's start by fetching basic stock information for Samsung Electronics:">삼성전자(005930)의 기본 주식 정보를 가져와 보겠습니다:</p>
-                            <div class="code-block">
-                                <pre><code class="language-csharp">// 삼성전자(005930) 주식 정보 가져오기
-var stockCode = "005930";
-var date = DateTime.Today;
-
-var stockInfo = await client.StockInfo.GetStockInfoAsync(
-    stockCode: stockCode,
-    date: date,
+<span class="cm">// 삼성전자(005930) 주식 정보 가져오기</span>
+<span class="kw">var</span> stockInfo = <span class="kw">await</span> client.StockInfo.<span class="fn">GetStockInfoAsync</span>(
+    stockCode: <span class="str">"005930"</span>,
+    date: DateTime.Today,
     marginLoanType: KiwoomStockInfoMarginLoanType.Loan
 );
 
-if (stockInfo.IsSuccess)
+<span class="kw">if</span> (stockInfo.IsSuccess)
 {
-    Console.WriteLine($"주식명: {stockInfo.Data?.StockName}");
-    Console.WriteLine($"현재가: {stockInfo.Data?.CurrentPrice:N0} KRW");
-    Console.WriteLine($"변동률: {stockInfo.Data?.ChangeRate:F2}%");
-    Console.WriteLine($"거래량: {stockInfo.Data?.AccumulatedTradingVolume:N0}");
+    Console.<span class="fn">WriteLine</span>($<span class="str">"주식명: {stockInfo.Data?.StockName}"</span>);
+    Console.<span class="fn">WriteLine</span>($<span class="str">"현재가: {stockInfo.Data?.CurrentPrice:N0} KRW"</span>);
+    Console.<span class="fn">WriteLine</span>($<span class="str">"변동률: {stockInfo.Data?.ChangeRate:F2}%"</span>);
+    Console.<span class="fn">WriteLine</span>($<span class="str">"거래량: {stockInfo.Data?.Volume:N0}"</span>);
 }
-else
+<span class="kw">else</span>
 {
-    Console.WriteLine($"오류: {stockInfo.ErrorMessage}");
-}</code></pre>
-                            </div>
+    Console.<span class="fn">WriteLine</span>($<span class="str">"오류: {stockInfo.ReturnMessage}"</span>);
+}</code></div>
 
-                            <h4 data-ko="응답 이해하기" data-en="Understanding the Response">응답 이해하기</h4>
-                            <p data-ko="모든 API 호출은 KiwoomRestApiResponse&lt;T&gt; 객체를 반환합니다:" data-en="All API calls return a KiwoomRestApiResponse&lt;T&gt; object:">모든 API 호출은 KiwoomRestApiResponse&lt;T&gt; 객체를 반환합니다:</p>
-                            <div class="code-block">
-                                <pre><code class="language-csharp">public class KiwoomRestApiResponse&lt;T&gt;
-{
-    public bool IsSuccess { get; set; }
-    public T? Data { get; set; }
-    public string? ErrorMessage { get; set; }
-    public string ApiId { get; set; }
-    public bool ContYn { get; set; }  // 페이지네이션을 위한 연속 플래그
-    public string NextKey { get; set; } // 다음 페이지 키
-}</code></pre>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+        <h3>Understanding the Response</h3>
+        <p class="desc">모든 API 호출은 KiwoomRestApiResponse&lt;T&gt; 객체를 반환합니다:</p>
+        <div class="table-wrap"><table>
+            <thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead>
+            <tbody>
+                <tr><td><code>IsSuccess</code></td><td><code>bool</code></td><td>API 호출 성공 여부</td></tr>
+                <tr><td><code>Data</code></td><td><code>T?</code></td><td>응답 데이터</td></tr>
+                <tr><td><code>ReturnMessage</code></td><td><code>string?</code></td><td>응답 메시지</td></tr>
+                <tr><td><code>ApiId</code></td><td><code>string</code></td><td>API 식별자</td></tr>
+                <tr><td><code>ContYn</code></td><td><code>bool</code></td><td>페이지네이션 연속 플래그</td></tr>
+                <tr><td><code>NextKey</code></td><td><code>string</code></td><td>다음 페이지 키</td></tr>
+            </tbody>
+        </table></div>
+    </div>
 
-                <!-- Account Management -->
-                <section id="account-management" class="tutorial-section">
-                    <h2><i class="bi bi-wallet2"></i> <span data-ko="계좌 관리" data-en="Account Management">계좌 관리</span></h2>
+    <!-- ============ Account Management ============ -->
+    <div class="section" id="account-management">
+        <div class="section-header">
+            <h2>Account Management</h2>
+            <span class="tag tag-data">Data</span>
+        </div>
 
-                    <div class="tutorial-item">
-                        <div class="card-body">
-                            <h4 data-ko="계좌 잔고 가져오기" data-en="Getting Account Balance">계좌 잔고 가져오기</h4>
-                            <div class="code-block">
-                                <pre><code class="language-csharp">// 평가 잔고 가져오기
-var balances = await client.Account.GetEvaluationBalancesAsync(
+        <h3>Getting Account Balance</h3>
+        <div class="code-block"><code><span class="kw">using</span> KiwoomRestApi.Net.Enums.Account;
+
+<span class="cm">// 평가 잔고 가져오기</span>
+<span class="kw">var</span> balances = <span class="kw">await</span> client.Account.<span class="fn">GetEvaluationBalancesAsync</span>(
     queryType: KiwoomAccountEvaluationBalanceQueryType.Aggregate,
-    exchangeType: KiwoomAccountDomesticStockExchangeType.All
+    domesticStockExchangeType: KiwoomAccountDomesticStockExchangeType2.Krx
 );
 
-if (balances.IsSuccess)
+<span class="kw">if</span> (balances.IsSuccess)
 {
-    foreach (var balance in balances.Data)
+    <span class="kw">foreach</span> (<span class="kw">var</span> balance <span class="kw">in</span> balances.Data?.Items)
     {
-        Console.WriteLine($"계좌: {balance.AccountNumber}");
-        Console.WriteLine($"총자산: {balance.TotalAssetAmount:N0} KRW");
-        Console.WriteLine($"총 손익: {balance.TotalProfitLossAmount:N0} KRW");
-        Console.WriteLine($"손익률: {balance.TotalProfitLossRate:F2}%");
+        Console.<span class="fn">WriteLine</span>($<span class="str">"총자산: {balance.TotalEvaluationAmount:N0} KRW"</span>);
+        Console.<span class="fn">WriteLine</span>($<span class="str">"총 손익: {balance.TotalEvaluationProfitLossAmount:N0} KRW"</span>);
+        Console.<span class="fn">WriteLine</span>($<span class="str">"손익률: {balance.TotalProfitRate:F2}%"</span>);
     }
-}</code></pre>
-                            </div>
+}</code></div>
 
-                            <h4 data-ko="일별 상태 가져오기" data-en="Getting Daily Status">일별 상태 가져오기</h4>
-                            <div class="code-block">
-                                <pre><code class="language-csharp">// 일별 계좌 상태 가져오기
-var dailyStatus = await client.Account.GetDailyStatusAsync();
+        <h3>Getting Daily Status</h3>
+        <div class="code-block"><code><span class="cm">// 일별 계좌 상태 가져오기</span>
+<span class="kw">var</span> dailyStatus = <span class="kw">await</span> client.Account.<span class="fn">GetDailyStatusAsync</span>();
 
-if (dailyStatus.IsSuccess)
+<span class="kw">if</span> (dailyStatus.IsSuccess)
 {
-    Console.WriteLine($"입금액: {dailyStatus.Data?.DepositAmount:N0} KRW");
-    Console.WriteLine($"총 인출: {dailyStatus.Data?.TotalWithdrawal:N0} KRW");
-    Console.WriteLine($"총 매수: {dailyStatus.Data?.TotalBuying:N0} KRW");
-    Console.WriteLine($"총 매도: {dailyStatus.Data?.TotalSelling:N0} KRW");
-}</code></pre>
-                            </div>
+    Console.<span class="fn">WriteLine</span>($<span class="str">"입금액: {dailyStatus.Data?.DepositAmount:N0} KRW"</span>);
+    Console.<span class="fn">WriteLine</span>($<span class="str">"총 매수: {dailyStatus.Data?.BuyAmount:N0} KRW"</span>);
+    Console.<span class="fn">WriteLine</span>($<span class="str">"총 매도: {dailyStatus.Data?.SellAmount:N0} KRW"</span>);
+}</code></div>
 
-                            <div class="alert-warning">
-                                <i class="bi bi-exclamation-triangle"></i> <strong data-ko="경고:" data-en="Warning:">경고:</strong> <span data-ko="일부 계좌 API는 모의투자 모드에서 사용할 수 없습니다. 전체 기능을 위해 실제 API 키를 사용하세요." data-en="Some account APIs are not available in mock mode. Use real API keys for full functionality.">일부 계좌 API는 모의투자 모드에서 사용할 수 없습니다. 전체 기능을 위해 실제 API 키를 사용하세요.</span>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Stock Information -->
-                <section id="stock-information" class="tutorial-section">
-                    <h2><i class="bi bi-info-circle"></i> <span data-ko="주식 정보" data-en="Stock Information">주식 정보</span></h2>
-
-                    <div class="tutorial-item">
-                        <div class="card-body">
-                            <h4 data-ko="시장 데이터" data-en="Market Data">시장 데이터</h4>
-                            <div class="code-block">
-                                <pre><code class="language-csharp">// 현재 시장 호가 가져오기
-var quote = await client.MarketCondition.GetQuoteAsync("005930");
-
-if (quote.IsSuccess)
-{
-    Console.WriteLine($"현재가: {quote.Data?.CurrentPrice}");
-    Console.WriteLine($"최우수 매수가: {quote.Data?.BestBidPrice}");
-    Console.WriteLine($"최우수 매도가: {quote.Data?.BestAskPrice}");
-    Console.WriteLine($"매수 잔량: {quote.Data?.BestBidQuantity}");
-    Console.WriteLine($"매도 잔량: {quote.Data?.BestAskQuantity}");
-}
-
-// 호가창 가져오기
-var orderBook = await client.MarketCondition.GetOrderBookAsync("005930");
-
-if (orderBook.IsSuccess)
-{
-    Console.WriteLine("호가창:");
-    for (int i = 0; i < 5; i++)
-    {
-        Console.WriteLine($"  매도 {i+1}: {orderBook.Data?.AskPrices[i]} ({orderBook.Data?.AskQuantities[i]})");
-    }
-    Console.WriteLine("  --------------------");
-    for (int i = 0; i < 5; i++)
-    {
-        Console.WriteLine($"  매수 {i+1}: {orderBook.Data?.BidPrices[i]} ({orderBook.Data?.BidQuantities[i]})");
-    }
-}</code></pre>
-                            </div>
-
-                            <h4 data-ko="랭킹 정보" data-en="Ranking Information">랭킹 정보</h4>
-                            <div class="code-block">
-                                <pre><code class="language-csharp">// 상위 상승종 가져오기
-var gainers = await client.RankingInfo.GetChangeRateTopsAsync(
-    marketType: KiwoomRankingInfoMarketType.All,
-    sortType: KiwoomRankingInfoChangeSortType.Up,
-    count: 10
-);
-
-if (gainers.IsSuccess)
-{
-    Console.WriteLine("상위 상승종:");
-    foreach (var stock in gainers.Data.Take(5))
-    {
-        Console.WriteLine($"{stock.StockName}: {stock.ChangeRate:F2}% ({stock.CurrentPrice})");
-    }
-}
-
-// 거래량 상위 종목 가져오기
-var activeStocks = await client.RankingInfo.GetTodayVolumeTopsAsync(
-    marketType: KiwoomRankingInfoMarketType.All,
-    volumeSortType: KiwoomRankingInfoVolumeSortType.Volume,
-    count: 10
-);
-
-if (activeStocks.IsSuccess)
-{
-    Console.WriteLine("거래량 상위 종목:");
-    foreach (var stock in activeStocks.Data.Take(5))
-    {
-        Console.WriteLine($"{stock.StockName}: {stock.AccumulatedVolume:N0} 주");
-    }
-}</code></pre>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Trading Operations -->
-                <section id="trading-operations" class="tutorial-section">
-                    <h2><i class="bi bi-currency-exchange"></i> <span data-ko="거래 작업" data-en="Trading Operations">거래 작업</span></h2>
-
-                    <div class="tutorial-item">
-                        <div class="card-body">
-                            <div class="alert-warning">
-                                <i class="bi bi-exclamation-triangle"></i> <strong data-ko="중요:" data-en="Important:">중요:</strong> <span data-ko="거래 작업은 실제 API 키가 필요하며 주의해서 사용해야 합니다. 테스트를 위해 모의투자 모드로 시작하세요." data-en="Trading operations require real API keys and should be used with caution. Start with mock mode for testing.">거래 작업은 실제 API 키가 필요하며 주의해서 사용해야 합니다. 테스트를 위해 모의투자 모드로 시작하세요.</span>
-                            </div>
-
-                            <h4 data-ko="주문 체결" data-en="Placing Orders">주문 체결</h4>
-                            <div class="code-block">
-                                <pre><code class="language-csharp">// 매수 주문 예제
-var buyOrder = await client.Order.PlaceOrderAsync(
-    orderType: KiwoomOrderType.Buy,
-    exchangeType: KiwoomOrderDomesticStockExchangeType.Krx,
-    stockCode: "005930",
-    quantity: 10,
-    transactionType: KiwoomOrderTransactionType.Market
-);
-
-if (buyOrder.IsSuccess)
-{
-    Console.WriteLine($"주문 성공. 주문번호: {buyOrder.Data?.OrderNumber}");
-    Console.WriteLine($"주문 상태: {buyOrder.Data?.OrderStatus}");
-}
-else
-{
-    Console.WriteLine($"주문 실패: {buyOrder.ErrorMessage}");
-}
-
-// 지정가 주문 예제
-var limitOrder = await client.Order.PlaceOrderAsync(
-    orderType: KiwoomOrderType.Buy,
-    exchangeType: KiwoomOrderDomesticStockExchangeType.Krx,
-    stockCode: "005930",
-    quantity: 10,
-    transactionType: KiwoomOrderTransactionType.Limit,
-    price: 75000  // 지정가
-);</code></pre>
-                            </div>
-
-                            <h4 data-ko="주문 관리" data-en="Order Management">주문 관리</h4>
-                            <div class="code-block">
-                                <pre><code class="language-csharp">// 미체결 주문 가져오기
-var unfilledOrders = await client.Account.GetUnfilledOrdersAsync(
-    queryType: KiwoomAccountQueryType.All,
-    transactionType: KiwoomAccountTransactionType.All,
-    stockExchangeType: KiwoomAccountStockExchangeType.Unified
-);
-
-if (unfilledOrders.IsSuccess)
-{
-    foreach (var order in unfilledOrders.Data)
-    {
-        Console.WriteLine($"주문: {order.OrderNumber} - {order.StockName}");
-        Console.WriteLine($"유형: {order.OrderType}, 수량: {order.OrderQuantity}");
-        Console.WriteLine($"상태: {order.OrderStatus}");
-    }
-}
-
-// 주문 취소
-var cancelResult = await client.Order.CancelOrderAsync(
-    exchangeType: KiwoomOrderDomesticStockExchangeType.Krx,
-    orderNumber: "YOUR_ORDER_NUMBER",
-    stockCode: "005930",
-    quantity: 5
-);
-
-// 주문 수정
-var modifyResult = await client.Order.ModifyOrderAsync(
-    exchangeType: KiwoomOrderDomesticStockExchangeType.Krx,
-    orderNumber: "YOUR_ORDER_NUMBER",
-    stockCode: "005930",
-    quantity: 15,
-    price: 76000
-);</code></pre>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Real-time Data -->
-                <section id="realtime-data" class="tutorial-section">
-                    <h2><i class="bi bi-broadcast"></i> <span data-ko="실시간 데이터" data-en="Real-time Data">실시간 데이터</span></h2>
-
-                    <div class="tutorial-item">
-                        <div class="card-body">
-                            <h4 data-ko="WebSocket 클라이언트 설정" data-en="Setting up WebSocket Client">WebSocket 클라이언트 설정</h4>
-                            <div class="code-block">
-                                <pre><code class="language-csharp">// 소켓 클라이언트 생성
-var socketClient = await KiwoomSocketClient.CreateAsync(client.Token, isMock: true);
-
-// 실시간 주식 체결 데이터 구독
-await socketClient.WebSocket.SubscribeAsync(
-    serviceNames: [KiwoomWebSocketServiceName.StockExecution],
-    stockCodes: ["005930", "000660", "035420"],
-    fidList: "0;10;11;12"  // 현재가, 변동률, 거래량 등
-);</code></pre>
-                            </div>
-
-                            <h4 data-ko="실시간 이벤트 처리" data-en="Handling Real-time Events">실시간 이벤트 처리</h4>
-                            <div class="code-block">
-                                <pre><code class="language-csharp">// 이벤트 핸들러 설정
-socketClient.OnRealtimeStockTradeReceived += (realtimeData) =>
-{
-    foreach (var data in realtimeData)
-    {
-        Console.WriteLine($"[{data.StockCode}] {data.Values.CurrentPrice} " +
-                         $"({data.Values.ChangeRate:F2}%) " +
-                         $"거래량: {data.Values.AccumulatedVolume:N0}");
-    }
-};
-
-socketClient.OnRealtimeOrderTradeReceived += (orderData) =>
-{
-    foreach (var order in orderData)
-    {
-        Console.WriteLine($"주문 업데이트: {order.Values.OrderNumber} - {order.Values.OrderStatus}");
-        Console.WriteLine($"주식: {order.Values.StockCode}, 수량: {order.Values.OrderQuantity}");
-    }
-};
-
-socketClient.OnRealtimeBalanceReceived += (balanceData) =>
-{
-    foreach (var balance in balanceData)
-    {
-        Console.WriteLine($"잔고 업데이트: {balance.Values.StockName}");
-        Console.WriteLine($"보유 수량: {balance.Values.HoldingQuantity}");
-        Console.WriteLine($"평가 금액: {balance.Values.EvaluationAmount:N0}");
-    }
-};</code></pre>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Best Practices -->
-                <section id="best-practices" class="tutorial-section">
-                    <h2><i class="bi bi-star"></i> <span data-ko="모범 사례" data-en="Best Practices">모범 사례</span></h2>
-
-                    <div class="tutorial-item">
-                        <div class="card-body">
-                            <h4 data-ko="연결 관리" data-en="Connection Management">연결 관리</h4>
-                            <div class="code-block">
-                                <pre><code class="language-csharp">// using 문으로 적절한 해제
-using var client = await KiwoomRestApiClient.CreateAsync(appKey, secretKey, isMock);
-using var socketClient = await KiwoomSocketClient.CreateAsync(client.Token, isMock);
-
-// 또는 직접 해제
-try
-{
-    // API 호출
-}
-finally
-{
-    client?.Dispose();
-    socketClient?.Dispose();
-}</code></pre>
-                            </div>
-
-                            <h4 data-ko="속도 제한" data-en="Rate Limiting">속도 제한</h4>
-                            <div class="code-block">
-                                <pre><code class="language-csharp">// 요청 간 지연 구현
-public class RateLimitedKiwoomClient
-{
-    private readonly KiwoomRestApiClient _client;
-    private readonly SemaphoreSlim _semaphore;
-    private readonly TimeSpan _delay;
-
-    public RateLimitedKiwoomClient(KiwoomRestApiClient client, int requestsPerSecond = 10)
-    {
-        _client = client;
-        _semaphore = new SemaphoreSlim(1);
-        _delay = TimeSpan.FromMilliseconds(1000.0 / requestsPerSecond);
-    }
-
-    public async Task&lt;KiwoomRestApiResponse&lt;T&gt;&gt; ExecuteAsync&lt;T&gt;(Func&lt;Task&lt;KiwoomRestApiResponse&lt;T&gt;&gt;&gt; apiCall)
-    {
-        await _semaphore.WaitAsync();
-        try
-        {
-            var result = await apiCall();
-            await Task.Delay(_delay);
-            return result;
-        }
-        finally
-        {
-            _semaphore.Release();
-        }
-    }
-}</code></pre>
-                            </div>
-
-                            <div class="alert-tip">
-                                <i class="bi bi-lightbulb"></i> <strong data-ko="전문가 팁:" data-en="Pro Tip:">전문가 팁:</strong> <span data-ko="개발 및 테스트 시에는 항상 모의투자 모드로 시작하세요. 프로덕션 준비가 되었을 때만 실제 API 키로 전환하세요." data-en="Always start with mock mode for development and testing. Switch to real API keys only when you're ready for production.">개발 및 테스트 시에는 항상 모의투자 모드로 시작하세요. 프로덕션 준비가 되었을 때만 실제 API 키로 전환하세요.</span>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <div class="text-center mt-5 mb-3">
-                    <p class="text-muted">
-                        <small data-ko="더 많은 정보는 API Reference를 확인하세요." data-en="For more information, check the API Reference.">더 많은 정보는 API Reference를 확인하세요.</small>
-                    </p>
-                </div>
-            </div>
+        <div class="info-box warn">
+            <strong>Warning:</strong> 일부 계좌 API는 모의투자 모드에서 사용할 수 없습니다. 전체 기능을 위해 실제 API 키를 사용하세요.
         </div>
     </div>
 
-    <footer class="bg-light text-dark text-center py-3 mt-5" style="background: linear-gradient(135deg, #f8fafc, #e2e8f0);">
-        <div class="container">
-            <p class="mb-0">&copy; 2025 KiwoomRestApi.Net Project. MIT Licensed.</p>
+    <!-- ============ Stock Information ============ -->
+    <div class="section" id="stock-information">
+        <div class="section-header">
+            <h2>Stock Information</h2>
+            <span class="tag tag-data">Data</span>
         </div>
-    </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+        <h3>Market Data &amp; Quotes</h3>
+        <div class="code-block"><code><span class="cm">// 현재 시장 호가 가져오기</span>
+<span class="kw">var</span> quote = <span class="kw">await</span> client.MarketCondition.<span class="fn">GetQuoteAsync</span>(<span class="str">"005930"</span>);
 
-    <script>
-        // 다국어 전환 함수
-        let currentLanguage = 'ko';
+<span class="kw">if</span> (quote.IsSuccess)
+{
+    Console.<span class="fn">WriteLine</span>($<span class="str">"현재가: {quote.Data?.CurrentPrice}"</span>);
+    Console.<span class="fn">WriteLine</span>($<span class="str">"최우수 매수가: {quote.Data?.BuyPrice1}"</span>);
+    Console.<span class="fn">WriteLine</span>($<span class="str">"최우수 매도가: {quote.Data?.SellPrice1}"</span>);
+}
 
-        function toggleLanguage() {
-            currentLanguage = currentLanguage === 'ko' ? 'en' : 'ko';
-            updateLanguage(currentLanguage);
-        }
+<span class="cm">// 호가창 가져오기</span>
+<span class="kw">var</span> orderBook = <span class="kw">await</span> client.MarketCondition.<span class="fn">GetOrderBookListAsync</span>(<span class="str">"005930"</span>);
 
-        function updateLanguage(lang) {
-            // 모든 data-ko, data-en 속성을 가진 요소를 찾아 텍스트 업데이트
-            document.querySelectorAll('[data-ko]').forEach(element => {
-                const text = element.getAttribute(`data-${lang}`);
-                if (text) {
-                    element.textContent = text;
+<span class="kw">if</span> (orderBook.IsSuccess)
+{
+    Console.<span class="fn">WriteLine</span>(<span class="str">"호가창:"</span>);
+    <span class="kw">var</span> quotes = orderBook.Data;
+    <span class="kw">for</span> (<span class="kw">int</span> i = <span class="str">0</span>; i &lt; <span class="str">5</span>; i++)
+    {
+        Console.<span class="fn">WriteLine</span>($<span class="str">"  매도 {i+1}: {quotes?.SellQuotes[i].Price} ({quotes?.SellQuotes[i].Quantity})"</span>);
+    }
+    Console.<span class="fn">WriteLine</span>(<span class="str">"  --------------------"</span>);
+    <span class="kw">for</span> (<span class="kw">int</span> i = <span class="str">0</span>; i &lt; <span class="str">5</span>; i++)
+    {
+        Console.<span class="fn">WriteLine</span>($<span class="str">"  매수 {i+1}: {quotes?.BuyQuotes[i].Price} ({quotes?.BuyQuotes[i].Quantity})"</span>);
+    }
+}</code></div>
+
+        <h3>Ranking Information</h3>
+        <div class="code-block"><code><span class="kw">using</span> KiwoomRestApi.Net.Enums.RankingInfo;
+
+<span class="cm">// 상위 상승종 가져오기</span>
+<span class="kw">var</span> gainers = <span class="kw">await</span> client.RankingInfo.<span class="fn">GetChangeRateTopsAsync</span>(
+    marketType: KiwoomRankingInfoMarketType.All,
+    sortType: KiwoomRankingInfoChangeSortType.Up,
+    minVolume: <span class="str">100</span>,
+    stockCondition: KiwoomRankingInfoStockCondition.All,
+    creditCondition: KiwoomRankingInfoCreditCondition.All,
+    isIncludeUpDown: <span class="kw">true</span>,
+    priceCondition: KiwoomRankingInfoPriceCondition.All,
+    minTransactionAmount: <span class="str">1000</span>,
+    stockExchangeType: KiwoomRankingInfoStockExchangeType.Unified
+);
+
+<span class="kw">if</span> (gainers.IsSuccess)
+{
+    Console.<span class="fn">WriteLine</span>(<span class="str">"상위 상승종:"</span>);
+    <span class="kw">foreach</span> (<span class="kw">var</span> stock <span class="kw">in</span> gainers.Data?.Items.Take(<span class="str">5</span>) ?? Enumerable.Empty&lt;KiwoomRankingInfoGetChangeRateTopItem&gt;())
+    {
+        Console.<span class="fn">WriteLine</span>($<span class="str">"{stock.StockName}: {stock.ChangeRate:F2}% ({stock.CurrentPrice})"</span>);
+    }
+}
+
+<span class="cm">// 거래량 상위 종목 가져오기</span>
+<span class="kw">var</span> activeStocks = <span class="kw">await</span> client.RankingInfo.<span class="fn">GetTodayVolumeTopsAsync</span>(
+    marketType: KiwoomRankingInfoMarketType.All,
+    sortType: KiwoomRankingInfoVolumeSortType.Volume,
+    stockCondition: KiwoomRankingInfoStockCondition.All,
+    creditCondition: KiwoomRankingInfoCreditCondition.All,
+    minVolume: <span class="str">100</span>,
+    priceCondition: KiwoomRankingInfoPriceCondition2.All,
+    minTransactionAmount: <span class="str">1000</span>,
+    marketOpenType: KiwoomRankingInfoMarketOpenType.All,
+    stockExchangeType: KiwoomRankingInfoStockExchangeType.Unified
+);
+
+<span class="kw">if</span> (activeStocks.IsSuccess)
+{
+    Console.<span class="fn">WriteLine</span>(<span class="str">"거래량 상위 종목:"</span>);
+    <span class="kw">foreach</span> (<span class="kw">var</span> stock <span class="kw">in</span> activeStocks.Data?.Items.Take(<span class="str">5</span>) ?? Enumerable.Empty&lt;KiwoomRankingInfoGetTodayVolumeTopItem&gt;())
+    {
+        Console.<span class="fn">WriteLine</span>($<span class="str">"{stock.StockName}: {stock.Volume:N0} 주"</span>);
+    }
+}</code></div>
+    </div>
+
+    <!-- ============ Trading Operations ============ -->
+    <div class="section" id="trading-operations">
+        <div class="section-header">
+            <h2>Trading Operations</h2>
+            <span class="tag tag-trading">Trading</span>
+        </div>
+
+        <div class="info-box warn">
+            <strong>Important:</strong> 거래 작업은 실제 API 키가 필요하며 주의해서 사용해야 합니다. 테스트를 위해 모의투자 모드로 시작하세요.
+        </div>
+
+        <h3>Placing Orders</h3>
+        <div class="code-block"><code><span class="kw">using</span> KiwoomRestApi.Net.Enums.Order;
+
+<span class="cm">// 매수 주문 예제 (시장가)</span>
+<span class="kw">var</span> buyOrder = <span class="kw">await</span> client.Order.<span class="fn">PlaceOrderAsync</span>(
+    KiwoomOrderType.Buy,
+    KiwoomOrderDomesticStockExchangeType.Krx,
+    stockCode: <span class="str">"005930"</span>,
+    orderQuantity: <span class="str">10</span>,
+    KiwoomOrderTransactionType.Market
+);
+
+<span class="kw">if</span> (buyOrder.IsSuccess)
+{
+    Console.<span class="fn">WriteLine</span>($<span class="str">"주문 성공. 주문번호: {buyOrder.Data?.OrderId}"</span>);
+}
+
+<span class="cm">// 지정가 주문 예제</span>
+<span class="kw">var</span> limitOrder = <span class="kw">await</span> client.Order.<span class="fn">PlaceOrderAsync</span>(
+    KiwoomOrderType.Buy,
+    KiwoomOrderDomesticStockExchangeType.Krx,
+    stockCode: <span class="str">"005930"</span>,
+    orderQuantity: <span class="str">10</span>,
+    KiwoomOrderTransactionType.Limit,
+    orderPrice: <span class="str">75000</span>  <span class="cm">// 지정가</span>
+);</code></div>
+
+        <h3>Order Management</h3>
+        <div class="code-block"><code><span class="cm">// 미체결 주문 가져오기</span>
+<span class="kw">var</span> unfilledOrders = <span class="kw">await</span> client.Account.<span class="fn">GetUnfilledOrdersAsync</span>(
+    KiwoomAccountQueryType.All,
+    KiwoomAccountTransactionType.All,
+    KiwoomAccountStockExchangeType.Unified
+);
+
+<span class="kw">if</span> (unfilledOrders.IsSuccess)
+{
+    <span class="kw">foreach</span> (<span class="kw">var</span> order <span class="kw">in</span> unfilledOrders.Data?.Items)
+    {
+        Console.<span class="fn">WriteLine</span>($<span class="str">"주문: {order.OrderId} - {order.StockName}"</span>);
+        Console.<span class="fn">WriteLine</span>($<span class="str">"유형: {order.TaskType}, 수량: {order.OrderQuantity}"</span>);
+    }
+}
+
+<span class="cm">// 주문 취소</span>
+<span class="kw">var</span> cancelResult = <span class="kw">await</span> client.Order.<span class="fn">CancelOrderAsync</span>(
+    KiwoomOrderDomesticStockExchangeType.Krx,
+    originalOrderId: <span class="str">"YOUR_ORDER_NUMBER"</span>,
+    stockCode: <span class="str">"005930"</span>,
+    cancelQuantity: <span class="str">5</span>
+);
+
+<span class="cm">// 주문 수정</span>
+<span class="kw">var</span> modifyResult = <span class="kw">await</span> client.Order.<span class="fn">ModifyOrderAsync</span>(
+    KiwoomOrderDomesticStockExchangeType.Krx,
+    originalOrderId: <span class="str">"YOUR_ORDER_NUMBER"</span>,
+    stockCode: <span class="str">"005930"</span>,
+    modifyQuantity: <span class="str">15</span>,
+    modifyPrice: <span class="str">76000</span>
+);</code></div>
+    </div>
+
+    <!-- ============ Chart Data ============ -->
+    <div class="section" id="chart-data">
+        <div class="section-header">
+            <h2>Chart Data</h2>
+            <span class="tag tag-data">Data</span>
+        </div>
+
+        <h3>Basic Charts</h3>
+        <p class="desc">다양한 주기의 차트 데이터를 조회할 수 있습니다:</p>
+        <div class="code-block"><code><span class="kw">using</span> KiwoomRestApi.Net.Enums.Chart;
+
+<span class="kw">var</span> stockCode = <span class="str">"005930"</span>;
+<span class="kw">var</span> date = <span class="kw">new</span> DateTime(<span class="str">2026</span>, <span class="str">3</span>, <span class="str">1</span>);
+
+<span class="cm">// 일봉 차트</span>
+<span class="kw">var</span> daily = <span class="kw">await</span> client.Chart.<span class="fn">GetDailyChartsAsync</span>(stockCode, date, <span class="kw">false</span>);
+
+<span class="cm">// 주봉 차트</span>
+<span class="kw">var</span> weekly = <span class="kw">await</span> client.Chart.<span class="fn">GetWeeklyChartsAsync</span>(stockCode, date, <span class="kw">false</span>);
+
+<span class="cm">// 월봉 차트</span>
+<span class="kw">var</span> monthly = <span class="kw">await</span> client.Chart.<span class="fn">GetMonthlyChartsAsync</span>(stockCode, date, <span class="kw">false</span>);
+
+<span class="cm">// 분봉 차트 (15분)</span>
+<span class="kw">var</span> minute = <span class="kw">await</span> client.Chart.<span class="fn">GetMinuteChartsAsync</span>(stockCode, <span class="str">15</span>, date, <span class="kw">false</span>);
+
+<span class="cm">// 틱 차트 (30틱)</span>
+<span class="kw">var</span> tick = <span class="kw">await</span> client.Chart.<span class="fn">GetTickChartsAsync</span>(stockCode, <span class="str">30</span>, <span class="kw">false</span>);</code></div>
+
+        <h3>Range Charts</h3>
+        <p class="desc">특정 기간의 차트 데이터를 조회할 수도 있습니다:</p>
+        <div class="code-block"><code><span class="kw">var</span> startDate = <span class="kw">new</span> DateTime(<span class="str">2026</span>, <span class="str">1</span>, <span class="str">1</span>);
+<span class="kw">var</span> endDate = <span class="kw">new</span> DateTime(<span class="str">2026</span>, <span class="str">3</span>, <span class="str">6</span>);
+
+<span class="cm">// 기간별 일봉 차트</span>
+<span class="kw">var</span> dailyRange = <span class="kw">await</span> client.Chart.<span class="fn">GetDailyChartsByRangeAsync</span>(stockCode, startDate, endDate, <span class="kw">false</span>);
+
+<span class="cm">// 기간별 분봉 차트</span>
+<span class="kw">var</span> minuteRange = <span class="kw">await</span> client.Chart.<span class="fn">GetMinuteChartsByRangeAsync</span>(stockCode, <span class="str">15</span>, startDate, endDate, <span class="kw">false</span>);</code></div>
+
+        <h3>Industry Charts</h3>
+        <div class="code-block"><code><span class="cm">// 업종 일봉 차트</span>
+<span class="kw">var</span> industryDaily = <span class="kw">await</span> client.Chart.<span class="fn">GetIndustryDailyChartsAsync</span>(
+    KiwoomChartIndustryCode.Kospi200, date);
+
+<span class="cm">// 업종 분봉 차트 (15분)</span>
+<span class="kw">var</span> industryMinute = <span class="kw">await</span> client.Chart.<span class="fn">GetIndustryMinuteChartsAsync</span>(
+    KiwoomChartIndustryCode.Kospi200, <span class="str">15</span>, date);</code></div>
+
+        <h3>Gold Spot Charts</h3>
+        <div class="code-block"><code><span class="kw">using</span> KiwoomRestApi.Net.Enums.Chart;
+
+<span class="cm">// 금현물 틱 차트</span>
+<span class="kw">var</span> goldTick = <span class="kw">await</span> client.Chart.<span class="fn">GetGoldSpotTickChartsAsync</span>(
+    KiwoomGoldSpotStockCode.Gold_1kg, <span class="str">10</span>, <span class="kw">true</span>);
+
+<span class="cm">// 금현물 일봉 차트</span>
+<span class="kw">var</span> goldDaily = <span class="kw">await</span> client.Chart.<span class="fn">GetGoldSpotDailyChartsAsync</span>(
+    KiwoomGoldSpotStockCode.Gold_1kg, date, <span class="kw">true</span>);</code></div>
+    </div>
+
+    <!-- ============ Real-time Data ============ -->
+    <div class="section" id="realtime-data">
+        <div class="section-header">
+            <h2>Real-time Data</h2>
+            <span class="tag tag-realtime">WebSocket</span>
+        </div>
+
+        <h3>Setting up WebSocket Client</h3>
+        <div class="code-block"><code><span class="kw">using</span> KiwoomRestApi.Net.Enums.WebSocket;
+
+<span class="cm">// 소켓 클라이언트 생성</span>
+<span class="kw">var</span> socketClient = KiwoomSocketClient.<span class="fn">Create</span>(client.Token, isMock: <span class="kw">true</span>);
+
+<span class="cm">// 실시간 주식 체결 데이터 구독</span>
+<span class="kw">await</span> socketClient.WebSocket.<span class="fn">SubscribeAsync</span>(
+    serviceNames: [KiwoomWebSocketServiceName.StockTrade],
+    parameters: [<span class="str">"005930"</span>, <span class="str">"000660"</span>, <span class="str">"035420"</span>],
+    groupId: <span class="str">"1"</span>
+);</code></div>
+
+        <h3>Handling Real-time Events</h3>
+        <div class="code-block"><code><span class="cm">// 주식 체결 이벤트</span>
+socketClient.OnRealtimeStockTradeReceived += (realtimeData) =>
+{
+    <span class="kw">foreach</span> (<span class="kw">var</span> data <span class="kw">in</span> realtimeData)
+    {
+        Console.<span class="fn">WriteLine</span>($<span class="str">"[{data.Item}] {data.Values.CurrentPrice} "</span> +
+                         $<span class="str">"({data.Values.ChangeRate:F2}%) "</span> +
+                         $<span class="str">"거래량: {data.Values.AccumulatedVolume:N0}"</span>);
+    }
+};
+
+<span class="cm">// 주문 체결 이벤트</span>
+socketClient.OnRealtimeOrderTradeReceived += (orderData) =>
+{
+    <span class="kw">foreach</span> (<span class="kw">var</span> order <span class="kw">in</span> orderData)
+    {
+        Console.<span class="fn">WriteLine</span>($<span class="str">"주문 업데이트: {order.Values.OrderId} - {order.Values.OrderStatus}"</span>);
+    }
+};
+
+<span class="cm">// 잔고 이벤트</span>
+socketClient.OnRealtimeBalanceReceived += (balanceData) =>
+{
+    <span class="kw">foreach</span> (<span class="kw">var</span> balance <span class="kw">in</span> balanceData)
+    {
+        Console.<span class="fn">WriteLine</span>($<span class="str">"잔고 업데이트: {balance.Values.StockName}"</span>);
+        Console.<span class="fn">WriteLine</span>($<span class="str">"보유 수량: {balance.Values.HoldingQuantity}"</span>);
+    }
+};</code></div>
+
+        <h3>Available Services</h3>
+        <div class="table-wrap"><table>
+            <thead><tr><th>Service</th><th>Enum Value</th><th>Description</th></tr></thead>
+            <tbody>
+                <tr><td>주식 체결</td><td><code>StockTrade</code></td><td>실시간 주식 체결 데이터</td></tr>
+                <tr><td>주식 호가</td><td><code>OrderBook</code></td><td>실시간 호가 데이터</td></tr>
+                <tr><td>잔고</td><td><code>Balance</code></td><td>실시간 잔고 변동</td></tr>
+                <tr><td>주문 체결</td><td><code>OrderTrade</code></td><td>실시간 주문 체결</td></tr>
+                <tr><td>VI 발동</td><td><code>ViEvent</code></td><td>VI(변동성 완화장치) 발동</td></tr>
+                <tr><td>ETF NAV</td><td><code>EtfNav</code></td><td>ETF NAV 데이터</td></tr>
+            </tbody>
+        </table></div>
+    </div>
+
+    <!-- ============ Advanced Features ============ -->
+    <div class="section" id="advanced-features">
+        <div class="section-header">
+            <h2>Advanced Features</h2>
+            <span class="tag tag-advanced">Advanced</span>
+        </div>
+
+        <h3>Pagination</h3>
+        <p class="desc">대량의 데이터를 조회할 때 페이지네이션을 사용할 수 있습니다:</p>
+        <div class="code-block"><code><span class="cm">// 첫 페이지 조회</span>
+<span class="kw">var</span> firstPage = <span class="kw">await</span> client.Chart.<span class="fn">GetTickChartsAsync</span>(<span class="str">"005930"</span>, <span class="str">1</span>, <span class="kw">false</span>);
+
+<span class="cm">// 다음 페이지가 있으면</span>
+<span class="kw">if</span> (firstPage.ContYn)
+{
+    client.ContYn = <span class="kw">true</span>;
+    client.NextKey = firstPage.NextKey;
+
+    <span class="kw">var</span> secondPage = <span class="kw">await</span> client.Chart.<span class="fn">GetTickChartsAsync</span>(<span class="str">""</span>, <span class="str">1</span>, <span class="kw">false</span>);
+
+    <span class="cm">// 초기화</span>
+    client.ContYn = <span class="kw">false</span>;
+    client.NextKey = <span class="str">""</span>;
+}</code></div>
+
+        <h3>Pagination Loop</h3>
+        <p class="desc">모든 페이지를 순회하는 방법입니다:</p>
+        <div class="code-block"><code><span class="cm">// 모든 페이지를 순회하는 루프</span>
+<span class="kw">var</span> response = <span class="kw">await</span> client.Chart.<span class="fn">GetTickChartsAsync</span>(<span class="str">"005930"</span>, <span class="str">1</span>, <span class="kw">false</span>);
+
+<span class="kw">while</span> (response.IsSuccess)
+{
+    <span class="kw">foreach</span> (<span class="kw">var</span> item <span class="kw">in</span> response.Data?.Items ?? Enumerable.Empty&lt;KiwoomChartGetTickChartItem&gt;())
+    {
+        Console.<span class="fn">WriteLine</span>($<span class="str">"{item.CurrentPrice}"</span>);
+    }
+
+    <span class="kw">if</span> (!response.ContYn) <span class="kw">break</span>;
+
+    client.ContYn = <span class="kw">true</span>;
+    client.NextKey = response.NextKey;
+    response = <span class="kw">await</span> client.Chart.<span class="fn">GetTickChartsAsync</span>(<span class="str">""</span>, <span class="str">1</span>, <span class="kw">false</span>);
+}
+
+client.ContYn = <span class="kw">false</span>;
+client.NextKey = <span class="str">""</span>;</code></div>
+
+        <h3>Gold Spot Trading</h3>
+        <div class="code-block"><code><span class="kw">using</span> KiwoomRestApi.Net.Enums.Order;
+<span class="kw">using</span> KiwoomRestApi.Net.Enums.Chart;
+
+<span class="cm">// 금현물 매수 주문</span>
+<span class="kw">var</span> goldBuy = <span class="kw">await</span> client.Order.<span class="fn">GoldSpotPlaceOrderAsync</span>(
+    KiwoomOrderType.Buy,
+    KiwoomGoldSpotStockCode.MiniGold_100g,
+    orderQuantity: <span class="str">1</span>,
+    KiwoomOrderGoldSpotTransactionType.Normal
+);
+
+<span class="cm">// 금현물 잔고 조회</span>
+<span class="kw">var</span> goldBalances = <span class="kw">await</span> client.Account.<span class="fn">GetGoldEvaluationBalancesAsync</span>();
+
+<span class="cm">// 금현물 예수금 조회</span>
+<span class="kw">var</span> goldDeposit = <span class="kw">await</span> client.Account.<span class="fn">GetGoldDepositAsync</span>(
+    KiwoomAccountEvaluationBalanceQueryType.Aggregate,
+    KiwoomAccountDomesticStockExchangeType.All
+);</code></div>
+
+        <h3>Condition Search</h3>
+        <div class="code-block"><code><span class="cm">// 조건검색 목록 조회</span>
+<span class="kw">await</span> socketClient.WebSocket.<span class="fn">GetConditionSearchListAsync</span>();
+
+<span class="cm">// 조건검색 실시간 구독</span>
+<span class="kw">await</span> socketClient.WebSocket.<span class="fn">GetConditionSearchRequestRealtimeAsync</span>(1);</code></div>
+    </div>
+
+    <!-- ============ Error Handling ============ -->
+    <div class="section" id="error-handling">
+        <div class="section-header">
+            <h2>Error Handling</h2>
+            <span class="tag tag-advanced">Advanced</span>
+        </div>
+
+        <h3>Handling API Errors</h3>
+        <div class="code-block"><code><span class="kw">try</span>
+{
+    <span class="kw">var</span> result = <span class="kw">await</span> client.StockInfo.<span class="fn">GetStockInfoAsync</span>(
+        stockCode: <span class="str">"005930"</span>,
+        date: DateTime.Today,
+        marginLoanType: KiwoomStockInfoMarginLoanType.Loan
+    );
+
+    <span class="kw">if</span> (!result.IsSuccess)
+    {
+        Console.<span class="fn">WriteLine</span>($<span class="str">"API Error [{result.ApiId}]: {result.ReturnMessage}"</span>);
+        <span class="kw">return</span>;
+    }
+
+    <span class="cm">// 성공 처리</span>
+    Console.<span class="fn">WriteLine</span>($<span class="str">"Stock: {result.Data?.StockName}"</span>);
+}
+<span class="kw">catch</span> (HttpRequestException ex)
+{
+    Console.<span class="fn">WriteLine</span>($<span class="str">"HTTP Error: {ex.Message}"</span>);
+}
+<span class="kw">catch</span> (TaskCanceledException)
+{
+    Console.<span class="fn">WriteLine</span>(<span class="str">"Request timed out."</span>);
+}
+<span class="kw">catch</span> (Exception ex)
+{
+    Console.<span class="fn">WriteLine</span>($<span class="str">"Unexpected error: {ex.Message}"</span>);
+}</code></div>
+
+        <div class="info-box">
+            <strong>Note:</strong> API 오류는 <code style="font-family:'SF Mono','Cascadia Code','Consolas',monospace; font-size:12px; background:var(--code-bg); padding:2px 6px; border-radius:3px;">IsSuccess == false</code>로 반환됩니다. 네트워크 오류 등은 예외로 발생합니다.
+        </div>
+    </div>
+
+    <!-- ============ Best Practices ============ -->
+    <div class="section" id="best-practices">
+        <div class="section-header">
+            <h2>Best Practices</h2>
+            <span class="tag tag-setup">Setup</span>
+        </div>
+
+        <h3>Connection Management</h3>
+        <div class="code-block"><code><span class="cm">// IDisposable을 활용한 적절한 해제</span>
+<span class="kw">using</span> <span class="kw">var</span> client = KiwoomRestApiClient.<span class="fn">Create</span>(appKey, secretKey, isMock);
+<span class="kw">using</span> <span class="kw">var</span> socketClient = KiwoomSocketClient.<span class="fn">Create</span>(client.Token, isMock);
+
+<span class="cm">// API 호출...</span></code></div>
+
+        <h3>Rate Limiting</h3>
+        <p class="desc">API 호출 시 속도 제한을 구현하는 것이 좋습니다:</p>
+        <div class="code-block"><code><span class="cm">// PagingDelay 속성을 활용한 페이지네이션 지연</span>
+client.PagingDelay = <span class="str">1000</span>; <span class="cm">// 페이지 간 1초 지연 (ms)</span>
+
+<span class="cm">// 또는 SemaphoreSlim을 사용한 수동 제한</span>
+<span class="kw">private readonly</span> SemaphoreSlim _semaphore = <span class="kw">new</span>(<span class="str">1</span>, <span class="str">1</span>);
+
+<span class="kw">public async Task</span>&lt;T&gt; <span class="fn">ExecuteWithLimitAsync</span>&lt;T&gt;(Func&lt;Task&lt;T&gt;&gt; apiCall)
+{
+    <span class="kw">await</span> _semaphore.<span class="fn">WaitAsync</span>();
+    <span class="kw">try</span>
+    {
+        <span class="kw">var</span> result = <span class="kw">await</span> <span class="fn">apiCall</span>();
+        <span class="kw">await</span> Task.<span class="fn">Delay</span>(TimeSpan.FromMilliseconds(<span class="str">100</span>));
+        <span class="kw">return</span> result;
+    }
+    <span class="kw">finally</span>
+    {
+        _semaphore.<span class="fn">Release</span>();
+    }
+}</code></div>
+
+        <div class="info-box tip">
+            <strong>Pro Tip:</strong> 개발 및 테스트 시에는 항상 모의투자 모드로 시작하세요. 프로덕션 준비가 되었을 때만 실제 API 키로 전환하세요.
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2025 KiwoomRestApi.Net Project. MIT Licensed.
+    </div>
+
+</main>
+
+<script>
+    // Smooth scrolling for TOC links
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.toc-sidebar a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    const offsetTop = targetSection.offsetTop - 80;
+                    window.scrollTo({ top: offsetTop, behavior: 'smooth' });
                 }
             });
+        });
 
-            // 언어 토글 버튼 텍스트 업데이트
-            document.getElementById('current-lang').textContent = lang === 'ko' ? '한국어' : 'English';
+        // Active link tracking on scroll
+        const sections = document.querySelectorAll('.section');
+        const tocLinks = document.querySelectorAll('.toc-sidebar a');
 
-            // HTML lang 속성 업데이트
-            document.documentElement.lang = lang === 'ko' ? 'ko' : 'en';
-        }
-
-        // 부드러운 스크롤링
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.toc-nav .nav-link').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetSection = document.querySelector(targetId);
-
-                    if (targetSection) {
-                        const offsetTop = targetSection.offsetTop - 80;
-                        window.scrollTo({
-                            top: offsetTop,
-                            behavior: 'smooth'
-                        });
-
-                        // 활성 링크 업데이트
-                        document.querySelectorAll('.toc-nav .nav-link').forEach(link => {
-                            link.classList.remove('active');
-                        });
-                        this.classList.add('active');
-                    }
-                });
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
             });
-
-            // 스크롤 위치에 따른 활성 링크 업데이트
-            window.addEventListener('scroll', () => {
-                const sections = document.querySelectorAll('.tutorial-section');
-                const navLinks = document.querySelectorAll('.toc-nav .nav-link');
-
-                let current = '';
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop - 100;
-                    const sectionHeight = section.clientHeight;
-
-                    if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
-                        current = section.getAttribute('id');
-                    }
-                });
-
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === '#' + current) {
-                        link.classList.add('active');
-                    }
-                });
+            tocLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
             });
         });
-    </script>
+    });
+</script>
+
 </body>
 </html>

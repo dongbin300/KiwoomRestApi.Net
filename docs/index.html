@@ -4,345 +4,455 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KiwoomRestApi.Net - Documentation</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
     <style>
+        :root {
+            --bg: #ffffff;
+            --surface: #f8f9fa;
+            --border: #e2e6ea;
+            --text: #1a1a2e;
+            --text-secondary: #5a6070;
+            --accent: #4361ee;
+            --accent-light: #eef1ff;
+            --green: #2d9e6a;
+            --orange: #e07c24;
+            --code-bg: #f1f3f5;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            padding-top: 56px;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg);
             line-height: 1.6;
-            color: #4b5563;
         }
 
-        /* Language Toggle */
-        .language-toggle {
+        /* Top Navigation */
+        .topnav {
             position: fixed;
-            top: 80px;
-            right: 20px;
-            z-index: 1000;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50px;
-            padding: 8px 16px;
-            font-size: 0.9rem;
-            color: #f8fafc;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+            top: 0; left: 0; right: 0;
+            height: 52px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            padding: 0 32px;
+            z-index: 100;
         }
-
-        .language-toggle:hover {
-            background: linear-gradient(135deg, #fbbf24, #f59e0b);
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
+        .topnav-brand {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+            margin-right: 32px;
         }
-
-        .language-toggle i {
-            margin-right: 6px;
-        }
-
-        /* 상단 내비게이션 */
-        .navbar {
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            color: #f8fafc;
-        }
-
-        .navbar-brand {
-            font-weight: 600;
-            font-size: 1.2rem;
-            color: #f8fafc;
-        }
-
-        .navbar-nav .nav-link {
-            color: #f8fafc !important;
+        .topnav a {
+            font-size: 13px;
             font-weight: 500;
-            transition: all 0.3s ease;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 4px;
+            transition: all 0.15s;
         }
+        .topnav a:hover { color: var(--accent); background: var(--accent-light); }
+        .topnav a.active { color: var(--accent); font-weight: 600; }
 
-        .navbar-nav .nav-link:hover {
-            color: #fbbf24 !important;
-            transform: translateY(-1px);
-        }
-
-        .navbar-nav .nav-link.active {
-            color: #fbbf24 !important;
-            font-weight: 600;
-        }
-
+        /* Hero */
         .hero {
-            background: linear-gradient(to right, #6366f1, #8b5cf6);
-            padding: 3rem 0;
+            margin-top: 52px;
+            padding: 80px 32px 60px;
             text-align: center;
-            color: #ffffff;
+            background: linear-gradient(135deg, #eef1ff 0%, #f0f9ff 100%);
+            border-bottom: 1px solid var(--border);
         }
         .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #ffffff;
+            font-size: 40px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--text);
+            margin-bottom: 16px;
         }
+        .hero h1 span { color: var(--accent); }
         .hero p {
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            color: #f1f5f9;
+            font-size: 17px;
+            color: var(--text-secondary);
+            max-width: 560px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
         }
-        .section {
-            padding: 4rem 0;
+        .hero-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background: #3651d4;
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+        }
+        .btn-outline {
+            background: var(--bg);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+        .btn-outline:hover {
+            background: var(--accent-light);
+        }
+
+        /* Features */
+        .features {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 32px;
+        }
+        .features-title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 48px;
+            letter-spacing: -0.3px;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        .feature-card {
+            padding: 28px 24px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--bg);
+            transition: all 0.2s;
+        }
+        .feature-card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            transform: translateY(-2px);
         }
         .feature-icon {
-            font-size: 3rem;
-            color: var(--bs-primary);
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 16px;
         }
-        .code-block {
-            background-color: #f8fafc;
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-            margin: 1rem 0;
-            overflow-x: auto;
-            font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        .icon-blue { background: #eef1ff; color: #4361ee; }
+        .icon-green { background: #eef8f0; color: #2d9e6a; }
+        .icon-orange { background: #fff4e6; color: #e07c24; }
+        .icon-purple { background: #f3e8ff; color: #7c3aed; }
+        .icon-teal { background: #f0fdfa; color: #0d9488; }
+        .icon-red { background: #fef2f2; color: #dc2626; }
+        .feature-card h3 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 8px;
         }
-
-        .alert-tip {
-            background-color: rgba(13, 202, 240, 0.1);
-            border: 1px solid rgba(13, 202, 240, 0.3);
-            color: #0dcaf0;
-            border-radius: 0.5rem;
-            padding: 1rem;
-            margin: 1rem 0;
-        }
-        .alert-warning {
-            background-color: rgba(255, 193, 7, 0.1);
-            border: 1px solid rgba(255, 193, 7, 0.3);
-            color: #ffc107;
-            border-radius: 0.5rem;
-            padding: 1rem;
-            margin: 1rem 0;
-        }
-
-        /* 섹션 제목 색상 */
-        h2 {
-            color: #3b82f6;
-            border-bottom: 2px solid #3b82f6;
-            padding-bottom: 0.5rem;
-            margin-bottom: 2rem;
-            font-weight: 600;
-        }
-
-        h3 {
-            color: #60a5fa;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        p {
-            color: #222;
+        .feature-card p {
+            font-size: 13px;
+            color: var(--text-secondary);
             line-height: 1.6;
         }
 
-              .btn-primary {
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
-            font-weight: 500;
-            border: none;
-            transition: all 0.3s ease;
+        /* Section */
+        .section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 32px 60px;
+        }
+        .section h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.3px;
+        }
+        .section .subtitle {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 28px;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+        /* Code block */
+        .code-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text);
+            border-radius: 8px;
+            padding: 20px 24px;
+            overflow-x: auto;
+            white-space: pre;
+        }
+        .code-block code {
+            font-family: 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+        .code-block .kw { color: #3651d4; font-weight: 600; }
+        .code-block .type { color: #2563eb; }
+        .code-block .str { color: #ea580c; }
+        .code-block .cm { color: #6a9955; }
+        .code-block .fn { color: #3651d4; font-weight: 600; }
+        .code-block .param { color: #ea580c; }
+
+        .install-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px 20px;
+            font-family: 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+            font-size: 13px;
+            color: var(--text);
+            margin-bottom: 20px;
         }
 
-        .btn-outline-light {
-            color: white;
-            border-color: rgba(255, 255, 255, 0.8);
-            transition: all 0.3s ease;
+        /* Info box */
+        .info-box {
+            background: var(--accent-light);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 6px 6px 0;
+            padding: 14px 16px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: var(--text);
         }
 
-        .btn-outline-light:hover {
-            color: #10b981;
-            background-color: white;
-            border-color: white;
-            transform: translateY(-2px);
+        /* Quick Links */
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .quick-link {
+            display: block;
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.2s;
+        }
+        .quick-link:hover {
+            border-color: var(--accent);
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.1);
+        }
+        .quick-link h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--accent);
+        }
+        .quick-link p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* API Coverage */
+        .coverage-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .coverage-item {
+            text-align: center;
+            padding: 16px 8px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--bg);
+            transition: all 0.2s;
+        }
+        .coverage-item:hover {
+            border-color: var(--accent);
+            background: var(--accent-light);
+        }
+        .coverage-item .count {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .coverage-item .label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-top: 4px;
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 24px 32px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .features-grid { grid-template-columns: 1fr; }
+            .coverage-grid { grid-template-columns: repeat(2, 1fr); }
+            .quick-links { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 28px; }
+            .hero { padding: 48px 20px 40px; }
         }
     </style>
 </head>
-<body style="background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%); min-height: 100vh;">
-    <!-- Language Toggle Button -->
-    <button class="language-toggle" onclick="toggleLanguage()">
-        <i class="bi bi-translate"></i>
-        <span id="current-lang">English</span>
-    </button>
+<body>
 
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <i class="bi bi-bar-chart-line-fill"></i> KiwoomRestApi.Net
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="api-reference.html">API Reference</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="tutorial.html">Tutorial</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="FAQ.html">FAQ</a>
-                    </li>
-                </ul>
-            </div>
+<!-- Top Navigation -->
+<nav class="topnav">
+    <a class="topnav-brand" href="index.html">KiwoomRestApi.Net</a>
+    <a href="index.html" class="active">Home</a>
+    <a href="api-reference.html">API Reference</a>
+    <a href="tutorial.html">Tutorial</a>
+    <a href="FAQ.html">FAQ</a>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+    <h1>Kiwoom<span>RestApi</span>.Net</h1>
+    <p>키움 REST API를 위한 현대적이고 직관적인 완전 비동기 .NET 래퍼입니다.</p>
+    <div class="hero-buttons">
+        <a href="#getting-started" class="btn btn-primary">Getting Started</a>
+        <a href="api-reference.html" class="btn btn-outline">API Reference</a>
+        <a href="tutorial.html" class="btn btn-outline">Tutorial</a>
+    </div>
+</div>
+
+<!-- Features -->
+<div class="features">
+    <div class="features-title">Why KiwoomRestApi.Net?</div>
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon icon-blue">&#9889;</div>
+            <h3>Fully Asynchronous</h3>
+            <p>최신 C# async/await 패턴을 활용하여 블로킹 없는 고성능 API 호출을 구현합니다.</p>
         </div>
-    </nav>
-
-    <header class="hero">
-        <div class="container">
-            <h1 data-en="KiwoomRestApi.Net" data-ko="KiwoomRestApi.Net">KiwoomRestApi.Net</h1>
-            <p class="lead" data-en="The modern, intuitive, and fully asynchronous .NET wrapper for the Kiwoom REST API." data-ko="키움 REST API를 위한 현대적이고 직관적인 완전 비동기 .NET 래퍼입니다.">The modern, intuitive, and fully asynchronous .NET wrapper for the Kiwoom REST API.</p>
-            <div>
-                <a href="#getting-started" class="btn btn-primary btn-lg" data-en="Get Started" data-ko="시작하기">Get Started</a>
-                <a href="api-reference.html" class="btn btn-outline-light btn-lg" data-en="View API Reference" data-ko="API 레퍼런스 보기">View API Reference</a>
-            </div>
+        <div class="feature-card">
+            <div class="feature-icon icon-green">&#128230;</div>
+            <h3>Comprehensive Coverage</h3>
+            <p>계정 정보, 차트, 주문, WebSocket 실시간 데이터 등 190개 이상의 API를 지원합니다.</p>
         </div>
-    </header>
-
-    <section class="section" style="background: rgba(248, 250, 252, 0.8);">
-        <div class="container">
-            <h2 class="text-center mb-5" data-en="Why KiwoomRestApi.Net?" data-ko="왜 KiwoomRestApi.Net인가요?">Why KiwoomRestApi.Net?</h2>
-            <div class="row g-4">
-                <div class="col-md-4 text-center">
-                    <div class="feature-icon mb-3">
-                        <i class="bi bi-lightning-charge-fill"></i>
-                    </div>
-                    <h4 data-en="Fully Asynchronous" data-ko="완전 비동기">Fully Asynchronous</h4>
-                    <p data-en="Leverage modern C# async/await patterns for non-blocking, high-performance API calls." data-ko="최신 C# async/await 패턴을 활용하여 블로킹 없는 고성능 API 호출을 구현합니다.">Leverage modern C# async/await patterns for non-blocking, high-performance API calls.</p>
-                </div>
-                <div class="col-md-4 text-center">
-                    <div class="feature-icon mb-3">
-                        <i class="bi bi-box-seam-fill"></i>
-                    </div>
-                    <h4 data-en="Comprehensive Coverage" data-ko="포괄적인 기능 지원">Comprehensive Coverage</h4>
-                    <p data-en="Extensive support for a wide range of APIs, including account info, charting, orders, and real-time data via WebSockets." data-ko="계정 정보, 차트, 주문, WebSocket을 통한 실시간 데이터 등 광범위한 API를 지원합니다.">Extensive support for a wide range of APIs, including account info, charting, orders, and real-time data via WebSockets.</p>
-                </div>
-                <div class="col-md-4 text-center">
-                    <div class="feature-icon mb-3">
-                        <i class="bi bi-code-slash"></i>
-                    </div>
-                    <h4 data-en="Intuitive & Type-Safe" data-ko="직관적이고 타입 안전성">Intuitive & Type-Safe</h4>
-                    <p data-en="Designed with a fluent API and strong typing to minimize errors and improve developer experience." data-ko="유창한 API와 강력한 타입 지정으로 오류를 최소화하고 개발자 경험을 향상시킵니다.">Designed with a fluent API and strong typing to minimize errors and improve developer experience.</p>
-                </div>
-            </div>
+        <div class="feature-card">
+            <div class="feature-icon icon-orange">&#128209;</div>
+            <h3>Intuitive & Type-Safe</h3>
+            <p>유창한 API와 강력한 타입 지정으로 오류를 최소화하고 개발자 경험을 향상시킵니다.</p>
         </div>
-    </section>
+        <div class="feature-card">
+            <div class="feature-icon icon-purple">&#128274;</div>
+            <h3>OAuth 2.0 Built-in</h3>
+            <p>접근 토큰 발급 및 폐기를 포함한 OAuth 2.0 인증이 내장되어 있습니다.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon icon-teal">&#128200;</div>
+            <h3>Real-time WebSocket</h3>
+            <p>체결, 호가, 잔고 등 실시간 데이터를 WebSocket으로 수신할 수 있습니다.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon icon-red">&#127760;</div>
+            <h3>Gold Spot Trading</h3>
+            <p>금현물 거래, 잔고 조회, 차트 등 금현물 관련 API를 완벽하게 지원합니다.</p>
+        </div>
+    </div>
+</div>
 
-    <section id="getting-started" class="section">
-        <div class="container">
-            <h2 class="text-center mb-5" data-en="Getting Started" data-ko="시작하기">Getting Started</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <h5 data-en="1. Installation" data-ko="1. 설치">1. Installation</h5>
-                    <p data-en="Install the library via NuGet Package Manager." data-ko="NuGet 패키지 관리자를 통해 라이브러리를 설치하세요.">Install the library via NuGet Package Manager.</p>
-                    <div class="code-block mb-4">
-                        <pre><code class="language-powershell" style="color:#222;">PM> Install-Package KiwoomRestApi.Net</code></pre>
-                    </div>
+<!-- API Coverage -->
+<div class="section">
+    <h2>API Coverage</h2>
+    <p class="subtitle">16개 카테고리에 걸쳐 190개 이상의 API 메서드를 제공합니다.</p>
+    <div class="coverage-grid">
+        <div class="coverage-item"><div class="count">33</div><div class="label">Account</div></div>
+        <div class="coverage-item"><div class="count">21</div><div class="label">Chart</div></div>
+        <div class="coverage-item"><div class="count">31</div><div class="label">StockInfo</div></div>
+        <div class="coverage-item"><div class="count">25</div><div class="label">MarketCondition</div></div>
+        <div class="coverage-item"><div class="count">23</div><div class="label">RankingInfo</div></div>
+        <div class="coverage-item"><div class="count">11</div><div class="label">ELW</div></div>
+        <div class="coverage-item"><div class="count">9</div><div class="label">ETF</div></div>
+        <div class="coverage-item"><div class="count">8</div><div class="label">Order</div></div>
+    </div>
+</div>
 
-                    <h5 data-en="2. Basic Usage" data-ko="2. 기본 사용법">2. Basic Usage</h5>
-                    <p data-en="Initialize the client and start making API calls." data-ko="클라이언트를 초기화하고 API 호출을 시작하세요.">Initialize the client and start making API calls.</p>
-                    <div class="code-block">
-                        <pre><code class="language-csharp" style="color:#222;">
-using KiwoomRestApi.Net.Clients;
-using KiwoomRestApi.Net.Enums.StockInfo;
+<!-- Getting Started -->
+<div class="section" id="getting-started">
+    <h2>Getting Started</h2>
+    <p class="subtitle">몇 분 안에 KiwoomRestApi.Net을 시작할 수 있습니다.</p>
 
-// Initialize the client (replace with your keys)
-var client = await KiwoomRestApiClient.CreateAsync("YOUR_APP_KEY", "YOUR_SECRET_KEY");
+    <h3 style="font-size:15px; font-weight:600; margin-bottom:12px;">1. Installation</h3>
+    <div class="install-block">dotnet add package KiwoomRestApi.Net</div>
 
-// Fetch stock information for Samsung Electronics
-var stockInfo = await client.StockInfo.GetStockInfoAsync(
-    stockCode: "005930",
+    <h3 style="font-size:15px; font-weight:600; margin-bottom:12px;">2. Basic Usage</h3>
+    <div class="code-block"><code><span class="kw">using</span> KiwoomRestApi.Net.Clients;
+<span class="kw">using</span> KiwoomRestApi.Net.Enums.StockInfo;
+
+<span class="cm">// 클라이언트 생성</span>
+<span class="kw">var</span> client = KiwoomRestApiClient.<span class="fn">Create</span>(<span class="str">"YOUR_APP_KEY"</span>, <span class="str">"YOUR_SECRET_KEY"</span>, isMock: <span class="kw">true</span>);
+
+<span class="cm">// 삼성전자 주식 정보 가져오기</span>
+<span class="kw">var</span> stockInfo = <span class="kw">await</span> client.StockInfo.<span class="fn">GetStockInfoAsync</span>(
+    stockCode: <span class="str">"005930"</span>,
     date: DateTime.Today,
     marginLoanType: KiwoomStockInfoMarginLoanType.Loan
 );
 
-if (stockInfo.IsSuccess)
+<span class="kw">if</span> (stockInfo.IsSuccess)
 {
-    Console.WriteLine($"Stock: {stockInfo.Data?.StockName}");
-    Console.WriteLine($"Current Price: {stockInfo.Data?.CurrentPrice:N0} KRW");
+    Console.<span class="fn">WriteLine</span>($<span class="str">"Stock: {stockInfo.Data?.StockName}"</span>);
+    Console.<span class="fn">WriteLine</span>($<span class="str">"Price: {stockInfo.Data?.CurrentPrice:N0} KRW"</span>);
 }
-else
+<span class="kw">else</span>
 {
-    Console.WriteLine($"Error: {stockInfo.ErrorMessage}");
-}
-                        </code></pre>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    Console.<span class="fn">WriteLine</span>($<span class="str">"Error: {stockInfo.ReturnMessage}"</span>);
+}</code></div>
 
-    <footer class="bg-light text-dark text-center py-3" style="background: linear-gradient(135deg, #f8fafc, #e2e8f0);">
-        <div class="container">
-            <p class="mb-0">&copy; 2025 KiwoomRestApi.Net Project. MIT Licensed.</p>
-        </div>
-    </footer>
+    <div class="info-box">
+        <strong>Note:</strong> 개발 및 테스트 시에는 <code style="font-family:'SF Mono','Cascadia Code','Consolas',monospace; font-size:12px; background:var(--code-bg); padding:2px 6px; border-radius:3px;">isMock: true</code>로 설정하여 모의투자 모드를 사용하세요. 프로덕션 준비가 되면 <code style="font-family:'SF Mono','Cascadia Code','Consolas',monospace; font-size:12px; background:var(--code-bg); padding:2px 6px; border-radius:3px;">false</code>로 변경하세요.
+    </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<!-- Quick Links -->
+<div class="section">
+    <h2>Documentation</h2>
+    <p class="subtitle">라이브러리 사용에 필요한 모든 문서를 제공합니다.</p>
+    <div class="quick-links">
+        <a class="quick-link" href="api-reference.html">
+            <h4>API Reference</h4>
+            <p>모든 REST API 메서드, 파라미터, 응답 모델에 대한 상세 레퍼런스입니다.</p>
+        </a>
+        <a class="quick-link" href="tutorial.html">
+            <h4>Tutorial</h4>
+            <p>설치부터 실시간 데이터 처리까지 단계별 가이드입니다.</p>
+        </a>
+        <a class="quick-link" href="FAQ.html">
+            <h4>FAQ</h4>
+            <p>자주 묻는 질문과 문제 해결 가이드입니다.</p>
+        </a>
+        <a class="quick-link" href="https://github.com/dongbin300/KiwoomRestApi.Net">
+            <h4>GitHub</h4>
+            <p>소스 코드, 이슈 트래커, 기여 가이드입니다.</p>
+        </a>
+    </div>
+</div>
 
-    <script>
-        // 다국어 전환 함수
-        let currentLanguage = 'en';
+<!-- Footer -->
+<div class="footer">
+    &copy; 2025 KiwoomRestApi.Net Project. MIT Licensed.
+</div>
 
-        function toggleLanguage() {
-            currentLanguage = currentLanguage === 'ko' ? 'en' : 'ko';
-            updateLanguage(currentLanguage);
-            localStorage.setItem('preferredLanguage', currentLanguage);
-        }
-
-        function updateLanguage(lang) {
-            // 모든 data-ko, data-en 속성을 가진 요소를 찾아 텍스트 업데이트
-            document.querySelectorAll('[data-ko]').forEach(element => {
-                const text = element.getAttribute(`data-${lang}`);
-                if (text) {
-                    element.textContent = text;
-                }
-            });
-
-            // 언어 토글 버튼 텍스트 업데이트
-            document.getElementById('current-lang').textContent = lang === 'ko' ? '한국어' : 'English';
-
-            // HTML lang 속성 업데이트
-            document.documentElement.lang = lang === 'ko' ? 'ko' : 'en';
-        }
-
-        // 페이지 로드 시 저장된 언어 설정 적용
-        document.addEventListener('DOMContentLoaded', function() {
-            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
-            currentLanguage = savedLang;
-            updateLanguage(currentLanguage);
-
-            // 부드러운 스크롤 애니메이션
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>
