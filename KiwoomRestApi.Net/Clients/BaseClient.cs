@@ -14,8 +14,14 @@ namespace KiwoomRestApi.Net.Clients
 {
 	public record HttpResponseWrapper<T>
 	{
-		public T? Body { get; set; }
-		public IDictionary<string, IEnumerable<string>> Headers { get; set; } = new Dictionary<string, IEnumerable<string>>();
+		public T? Body { get; }
+		public IReadOnlyDictionary<string, IEnumerable<string>> Headers { get; }
+
+		public HttpResponseWrapper(T? body, IReadOnlyDictionary<string, IEnumerable<string>> headers)
+		{
+			Body = body;
+			Headers = headers;
+		}
 	}
 
 	public class BaseClient : IClient
@@ -51,14 +57,14 @@ namespace KiwoomRestApi.Net.Clients
 		}
 		#endregion
 
-		public async Task<HttpResponseWrapper<T>> GetAsync<T>(string endpoint, IDictionary<string, string>? headers = null, CancellationToken cancellationToken = default)
+		public async Task<HttpResponseWrapper<T>> GetAsync<T>(string endpoint, IEnumerable<KeyValuePair<string, string>>? headers = null, CancellationToken cancellationToken = default)
 		{
 			using var request = CreateRequest(HttpMethod.Get, endpoint, headers);
 			using var response = await Client.SendAsync(request, cancellationToken).ConfigureAwait(false);
 			return await CreateResponseWrapper<T>(response).ConfigureAwait(false);
 		}
 
-		public async Task<HttpResponseWrapper<T>> PostAsync<T>(string endpoint, IDictionary<string, string>? headers = null, IDictionary<string, string>? body = null, CancellationToken cancellationToken = default)
+		public async Task<HttpResponseWrapper<T>> PostAsync<T>(string endpoint, IEnumerable<KeyValuePair<string, string>>? headers = null, IEnumerable<KeyValuePair<string, string>>? body = null, CancellationToken cancellationToken = default)
 		{
 			using var request = CreateRequest(HttpMethod.Post, endpoint, headers, body);
 
@@ -71,7 +77,7 @@ namespace KiwoomRestApi.Net.Clients
             return await CreateResponseWrapper<T>(response).ConfigureAwait(false);
 		}
 
-		private static HttpRequestMessage CreateRequest(HttpMethod method, string endpoint, IDictionary<string, string>? headers, IDictionary<string, string>? body = null)
+		private static HttpRequestMessage CreateRequest(HttpMethod method, string endpoint, IEnumerable<KeyValuePair<string, string>>? headers, IEnumerable<KeyValuePair<string, string>>? body = null)
 		{
 			var request = new HttpRequestMessage(method, endpoint);
 			AddHeaders(request, headers);
@@ -85,7 +91,7 @@ namespace KiwoomRestApi.Net.Clients
 			return request;
 		}
 
-		private static void AddHeaders(HttpRequestMessage request, IDictionary<string, string>? headers)
+		private static void AddHeaders(HttpRequestMessage request, IEnumerable<KeyValuePair<string, string>>? headers)
 		{
 			if (headers == null) return;
 			foreach (var kvp in headers)
@@ -96,32 +102,34 @@ namespace KiwoomRestApi.Net.Clients
 
 		private static async Task<HttpResponseWrapper<T>> CreateResponseWrapper<T>(HttpResponseMessage response)
 		{
-			var wrapper = new HttpResponseWrapper<T>();
+			var headerDict = new Dictionary<string, IEnumerable<string>>();
+			foreach (var h in response.Headers)
+				headerDict[h.Key] = h.Value;
+			foreach (var h in response.Content.Headers)
+				headerDict[h.Key] = h.Value;
 
-			foreach (var header in response.Headers)
-				wrapper.Headers[header.Key] = header.Value;
-			foreach (var header in response.Content.Headers)
-				wrapper.Headers[header.Key] = header.Value;
+			T? body = default;
 
 			string responseString = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-            if (!string.IsNullOrWhiteSpace(responseString))
+
+			if (!string.IsNullOrWhiteSpace(responseString))
 			{
 				try
 				{
-					wrapper.Body = JsonConvert.DeserializeObject<T>(responseString);
+					body = JsonConvert.DeserializeObject<T>(responseString);
 				}
 				catch
 				{
-					wrapper.Body = default;
+					body = default;
 				}
 			}
 
 #if DEBUG
-            Debug.WriteLine(">>> Response");
-            Debug.WriteLine(wrapper.Body);
+			Debug.WriteLine(">>> Response");
+			Debug.WriteLine(body);
 #endif
 
-            return wrapper;
+			return new HttpResponseWrapper<T>(body, headerDict);
 		}
 	}
 }

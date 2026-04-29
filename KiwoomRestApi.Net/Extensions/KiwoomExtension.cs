@@ -1,6 +1,7 @@
 ﻿using KiwoomRestApi.Net.Objects.Commons;
 
 using System;
+using System.Collections.Concurrent;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
@@ -9,48 +10,40 @@ namespace KiwoomRestApi.Net.Extensions
 {
 	public static class KiwoomExtension
 	{
+		private static readonly ConcurrentDictionary<Enum, string> _enumCache = new();
+
 		public static string ToFormattedString(this object? value)
 		{
-			if (value == null)
+			return value switch
 			{
-				return string.Empty;
-			}
-
-			if (value is DateTime dt)
-			{
-				return dt.ToString("yyyyMMdd");
-			}
-
-			if (value is decimal dec)
-			{
-				return dec.ToString("F0");
-			}
-
-			if (value is bool boolean)
-			{
-				return boolean ? "1" : "0";
-			}
-
-			if (value is Enum e)
-			{
-				return e.ToEnumString();
-			}
-
-			return value.ToString() ?? string.Empty;
+				null => string.Empty,
+				DateTime dt => dt.ToString("yyyyMMdd"),
+				decimal dec => dec.ToString("F0"),
+				bool boolean => boolean ? "1" : "0",
+				Enum e => e.ToEnumString(),
+				_ => value.ToString() ?? string.Empty
+			};
 		}
 
 		public static string ToEnumString(this Enum value)
 		{
-			var memberInfo = value.GetType().GetMember(value.ToString()).FirstOrDefault();
-			if (memberInfo != null)
+			return _enumCache.GetOrAdd(value, (key) =>
 			{
-				var enumMemberAttr = memberInfo.GetCustomAttribute<EnumMemberAttribute>();
-				if (enumMemberAttr != null && !string.IsNullOrEmpty(enumMemberAttr.Value))
+				var type = key.GetType();
+				var name = key.ToString();
+				var memberInfo = type.GetMember(name).FirstOrDefault();
+
+				if (memberInfo != null)
 				{
-					return enumMemberAttr.Value;
+					var attr = memberInfo.GetCustomAttribute<EnumMemberAttribute>();
+					if (attr != null && !string.IsNullOrEmpty(attr.Value))
+					{
+						return attr.Value!;
+					}
 				}
-			}
-			return Convert.ToInt32(value).ToString();
+
+				return Convert.ToInt32(key).ToString();
+			});
 		}
 
 		public static KiwoomRestApiResponse<TTarget> MapResponse<TSource, TTarget>(this KiwoomRestApiResponse<TSource> source, Func<TSource, TTarget> mapper) where TSource : class where TTarget : class
@@ -65,11 +58,9 @@ namespace KiwoomRestApi.Net.Extensions
 				throw new ArgumentNullException(nameof(mapper));
 			}
 
-			TTarget? mappedData = source.Data != null ? mapper(source.Data) : null;
-
 			return new KiwoomRestApiResponse<TTarget>
 			{
-				Data = mappedData,
+				Data = source.Data is { } data ? mapper(data) : null,
 				ReturnMessage = source.ReturnMessage,
 				ReturnCode = source.ReturnCode,
 				ApiId = source.ApiId,

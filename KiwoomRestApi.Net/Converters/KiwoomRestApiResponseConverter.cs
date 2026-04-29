@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 using System;
-using System.Diagnostics;
 
 namespace KiwoomRestApi.Net.Converters
 {
@@ -25,13 +24,13 @@ namespace KiwoomRestApi.Net.Converters
 		/// <returns>변환된 KiwoomRestApiResponse 객체</returns>
 		public override KiwoomRestApiResponse<T>? ReadJson(JsonReader reader, Type objectType, KiwoomRestApiResponse<T>? existingValue, bool hasExistingValue, JsonSerializer serializer)
 		{
-			var jsonObject = JObject.Load(reader);
+			if (reader.TokenType == JsonToken.Null) return null;
 
-			// 응답 공통 정보 추출
+			var jsonObject = JObject.Load(reader);
 			var response = new KiwoomRestApiResponse<T>
 			{
-				ReturnMessage = jsonObject["return_msg"]?.ToString().Trim() ?? "",
-				ReturnCode = jsonObject["return_code"]?.ToObject<int>() ?? 0
+				ReturnMessage = jsonObject["return_msg"]?.Value<string>()?.Trim() ?? string.Empty,
+				ReturnCode = jsonObject["return_code"]?.Value<int>() ?? -1
 			};
 
 			// 공통 필드 제거
@@ -53,7 +52,9 @@ namespace KiwoomRestApi.Net.Converters
         /// <exception cref="NotImplementedException">쓰기 기능은 구현되지 않음</exception>
         public override void WriteJson(JsonWriter writer, KiwoomRestApiResponse<T>? value, JsonSerializer serializer)
 		{
-			throw new NotImplementedException();
+			throw new NotSupportedException();
 		}
+
+		public override bool CanWrite => false;
 	}
 }

@@ -69,7 +69,7 @@ namespace KiwoomRestApi.Net.Examples
 			var endDate3 = new DateTime(2026, 3, 6);
 
 
-			//var tickDataResult = _client.Chart.GetTickChartsAsync("100590", 1, false).Result;
+			var tickDataResult = _client.Chart.GetTickChartsAsync("100590", 1, false).Result;
 			//var nextKey = tickDataResult.NextKey;
 			//_client.ContYn = "Y";
 			//_client.NextKey = nextKey;

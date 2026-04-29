@@ -3,6 +3,7 @@
 using Newtonsoft.Json;
 
 using System;
+using System.Buffers;
 using System.Diagnostics;
 using System.IO;
 using System.Net.WebSockets;
@@ -75,7 +76,7 @@ namespace KiwoomRestApi.Net.Clients
 
 		public async Task ReceiveAsync(CancellationToken cancellationToken)
 		{
-			var buffer = new byte[_bufferSize];
+			var buffer = ArrayPool<byte>.Shared.Rent(_bufferSize);
 			try
 			{
 				while (ClientWebSocket.State == WebSocketState.Open && !cancellationToken.IsCancellationRequested)
@@ -95,10 +96,13 @@ namespace KiwoomRestApi.Net.Clients
 						ms.Write(buffer, 0, result.Count);
 					} while (!result.EndOfMessage);
 
-					ms.Seek(0, SeekOrigin.Begin);
+#if NETSTANDARD2_0 || NETSTANDARD2_1
+					var message = Encoding.UTF8.GetString(ms.GetBuffer(), 0, (int)ms.Length);
+#else
+					var message = Encoding.UTF8.GetString(ms.GetBuffer().AsSpan(0, (int)ms.Length));
+#endif
 
-					using var reader = new StreamReader(ms, Encoding.UTF8);
-					var message = await reader.ReadToEndAsync();
+
 #if DEBUG
 					Debug.WriteLine($"받은 메시지: {message}");
 #endif
@@ -115,6 +119,10 @@ namespace KiwoomRestApi.Net.Clients
 #if DEBUG
 				Debug.WriteLine($"수신 중 예외 발생: {ex.Message}");
 #endif
+			}
+			finally
+			{
+				ArrayPool<byte>.Shared.Return(buffer);
 			}
 		}
 

@@ -34,7 +34,7 @@ namespace KiwoomRestApi.Net.Interfaces
 		/// <returns>HTTP 응답을 래핑한 HttpResponseWrapper 객체를 반환하는 Task</returns>
 		/// <exception cref="HttpRequestException">HTTP 요청 실패 시</exception>
 		/// <exception cref="TaskCanceledException">요청이 취소된 경우</exception>
-		Task<HttpResponseWrapper<T>> GetAsync<T>(string endpoint, IDictionary<string, string>? headers = null, CancellationToken cancellationToken = default);
+		Task<HttpResponseWrapper<T>> GetAsync<T>(string endpoint, IEnumerable<KeyValuePair<string, string>>? headers = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// 지정된 엔드포인트로 HTTP POST 요청을 비동기로 전송합니다.
@@ -47,6 +47,6 @@ namespace KiwoomRestApi.Net.Interfaces
 		/// <returns>HTTP 응답을 래핑한 HttpResponseWrapper 객체를 반환하는 Task</returns>
 		/// <exception cref="HttpRequestException">HTTP 요청 실패 시</exception>
 		/// <exception cref="TaskCanceledException">요청이 취소된 경우</exception>
-		Task<HttpResponseWrapper<T>> PostAsync<T>(string endpoint, IDictionary<string, string>? headers = null, IDictionary<string, string>? body = null, CancellationToken cancellationToken = default);
+		Task<HttpResponseWrapper<T>> PostAsync<T>(string endpoint, IEnumerable<KeyValuePair<string, string>>? headers = null, IEnumerable<KeyValuePair<string, string>>? body = null, CancellationToken cancellationToken = default);
 	}
 }

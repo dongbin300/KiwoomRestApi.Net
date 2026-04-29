@@ -5,38 +5,29 @@ using KiwoomRestApi.Net.Enums.CreditOrder;
 using KiwoomRestApi.Net.Enums.Elw;
 using KiwoomRestApi.Net.Enums.Etf;
 using KiwoomRestApi.Net.Enums.ForeignInstitution;
+using KiwoomRestApi.Net.Enums.Industry;
 using KiwoomRestApi.Net.Enums.MarketCondition;
 using KiwoomRestApi.Net.Enums.Order;
 using KiwoomRestApi.Net.Enums.RankingInfo;
-using KiwoomRestApi.Net.Enums.Industry;
 using KiwoomRestApi.Net.Enums.SecuritiesLending;
 using KiwoomRestApi.Net.Enums.ShortSale;
 using KiwoomRestApi.Net.Enums.StockInfo;
 using KiwoomRestApi.Net.Enums.Theme;
+using KiwoomRestApi.Net.Misc;
 
 namespace KiwoomRestApi.Net.Tests
 {
 	public class KiwoomRestApiClientTests
 	{
 		KiwoomRestApiClient client = default!;
-		int apiType = 2;
+		int apiType = 1; // 1: 일반, 2: 골드
 
 		[OneTimeSetUp]
 		public async Task OneTimeSetUp()
 		{
-			var appKeyFileName =
-				apiType == 1 ? "kiwoom_appkey.txt" : 
-				apiType == 2 ? "kiwoom_appkey_gold.txt" 
-				: "kiwoom_appkey.txt";
+			var (AppKey, SecretKey) = KeyVault.GetKey(apiType == 1 ? "kiwoom" : apiType == 2 ? "kiwoom_gold" : "kiwoom");
 
-			var secretKeyFileName =
-				apiType == 1 ? "kiwoom_secretkey.txt" :
-				apiType == 2 ? "kiwoom_secretkey_gold.txt"
-				: "kiwoom_secretkey.txt";
-
-			var appKey = File.ReadAllText("D:\\Assets\\" + appKeyFileName);
-			var secretKey = File.ReadAllText("D:\\Assets\\" + secretKeyFileName);
-			client = await KiwoomRestApiClient.CreateAsync(appKey, secretKey, false);
+			client = await KiwoomRestApiClient.CreateAsync(AppKey, SecretKey, false);
 		}
 
 		#region OAuth

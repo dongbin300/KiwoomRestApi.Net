@@ -182,14 +182,13 @@ namespace KiwoomRestApi.Net.Clients
 		/// <exception cref="ArgumentException">appKey 또는 secretKey가 null 또는 빈 문자열인 경우</exception>
 		public KiwoomRestApiClient(string appKey, string secretKey, string? token, bool isMock = false)
 		{
-			Client = new HttpClient
+			Client ??= new HttpClient
 			{
 				BaseAddress = new Uri(isMock ? KiwoomUrls.MockRestApiHost : KiwoomUrls.RestApiHost)
 			};
 			AppKey = appKey.Trim();
 			SecretKey = secretKey.Trim();
-			Authorization = token != null ? $"Bearer {token}" : null;
-			Token = token ?? string.Empty;
+			UpdateToken(token);
 
 			OAuth = new KiwoomRestApiClientOAuth(this);
 			Account = new KiwoomRestApiClientDomesticStockAccount(this);
@@ -206,6 +205,12 @@ namespace KiwoomRestApi.Net.Clients
 			Theme = new KiwoomRestApiClientDomesticStockTheme(this);
 			Elw = new KiwoomRestApiClientDomesticStockElw(this);
 			Etf = new KiwoomRestApiClientDomesticStockEtf(this);
+		}
+
+		private void UpdateToken(string? token)
+		{
+			Token = token ?? string.Empty;
+			Authorization = !string.IsNullOrEmpty(token) ? $"Bearer {token}" : null;
 		}
 
 		/// <summary>
@@ -255,9 +260,9 @@ namespace KiwoomRestApi.Net.Clients
 		/// <exception cref="InvalidOperationException">토큰 획득에 실패한 경우</exception>
 		public async Task InitializeAsync()
 		{
-			var result = await OAuth.GetAccessTokenAsync();
-			Token = result.Data?.Token ?? throw new InvalidOperationException("Token is null");
-			Authorization = $"Bearer {Token}";
+			var result = await OAuth.GetAccessTokenAsync().ConfigureAwait(false);
+			var token = result.Data?.Token ?? throw new InvalidOperationException("Token is null");
+			UpdateToken(token);
 		}
 
 		/// <summary>
@@ -299,19 +304,17 @@ namespace KiwoomRestApi.Net.Clients
 				.AddField("cont-yn", ContYn ? "Y" : "N")
 				.AddField("next-key", NextKey);
 
-			var response = await PostAsync<JObject>(endpoint, headers, body, cancellationToken).ConfigureAwait(false);
+			var response = await PostAsync<JToken>(endpoint, headers, body, cancellationToken).ConfigureAwait(false);
 
 			if (response.Body == null)
 				return new KiwoomRestApiResponse<T>();
 
-			var jsonString = response.Body.ToString();
-
-			var settings = new JsonSerializerSettings
+			var serializer = JsonSerializer.Create(new JsonSerializerSettings
 			{
 				Converters = { new KiwoomRestApiResponseConverter<T>() }
-			};
+			});
 
-			var result = JsonConvert.DeserializeObject<KiwoomRestApiResponse<T>>(jsonString, settings) ?? new KiwoomRestApiResponse<T>();
+			var result = response.Body.ToObject<KiwoomRestApiResponse<T>>(serializer) ?? new KiwoomRestApiResponse<T>();
 
 			AssignHeadersToResponse(result, response.Headers);
 
@@ -324,19 +327,19 @@ namespace KiwoomRestApi.Net.Clients
 		/// <typeparam name="T">응답 데이터의 타입</typeparam>
 		/// <param name="response">키움 API 응답 객체</param>
 		/// <param name="headers">HTTP 응답 헤더</param>
-		private void AssignHeadersToResponse<T>(KiwoomRestApiResponse<T> response, IDictionary<string, IEnumerable<string>>? headers)
+		private void AssignHeadersToResponse<T>(KiwoomRestApiResponse<T> response, IReadOnlyDictionary<string, IEnumerable<string>>? headers)
 		{
 			if (headers == null)
 				return;
 
-			if (headers.TryGetValue("api-id", out var apiIdValues))
-				response.ApiId = apiIdValues.FirstOrDefault() ?? string.Empty;
+			if (headers.TryGetValue("api-id", out var apiId))
+				response.ApiId = apiId.FirstOrDefault() ?? string.Empty;
 
-            if (headers.TryGetValue("cont-yn", out var contYnValues))
-                response.ContYn = contYnValues.FirstOrDefault()?.Equals("Y", StringComparison.OrdinalIgnoreCase) ?? false;
+            if (headers.TryGetValue("cont-yn", out var contYn))
+                response.ContYn = contYn.FirstOrDefault()?.Equals("Y", StringComparison.OrdinalIgnoreCase) ?? false;
 
-            if (headers.TryGetValue("next-key", out var nextKeyValues))
-				response.NextKey = nextKeyValues.FirstOrDefault() ?? string.Empty;
+            if (headers.TryGetValue("next-key", out var nextKey))
+				response.NextKey = nextKey.FirstOrDefault() ?? string.Empty;
 		}
 	}
 }

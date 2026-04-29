@@ -58,7 +58,7 @@ namespace KiwoomRestApi.Net.Clients
 		/// 국내주식 WebSocket API 기능을 제공합니다.
 		/// 실시간 데이터 구독/해제, 조건검색 등의 기능을 포함합니다.
 		/// </summary>
-		public KiwoomRestApiClientDomesticStockWebSocket WebSocket { get; set; }
+		public KiwoomRestApiClientDomesticStockWebSocket WebSocket { get; }
 
 		public event Action<KiwoomSocketMessage>? OnMessageReceived;
 		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeOrderTrade>>>? OnRealtimeOrderTradeReceived;
