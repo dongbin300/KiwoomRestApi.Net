@@ -29,7 +29,7 @@ namespace KiwoomRestApi.Net.Examples
     {
         private readonly KiwoomRestApiClient _client;
         private readonly KiwoomSocketClient _client2;
-		private readonly int mock = 1;
+		private readonly int mock = 0;
 
 		public KiwoomApis()
 		{
@@ -68,8 +68,9 @@ namespace KiwoomRestApi.Net.Examples
 			var startDate3 = new DateTime(2024, 1, 1);
 			var endDate3 = new DateTime(2026, 3, 6);
 
-
-			var tickDataResult = _client.Chart.GetTickChartsAsync("100590", 1, false).Result;
+			var r1 = _client.Watchlist.GetWatchlistGroupsAsync().Result;
+			var r2 = _client.Watchlist.GetWatchlistGroupDetailsAsync("005").Result;
+			//var tickDataResult = _client.Chart.GetTickChartsAsync("100590", 1, false).Result;
 			//var nextKey = tickDataResult.NextKey;
 			//_client.ContYn = "Y";
 			//_client.NextKey = nextKey;

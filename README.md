@@ -314,6 +314,10 @@ var results = await Task.WhenAll(tasks);
 <details>
 <summary><strong>Release Notes</strong></summary>
 
+### v0.8.0 (2026-06-29)
+- 추가: | ka01300 | 관심종목 그룹 리스트 조회 (`GetWatchlistGroupsAsync`)
+- 추가: | ka01301 | 관심종목 그룹 상세 조회 (`GetWatchlistGroupDetailsAsync`)
+
 ### v0.7.2 (2026-04-29)
 - 변경: 전체적인 성능 개선
 

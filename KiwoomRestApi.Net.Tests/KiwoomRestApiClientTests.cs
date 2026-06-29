@@ -1450,5 +1450,21 @@ namespace KiwoomRestApi.Net.Tests
 
 		#endregion
 
+		#region Watchlist
+
+		[Test]
+		public async Task GetWatchlistGroupsAsync()
+		{
+			var result = await client.Watchlist.GetWatchlistGroupsAsync();
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase("005")]
+		public async Task GetWatchlistGroupsAsync(string groupCode)
+		{
+			var result = await client.Watchlist.GetWatchlistGroupDetailsAsync(groupCode);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+		#endregion
 	}
 }

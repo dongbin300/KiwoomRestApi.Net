@@ -136,6 +136,11 @@ namespace KiwoomRestApi.Net.Clients
 		public KiwoomRestApiClientDomesticStockEtf Etf { get; set; }
 
 		/// <summary>
+		/// 관심종목 관련 기능을 제공합니다.
+		/// </summary>
+		public KiwoomRestApiClientDomesticStockWatchlist Watchlist { get; set; }
+
+		/// <summary>
 		/// API 연속 호출 시 딜레이 시간(밀리초)을 가져오거나 설정합니다. 기본값은 1000ms입니다.
 		/// </summary>
 		public int PagingDelay { get; set; } = 1000;
@@ -205,6 +210,7 @@ namespace KiwoomRestApi.Net.Clients
 			Theme = new KiwoomRestApiClientDomesticStockTheme(this);
 			Elw = new KiwoomRestApiClientDomesticStockElw(this);
 			Etf = new KiwoomRestApiClientDomesticStockEtf(this);
+			Watchlist = new KiwoomRestApiClientDomesticStockWatchlist(this);
 		}
 
 		private void UpdateToken(string? token)
