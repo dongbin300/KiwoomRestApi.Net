@@ -2,6 +2,7 @@
 using KiwoomRestApi.Net.Extensions;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
+using KiwoomRestApi.Net.Objects.Models.DomesticStock;
 
 using System.Collections.Generic;
 using System.Linq;

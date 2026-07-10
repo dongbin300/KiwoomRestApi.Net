@@ -2,6 +2,7 @@
 using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
+using KiwoomRestApi.Net.Objects.Models.DomesticStock;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -82,7 +83,9 @@ namespace KiwoomRestApi.Net.Clients
 		public event Action<IEnumerable<KiwoomWebSocketRealtimeSubscription<KiwoomWebSocketRealtimeViEvent>>>? OnRealtimeViEventReceived;
 
 		public event Action<IEnumerable<KiwoomWebSocketConditionSearchList>>? OnConditionSearchListReceived;
+#pragma warning disable CS0067 // 조건검색 일반 응답은 현재 실시간(Realtime) 응답으로 통합 처리되어 별도로 발생하지 않음
 		public event Action<IEnumerable<KiwoomWebSocketConditionSearchRequest>>? OnConditionSearchRequestReceived;
+#pragma warning restore CS0067
 		public event Action<IEnumerable<KiwoomWebSocketConditionSearchRequestRealtime>>? OnConditionSearchRequestRealtimeReceived;
 		public event Action<IEnumerable<KiwoomWebSocketConditionSearchRequestRealtime2>>? OnConditionSearchRequestRealtime2Received;
 		public event Action<IEnumerable<KiwoomWebSocketConditionSearchClear>>? OnConditionSearchClearReceived;

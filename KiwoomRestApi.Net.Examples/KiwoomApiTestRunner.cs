@@ -1,5 +1,5 @@
 using KiwoomRestApi.Net.Clients;
-using KiwoomRestApi.Net.Enums.Account;
+using KiwoomRestApi.Net.Enums.DomesticStock.Account;
 
 namespace KiwoomRestApi.Net.Examples
 {

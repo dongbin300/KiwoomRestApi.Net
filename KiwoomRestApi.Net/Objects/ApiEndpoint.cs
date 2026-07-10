@@ -25,5 +25,20 @@ namespace KiwoomRestApi.Net.Objects
 
 			public const string Socket = "/api/dostk/websocket";
 		}
+
+		public static class UsStock
+		{
+			public const string Account = "/api/us/acnt";
+			public const string Chart = "/api/us/chart";
+			public const string Exchange = "/api/us/exchange";
+			public const string Industry = "/api/us/sect";
+			public const string InvestmentInfo = "/api/us/invtinfo";
+			public const string MarketCondition = "/api/us/mrkcond";
+			public const string Order = "/api/us/ordr";
+			public const string RankingInfo = "/api/us/rkinfo";
+			public const string Socket = "/api/us/websocket";
+			public const string StockInfo = "/api/us/stkinfo";
+			public const string Watchlist = "/api/us/watchlist";
+		}
 	}
 }

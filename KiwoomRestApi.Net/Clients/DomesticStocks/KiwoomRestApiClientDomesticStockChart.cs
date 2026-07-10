@@ -1,8 +1,9 @@
 ﻿using KiwoomRestApi.Net.Enums;
-using KiwoomRestApi.Net.Enums.Chart;
+using KiwoomRestApi.Net.Enums.DomesticStock.Chart;
 using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
+using KiwoomRestApi.Net.Objects.Models.DomesticStock;
 
 using System;
 using System.Collections.Generic;

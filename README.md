@@ -15,6 +15,49 @@
 
 ---
 
+## ⚠️ Migration Notice (v0.9.0+)
+
+미국주식(UsStocks) 지원이 추가되면서 `KiwoomRestApiClient`의 API 구조가 국내주식(`DomesticStock`) / 미국주식(`UsStock`)으로 분리되었습니다. 기존에 사용하던 최상위 프로퍼티(`client.Account`, `client.Order`, `client.Chart`, `client.StockInfo` 등)는 `[Obsolete]`로 표시되었으며, 향후 버전에서 제거될 예정이니 아래와 같이 마이그레이션해주세요.
+
+```csharp
+// 기존 방식 (Obsolete, 향후 제거 예정)
+var stockInfo = await client.StockInfo.GetStockInfoAsync("005930", DateTime.Today, KiwoomStockInfoMarginLoanType.Loan);
+var deposits = await client.Account.GetDepositsAsync(KiwoomAccountDepositQueryType.Normal);
+var buyOrderResult = await client.Order.PlaceOrderAsync(...);
+
+// 변경된 방식 (권장) - 국내주식은 DomesticStock 하위로 이동
+var stockInfo = await client.DomesticStock.StockInfo.GetStockInfoAsync("005930", DateTime.Today, KiwoomStockInfoMarginLoanType.Loan);
+var deposits = await client.DomesticStock.Account.GetDepositsAsync(KiwoomAccountDepositQueryType.Normal);
+var buyOrderResult = await client.DomesticStock.Order.PlaceOrderAsync(...);
+
+// 미국주식은 UsStock 하위에 신규 추가
+var usStockInfo = await client.UsStock.MarketCondition.GetStockInfoAsync("AAPL");
+var usBuyOrderResult = await client.UsStock.Order.BuyOrderAsync(...);
+```
+
+| 기존 (Obsolete) | 변경 (권장) |
+|:---|:---|
+| `client.Account` | `client.DomesticStock.Account` |
+| `client.Order` | `client.DomesticStock.Order` |
+| `client.Chart` | `client.DomesticStock.Chart` |
+| `client.StockInfo` | `client.DomesticStock.StockInfo` |
+| `client.MarketCondition` | `client.DomesticStock.MarketCondition` |
+| `client.RankingInfo` | `client.DomesticStock.RankingInfo` |
+| `client.Industry` | `client.DomesticStock.Industry` |
+| `client.Theme` | `client.DomesticStock.Theme` |
+| `client.Elw` | `client.DomesticStock.Elw` |
+| `client.Etf` | `client.DomesticStock.Etf` |
+| `client.Watchlist` | `client.DomesticStock.Watchlist` |
+| `client.CreditOrder` | `client.DomesticStock.CreditOrder` |
+| `client.ShortSale` | `client.DomesticStock.ShortSale` |
+| `client.SecuritiesLending` | `client.DomesticStock.SecuritiesLending` |
+| `client.ForeignInstitution` | `client.DomesticStock.ForeignInstitution` |
+| _(신규)_ | `client.UsStock.*` |
+
+> 아래 **Quick Start**, **Usage Examples** 등 문서 내 코드 예제는 하위 호환을 위해 아직 기존 방식(`client.Account` 등)을 사용하고 있습니다. 새로 작성하는 코드에서는 위 표를 참고하여 `client.DomesticStock.*` / `client.UsStock.*` 형태로 작성해주세요.
+
+---
+
 ## Quick Start
 
 ```bash
@@ -313,6 +356,158 @@ var results = await Task.WhenAll(tasks);
 
 <details>
 <summary><strong>Release Notes</strong></summary>
+
+### v0.9.0 (2026-07-10)
+- 추가: 미국주식(UsStocks) API Wrapper 전체 추가 (`client.UsStock`)
+
+#### 계좌 (Account)
+- 추가: | usa21670 | 미국주식 일별계좌수익률현황 (`GetDailyAccountProfitRatesAsync`)
+- 추가: | usa21680 | 미국주식 월별계좌수익률현황 (`GetMonthlyAccountProfitRatesAsync`)
+- 추가: | usa21690 | 미국주식 연도별계좌수익률현황 (`GetYearlyAccountProfitRatesAsync`)
+- 추가: | usa21730 | 미국주식 일별종목수익률현황 (`GetDailyStockProfitRatesAsync`)
+- 추가: | usa21731 | 미국주식 월별종목수익률현황 (`GetMonthlyStockProfitRatesAsync`)
+- 추가: | usa21732 | 미국주식 연도별종목수익률현황 (`GetYearlyStockProfitRatesAsync`)
+- 추가: | ust21050 | 미국주식 원장 미체결 (`GetUnfilledOrdersAsync`)
+- 추가: | ust21070 | 미국주식 원장잔고확인 (`GetBalanceAsync`)
+- 추가: | ust21100 | 미국주식 거래내역 (`GetTransactionHistoryAsync`)
+- 추가: | ust21110 | 해외주식 예수금 (`GetDepositAsync`)
+- 추가: | ust21111 | 원화출금가능 금액 조회 (원화대용 포함) (`GetKrwWithdrawableAmountAsync`)
+- 추가: | ust21120 | 통화별 예수금 및 증권 평가금현황 (`GetCurrencyDepositEvaluationAsync`)
+- 추가: | ust21121 | 해외증권 원장 평가금액현황 (`GetLedgerEvaluationAmountAsync`)
+- 추가: | ust21131 | 해외증권 특정일 평가금액 (`GetSpecificDateEvaluationAmountAsync`)
+- 추가: | ust21132 | 특정일 통화별 예수금 및 증권 평가금 (`GetSpecificDateCurrencyDepositEvaluationAsync`)
+- 추가: | ust21150 | 미국주식 일별 주문체결내역 (`GetDailyOrderExecutionsAsync`)
+- 추가: | ust21160 | 미국주식 예수금 상세 (`GetDepositDetailsAsync`)
+- 추가: | ust21170 | 미국주식 당일 종목별 실현손익 (`GetTodayStockRealizedProfitLossesAsync`)
+- 추가: | ust21180 | 미국주식 기간별 주문내역 (`GetOrderHistoryAsync`)
+- 추가: | ust21510 | 미국주식 당일 주문체결 확인 (`GetTodayOrderExecutionsAsync`)
+- 추가: | ust21530 | 미국주식 실현손익 (`GetRealizedProfitLossesAsync`)
+- 추가: | ust21610 | 미국주식 당일매매 (`GetTodayTradesAsync`)
+- 추가: | ust21620 | 미국주식 당일매매정리 (`GetTodayTradeSummaryAsync`)
+- 추가: | ust21630 | 미국주식 당일 실현손익 (`GetTodayRealizedProfitLossesAsync`)
+- 추가: | ust21640 | 미국주식 일별 종목별 실현손익 (`GetDailyStockRealizedProfitLossesAsync`)
+- 추가: | ust21650 | 미국주식 기간별 수익률 현황 (`GetPeriodProfitRatesAsync`)
+- 추가: | ust21660 | 미국주식 일별 실현손익 (`GetDailyRealizedProfitLossesAsync`)
+- 추가: | ust21661 | 미국주식 월별 실현손익 (`GetMonthlyRealizedProfitLossesAsync`)
+
+#### 차트 (Chart)
+- 추가: | usa06010 | 미국주식 틱 차트 (`GetTickChartsAsync`, `GetTickChartsByRangeAsync`)
+- 추가: | usa06011 | 미국주식 분 차트 (`GetMinuteChartsAsync`, `GetMinuteChartsByRangeAsync`)
+- 추가: | usa06012 | 미국주식 일 차트 (`GetDailyChartsAsync`, `GetDailyChartsByRangeAsync`)
+- 추가: | usa06013 | 미국주식 주 차트 (`GetWeeklyChartsAsync`, `GetWeeklyChartsByRangeAsync`)
+- 추가: | usa06014 | 미국주식 월 차트 (`GetMonthlyChartsAsync`, `GetMonthlyChartsByRangeAsync`)
+- 추가: | usa06015 | 미국주식 년 차트 (`GetYearlyChartsAsync`, `GetYearlyChartsByRangeAsync`)
+- 추가: | usa06016 | 미국주식 분기 차트 (`GetQuarterlyChartsAsync`, `GetQuarterlyChartsByRangeAsync`)
+
+#### 환전 (Exchange)
+- 추가: | ust31300 | 환전 예상 금액 조회 (`GetExpectedAmountAsync`)
+- 추가: | ust31301 | 환율 조회 (`GetExchangeRateAsync`)
+- 추가: | ust31302 | 환전 신청 (`ApplyExchangeAsync`)
+
+#### 업종 (Industry)
+- 추가: | usa23000 | 미국주식 업종별 기간별 수익률 조회 (`GetPeriodReturnsAsync`)
+- 추가: | usa23100 | 미국주식 업종별 등락률 상위/하위 조회 (`GetChangeRateRanksAsync`)
+
+#### 종목정보 (Info)
+- 추가: | usa10098 | 미국주식 거래소구분 조회 (`GetExchangeTypesAsync`)
+- 추가: | usa10099 | 미국주식 종목리스트 (`GetStocksAsync`)
+- 추가: | usa10100 | 미국주식 종목 조회 (`GetStockAsync`)
+- 추가: | usa10101 | 미국주식 업종리스트 (`GetIndustriesAsync`)
+- 추가: | usa10102 | 미국지수 리스트 (`GetIndicesAsync`)
+- 추가: | usa10104 | 미국 ETF,ETN 리스트 (`GetEtfEtnsAsync`)
+- 추가: | usa10105 | 미국 ETF 카테고리 리스트 (`GetEtfCategoriesAsync`)
+- 추가: | usa20520 | 미국주식 거래량급등락(주식/업종) (`GetVolumeSurgesAsync`)
+- 추가: | usa20521 | 미국주식 거래량급등락(ETF) (`GetEtfVolumeSurgesAsync`)
+- 추가: | usa20570 | 미국주식 가격대별주가(주식/업종) (`GetPriceRangesAsync`)
+- 추가: | usa20571 | 미국주식 가격대별주가(ETF) (`GetEtfPriceRangesAsync`)
+- 추가: | usa20930 | 미국주식 가격급등락(주식/업종) (`GetPriceVolatilitiesAsync`)
+- 추가: | usa20931 | 미국주식 가격급등락(ETF) (`GetEtfPriceVolatilitiesAsync`)
+- 추가: | usa20932 | 미국주식 가격급등락(관심종목) (`GetWatchlistPriceVolatilitiesAsync`)
+- 추가: | usa20970 | 미국주식 고가/저가 접근(주식/업종) (`GetHighLowApproachesAsync`)
+- 추가: | usa20971 | 미국주식 고가/저가 접근(ETF) (`GetEtfHighLowApproachesAsync`)
+- 추가: | usa20972 | 미국주식 고가/저가 접근(관심종목) (`GetWatchlistHighLowApproachesAsync`)
+- 추가: | usa23400 | 미국주식 거래량갱신(주식/업종) (`GetVolumeRenewalsAsync`)
+- 추가: | usa23401 | 미국주식 거래량갱신(ETF) (`GetEtfVolumeRenewalsAsync`)
+- 추가: | usa23402 | 미국주식 거래량갱신(관심종목) (`GetWatchlistVolumeRenewalsAsync`)
+- 추가: | usa24100 | 미국주식 신고가/신저가(주식/업종) (`GetNewPricesAsync`)
+- 추가: | usa24101 | 미국주식 신고가/신저가(ETF) (`GetEtfNewPricesAsync`)
+- 추가: | usa24140 | 미국주식 갭상승/갭하락(주식/업종) (`GetGapsAsync`)
+- 추가: | usa24141 | 미국주식 갭상승/갭하락(ETF) (`GetEtfGapsAsync`)
+- 추가: | usa24210 | 미국주식 잔량률급증(주식/업종) (`GetRemainRatioSurgesAsync`)
+- 추가: | usa24211 | 미국주식 잔량률급증(ETF) (`GetEtfRemainRatioSurgesAsync`)
+- 추가: | usa24220 | 미국주식 매물대집중(주식/업종) (`GetVolumeZonesAsync`)
+- 추가: | usa24221 | 미국주식 매물대집중(ETF) (`GetEtfVolumeZonesAsync`)
+- 추가: | usa26410 | 미국주식 연도별 등락률(종목) (`GetYearlyChangeRateAsync`)
+- 추가: | usa26411 | 미국주식 연도별 업종별 종목등락률 (`GetIndustryStockYearlyChangeRatesAsync`)
+- 추가: | usa26412 | 미국주식 연도별 ETF 카테고리별 종목등락률 (`GetEtfCategoryStockYearlyChangeRatesAsync`)
+- 추가: | usa26413 | 미국주식 연도별 등락률(업종) (`GetIndustryYearlyChangeRateAsync`)
+- 추가: | usa26414 | 미국주식 연도별 등락률(ETF) (`GetEtfCategoryYearlyChangeRateAsync`)
+
+#### 투자정보 (InvestmentInfo)
+- 추가: | usa24300 | 미국주식 리서치(미국주식/ETF) (`GetResearchesAsync`)
+
+#### 시세 (MarketCondition)
+- 추가: | usa20100 | 미국주식 현재가 종목정보 (`GetStockInfoAsync`)
+- 추가: | usa20101 | 미국주식 현재가 10호가 (`GetOrderBookAsync`)
+- 추가: | usa20150 | 미국주식 상세 체결내역 (`GetDetailedTradesAsync`)
+- 추가: | usa20151 | 미국주식 일별 체결내역 (`GetDailyTradesAsync`)
+- 추가: | usa20590 | 미국주식 일별주가 (`GetDailyPricesAsync`)
+
+#### 주문 (Order)
+- 추가: | ust20000 | 미국주식 매수주문 (`BuyOrderAsync`)
+- 추가: | ust20001 | 미국주식 매도주문 (`SellOrderAsync`)
+- 추가: | ust20002 | 미국주식 정정주문 (`ModifyOrderAsync`)
+- 추가: | ust20003 | 미국주식 취소주문 (`CancelOrderAsync`)
+- 추가: | ust31490 | 미국주식 증거금율별 주문가능수량 조회 (`GetAvailableOrderQuantityAsync`)
+
+#### 순위정보 (RankingInfo)
+- 추가: | usa01980 | 미국주식 실시간 종목 조회 순위 (`GetRealtimeQueryRanksAsync`)
+- 추가: | usa01990 | 미국주식 관심종목 등록 상위 (`GetWatchlistRegistrationRanksAsync`)
+- 추가: | usa20510 | 미국주식 기간별 등락률상위(주식/업종) (`GetPeriodChangeRateRanksAsync`)
+- 추가: | usa20511 | 미국주식 기간별 등락률상위(ETF) (`GetEtfPeriodChangeRateRanksAsync`)
+- 추가: | usa20512 | 미국주식 기간별 등락률상위(관심종목) (`GetWatchlistPeriodChangeRateRanksAsync`)
+- 추가: | usa20530 | 미국주식 당일 거래량 상위(주식/업종) (`GetVolumeRanksAsync`)
+- 추가: | usa20531 | 미국주식 당일 거래량 상위(ETF) (`GetEtfVolumeRanksAsync`)
+- 추가: | usa20540 | 미국주식 당일 거래대금 상위(주식/업종) (`GetTransactionAmountRanksAsync`)
+- 추가: | usa20541 | 미국주식 당일 거래대금 상위(ETF) (`GetEtfTransactionAmountRanksAsync`)
+- 추가: | usa20550 | 미국주식 시가총액상위(주식/업종) (`GetMarketCapRanksAsync`)
+- 추가: | usa20551 | 미국주식 시가총액상위(ETF) (`GetEtfMarketCapRanksAsync`)
+- 추가: | usa20880 | 키움 거래 상위 종목(미국주식) (`GetKiwoomTradeRanksAsync`)
+- 추가: | usa20881 | 키움 거래 상위 종목(미국 ETF) (`GetEtfKiwoomTradeRanksAsync`)
+- 추가: | usa20910 | 미국주식 전일대비 등락률상위(주식/업종) (`GetChangeRateRanksAsync`)
+- 추가: | usa20911 | 미국주식 전일대비 등락률상위(ETF) (`GetEtfChangeRateRanksAsync`)
+- 추가: | usa20920 | 미국주식 시가대비 등락률상위(주식/업종) (`GetOpenPriceChangeRateRanksAsync`)
+- 추가: | usa20921 | 미국주식 시가대비 등락률상위(ETF) (`GetEtfOpenPriceChangeRateRanksAsync`)
+- 추가: | usa20922 | 미국주식 시가대비 등락률상위(관심종목) (`GetWatchlistOpenPriceChangeRateRanksAsync`)
+- 추가: | usa20940 | 미국주식 누적 등락률 상위(주식/업종) (`GetCumulativeChangeRateRanksAsync`)
+- 추가: | usa20941 | 미국주식 누적 등락률 상위(ETF) (`GetEtfCumulativeChangeRateRanksAsync`)
+- 추가: | usa20960 | 미국주식 전일 거래상위(주식/업종) (`GetPreviousDayTradeRanksAsync`)
+- 추가: | usa20961 | 미국주식 전일 거래상위(ETF) (`GetEtfPreviousDayTradeRanksAsync`)
+- 추가: | usa24110 | 미국주식 최고최저가대비 상승하락(주식/업종) (`GetHighLowChangeRanksAsync`)
+- 추가: | usa24111 | 미국주식 최고최저가대비 상승하락(ETF) (`GetEtfHighLowChangeRanksAsync`)
+- 추가: | usa24120 | 미국주식 특정일자 상승/하락(주식/업종) (`GetSpecificDayChangeRanksAsync`)
+- 추가: | usa24121 | 미국주식 특정일자 상승/하락(ETF) (`GetEtfSpecificDayChangeRanksAsync`)
+- 추가: | usa24150 | 미국주식 회전율 상위(주식/업종) (`GetTurnoverRateRanksAsync`)
+- 추가: | usa24151 | 미국주식 회전율 상위(ETF) (`GetEtfTurnoverRateRanksAsync`)
+- 추가: | usa24160 | 미국주식 연속상승/하락 순위(주식/업종) (`GetContinuousChangeRanksAsync`)
+- 추가: | usa24161 | 미국주식 연속상승/하락 순위(ETF) (`GetEtfContinuousChangeRanksAsync`)
+- 추가: | usa24162 | 미국주식 연속상승/하락 순위(관심종목) (`GetWatchlistContinuousChangeRanksAsync`)
+- 추가: | usa24200 | 미국주식 호가잔량상위(주식/업종) (`GetOrderBookRanksAsync`)
+- 추가: | usa24201 | 미국주식 호가잔량상위(ETF) (`GetEtfOrderBookRanksAsync`)
+- 추가: | usa24290 | 미국주식 주간거래 괴리율 상위(주식/업종) (`GetDisparityRateRanksAsync`)
+- 추가: | usa24291 | 미국주식 주간거래 괴리율 상위(ETF) (`GetEtfDisparityRateRanksAsync`)
+
+#### 관심종목 (Watchlist)
+- 추가: | usa20200 | 미국주식 관심종목 그룹 리스트 조회 (`GetWatchlistGroupsAsync`)
+- 추가: | usa20201 | 미국주식 관심종목 그룹 상세 조회 (`GetWatchlistGroupDetailsAsync`)
+
+#### 실시간 (WebSocket)
+- 추가: | REG/REMOVE | 미국주식 실시간시세 구독/구독해제 (`SubscribeAsync`, `UnsubscribeAsync`, `UnsubscribeAllAsync`) - F4(해외주식주문), F5(해외주식체결), FE(미국체결), FT(미국10호가)
+- 추가: | usa20280 | 미국주식 조건검색 목록조회 (`GetConditionSearchListAsync`)
+- 추가: | usa20281 | 미국주식 조건검색 요청 일반 (`GetConditionSearchRequestAsync`)
+- 추가: | usa20290 | 미국주식 조건검색 요청 실시간 (`GetConditionSearchRequestRealtimeAsync`)
+- 추가: | usa20291 | 미국주식 조건검색 실시간 해제 (`GetConditionSearchClearAsync`)
+- 추가: `KiwoomUsStockSocketClient` (`OnRealtimeOrderReceived`, `OnRealtimeExecutionReceived`, `OnRealtimeTradeReceived`, `OnRealtimeOrderBookReceived`, `OnConditionSearchListReceived`, `OnConditionSearchRequestReceived`, `OnConditionSearchRequestRealtimeReceived`, `OnConditionSearchClearReceived`)
 
 ### v0.8.0 (2026-06-29)
 - 추가: | ka01300 | 관심종목 그룹 리스트 조회 (`GetWatchlistGroupsAsync`)

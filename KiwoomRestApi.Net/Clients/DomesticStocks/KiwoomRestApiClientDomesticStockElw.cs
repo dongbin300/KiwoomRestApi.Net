@@ -1,7 +1,8 @@
-﻿using KiwoomRestApi.Net.Enums.Elw;
+﻿using KiwoomRestApi.Net.Enums.DomesticStock.Elw;
 using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
+using KiwoomRestApi.Net.Objects.Models.DomesticStock;
 
 using System;
 using System.Threading;

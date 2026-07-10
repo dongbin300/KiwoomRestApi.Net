@@ -42,7 +42,7 @@ namespace KiwoomRestApi.Net.Converters
         public override object ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
         {
             var str = reader.Value as string;
-            if (string.IsNullOrWhiteSpace(str))
+            if (str is null || string.IsNullOrWhiteSpace(str))
             {
                 return objectType switch
                 {

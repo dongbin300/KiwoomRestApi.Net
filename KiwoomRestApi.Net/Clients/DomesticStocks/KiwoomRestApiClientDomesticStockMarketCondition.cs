@@ -1,9 +1,10 @@
 ﻿using KiwoomRestApi.Net.Enums;
-using KiwoomRestApi.Net.Enums.MarketCondition;
+using KiwoomRestApi.Net.Enums.DomesticStock.MarketCondition;
 using KiwoomRestApi.Net.Extensions;
 using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
+using KiwoomRestApi.Net.Objects.Models.DomesticStock;
 
 using System;
 using System.Threading;

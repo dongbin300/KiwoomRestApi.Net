@@ -1,0 +1,21 @@
+﻿namespace KiwoomRestApi.Net.Enums.DomesticStock.Etf
+{
+	/// <summary>
+	/// 과세여부
+	/// </summary>
+	public enum KiwoomEtfTaxationType
+	{
+		/// <summary>
+		/// 전체
+		/// </summary>
+		All = 0,
+		/// <summary>
+		/// 과세
+		/// </summary>
+		Taxable = 1,
+		/// <summary>
+		/// 비과세
+		/// </summary>
+		NonTaxable = 2
+	}
+}

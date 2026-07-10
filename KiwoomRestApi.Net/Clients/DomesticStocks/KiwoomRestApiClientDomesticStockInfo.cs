@@ -1,7 +1,8 @@
-﻿using KiwoomRestApi.Net.Enums.StockInfo;
+﻿using KiwoomRestApi.Net.Enums.DomesticStock.StockInfo;
 using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
+using KiwoomRestApi.Net.Objects.Models.DomesticStock;
 
 using System;
 using System.Threading;
@@ -539,7 +540,7 @@ namespace KiwoomRestApi.Net.Clients.DomesticStocks
 		}
 
 		/// <summary>
-		/// | ka10095 | 관심종목정보요청
+		/// | ka10095 | 지정종목정보요청
 		/// </summary>
 		/// <param name="stockCode"></param>
 		/// <param name="cancellationToken"></param>

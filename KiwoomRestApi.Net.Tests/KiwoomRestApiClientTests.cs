@@ -1,18 +1,27 @@
 using KiwoomRestApi.Net.Clients;
-using KiwoomRestApi.Net.Enums.Account;
-using KiwoomRestApi.Net.Enums.Chart;
-using KiwoomRestApi.Net.Enums.CreditOrder;
-using KiwoomRestApi.Net.Enums.Elw;
-using KiwoomRestApi.Net.Enums.Etf;
-using KiwoomRestApi.Net.Enums.ForeignInstitution;
-using KiwoomRestApi.Net.Enums.Industry;
-using KiwoomRestApi.Net.Enums.MarketCondition;
-using KiwoomRestApi.Net.Enums.Order;
-using KiwoomRestApi.Net.Enums.RankingInfo;
-using KiwoomRestApi.Net.Enums.SecuritiesLending;
-using KiwoomRestApi.Net.Enums.ShortSale;
-using KiwoomRestApi.Net.Enums.StockInfo;
-using KiwoomRestApi.Net.Enums.Theme;
+using KiwoomRestApi.Net.Enums.DomesticStock.Account;
+using KiwoomRestApi.Net.Enums.DomesticStock.Chart;
+using KiwoomRestApi.Net.Enums.DomesticStock.CreditOrder;
+using KiwoomRestApi.Net.Enums.DomesticStock.Elw;
+using KiwoomRestApi.Net.Enums.DomesticStock.Etf;
+using KiwoomRestApi.Net.Enums.DomesticStock.ForeignInstitution;
+using KiwoomRestApi.Net.Enums.DomesticStock.Industry;
+using KiwoomRestApi.Net.Enums.DomesticStock.MarketCondition;
+using KiwoomRestApi.Net.Enums.DomesticStock.Order;
+using KiwoomRestApi.Net.Enums.DomesticStock.RankingInfo;
+using KiwoomRestApi.Net.Enums.DomesticStock.SecuritiesLending;
+using KiwoomRestApi.Net.Enums.DomesticStock.ShortSale;
+using KiwoomRestApi.Net.Enums.DomesticStock.StockInfo;
+using KiwoomRestApi.Net.Enums.DomesticStock.Theme;
+using KiwoomRestApi.Net.Enums.UsStock.Account;
+using KiwoomRestApi.Net.Enums.UsStock.Chart;
+using KiwoomRestApi.Net.Enums.UsStock.Exchange;
+using KiwoomRestApi.Net.Enums.UsStock.Industry;
+using KiwoomRestApi.Net.Enums.UsStock.InvestmentInfo;
+using KiwoomRestApi.Net.Enums.UsStock.MarketCondition;
+using KiwoomRestApi.Net.Enums.UsStock.Order;
+using KiwoomRestApi.Net.Enums.UsStock.RankingInfo;
+using KiwoomRestApi.Net.Enums.UsStock.StockInfo;
 using KiwoomRestApi.Net.Misc;
 
 namespace KiwoomRestApi.Net.Tests
@@ -1464,6 +1473,935 @@ namespace KiwoomRestApi.Net.Tests
 		{
 			var result = await client.Watchlist.GetWatchlistGroupDetailsAsync(groupCode);
 			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+		#endregion
+
+		#region UsStockOrder
+		[TestCase(KiwoomUsStockOrderExchangeType.Nasdaq, "AAPL", 1.0, KiwoomUsStockOrderTransactionType.Limit, 1.0)]
+		public async Task UsStockBuyOrderAsync(KiwoomUsStockOrderExchangeType exchangeType, string stockCode, decimal orderQuantity, KiwoomUsStockOrderTransactionType tradeType, decimal? orderPrice)
+		{
+			var result = await client.UsStock.Order.BuyOrderAsync(exchangeType, stockCode, orderQuantity, tradeType, orderPrice);
+
+			Assert.That(result.ReturnCode, Is.EqualTo(0).Or.EqualTo(20));
+		}
+
+		[TestCase(KiwoomUsStockOrderExchangeType.Nasdaq, "AAPL", 1.0, KiwoomUsStockOrderTransactionType.Limit, 9999.0)]
+		public async Task UsStockSellOrderAsync(KiwoomUsStockOrderExchangeType exchangeType, string stockCode, decimal orderQuantity, KiwoomUsStockOrderTransactionType tradeType, decimal? orderPrice)
+		{
+			var result = await client.UsStock.Order.SellOrderAsync(exchangeType, stockCode, orderQuantity, tradeType, orderPrice);
+
+			Assert.That(result.ReturnCode, Is.EqualTo(0).Or.EqualTo(20));
+		}
+
+		[TestCase("12345", KiwoomUsStockOrderExchangeType.Nasdaq, "AAPL", 1.0)]
+		public async Task UsStockModifyOrderAsync(string originalOrderId, KiwoomUsStockOrderExchangeType exchangeType, string stockCode, decimal modifyPrice)
+		{
+			var result = await client.UsStock.Order.ModifyOrderAsync(originalOrderId, exchangeType, stockCode, modifyPrice);
+
+			Assert.That(result.ReturnCode, Is.EqualTo(0).Or.EqualTo(20));
+		}
+
+		[TestCase("12345", KiwoomUsStockOrderExchangeType.Nasdaq, "AAPL")]
+		public async Task UsStockCancelOrderAsync(string originalOrderId, KiwoomUsStockOrderExchangeType exchangeType, string stockCode)
+		{
+			var result = await client.UsStock.Order.CancelOrderAsync(originalOrderId, exchangeType, stockCode);
+
+			Assert.That(result.ReturnCode, Is.EqualTo(0).Or.EqualTo(20));
+		}
+
+		[TestCase("AAPL", 200.0, KiwoomUsStockOrderExchangeType.Nasdaq)]
+		public async Task GetUsStockAvailableOrderQuantityAsync(string stockCode, decimal buyPrice, KiwoomUsStockOrderExchangeType exchangeType)
+		{
+			var result = await client.UsStock.Order.GetAvailableOrderQuantityAsync(stockCode, buyPrice, exchangeType);
+
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+		#endregion
+
+		#region UsStockChart
+		[TestCase(KiwoomUsStockChartExchangeType.Nasdaq, "NVDA", 1)]
+		public async Task GetUsStockTickChartsAsync(KiwoomUsStockChartExchangeType exchangeType, string stockCode, int tickCount)
+		{
+			var result = await client.UsStock.Chart.GetTickChartsAsync(exchangeType, stockCode, tickCount);
+
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockChartExchangeType.Nasdaq, "NVDA", 1, "2026-03-05")]
+		public async Task GetUsStockMinuteChartsAsync(KiwoomUsStockChartExchangeType exchangeType, string stockCode, int tickCount, string _startDate)
+		{
+			DateTime startDate = DateTime.Parse(_startDate);
+			var result = await client.UsStock.Chart.GetMinuteChartsAsync(exchangeType, stockCode, tickCount, startDate);
+
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockChartExchangeType.Nasdaq, "NVDA", "2026-04-12")]
+		public async Task GetUsStockDailyChartsAsync(KiwoomUsStockChartExchangeType exchangeType, string stockCode, string _startDate)
+		{
+			DateTime startDate = DateTime.Parse(_startDate);
+			var result = await client.UsStock.Chart.GetDailyChartsAsync(exchangeType, stockCode, startDate);
+
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockChartExchangeType.Nasdaq, "NVDA", "2026-04-02")]
+		public async Task GetUsStockWeeklyChartsAsync(KiwoomUsStockChartExchangeType exchangeType, string stockCode, string _startDate)
+		{
+			DateTime startDate = DateTime.Parse(_startDate);
+			var result = await client.UsStock.Chart.GetWeeklyChartsAsync(exchangeType, stockCode, startDate);
+
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockChartExchangeType.Nasdaq, "NVDA", "2026-04-02")]
+		public async Task GetUsStockMonthlyChartsAsync(KiwoomUsStockChartExchangeType exchangeType, string stockCode, string _startDate)
+		{
+			DateTime startDate = DateTime.Parse(_startDate);
+			var result = await client.UsStock.Chart.GetMonthlyChartsAsync(exchangeType, stockCode, startDate);
+
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockChartExchangeType.Nasdaq, "NVDA", "2026-04-02")]
+		public async Task GetUsStockYearlyChartsAsync(KiwoomUsStockChartExchangeType exchangeType, string stockCode, string _startDate)
+		{
+			DateTime startDate = DateTime.Parse(_startDate);
+			var result = await client.UsStock.Chart.GetYearlyChartsAsync(exchangeType, stockCode, startDate);
+
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockChartExchangeType.Nasdaq, "NVDA", "2026-05-02")]
+		public async Task GetUsStockQuarterlyChartsAsync(KiwoomUsStockChartExchangeType exchangeType, string stockCode, string _startDate)
+		{
+			DateTime startDate = DateTime.Parse(_startDate);
+			var result = await client.UsStock.Chart.GetQuarterlyChartsAsync(exchangeType, stockCode, startDate);
+
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+		#endregion
+
+		#region UsStockInvestmentInfo
+		[TestCase(KiwoomUsStockInvestmentInfoQueryType.UsStock)]
+		public async Task GetUsStockResearchesAsync(KiwoomUsStockInvestmentInfoQueryType queryType)
+		{
+			var result = await client.UsStock.InvestmentInfo.GetResearchesAsync(queryType);
+
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+		#endregion
+
+		#region UsStockExchange
+		[TestCase(KiwoomUsStockExchangeType.KrwToUsd, 100.0)]
+		public async Task GetUsStockExpectedAmountAsync(KiwoomUsStockExchangeType exchangeType, decimal exchangeAmount)
+		{
+			var result = await client.UsStock.Exchange.GetExpectedAmountAsync(exchangeType, exchangeAmount);
+
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockExchangeType.KrwToUsd)]
+		public async Task GetUsStockExchangeRateAsync(KiwoomUsStockExchangeType exchangeType)
+		{
+			var result = await client.UsStock.Exchange.GetExchangeRateAsync(exchangeType);
+
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[Ignore("실제 원화<->달러 환전이 실행되어 실제 자금이 이동하므로 자동화 테스트에서는 실행하지 않음")]
+		[TestCase(KiwoomUsStockExchangeType.KrwToUsd, 1.0)]
+		public async Task ApplyUsStockExchangeAsync(KiwoomUsStockExchangeType exchangeType, decimal exchangeAmount)
+		{
+			var result = await client.UsStock.Exchange.ApplyExchangeAsync(exchangeType, exchangeAmount);
+
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+		#endregion
+
+		#region UsStockInfo
+		[TestCase("NVDA")]
+		public async Task GetUsStockExchangeTypesAsync(string stockCode)
+		{
+			var result = await client.UsStock.StockInfo.GetExchangeTypesAsync(stockCode);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoExchangeType.Nasdaq)]
+		public async Task GetUsStockStocksAsync(KiwoomUsStockInfoExchangeType exchangeType)
+		{
+			var result = await client.UsStock.StockInfo.GetStocksAsync(exchangeType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase("NVDA", KiwoomUsStockInfoExchangeType.Nasdaq)]
+		public async Task GetUsStockStockAsync(string stockCode, KiwoomUsStockInfoExchangeType exchangeType)
+		{
+			var result = await client.UsStock.StockInfo.GetStockAsync(stockCode, exchangeType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoIndustryQueryType.All)]
+		public async Task GetUsStockIndustriesAsync(KiwoomUsStockInfoIndustryQueryType queryType)
+		{
+			var result = await client.UsStock.StockInfo.GetIndustriesAsync(queryType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoIndexQueryType.All)]
+		public async Task GetUsStockIndicesAsync(KiwoomUsStockInfoIndexQueryType queryType)
+		{
+			var result = await client.UsStock.StockInfo.GetIndicesAsync(queryType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoExchangeType.All)]
+		public async Task GetUsStockEtfEtnsAsync(KiwoomUsStockInfoExchangeType exchangeType)
+		{
+			var result = await client.UsStock.StockInfo.GetEtfEtnsAsync(exchangeType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoEtfCategoryQueryType.All)]
+		public async Task GetUsStockEtfCategoriesAsync(KiwoomUsStockInfoEtfCategoryQueryType queryType)
+		{
+			var result = await client.UsStock.StockInfo.GetEtfCategoriesAsync(queryType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType.All)]
+		public async Task GetUsStockVolumeSurgesAsync(KiwoomUsStockInfoRankingExchangeType exchangeType)
+		{
+			var result = await client.UsStock.StockInfo.GetVolumeSurgesAsync(exchangeType, averageComparisonDays: 5);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType.All)]
+		public async Task GetUsStockEtfVolumeSurgesAsync(KiwoomUsStockInfoRankingExchangeType exchangeType)
+		{
+			var result = await client.UsStock.StockInfo.GetEtfVolumeSurgesAsync(exchangeType, averageComparisonDays: 5);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType.All)]
+		public async Task GetUsStockPriceRangesAsync(KiwoomUsStockInfoRankingExchangeType exchangeType)
+		{
+			var result = await client.UsStock.StockInfo.GetPriceRangesAsync(exchangeType, priceStart: 5m, priceEnd: 20m);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType.All)]
+		public async Task GetUsStockEtfPriceRangesAsync(KiwoomUsStockInfoRankingExchangeType exchangeType)
+		{
+			var result = await client.UsStock.StockInfo.GetEtfPriceRangesAsync(exchangeType, priceStart: 5m, priceEnd: 20m);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType.All, KiwoomUsStockInfoChangeType.Plunge, KiwoomUsStockInfoTimeBasisType.MinutesAgo)]
+		public async Task GetUsStockPriceVolatilitiesAsync(KiwoomUsStockInfoRankingExchangeType exchangeType, KiwoomUsStockInfoChangeType changeType, KiwoomUsStockInfoTimeBasisType timeBasisType)
+		{
+			var result = await client.UsStock.StockInfo.GetPriceVolatilitiesAsync(exchangeType, changeType: changeType, timeBasisType: timeBasisType, timeValue: 5);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType.All, KiwoomUsStockInfoChangeType.Plunge, KiwoomUsStockInfoTimeBasisType.MinutesAgo)]
+		public async Task GetUsStockEtfPriceVolatilitiesAsync(KiwoomUsStockInfoRankingExchangeType exchangeType, KiwoomUsStockInfoChangeType changeType, KiwoomUsStockInfoTimeBasisType timeBasisType)
+		{
+			var result = await client.UsStock.StockInfo.GetEtfPriceVolatilitiesAsync(exchangeType, changeType: changeType, timeBasisType: timeBasisType, timeValue: 5);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[Test]
+		public async Task GetUsStockWatchlistPriceVolatilitiesAsync()
+		{
+			var watchlist = new[] { (KiwoomUsStockInfoExchangeType.Nasdaq, "NVDA"), (KiwoomUsStockInfoExchangeType.Nyse, "BA") };
+			var result = await client.UsStock.StockInfo.GetWatchlistPriceVolatilitiesAsync(watchlist, KiwoomUsStockInfoRankingExchangeType2.All, KiwoomUsStockInfoChangeType.Plunge, KiwoomUsStockInfoTimeBasisType.DaysAgo, 1);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType2.All, KiwoomUsStockInfoHighLowType.High)]
+		public async Task GetUsStockHighLowApproachesAsync(KiwoomUsStockInfoRankingExchangeType2 exchangeType, KiwoomUsStockInfoHighLowType highLowType)
+		{
+			var result = await client.UsStock.StockInfo.GetHighLowApproachesAsync(exchangeType, highLowType: highLowType, approachRate: 0.5m);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType2.All, KiwoomUsStockInfoHighLowType.High)]
+		public async Task GetUsStockEtfHighLowApproachesAsync(KiwoomUsStockInfoRankingExchangeType2 exchangeType, KiwoomUsStockInfoHighLowType highLowType)
+		{
+			var result = await client.UsStock.StockInfo.GetEtfHighLowApproachesAsync(exchangeType, highLowType: highLowType, approachRate: 0.5m);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[Test]
+		public async Task GetUsStockWatchlistHighLowApproachesAsync()
+		{
+			var watchlist = new[] { (KiwoomUsStockInfoExchangeType.Nasdaq, "NVDA"), (KiwoomUsStockInfoExchangeType.Nyse, "BA") };
+			var result = await client.UsStock.StockInfo.GetWatchlistHighLowApproachesAsync(watchlist, KiwoomUsStockInfoRankingExchangeType2.All, KiwoomUsStockInfoHighLowType.High, 0.5m);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType2.All, KiwoomUsStockInfoDayCountType.Day10)]
+		public async Task GetUsStockVolumeRenewalsAsync(KiwoomUsStockInfoRankingExchangeType2 exchangeType, KiwoomUsStockInfoDayCountType dayCountType)
+		{
+			var result = await client.UsStock.StockInfo.GetVolumeRenewalsAsync(exchangeType, dayCountType: dayCountType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType2.All, KiwoomUsStockInfoDayCountType.Day10)]
+		public async Task GetUsStockEtfVolumeRenewalsAsync(KiwoomUsStockInfoRankingExchangeType2 exchangeType, KiwoomUsStockInfoDayCountType dayCountType)
+		{
+			var result = await client.UsStock.StockInfo.GetEtfVolumeRenewalsAsync(exchangeType, dayCountType: dayCountType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType2.All, KiwoomUsStockInfoDayCountType.Day10)]
+		public async Task GetUsStockWatchlistVolumeRenewalsAsync(KiwoomUsStockInfoRankingExchangeType2 exchangeType, KiwoomUsStockInfoDayCountType dayCountType)
+		{
+			var watchlist = new[] { (KiwoomUsStockInfoExchangeType.Nasdaq, "NVDA"), (KiwoomUsStockInfoExchangeType.Nyse, "BA") };
+			var result = await client.UsStock.StockInfo.GetWatchlistVolumeRenewalsAsync(watchlist, exchangeType, dayCountType: dayCountType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType.All, KiwoomUsStockInfoNewPriceType.NewHigh, KiwoomUsStockInfoHighLowBasisType.HighLowPrice)]
+		public async Task GetUsStockNewPricesAsync(KiwoomUsStockInfoRankingExchangeType exchangeType, KiwoomUsStockInfoNewPriceType newPriceType, KiwoomUsStockInfoHighLowBasisType highLowBasisType)
+		{
+			var result = await client.UsStock.StockInfo.GetNewPricesAsync(exchangeType, newPriceType: newPriceType, highLowBasisType: highLowBasisType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType.All, KiwoomUsStockInfoNewPriceType.NewHigh, KiwoomUsStockInfoHighLowBasisType.HighLowPrice)]
+		public async Task GetUsStockEtfNewPricesAsync(KiwoomUsStockInfoRankingExchangeType exchangeType, KiwoomUsStockInfoNewPriceType newPriceType, KiwoomUsStockInfoHighLowBasisType highLowBasisType)
+		{
+			var result = await client.UsStock.StockInfo.GetEtfNewPricesAsync(exchangeType, newPriceType: newPriceType, highLowBasisType: highLowBasisType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType.All, KiwoomUsStockInfoUpDownType.GapUp)]
+		public async Task GetUsStockGapsAsync(KiwoomUsStockInfoRankingExchangeType exchangeType, KiwoomUsStockInfoUpDownType upDownType)
+		{
+			var result = await client.UsStock.StockInfo.GetGapsAsync(exchangeType, upDownType: upDownType, gapRate: 3m);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType.All, KiwoomUsStockInfoUpDownType.GapUp)]
+		public async Task GetUsStockEtfGapsAsync(KiwoomUsStockInfoRankingExchangeType exchangeType, KiwoomUsStockInfoUpDownType upDownType)
+		{
+			var result = await client.UsStock.StockInfo.GetEtfGapsAsync(exchangeType, upDownType: upDownType, gapRate: 3m);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType2.All, KiwoomUsStockInfoRatioType.BuySell)]
+		public async Task GetUsStockRemainRatioSurgesAsync(KiwoomUsStockInfoRankingExchangeType2 exchangeType, KiwoomUsStockInfoRatioType ratioType)
+		{
+			var result = await client.UsStock.StockInfo.GetRemainRatioSurgesAsync(exchangeType, ratioType: ratioType, minutesAgo: 1);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType2.All, KiwoomUsStockInfoRatioType.BuySell)]
+		public async Task GetUsStockEtfRemainRatioSurgesAsync(KiwoomUsStockInfoRankingExchangeType2 exchangeType, KiwoomUsStockInfoRatioType ratioType)
+		{
+			var result = await client.UsStock.StockInfo.GetEtfRemainRatioSurgesAsync(exchangeType, ratioType: ratioType, minutesAgo: 1);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType.All, KiwoomUsStockInfoZoneCondition.All)]
+		public async Task GetUsStockVolumeZonesAsync(KiwoomUsStockInfoRankingExchangeType exchangeType, KiwoomUsStockInfoZoneCondition zoneCondition)
+		{
+			var result = await client.UsStock.StockInfo.GetVolumeZonesAsync(exchangeType, periodDays: 50, concentrationRate: 50, zoneCondition: zoneCondition, zoneCount: 10);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType.All, KiwoomUsStockInfoZoneCondition.All)]
+		public async Task GetUsStockEtfVolumeZonesAsync(KiwoomUsStockInfoRankingExchangeType exchangeType, KiwoomUsStockInfoZoneCondition zoneCondition)
+		{
+			var result = await client.UsStock.StockInfo.GetEtfVolumeZonesAsync(exchangeType, periodDays: 50, concentrationRate: 50, zoneCondition: zoneCondition, zoneCount: 10);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoExchangeType.Nasdaq, "NVDA")]
+		public async Task GetUsStockYearlyChangeRateAsync(KiwoomUsStockInfoExchangeType exchangeType, string stockCode)
+		{
+			var result = await client.UsStock.StockInfo.GetYearlyChangeRateAsync(exchangeType, stockCode);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase("000", 2026)]
+		public async Task GetUsStockIndustryStockYearlyChangeRatesAsync(string industryCode, int year)
+		{
+			var result = await client.UsStock.StockInfo.GetIndustryStockYearlyChangeRatesAsync(industryCode, year);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(2026)]
+		public async Task GetUsStockEtfCategoryStockYearlyChangeRatesAsync(int year)
+		{
+			var result = await client.UsStock.StockInfo.GetEtfCategoryStockYearlyChangeRatesAsync(year: year);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase("010")]
+		public async Task GetUsStockIndustryYearlyChangeRateAsync(string industryCode)
+		{
+			var result = await client.UsStock.StockInfo.GetIndustryYearlyChangeRateAsync(industryCode);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[Test]
+		public async Task GetUsStockEtfCategoryYearlyChangeRateAsync()
+		{
+			var result = await client.UsStock.StockInfo.GetEtfCategoryYearlyChangeRateAsync();
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+		#endregion
+
+		#region UsStockIndustry
+		[TestCase(KiwoomUsStockIndustryExchangeType.All, "000")]
+		public async Task GetUsStockIndustryPeriodReturnsAsync(KiwoomUsStockIndustryExchangeType exchangeType, string industryCode)
+		{
+			var result = await client.UsStock.Industry.GetPeriodReturnsAsync(exchangeType, industryCode);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockIndustryExchangeType.All, KiwoomUsStockIndustrySortType.TopChangeRate, "000")]
+		public async Task GetUsStockIndustryChangeRateRanksAsync(KiwoomUsStockIndustryExchangeType exchangeType, KiwoomUsStockIndustrySortType sortType, string industryCode)
+		{
+			var result = await client.UsStock.Industry.GetChangeRateRanksAsync(exchangeType, sortType, industryCode);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+		#endregion
+
+		#region UsStockWebSocket
+		[Explicit("실시간 WebSocket 연결을 수동으로 확인할 때만 실행")]
+		[Test]
+		public async Task GetUsStockConditionSearchListAsync()
+		{
+			var socketClient = await KiwoomRestApi.Net.Clients.UsStocks.KiwoomUsStockSocketClient.CreateAsync(client.Token, false);
+
+			socketClient.OnMessageReceived += msg => TestContext.WriteLine($"메시지 수신: {msg.ServiceName}, {msg.ReturnCode}, {msg.ReturnMessage}");
+
+			var tcs = new TaskCompletionSource<bool>();
+			socketClient.OnConditionSearchListReceived += list =>
+			{
+				TestContext.WriteLine($"조건검색 목록 {list.Count()}건 수신");
+				tcs.TrySetResult(true);
+			};
+
+			await Task.Delay(TimeSpan.FromSeconds(1));
+			await socketClient.WebSocket.GetConditionSearchListAsync();
+
+			var completed = await Task.WhenAny(tcs.Task, Task.Delay(TimeSpan.FromSeconds(15)));
+			Assert.That(completed, Is.EqualTo(tcs.Task), "15초 내에 조건검색 목록을 수신하지 못했습니다.");
+
+			await socketClient.DisconnectAsync();
+		}
+		#endregion
+
+		#region UsStockMarketCondition
+		[TestCase(KiwoomUsStockMarketConditionExchangeType.Nasdaq, "NVDA")]
+		public async Task GetUsStockMarketConditionStockInfoAsync(KiwoomUsStockMarketConditionExchangeType exchangeType, string stockCode)
+		{
+			var result = await client.UsStock.MarketCondition.GetStockInfoAsync(exchangeType, stockCode);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockMarketConditionExchangeType.Nasdaq, "NVDA")]
+		public async Task GetUsStockMarketConditionOrderBookAsync(KiwoomUsStockMarketConditionExchangeType exchangeType, string stockCode)
+		{
+			var result = await client.UsStock.MarketCondition.GetOrderBookAsync(exchangeType, stockCode);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockMarketConditionExchangeType.Nasdaq, "NVDA")]
+		public async Task GetUsStockMarketConditionDetailedTradesAsync(KiwoomUsStockMarketConditionExchangeType exchangeType, string stockCode)
+		{
+			var result = await client.UsStock.MarketCondition.GetDetailedTradesAsync(exchangeType, stockCode);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockMarketConditionExchangeType.Nasdaq, "NVDA")]
+		public async Task GetUsStockMarketConditionDailyTradesAsync(KiwoomUsStockMarketConditionExchangeType exchangeType, string stockCode)
+		{
+			var result = await client.UsStock.MarketCondition.GetDailyTradesAsync(exchangeType, stockCode);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockMarketConditionExchangeType.Nasdaq, "NVDA", "2026-05-01")]
+		public async Task GetUsStockMarketConditionDailyPricesAsync(KiwoomUsStockMarketConditionExchangeType exchangeType, string stockCode, string _baseDate)
+		{
+			DateTime baseDate = DateTime.Parse(_baseDate);
+			var result = await client.UsStock.MarketCondition.GetDailyPricesAsync(exchangeType, stockCode, baseDate);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+		#endregion
+
+		#region UsStockRankingInfo
+		[TestCase(KiwoomUsStockRankingInfoServiceType.Minutes1)]
+		public async Task GetUsStockRankingInfoRealtimeQueryRanksAsync(KiwoomUsStockRankingInfoServiceType serviceType)
+		{
+			var result = await client.UsStock.RankingInfo.GetRealtimeQueryRanksAsync(serviceType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockRankingInfoDateUnitType.Day, KiwoomUsStockRankingInfoMarketType.All)]
+		public async Task GetUsStockRankingInfoWatchlistRegistrationRanksAsync(KiwoomUsStockRankingInfoDateUnitType dateUnitType, KiwoomUsStockRankingInfoMarketType marketType)
+		{
+			var result = await client.UsStock.RankingInfo.GetWatchlistRegistrationRanksAsync(dateUnitType, marketType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType.All)]
+		public async Task GetUsStockRankingInfoPeriodChangeRateRanksAsync(KiwoomUsStockInfoRankingExchangeType exchangeType)
+		{
+			var result = await client.UsStock.RankingInfo.GetPeriodChangeRateRanksAsync(exchangeType, daysAgo: 1);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType.All)]
+		public async Task GetUsStockRankingInfoEtfPeriodChangeRateRanksAsync(KiwoomUsStockInfoRankingExchangeType exchangeType)
+		{
+			var result = await client.UsStock.RankingInfo.GetEtfPeriodChangeRateRanksAsync(exchangeType, daysAgo: 1);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[Test]
+		public async Task GetUsStockRankingInfoWatchlistPeriodChangeRateRanksAsync()
+		{
+			var watchlist = new[] { (KiwoomUsStockInfoExchangeType.Nyse, "BA"), (KiwoomUsStockInfoExchangeType.Nasdaq, "AMGN") };
+			var result = await client.UsStock.RankingInfo.GetWatchlistPeriodChangeRateRanksAsync(watchlist, KiwoomUsStockInfoRankingExchangeType.All, daysAgo: 1);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType.All, KiwoomUsStockRankingInfoSortType.Volume)]
+		public async Task GetUsStockRankingInfoVolumeRanksAsync(KiwoomUsStockInfoRankingExchangeType exchangeType, KiwoomUsStockRankingInfoSortType sortType)
+		{
+			var result = await client.UsStock.RankingInfo.GetVolumeRanksAsync(exchangeType, sortType: sortType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType.All, KiwoomUsStockRankingInfoSortType.Volume)]
+		public async Task GetUsStockRankingInfoEtfVolumeRanksAsync(KiwoomUsStockInfoRankingExchangeType exchangeType, KiwoomUsStockRankingInfoSortType sortType)
+		{
+			var result = await client.UsStock.RankingInfo.GetEtfVolumeRanksAsync(exchangeType, sortType: sortType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType.All)]
+		public async Task GetUsStockRankingInfoTransactionAmountRanksAsync(KiwoomUsStockInfoRankingExchangeType exchangeType)
+		{
+			var result = await client.UsStock.RankingInfo.GetTransactionAmountRanksAsync(exchangeType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType.All)]
+		public async Task GetUsStockRankingInfoEtfTransactionAmountRanksAsync(KiwoomUsStockInfoRankingExchangeType exchangeType)
+		{
+			var result = await client.UsStock.RankingInfo.GetEtfTransactionAmountRanksAsync(exchangeType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType.All)]
+		public async Task GetUsStockRankingInfoMarketCapRanksAsync(KiwoomUsStockInfoRankingExchangeType exchangeType)
+		{
+			var result = await client.UsStock.RankingInfo.GetMarketCapRanksAsync(exchangeType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType.All)]
+		public async Task GetUsStockRankingInfoEtfMarketCapRanksAsync(KiwoomUsStockInfoRankingExchangeType exchangeType)
+		{
+			var result = await client.UsStock.RankingInfo.GetEtfMarketCapRanksAsync(exchangeType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockRankingInfoKiwoomQueryType.TransactionAmount, KiwoomUsStockRankingInfoKiwoomDateUnitType.Minutes5)]
+		public async Task GetUsStockRankingInfoKiwoomTradeRanksAsync(KiwoomUsStockRankingInfoKiwoomQueryType queryType, KiwoomUsStockRankingInfoKiwoomDateUnitType dateUnitType)
+		{
+			var result = await client.UsStock.RankingInfo.GetKiwoomTradeRanksAsync(queryType, dateUnitType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockRankingInfoKiwoomQueryType.TransactionAmount, KiwoomUsStockRankingInfoKiwoomDateUnitType.Minutes5)]
+		public async Task GetUsStockRankingInfoEtfKiwoomTradeRanksAsync(KiwoomUsStockRankingInfoKiwoomQueryType queryType, KiwoomUsStockRankingInfoKiwoomDateUnitType dateUnitType)
+		{
+			var result = await client.UsStock.RankingInfo.GetEtfKiwoomTradeRanksAsync(queryType, dateUnitType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType.All, KiwoomUsStockRankingInfoChangeSortType.RiseRate)]
+		public async Task GetUsStockRankingInfoChangeRateRanksAsync(KiwoomUsStockInfoRankingExchangeType exchangeType, KiwoomUsStockRankingInfoChangeSortType sortType)
+		{
+			var result = await client.UsStock.RankingInfo.GetChangeRateRanksAsync(exchangeType, sortType: sortType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType.All, KiwoomUsStockRankingInfoChangeSortType.RiseRate)]
+		public async Task GetUsStockRankingInfoEtfChangeRateRanksAsync(KiwoomUsStockInfoRankingExchangeType exchangeType, KiwoomUsStockRankingInfoChangeSortType sortType)
+		{
+			var result = await client.UsStock.RankingInfo.GetEtfChangeRateRanksAsync(exchangeType, sortType: sortType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType.All, KiwoomUsStockRankingInfoUpDownSortType.RiseRate)]
+		public async Task GetUsStockRankingInfoOpenPriceChangeRateRanksAsync(KiwoomUsStockInfoRankingExchangeType exchangeType, KiwoomUsStockRankingInfoUpDownSortType sortType)
+		{
+			var result = await client.UsStock.RankingInfo.GetOpenPriceChangeRateRanksAsync(exchangeType, sortType: sortType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType.All, KiwoomUsStockRankingInfoUpDownSortType.RiseRate)]
+		public async Task GetUsStockRankingInfoEtfOpenPriceChangeRateRanksAsync(KiwoomUsStockInfoRankingExchangeType exchangeType, KiwoomUsStockRankingInfoUpDownSortType sortType)
+		{
+			var result = await client.UsStock.RankingInfo.GetEtfOpenPriceChangeRateRanksAsync(exchangeType, sortType: sortType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[Test]
+		public async Task GetUsStockRankingInfoWatchlistOpenPriceChangeRateRanksAsync()
+		{
+			var watchlist = new[] { (KiwoomUsStockInfoExchangeType.Nasdaq, "NVDA"), (KiwoomUsStockInfoExchangeType.Nyse, "BA") };
+			var result = await client.UsStock.RankingInfo.GetWatchlistOpenPriceChangeRateRanksAsync(watchlist, KiwoomUsStockInfoRankingExchangeType.All, KiwoomUsStockRankingInfoUpDownSortType.RiseRate);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType2.All, KiwoomUsStockRankingInfoCumulativeSortType.RiseRate, "2026-04-10")]
+		public async Task GetUsStockRankingInfoCumulativeChangeRateRanksAsync(KiwoomUsStockInfoRankingExchangeType2 exchangeType, KiwoomUsStockRankingInfoCumulativeSortType sortType, string _baseDate)
+		{
+			DateTime baseDate = DateTime.Parse(_baseDate);
+			var result = await client.UsStock.RankingInfo.GetCumulativeChangeRateRanksAsync(exchangeType, sortType: sortType, priceStart: -100m, priceEnd: 100m, baseDate: baseDate);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType2.All, KiwoomUsStockRankingInfoCumulativeSortType.RiseRate, "2026-04-10")]
+		public async Task GetUsStockRankingInfoEtfCumulativeChangeRateRanksAsync(KiwoomUsStockInfoRankingExchangeType2 exchangeType, KiwoomUsStockRankingInfoCumulativeSortType sortType, string _baseDate)
+		{
+			DateTime baseDate = DateTime.Parse(_baseDate);
+			var result = await client.UsStock.RankingInfo.GetEtfCumulativeChangeRateRanksAsync(exchangeType, sortType: sortType, priceStart: -100m, priceEnd: 100m, baseDate: baseDate);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType2.All, KiwoomUsStockRankingInfoPreviousDaySortType.Volume)]
+		public async Task GetUsStockRankingInfoPreviousDayTradeRanksAsync(KiwoomUsStockInfoRankingExchangeType2 exchangeType, KiwoomUsStockRankingInfoPreviousDaySortType sortType)
+		{
+			var result = await client.UsStock.RankingInfo.GetPreviousDayTradeRanksAsync(exchangeType, sortType: sortType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType2.All, KiwoomUsStockRankingInfoPreviousDaySortType.Volume)]
+		public async Task GetUsStockRankingInfoEtfPreviousDayTradeRanksAsync(KiwoomUsStockInfoRankingExchangeType2 exchangeType, KiwoomUsStockRankingInfoPreviousDaySortType sortType)
+		{
+			var result = await client.UsStock.RankingInfo.GetEtfPreviousDayTradeRanksAsync(exchangeType, sortType: sortType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType2.All, KiwoomUsStockRankingInfoHighLowSortType.RiseFromLow, KiwoomUsStockRankingInfoPeriodType.YearToDate)]
+		public async Task GetUsStockRankingInfoHighLowChangeRanksAsync(KiwoomUsStockInfoRankingExchangeType2 exchangeType, KiwoomUsStockRankingInfoHighLowSortType sortType, KiwoomUsStockRankingInfoPeriodType periodType)
+		{
+			var result = await client.UsStock.RankingInfo.GetHighLowChangeRanksAsync(exchangeType, sortType: sortType, periodType: periodType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType2.All, KiwoomUsStockRankingInfoHighLowSortType.RiseFromLow, KiwoomUsStockRankingInfoPeriodType.YearToDate)]
+		public async Task GetUsStockRankingInfoEtfHighLowChangeRanksAsync(KiwoomUsStockInfoRankingExchangeType2 exchangeType, KiwoomUsStockRankingInfoHighLowSortType sortType, KiwoomUsStockRankingInfoPeriodType periodType)
+		{
+			var result = await client.UsStock.RankingInfo.GetEtfHighLowChangeRanksAsync(exchangeType, sortType: sortType, periodType: periodType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType2.All, "2026-05-08", KiwoomUsStockRankingInfoSpecificDaySortType.Rise)]
+		public async Task GetUsStockRankingInfoSpecificDayChangeRanksAsync(KiwoomUsStockInfoRankingExchangeType2 exchangeType, string _baseDate, KiwoomUsStockRankingInfoSpecificDaySortType sortType)
+		{
+			DateTime baseDate = DateTime.Parse(_baseDate);
+			var result = await client.UsStock.RankingInfo.GetSpecificDayChangeRanksAsync(exchangeType, baseDate: baseDate, sortType: sortType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType2.All, "2026-05-08", KiwoomUsStockRankingInfoSpecificDaySortType.Rise)]
+		public async Task GetUsStockRankingInfoEtfSpecificDayChangeRanksAsync(KiwoomUsStockInfoRankingExchangeType2 exchangeType, string _baseDate, KiwoomUsStockRankingInfoSpecificDaySortType sortType)
+		{
+			DateTime baseDate = DateTime.Parse(_baseDate);
+			var result = await client.UsStock.RankingInfo.GetEtfSpecificDayChangeRanksAsync(exchangeType, baseDate: baseDate, sortType: sortType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType.All)]
+		public async Task GetUsStockRankingInfoTurnoverRateRanksAsync(KiwoomUsStockInfoRankingExchangeType exchangeType)
+		{
+			var result = await client.UsStock.RankingInfo.GetTurnoverRateRanksAsync(exchangeType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType.All)]
+		public async Task GetUsStockRankingInfoEtfTurnoverRateRanksAsync(KiwoomUsStockInfoRankingExchangeType exchangeType)
+		{
+			var result = await client.UsStock.RankingInfo.GetEtfTurnoverRateRanksAsync(exchangeType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType2.All, KiwoomUsStockRankingInfoContinuousSortType.ConsecutiveDaysRise)]
+		public async Task GetUsStockRankingInfoContinuousChangeRanksAsync(KiwoomUsStockInfoRankingExchangeType2 exchangeType, KiwoomUsStockRankingInfoContinuousSortType sortType)
+		{
+			var result = await client.UsStock.RankingInfo.GetContinuousChangeRanksAsync(exchangeType, sortType: sortType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType2.All, KiwoomUsStockRankingInfoContinuousSortType.ConsecutiveDaysRise)]
+		public async Task GetUsStockRankingInfoEtfContinuousChangeRanksAsync(KiwoomUsStockInfoRankingExchangeType2 exchangeType, KiwoomUsStockRankingInfoContinuousSortType sortType)
+		{
+			var result = await client.UsStock.RankingInfo.GetEtfContinuousChangeRanksAsync(exchangeType, sortType: sortType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[Test]
+		public async Task GetUsStockRankingInfoWatchlistContinuousChangeRanksAsync()
+		{
+			var watchlist = new[] { (KiwoomUsStockInfoExchangeType.Nyse, "BA"), (KiwoomUsStockInfoExchangeType.Nasdaq, "AMGN") };
+			var result = await client.UsStock.RankingInfo.GetWatchlistContinuousChangeRanksAsync(watchlist, KiwoomUsStockInfoRankingExchangeType2.All, sortType: KiwoomUsStockRankingInfoContinuousSortType.ConsecutiveDaysRise);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType.All, KiwoomUsStockRankingInfoOrderBookSortType.NetBuyRemainingQuantity)]
+		public async Task GetUsStockRankingInfoOrderBookRanksAsync(KiwoomUsStockInfoRankingExchangeType exchangeType, KiwoomUsStockRankingInfoOrderBookSortType sortType)
+		{
+			var result = await client.UsStock.RankingInfo.GetOrderBookRanksAsync(exchangeType, sortType: sortType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType.All, KiwoomUsStockRankingInfoOrderBookSortType.NetBuyRemainingQuantity)]
+		public async Task GetUsStockRankingInfoEtfOrderBookRanksAsync(KiwoomUsStockInfoRankingExchangeType exchangeType, KiwoomUsStockRankingInfoOrderBookSortType sortType)
+		{
+			var result = await client.UsStock.RankingInfo.GetEtfOrderBookRanksAsync(exchangeType, sortType: sortType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType2.All, KiwoomUsStockRankingInfoDisparityRateSortType.RiseRate)]
+		public async Task GetUsStockRankingInfoDisparityRateRanksAsync(KiwoomUsStockInfoRankingExchangeType2 exchangeType, KiwoomUsStockRankingInfoDisparityRateSortType sortType)
+		{
+			var result = await client.UsStock.RankingInfo.GetDisparityRateRanksAsync(exchangeType, sortType: sortType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockInfoRankingExchangeType2.All, KiwoomUsStockRankingInfoDisparityRateSortType.RiseRate)]
+		public async Task GetUsStockRankingInfoEtfDisparityRateRanksAsync(KiwoomUsStockInfoRankingExchangeType2 exchangeType, KiwoomUsStockRankingInfoDisparityRateSortType sortType)
+		{
+			var result = await client.UsStock.RankingInfo.GetEtfDisparityRateRanksAsync(exchangeType, sortType: sortType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+		#endregion
+
+		#region UsStockWatchlist
+
+		[Test]
+		public async Task GetUsStockWatchlistGroupsAsync()
+		{
+			var result = await client.UsStock.Watchlist.GetWatchlistGroupsAsync();
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase("001")]
+		public async Task GetUsStockWatchlistGroupDetailsAsync(string groupCode)
+		{
+			var result = await client.UsStock.Watchlist.GetWatchlistGroupDetailsAsync(groupCode);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+		#endregion
+
+		#region UsStockAccount
+
+		[Test]
+		public async Task GetUsStockAccountDailyAccountProfitRatesAsync()
+		{
+			var result = await client.UsStock.Account.GetDailyAccountProfitRatesAsync(DateTime.Today.AddDays(-30), DateTime.Today);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[Test]
+		public async Task GetUsStockAccountMonthlyAccountProfitRatesAsync()
+		{
+			var result = await client.UsStock.Account.GetMonthlyAccountProfitRatesAsync(DateTime.Today.AddMonths(-3), DateTime.Today);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[Test]
+		public async Task GetUsStockAccountYearlyAccountProfitRatesAsync()
+		{
+			var result = await client.UsStock.Account.GetYearlyAccountProfitRatesAsync(DateTime.Today.Year - 2, DateTime.Today.Year);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase("NVDA", KiwoomUsStockInfoExchangeType.Nasdaq)]
+		public async Task GetUsStockAccountDailyStockProfitRatesAsync(string stockCode, KiwoomUsStockInfoExchangeType exchangeType)
+		{
+			var result = await client.UsStock.Account.GetDailyStockProfitRatesAsync(DateTime.Today.AddDays(-30), DateTime.Today, stockCode, exchangeType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase("NVDA", KiwoomUsStockInfoExchangeType.Nasdaq)]
+		public async Task GetUsStockAccountMonthlyStockProfitRatesAsync(string stockCode, KiwoomUsStockInfoExchangeType exchangeType)
+		{
+			var result = await client.UsStock.Account.GetMonthlyStockProfitRatesAsync(DateTime.Today.AddMonths(-3), DateTime.Today, stockCode, exchangeType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase("NVDA", KiwoomUsStockInfoExchangeType.Nasdaq)]
+		public async Task GetUsStockAccountYearlyStockProfitRatesAsync(string stockCode, KiwoomUsStockInfoExchangeType exchangeType)
+		{
+			var result = await client.UsStock.Account.GetYearlyStockProfitRatesAsync(DateTime.Today.Year - 2, DateTime.Today.Year, stockCode, exchangeType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[Test]
+		public async Task GetUsStockAccountUnfilledOrdersAsync()
+		{
+			var result = await client.UsStock.Account.GetUnfilledOrdersAsync();
+			Assert.That(result.ReturnCode, Is.EqualTo(0).Or.EqualTo(20));
+		}
+
+		[Test]
+		public async Task GetUsStockAccountBalanceAsync()
+		{
+			var result = await client.UsStock.Account.GetBalanceAsync();
+			Assert.That(result.ReturnCode, Is.EqualTo(0).Or.EqualTo(20));
+		}
+
+		[Test]
+		public async Task GetUsStockAccountTransactionHistoryAsync()
+		{
+			var result = await client.UsStock.Account.GetTransactionHistoryAsync(DateTime.Today.AddDays(-30), DateTime.Today);
+			Assert.That(result.ReturnCode, Is.EqualTo(0).Or.EqualTo(20));
+		}
+
+		[Test]
+		public async Task GetUsStockAccountDepositAsync()
+		{
+			var result = await client.UsStock.Account.GetDepositAsync();
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[Test]
+		public async Task GetUsStockAccountKrwWithdrawableAmountAsync()
+		{
+			var result = await client.UsStock.Account.GetKrwWithdrawableAmountAsync();
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockAccountCommissionInclusionType.Included, KiwoomUsStockAccountExchangeRateType.BaseExchangeRate)]
+		public async Task GetUsStockAccountCurrencyDepositEvaluationAsync(KiwoomUsStockAccountCommissionInclusionType commissionInclusionType, KiwoomUsStockAccountExchangeRateType exchangeRateType)
+		{
+			var result = await client.UsStock.Account.GetCurrencyDepositEvaluationAsync(commissionInclusionType, exchangeRateType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockAccountCommissionInclusionType.Included, KiwoomUsStockAccountExchangeRateType.BaseExchangeRate)]
+		public async Task GetUsStockAccountLedgerEvaluationAmountAsync(KiwoomUsStockAccountCommissionInclusionType commissionInclusionType, KiwoomUsStockAccountExchangeRateType exchangeRateType)
+		{
+			var result = await client.UsStock.Account.GetLedgerEvaluationAmountAsync(commissionInclusionType, exchangeRateType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0).Or.EqualTo(20));
+		}
+
+		[Test]
+		public async Task GetUsStockAccountSpecificDateEvaluationAmountAsync()
+		{
+			var result = await client.UsStock.Account.GetSpecificDateEvaluationAmountAsync(DateTime.Today.AddDays(-1));
+			Assert.That(result.ReturnCode, Is.EqualTo(0).Or.EqualTo(20));
+		}
+
+		[Test]
+		public async Task GetUsStockAccountSpecificDateCurrencyDepositEvaluationAsync()
+		{
+			var result = await client.UsStock.Account.GetSpecificDateCurrencyDepositEvaluationAsync(DateTime.Today.AddDays(-1));
+			Assert.That(result.ReturnCode, Is.EqualTo(0).Or.EqualTo(20));
+		}
+
+		[TestCase(KiwoomUsStockAccountOrderQueryType.OrderDescending, KiwoomUsStockAccountSellBuyType.All)]
+		public async Task GetUsStockAccountDailyOrderExecutionsAsync(KiwoomUsStockAccountOrderQueryType queryType, KiwoomUsStockAccountSellBuyType sellBuyType)
+		{
+			var result = await client.UsStock.Account.GetDailyOrderExecutionsAsync(queryType, sellBuyType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0).Or.EqualTo(20));
+		}
+
+		[Test]
+		public async Task GetUsStockAccountDepositDetailsAsync()
+		{
+			var result = await client.UsStock.Account.GetDepositDetailsAsync();
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[TestCase(KiwoomUsStockAccountForeignCurrencyKrwType.ForeignCurrency)]
+		public async Task GetUsStockAccountTodayStockRealizedProfitLossesAsync(KiwoomUsStockAccountForeignCurrencyKrwType foreignCurrencyKrwType)
+		{
+			var result = await client.UsStock.Account.GetTodayStockRealizedProfitLossesAsync(foreignCurrencyKrwType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0).Or.EqualTo(20));
+		}
+
+		[Test]
+		public async Task GetUsStockAccountOrderHistoryAsync()
+		{
+			var result = await client.UsStock.Account.GetOrderHistoryAsync(DateTime.Today.AddDays(-30), DateTime.Today);
+			Assert.That(result.ReturnCode, Is.EqualTo(0).Or.EqualTo(20));
+		}
+
+		[Test]
+		public async Task GetUsStockAccountTodayOrderExecutionsAsync()
+		{
+			var result = await client.UsStock.Account.GetTodayOrderExecutionsAsync();
+			Assert.That(result.ReturnCode, Is.EqualTo(0).Or.EqualTo(20));
+		}
+
+		[Test]
+		public async Task GetUsStockAccountRealizedProfitLossesAsync()
+		{
+			var result = await client.UsStock.Account.GetRealizedProfitLossesAsync(DateTime.Today.AddDays(-30), DateTime.Today);
+			Assert.That(result.ReturnCode, Is.EqualTo(0).Or.EqualTo(20));
+		}
+
+		[TestCase(KiwoomUsStockAccountTodayTradeQueryType.TodayBuyTodaySell, KiwoomUsStockAccountForeignCurrencyKrwType.ForeignCurrency)]
+		public async Task GetUsStockAccountTodayTradesAsync(KiwoomUsStockAccountTodayTradeQueryType queryType, KiwoomUsStockAccountForeignCurrencyKrwType foreignCurrencyKrwType)
+		{
+			var result = await client.UsStock.Account.GetTodayTradesAsync(queryType, foreignCurrencyKrwType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0).Or.EqualTo(20));
+		}
+
+		[TestCase(KiwoomUsStockAccountForeignCurrencyKrwType.ForeignCurrency)]
+		public async Task GetUsStockAccountTodayTradeSummaryAsync(KiwoomUsStockAccountForeignCurrencyKrwType foreignCurrencyKrwType)
+		{
+			var result = await client.UsStock.Account.GetTodayTradeSummaryAsync(foreignCurrencyKrwType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0).Or.EqualTo(20));
+		}
+
+		[TestCase(KiwoomUsStockAccountForeignCurrencyKrwType.ForeignCurrency)]
+		public async Task GetUsStockAccountTodayRealizedProfitLossesAsync(KiwoomUsStockAccountForeignCurrencyKrwType foreignCurrencyKrwType)
+		{
+			var result = await client.UsStock.Account.GetTodayRealizedProfitLossesAsync(foreignCurrencyKrwType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0).Or.EqualTo(20));
+		}
+
+		[TestCase(KiwoomUsStockAccountForeignCurrencyKrwType.ForeignCurrency)]
+		public async Task GetUsStockAccountDailyStockRealizedProfitLossesAsync(KiwoomUsStockAccountForeignCurrencyKrwType foreignCurrencyKrwType)
+		{
+			var result = await client.UsStock.Account.GetDailyStockRealizedProfitLossesAsync(DateTime.Today, foreignCurrencyKrwType);
+			Assert.That(result.ReturnCode, Is.EqualTo(0).Or.EqualTo(20));
+		}
+
+		[Test]
+		public async Task GetUsStockAccountPeriodProfitRatesAsync()
+		{
+			var result = await client.UsStock.Account.GetPeriodProfitRatesAsync(DateTime.Today.AddDays(-30), DateTime.Today);
+			Assert.That(result.ReturnCode, Is.EqualTo(0));
+		}
+
+		[Test]
+		public async Task GetUsStockAccountDailyRealizedProfitLossesAsync()
+		{
+			var result = await client.UsStock.Account.GetDailyRealizedProfitLossesAsync(DateTime.Today.AddDays(-30), DateTime.Today);
+			Assert.That(result.ReturnCode, Is.EqualTo(0).Or.EqualTo(20));
+		}
+
+		[Test]
+		public async Task GetUsStockAccountMonthlyRealizedProfitLossesAsync()
+		{
+			var result = await client.UsStock.Account.GetMonthlyRealizedProfitLossesAsync(DateTime.Today.AddMonths(-3), DateTime.Today);
+			Assert.That(result.ReturnCode, Is.EqualTo(0).Or.EqualTo(20));
 		}
 		#endregion
 	}

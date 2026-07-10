@@ -1,7 +1,8 @@
-﻿using KiwoomRestApi.Net.Enums.Industry;
+﻿using KiwoomRestApi.Net.Enums.DomesticStock.Industry;
 using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
+using KiwoomRestApi.Net.Objects.Models.DomesticStock;
 
 using System;
 using System.Threading;

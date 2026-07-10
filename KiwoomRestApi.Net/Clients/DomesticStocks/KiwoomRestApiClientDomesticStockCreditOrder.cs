@@ -1,7 +1,8 @@
-﻿using KiwoomRestApi.Net.Enums.CreditOrder;
+﻿using KiwoomRestApi.Net.Enums.DomesticStock.CreditOrder;
 using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
+using KiwoomRestApi.Net.Objects.Models.DomesticStock;
 
 using System;
 using System.Threading;

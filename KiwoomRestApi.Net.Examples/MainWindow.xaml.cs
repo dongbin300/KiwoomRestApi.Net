@@ -1,7 +1,7 @@
 using KiwoomRestApi.Net.Clients;
 using KiwoomRestApi.Net.Clients.DomesticStocks;
-using KiwoomRestApi.Net.Enums.Chart;
-using KiwoomRestApi.Net.Enums.StockInfo;
+using KiwoomRestApi.Net.Enums.DomesticStock.Chart;
+using KiwoomRestApi.Net.Enums.DomesticStock.StockInfo;
 using KiwoomRestApi.Net.Enums.WebSocket;
 
 using Newtonsoft.Json;

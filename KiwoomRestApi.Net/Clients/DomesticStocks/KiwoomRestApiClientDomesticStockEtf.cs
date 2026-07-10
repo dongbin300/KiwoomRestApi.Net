@@ -1,7 +1,8 @@
-﻿using KiwoomRestApi.Net.Enums.Etf;
+﻿using KiwoomRestApi.Net.Enums.DomesticStock.Etf;
 using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
+using KiwoomRestApi.Net.Objects.Models.DomesticStock;
 
 using System.Threading;
 using System.Threading.Tasks;

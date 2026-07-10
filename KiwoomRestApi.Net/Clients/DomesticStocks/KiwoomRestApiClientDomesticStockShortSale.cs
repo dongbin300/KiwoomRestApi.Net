@@ -1,7 +1,8 @@
-﻿using KiwoomRestApi.Net.Enums.ShortSale;
+﻿using KiwoomRestApi.Net.Enums.DomesticStock.ShortSale;
 using KiwoomRestApi.Net.Objects;
 using KiwoomRestApi.Net.Objects.Commons;
 using KiwoomRestApi.Net.Objects.Models;
+using KiwoomRestApi.Net.Objects.Models.DomesticStock;
 
 using System;
 using System.Threading;

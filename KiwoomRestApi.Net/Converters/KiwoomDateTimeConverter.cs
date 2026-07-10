@@ -12,10 +12,6 @@ namespace KiwoomRestApi.Net.Converters
 	{
 		/// <summary>날짜 형식 (yyyyMMdd)</summary>
 		private const string FormatDate = "yyyyMMdd";
-		/// <summary>날짜시간 형식 (yyyyMMddHHmmss)</summary>
-		private const string FormatDateTime = "yyyyMMddHHmmss";
-		/// <summary>시간 형식 (HHmmss)</summary>
-		private const string FormatTime = "HHmmss";
 
 		/// <summary>
 		/// JSON에서 읽은 날짜/시간 문자열을 DateTime으로 변환합니다.
@@ -31,7 +27,7 @@ namespace KiwoomRestApi.Net.Converters
 		{
 			var s = reader.Value as string;
 			// 빈 문자열이면 null 반환
-			if (string.IsNullOrEmpty(s))
+			if (s is null || s.Length == 0)
 			{
 				return null;
 			}
@@ -46,14 +42,24 @@ namespace KiwoomRestApi.Net.Converters
 				return dtDate;
 			}
 			// 날짜시간 형식 (yyyyMMddHHmmss) 파싱 시도
-			if (DateTime.TryParseExact(s, FormatDateTime, CultureInfo.InvariantCulture, DateTimeStyles.None, out var dtDateTime))
+			// 해외주식(미국주식 등)은 한국시간 기준 자정을 넘는 체결시간을 시(HH) 24 이상으로 표기하므로 TimeSpan으로 직접 계산
+			if (s.Length == 14 && long.TryParse(s, NumberStyles.None, CultureInfo.InvariantCulture, out _))
 			{
-				return dtDateTime;
+				var year = int.Parse(s.Substring(0, 4), CultureInfo.InvariantCulture);
+				var month = int.Parse(s.Substring(4, 2), CultureInfo.InvariantCulture);
+				var day = int.Parse(s.Substring(6, 2), CultureInfo.InvariantCulture);
+				var hour = int.Parse(s.Substring(8, 2), CultureInfo.InvariantCulture);
+				var minute = int.Parse(s.Substring(10, 2), CultureInfo.InvariantCulture);
+				var second = int.Parse(s.Substring(12, 2), CultureInfo.InvariantCulture);
+				return new DateTime(year, month, day) + new TimeSpan(hour, minute, second);
 			}
-			// 시간 형식 (HHmmss) 파싱 시도 - 오늘 날짜와 결합
-			if (DateTime.TryParseExact(s, FormatTime, CultureInfo.InvariantCulture, DateTimeStyles.None, out var dtTime))
+			// 시간 형식 (HHmmss) 파싱 시도 - 오늘 날짜와 결합, 시(HH) 24 이상도 지원
+			if (s.Length == 6 && long.TryParse(s, NumberStyles.None, CultureInfo.InvariantCulture, out _))
 			{
-				return DateTime.Today.Add(dtTime.TimeOfDay);
+				var hour = int.Parse(s.Substring(0, 2), CultureInfo.InvariantCulture);
+				var minute = int.Parse(s.Substring(2, 2), CultureInfo.InvariantCulture);
+				var second = int.Parse(s.Substring(4, 2), CultureInfo.InvariantCulture);
+				return DateTime.Today + new TimeSpan(hour, minute, second);
 			}
 			throw new JsonSerializationException($"Invalid date format: {s}");
 		}

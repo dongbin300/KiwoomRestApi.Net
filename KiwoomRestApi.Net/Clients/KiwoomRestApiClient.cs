@@ -1,4 +1,5 @@
 ﻿using KiwoomRestApi.Net.Clients.DomesticStocks;
+using KiwoomRestApi.Net.Clients.UsStocks;
 using KiwoomRestApi.Net.Configuration;
 using KiwoomRestApi.Net.Converters;
 using KiwoomRestApi.Net.Objects;
@@ -66,79 +67,104 @@ namespace KiwoomRestApi.Net.Clients
 		public KiwoomRestApiClientOAuth OAuth { get; set; }
 
 		/// <summary>
+		/// 국내주식 관련 기능을 제공합니다.
+		/// </summary>
+		public KiwoomRestApiClientDomesticStock DomesticStock { get; set; }
+
+		/// <summary>
+		/// 미국주식 관련 기능을 제공합니다.
+		/// </summary>
+		public KiwoomRestApiClientUsStock UsStock { get; set; }
+
+		/// <summary>
 		/// 계좌 관련 기능을 제공합니다.
 		/// </summary>
-		public KiwoomRestApiClientDomesticStockAccount Account { get; set; }
+		[Obsolete("DomesticStock.Account를 사용하세요.")]
+		public KiwoomRestApiClientDomesticStockAccount Account => DomesticStock.Account;
 
 		/// <summary>
 		/// 공매도 관련 기능을 제공합니다.
 		/// </summary>
-		public KiwoomRestApiClientDomesticStockShortSale ShortSale { get; set; }
+		[Obsolete("DomesticStock.ShortSale을 사용하세요.")]
+		public KiwoomRestApiClientDomesticStockShortSale ShortSale => DomesticStock.ShortSale;
 
 		/// <summary>
 		/// 외국인/기관 관련 기능을 제공합니다.
 		/// </summary>
-		public KiwoomRestApiClientDomesticStockForeignInstitution ForeignInstitution { get; set; }
+		[Obsolete("DomesticStock.ForeignInstitution을 사용하세요.")]
+		public KiwoomRestApiClientDomesticStockForeignInstitution ForeignInstitution => DomesticStock.ForeignInstitution;
 
 		/// <summary>
 		/// 대차거래 관련 기능을 제공합니다.
 		/// </summary>
-		public KiwoomRestApiClientDomesticStockSecuritiesLending SecuritiesLending { get; set; }
+		[Obsolete("DomesticStock.SecuritiesLending을 사용하세요.")]
+		public KiwoomRestApiClientDomesticStockSecuritiesLending SecuritiesLending => DomesticStock.SecuritiesLending;
 
 		/// <summary>
 		/// 순위 정보 관련 기능을 제공합니다.
 		/// </summary>
-		public KiwoomRestApiClientDomesticStockRankingInfo RankingInfo { get; set; }
+		[Obsolete("DomesticStock.RankingInfo를 사용하세요.")]
+		public KiwoomRestApiClientDomesticStockRankingInfo RankingInfo => DomesticStock.RankingInfo;
 
 		/// <summary>
 		/// 시장 상황 관련 기능을 제공합니다.
 		/// </summary>
-		public KiwoomRestApiClientDomesticStockMarketCondition MarketCondition { get; set; }
+		[Obsolete("DomesticStock.MarketCondition을 사용하세요.")]
+		public KiwoomRestApiClientDomesticStockMarketCondition MarketCondition => DomesticStock.MarketCondition;
 
 		/// <summary>
 		/// 신용 주문 관련 기능을 제공합니다.
 		/// </summary>
-		public KiwoomRestApiClientDomesticStockCreditOrder CreditOrder { get; set; }
+		[Obsolete("DomesticStock.CreditOrder를 사용하세요.")]
+		public KiwoomRestApiClientDomesticStockCreditOrder CreditOrder => DomesticStock.CreditOrder;
 
 		/// <summary>
 		/// 업종 관련 기능을 제공합니다.
 		/// </summary>
-		public KiwoomRestApiClientDomesticStockIndustry Industry { get; set; }
+		[Obsolete("DomesticStock.Industry를 사용하세요.")]
+		public KiwoomRestApiClientDomesticStockIndustry Industry => DomesticStock.Industry;
 
 		/// <summary>
 		/// 주식 정보 관련 기능을 제공합니다.
 		/// </summary>
-		public KiwoomRestApiClientDomesticStockInfo StockInfo { get; set; }
+		[Obsolete("DomesticStock.StockInfo를 사용하세요.")]
+		public KiwoomRestApiClientDomesticStockInfo StockInfo => DomesticStock.StockInfo;
 
 		/// <summary>
 		/// 주문 관련 기능을 제공합니다.
 		/// </summary>
-		public KiwoomRestApiClientDomesticStockOrder Order { get; set; }
+		[Obsolete("DomesticStock.Order를 사용하세요.")]
+		public KiwoomRestApiClientDomesticStockOrder Order => DomesticStock.Order;
 
 		/// <summary>
 		/// 차트 데이터 관련 기능을 제공합니다.
 		/// </summary>
-		public KiwoomRestApiClientDomesticStockChart Chart { get; set; }
+		[Obsolete("DomesticStock.Chart를 사용하세요.")]
+		public KiwoomRestApiClientDomesticStockChart Chart => DomesticStock.Chart;
 
 		/// <summary>
 		/// 테마 관련 기능을 제공합니다.
 		/// </summary>
-		public KiwoomRestApiClientDomesticStockTheme Theme { get; set; }
+		[Obsolete("DomesticStock.Theme을 사용하세요.")]
+		public KiwoomRestApiClientDomesticStockTheme Theme => DomesticStock.Theme;
 
 		/// <summary>
 		/// ELW 관련 기능을 제공합니다.
 		/// </summary>
-		public KiwoomRestApiClientDomesticStockElw Elw { get; set; }
+		[Obsolete("DomesticStock.Elw를 사용하세요.")]
+		public KiwoomRestApiClientDomesticStockElw Elw => DomesticStock.Elw;
 
 		/// <summary>
 		/// ETF 관련 기능을 제공합니다.
 		/// </summary>
-		public KiwoomRestApiClientDomesticStockEtf Etf { get; set; }
+		[Obsolete("DomesticStock.Etf를 사용하세요.")]
+		public KiwoomRestApiClientDomesticStockEtf Etf => DomesticStock.Etf;
 
 		/// <summary>
 		/// 관심종목 관련 기능을 제공합니다.
 		/// </summary>
-		public KiwoomRestApiClientDomesticStockWatchlist Watchlist { get; set; }
+		[Obsolete("DomesticStock.Watchlist를 사용하세요.")]
+		public KiwoomRestApiClientDomesticStockWatchlist Watchlist => DomesticStock.Watchlist;
 
 		/// <summary>
 		/// API 연속 호출 시 딜레이 시간(밀리초)을 가져오거나 설정합니다. 기본값은 1000ms입니다.
@@ -196,21 +222,8 @@ namespace KiwoomRestApi.Net.Clients
 			UpdateToken(token);
 
 			OAuth = new KiwoomRestApiClientOAuth(this);
-			Account = new KiwoomRestApiClientDomesticStockAccount(this);
-			ShortSale = new KiwoomRestApiClientDomesticStockShortSale(this);
-			ForeignInstitution = new KiwoomRestApiClientDomesticStockForeignInstitution(this);
-			SecuritiesLending = new KiwoomRestApiClientDomesticStockSecuritiesLending(this);
-			RankingInfo = new KiwoomRestApiClientDomesticStockRankingInfo(this);
-			MarketCondition = new KiwoomRestApiClientDomesticStockMarketCondition(this);
-			CreditOrder = new KiwoomRestApiClientDomesticStockCreditOrder(this);
-			Industry = new KiwoomRestApiClientDomesticStockIndustry(this);
-			StockInfo = new KiwoomRestApiClientDomesticStockInfo(this);
-			Order = new KiwoomRestApiClientDomesticStockOrder(this);
-			Chart = new KiwoomRestApiClientDomesticStockChart(this);
-			Theme = new KiwoomRestApiClientDomesticStockTheme(this);
-			Elw = new KiwoomRestApiClientDomesticStockElw(this);
-			Etf = new KiwoomRestApiClientDomesticStockEtf(this);
-			Watchlist = new KiwoomRestApiClientDomesticStockWatchlist(this);
+			DomesticStock = new KiwoomRestApiClientDomesticStock(this);
+			UsStock = new KiwoomRestApiClientUsStock(this);
 		}
 
 		private void UpdateToken(string? token)

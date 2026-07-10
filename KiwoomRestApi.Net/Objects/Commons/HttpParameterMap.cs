@@ -54,6 +54,20 @@ namespace KiwoomRestApi.Net.Objects.Commons
 		}
 
 		/// <summary>
+		/// 배열/객체 형태의 파라미터(예: 관심종목 리스트)를 JSON으로 직렬화하여 추가합니다.
+		/// 값은 ToFormattedString()을 거치지 않고 JSON 문자열 그대로 저장되며,
+		/// 요청 전송 시 원본 JSON 배열/객체 토큰으로 복원됩니다.
+		/// </summary>
+		/// <param name="key">파라미터 키</param>
+		/// <param name="value">JSON으로 직렬화할 객체 (null 허용)</param>
+		/// <returns>메서드 체이닝을 위한 현재 HttpParameterMap 인스턴스</returns>
+		public HttpParameterMap AddRawField(string key, object? value)
+		{
+			base[key] = value == null ? string.Empty : Newtonsoft.Json.JsonConvert.SerializeObject(value);
+			return this;
+		}
+
+		/// <summary>
 		/// 파라미터 맵의 모든 키-값 쌍을 읽기 쉬운 문자열 형태로 반환합니다.
 		/// </summary>
 		/// <returns>쉼표로 구분된 "키: 값" 형태의 문자열</returns>
