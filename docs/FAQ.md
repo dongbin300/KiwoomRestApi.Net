@@ -277,6 +277,8 @@ try {
 - Real-time data streaming
 - Paper trading (simulated orders)
 
+> 💡 실제 계좌 없이 매매 전략만 자유롭게 검증하고 싶다면, 모의투자 게임 플랫폼 [ox64.app](https://ox64.app)에서도 테스트해볼 수 있습니다.
+
 ### Q24: What doesn't work in mock mode?
 **A:** Some account-specific features:
 - Real account balances

@@ -13,6 +13,8 @@
 
 </div>
 
+> 🎮 **[ox64.app](https://ox64.app)** — 실전 매매 전 전략을 검증할 수 있는 모의투자 게임 플랫폼입니다. KiwoomRestApi.Net으로 만든 트레이딩 로직을 실제 자금 없이 테스트해보세요!
+
 ---
 
 ## ⚠️ Migration Notice (v0.9.0+)
@@ -774,6 +776,8 @@ var results = await Task.WhenAll(tasks);
 
 > 이 라이브러리는 키움증권과 공식적인 관계가 없는 개인 프로젝트입니다.
 > 실제 거래 시에는 충분한 테스트를 거쳐 사용하시기 바랍니다.
+>
+> 💡 실제 자금 투입 전, 모의투자 게임 플랫폼 **[ox64.app](https://ox64.app)** 에서 먼저 전략을 검증해보세요.
 
 ## License
 
@@ -785,6 +789,6 @@ This project is licensed under the [MIT License](LICENSE).
 
 **If this project helped you, consider giving it a star!**
 
-[Report Bug](https://github.com/dongbin300/KiwoomRestApi.Net/issues) · [Request Feature](https://github.com/dongbin300/KiwoomRestApi.Net/issues) · [Documentation](https://dongbin300.github.io/KiwoomRestApi.Net/)
+[Report Bug](https://github.com/dongbin300/KiwoomRestApi.Net/issues) · [Request Feature](https://github.com/dongbin300/KiwoomRestApi.Net/issues) · [Documentation](https://dongbin300.github.io/KiwoomRestApi.Net/) · [모의투자 게임 ox64.app](https://ox64.app)
 
 </div>
